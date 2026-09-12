@@ -6,7 +6,6 @@ interface Props {
   ogImage?: string;
   ogType?: 'website' | 'article';
   noIndex?: boolean;
-  children: any;
 }
 
 const {
@@ -16,7 +15,6 @@ const {
   ogImage = '/og-default.jpg',
   ogType = 'website',
   noIndex = false,
-  children,
 } = Astro.props;
 
 const SITE_URL = 'https://optibilan.com';
@@ -86,6 +84,6 @@ const fullOgImage = ogImage.startsWith('http') ? ogImage : `${SITE_URL}${ogImage
     </script>
   </head>
   <body class="font-sans antialiased bg-white text-ink-900">
-    {children}
+    <slot />
   </body>
 </html>

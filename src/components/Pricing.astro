@@ -2,7 +2,7 @@
 interface Props {
   title?: string;
   subtitle?: string;
-  plans: Array<{
+  plans?: Array<{
     name: string;
     tagline: string;
     priceMonthly: number;
@@ -19,12 +19,6 @@ interface Props {
     };
   }>;
 }
-
-const {
-  title = 'Des offres qui grandissent avec vous',
-  subtitle = '30 jours d\'essai gratuit, sans CB. Changez d\'offre à tout moment.',
-  plans,
-} = Astro.props;
 
 const defaultPlans = [
   {
@@ -88,7 +82,13 @@ const defaultPlans = [
   },
 ];
 
-const displayPlans = plans.length > 0 ? plans : defaultPlans;
+const {
+  title = 'Des offres qui grandissent avec vous',
+  subtitle = '30 jours d\'essai gratuit, sans CB. Changez d\'offre à tout moment.',
+  plans,
+} = Astro.props;
+
+const displayPlans = plans && plans.length > 0 ? plans : defaultPlans;
 ---
 
 <section class="section bg-ink-50" aria-labelledby="pricing-title">
