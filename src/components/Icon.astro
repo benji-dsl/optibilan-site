@@ -31,4 +31,4 @@ const { name, class: className = '', 'aria-hidden': ariaHidden = true } = Astro.
 const svg = icons[name] || icons.shield;
 ---
 
-<span class="inline-flex {className}" aria-hidden={ariaHidden} set:html={svg}></span>
+<span class={`inline-flex ${className}`} aria-hidden={ariaHidden} set:html={svg}></span>
