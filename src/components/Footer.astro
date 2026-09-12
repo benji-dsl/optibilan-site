@@ -40,20 +40,20 @@ const socialLinks = [
 ];
 ---
 
-<footer class="bg-ink-950 text-ink-300" role="contentinfo">
+<footer class="bg-encre text-craie" role="contentinfo">
   <div class="container py-16 md:py-24 lg:py-32">
     <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 md:gap-12">
       <div class="col-span-2 lg:col-span-1">
         <a href="/" class="flex items-center gap-2 mb-6" aria-label="Optibilan - Accueil">
-          <Icon name="logo" class="w-9 h-9 text-primary-400" />
-          <span class="font-display font-bold text-xl text-white">Optibilan</span>
+          <Icon name="logo" class="w-9 h-9 text-bleu-signature" />
+          <span class="font-display font-bold text-xl text-craie">Optibilan</span>
         </a>
-        <p class="text-ink-400 text-sm leading-relaxed mb-6 max-w-xs">
+        <p class="text-craie/60 text-sm leading-relaxed mb-6 max-w-xs">
           Le SaaS de suivi coaching pour cabinets, studios et coachs indépendants. Multi-tenant, marque blanche, RGPD by design.
         </p>
         <div class="flex gap-4">
           {socialLinks.map(social => (
-            <a href={social.href} target="_blank" rel="noopener noreferrer" class="text-ink-500 hover:text-gold-400 transition-colors" aria-label={social.label} title={social.label}>
+            <a href={social.href} target="_blank" rel="noopener noreferrer" class="text-craie/50 hover:text-bleu-signature transition-colors" aria-label={social.label} title={social.label}>
               <Icon name={social.icon} class="w-5 h-5" />
             </a>
           ))}
@@ -61,51 +61,51 @@ const socialLinks = [
       </div>
 
       <nav aria-label="Produit">
-        <h3 class="font-semibold text-white mb-4">Produit</h3>
+        <h3 class="font-semibold text-craie mb-4">Produit</h3>
         <ul class="space-y-3">
           {footerLinks.produit.map(link => (
-            <li><a href={link.href} class="text-sm hover:text-gold-400 transition-colors">{link.label}</a></li>
+            <li><a href={link.href} class="text-sm hover:text-bleu-signature transition-colors">{link.label}</a></li>
           ))}
         </ul>
       </nav>
 
       <nav aria-label="Ressources">
-        <h3 class="font-semibold text-white mb-4">Ressources</h3>
+        <h3 class="font-semibold text-craie mb-4">Ressources</h3>
         <ul class="space-y-3">
           {footerLinks.ressources.map(link => (
-            <li><a href={link.href} class="text-sm hover:text-gold-400 transition-colors">{link.label}</a></li>
+            <li><a href={link.href} class="text-sm hover:text-bleu-signature transition-colors">{link.label}</a></li>
           ))}
         </ul>
       </nav>
 
       <nav aria-label="Entreprise">
-        <h3 class="font-semibold text-white mb-4">Entreprise</h3>
+        <h3 class="font-semibold text-craie mb-4">Entreprise</h3>
         <ul class="space-y-3">
           {footerLinks.entreprise.map(link => (
-            <li><a href={link.href} class="text-sm hover:text-gold-400 transition-colors">{link.label}</a></li>
+            <li><a href={link.href} class="text-sm hover:text-bleu-signature transition-colors">{link.label}</a></li>
           ))}
         </ul>
       </nav>
 
       <nav aria-label="Légal">
-        <h3 class="font-semibold text-white mb-4">Légal</h3>
+        <h3 class="font-semibold text-craie mb-4">Légal</h3>
         <ul class="space-y-3">
           {footerLinks.legal.map(link => (
-            <li><a href={link.href} class="text-sm hover:text-gold-400 transition-colors">{link.label}</a></li>
+            <li><a href={link.href} class="text-sm hover:text-bleu-signature transition-colors">{link.label}</a></li>
           ))}
         </ul>
       </nav>
     </div>
 
-    <div class="mt-12 md:mt-16 pt-8 border-t border-ink-800">
+    <div class="mt-12 md:mt-16 pt-8 border-t border-encre/20">
       <div class="flex flex-col md:flex-row items-center justify-between gap-4">
-        <p class="text-ink-500 text-sm">
+        <p class="text-craie/40 text-sm">
           © {new Date().getFullYear()} Optibilan. Tous droits réservés.
         </p>
-        <div class="flex items-center gap-6 text-sm text-ink-500">
-          <a href="/mentions-legales" class="hover:text-gold-400 transition-colors">Mentions légales</a>
-          <a href="/confidentialite" class="hover:text-gold-400 transition-colors">Confidentialité</a>
-          <a href="/cgv" class="hover:text-gold-400 transition-colors">CGV</a>
+        <div class="flex items-center gap-6 text-sm text-craie/40">
+          <a href="/mentions-legales" class="hover:text-bleu-signature transition-colors">Mentions légales</a>
+          <a href="/confidentialite" class="hover:text-bleu-signature transition-colors">Confidentialité</a>
+          <a href="/cgv" class="hover:text-bleu-signature transition-colors">CGV</a>
         </div>
       </div>
     </div>

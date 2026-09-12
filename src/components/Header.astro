@@ -14,17 +14,17 @@ const ctaButtons = [
 ];
 ---
 
-<header class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-ink-100 transition-shadow duration-300" data-header>
+<header class="fixed top-0 left-0 right-0 z-50 bg-blanc/95 backdrop-blur-sm border-b border-encre/10 transition-shadow duration-300" data-header>
   <nav class="container" aria-label="Navigation principale">
     <div class="flex h-16 items-center justify-between gap-4">
       <a href="/" class="flex items-center gap-2 shrink-0" aria-label="Optibilan - Accueil">
-        <Icon name="logo" class="w-8 h-8 text-primary-600" />
-        <span class="font-display font-bold text-xl text-ink-900">Optibilan</span>
+        <Icon name="logo" class="w-8 h-8 text-bleu-signature" />
+        <span class="font-display font-bold text-xl text-encre">Optibilan</span>
       </a>
 
       <div class="hidden md:flex items-center gap-8">
         {navLinks.map(link => (
-          <a href={link.href} class="text-sm font-medium text-ink-600 hover:text-primary-600 transition-colors relative after:absolute after:bottom-[-4px] after:left-0 after:right-0 after:h-[2px] after:bg-primary-500 after:scale-x-0 after:origin-center after:transition-transform hover:after:scale-x-100">
+          <a href={link.href} class="text-sm font-medium text-encre/60 hover:text-bleu-signature transition-colors relative after:absolute after:bottom-[-4px] after:left-0 after:right-0 after:h-[2px] after:bg-bleu-signature after:scale-x-0 after:origin-center after:transition-transform hover:after:scale-x-100">
             {link.label}
           </a>
         ))}
@@ -38,19 +38,19 @@ const ctaButtons = [
         ))}
       </div>
 
-      <button class="md:hidden p-2 rounded-lg text-ink-600 hover:bg-ink-100" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobile-menu" data-menu-toggle>
+      <button class="md:hidden p-2 rounded-lg text-encre/60 hover:bg-encre/5" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobile-menu" data-menu-toggle>
         <Icon name="menu" class="w-6 h-6" />
       </button>
     </div>
 
-    <div class="md:hidden hidden py-4 border-t border-ink-100" id="mobile-menu" role="navigation" aria-label="Menu mobile">
+    <div class="md:hidden hidden py-4 border-t border-encre/10" id="mobile-menu" role="navigation" aria-label="Menu mobile">
       <div class="flex flex-col gap-4">
         {navLinks.map(link => (
-          <a href={link.href} class="text-base font-medium text-ink-600 hover:text-primary-600 transition-colors px-2 py-1" data-mobile-link>
+          <a href={link.href} class="text-base font-medium text-encre/60 hover:text-bleu-signature transition-colors px-2 py-1" data-mobile-link>
             {link.label}
           </a>
         ))}
-        <div class="flex flex-col gap-2 pt-2 border-t border-ink-100">
+        <div class="flex flex-col gap-2 pt-2 border-t border-encre/10">
           {ctaButtons.map(btn => (
             <a href={btn.href} class={btn.primary ? 'btn-primary text-center' : 'btn-secondary text-center'}>
               {btn.label}

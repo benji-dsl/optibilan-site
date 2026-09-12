@@ -52,7 +52,6 @@ const {
 
 <section class="section bg-papier" aria-labelledby="testimonials-title">
   <div class="container">
-    <!-- Stats bar -->
     <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 mb-16" role="list" aria-label="Statistiques de confiance">
       {stats.map((stat, i) => (
         <div key={i} class="text-center" role="listitem">
@@ -74,12 +73,10 @@ const {
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
       {testimonials.map((testimonial, index) => (
         <article class="card-hover relative p-6 md:p-8" style={{ animationDelay: `${index * 100}ms` }}>
-          <!-- Quote icon -->
           <div class="absolute top-6 right-6 text-bleu-signature/10">
             <Icon name="chart" class="w-12 h-12" />
           </div>
 
-          <!-- Rating -->
           <div class="flex gap-0.5 mb-4" aria-label={`Note : ${testimonial.rating}/5`}>
             {[...Array(testimonial.rating || 5)].map((_, i) => (
               <Icon key={i} name="check" class="w-5 h-5 text-gold-400" />
@@ -105,7 +102,6 @@ const {
       ))}
     </div>
 
-    <!-- Trustpilot / CTA -->
     <div class="text-center mt-12">
       <p class="text-encre/50 mb-4">
         <span class="font-semibold text-encre">4,9/5</span> sur Trustpilot · <span class="font-semibold text-encre">150+</span> avis vérifiés

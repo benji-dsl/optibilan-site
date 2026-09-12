@@ -78,11 +78,9 @@ const {
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {pillars.map((pillar, index) => (
         <article class="card-hover group relative overflow-hidden" style={{ '--pillar-color': `var(--color-${pillar.color})` }}>
-          <!-- Barre colorée en haut -->
           <div class="absolute top-0 left-0 right-0 h-1 bg-[var(--pillar-color)] opacity-0 group-hover:opacity-100 transition-opacity duration-300" aria-hidden="true"></div>
 
           <div class="p-6 md:p-8">
-            <!-- Icône -->
             <div class="icon-wrapper mb-4" aria-hidden="true">
               <Icon name={pillar.icon as any} />
             </div>
@@ -94,7 +92,6 @@ const {
               {pillar.description}
             </p>
 
-            <!-- Liste features -->
             <ul class="space-y-2 mb-6" role="list">
               {pillar.features.map(feature => (
                 <li key={feature} class="flex items-start gap-2 text-sm text-encre/60 group">
@@ -104,7 +101,6 @@ const {
               ))}
             </ul>
 
-            <!-- Lien -->
             <a href={`/fonctionnalites#${pillar.title.toLowerCase().replace(/ & /g, '-').replace(/\s+/g, '-')}`} class="inline-flex items-center gap-1.5 text-sm font-medium text-[var(--pillar-color)] hover:opacity-80 transition-opacity group">
               Voir le détail
               <Icon name="arrowRight" class="w-4 h-4 transition-transform group-hover:translate-x-1" />
@@ -114,7 +110,6 @@ const {
       ))}
     </div>
 
-    <!-- Note bas de section -->
     <p class="text-center text-sm text-encre/40 mt-10">
       Tous les modules inclus dans votre offre · Aucun surcoût · Activation instantanée
     </p>

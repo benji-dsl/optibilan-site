@@ -22,13 +22,11 @@ const {
 ---
 
 <section class="relative section-lg pt-32 md:pt-40 lg:pt-48 overflow-hidden" aria-labelledby="hero-title">
-  <!-- Fond papier + gradient radial doux -->
   <div class="absolute inset-0 bg-gradient-to-b from-papier via-papier to-blanc" aria-hidden="true"></div>
   <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[500px] bg-gradient-radial from-bleu-clair/50 via-transparent to-transparent" aria-hidden="true"></div>
 
   <div class="container relative">
     <div class="max-w-3xl mx-auto text-center">
-      <!-- Badge -->
       {badge && (
         <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-bleu-clair text-bleu-lecture text-sm font-medium mb-8 animate-fade-in" role="status">
           <span class="w-2 h-2 rounded-full bg-bleu-signature animate-pulse" aria-hidden="true"></span>
@@ -36,19 +34,16 @@ const {
         </span>
       )}
 
-      <!-- Titre principal -->
       <h1 id="hero-title" class="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-encre tracking-tight leading-[1.1] mb-6 animate-slide-up">
         {title.split('\n').map((line, i) => (
           <span key={i} class="block">{line}</span>
         ))}
       </h1>
 
-      <!-- Sous-titre -->
       <p class="text-lg md:text-xl text-encre/70 leading-relaxed mb-10 max-w-2xl mx-auto animate-slide-up delay-200">
         {subtitle}
       </p>
 
-      <!-- Stats de confiance -->
       <div class="flex flex-wrap items-center justify-center gap-8 md:gap-12 mb-10 animate-slide-up delay-300" role="list" aria-label="Statistiques de confiance">
         {stats.map((stat, i) => (
           <div key={i} class="flex flex-col items-center" role="listitem">
@@ -58,7 +53,6 @@ const {
         ))}
       </div>
 
-      <!-- CTA -->
       <div class="flex flex-col sm:flex-row items-center justify-center gap-4 animate-slide-up delay-300">
         <a href="https://app.optibilan.com/inscription" class="btn-primary w-full sm:w-auto group">
           Essai gratuit 30 jours
@@ -74,7 +68,6 @@ const {
       </p>
     </div>
 
-    <!-- Illustration placeholder (remplacer par vraie image plus tard) -->
     <div class="mt-16 relative animate-scale-in delay-500 hidden lg:block" aria-hidden="true">
       <div class="aspect-[4/3] max-w-4xl mx-auto rounded-card-lg bg-gradient-to-br from-bleu-clair via-papier to-blanc border border-encre/10 shadow-elevated flex items-center justify-center">
         <div class="text-center p-8">

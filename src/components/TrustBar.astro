@@ -1,4 +1,6 @@
 ---
+import Icon from './Icon.astro';
+
 interface Props {
   logos?: string[];
   title?: string;
@@ -13,20 +15,19 @@ const {
     'Next.js',
     'TypeScript',
     'PostgreSQL',
-    'Vercel',
   ],
   title = 'Ils nous font confiance',
 } = Astro.props;
 ---
 
-<section class="py-12 bg-white border-y border-ink-100" aria-labelledby="trust-title">
+<section class="py-12 bg-blanc border-y border-encre/10" aria-labelledby="trust-title">
   <div class="container">
-    <p id="trust-title" class="text-center text-sm font-semibold text-ink-500 uppercase tracking-wider mb-8">
+    <p id="trust-title" class="text-center text-sm font-semibold text-encre/50 uppercase tracking-wider mb-8">
       {title}
     </p>
     <div class="flex flex-wrap items-center justify-center gap-8 md:gap-16 opacity-60 hover:opacity-100 transition-opacity duration-300">
       {logos.map(logo => (
-        <span class="text-lg font-semibold text-ink-400 hover:text-ink-600 transition-colors" aria-label={logo}>
+        <span class="text-lg font-semibold text-encre/40 hover:text-encre/60 transition-colors" aria-label={logo}>
           {logo}
         </span>
       ))}

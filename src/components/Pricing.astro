@@ -93,58 +93,58 @@ const {
 const displayPlans = plans && plans.length > 0 ? plans : defaultPlans;
 ---
 
-<section class="section bg-ink-50" aria-labelledby="pricing-title">
+<section class="section bg-blanc" aria-labelledby="pricing-title">
   <div class="container">
     <header class="text-center max-w-3xl mx-auto mb-12">
-      <h2 id="pricing-title" class="font-display text-3xl md:text-4xl font-bold text-ink-950 mb-4">
+      <h2 id="pricing-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
         {title}
       </h2>
-      <p class="text-lg text-ink-600">
+      <p class="text-lg text-encre/60">
         {subtitle}
       </p>
     </header>
 
     <div class="mb-10 flex justify-center">
-      <div class="inline-flex items-center gap-2 p-1 bg-white rounded-xl border border-ink-200 shadow-sm">
-        <button id="monthly-btn" class="px-4 py-2 rounded-lg text-sm font-medium text-ink-900 bg-primary-600 text-white shadow-sm" aria-pressed="true" data-period="monthly">Mensuel</button>
-        <button id="yearly-btn" class="px-4 py-2 rounded-lg text-sm font-medium text-ink-600 hover:text-ink-900" aria-pressed="false" data-period="yearly">
+      <div class="inline-flex items-center gap-2 p-1 bg-blanc rounded-pill border border-encre/10 shadow-sm">
+        <button id="monthly-btn" class="px-4 py-2 rounded-pill text-sm font-medium text-craie bg-bleu-signature text-craie shadow-sm" aria-pressed="true" data-period="monthly">Mensuel</button>
+        <button id="yearly-btn" class="px-4 py-2 rounded-pill text-sm font-medium text-encre/60 hover:text-encre" aria-pressed="false" data-period="yearly">
           Annuel
-          <span class="ml-2 px-2 py-0.5 text-xs font-bold text-gold-700 bg-gold-100 rounded-full">-20%</span>
+          <span class="ml-2 px-2 py-0.5 text-xs font-bold text-bordeaux bg-rose-bordeaux rounded-full">-20%</span>
         </button>
       </div>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
       {displayPlans.map((plan, index) => (
-        <article class={`relative card flex flex-col ${plan.popular ? 'ring-2 ring-primary-500 shadow-card' : ''}`} data-plan={plan.name}>
+        <article class={`relative card flex flex-col ${plan.popular ? 'ring-2 ring-bleu-signature shadow-card' : ''}`} data-plan={plan.name}>
           {plan.popular && (
-            <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-primary-600 text-white text-xs font-semibold rounded-full">
+            <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-bleu-signature text-craie text-xs font-semibold rounded-full">
               Le plus choisi
             </div>
           )}
           <div class="mb-6">
-            <h3 class="text-xl font-bold text-ink-950 mb-1">{plan.name}</h3>
-            <p class="text-sm text-ink-500">{plan.tagline}</p>
+            <h3 class="text-xl font-bold text-encre mb-1">{plan.name}</h3>
+            <p class="text-sm text-encre/50">{plan.tagline}</p>
           </div>
 
           <div class="mb-6" data-price-container>
             <div class="flex items-baseline gap-1" data-monthly>
-              <span class="text-4xl font-bold text-ink-950">{plan.priceMonthly}</span>
-              <span class="text-ink-500">/mois</span>
+              <span class="text-4xl font-bold text-encre">{plan.priceMonthly}</span>
+              <span class="text-encre/50">/mois</span>
             </div>
             <div class="flex items-baseline gap-1 hidden" data-yearly>
-              <span class="text-4xl font-bold text-ink-950">{plan.priceYearly}</span>
-              <span class="text-ink-500">/mois</span>
+              <span class="text-4xl font-bold text-encre">{plan.priceYearly}</span>
+              <span class="text-encre/50">/mois</span>
             </div>
-            <p class="text-sm text-ink-500 mt-1" data-yearly-note hidden>
+            <p class="text-sm text-encre/50 mt-1" data-yearly-note hidden>
               Facturé {plan.priceYearly * 12}€ / an
             </p>
           </div>
 
           <ul class="flex-1 space-y-3 mb-8" role="list">
             {plan.features.map(feature => (
-              <li class="flex items-start gap-3 text-sm text-ink-600">
-                <Icon name="check" class="w-5 h-5 text-primary-500 flex-shrink-0 mt-0.5" />
+              <li class="flex items-start gap-3 text-sm text-encre/60">
+                <Icon name="check" class="w-5 h-5 text-bleu-signature flex-shrink-0 mt-0.5" />
                 {feature}
               </li>
             ))}
@@ -155,22 +155,22 @@ const displayPlans = plans && plans.length > 0 ? plans : defaultPlans;
           </a>
 
           {plan.limits && (
-            <details class="mt-6 pt-6 border-t border-ink-100 group">
-              <summary class="flex items-center justify-between cursor-pointer text-sm font-medium text-ink-700 hover:text-ink-900">
+            <details class="mt-6 pt-6 border-t border-encre/10 group">
+              <summary class="flex items-center justify-between cursor-pointer text-sm font-medium text-encre/70 hover:text-encre">
                 <span>Détails des limites</span>
-                <Icon name="chevronDown" class="w-5 h-5 text-ink-400 transition-transform group-open:rotate-180" />
+                <Icon name="chevronDown" class="w-5 h-5 text-encre/40 transition-transform group-open:rotate-180" />
               </summary>
               <div class="mt-4 grid grid-cols-2 gap-3 text-sm">
-                <div class="text-ink-500">Coachés</div>
-                <div class="font-medium text-ink-900">{plan.limits.clients}</div>
-                <div class="text-ink-500">Accès staff</div>
-                <div class="font-medium text-ink-900">{plan.limits.staff}</div>
-                <div class="text-ink-500">Messages IA/mois</div>
-                <div class="font-medium text-ink-900">{plan.limits.aiMessages === 'illimité' ? 'Illimité' : plan.limits.aiMessages.toLocaleString()}</div>
-                <div class="text-ink-500">API REST</div>
-                <div class="font-medium text-ink-900">{plan.limits.api ? 'Incluse' : 'Non'}</div>
-                <div class="text-ink-500">Marque blanche</div>
-                <div class="font-medium text-ink-900">{plan.limits.whiteLabel ? 'Avancée' : 'Basique'}</div>
+                <div class="text-encre/50">Coachés</div>
+                <div class="font-medium text-encre">{plan.limits.clients}</div>
+                <div class="text-encre/50">Accès staff</div>
+                <div class="font-medium text-encre">{plan.limits.staff}</div>
+                <div class="text-encre/50">Messages IA/mois</div>
+                <div class="font-medium text-encre">{plan.limits.aiMessages === 'illimité' ? 'Illimité' : plan.limits.aiMessages.toLocaleString()}</div>
+                <div class="text-encre/50">API REST</div>
+                <div class="font-medium text-encre">{plan.limits.api ? 'Incluse' : 'Non'}</div>
+                <div class="text-encre/50">Marque blanche</div>
+                <div class="font-medium text-encre">{plan.limits.whiteLabel ? 'Avancée' : 'Basique'}</div>
               </div>
             </details>
           )}
@@ -178,7 +178,7 @@ const displayPlans = plans && plans.length > 0 ? plans : defaultPlans;
       ))}
     </div>
 
-    <p class="text-center text-sm text-ink-500 mt-10">
+    <p class="text-center text-sm text-encre/50 mt-10">
       TVA en sus pour les assujettis. Paiement sécurisé par Stripe. Annulation quand vous voulez.
     </p>
   </div>
@@ -193,17 +193,17 @@ const displayPlans = plans && plans.length > 0 ? plans : defaultPlans;
 
   function setPeriod(period) {
     const isYearly = period === 'yearly';
-    monthlyBtn?.classList.toggle('bg-primary-600', !isYearly);
-    monthlyBtn?.classList.toggle('text-white', !isYearly);
+    monthlyBtn?.classList.toggle('bg-bleu-signature', !isYearly);
+    monthlyBtn?.classList.toggle('text-craie', !isYearly);
     monthlyBtn?.classList.toggle('shadow-sm', !isYearly);
-    monthlyBtn?.classList.toggle('bg-white', isYearly);
-    monthlyBtn?.classList.toggle('text-ink-600', isYearly);
+    monthlyBtn?.classList.toggle('bg-blanc', isYearly);
+    monthlyBtn?.classList.toggle('text-encre/60', isYearly);
     monthlyBtn?.setAttribute('aria-pressed', String(!isYearly));
 
-    yearlyBtn?.classList.toggle('bg-primary-600', isYearly);
-    yearlyBtn?.classList.toggle('text-white', isYearly);
+    yearlyBtn?.classList.toggle('bg-bleu-signature', isYearly);
+    yearlyBtn?.classList.toggle('text-craie', isYearly);
     yearlyBtn?.classList.toggle('shadow-sm', isYearly);
-    yearlyBtn?.classList.toggle('text-ink-600', !isYearly);
+    yearlyBtn?.classList.toggle('text-encre/60', !isYearly);
     yearlyBtn?.setAttribute('aria-pressed', String(isYearly));
 
     monthlyPrices.forEach(el => el.classList.toggle('hidden', isYearly));
