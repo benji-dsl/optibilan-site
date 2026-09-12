@@ -21,6 +21,8 @@ const SITE_URL = 'https://optibilan.com';
 const SITE_NAME = 'Optibilan';
 const fullUrl = canonical ? `${SITE_URL}${canonical}` : Astro.url.href;
 const fullOgImage = ogImage.startsWith('http') ? ogImage : `${SITE_URL}${ogImage}`;
+
+import '../styles/global.css';
 ---
 
 <!doctype html>
