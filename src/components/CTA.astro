@@ -1,4 +1,6 @@
 ---
+import Icon from './Icon.astro';
+
 interface Props {
   title?: string;
   subtitle?: string;
@@ -45,9 +47,7 @@ const variants = {
         'bg-white text-ink-900 hover:bg-ink-100 text-lg px-8 py-4 rounded-xl font-semibold transition-colors'
       }>
         {primaryCTA.label}
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-        </svg>
+        <Icon name="arrowRight" class="w-5 h-5" />
       </a>
       <a href={secondaryCTA.href} class={
         variant !== 'minimal' ? 'btn-secondary text-lg px-8 py-4 border-white/30 text-white hover:bg-white/10' :
