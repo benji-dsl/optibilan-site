@@ -1,51 +1,57 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary-50: #eff6ff;
-  --color-primary-100: #dbeafe;
-  --color-primary-200: #bfdbfe;
-  --color-primary-300: #93c5fd;
-  --color-primary-400: #60a5fa;
-  --color-primary-500: #3b82f6;
-  --color-primary-600: #2563eb;
-  --color-primary-700: #1d4ed8;
-  --color-primary-800: #1e40af;
-  --color-primary-900: #1e3a8a;
-  --color-primary-950: #172554;
+  /* === DA ÉCOLE DE LA LONGÉVITÉ === */
 
-  --color-gold-50: #fefce8;
-  --color-gold-100: #fef9c3;
-  --color-gold-200: #fef08a;
-  --color-gold-300: #fde047;
-  --color-gold-400: #facc15;
-  --color-gold-500: #eab308;
-  --color-gold-600: #ca8a04;
-  --color-gold-700: #a16207;
-  --color-gold-800: #854d0e;
-  --color-gold-900: #713f12;
-  --color-gold-950: #422006;
+  /* --- FONDS --- */
+  --color-papier: #F7F5F1;        /* fond principal clair */
+  --color-blanc: #FFFFFF;         /* second fond clair, cartes, slides photo */
+  --color-bleu-clair: #E8F5FF;    /* sections données, graphiques */
+  --color-encre: #23211C;         /* sections autorité, citations, intercalaires */
+  --color-carbone: #191817;       /* pied de page */
+  --color-bordeaux: #7D3037;      /* fond aplat manifeste, intercalaire */
 
-  --color-ink-50: #f8fafc;
-  --color-ink-100: #f1f5f9;
-  --color-ink-200: #e2e8f0;
-  --color-ink-300: #cbd5e1;
-  --color-ink-400: #94a3b8;
-  --color-ink-500: #64748b;
-  --color-ink-600: #475569;
-  --color-ink-700: #334155;
-  --color-ink-800: #1e293b;
-  --color-ink-900: #0f172a;
-  --color-ink-950: #020617;
+  /* --- TEXTES --- */
+  --color-encre-texte: #23211C;   /* sur fond clair */
+  --color-craie: #F1EADD;         /* sur fond sombre (Encre/Bordeaux) */
 
-  --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-display: 'Cal Sans', 'Inter', system-ui, sans-serif;
+  /* --- ACCENTS --- */
+  --color-bleu-signature: #2A8AFF;   /* principal : grands titres, filets, pictos, points données */
+  --color-bleu-lecture: #1466C4;     /* variante sombre : texte courant, légendes, liens sur fond clair */
+  --color-indigo: #433BFF;           /* fin de dégradé uniquement */
+  --color-bordeaux: #7D3037;         /* alerte, contre-exemple, filets 1.5px blocs chiffres */
+  --color-saumon: #E88690;           /* points/libellés courbe basse (fond sombre only) */
+  --color-bleu-ardoise: #8FAFC2;     /* aplats discrets, grilles, repères décoratifs */
 
+  /* Palettes fonctionnelles schémas (texte = Encre) */
+  --color-ciel: #E8F5FF;
+  --color-creme: #FBF2E3;
+  --color-vert-gris: #E9F1F1;
+  --color-rose-bordeaux: #F4E8E9;
+  --color-sable: #EFEDE3;
+
+  /* --- TYPOGRAPHIES --- */
+  --font-display: 'Playfair Display', serif;  /* titres courts, citations, chiffres d'impact */
+  --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; /* texte courant, interface */
+
+  /* --- OMBRES --- */
   --shadow-soft: 0 2px 15px -3px rgba(0, 0, 0, 0.07), 0 10px 20px -2px rgba(0, 0, 0, 0.04);
   --shadow-card: 0 4px 25px -5px rgba(0, 0, 0, 0.08), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
   --shadow-elevated: 0 20px 50px -12px rgba(0, 0, 0, 0.15);
 
-  --radius-xl: 1rem;
-  --radius-2xl: 1.5rem;
+  /* --- RAYONS --- */
+  --radius-pill: 999px;      /* boutons */
+  --radius-card-lg: 24px;    /* grandes cartes */
+  --radius-card: 16px;       /* cartes standard */
+  --radius-card-sm: 12px;    /* petites cartes */
+  --radius-puce: 6px;        /* puces */
+
+  /* --- DÉGRADÉS AUTORISÉS (variables pour réutilisation) --- */
+  --gradient-btn-primary: linear-gradient(135deg, #1466C4, #433BFF);
+  --gradient-progress: linear-gradient(90deg, #2A8AFF, #433BFF, #7D3037);
+  --gradient-blue-deep: linear-gradient(160deg, #2A8AFF, #1466C4, #0D4A94);
+  --gradient-dark-section: linear-gradient(180deg, #241C1D, #1B1516);
+  --gradient-card-light: linear-gradient(155deg, #FFFFFF, #F7F5F1);
 }
 
 @layer base {
@@ -53,41 +59,48 @@
     scroll-behavior: smooth;
   }
   body {
-    @apply text-ink-900 antialiased;
+    @apply bg-papier text-encre-texte antialiased;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    font-family: var(--font-sans);
   }
   ::selection {
-    @apply bg-primary-200 text-primary-900;
+    @apply bg-bleu-signature/30 text-encre-texte;
   }
   :focus-visible {
-    @apply outline-none ring-2 ring-primary-500 ring-offset-2;
+    @apply outline-none ring-2 ring-bleu-signature ring-offset-2 ring-offset-papier;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
   }
 }
 
 @layer components {
+  /* === BOUTONS === */
   .btn {
-    @apply inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl font-semibold text-sm transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed;
+    @apply inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full font-semibold text-sm transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed;
   }
   .btn-primary {
-    @apply btn bg-primary-600 text-white hover:bg-primary-700 active:bg-primary-800 focus-visible:ring-primary-500 shadow-lg shadow-primary-500/25;
+    @apply btn bg-gradient-to-r from-bleu-lecture to-indigo text-white hover:from-bleu-lecture/90 hover:to-indigo/90 focus-visible:ring-bleu-signature shadow-lg shadow-bleu-signature/25;
   }
   .btn-secondary {
-    @apply btn bg-white text-ink-700 border border-ink-200 hover:bg-ink-50 active:bg-ink-100 focus-visible:ring-ink-500 shadow-sm;
+    @apply btn bg-transparent border border-encre-texte/20 text-encre-texte hover:bg-encre-texte/5 active:bg-encre-texte/10 focus-visible:ring-encre-texte/30;
   }
   .btn-gold {
-    @apply btn bg-gold-500 text-ink-900 hover:bg-gold-400 active:bg-gold-600 focus-visible:ring-gold-500 shadow-lg shadow-gold-500/25;
+    @apply btn bg-gradient-to-r from-bleu-lecture to-indigo text-white hover:from-bleu-lecture/90 hover:to-indigo/90 focus-visible:ring-bleu-signature shadow-lg shadow-bleu-signature/25;
   }
   .btn-ghost {
-    @apply btn bg-transparent text-ink-600 hover:bg-ink-100 active:bg-ink-200 focus-visible:ring-ink-500;
+    @apply btn bg-transparent text-encre-texte/70 hover:text-encre-texte hover:bg-encre-texte/5 active:bg-encre-texte/10 focus-visible:ring-encre-texte/30;
   }
 
+  /* === CARTES === */
   .card {
-    @apply bg-white rounded-2xl border border-ink-100 p-5 md:p-7 transition-all duration-300 hover:shadow-card hover:-translate-y-0.5;
+    @apply bg-blanc rounded-card border border-encre-texte/10 p-5 md:p-7 transition-all duration-300 hover:shadow-card hover:-translate-y-0.5;
   }
   .card-hover {
     @apply card group;
   }
 
+  /* === SECTIONS === */
   .section {
     @apply py-12 md:py-16 lg:py-24;
   }
@@ -103,12 +116,9 @@
     text-wrap: balance;
   }
 
-  .gradient-text {
-    @apply bg-gradient-to-r from-primary-600 via-primary-500 to-gold-500 bg-clip-text text-transparent;
-  }
-
+  /* Wrapper icônes (utilise la classe icon-wrapper via Icon.astro) */
   .icon-wrapper {
-    @apply w-12 h-12 rounded-xl bg-primary-50 text-primary-600 flex items-center justify-center transition-colors group-hover:bg-primary-100 group-hover:text-primary-700;
+    @apply w-12 h-12 rounded-card-lg bg-bleu-clair text-bleu-signature flex items-center justify-center transition-colors group-hover:bg-bleu-signature/10 group-hover:text-bleu-lecture;
   }
 }
 
@@ -142,7 +152,7 @@
   to { opacity: 1; transform: scale(1); }
 }
 
-/* Mobile-first responsive fixes */
+/* === MOBILE-FIRST RESPONSIVE === */
 @media (max-width: 640px) {
   .section {
     @apply py-10;
@@ -165,4 +175,36 @@
   .card {
     @apply p-4;
   }
+  .icon-wrapper {
+    @apply w-10 h-10 rounded-card;
+  }
+}
+
+/* === UTILITAIRES DA SPÉCIFIQUES === */
+.bg-papier { background-color: #F7F5F1; }
+.bg-encre { background-color: #23211C; }
+.bg-bordeaux { background-color: #7D3037; }
+.bg-bleu-clair { background-color: #E8F5FF; }
+.bg-carbone { background-color: #191817; }
+
+.text-encre { color: #23211C; }
+.text-craie { color: #F1EADD; }
+.text-bleu-signature { color: #2A8AFF; }
+.text-bleu-lecture { color: #1466C4; }
+.text-bordeaux { color: #7D3037; }
+.text-bleu-ardoise { color: #8FAFC2; }
+
+.border-encre-6 { border-color: #23211C; opacity: 0.06; }
+.border-bordeaux-1-5 { border-color: #7D3037; border-width: 1.5px; }
+
+/* Dégradés via classes utilitaires */
+.gradient-btn-primary { background: linear-gradient(135deg, #1466C4, #433BFF); }
+.gradient-progress { background: linear-gradient(90deg, #2A8AFF, #433BFF, #7D3037); }
+.gradient-blue-deep { background: linear-gradient(160deg, #2A8AFF, #1466C4, #0D4A94); }
+.gradient-dark-section { background: linear-gradient(180deg, #241C1D, #1B1516); }
+.gradient-card-light { background: linear-gradient(155deg, #FFFFFF, #F7F5F1); }
+
+/* Focus visible pour accessibilité */
+.focus-visible-ring {
+  @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bleu-signature focus-visible:ring-offset-2 focus-visible:ring-offset-papier;
 }
