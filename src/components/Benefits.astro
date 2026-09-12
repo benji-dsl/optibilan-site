@@ -71,7 +71,7 @@ const {
       {benefits.map((benefit, index) => (
         <article class="card-hover group relative p-6 md:p-8" style={{ animationDelay: `${index * 100}ms` }}>
           <div class="icon-wrapper mb-4" aria-hidden="true">
-            <Icon name={benefit.icon as any} />
+            <Icon name={benefit.icon as any} class="w-10 h-10" />
           </div>
 
           {benefit.metric && (
