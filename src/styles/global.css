@@ -3,7 +3,7 @@
 @theme {
   /* === DA ÉCOLE DE LA LONGÉVITÉ === */
 
-  /* --- FONDS --- */
+  /* --- FONDS DA --- */
   --color-papier: #F7F5F1;        /* fond principal clair */
   --color-blanc: #FFFFFF;         /* second fond clair, cartes, slides photo */
   --color-bleu-clair: #E8F5FF;    /* sections données, graphiques */
@@ -11,11 +11,89 @@
   --color-carbone: #191817;       /* pied de page */
   --color-bordeaux: #7D3037;      /* fond aplat manifeste, intercalaire */
 
-  /* --- TEXTES --- */
+  /* --- TEXTES DA --- */
   --color-encre-texte: #23211C;   /* sur fond clair */
   --color-craie: #F1EADD;         /* sur fond sombre (Encre/Bordeaux) */
 
-  /* --- ACCENTS --- */
+  /* --- ACCENTS DA --- */
+  --color-bleu-signature: #2A8AFF;   /* principal : grands titres, filets, pictos, points données */
+  --color-bleu-lecture: #1466C4;     /* variante sombre : texte courant, légendes, liens sur fond clair */
+  --color-indigo: #433BFF;           /* fin de dégradé uniquement */
+  --color-bordeaux: #7D3037;         /* alerte, contre-exemple, filets 1.5px blocs chiffres */
+  --color-saumon: #E88690;           /* points/libellés courbe basse (fond sombre only) */
+  --color-bleu-ardoise: #8FAFC2;     /* aplats discrets, grilles, repères décoratifs */
+
+  /* Palettes fonctionnelles schémas (texte = Encre) */
+  --color-ciel: #E8F5FF;
+  --color-creme: #FBF2E3;
+  --color-vert-gris: #E9F1F1;
+  --color-rose-bordeaux: #F4E8E9;
+  --color-sable: #EFEDE3;
+
+  /* === ALIAS ANCIENNE PALETTE (compatibilité composants existants) === */
+  /* Ink (slate) */
+  --color-ink-50: #F8FAFC;
+  --color-ink-100: #F1F5F9;
+  --color-ink-200: #E2E8F0;
+  --color-ink-300: #CBD5E1;
+  --color-ink-400: #94A3B8;
+  --color-ink-500: #64748B;
+  --color-ink-600: #475569;
+  --color-ink-700: #334155;
+  --color-ink-800: #1E293B;
+  --color-ink-900: #0F172A;
+  --color-ink-950: #020617;
+
+  /* Primary (blue) */
+  --color-primary-50: #EFF6FF;
+  --color-primary-100: #DBEAFE;
+  --color-primary-200: #BFDBFE;
+  --color-primary-300: #93C5FD;
+  --color-primary-400: #60A5FA;
+  --color-primary-500: #3B82F6;
+  --color-primary-600: #2563EB;
+  --color-primary-700: #1D4ED8;
+  --color-primary-800: #1E40AF;
+  --color-primary-900: #1E3A8A;
+  --color-primary-950: #172554;
+
+  /* Gold (amber/yellow) */
+  --color-gold-50: #FEFCE8;
+  --color-gold-100: #FEF9C3;
+  --color-gold-200: #FEF08A;
+  --color-gold-300: #FDE047;
+  --color-gold-400: #FACC15;
+  --color-gold-500: #EAB308;
+  --color-gold-500: #EAB308;
+  --color-gold-600: #CA8A04;
+  --color-gold-700: #A16207;
+  --color-gold-800: #854D0E;
+  --color-gold-900: #713F12;
+  --color-gold-950: #422006;
+
+  /* Success (green) */
+  --color-success-500: #22C55E;
+  --color-success-600: #16A34A;
+
+  /* Danger (red) */
+  --color-danger-500: #EF4444;
+  --color-danger-600: #DC2626;
+
+  /* === DA ÉCOLE DE LA LONGÉVITÉ === */
+
+  /* --- FONDS DA --- */
+  --color-papier: #F7F5F1;        /* fond principal clair */
+  --color-blanc: #FFFFFF;         /* second fond clair, cartes, slides photo */
+  --color-bleu-clair: #E8F5FF;    /* sections données, graphiques */
+  --color-encre: #23211C;         /* sections autorité, citations, intercalaires */
+  --color-carbone: #191817;       /* pied de page */
+  --color-bordeaux: #7D3037;      /* fond aplat manifeste, intercalaire */
+
+  /* --- TEXTES DA --- */
+  --color-encre-texte: #23211C;   /* sur fond clair */
+  --color-craie: #F1EADD;         /* sur fond sombre (Encre/Bordeaux) */
+
+  /* --- ACCENTS DA --- */
   --color-bleu-signature: #2A8AFF;   /* principal : grands titres, filets, pictos, points données */
   --color-bleu-lecture: #1466C4;     /* variante sombre : texte courant, légendes, liens sur fond clair */
   --color-indigo: #433BFF;           /* fin de dégradé uniquement */
