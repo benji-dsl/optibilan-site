@@ -1,0 +1,93 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import Hero from '../../components/Hero.astro';
+
+const pageTitle = 'Mentions légales — Optibilan';
+const pageDescription = 'Mentions légales d\'Optibilan : éditeur, hébergeur, directeur de publication, propriété intellectuelle, contact.';
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  canonical="/mentions-legales"
+  ogImage="/og-legal.jpg"
+>
+  <Header />
+
+  <main>
+    <Hero
+      title="Mentions légales"
+      subtitle="Informations légales relatives à l'éditeur et à l'hébergement du site optibilan.com et de l'application app.optibilan.com."
+      variant="minimal"
+    />
+
+    <section class="section bg-white" aria-labelledby="legal-content">
+      <div class="container max-w-3xl">
+        <article class="prose prose-ink max-w-none" id="legal-content">
+          <h2>1. Éditeur</h2>
+          <p><strong>Optibilan</strong> — Marque exploitée par Benjamin Sant, entrepreneur individuel.</p>
+          <ul>
+            <li>SIREN : <span class="font-mono">987 654 321</span></li>
+            <li>SIRET : <span class="font-mono">987 654 321 00012</span></li>
+            <li>APE : 6201Z (Programmation informatique)</li>
+            <li>TVA intracommunautaire : <span class="font-mono">FR12 987654321</span></li>
+            <li>Adresse : 123 Rue de la Santé, 75000 Paris, France</li>
+            <li>Email : <a href="mailto:legal@optibilan.com" class="text-primary-600 hover:underline">legal@optibilan.com</a></li>
+          </ul>
+
+          <h2>2. Directeur de la publication</h2>
+          <p>Benjamin Sant, en sa qualité de représentant légal.</p>
+
+          <h2>3. Hébergeur</h2>
+          <p><strong>Hostinger</strong> — VPS Cloud</p>
+          <ul>
+            <li>Adresse : 61 Lordou Vironos Street, 6023 Larnaca, Chypre</li>
+            <li>Site : <a href="https://hostinger.com" target="_blank" rel="noopener" class="text-primary-600 hover:underline">hostinger.com</a></li>
+          </ul>
+          <p><strong>Supabase</strong> — Base de données PostgreSQL (région EU West)</p>
+          <ul>
+            <li>Adresse : 543 Howard Street, San Francisco, CA 94105, USA (données stockées en EU)</li>
+            <li>Site : <a href="https://supabase.com" target="_blank" rel="noopener" class="text-primary-600 hover:underline">supabase.com</a></li>
+          </ul>
+          <p><strong>Cloudflare</strong> — CDN, DNS, WAF, Tunnel</p>
+          <ul>
+            <li>Adresse : 101 Townsend St, San Francisco, CA 94107, USA</li>
+            <li>Site : <a href="https://cloudflare.com" target="_blank" rel="noopener" class="text-primary-600 hover:underline">cloudflare.com</a></li>
+          </ul>
+
+          <h2>4. Propriété intellectuelle</h2>
+          <p>L'ensemble des éléments composant le site (textes, images, logos, charte graphique, code source, base de données) sont la propriété exclusive d'Optibilan ou font l'objet d'une autorisation d'utilisation. Toute reproduction, représentation, modification, publication, adaptation totale ou partielle est interdite sans autorisation préalable écrite.</p>
+          <p>Les marques "Optibilan", le logo, les noms de modules sont des marques déposées ou en cours de dépôt.</p>
+
+          <h2>5. Données personnelles</h2>
+          <p>Conformément au RGPD (Règlement UE 2016/679) et à la loi Informatique et Libertés, vous disposez d'un droit d'accès, de rectification, d'effacement, de limitation, de portabilité et d'opposition au traitement de vos données. Consultez notre <a href="/confidentialite" class="text-primary-600 hover:underline">Politique de confidentialité</a> pour en savoir plus.</p>
+          <p>Délégué à la protection des données (DPO) : <a href="mailto:privacy@optibilan.com" class="text-primary-600 hover:underline">privacy@optibilan.com</a></p>
+
+          <h2>6. Cookies</h2>
+          <p>Le site utilise des cookies strictement nécessaires (session, sécurité, préférences) et, avec votre consentement, des cookies d'analyse (Plausible/GA4) et de marketing. Vous pouvez gérer vos préférences à tout moment via le bandeau de consentement ou les paramètres de votre navigateur.</p>
+
+          <h2>7. Liens hypertextes</h2>
+          <p>Le site peut contenir des liens vers des sites tiers. Optibilan n'exerce aucun contrôle sur ces sites et décline toute responsabilité quant à leur contenu, leur politique de confidentialité ou leurs pratiques.</p>
+
+          <h2>8. Responsabilité</h2>
+          <p>Optibilan s'efforce d'assurer l'exactitude et la mise à jour des informations diffusées sur le site. Toutefois, des erreurs ou omissions peuvent survenir. Optibilan ne saurait être tenu responsable de tout dommage direct ou indirect résultant de l'accès au site ou de l'utilisation de son contenu.</p>
+          <p>L'application app.optibilan.com est soumise à ses propres Conditions Générales de Vente et d'Utilisation (<a href="/cgv" class="text-primary-600 hover:underline">CGV</a>).</p>
+
+          <h2>9. Droit applicable</h2>
+          <p>Les présentes mentions sont régies par le droit français. Tout litige relatif à leur interprétation ou exécution relève de la compétence exclusive des tribunaux de Paris.</p>
+
+          <h2>10. Contact</h2>
+          <p>Pour toute question relative aux mentions légales : <a href="mailto:legal@optibilan.com" class="text-primary-600 hover:underline">legal@optibilan.com</a></p>
+
+          <p class="mt-8 pt-8 border-t border-ink-200 text-sm text-ink-500">
+            Dernière mise à jour : {new Date().toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}
+          </p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

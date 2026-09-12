@@ -1,0 +1,42 @@
+{
+  "name": "Optibilan",
+  "short_name": "Optibilan",
+  "description": "SaaS de suivi coaching multi-tenant, marque blanche, RGPD",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1E3A8A",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["business", "health", "productivity"],
+  "screenshots": [],
+  "shortcuts": [
+    {
+      "name": "Connexion",
+      "short_name": "Connexion",
+      "description": "Se connecter à son espace",
+      "url": "https://app.optibilan.com/login",
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Essai gratuit",
+      "short_name": "Essai",
+      "description": "Créer son cabinet (30 jours gratuits)",
+      "url": "https://app.optibilan.com/inscription",
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+# Cloudflare Pages redirects
+# Syntaxe: /source /destination [status]
+
+# API routes vers l'app (proxy)
+/api/* https://app.optibilan.com/api/* 200
+
+# Assets statiques avec cache long
+/assets/* /assets/:splat 200
+/*.png /:splat 200
+/*.svg /:splat 200
+/*.ico /:splat 200
+/*.webmanifest /:splat 200
+/*.xml /:splat 200
+
+# Pages légales (statiques)
+/mentions-legales /legal/mentions 200
+/cgv /legal/cgv 200
+/confidentialite /legal/confidentialite 200
+/sous-traitance /legal/sous-traitance 200
+
+# Redirections legacy
+/tarifs /pricing 301
+/fonctionnalites /features 301
+/docs /docs 200

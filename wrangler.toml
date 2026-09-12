@@ -1,0 +1,70 @@
+# Cloudflare Pages Configuration
+# Déploiement : connecter ce repo à Cloudflare Pages
+# Build command: npm run build
+# Build output directory: dist
+# Root directory: /
+
+name = "optibilan-site"
+compatibility_date = "2024-01-15"
+pages_build_output_dir = "dist"
+
+[build]
+command = "npm run build"
+cwd = "."
+
+[[build.environment]]
+key = "NODE_VERSION"
+value = "20"
+
+# Headers de sécurité appliqués par Cloudflare Pages
+# (complémentaires à ceux dans astro.config.mjs)
+[headers]
+  # Sécurité
+  "/*" = """
+    X-Frame-Options: DENY
+    X-Content-Type-Options: nosniff
+    Referrer-Policy: strict-origin-when-cross-origin
+    Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), interest-cohort=()
+    X-DNS-Prefetch-Control: off
+  """
+  
+  # Cache long pour assets hashés
+  "/assets/*" = """
+    Cache-Control: public, max-age=31536000, immutable
+  """
+  
+  # Fonts
+  "/fonts/*" = """
+    Cache-Control: public, max-age=31536000, immutable
+    Access-Control-Allow-Origin: *
+  """
+  
+  # Images
+  "*.png" = """
+    Cache-Control: public, max-age=31536000, immutable
+  """
+  "*.svg" = """
+    Cache-Control: public, max-age=31536000, immutable
+  """
+  "*.webp" = """
+    Cache-Control: public, max-age=31536000, immutable
+  """
+  "*.ico" = """
+    Cache-Control: public, max-age=31536000, immutable
+  """
+  
+  # Manifest & sitemap
+  "/manifest.webmanifest" = """
+    Cache-Control: public, max-age=86400
+  """
+  "/sitemap-index.xml" = """
+    Cache-Control: public, max-age=86400
+  """
+  "/robots.txt" = """
+    Cache-Control: public, max-age=86400
+  """
+
+# Redirects (aussi dans public/_redirects)
+[redirects]
+  "/tarifs" = { status = 301, url = "/pricing" }
+  "/fonctionnalites" = { status = 301, url = "/features" }

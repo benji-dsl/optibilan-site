@@ -1,0 +1,67 @@
+---
+interface Props {
+  title: string;
+  subtitle: string;
+  ctaPrimary?: { href: string; label: string };
+  ctaSecondary?: { href: string; label: string };
+  badge?: string;
+  illustration?: string;
+}
+
+const {
+  title,
+  subtitle,
+  ctaPrimary = { href: 'https://app.optibilan.com/inscription', label: 'Essai gratuit 30 jours' },
+  ctaSecondary = { href: '/fonctionnalites', label: 'Voir les fonctionnalités' },
+  badge,
+  illustration,
+} = Astro.props;
+---
+
+<section class="relative section-lg pt-32 md:pt-40 lg:pt-48 overflow-hidden" aria-labelledby="hero-title">
+  <div class="absolute inset-0 bg-gradient-to-b from-primary-50/50 via-white to-white" aria-hidden="true"></div>
+  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[600px] bg-gradient-radial from-primary-100/30 via-transparent to-transparent" aria-hidden="true"></div>
+
+  <div class="container relative">
+    <div class="max-w-3xl mx-auto text-center">
+      {badge && (
+        <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary-50 text-primary-700 text-sm font-medium mb-6 animate-fade-in" role="status">
+          <span class="w-2 h-2 rounded-full bg-primary-500 animate-pulse" aria-hidden="true"></span>
+          {badge}
+        </span>
+      )}
+
+      <h1 id="hero-title" class="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-ink-950 tracking-tight leading-[1.1] mb-6 animate-slide-up">
+        {title.split('\n').map((line, i) => (
+          <span key={i} class="block">{line}</span>
+        ))}
+      </h1>
+
+      <p class="text-lg md:text-xl text-ink-600 leading-relaxed mb-10 max-w-2xl mx-auto animate-slide-up delay-200">
+        {subtitle}
+      </p>
+
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 animate-slide-up delay-300">
+        <a href={ctaPrimary.href} class="btn-primary w-full sm:w-auto group">
+          {ctaPrimary.label}
+          <svg class="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+          </svg>
+        </a>
+        <a href={ctaSecondary.href} class="btn-secondary w-full sm:w-auto">
+          {ctaSecondary.label}
+        </a>
+      </div>
+
+      <p class="mt-6 text-sm text-ink-500 animate-fade-in delay-400">
+        Aucune carte bancaire requise · Annulation en 1 clic · Conforme RGPD
+      </p>
+    </div>
+
+    {illustration && (
+      <div class="mt-16 relative animate-scale-in delay-500" aria-hidden="true">
+        <img src={illustration} alt="" class="w-full max-w-5xl mx-auto rounded-2xl shadow-elevated border border-ink-100" loading="eager" fetchpriority="high" />
+      </div>
+    )}
+  </div>
+</section>

@@ -1,0 +1,106 @@
+---
+const navLinks = [
+  { href: '/fonctionnalites', label: 'Fonctionnalités' },
+  { href: '/tarifs', label: 'Tarifs' },
+  { href: '/docs', label: 'Documentation' },
+  { href: '/blog', label: 'Blog' },
+];
+
+const ctaButtons = [
+  { href: 'https://app.optibilan.com/inscription', label: 'Essai gratuit 30 jours', primary: true },
+  { href: 'https://app.optibilan.com/login', label: 'Connexion', primary: false },
+];
+---
+
+<header class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-ink-100 transition-shadow duration-300" data-header>
+  <nav class="container" aria-label="Navigation principale">
+    <div class="flex h-16 items-center justify-between gap-4">
+      <a href="/" class="flex items-center gap-2 shrink-0" aria-label="Optibilan - Accueil">
+        <svg class="w-8 h-8 text-primary-600" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <rect width="32" height="32" rx="8" class="fill-primary-600"/>
+          <path d="M8 16L14 22L24 10" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="font-display font-bold text-xl text-ink-900">Optibilan</span>
+      </a>
+
+      <div class="hidden md:flex items-center gap-8">
+        {navLinks.map(link => (
+          <a href={link.href} class="text-sm font-medium text-ink-600 hover:text-primary-600 transition-colors relative after:absolute after:bottom-[-4px] after:left-0 after:right-0 after:h-[2px] after:bg-primary-500 after:scale-x-0 after:origin-center after:transition-transform hover:after:scale-x-100">
+            {link.label}
+          </a>
+        ))}
+      </div>
+
+      <div class="hidden md:flex items-center gap-3">
+        {ctaButtons.map(btn => (
+          <a href={btn.href} class={btn.primary ? 'btn-primary text-sm' : 'btn-secondary text-sm'}>
+            {btn.label}
+          </a>
+        ))}
+      </div>
+
+      <button class="md:hidden p-2 rounded-lg text-ink-600 hover:bg-ink-100" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobile-menu" data-menu-toggle>
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+
+    <div class="md:hidden hidden py-4 border-t border-ink-100" id="mobile-menu" role="navigation" aria-label="Menu mobile">
+      <div class="flex flex-col gap-4">
+        {navLinks.map(link => (
+          <a href={link.href} class="text-base font-medium text-ink-600 hover:text-primary-600 transition-colors px-2 py-1" data-mobile-link>
+            {link.label}
+          </a>
+        ))}
+        <div class="flex flex-col gap-2 pt-2 border-t border-ink-100">
+          {ctaButtons.map(btn => (
+            <a href={btn.href} class={btn.primary ? 'btn-primary text-center' : 'btn-secondary text-center'}>
+              {btn.label}
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<script is:inline>
+  const header = document.querySelector('[data-header]');
+  const toggle = document.querySelector('[data-menu-toggle]');
+  const mobileMenu = document.querySelector('#mobile-menu');
+  const mobileLinks = document.querySelectorAll('[data-mobile-link]');
+
+  let lastScroll = 0;
+  window.addEventListener('scroll', () => {
+    const currentScroll = window.pageYOffset;
+    if (currentScroll > 100) {
+      header?.classList.add('shadow-soft');
+    } else {
+      header?.classList.remove('shadow-soft');
+    }
+    lastScroll = currentScroll;
+  });
+
+  toggle?.addEventListener('click', () => {
+    const isOpen = mobileMenu?.classList.toggle('hidden') === false;
+    toggle.setAttribute('aria-expanded', String(isOpen));
+    toggle.innerHTML = isOpen
+      ? '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>'
+      : '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>';
+  });
+
+  mobileLinks?.forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu?.classList.add('hidden');
+      toggle?.setAttribute('aria-expanded', 'false');
+      toggle.innerHTML = '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>';
+    });
+  });
+</script>
+
+<style is:global>
+  [data-header].shadow-soft {
+    box-shadow: 0 2px 15px -3px rgba(0, 0, 0, 0.07), 0 10px 20px -2px rgba(0, 0, 0, 0.04);
+  }
+</style>

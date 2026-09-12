@@ -1,0 +1,100 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import Hero from '../../components/Hero.astro';
+import Features from '../../components/Features.astro';
+import CTA from '../../components/CTA.astro';
+import TrustBar from '../../components/TrustBar.astro';
+
+const pageTitle = 'Fonctionnalités — Optibilan';
+const pageDescription = 'Découvrez tous les modules : bilans hebdo, nutrition, sport, prépa mentale, santé connectée, gamification, API, webhooks, marque blanche. Activez seulement ce dont vous avez besoin.';
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  canonical="/fonctionnalites"
+  ogImage="/og-features.jpg"
+>
+  <Header />
+
+  <main>
+    <Hero
+      title="Des modules qui couvrent\nvotre pratique entière"
+      subtitle="Chaque cabinet est différent. Activez seulement les modules dont vous avez besoin : nutrition, sport, prépa mentale, santé, parrainage. Tout est inclus dans votre offre."
+      badge="9 modules, 0 surcoût"
+      illustration="/features-modules.svg"
+    />
+
+    <TrustBar />
+
+    <Features
+      title="9 modules, une plateforme"
+      subtitle="Construisez votre espace sur mesure. Chaque module s'active d'un clic, sans migration, sans surcoût."
+      features={[
+        {
+          icon: 'chart',
+          title: 'Bilans & progression',
+          description: 'Bilans hebdo guidés, mensurations, poids, ressenti, sommeil, faim, motivation. Graphiques interactifs, détection signaux faibles, export PDF.',
+          link: { href: '/fonctionnalites#bilans', label: 'Voir le détail' }
+        },
+        {
+          icon: 'document',
+          title: 'Nutrition complète',
+          description: 'Plan alimentaire (protéines/glucides/lipides/légumes/fruits/plaisirs), listes de courses, compléments classés, méthodes OK/à éviter, notes coach visibles ou privées, templates réutilisables.',
+          link: { href: '/fonctionnalites#nutrition', label: 'Voir le détail' }
+        },
+        {
+          icon: 'zap',
+          title: 'Sport & programmes',
+          description: 'Bibliothèque d\'exercices (force/cardio/mobilité), programmes types réutilisables, séances validées par le coaché, ressenti, notes. Import FitFocus.',
+          link: { href: '/fonctionnalites#sport', label: 'Voir le détail' }
+        },
+        {
+          icon: 'brain',
+          title: 'Préparation mentale',
+          description: 'Exercices déposés par le préparateur mental (transversaux), bibliothèque de ressources (vidéos, PDF), journal d\'appels dédié.',
+          link: { href: '/fonctionnalites#mental', label: 'Voir le détail' }
+        },
+        {
+          icon: 'globe',
+          title: 'Santé connectée',
+          description: 'Sync Apple Health / Oura / Whoop / Garmin (via n8n ou Raccourcis), saisie manuelle : sommeil, VFC, FC repos, VO2max, pas, poids, % masse grasse. Biomarqueurs structurés (glycémie, HbA1c, CRP, vit D, ferritine...).',
+          link: { href: '/fonctionnalites#sante', label: 'Voir le détail' }
+        },
+        {
+          icon: 'users',
+          title: 'Gamification & engagement',
+          description: 'Onboarding gamifié (XP, badges), objectif ultime, objectif du mois, dreamboard, habitudes quotidiennes, observance compléments, jalons parcours (photos, avis, témoignage, reclosing).',
+          link: { href: '/fonctionnalites#gamification', label: 'Voir le détail' }
+        },
+        {
+          icon: 'lock',
+          title: 'Journal coaching & CRM',
+          description: 'Entrées typées (lancement, suivi, prépa mentale, bilan mensuel, micronutrition, optimisation, sport, questionnaire, note), pièces jointes, partage client, sync Notion via n8n.',
+          link: { href: '/fonctionnalites#journal', label: 'Voir le détail' }
+        },
+        {
+          icon: 'calendar',
+          title: 'Appels planifiés & agenda',
+          description: 'Cadence auto selon l\'offre (Starter/Essentiel/Plus/Premium), rappels Slack/email/push, gestion retards, calendrier ICS abonnable, vue agenda coach.',
+          link: { href: '/fonctionnalites#agenda', label: 'Voir le détail' }
+        },
+        {
+          icon: 'shield',
+          title: 'Admin & conformité',
+          description: 'Gestion utilisateurs (rôles, spécialités, 2FA), offres d\'appel personnalisées, mentions légales du cabinet, modules on/off, questionnaire lancement configurable, RGPD (export, purge), audit trail, webhooks, API keys.',
+          link: { href: '/fonctionnalites#admin', label: 'Voir le détail' }
+        },
+      ]}
+    />
+
+    <CTA
+      title="Chaque module s'active en un clic"
+      subtitle="Pas de migration, pas de surcoût. Votre offre inclut tout."
+    />
+  </main>
+
+  <Footer />
+</Layout>

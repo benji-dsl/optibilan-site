@@ -1,0 +1,13 @@
+# Robots.txt pour optibilan.com
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://optibilan.com/sitemap-index.xml
+
+# Disallow admin/private areas (none on static site)
+# Crawl-delay respectueux
+Crawl-delay: 10
+
+# Host
+Host: https://optibilan.com
