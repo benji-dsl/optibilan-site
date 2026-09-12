@@ -3,10 +3,12 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Hero from '../components/Hero.astro';
-import Features from '../components/Features.astro';
-import Pricing from '../components/Pricing.astro';
-import CTA from '../components/CTA.astro';
+import Process from '../components/Process.astro';
+import Pillars from '../components/Pillars.astro';
+import Benefits from '../components/Benefits.astro';
+import Testimonials from '../components/Testimonials.astro';
 import TrustBar from '../components/TrustBar.astro';
+import CTA from '../components/CTA.astro';
 
 const pageTitle = 'Optibilan — SaaS de suivi coaching multi-tenant, marque blanche, RGPD';
 const pageDescription = 'Le SaaS pour cabinets, studios et coachs indépendants : bilans, nutrition, sport, prépa mentale, santé connectée. Multi-tenant natif, marque blanche totale, API, webhooks, hébergement EU.';
@@ -21,19 +23,23 @@ const pageDescription = 'Le SaaS pour cabinets, studios et coachs indépendants 
   <Header />
 
   <main>
-    <Hero
-      title="Le SaaS de suivi coaching\npensé pour les pros"
-      subtitle="Bilans, nutrition, sport, prépa mentale, santé connectée. Une plateforme multi-tenant, marque blanche, conforme RGPD, hébergée en Europe. Lancez votre espace en 5 minutes."
-      badge="Nouveau : Assistant IA + Sync Apple Health"
-    />
+    <Hero />
 
     <TrustBar />
 
-    <Features />
+    <Process />
 
-    <Pricing />
+    <Pillars />
 
-    <CTA />
+    <Benefits />
+
+    <Testimonials />
+
+    <CTA
+      variant="primary"
+      title="Prêt à structurer votre cabinet ?"
+      subtitle="Rejoignez 150+ cabinets qui ont choisi Optibilan pour professionnaliser leur suivi."
+    />
   </main>
 
   <Footer />

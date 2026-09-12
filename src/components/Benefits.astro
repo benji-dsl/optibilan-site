@@ -1,0 +1,93 @@
+---
+import Icon from './Icon.astro';
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+  benefits?: Array<{
+    icon: string;
+    title: string;
+    description: string;
+    metric?: string;
+  }>;
+}
+
+const {
+  title = "L'impact, au quotidien",
+  subtitle = "Ce que change Optibilan pour votre cabinet et vos clients, concrètement.",
+  benefits = [
+    {
+      icon: "chart",
+      title: "Gain de temps administratif",
+      description: "Bilans guidés, templates réutilisables, automatisations : passez de 45 min à 10 min par client pour la paperasse.",
+      metric: "−75% temps admin"
+    },
+    {
+      icon: "users",
+      title: "Meilleure rétention clients",
+      description: "Suivi structuré, détection signaux faibles, rappels automatiques : vos clients restent engagés plus longtemps.",
+      metric: "+40% rétention à 6 mois"
+    },
+    {
+      icon: "chart",
+      title: "Décisions fondées sur les données",
+      description: "130+ biomarqueurs, graphiques tendances, détection signaux faibles : chaque ajustement part d'une mesure, pas d'un ressenti.",
+      metric: "130+ biomarqueurs suivis"
+    },
+    {
+      icon: "lock",
+      title: "Conformité sans charge mentale",
+      description: "Export RGPD complet, audit trail, purge auto, contrats intégrés : la conformité est gérée, vous vous concentrez sur l'accompagnement.",
+      metric: "Export RGPD 1-clic"
+    },
+    {
+      icon: "zap",
+      title: "Équipe alignée, clients satisfaits",
+      description: "Rôles spécialisés (coach/mental/diet), journal partagé, rappels Slack/email : tout le monde a la même info au bon moment.",
+      metric: "0 info perdue"
+    },
+    {
+      icon: "globe",
+      title: "Marque blanche = votre identité",
+      description: "Logo, couleurs, domaine, vocabulaire, emails : vos clients ne voient que votre marque. Optibilan s'efface totalement.",
+      metric: "100% votre marque"
+    },
+  ],
+} = Astro.props;
+---
+
+<section class="section bg-blanc" aria-labelledby="benefits-title">
+  <div class="container">
+    <header class="text-center max-w-3xl mx-auto mb-16">
+      <h2 id="benefits-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+        {title}
+      </h2>
+      <p class="text-lg text-encre/60">
+        {subtitle}
+      </p>
+    </header>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {benefits.map((benefit, index) => (
+        <article class="card-hover group relative p-6 md:p-8" style={{ animationDelay: `${index * 100}ms` }}>
+          <div class="icon-wrapper mb-4" aria-hidden="true">
+            <Icon name={benefit.icon as any} />
+          </div>
+
+          {benefit.metric && (
+            <div class="absolute top-6 right-6 text-right opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <div class="font-display text-xl font-bold text-bleu-signature">{benefit.metric}</div>
+            </div>
+          )}
+
+          <h3 class="font-display text-xl font-bold text-encre mb-3">
+            {benefit.title}
+          </h3>
+          <p class="text-encre/60 leading-relaxed">
+            {benefit.description}
+          </p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

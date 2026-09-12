@@ -1,0 +1,122 @@
+---
+import Icon from './Icon.astro';
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+  pillars?: Array<{
+    icon: string;
+    title: string;
+    description: string;
+    features: string[];
+    image?: string;
+    color?: string;
+  }>;
+}
+
+const {
+  title = "6 modules, une plateforme unifiée",
+  subtitle = "Activez seulement ce dont vous avez besoin. Chaque module est complet, sans surcoût.",
+  pillars = [
+    {
+      icon: "chart",
+      title: "Bilans & Progression",
+      description: "Bilans hebdo guidés, mensurations, photos avant/après, biomarqueurs, score longévité. Graphiques interactifs, détection signaux faibles, export PDF.",
+      features: ["Poids, mensurations, ressenti", "Sommeil, faim, motivation", "Photos avant/après mensuelles", "Score longévité automatique", "Détection signaux faibles"],
+      color: "bleu-signature"
+    },
+    {
+      icon: "document",
+      title: "Nutrition Complète",
+      description: "Plan alimentaire (protéines/glucides/lipides/légumes/fruits/plaisirs), listes de courses, compléments classés, méthodes OK/à éviter, templates réutilisables.",
+      features: ["Plan par macro/micro-nutriments", "Listes de courses automatisées", "Compléments classés (indispensable/optionnel)", "Templates réutilisables", "Notes coach visibles/privées"],
+      color: "bleu-lecture"
+    },
+    {
+      icon: "zap",
+      title: "Sport & Programmes",
+      description: "Bibliothèque d'exercices (force/cardio/mobilité), programmes types réutilisables, séances validées par le coaché, ressenti, notes. Import FitFocus.",
+      features: ["Bibliothèque exercices (force/cardio/mobilité)", "Programmes types réutilisables", "Séances validées + ressenti", "Import FitFocus", "Suivi progression charge/volume"],
+      color: "indigo"
+    },
+    {
+      icon: "brain",
+      title: "Préparation Mentale",
+      description: "Exercices déposés par le préparateur mental (transversaux), bibliothèque ressources (vidéos, PDF), journal d'appels dédié, techniques visualisation/respiration.",
+      features: ["Exercices transversaux (réutilisables)", "Bibliothèque vidéos/PDF", "Journal d'appels dédié", "Techniques visualisation", "Suivi adhérence mental"],
+      color: "bleu-ardoise"
+    },
+    {
+      icon: "globe",
+      title: "Santé Connectée",
+      description: "Sync Apple Health/Oura/Whoop/Garmin, saisie manuelle : sommeil, VFC, FC repos, VO2max, pas, poids, %MG. Biomarqueurs structurés (glycémie, HbA1c, CRP, vit D, ferritine...).",
+      features: ["Sync Apple Health/Oura/Whoop/Garmin", "Biomarqueurs structurés (130+)", "Habitudes quotidiennes", "Observance compléments", "Graphiques tendances temporelles"],
+      color: "bleu-clair"
+    },
+    {
+      icon: "lock",
+      title: "API, Webhooks & Conformité",
+      description: "REST v1 + OpenAPI, clés API scopées, webhooks signés HMAC, rate-limit, sync santé, export RGPD complet, audit trail, purge paramétrable, hébergement EU.",
+      features: ["API REST v1 + OpenAPI", "Webhooks HMAC (8 événements)", "Export RGPD complet (37 modèles)", "Audit trail double niveau", "Purge auto paramétrable", "Hébergement EU (Supabase France)"],
+      color: "bordeaux"
+    },
+  ],
+} = Astro.props;
+---
+
+<section class="section bg-papier" aria-labelledby="pillars-title">
+  <div class="container">
+    <header class="text-center max-w-3xl mx-auto mb-16">
+      <h2 id="pillars-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+        {title}
+      </h2>
+      <p class="text-lg text-encre/60">
+        {subtitle}
+      </p>
+    </header>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {pillars.map((pillar, index) => (
+        <article class="card-hover group relative overflow-hidden" style={{ '--pillar-color': `var(--color-${pillar.color})` }}>
+          <!-- Barre colorée en haut -->
+          <div class="absolute top-0 left-0 right-0 h-1 bg-[var(--pillar-color)] opacity-0 group-hover:opacity-100 transition-opacity duration-300" aria-hidden="true"></div>
+
+          <div class="p-6 md:p-8">
+            <!-- Icône -->
+            <div class="icon-wrapper mb-4" aria-hidden="true">
+              <Icon name={pillar.icon as any} />
+            </div>
+
+            <h3 class="font-display text-xl font-bold text-encre mb-3">
+              {pillar.title}
+            </h3>
+            <p class="text-encre/60 leading-relaxed mb-5">
+              {pillar.description}
+            </p>
+
+            <!-- Liste features -->
+            <ul class="space-y-2 mb-6" role="list">
+              {pillar.features.map(feature => (
+                <li key={feature} class="flex items-start gap-2 text-sm text-encre/60 group">
+                  <Icon name="check" class="w-4 h-4 text-[var(--pillar-color)] flex-shrink-0 mt-0.5 transition-transform group-hover:translate-x-0.5" />
+                  <span>{feature}</span>
+                </li>
+              ))}
+            </ul>
+
+            <!-- Lien -->
+            <a href={`/fonctionnalites#${pillar.title.toLowerCase().replace(/ & /g, '-').replace(/\s+/g, '-')}`} class="inline-flex items-center gap-1.5 text-sm font-medium text-[var(--pillar-color)] hover:opacity-80 transition-opacity group">
+              Voir le détail
+              <Icon name="arrowRight" class="w-4 h-4 transition-transform group-hover:translate-x-1" />
+            </a>
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <!-- Note bas de section -->
+    <p class="text-center text-sm text-encre/40 mt-10">
+      Tous les modules inclus dans votre offre · Aucun surcoût · Activation instantanée
+    </p>
+  </div>
+</section>

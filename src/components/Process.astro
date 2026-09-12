@@ -1,0 +1,108 @@
+---
+import Icon from './Icon.astro';
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+  steps?: Array<{
+    number: string;
+    title: string;
+    description: string;
+    icon: string;
+    image?: string;
+  }>;
+}
+
+const {
+  title = "Votre cabinet opérationnel en 3 étapes",
+  subtitle = "De la création à l'accompagnement de vos premiers clients, tout est pensé pour aller à l'essentiel.",
+  steps = [
+    {
+      number: "01",
+      title: "Créez votre cabinet",
+      description: "Inscrivez-vous, choisissez votre offre, personnalisez votre marque (logo, couleurs, vocabulaire, domaine). Votre espace est prêt en 5 minutes.",
+      icon: "document",
+      image: "/images/process-1.jpg"
+    },
+    {
+      number: "02",
+      title: "Invitez votre équipe",
+      description: "Ajoutez vos coachs, diététiciens, préparateurs mentaux. Définissez leurs rôles et spécialités. Ils reçoivent leur lien d'activation instantanément.",
+      icon: "users",
+      image: "/images/process-2.jpg"
+    },
+    {
+      number: "03",
+      title: "Accompagnez vos clients",
+      description: "Créez vos premiers clients, ils reçoivent leur lien d'activation. Bilans, nutrition, sport, mental, santé : tout est centralisé dans un seul espace.",
+      icon: "chart",
+      image: "/images/process-3.jpg"
+    },
+  ],
+} = Astro.props;
+---
+
+<section class="section bg-papier" aria-labelledby="process-title">
+  <div class="container">
+    <header class="text-center max-w-3xl mx-auto mb-16">
+      <h2 id="process-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+        {title}
+      </h2>
+      <p class="text-lg text-encre/60">
+        {subtitle}
+      </p>
+    </header>
+
+    <div class="relative">
+      <!-- Ligne de connexion desktop -->
+      <div class="hidden lg:absolute top-[60px] left-1/2 -translate-x-1/2 w-[calc(100%-4rem)] max-w-5xl h-px bg-gradient-to-r from-transparent via-bleu-signature/30 to-transparent" aria-hidden="true"></div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
+        {steps.map((step, index) => (
+          <article class="relative group" style={{ '--step-index': index }}>
+            <!-- Numéro d'étape -->
+            <div class="absolute -top-4 left-1/2 -translate-x-1/2 z-10">
+              <div class="w-14 h-14 rounded-full bg-bleu-signature text-craie flex items-center justify-center font-display text-xl font-bold shadow-lg shadow-bleu-signature/30">
+                {step.number}
+              </div>
+              <!-- Ligne de connexion vers le suivant -->
+              {index < steps.length - 1 && (
+                <div class="hidden lg:absolute top-[60px] left-full w-full h-px bg-gradient-to-r from-bleu-signature/30 via-transparent to-transparent" aria-hidden="true"></div>
+              )}
+            </div>
+
+            <!-- Carte étape -->
+            <div class="card-hover relative pt-16">
+              <!-- Image placeholder -->
+              <div class="aspect-[4/3] w-full rounded-card-lg overflow-hidden mb-6 bg-gradient-to-br from-bleu-clair via-papier to-blanc border border-encre/10 relative">
+                <div class="absolute inset-0 flex items-center justify-center">
+                  <Icon name={step.icon as any} class="w-16 h-16 text-bleu-signature/30 group-hover:text-bleu-signature/50 transition-colors" />
+                </div>
+              </div>
+
+              <h3 class="font-display text-xl font-bold text-encre mb-3">
+                {step.title}
+              </h3>
+              <p class="text-encre/60 leading-relaxed">
+                {step.description}
+              </p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  @media (max-width: 1024px) {
+    /* Sur mobile, les numéros restent en haut de chaque carte */
+    .group:first-child .absolute.-top-4 {
+      position: relative;
+      top: 0;
+      left: 0;
+      transform: none;
+      margin-bottom: 1rem;
+    }
+  }
+</style>

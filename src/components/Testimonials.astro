@@ -1,0 +1,119 @@
+---
+import Icon from './Icon.astro';
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+  stats?: Array<{ value: string; label: string }>;
+  testimonials?: Array<{
+    name: string;
+    role: string;
+    company?: string;
+    avatar?: string;
+    content: string;
+    rating?: number;
+  }>;
+}
+
+const {
+  title = "Ils ont fait le choix Optibilan",
+  subtitle = "Cabinets, studios et coachs indépendants partagent leur expérience.",
+  stats = [
+    { value: "150+", label: "Cabinets équipés" },
+    { value: "2 500+", label: "Coachs actifs" },
+    { value: "50 000+", label: "Clients suivis" },
+    { value: "4,9/5", label: "Satisfaction" },
+  ],
+  testimonials = [
+    {
+      name: "Dr. Marie Dubois",
+      role: "Médecin du sport & Fondatrice",
+      company: "Cabinet Vitalité Plus — Lyon",
+      content: "Optibilan a transformé ma pratique. Mes patients ont un suivi structuré entre deux consultations, mes diététiciennes et mon préparateur mental sont alignés sur le même plan. Le gain de temps administratif est réel : je passe de 40 min à 8 min par dossier.",
+      rating: 5
+    },
+    {
+      name: "Thomas Bertrand",
+      role: "Coach sportif & Fondateur",
+      company: "Studio Performance — Bordeaux",
+      content: "La bibliothèque d'exercices et les programmes types m'ont fait gagner des heures chaque semaine. Mes clients valident leurs séances sur l'app, je vois leur progression en temps réel. La rétention à 6 mois est passée de 65% à 89%.",
+      rating: 5
+    },
+    {
+      name: "Sophie Martin",
+      role: "Diététicienne-nutritionniste",
+      company: "Cabinet NutriSanté — Nantes",
+      content: "Les templates nutrition et les listes de courses automatisées ont changé ma pratique. Mes patients reçoivent leur plan complet en 1 clic. L'export RGPD est un vrai plus pour la conformité. Je ne pourrais plus m'en passer.",
+      rating: 5
+    },
+  ],
+} = Astro.props;
+---
+
+<section class="section bg-papier" aria-labelledby="testimonials-title">
+  <div class="container">
+    <!-- Stats bar -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 mb-16" role="list" aria-label="Statistiques de confiance">
+      {stats.map((stat, i) => (
+        <div key={i} class="text-center" role="listitem">
+          <div class="font-display text-3xl md:text-4xl font-bold text-bleu-signature mb-1">{stat.value}</div>
+          <div class="text-sm text-encre/60 font-medium">{stat.label}</div>
+        </div>
+      ))}
+    </div>
+
+    <header class="text-center max-w-3xl mx-auto mb-12">
+      <h2 id="testimonials-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+        {title}
+      </h2>
+      <p class="text-lg text-encre/60">
+        {subtitle}
+      </p>
+    </header>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {testimonials.map((testimonial, index) => (
+        <article class="card-hover relative p-6 md:p-8" style={{ animationDelay: `${index * 100}ms` }}>
+          <!-- Quote icon -->
+          <div class="absolute top-6 right-6 text-bleu-signature/10">
+            <Icon name="chart" class="w-12 h-12" />
+          </div>
+
+          <!-- Rating -->
+          <div class="flex gap-0.5 mb-4" aria-label={`Note : ${testimonial.rating}/5`}>
+            {[...Array(testimonial.rating || 5)].map((_, i) => (
+              <Icon key={i} name="check" class="w-5 h-5 text-gold-400" />
+            ))}
+          </div>
+
+          <blockquote class="text-encre/70 leading-relaxed mb-6 italic">
+            "{testimonial.content}"
+          </blockquote>
+
+          <footer>
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-gradient-to-br from-bleu-signature to-bleu-lecture flex items-center justify-center text-craie font-bold text-sm">
+                {testimonial.name.charAt(0)}
+              </div>
+              <div>
+                <div class="font-semibold text-encre">{testimonial.name}</div>
+                <div class="text-sm text-encre/50">{testimonial.role}{testimonial.company ? ` · ${testimonial.company}` : ''}</div>
+              </div>
+            </div>
+          </footer>
+        </article>
+      ))}
+    </div>
+
+    <!-- Trustpilot / CTA -->
+    <div class="text-center mt-12">
+      <p class="text-encre/50 mb-4">
+        <span class="font-semibold text-encre">4,9/5</span> sur Trustpilot · <span class="font-semibold text-encre">150+</span> avis vérifiés
+      </p>
+      <a href="https://trustpilot.com/review/optibilan.com" target="_blank" rel="noopener" class="btn-ghost">
+        Voir les avis sur Trustpilot
+        <Icon name="arrowRight" class="w-4 h-4" />
+      </a>
+    </div>
+  </div>
+</section>
