@@ -8,15 +8,15 @@ import TrustBar from '../../components/TrustBar.astro';
 import Icon from '../../components/Icon.astro';
 
 const pageTitle = 'Blog — Optibilan';
-const pageDescription = 'Articles, guides et études de cas pour cabinets, studios et coachs indépendants : logiciel suivi nutritionnel, application coaching sportif marque blanche, SaaS préparateur mental, plateforme suivi biométrie clients.';
+const pageDescription = 'Articles, guides et études de cas pour cabinets, studios et coachs indépendants : nutrition, sport, prépa mentale, santé connectée, croissance business.';
 
 const categories = [
-  { slug: 'digitalisation-cabinets', label: 'Digitalisation des cabinets', count: 12, color: 'bleu-signature', icon: 'chart', seoKeywords: ['logiciel suivi coaching', 'SaaS cabinet santé', 'digitalisation pratique'] },
-  { slug: 'optimisation-performance', label: 'Optimisation de la performance', count: 10, color: 'bleu-lecture', icon: 'zap', seoKeywords: ['application coaching sportif', 'suivi performance athlètes', 'programmation entraînement'] },
-  { slug: 'business-coaching', label: 'Business model du coaching haut de gamme', count: 8, color: 'bordeaux', icon: 'users', seoKeywords: ['business coaching', 'marque blanche coaching', 'tarification accompagnement'] },
-  { slug: 'sante-connectee', label: 'Santé connectée & biomarqueurs', count: 9, color: 'bleu-ardoise', icon: 'globe', seoKeywords: ['plateforme suivi biométrie', 'Apple Health Oura Garmin', 'biomarqueurs sanguins coaching'] },
-  { slug: 'preparation-mentale', label: 'Préparation mentale & psychologie', count: 6, color: 'indigo', icon: 'brain', seoKeywords: ['SaaS préparateur mental', 'suivi mental sportifs', 'outils prépa mentale'] },
-  { slug: 'nutrition-coaching', label: 'Nutrition & coaching alimentaire', count: 7, color: 'bleu-clair', icon: 'document', seoKeywords: ['logiciel suivi nutritionnel', 'plan alimentaire personnalisé', 'complémentation sportive'] },
+  { slug: 'digitalisation', label: 'Digitalisation des cabinets', icon: 'chart', color: 'bleu-signature' },
+  { slug: 'performance', label: 'Optimisation de la performance', icon: 'zap', color: 'bleu-lecture' },
+  { slug: 'business', label: 'Business & Croissance', icon: 'users', color: 'bordeaux' },
+  { slug: 'sante-connectee', label: 'Santé connectée', icon: 'globe', color: 'bleu-ardoise' },
+  { slug: 'mental', label: 'Préparation mentale', icon: 'brain', color: 'indigo' },
+  { slug: 'nutrition', label: 'Nutrition', icon: 'document', color: 'bleu-clair' },
 ];
 
 const articles = [
@@ -24,7 +24,7 @@ const articles = [
     slug: 'bilans-hebdo-automatises',
     title: 'Comment automatiser vos bilans hebdo et gagner 10h par semaine',
     excerpt: 'Découvrez comment les cabinets qui utilisent les bilans guidés Optibilan réduisent leur temps administratif de 75% tout en améliorant la qualité du suivi.',
-    category: 'digitalisation-cabinets',
+    category: 'digitalisation',
     author: 'Marie Dubois',
     date: '2024-01-15',
     readTime: '8 min',
@@ -34,7 +34,7 @@ const articles = [
     slug: 'nutrition-personnalisee-echelle',
     title: 'Nutrition personnalisée à grande échelle : la méthode des templates',
     excerpt: 'Comment créer des plans nutritionnels individualisés pour 50+ coachés sans y passer vos soirées. La puissance des templates réutilisables.',
-    category: 'nutrition-coaching',
+    category: 'nutrition',
     author: 'Thomas Bertrand',
     date: '2024-01-10',
     readTime: '6 min',
@@ -44,7 +44,7 @@ const articles = [
     slug: 'prepa-mentale-difference',
     title: 'Pourquoi la prépa mentale fait la différence sur la rétention à 6 mois',
     excerpt: 'Étude sur 2000+ coachés : ceux qui ont un suivi prépa mentale restent engagés 40% plus longtemps. Les exercices transversaux qui fonctionnent.',
-    category: 'preparation-mentale',
+    category: 'mental',
     author: 'Sophie Martin',
     date: '2024-01-05',
     readTime: '7 min',
@@ -64,17 +64,17 @@ const articles = [
     slug: 'marque-blanche-cabinet-pro',
     title: 'Marque blanche totale : comment faire passer votre cabinet au niveau pro',
     excerpt: 'Logo, couleurs, domaine, vocabulaire, emails : tout ce qu\'il faut configurer pour que vos clients ne voient que votre marque. Checklist complète.',
-    category: 'business-coaching',
+    category: 'business',
     author: 'Julie Moreau',
     date: '2023-12-28',
     readTime: '5 min',
     featured: false,
   },
   {
-    slug: 'gamification-engagement-coaches',
+    slug: 'gamification-engagement',
     title: 'Gamification : XP, badges et habitudes qui boostent l\'adhérence',
     excerpt: 'Analyse des mécaniques qui fonctionnent vraiment : objectif ultime, dreamboard, observance compléments. +40% d\'adhérence sur les habitudes quotidiennes.',
-    category: 'optimisation-performance',
+    category: 'performance',
     author: 'Antoine Roux',
     date: '2023-12-22',
     readTime: '6 min',
@@ -84,17 +84,17 @@ const articles = [
     slug: 'cas-client-studio-performance',
     title: 'Cas client : Studio Performance Bordeaux — de 20 à 150 coachés en 8 mois',
     excerpt: 'Comment Thomas Bertrand a structuré son studio avec Optibilan : onboarding staff, automatisation bilans, marque blanche. Le retour d\'expérience complet.',
-    category: 'business-coaching',
+    category: 'business',
     author: 'Équipe Optibilan',
     date: '2023-12-18',
     readTime: '9 min',
     featured: true,
   },
   {
-    slug: 'api-webhooks-integration-n8n',
+    slug: 'api-webhooks-integration',
     title: 'Intégrer Optibilan à votre stack via API et webhooks (n8n, Make, Zapier)',
     excerpt: 'Exemples concrets : nouveau client → créer dossier Notion, bilan déposé → alerte Slack, paiement → email personnalisé. Clés API scopées, HMAC, idempotence.',
-    category: 'digitalisation-cabinets',
+    category: 'digitalisation',
     author: 'Dev Team',
     date: '2023-12-12',
     readTime: '12 min',
@@ -103,12 +103,12 @@ const articles = [
 ];
 
 const categoryLabels: Record<string, string> = {
-  'digitalisation-cabinets': 'Digitalisation des cabinets',
-  'optimisation-performance': 'Optimisation de la performance',
-  'business-coaching': 'Business model du coaching haut de gamme',
-  'sante-connectee': 'Santé connectée & biomarqueurs',
-  'preparation-mentale': 'Préparation mentale & psychologie',
-  'nutrition-coaching': 'Nutrition & coaching alimentaire',
+  digitalisation: 'Digitalisation des cabinets',
+  performance: 'Optimisation de la performance',
+  business: 'Business & Croissance',
+  'sante-connectee': 'Santé connectée',
+  mental: 'Préparation mentale',
+  nutrition: 'Nutrition & coaching',
 };
 
 function formatDate(dateStr: string) {
@@ -127,7 +127,7 @@ function formatDate(dateStr: string) {
   <main>
     <Hero
       title="Ressources pour cabinets\nqui veulent grandir"
-      subtitle="Guides pratiques, études de cas, méthodes éprouvées. Écrit par des coachs, pour des coachs. Mots-clés : logiciel suivi nutritionnel, application coaching sportif marque blanche, SaaS préparateur mental, plateforme suivi biométrie clients."
+      subtitle="Guides pratiques, études de cas, méthodes éprouvées. Écrit par des coachs, pour des coachs."
       badge="Nouveau : newsletter hebdo — 2 000+ abonnés"
     />
 
@@ -136,17 +136,17 @@ function formatDate(dateStr: string) {
     <section class="section bg-papier" aria-labelledby="categories-title">
       <div class="container">
         <header class="text-center max-w-3xl mx-auto mb-12">
-          <h2 id="categories-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">Explorer par catégorie SEO</h2>
-          <p class="text-lg text-encre/60">Chaque catégorie cible des requêtes business précises : logiciel suivi nutritionnel, application coaching sportif marque blanche, SaaS préparateur mental, plateforme suivi biométrie clients.</p>
+          <h2 id="categories-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">Explorer par catégorie</h2>
+          <p class="text-lg text-encre/60">Chaque catégorie regroupe des articles spécialisés pour votre pratique.</p>
         </header>
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
           {categories.map(cat => (
-            <a href={`/blog/${cat.slug}`} class="card-hover group p-5 md:p-6 text-center" style={`--pillar-color: var(--color-${cat.color})`}>
-              <div class="icon-wrapper mx-auto mb-4" aria-hidden="true" style={`background-color: color-mix(in oklab, var(--color-${cat.color}) 15%, transparent);`}>
-                <Icon name={cat.icon} class="w-6 h-6" style={`color: var(--color-${cat.color});`} />
+            <a href={`/blog/${cat.slug}`} class="card-hover group p-5 md:p-6 text-center" style="--pillar-color: var(--color-{cat.color})">
+              <div class="icon-wrapper mx-auto mb-4" aria-hidden="true" style="background-color: color-mix(in oklab, var(--color-{cat.color}) 15%, transparent);">
+                <Icon name={cat.icon} class="w-6 h-6" style="color: var(--color-{cat.color});" />
               </div>
               <h3 class="font-display text-lg font-bold text-encre mb-1">{cat.label}</h3>
-              <p class="text-sm text-encre/50">{cat.count} articles</p>
+              <p class="text-sm text-encre/50">Articles</p>
             </a>
           ))}
         </div>
@@ -206,11 +206,11 @@ function formatDate(dateStr: string) {
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {articles.map((article, i) => (
-            <article class="card-hover group relative overflow-hidden" style={`animation-delay: ${i * 100}ms`}>
+            <article class="card-hover group relative overflow-hidden" style="animation-delay: {i * 100}ms">
               <div class="absolute top-0 left-0 right-0 h-1 bg-[var(--color-bleu-signature)] opacity-0 group-hover:opacity-100 transition-opacity duration-300" aria-hidden="true"></div>
               <div class="p-6 md:p-7">
                 <div class="flex items-center gap-2 mb-3">
-                  <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-puce text-xs font-medium" style={`color: var(--color-${article.category}); background-color: color-mix(in oklab, var(--color-${article.category}) 10%, transparent);`}>
+                  <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-puce text-xs font-medium" style="color: var(--color-{article.category}); background-color: color-mix(in oklab, var(--color-{article.category}) 10%, transparent);">
                     {categoryLabels[article.category]}
                   </span>
                   <time class="text-xs text-encre/40" datetime={article.date}>{formatDate(article.date)}</time>
