@@ -1,0 +1,220 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import Hero from '../../components/Hero.astro';
+import TrustBar from '../../components/TrustBar.astro';
+import CTA from '../../components/CTA.astro';
+import Icon from '../../components/Icon.astro';
+
+const pageTitle = 'Produit — Optibilan';
+const pageDescription = 'Découvrez la plateforme complète de pilotage des accompagnements santé et performance : bilans, nutrition, sport, santé, mental, IA, marque blanche.';
+
+const modules = [
+  { href: '/product/check-ins', icon: 'chart', title: 'Bilans & progression', desc: 'Suivi centralisé des accompagnements', color: 'bleu-signature' },
+  { href: '/product/nutrition', icon: 'document', title: 'Nutrition', desc: 'Plans, habitudes, compléments, courses', color: 'bleu-lecture' },
+  { href: '/product/training', icon: 'zap', title: 'Sport & programmes', desc: 'Bibliothèque, séances, progression', color: 'indigo' },
+  { href: '/product/health', icon: 'globe', title: 'Santé & biomarqueurs', desc: 'Biologie, wearables, tendances', color: 'bleu-clair' },
+  { href: '/product/mental', icon: 'brain', title: 'Préparation mentale', desc: 'Exercices, ressources, journal, adhérence', color: 'bleu-ardoise' },
+  { href: '/product/engagement', icon: 'users', title: 'Engagement & habitudes', desc: 'Gamification, objectifs, jalons', color: 'bordeaux' },
+  { href: '/product/crm', icon: 'lock', title: 'Journal & CRM', desc: 'Entrées typées, pipeline, relances', color: 'bleu-ardoise' },
+  { href: '/product/agenda', icon: 'calendar', title: 'Agenda & appels', desc: 'Cadence, rappels, calendrier ICS', color: 'bleu-signature' },
+  { href: '/product/ai', icon: 'brain', title: 'IA & Automatisations', desc: 'Structuration, synthèses, alertes', color: 'indigo' },
+  { href: '/product/white-label', icon: 'shield', title: 'Marque blanche', desc: 'Logo, couleurs, domaine, emails', color: 'bordeaux' },
+  { href: '/product/integrations', icon: 'code', title: 'Intégrations & API', desc: 'Santé, agenda, webhooks, OpenAPI', color: 'bleu-ardoise' },
+  { href: '/product/admin', icon: 'shield', title: 'Administration', desc: 'Utilisateurs, modules, conformité', color: 'bordeaux' },
+];
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  canonical="/product/overview"
+  ogImage="/og-product-overview.jpg"
+>
+  <Header />
+
+  <main>
+    <Hero
+      title="La plateforme de pilotage\ndes accompagnements santé\n& performance"
+      subtitle="Bilans, nutrition, sport, santé, mental, habitudes et suivi réunis dans un environnement unique. Conçue pour mieux accompagner — sans multiplier les outils."
+      badge="12 modules, 0 surcoût, activation instantanée"
+      primaryCTA={{ href: 'https://calendly.com/optibilan/demo', label: 'Réserver une démo' }}
+      secondaryCTA={{ href: '/product/check-ins', label: 'Découvrir les bilans' }}
+    />
+
+    <TrustBar />
+
+    <section class="section bg-blanc" aria-labelledby="problem-title">
+      <div class="container">
+        <header class="text-center max-w-3xl mx-auto mb-16">
+          <h2 id="problem-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+            Votre expertise mérite mieux qu\'un empilement d\'outils
+          </h2>
+          <p class="text-lg text-encre/60 max-w-2xl mx-auto">
+            Formulaires papier, Excel, PDF, WhatsApp, applications spécialisées, données wearables dispersées…<br class="hidden md:inline">
+            Optibilan centralise tout dans une seule plateforme.
+          </p>
+        </header>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <div class="p-6 md:p-8 rounded-xl bg-papier/50 border border-encre/10">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-10 h-10 rounded-lg bg-encre/5 flex items-center justify-center">
+                <Icon name="document" class="w-5 h-5 text-encre" />
+              </div>
+              <h3 class="font-display text-xl font-bold text-encre">Avant Optibilan</h3>
+            </div>
+            <ul class="space-y-3 text-encre/70">
+              <li class="flex items-center gap-3"><span class="w-6 h-6 rounded-full bg-encre/5 flex items-center justify-center text-encre/50">1</span> Bilans sur papier / Google Forms</li>
+              <li class="flex items-center gap-3"><span class="w-6 h-6 rounded-full bg-encre/5 flex items-center justify-center text-encre/50">2</span> Programmes sport sur Excel / PDF</li>
+              <li class="flex items-center gap-3"><span class="w-6 h-6 rounded-full bg-encre/5 flex items-center justify-center text-encre/50">3</span> Nutrition sur logiciel séparé</li>
+              <li class="flex items-center gap-3"><span class="w-6 h-6 rounded-full bg-encre/5 flex items-center justify-center text-encre/50">4</span> Données wearables non exploitées</li>
+              <li class="flex items-center gap-3"><span class="w-6 h-6 rounded-full bg-encre/5 flex items-center justify-center text-encre/50">5</span> Mental sur documents partagés</li>
+              <li class="flex items-center gap-3"><span class="w-6 h-6 rounded-full bg-encre/5 flex items-center justify-center text-encre/50">6</span> Communication par WhatsApp / Email</li>
+              <li class="flex items-center gap-3"><span class="w-6 h-6 rounded-full bg-encre/5 flex items-center justify-center text-encre/50">7</span> Aucune vision globale du client</li>
+            </ul>
+          </div>
+          <div class="p-6 md:p-8 rounded-xl bg-gradient-to-br from-bleu-signature/5 via-papier to-bleu-lecture/5 border border-encre/10">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-10 h-10 rounded-lg bg-bleu-signature/10 flex items-center justify-center">
+                <Icon name="chart" class="w-5 h-5 text-bleu-signature" />
+              </div>
+              <h3 class="font-display text-xl font-bold text-encre">Avec Optibilan</h3>
+            </div>
+            <ul class="space-y-3 text-encre/70">
+              <li class="flex items-center gap-3"><Icon name="check" class="w-5 h-5 text-emerald-500 flex-shrink-0" /> Une seule plateforme, 12 modules</li>
+              <li class="flex items-center gap-3"><Icon name="check" class="w-5 h-5 text-emerald-500 flex-shrink-0" /> Bilans, nutrition, sport, santé, mental unifiés</li>
+              <li class="flex items-center gap-3"><Icon name="check" class="w-5 h-5 text-emerald-500 flex-shrink-0" /> IA pour structurer, synthétiser, alerter</li>
+              <li class="flex items-center gap-3"><Icon name="check" class="w-5 h-5 text-emerald-500 flex-shrink-0" /> Marque blanche totale, votre domaine</li>
+              <li class="flex items-center gap-3"><Icon name="check" class="w-5 h-5 text-emerald-500 flex-shrink-0" /> API, webhooks, intégrations natives</li>
+              <li class="flex items-center gap-3"><Icon name="check" class="w-5 h-5 text-emerald-500 flex-shrink-0" /> RGPD/HDS, hébergement EU, audit trail</li>
+              <li class="flex items-center gap-3"><Icon name="check" class="w-5 h-5 text-emerald-500 flex-shrink-0" /> Vision 360° de chaque client</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-papier" aria-labelledby="modules-title">
+      <div class="container">
+        <header class="text-center max-w-3xl mx-auto mb-16">
+          <h2 id="modules-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+            12 modules, une plateforme unifiée
+          </h2>
+          <p class="text-lg text-encre/60">Activez seulement ce dont vous avez besoin. Tout est inclus dans votre offre.</p>
+        </header>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+          {modules.map((mod, i) => (
+            <a href={mod.href} class="card-hover group p-5 md:p-6 text-center" style={`--mod-color: var(--color-${mod.color})`}>
+              <div class="icon-wrapper mx-auto mb-4" aria-hidden="true" style={`background-color: color-mix(in oklab, var(--color-${mod.color}) 15%, transparent);`}>
+                <Icon name={mod.icon} class="w-6 h-6" style={`color: var(--color-${mod.color});`} />
+              </div>
+              <h3 class="font-display text-lg font-bold text-encre mb-1">{mod.title}</h3>
+              <p class="text-sm text-encre/50">{mod.desc}</p>
+            </a>
+          ))}
+        </div>
+
+        <p class="text-center text-sm text-encre/40 mt-10">
+          Tous les modules inclus · Aucun surcoût · Activation instantanée
+        </p>
+      </div>
+    </section>
+
+    <section class="section bg-blanc" aria-labelledby="workflow-title">
+      <div class="container">
+        <header class="text-center max-w-3xl mx-auto mb-16">
+          <h2 id="workflow-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+            Du premier bilan au suivi quotidien
+          </h2>
+          <p class="text-lg text-encre/60">Trois étapes pour transformer votre pratique.</p>
+        </header>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {[
+            {
+              num: '01',
+              title: 'Centralisez les informations',
+              desc: 'Bilans guidés, questionnaires intelligents, synchronisation Apple Health/Oura/Garmin, import analyses sanguines (PDF → IA → données structurées), dreamboard et objectif ultime dès l\'inscription.',
+              icon: 'calendar',
+              color: 'bleu-signature',
+            },
+            {
+              num: '02',
+              title: 'Construisez l\'accompagnement',
+              desc: 'Templates nutrition/sport/mental réutilisables, assignation modules par praticien (rôles cloisonnés), assistant IA pour générer plans et séances, vocabulaire et marque blanche appliqués automatiquement.',
+              icon: 'document',
+              color: 'bleu-lecture',
+            },
+            {
+              num: '03',
+              title: 'Suivez ce qui évolue',
+              desc: 'Gamification (XP, badges, habitudes) qui engage vos clients, alertes IA sur signaux faibles (stagnation, désengagement, observance), vue cohortes pour piloter rétention et progression.',
+              icon: 'zap',
+              color: 'indigo',
+            },
+          ].map((step, i) => (
+            <article class="relative group" style={`--step-color: var(--color-${step.color})`}>
+              <div class="absolute -top-3 left-1/2 -translate-x-1/2 z-10">
+                <div class="w-12 h-12 rounded-full bg-gradient-to-br from-[var(--step-color)] to-[var(--step-color)] text-craie flex items-center justify-center font-display text-lg font-bold shadow-lg">
+                  {step.num}
+                </div>
+              </div>
+              <div class="card-hover relative pt-14">
+                <div class="icon-wrapper mx-auto mb-6" aria-hidden="true" style={`background-color: color-mix(in oklab, var(--step-color) 15%, transparent);`}>
+                  <Icon name={step.icon} class="w-7 h-7" style={`color: var(--step-color);`} />
+                </div>
+                <h3 class="font-display text-xl font-bold text-encre mb-3 text-center">{step.title}</h3>
+                <p class="text-encre/60 leading-relaxed text-center">{step.desc}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-gradient-to-br from-bleu-signature via-bleu-lecture to-indigo rounded-card-lg relative overflow-hidden" aria-labelledby="ai-title">
+      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-bleu-signature/20 via-transparent to-transparent" aria-hidden="true"></div>
+      <div class="absolute top-0 right-0 w-96 h-96 bg-bleu-signature/10 rounded-full blur-3xl" aria-hidden="true"></div>
+      <div class="absolute bottom-0 left-0 w-96 h-96 bg-bleu-signature/10 rounded-full blur-3xl" aria-hidden="true"></div>
+
+      <div class="container relative text-center max-w-3xl mx-auto py-16 md:py-24">
+        <h2 id="ai-title" class="font-display text-3xl md:text-4xl font-bold mb-4 text-craie">
+          L'IA prépare.<br>Le professionnel décide.
+        </h2>
+        <p class="text-lg mb-8 text-craie/80 max-w-2xl mx-auto">
+          Optibilan utilise l'IA pour réduire le travail répétitif, structurer l'information et faire remonter les éléments utiles.<br>Elle assiste le professionnel. Elle ne prend pas la décision à sa place.
+        </p>
+        <div class="grid md:grid-cols-3 gap-6 mb-10 max-w-2xl mx-auto">
+          {[
+            { icon: 'document', title: 'PDF → Données structurées', desc: 'L\'IA lit bilans, analyses, lettres et pré-remplit les champs.' },
+            { icon: 'chart', title: 'Bilan → Synthèse', desc: 'Génération automatique de résumés pour le professionnel et le client.' },
+            { icon: 'zap', title: 'Données → Proposition', desc: 'Détection signaux faibles, suggestions d\'ajustement, alertes proactives.' },
+          ].map(item => (
+            <div class="p-5 rounded-xl bg-craie/10 backdrop-blur-sm text-left" key={item.title}>
+              <div class="icon-wrapper mb-3" aria-hidden="true" style="background-color: color-mix(in oklab, var(--color-bleu-signature) 15%, transparent);">
+                <Icon name={item.icon} class="w-6 h-6 text-bleu-signature" />
+              </div>
+              <h4 class="font-semibold text-craie mb-1">{item.title}</h4>
+              <p class="text-craie/70 text-sm">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+        <p class="text-sm text-craie/60 max-w-xl mx-auto">
+          L'IA n'établit pas de diagnostic. Elle n'agit pas de façon autonome. Le professionnel garde le contrôle total.
+        </p>
+      </div>
+    </section>
+
+    <CTA
+      title="Découvrez Optibilan en conditions réelles"
+      subtitle="30 minutes pour voir la plateforme à partir de votre fonctionnement actuel."
+      primaryCTA={{ href: 'https://calendly.com/optibilan/demo', label: 'Réserver une démo' }}
+      variant="secondary"
+    />
+  </main>
+
+  <Footer />
+</Layout>

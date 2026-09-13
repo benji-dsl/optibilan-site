@@ -1,0 +1,174 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import Hero from '../../components/Hero.astro';
+import CTA from '../../components/CTA.astro';
+import TrustBar from '../../components/TrustBar.astro';
+import Icon from '../../components/Icon.astro';
+
+const pageTitle = 'Préparation mentale — Optibilan';
+const pageDescription = 'Exercices transversaux, ressources, journal d\'appels, suivi adhérence. Structurez le mental pour la performance durable. Cloisonnement des données garanti.';
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  canonical="/product/mental"
+  ogImage="/og-mental.jpg"
+>
+  <Header />
+
+  <main>
+    <Hero
+      title="Le mental fait partie de\nl'accompagnement.\nSes données méritent leur\npropre espace."
+      subtitle="Visualisation, respiration, routine, journal d'appels : structurez le suivi mental sans perdre la confidentialité."
+      badge="Module avancé — Inclus Studio & Cabinet"
+      primaryCTA={{ href: 'https://calendly.com/optibilan/demo', label: 'Voir le mental en démo' }}
+      secondaryCTA={{ href: '/product/overview', label: 'Retour au produit' }}
+    />
+
+    <TrustBar />
+
+    <section class="section bg-gradient-to-br from-encre/5 via-papier to-indigo/5 rounded-card-lg relative overflow-hidden" aria-labelledby="disclaimer-title">
+      <div class="container relative py-6 px-6 md:py-8 md:px-8">
+        <div class="flex items-start gap-4 p-4 bg-encre/5 rounded-lg border border-encre/10">
+          <Icon name="shield" class="w-6 h-6 text-encre/50 flex-shrink-0 mt-0.5" />
+          <div>
+            <h3 id="disclaimer-title" class="font-semibold text-encre mb-1">Cadre déontologique & confidentialité</h3>
+            <p class="text-encre/70 text-sm">
+              <strong>La préparation mentale n'est pas une psychothérapie.</strong> Optibilan fournit un cadre d'organisation pour les professionnels qualifiés (préparateurs mentaux, psychologues du sport, sophrologues…).<br>
+              <strong>Cloisonnement strict :</strong> le coach sport ne voit pas le contenu mental. Le préparateur mental décide ce que le client partage. Optibilan n'établit pas de diagnostic psychologique.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-blanc" aria-labelledby="problem-title">
+      <div class="container max-w-3xl">
+        <header class="mb-12">
+          <h2 id="problem-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+            Le problème : le mental dans des PDF oubliés
+          </h2>
+          <p class="text-lg text-encre/60">
+            Exercices sur Word, vidéos sur YouTube, journal d'appels sur cahier, adhérence inconnue…<br>
+            Le sportif ne pratique pas. Le préparateur ne pilote pas l'adhérence.
+          </p>
+        </header>
+
+        <div class="space-y-8">
+          {[
+            {
+              title: 'Exercices transversaux réutilisables',
+              desc: 'Visualisation (objectif, performance, récupération), cohérence cardiaque (5-5-5, 4-7-8), ancrage (gestuel, verbal, sensoriel), routine pré-performance, scan corporel, respiration box. Chaque exercice : audio guidé (streaming), PDF fiche, durée, niveau. Bibliothèque personnelle du préparateur + templates Optibilan.',
+              features: [
+                '6 catégories : visualisation, respiration, ancrage, routine, scan, cohérence',
+                'Audio guidé streaming (pas de téléchargement, pas de partage)',
+                'Fiche PDF : consignes, variantes, indications/contre-indications',
+                'Templates par sport / objectif (compétition, récupération, blessure)',
+              ],
+              icon: 'brain',
+            },
+            {
+              title: 'Bibliothèque ressources (vidéos, PDF, audio)',
+              desc: 'Dépôt sécurisé : vidéos (technique, mental), PDF (articles, protocoles), audio (guidés, relaxations). Streaming sécurisé (pas de téléchargement, pas de partage). Organisation par dossiers/tags. Partage sélectif client (niveau 1/2/3).',
+              features: [
+                'Streaming vidéo/audio sécurisé (token court, pas de DL)',
+                'Organisation : dossiers + tags + recherche full-text',
+                'Partage client : niveau 1 (visible) / 2 (commentaire) / 3 (privé préparateur)',
+                'Versioning des ressources (historique modifications)',
+              ],
+              icon: 'document',
+            },
+            {
+              title: 'Journal d\'appels dédié',
+              desc: 'Compte-rendu structuré : date, durée, objectifs séance, points clés, plan d\'action, prochaine échéance. Liaison bidirectionnelle avec le journal coaching (visible si autorisé). Historique complet, recherche full-text, export PDF pour le sportif ou le staff.',
+              features: [
+                'Structure : objectifs → déroulement → plan action → prochain RDV',
+                'Liaison journal coaching (si autorisation client)',
+                'Recherche full-text sur tout l\'historique',
+                'Export PDF brandé pour le sportif / staff',
+              ],
+              icon: 'calendar',
+            },
+            {
+              title: 'Techniques : respiration, visualisation, routine',
+              desc: 'Modules guidés intégrés : cohérence cardiaque (5-5-5 temps réel avec graphique HRV simulé), respiration box (4-4-4-4), scan corporel (guidage progressif), routine pré-sommeil, routine pré-compétition. Chronomètre visuel + audio + vibration.',
+              features: [
+                'Cohérence cardiaque : guide visuel + audio + HRV temps réel (si wearable)',
+                'Respiration box : 4-4-4-4 phases visuelles + sonores',
+                'Scan corporel : guidage progressif 5-20 min',
+                'Routines : pré-compétition, pré-sommeil, post-blessure',
+              ],
+              icon: 'zap',
+            },
+            {
+              title: 'Suivi adhérence mental & alertes',
+              desc: 'Fréquence, durée, ressentis pre/post (échelle 1-10), corrélation avec performance (si données sport dispo). Alertes : baisse fréquence > 50%, ressentis pre < 4/10, aucune séance > 14 jours. Le préparateur intervient avant l\'abandon.',
+              features: [
+                'Métriques : fréquence, durée, ressentis pre/post, régularité',
+                'Corrélation performance (si données sport : charge, RPE, résultat)',
+                'Alertes : fréquence ↓, ressentis ↓, inactivité > 14j',
+                'Rapport adhérence mensuel auto-généré pour le préparateur',
+              ],
+              icon: 'chart',
+            },
+            {
+              title: 'Confidentialité & permissions (cœur du module)',
+              desc: 'Séparation stricte des données : le coach sport ne voit PAS le contenu mental. Le préparateur mental décide ce que le client partage (niveau 1/2/3). Rôle "préparateur mental" avec périmètre RBAC strict. Chiffrement supplémentaire au repos (AES-256 + envelope encryption). Audit trail dédié.',
+              features: [
+                'RBAC : rôle "préparateur mental" = périmètre strict (mental seulement)',
+                'Partage client : niveau 1 (visible) / 2 (commentaire) / 3 (privé préparateur)',
+                'Chiffrement supplémentaire : AES-256 + envelope encryption pour données mentales',
+                'Audit trail dédié mental (accès, modifications, partages)',
+              ],
+              icon: 'lock',
+            },
+          ].map((section, i) => (
+            <article id={section.icon} class="py-8 border-t border-encre/10 first:border-0">
+              <header class="flex items-center gap-4 mb-6">
+                <div class="icon-wrapper flex-shrink-0" aria-hidden="true" style="background-color: var(--color-bleu-clair);">
+                  <Icon name={section.icon} class="w-7 h-7 text-indigo" />
+                </div>
+                <div>
+                  <h3 class="font-display text-2xl font-bold text-encre">{section.title}</h3>
+                  <p class="text-encre/60 mt-1">{section.desc}</p>
+                </div>
+              </header>
+              <ul class="space-y-2 text-encre/60">
+                {section.features.map(f => (
+                  <li key={f} class="flex items-start gap-2">
+                    <Icon name="check" class="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5" />
+                    <span>{f}</span>
+                  </li>
+                ))}
+              </ul>
+            </article>
+          ))}
+        </div>
+
+        <div class="mt-12 p-6 rounded-xl bg-papier border border-encre/10">
+          <h3 class="font-display text-xl font-bold text-encre mb-3">Spécifications techniques</h3>
+          <ul class="space-y-2 text-sm text-encre/60">
+            <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-indigo flex-shrink-0 mt-1.5" /> Streaming audio/vidéo sécurisé (token court, pas de DL, pas de partage)</li>
+            <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-indigo flex-shrink-0 mt-1.5" /> Chiffrement supplémentaire au repos : AES-256 + envelope encryption</li>
+            <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-indigo flex-shrink-0 mt-1.5" /> RBAC : rôle "préparateur mental" = périmètre strict (mental seulement)</li>
+            <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-indigo flex-shrink-0 mt-1.5" /> API mental : exercices, ressources, journal, adhérence</li>
+            <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-indigo flex-shrink-0 mt-1.5" /> Partage client : niveau 1/2/3 configurable par le préparateur</li>
+            <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-indigo flex-shrink-0 mt-1.5" /> Audit trail dédié mental (accès, modifications, partages)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <CTA
+      title="Prêt à structurer le suivi mental de vos sportifs ?"
+      subtitle="30 minutes pour voir comment organiser exercices, ressources et adhérence."
+      primaryCTA={{ href: 'https://calendly.com/optibilan/demo', label: 'Réserver une démo' }}
+      variant="primary"
+    />
+  </main>
+
+  <Footer />
+</Layout>

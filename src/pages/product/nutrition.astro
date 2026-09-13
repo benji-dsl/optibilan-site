@@ -1,0 +1,156 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import Hero from '../../components/Hero.astro';
+import CTA from '../../components/CTA.astro';
+import TrustBar from '../../components/TrustBar.astro';
+import Icon from '../../components/Icon.astro';
+
+const pageTitle = 'Nutrition — Optibilan';
+const pageDescription = 'Plans alimentaires, habitudes, listes de courses, compléments et suivi réunis dans le dossier client. La nutrition à l\'échelle.';
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  canonical="/product/nutrition"
+  ogImage="/og-nutrition.jpg"
+>
+  <Header />
+
+  <main>
+    <Hero
+      title="Construisez le suivi nutritionnel.\nPas une pile de PDF."
+      subtitle="Plans, habitudes alimentaires, listes de courses, compléments et suivi réunis dans le dossier client. La nutrition à l'échelle."
+      badge="Module cœur — Inclus dans toutes les offres"
+      primaryCTA={{ href: 'https://calendly.com/optibilan/demo', label: 'Voir la nutrition en démo' }}
+      secondaryCTA={{ href: '/product/overview', label: 'Retour au produit' }}
+    />
+
+    <TrustBar />
+
+    <section class="section bg-blanc" aria-labelledby="problem-title">
+      <div class="container max-w-3xl">
+        <header class="mb-12">
+          <h2 id="problem-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+            Le problème : la nutrition éparpillée
+          </h2>
+          <p class="text-lg text-encre/60">
+            Plan sur Word, liste de courses sur Notes, compléments dans un tableau, méthodes dans un dossier, journal alimentaire sur papier…<br>
+            Le client ne suit pas. Le professionnel perd du temps.
+          </p>
+        </header>
+
+        <div class="space-y-8">
+          {[
+            {
+              title: 'Créer un protocole nutritionnel en minutes',
+              desc: 'Répartition macro/micro-nutriments par repas et par jour, calcul automatique des besoins (Mifflin-St Jeor + facteur d\'activité). Base CIQUAL + USDA intégrée (3000+ aliments). Templates réutilisables : perte de gras, prise de masse, longévité, pathologie (diabète, thyroïde, SOPK…).',
+              features: [
+                'Calcul auto des besoins + répartition par repas',
+                'Templates par objectif / pathologie (créés par vous ou Optibilan)',
+                'Méthodes validées vs à éviter (niveau de preuve A/B/C)',
+                'Notes coach : visibles client / privées staff',
+              ],
+              icon: 'document',
+            },
+            {
+              title: 'Listes de courses hebdomadaires auto-générées',
+              desc: 'À partir du plan : quantités, catégories (légumes, protéines, épicerie…), magasins préférés du client. Le client coche sur mobile. Mise à jour auto si le plan change.',
+              features: [
+                'Quantités calculées pour la semaine',
+                'Catégorisation automatique (drive / marché / bio)',
+                'Partage par lien / email / espace client',
+                'Historique des listes pour réutilisation',
+              ],
+              icon: 'chart',
+            },
+            {
+              title: 'Compléments classés par niveau de preuve',
+              desc: 'Pour chaque complément : dosage, timing, marque recommandée, niveau de preuve scientifique (A = méta-analyses, B = RCTs, C = observationnel). Indispensable / Optionnel / Déconseillé. Alertes interactions médicamenteuses basiques.',
+              features: [
+                'Base de 200+ compléments documentés',
+                'Dosage personnalisé (poids, objectif, biologie)',
+                'Alertes : interactions, contre-indications, surdosage',
+                'Observance : rappels, validation scan code-barres, taux d\'adhérence',
+              ],
+              icon: 'zap',
+            },
+            {
+              title: 'Suivi alimentaire client + validation coach',
+              desc: 'Journal photo/texte simple pour le client (scan code-barres, recherche, plat favori). Validation coach en 1 clic (✓ / commentaire). Corrélation auto avec le plan (écart calories, protéines, légumes).',
+              features: [
+                'Scan code-barres + base aliments intégrée',
+                'Plats favoris / récents pour saisie rapide',
+                'Validation coach : ✓ / ajuster / commenter',
+                'Graphiques écart plan vs réel (calories, P/L/G, légumes)',
+              ],
+              icon: 'calendar',
+            },
+            {
+              title: 'Évolution du plan dans le temps',
+              desc: 'Duplicata de plan en 1 clic, ajustement macros/repas, historique des versions, commentaires de modification. Le client voit la progression (ex: +200 kcal / +30g protéines depuis le mois dernier).',
+              features: [
+                'Versioning complet des plans (qui a changé quoi, quand)',
+                'Comparatif version actuelle vs précédente',
+                'Alertes si dérive > seuils (ex: protéines < 1.6g/kg)',
+                'Export PDF du plan + courses + compléments pour le client',
+              ],
+              icon: 'users',
+            },
+          ].map((section, i) => (
+            <article id={section.icon} class="py-8 border-t border-encre/10 first:border-0">
+              <header class="flex items-center gap-4 mb-6">
+                <div class="icon-wrapper flex-shrink-0" aria-hidden="true" style="background-color: var(--color-bleu-clair);">
+                  <Icon name={section.icon} class="w-7 h-7 text-bleu-lecture" />
+                </div>
+                <div>
+                  <h3 class="font-display text-2xl font-bold text-encre">{section.title}</h3>
+                  <p class="text-encre/60 mt-1">{section.desc}</p>
+                </div>
+              </header>
+              <ul class="space-y-2 text-encre/60">
+                {section.features.map(f => (
+                  <li key={f} class="flex items-start gap-2">
+                    <Icon name="check" class="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5" />
+                    <span>{f}</span>
+                  </li>
+                ))}
+              </ul>
+            </article>
+          ))}
+        </div>
+
+        <div class="mt-12 p-6 rounded-xl bg-papier border border-encre/10">
+          <h3 class="font-display text-xl font-bold text-encre mb-3">⚠ Cadre réglementaire & éthique</h3>
+          <ul class="space-y-2 text-sm text-encre/60">
+            <li class="flex items-start gap-2"><Icon name="check" class="w-4 h-4 text-emerald-500 flex-shrink-0 mt-0.5" /> Optibilan est un outil d'organisation. Il <strong>ne remplace pas</strong> l'avis d'un professionnel de santé qualifié.</li>
+            <li class="flex items-start gap-2"><Icon name="check" class="w-4 h-4 text-emerald-500 flex-shrink-0 mt-0.5" /> Aucune recommandation de supplémentation n'est "validée" automatiquement. Le professionnel reste décisionnaire.</li>
+            <li class="flex items-start gap-2"><Icon name="check" class="w-4 h-4 text-emerald-500 flex-shrink-0 mt-0.5" /> L'IA structure, suggère, alerte. Elle <strong>n'établit pas de diagnostic</strong> ni de prescription.</li>
+            <li class="flex items-start gap-2"><Icon name="check" class="w-4 h-4 text-emerald-500 flex-shrink-0 mt-0.5" /> Conformité Art. 9 RGPD : données de santé traitées sous responsabilité du cabinet (vous = responsable, Optibilan = sous-traitant).</li>
+          </ul>
+        </div>
+
+        <div class="mt-12 p-6 rounded-xl bg-papier border border-encre/10">
+          <h3 class="font-display text-xl font-bold text-encre mb-3">Spécifications techniques</h3>
+          <ul class="space-y-2 text-sm text-encre/60">
+            <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-bleu-lecture flex-shrink-0 mt-1.5" /> Base CIQUAL + USDA (3000+ aliments)</li>
+            <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-bleu-lecture flex-shrink-0 mt-1.5" /> Calcul auto besoins (Mifflin-St Jeor + facteur activité)</li>
+            <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-bleu-lecture flex-shrink-0 mt-1.5" /> API nutrition : GET/POST /api/v1/clients/:id/nutrition</li>
+            <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-bleu-lecture flex-shrink-0 mt-1.5" /> Import/Export JSON pour partage templates entre coachs</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <CTA
+      title="Prêt à structurer votre suivi nutritionnel ?"
+      subtitle="30 minutes pour découvrir comment créer des plans en minutes, pas en heures."
+      primaryCTA={{ href: 'https://calendly.com/optibilan/demo', label: 'Réserver une démo' }}
+      variant="primary"
+    />
+  </main>
+
+  <Footer />
+</Layout>

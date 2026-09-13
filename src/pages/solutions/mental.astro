@@ -1,0 +1,122 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import Hero from '../../components/Hero.astro';
+import CTA from '../../components/CTA.astro';
+import TrustBar from '../../components/TrustBar.astro';
+import Icon from '../../components/Icon.astro';
+
+const pageTitle = 'Solution Préparateur mental — Optibilan';
+const pageDescription = 'Structurez le suivi mental sans perdre la confidentialité. Exercices, ressources, journal d\'appels, adhérence, permissions. Le mental structuré.';
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  canonical="/solutions/mental"
+  ogImage="/og-solution-mental.jpg"
+>
+  <Header />
+
+  <main>
+    <Hero
+      title="Structurez le suivi mental\nsans perdre la confidentialité."
+      subtitle="Exercices transversaux, ressources, journal d'appels, suivi adhérence. Cloisonnement strict des données. Le mental structuré."
+      badge="Module Préparation mentale — Inclus Studio & Cabinet"
+      primaryCTA={{ href: 'https://calendly.com/optibilan/demo', label: 'Voir la démo Mental' }}
+      secondaryCTA={{ href: '/solutions', label: 'Autres solutions' }}
+    />
+
+    <TrustBar />
+
+    <section class="section bg-gradient-to-br from-encre/5 via-papier to-indigo/5 rounded-card-lg relative overflow-hidden" aria-labelledby="disclaimer-title">
+      <div class="container relative py-6 px-6 md:py-8 md:px-8">
+        <div class="flex items-start gap-4 p-4 bg-encre/5 rounded-lg border border-encre/10">
+          <Icon name="shield" class="w-6 h-6 text-encre/50 flex-shrink-0 mt-0.5" />
+          <div>
+            <h3 id="disclaimer-title" class="font-semibold text-encre mb-1">Cadre déontologique</h3>
+            <p class="text-encre/70 text-sm">
+              <strong>La préparation mentale n'est pas une psychothérapie.</strong> Optibilan fournit un cadre d'organisation pour les professionnels qualifiés.<br>
+              <strong>Cloisonnement strict :</strong> le coach sport ne voit pas le contenu mental. Le préparateur décide ce que le client partage. Optibilan n'établit pas de diagnostic.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-blanc" aria-labelledby="promise-title">
+      <div class="container max-w-3xl">
+        <header class="text-center mb-16">
+          <h2 id="promise-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+            Le mental fait partie de la performance.<br>Ses données méritent leur propre espace.
+          </h2>
+          <p class="text-lg text-encre/60 max-w-2xl mx-auto">
+            Visualisation, respiration, routine, journal d'appels, adhérence. Tout structuré, cloisonné, pilotable.
+          </p>
+        </header>
+
+        <div class="grid md:grid-cols-2 gap-6 mb-16">
+          {[
+            { icon: 'brain', title: 'Exercices transversaux réutilisables', desc: 'Visualisation, cohérence cardiaque, ancrage, routine pré-performance, scan corporel. Audio guidé streaming, fiche PDF, templates par sport/objectif.' },
+            { icon: 'document', title: 'Bibliothèque ressources sécurisée', desc: 'Vidéos, PDF, audio guidés. Streaming sécurisé (pas de DL). Partage sélectif client (niveau 1/2/3). Versioning ressources.' },
+            { icon: 'calendar', title: 'Journal d\'appels dédié', desc: 'Compte-rendu structuré, objectifs, plan d\'action, prochaine échéance. Liaison bidirectionnelle journal coaching (si autorisé).' },
+            { icon: 'chart', title: 'Adhérence pilotée, alertes proactives', desc: 'Fréquence, durée, ressentis pre/post, corrélation performance. Alertes : fréquence ↓, ressentis ↓, inactivité > 14j.' },
+          ].map(item => (
+            <article class="p-6 rounded-xl border border-encre/10 hover:border-indigo/30 hover:shadow-soft transition-all">
+              <div class="icon-wrapper mb-4" aria-hidden="true" style="background-color: var(--color-bleu-clair);">
+                <Icon name={item.icon} class="w-7 h-7 text-indigo" />
+              </div>
+              <h3 class="font-display text-xl font-bold text-encre mb-2">{item.title}</h3>
+              <p class="text-encre/60">{item.desc}</p>
+            </article>
+          ))}
+        </div>
+
+        <div class="p-6 md:p-8 rounded-xl bg-gradient-to-br from-indigo/5 via-papier to-bleu-ardoise/5 border border-encre/10 mb-16">
+          <h3 class="font-display text-xl md:text-2xl font-bold text-encre mb-4">Retour d'expérience préparateur mental</h3>
+          <blockquote class="text-encre/70 leading-relaxed mb-4 italic max-w-2xl">
+            "Le module prépa mentale est le seul qui cloisonne vraiment les données : mes exercices, ma bibliothèque ressources, mon journal d'appels — le coach sport ne voit rien. La gamification booste l'adhérence des sportifs de haut niveau. L'alerte IA 'baisse motivation' me permet d'intervenir avant l'abandon. Mes athlètes ont un suivi mental structuré, pas des PDF oubliés."
+          </blockquote>
+          <footer class="flex items-center gap-3">
+            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-bleu-signature to-bleu-lecture flex items-center justify-center text-craie font-bold text-sm">AR</div>
+            <div>
+              <div class="font-semibold text-encre">Antoine Roux</div>
+              <div class="text-sm text-encre/50">Préparateur mental & Fondateur · Mental Performance — Paris</div>
+            </div>
+          </footer>
+        </div>
+
+        <h3 class="font-display text-2xl font-bold text-encre mb-8">Modules clés pour le préparateur mental</h3>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {[
+            { href: '/product/mental', icon: 'brain', title: 'Préparation Mentale', desc: 'Exercices, ressources, journal, adhérence, cloisonnement', color: 'indigo' },
+            { href: '/product/engagement', icon: 'users', title: 'Gamification & Habitudes', desc: 'XP, badges, dreamboard, habitudes, alertes IA', color: 'bordeaux' },
+            { href: '/product/crm', icon: 'lock', title: 'Journal Coaching & CRM', desc: 'Entrées typées, pipeline, relances, partage sélectif', color: 'bleu-ardoise' },
+            { href: '/product/engagement', icon: 'chart', title: 'Suivi Adhérence', desc: 'Fréquence, durée, ressentis, corrélation performance', color: 'indigo' },
+            { href: '/product/white-label', icon: 'shield', title: 'Marque Blanche', desc: 'Votre logo, vos couleurs, votre domaine, vos emails', color: 'bordeaux' },
+            { href: '/product/integrations', icon: 'code', title: 'API & Intégrations', desc: 'Webhooks, n8n, sync Notion, calendrier ICS', color: 'bleu-ardoise' },
+          ].map(mod => (
+            <a href={mod.href} class="card-hover p-6 text-center group" style={`--mod-color: var(--color-${mod.color})`}>
+              <div class="icon-wrapper mx-auto mb-4" aria-hidden="true" style={`background-color: color-mix(in oklab, var(--color-${mod.color}) 15%, transparent);`}>
+                <Icon name={mod.icon} class="w-7 h-7" style={`color: var(--color-${mod.color});`} />
+              </div>
+              <h4 class="font-display text-lg font-bold text-encre mb-2">{mod.title}</h4>
+              <p class="text-sm text-encre/50">{mod.desc}</p>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <CTA
+      title="Vous voulez voir comment structurer VOTRE suivi mental ?"
+      subtitle="30 minutes pour configurer Optibilan selon votre méthode de préparation mentale."
+      primaryCTA={{ href: 'https://calendly.com/optibilan/demo', label: 'Réserver ma démo Mental' }}
+      variant="primary"
+    />
+  </main>
+
+  <Footer />
+</Layout>

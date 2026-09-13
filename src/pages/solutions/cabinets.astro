@@ -1,0 +1,107 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import Hero from '../../components/Hero.astro';
+import CTA from '../../components/CTA.astro';
+import TrustBar from '../../components/TrustBar.astro';
+import Icon from '../../components/Icon.astro';
+
+const pageTitle = 'Solution Cabinet / Équipe — Optibilan';
+const pageDescription = 'Toute votre équipe. Une seule vision du client. Multi-praticiens, permissions, coordination, administration, sécurité, audit, marque blanche.';
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  canonical="/solutions/cabinets"
+  ogImage="/og-solution-cabinet.jpg"
+>
+  <Header />
+
+  <main>
+    <Hero
+      title="Toute votre équipe.\nUne seule vision du client."
+      subtitle="Multi-praticiens, permissions granulaires, coordination, administration, sécurité, audit, marque blanche totale. L'OS de votre cabinet."
+      badge="Offre Cabinet — Multi-praticiens illimités"
+      primaryCTA={{ href: 'https://calendly.com/optibilan/demo', label: 'Voir la démo Cabinet' }}
+      secondaryCTA={{ href: '/solutions', label: 'Autres solutions' }}
+    />
+
+    <TrustBar />
+
+    <section class="section bg-blanc" aria-labelledby="promise-title">
+      <div class="container max-w-3xl">
+        <header class="text-center mb-16">
+          <h2 id="promise-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+            Toute votre équipe.<br>Une seule vision du client.
+          </h2>
+          <p class="text-lg text-encre/60 max-w-2xl mx-auto">
+            Coach, diététicien, préparateur mental, médecin, admin… Chacun son périmètre. Le client au centre. La coordination fluide.
+          </p>
+        </header>
+
+        <div class="grid md:grid-cols-2 gap-6 mb-16">
+          {[
+            { icon: 'users', title: 'Multi-praticiens, permissions granulaires', desc: 'Rôles : admin, coach, mental, diet, support. Spécialités par praticien. Accès cloisonnés : le coach ne voit pas le mental, le mental ne voit pas la nutrition (sauf partage autorisé).' },
+            { icon: 'shield', title: 'Coordination fluide, zéro info perdue', desc: 'Journal coaching partagé (selon permissions), appels planifiés synchronisés, relances auto, rappels équipe Slack/email. 0 info perdue entre praticiens.' },
+            { icon: 'shield', title: 'Administration & conformité natives', desc: 'Gestion utilisateurs (2FA obligatoire admins), offres d\'appel custom, mentions légales cabinet, modules on/off, questionnaire lancement, RGPD (export, purge), audit trail double niveau, webhooks, API keys.' },
+            { icon: 'globe', title: 'Marque blanche totale = votre cabinet', desc: 'Logo, thème, domaine, vocabulaire, assistant IA nommé, emails @votrecabinet.fr, mentions légales, CGV — tout est à vous. Vos clients ne voient jamais Optibilan.' },
+          ].map(item => (
+            <article class="p-6 rounded-xl border border-encre/10 hover:border-bordeaux/30 hover:shadow-soft transition-all">
+              <div class="icon-wrapper mb-4" aria-hidden="true" style="background-color: var(--color-rose-bordeaux);">
+                <Icon name={item.icon} class="w-7 h-7 text-bordeaux" />
+              </div>
+              <h3 class="font-display text-xl font-bold text-encre mb-2">{item.title}</h3>
+              <p class="text-encre/60">{item.desc}</p>
+            </article>
+          ))}
+        </div>
+
+        <div class="p-6 md:p-8 rounded-xl bg-gradient-to-br from-bordeaux/5 via-papier to-rose-bordeaux/5 border border-encre/10 mb-16">
+          <h3 class="font-display text-xl md:text-2xl font-bold text-encre mb-4">Retour d'expérience cabinet</h3>
+          <blockquote class="text-encre/70 leading-relaxed mb-4 italic max-w-2xl">
+            "J'ai lancé mon accompagnement signature à 1 800€/mois grâce à la marque blanche totale : domaine custom, emails @ma-methode.fr, assistant IA 'Julie', vocabulaire 'membre'. Mes membres ne voient jamais Optibilan. L'API + webhooks m'ont permis de brancher Notion (CRM), Slack (alertes équipe), Stripe (facturation auto). En 6 mois : 45 membres à 1 800€ = 81k€ MRR, solo. Le support technique répond en <2h. C'est un OS, pas un SaaS."
+          </blockquote>
+          <footer class="flex items-center gap-3">
+            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-bleu-signature to-bleu-lecture flex items-center justify-center text-craie font-bold text-sm">JM</div>
+            <div>
+              <div class="font-semibold text-encre">Julie Moreau</div>
+              <div class="text-sm text-encre/50">Coach santé & Fondatrice · Méthode Équilibre — Lille</div>
+            </div>
+          </footer>
+        </div>
+
+        <h3 class="font-display text-2xl font-bold text-encre mb-8">Modules clés pour le cabinet</h3>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {[
+            { href: '/product/admin', icon: 'shield', title: 'Administration', desc: 'Utilisateurs, rôles, 2FA, offres, mentions, modules, RGPD, audit, API', color: 'bordeaux' },
+            { href: '/product/white-label', icon: 'shield', title: 'Marque Blanche Totale', desc: 'Logo, thème, domaine, vocabulaire, IA, emails, mentions, CGV', color: 'bordeaux' },
+            { href: '/product/crm', icon: 'lock', title: 'Journal Coaching & CRM', desc: 'Entrées typées, pipeline, relances, partage, sync Notion', color: 'bleu-ardoise' },
+            { href: '/product/check-ins', icon: 'chart', title: 'Bilans & Progression', desc: 'Questionnaires, graphiques, détection signaux faibles, export PDF', color: 'bleu-signature' },
+            { href: '/product/integrations', icon: 'code', title: 'API, Webhooks & SSO', desc: 'REST v1, OpenAPI, clés scopées, HMAC, SSO/SAML, webhooks', color: 'bleu-ardoise' },
+            { href: '/product/health', icon: 'globe', title: 'Santé & Biomarqueurs', desc: 'Biologie 130+, wearables, IA lit PDF, corrélations, HDS', color: 'bleu-clair' },
+          ].map(mod => (
+            <a href={mod.href} class="card-hover p-6 text-center group" style={`--mod-color: var(--color-${mod.color})`}>
+              <div class="icon-wrapper mx-auto mb-4" aria-hidden="true" style={`background-color: color-mix(in oklab, var(--color-${mod.color}) 15%, transparent);`}>
+                <Icon name={mod.icon} class="w-7 h-7" style={`color: var(--color-${mod.color});`} />
+              </div>
+              <h4 class="font-display text-lg font-bold text-encre mb-2">{mod.title}</h4>
+              <p class="text-sm text-encre/50">{mod.desc}</p>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <CTA
+      title="Vous voulez voir comment Optibilan s'adapte à VOTRE cabinet ?"
+      subtitle="30 minutes pour configurer Optibilan selon votre organisation multi-praticiens."
+      primaryCTA={{ href: 'https://calendly.com/optibilan/demo', label: 'Réserver ma démo Cabinet' }}
+      variant="primary"
+    />
+  </main>
+
+  <Footer />
+</Layout>

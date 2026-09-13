@@ -1,0 +1,151 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import Hero from '../../components/Hero.astro';
+import CTA from '../../components/CTA.astro';
+import TrustBar from '../../components/TrustBar.astro';
+import Icon from '../../components/Icon.astro';
+
+const pageTitle = 'Appels planifiés & Agenda — Optibilan';
+const pageDescription = 'Cadence auto selon l\'offre, rappels Slack/email/push, gestion retards, calendrier ICS abonnable, vue agenda coach. Intégré au journal coaching.';
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  canonical="/product/agenda"
+  ogImage="/og-agenda.jpg"
+>
+  <Header />
+
+  <main>
+    <Hero
+      title="L'agenda qui suit<br>votre cadence."
+      subtitle="Cadence auto selon l'offre, rappels multi-canal, gestion retards, calendrier ICS abonnable, vue agenda coach. Intégré au journal coaching."
+      badge="Module cœur — Inclus dans toutes les offres"
+      primaryCTA={{ href: 'https://calendly.com/optibilan/demo', label: 'Voir l\'agenda en démo' }}
+      secondaryCTA={{ href: '/product/overview', label: 'Retour au produit' }}
+    />
+
+    <TrustBar />
+
+    <section class="section bg-blanc" aria-labelledby="problem-title">
+      <div class="container max-w-3xl">
+        <header class="mb-12">
+          <h2 id="problem-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+            Le problème : les rendez-vous dans le vent
+          </h2>
+          <p class="text-lg text-encre/60">
+            Rappels oubliés, retards non gérés, calendrier pas partagé, client qui ne vient pas…<br>
+            Le temps du coach gaspillé. Le client pas accompagné.
+          </p>
+        </header>
+
+        <div class="space-y-8">
+          {[
+            {
+              icon: 'calendar',
+              title: 'Cadence auto selon l\'offre + personnalisation par client',
+              desc: 'Starter : 1 appel/mois. Essentiel : 2/mois. Plus : hebdo. Premium : 2/semaine. Personnalisable par client (fréquence, durée, type). Changement de cadence = recalcul auto des prochains appels.',
+              features: [
+                '4 cadences prédéfinies + personnalisation par client',
+                'Types : bilan, suivi, nutrition, mental, technique, libre',
+                'Durée configurable (15/30/45/60 min)',
+                'Recalcul auto si changement cadence / reports',
+              ],
+              icon: 'calendar',
+            },
+            {
+              icon: 'zap',
+              title: 'Rappels multi-canal — zéro oubli',
+              desc: 'Slack (équipe), email (client + coach), push (app client), calendrier ICS. Timing : J-1, H-1, H-0, H+15min si absent. Personnalisable par client (certains veulent J-2, d\'autres H-30 seulement).',
+              features: [
+                '4 canaux : Slack, email, push, ICS',
+                'Timing par défaut : J-1 9h, H-1, H-0, H+15min',
+                'Personnalisable par client (canaux + timing)',
+                'Logs de livraison + accusés de réception',
+              ],
+              icon: 'zap',
+            },
+            {
+              icon: 'users',
+              title: 'Gestion retards & absences — proactif',
+              desc: 'Alerte 15min avant si client pas connecté. Relance H+15min si absent. Report 1-clic (propose 3 créneaux dispo). Stats ponctualité par client (taux présence, retard moyen). Alerte coach si taux < 80%.',
+              features: [
+                'Alerte 15min avant si pas connecté',
+                'Relance auto H+15min + proposition report',
+                'Report 1-clic : 3 créneaux dispo proposés',
+                'Dashboard ponctualité : taux, retard moyen, tendances',
+              ],
+              icon: 'users',
+            },
+            {
+              icon: 'globe',
+              title: 'Calendrier ICS abonnable — zéro friction',
+              desc: 'Chaque staff a un token calendrier (régénérable, révocable). URL : https://app.optibilan.com/api/calendrier/<token>.ics. S\'abonne dans Google Calendar, Apple Calendar, Outlook, Calendly. Contient : titre, date, durée, lien fiche client. Filtré par rôle (coach ne voit pas appels mental).',
+              features: [
+                'Token par staff (régénérable, révocable, scope)',
+                'Compatible : Google, Apple, Outlook, Calendly, Notion Calendar',
+                'Contenu : titre, date, durée, lien fiche client direct',
+                'Filtrage par rôle (coach = pas d\'appels mental/diet)',
+              ],
+              icon: 'globe',
+            },
+            {
+              icon: 'chart',
+              title: 'Vue agenda coach — semaine / mois / liste',
+              desc: 'Filtres : client, type, statut (à venir / passé / annulé). Drag-and-drop pour reporter. Création appel rapide (client + type + date). Intégré journal : création entrée auto post-appel (pré-remplie : client, date, type, durée). Vue "charge de travail" : nb appels/semaine, taux remplissage.',
+              features: [
+                'Vues : semaine, mois, liste, charge',
+                'Filtres : client, type, statut, coach',
+                'Drag-and-drop report + création rapide',
+                'Entrée journal auto post-appel (pré-remplie)',
+              ],
+              icon: 'chart',
+            },
+          ].map((section, i) => (
+            <article id={section.icon} class="py-8 border-t border-encre/10 first:border-0">
+              <header class="flex items-center gap-4 mb-6">
+                <div class="icon-wrapper flex-shrink-0" aria-hidden="true" style="background-color: var(--color-bleu-clair);">
+                  <Icon name={section.icon} class="w-7 h-7 text-bleu-signature" />
+                </div>
+                <div>
+                  <h3 class="font-display text-2xl font-bold text-encre">{section.title}</h3>
+                  <p class="text-encre/60 mt-1">{section.desc}</p>
+                </div>
+              </header>
+              <ul class="space-y-2 text-encre/60">
+                {section.features.map(f => (
+                  <li key={f} class="flex items-start gap-2">
+                    <Icon name="check" class="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5" />
+                    <span>{f}</span>
+                  </li>
+                ))}
+              </ul>
+            </article>
+          ))}
+        </div>
+
+        <div class="mt-12 p-6 rounded-xl bg-papier border border-encre/10">
+          <h3 class="font-display text-xl font-bold text-encre mb-3">Spécifications techniques</h3>
+          <ul class="space-y-2 text-sm text-encre/60">
+            <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-bleu-signature flex-shrink-0 mt-1.5" /> Token calendrier par staff (régénérable, révocable, scope)</li>
+            <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-bleu-signature flex-shrink-0 mt-1.5" /> Sync Google Calendar / Apple Calendar / Outlook natif</li>
+            <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-bleu-signature flex-shrink-0 mt-1.5" /> Webhook call.scheduled / call.completed / call.missed</li>
+            <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-bleu-signature flex-shrink-0 mt-1.5" /> Intégré journal : entrée auto post-appel (client, date, type, durée)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <CTA
+      title="Prêt à ne plus jamais rater un rendez-vous ?"
+      subtitle="30 minutes pour voir comment automatiser votre agenda et vos rappels."
+      primaryCTA={{ href: 'https://calendly.com/optibilan/demo', label: 'Réserver une démo Agenda' }}
+      variant="primary"
+    />
+  </main>
+
+  <Footer />
+</Layout>

@@ -1,0 +1,109 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import Hero from '../../components/Hero.astro';
+import CTA from '../../components/CTA.astro';
+import TrustBar from '../../components/TrustBar.astro';
+import Icon from '../../components/Icon.astro';
+
+const pageTitle = 'Solution Nutritionniste / Diététicien — Optibilan';
+const pageDescription = 'Tout le suivi nutritionnel dans un seul dossier : plans, habitudes, listes de courses, compléments, évolution. La nutrition à l\'échelle.';
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  canonical="/solutions/nutrition"
+  ogImage="/og-solution-nutrition.jpg"
+>
+  <Header />
+
+  <main>
+    <Hero
+      title="Tout le suivi nutritionnel\ndans un seul dossier."
+      subtitle="Plans, habitudes alimentaires, listes de courses, compléments, évolution et documents réunis. La nutrition à l'échelle."
+      badge="Module Nutrition — Inclus dans toutes les offres"
+      primaryCTA={{ href: 'https://calendly.com/optibilan/demo', label: 'Voir la démo Nutrition' }}
+      secondaryCTA={{ href: '/solutions', label: 'Autres solutions' }}
+    />
+
+    <TrustBar />
+
+    <section class="section bg-blanc" aria-labelledby="promise-title">
+      <div class="container max-w-3xl">
+        <header class="text-center mb-16">
+          <h2 id="promise-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+            Construisez des plans nutritionnels individualisés pour 50+ patients.
+            Sans y passer vos soirées.
+          </h2>
+          <p class="text-lg text-encre/60 max-w-2xl mx-auto">
+            Templates réutilisables, listes de courses auto, compléments classés, validation coach en 1 clic.
+            La puissance des templates réutilisables.
+          </p>
+        </header>
+
+        <div class="grid md:grid-cols-2 gap-6 mb-16">
+          {[
+            { icon: 'document', title: 'Plan en 5 min grâce aux templates', desc: 'Calcul auto besoins (Mifflin-St Jeor), répartition macros/repas, templates par pathologie (diabète, thyroïde, SOPK…) ou objectif. Duplicata en 1 clic.' },
+            { icon: 'chart', title: 'Listes de courses hebdo auto', desc: 'Quantités calculées, catégories (légumes, protéines, épicerie), magasins préférés. Le patient coche sur mobile. Mise à jour auto si plan change.' },
+            { icon: 'zap', title: 'Compléments classés par preuve', desc: 'Dosage, timing, marque, niveau de preuve (A/B/C). Indispensable / Optionnel / Déconseillé. Alertes interactions, observance scan code-barres.' },
+            { icon: 'chart', title: 'Suivi alimentaire + validation 1 clic', desc: 'Journal photo/texte patient (scan code-barres), validation coach ✓/commenter. Graphiques écart plan vs réel (calories, P/L/G, légumes).' },
+          ].map(item => (
+            <article class="p-6 rounded-xl border border-encre/10 hover:border-bleu-lecture/30 hover:shadow-soft transition-all">
+              <div class="icon-wrapper mb-4" aria-hidden="true" style="background-color: var(--color-bleu-clair);">
+                <Icon name={item.icon} class="w-7 h-7 text-bleu-lecture" />
+              </div>
+              <h3 class="font-display text-xl font-bold text-encre mb-2">{item.title}</h3>
+              <p class="text-encre/60">{item.desc}</p>
+            </article>
+          ))}
+        </div>
+
+        <div class="p-6 md:p-8 rounded-xl bg-gradient-to-br from-bleu-lecture/5 via-papier to-bleu-clair/5 border border-encre/10 mb-16">
+          <h3 class="font-display text-xl md:text-2xl font-bold text-encre mb-4">Retour d'expérience nutritionniste</h3>
+          <blockquote class="text-encre/70 leading-relaxed mb-4 italic max-w-2xl">
+            "Les templates nutrition (perte de gras, longévité, pathologie) et les listes de courses automatisées ont changé ma pratique. Mes patients reçoivent leur plan complet + courses en 1 clic. L'IA pré-remplit les macros selon les objectifs. L'export RGPD est un vrai plus pour la conformité. J'ai ajouté le module prépa mentale pour mes patients TCA — le cloisonnement des données est parfait."
+          </blockquote>
+          <footer class="flex items-center gap-3">
+            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-bleu-signature to-bleu-lecture flex items-center justify-center text-craie font-bold text-sm">SM</div>
+            <div>
+              <div class="font-semibold text-encre">Sophie Martin</div>
+              <div class="text-sm text-encre/50">Diététicienne-nutritionniste · Cabinet NutriSanté — Nantes</div>
+            </div>
+          </footer>
+        </div>
+
+        <h3 class="font-display text-2xl font-bold text-encre mb-8">Modules clés pour la nutrition</h3>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {[
+            { href: '/product/nutrition', icon: 'document', title: 'Nutrition Complète', desc: 'Plans, courses, compléments, méthodes, templates, validation coach', color: 'bleu-lecture' },
+            { href: '/product/check-ins', icon: 'chart', title: 'Bilans & Progression', desc: 'Poids, mensurations, photos, adhérence, graphiques, export PDF', color: 'bleu-signature' },
+            { href: '/product/health', icon: 'globe', title: 'Santé & Biomarqueurs', desc: 'Bilan sanguin (130+ marqueurs), IA lit PDF labo, corrélations', color: 'bleu-clair' },
+            { href: '/product/engagement', icon: 'users', title: 'Habitudes & Observance', desc: 'Eau, suppléments, rappels, scan code-barres, taux adhérence', color: 'bordeaux' },
+            { href: '/product/crm', icon: 'lock', title: 'Journal & Documents', desc: 'Notes, pièces jointes, partage patient, sync Notion', color: 'bleu-ardoise' },
+            { href: '/product/white-label', icon: 'shield', title: 'Marque Blanche', desc: 'Votre logo, vos couleurs, votre domaine, vos emails', color: 'bordeaux' },
+          ].map(mod => (
+            <a href={mod.href} class="card-hover p-6 text-center group" style={`--mod-color: var(--color-${mod.color})`}>
+              <div class="icon-wrapper mx-auto mb-4" aria-hidden="true" style={`background-color: color-mix(in oklab, var(--color-${mod.color}) 15%, transparent);`}>
+                <Icon name={mod.icon} class="w-7 h-7" style={`color: var(--color-${mod.color});`} />
+              </div>
+              <h4 class="font-display text-lg font-bold text-encre mb-2">{mod.title}</h4>
+              <p class="text-sm text-encre/50">{mod.desc}</p>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <CTA
+      title="Vous voulez voir comment structurer VOS plans nutritionnels ?"
+      subtitle="30 minutes pour configurer Optibilan selon votre méthode diététique."
+      primaryCTA={{ href: 'https://calendly.com/optibilan/demo', label: 'Réserver ma démo Nutrition' }}
+      variant="primary"
+    />
+  </main>
+
+  <Footer />
+</Layout>

@@ -1,0 +1,107 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import Hero from '../../components/Hero.astro';
+import CTA from '../../components/CTA.astro';
+import TrustBar from '../../components/TrustBar.astro';
+import Icon from '../../components/Icon.astro';
+
+const pageTitle = 'Solution Coach sportif — Optibilan';
+const pageDescription = 'Passez moins de temps à gérer. Plus de temps à coacher. Programmes, bilans, progression, adhérence, communication dans une seule plateforme.';
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  canonical="/solutions/coaches"
+  ogImage="/og-solution-coach.jpg"
+>
+  <Header />
+
+  <main>
+    <Hero
+      title="Passez moins de temps\na gérer.\nPlus de temps à coacher."
+      subtitle="Programmes, bilans, progression, adhérence, communication dans une seule plateforme. Conçue pour les coaches qui veulent scaler sans perdre la qualité."
+      badge="Offre Solo / Studio / Cabinet"
+      primaryCTA={{ href: 'https://calendly.com/optibilan/demo', label: 'Voir la démo Coach' }}
+      secondaryCTA={{ href: '/solutions', label: 'Autres solutions' }}
+    />
+
+    <TrustBar />
+
+    <section class="section bg-blanc" aria-labelledby="promise-title">
+      <div class="container max-w-3xl">
+        <header class="text-center mb-16">
+          <h2 id="promise-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+            Votre promesse : programmer, suivre, ajuster. Sans l'admin.
+          </h2>
+          <p class="text-lg text-encre/60 max-w-2xl mx-auto">
+            Optibilan vous libère de la paperasse pour vous concentrer sur ce qui compte : la relation coach-client et la performance.
+          </p>
+        </header>
+
+        <div class="grid md:grid-cols-2 gap-6 mb-16">
+          {[
+            { icon: 'zap', title: 'Programmes en minutes, pas en heures', desc: 'Bibliothèque 200+ exercices (vidéo), drag-and-drop séances, progression auto, périodisation visuelle. Duplicata en 1 clic.' },
+            { icon: 'chart', title: 'Bilans clients en 30 sec', desc: 'Questionnaires guidés, photos, mensurations, ressenti. Graphiques auto, détection plateaux, export PDF brandé.' },
+            { icon: 'users', title: 'Adhérence pilotée, pas subie', desc: 'Gamification (XP, badges, habitudes), alertes IA signaux faibles, relances auto. +40% rétention à 6 mois.' },
+            { icon: 'document', title: 'Communication centralisée', desc: 'Journal coaching, appels planifiés, rappels Slack/email/push, calendrier ICS. Tout dans le dossier client.' },
+          ].map(item => (
+            <article class="p-6 rounded-xl border border-encre/10 hover:border-bleu-signature/30 hover:shadow-soft transition-all">
+              <div class="icon-wrapper mb-4" aria-hidden="true" style="background-color: var(--color-bleu-clair);">
+                <Icon name={item.icon} class="w-7 h-7 text-bleu-signature" />
+              </div>
+              <h3 class="font-display text-xl font-bold text-encre mb-2">{item.title}</h3>
+              <p class="text-encre/60">{item.desc}</p>
+            </article>
+          ))}
+        </div>
+
+        <div class="p-6 md:p-8 rounded-xl bg-gradient-to-br from-bleu-signature/5 via-papier to-bleu-lecture/5 border border-encre/10 mb-16">
+          <h3 class="font-display text-xl md:text-2xl font-bold text-encre mb-4">Témoignage coach</h3>
+          <blockquote class="text-encre/70 leading-relaxed mb-4 italic max-w-2xl">
+            "La bibliothèque d'exercices (200+ avec vidéos) et les programmes types m'ont fait gagner 10h/semaine. Mes clients valident leurs séances sur l'app, je vois leur progression en temps réel. La rétention à 6 mois est passée de 65% à 89%. J'ai pu passer de 30 à 120 clients sans embaucher."
+          </blockquote>
+          <footer class="flex items-center gap-3">
+            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-bleu-signature to-bleu-lecture flex items-center justify-center text-craie font-bold text-sm">TB</div>
+            <div>
+              <div class="font-semibold text-encre">Thomas Bertrand</div>
+              <div class="text-sm text-encre/50">Coach sportif & Fondateur · Studio Performance — Bordeaux</div>
+            </div>
+          </footer>
+        </div>
+
+        <h3 class="font-display text-2xl font-bold text-encre mb-8">Modules clés pour le coach sportif</h3>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {[
+            { href: '/product/training', icon: 'zap', title: 'Sport & Programmes', desc: 'Bibliothèque 200+, drag-and-drop, progression auto, import FitFocus', color: 'indigo' },
+            { href: '/product/check-ins', icon: 'chart', title: 'Bilans & Progression', desc: 'Questionnaires guidés, graphiques, détection plateaux, export PDF', color: 'bleu-signature' },
+            { href: '/product/engagement', icon: 'users', title: 'Gamification & Habitudes', desc: 'XP, badges, dreamboard, alertes IA, relances auto', color: 'bordeaux' },
+            { href: '/product/crm', icon: 'lock', title: 'Journal Coaching & CRM', desc: 'Entrées typées, pipeline, relances, sync Notion', color: 'bleu-ardoise' },
+            { href: '/product/agenda', icon: 'calendar', title: 'Appels & Agenda ICS', desc: 'Cadence auto, rappels multi-canal, calendrier partagé', color: 'bleu-signature' },
+            { href: '/product/white-label', icon: 'shield', title: 'Marque Blanche', desc: 'Logo, couleurs, domaine, emails, vocabulaire à vous', color: 'bordeaux' },
+          ].map(mod => (
+            <a href={mod.href} class="card-hover p-6 text-center group" style={`--mod-color: var(--color-${mod.color})`}>
+              <div class="icon-wrapper mx-auto mb-4" aria-hidden="true" style={`background-color: color-mix(in oklab, var(--color-${mod.color}) 15%, transparent);`}>
+                <Icon name={mod.icon} class="w-7 h-7" style={`color: var(--color-${mod.color});`} />
+              </div>
+              <h4 class="font-display text-lg font-bold text-encre mb-2">{mod.title}</h4>
+              <p class="text-sm text-encre/50">{mod.desc}</p>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <CTA
+      title="Vous voulez voir comment ça s'applique à VOTRE pratique ?"
+      subtitle="30 minutes pour configurer Optibilan selon votre méthode de coaching."
+      primaryCTA={{ href: 'https://calendly.com/optibilan/demo', label: 'Réserver ma démo Coach' }}
+      variant="primary"
+    />
+  </main>
+
+  <Footer />
+</Layout>

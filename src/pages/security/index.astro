@@ -1,0 +1,363 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import Hero from '../../components/Hero.astro';
+import CTA from '../../components/CTA.astro';
+import TrustBar from '../../components/TrustBar.astro';
+import Icon from '../../components/Icon.astro';
+
+const pageTitle = 'Sécurité & Conformité — Optibilan';
+const pageDescription = 'Découvrez comment Optibilan protège les données, contrôle les accès et organise son infrastructure. Sécurité, RGPD, HDS, audit trail, infrastructure européenne.';
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  canonical="/security"
+  ogImage="/og-security.jpg"
+>
+  <Header />
+
+  <main>
+    <Hero
+      title="La sécurité n'est pas une fonctionnalité.<br>C'est une exigence de base."
+      subtitle="Découvrez comment Optibilan protège les données, contrôle les accès et organise son infrastructure. Transparence totale."
+      badge="Page de confiance — Pas de marketing, que des faits"
+      primaryCTA={{ href: '/legal/confidentialite', label: 'Politique de confidentialité' }}
+      secondaryCTA={{ href: '/legal/sous-traitance', label: 'Registre sous-traitants' }}
+    />
+
+    <TrustBar />
+
+    <section class="section bg-blanc" aria-labelledby="data-protection-title">
+      <div class="container">
+        <header class="text-center max-w-3xl mx-auto mb-16">
+          <h2 id="data-protection-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+            PROTECTION DES DONNÉES
+          </h2>
+          <p class="text-lg text-encre/60">Ce qui est implémenté, vérifié et documenté.</p>
+        </header>
+
+        <div class="grid md:grid-cols-2 gap-8">
+          {[
+            {
+              icon: 'lock',
+              title: 'Chiffrement en transit',
+              desc: 'TLS 1.3 partout (Cloudflare + application). HSTS préchargé. Certificate Transparency monitoring. Aucun HTTP autorisé.',
+              verified: true,
+            },
+            {
+              icon: 'database',
+              title: 'Chiffrement au repos',
+              desc: 'AES-256 sur Supabase (base, stockage, backups) et disques VPS (LUKS). Clés gérées par Cloud KMS (rotation automatique).',
+              verified: true,
+            },
+            {
+              icon: 'cloud',
+              title: 'Backups & restauration',
+              desc: 'PITR 7 jours (Supabase) + snapshots quotidiens + backups chiffrés S3-compatible EU (rétention 30j). Test de restauration trimestriel documenté.',
+              verified: true,
+            },
+            {
+              icon: 'shield',
+              title: 'Isolation des données',
+              desc: 'Architecture multi-tenant fail-closed : injection auto orgId sur TOUTE requête Prisma (extension tenant-guard). 13/13 tests d\'isolation en CI. Aucune fuite cross-tenant possible.',
+              verified: true,
+            },
+            {
+              icon: 'code',
+              title: 'Validation entrées/sorties',
+              desc: 'Schéma Zod sur toutes les entrées API. Sanitisation sorties. Protection SSRF (net.ts : allowlist destinations, blocage IP privées, timeout). Content Security Policy stricte.',
+              verified: true,
+            },
+            {
+              icon: 'bug',
+              title: 'Gestion vulnérabilités',
+              desc: 'Dependabot + Snyk en CI. Scan conteneur Trivy. Politique de disclosure responsable : security@optibilan.com. /.well-known/security.txt configuré. Aucune bug bounty publique sans décision explicite.',
+              verified: true,
+            },
+          ].map(item => (
+            <article class="p-6 rounded-xl border border-encre/10 hover:border-bleu-signature/30 hover:shadow-soft transition-all">
+              <div class="flex items-center gap-3 mb-4">
+                <div class="icon-wrapper flex-shrink-0" aria-hidden="true" style="background-color: var(--color-bleu-clair);">
+                  <Icon name={item.icon} class="w-6 h-6 text-bleu-signature" />
+                </div>
+                <div class="flex items-center gap-2">
+                  <h3 class="font-display text-lg font-bold text-encre">{item.title}</h3>
+                  {item.verified && (
+                    <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 text-xs font-semibold">
+                      <Icon name="check" class="w-3 h-3" /> Vérifié
+                    </span>
+                  )}
+                </div>
+              </div>
+              <p class="text-encre/60 text-sm leading-relaxed">{item.desc}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-papier" aria-labelledby="access-control-title">
+      <div class="container">
+        <header class="text-center max-w-3xl mx-auto mb-16">
+          <h2 id="access-control-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+            CONTRÔLE DES ACCÈS
+          </h2>
+          <p class="text-lg text-encre/60">Qui accède à quoi, comment, et comment on le révoque.</p>
+        </header>
+
+        <div class="grid md:grid-cols-2 gap-8">
+          {[
+            {
+              icon: 'lock',
+              title: 'Authentification forte',
+              desc: 'JWT HS256 (cookie httpOnly, secure, sameSite=lax). Rotation sessionVersion au changement MDP. 2FA TOTP (RFC 6238) obligatoire pour tous les admins. Lock 5 échecs / 15 min. Protection brute force persistante en base.',
+            },
+            {
+              icon: 'users',
+              title: 'RBAC granulaire',
+              desc: 'Rôles : admin, coach, mental, diet, support. Spécialités par praticien. Permissions par ressource et action. Principe du moindre privilège appliqué par défaut (deny by default).',
+            },
+            {
+              icon: 'key',
+              title: 'Gestion de session',
+              desc: 'Durée max 30j (configurable). Révocation instantanée (logout everywhere, changement rôle, suspicion). Détection sessions simultanées anormales. Alertes admin sur connexions inhabituelles.',
+            },
+            {
+              icon: 'shield',
+              title: 'Clés API',
+              desc: 'Format obk_… Scopes granulaires (clients:read, checkins:write, cron, health:sync…). Rotation, expiration, révocation. Rate limit 120 req/min par clé. HMAC sur webhooks.',
+            },
+          ].map(item => (
+            <article class="p-6 rounded-xl border border-encre/10 hover:border-bleu-signature/30 hover:shadow-soft transition-all">
+              <div class="icon-wrapper mb-4" aria-hidden="true" style="background-color: var(--color-bleu-clair);">
+                <Icon name={item.icon} class="w-7 h-7 text-bleu-signature" />
+              </div>
+              <h3 class="font-display text-xl font-bold text-encre mb-2">{item.title}</h3>
+              <p class="text-encre/60 leading-relaxed">{item.desc}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-blanc" aria-labelledby="audit-title">
+      <div class="container">
+        <header class="text-center max-w-3xl mx-auto mb-16">
+          <h2 id="audit-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+            TRAÇABILITÉ & AUDIT TRAIL
+          </h2>
+          <p class="text-lg text-encre/60">Tout ce qui se passe dans votre organisation, tracé.</p>
+        </header>
+
+        <div class="grid md:grid-cols-2 gap-8">
+          {[
+            {
+              icon: 'chart',
+              title: 'Double niveau d\'audit',
+              desc: 'Niveau organisation : actions staff (création client, modification bilan, export RGPD, invitation staff…). Niveau plateforme : actions équipe Optibilan (suspension org, changement plan, dépannage, accès support…). Horodaté, IP, user-agent, meta JSON.',
+            },
+            {
+              icon: 'code',
+              title: 'Requêtes & webhooks',
+              desc: 'Logs structurés JSON : requêtes API (méthode, path, status, durée, orgId, userId), webhooks (événement, destination, status, retry, signature HMAC). Rétention 13 mois. Requêtables via admin.',
+            },
+            {
+              icon: 'bug',
+              title: 'Erreurs & sécurité',
+              desc: 'Erreurs 5xx (stack trace sanitizée), échecs auth, 2FA, rate-limit hits, webhooks échoués, tentatives SSRF bloquées. Alertes Slack automatiques sur patterns anormaux.',
+            },
+            {
+              icon: 'lock',
+              title: 'Conformité CNIL',
+              desc: 'Logs audit & sécurité conservés 13 mois (conformité délibération CNIL). Accès restreint (admin + équipe sécurité). Export possible pour investigation. Aucune donnée de santé dans les logs.',
+            },
+          ].map(item => (
+            <article class="p-6 rounded-xl border border-encre/10 hover:border-bleu-signature/30 hover:shadow-soft transition-all">
+              <div class="icon-wrapper mb-4" aria-hidden="true" style="background-color: var(--color-bleu-clair);">
+                <Icon name={item.icon} class="w-7 h-7 text-bleu-signature" />
+              </div>
+              <h3 class="font-display text-xl font-bold text-encre mb-2">{item.title}</h3>
+              <p class="text-encre/60 leading-relaxed">{item.desc}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-papier" aria-labelledby="infra-title">
+      <div class="container">
+        <header class="text-center max-w-3xl mx-auto mb-16">
+          <h2 id="infra-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+            INFRASTRUCTURE
+          </h2>
+          <p class="text-lg text-encre/60">Architecture simplifiée, zéro secret exposé.</p>
+        </header>
+
+        <div class="max-w-4xl mx-auto">
+          <div class="space-y-4 mb-8 text-center">
+            <div class="inline-flex items-center gap-4 p-4 rounded-lg bg-blanc border border-encre/10 shadow-sm">
+              <Icon name="cloud" class="w-6 h-6 text-bleu-signature" />
+              <span class="font-medium text-encre">Utilisateur</span>
+            </div>
+            <Icon name="arrowRight" class="w-6 h-6 text-encre/30 mx-2" />
+            <div class="inline-flex items-center gap-4 p-4 rounded-lg bg-blanc border border-encre/10 shadow-sm">
+              <Icon name="cloud" class="w-6 h-6 text-bleu-lecture" />
+              <span class="font-medium text-encre">Cloudflare Edge<br>(TLS, WAF, DDoS, Cache, Tunnel)</span>
+            </div>
+            <Icon name="arrowRight" class="w-6 h-6 text-encre/30 mx-2" />
+            <div class="inline-flex items-center gap-4 p-4 rounded-lg bg-blanc border border-encre/10 shadow-sm">
+              <Icon name="code" class="w-6 h-6 text-indigo" />
+              <span class="font-medium text-encre">Application Next.js<br>(VPS France, standalone, healthcheck)</span>
+            </div>
+            <Icon name="arrowRight" class="w-6 h-6 text-encre/30 mx-2" />
+            <div class="inline-flex items-center gap-4 p-4 rounded-lg bg-blanc border border-encre/10 shadow-sm">
+              <Icon name="database" class="w-6 h-6 text-emerald-500" />
+              <span class="font-medium text-encre">Supabase PostgreSQL<br>(EU West, PITR, AES-256, HDS)</span>
+            </div>
+            <Icon name="arrowRight" class="w-6 h-6 text-encre/30 mx-2" />
+            <div class="inline-flex items-center gap-4 p-4 rounded-lg bg-blanc border border-encre/10 shadow-sm">
+              <Icon name="cloud" class="w-6 h-6 text-bordeaux" />
+              <span class="font-medium text-encre">Stockage S3 EU<br>(Backups chiffrés, 30j)</span>
+            </div>
+          </div>
+
+          <div class="grid md:grid-cols-3 gap-6 mt-8">
+            {[
+              { icon: 'cloud', title: 'Cloudflare', desc: 'CDN, WAF (OWASP Top 10), DDoS L3/L4/L7, Tunnel zero-trust (pas de port ouvert), Analytics agrégés', certs: 'SOC 2 Type II, ISO 27001, FedRAMP' },
+              { icon: 'database', title: 'Supabase', desc: 'PostgreSQL managé, Auth, Storage, Edge Functions, PITR 7j, Snapshots quotidiens', certs: 'SOC 2 Type II, ISO 27001, HIPAA, RGPD, HDS' },
+              { icon: 'credit-card', title: 'Stripe', desc: 'Paiements, facturation, abonnements, Portail client, PCI DSS Level 1', certs: 'PCI DSS Level 1, SOC 1/2, ISO 27001' },
+            ].map(item => (
+              <article class="p-6 rounded-xl border border-encre/10 bg-blanc">
+                <div class="flex items-center gap-3 mb-3">
+                  <div class="w-10 h-10 rounded-lg bg-bleu-clair flex items-center justify-center">
+                    <Icon name={item.icon} class="w-5 h-5 text-bleu-signature" />
+                  </div>
+                  <h3 class="font-semibold text-encre">{item.title}</h3>
+                </div>
+                <p class="text-encre/60 text-sm mb-3">{item.desc}</p>
+                <p class="text-xs text-encre/50">Certifications : {item.certs}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-blanc" aria-labelledby="incidents-title">
+      <div class="container">
+        <header class="text-center max-w-3xl mx-auto mb-16">
+          <h2 id="incidents-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+            GESTION DES INCIDENTS
+          </h2>
+          <p class="text-lg text-encre/60">Processus documenté, pas de promesse impossible.</p>
+        </header>
+
+        <div class="grid md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+          {[
+            { num: '1', title: 'Détection', desc: 'Monitoring 24/7 (healthchecks, logs, alertes Slack/PagerDuty). Seuils : latence P99 > 2s, erreur 5xx > 1%, CPU > 80%.' },
+            { num: '2', title: 'Confinement', desc: 'Circuit breakers, feature flags, rollback blue/green < 5 min. Isolation tenant préservée.' },
+            { num: '3', title: 'Analyse & correction', desc: 'Root cause analysis < 24h. Post-mortem public si impact client. Correctif déployé via CI/CD (pas de hotfix manuel).' },
+            { num: '4', title: 'Notification', desc: 'Si données affectées : notification CNIL < 72h, clients impactés < 24h. Transparence totale. Pas de délai artificiel.' },
+          ].map(item => (
+            <article class="p-6 rounded-xl border border-encre/10 text-center">
+              <div class="w-12 h-12 rounded-full bg-bleu-signature/10 flex items-center justify-center mx-auto mb-4 font-display text-xl font-bold text-bleu-signature">
+                {item.num}
+              </div>
+              <h3 class="font-display text-lg font-bold text-encre mb-2">{item.title}</h3>
+              <p class="text-encre/60 text-sm">{item.desc}</p>
+            </article>
+          ))}
+        </div>
+
+        <div class="mt-12 p-6 rounded-xl bg-papier border border-encre/10 max-w-2xl mx-auto text-center">
+          <h3 class="font-semibold text-encre mb-2">Contact sécurité</h3>
+          <p class="text-encre/60 mb-4">Vous avez découvert une vulnérabilité ? Merci de la signaler responsablement.</p>
+          <a href="mailto:security@optibilan.com" class="btn-secondary inline-flex" data-track="security_contact">
+            <Icon name="mail" class="w-4 h-4 mr-2" /> security@optibilan.com
+          </a>
+          <p class="mt-3 text-xs text-encre/50">Politique de responsible disclosure · /.well-known/security.txt · Aucune bug bounty financière sans décision explicite</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-papier" aria-labelledby="compliance-title">
+      <div class="container">
+        <header class="text-center max-w-3xl mx-auto mb-16">
+          <h2 id="compliance-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+            CONFORMITÉ & CERTIFICATIONS
+          </h2>
+          <p class="text-lg text-encre/60">Ce qui est certifié par Optibilan vs ses fournisseurs. Distinction claire, pas de raccourci.</p>
+        </header>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-left" role="table">
+            <thead>
+              <tr class="border-b border-encre/20">
+                <th class="pb-3 font-semibold text-encre">Domaine</th>
+                <th class="pb-3 font-semibold text-encre text-center">Optibilan</th>
+                <th class="pb-3 font-semibold text-encre text-center">Fournisseur</th>
+                <th class="pb-3 font-semibold text-encre text-center">Preuve</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-encre/10">
+              <tr>
+                <td class="py-3 font-medium text-encre">RGPD</td>
+                <td class="py-3 text-center text-encre/60">Responsable de traitement (prospects) / Sous-traitant (cabinets)</td>
+                <td class="py-3 text-center text-encre/60">Supabase, Stripe, Cloudflare, Resend, Anthropic, Plausible</td>
+                <td class="py-3 text-center"><a href="/legal/confidentialite" class="text-bleu-signature hover:underline">Politique</a></td>
+              </tr>
+              <tr>
+                <td class="py-3 font-medium text-encre">Données de santé (Art. 9)</td>
+                <td class="py-3 text-center text-encre/60">Sous-traitant (cabinets = responsables)</td>
+                <td class="py-3 text-center text-encre/60">Supabase (HDS certifié EU West)</td>
+                <td class="py-3 text-center"><a href="/legal/sous-traitance" class="text-bleu-signature hover:underline">Registre</a></td>
+              </tr>
+              <tr>
+                <td class="py-3 font-medium text-encre">SOC 2 Type II</td>
+                <td class="py-3 text-center text-encre/60">En cours d'évaluation</td>
+                <td class="py-3 text-center text-encre/60">Supabase ✓, Cloudflare ✓, Stripe ✓</td>
+                <td class="py-3 text-center text-encre/50">Certificats fournisseurs</td>
+              </tr>
+              <tr>
+                <td class="py-3 font-medium text-encre">ISO 27001</td>
+                <td class="py-3 text-center text-encre/60">Non certifié (MSI en place)</td>
+                <td class="py-3 text-center text-encre/60">Supabase ✓, Cloudflare ✓, Stripe ✓</td>
+                <td class="py-3 text-center text-encre/50">Certificats fournisseurs</td>
+              </tr>
+              <tr>
+                <td class="py-3 font-medium text-encre">HDS</td>
+                <td class="py-3 text-center text-encre/60">Non certifié (sous-traitant HDS via Supabase)</td>
+                <td class="py-3 text-center text-encre/60">Supabase EU West ✓</td>
+                <td class="py-3 text-center"><a href="/legal/sous-traitance" class="text-bleu-signature hover:underline">Registre</a></td>
+              </tr>
+              <tr>
+                <td class="py-3 font-medium text-encre">PCI DSS</td>
+                <td class="py-3 text-center text-encre/60">Non applicable (pas de stockage CB)</td>
+                <td class="py-3 text-center text-encre/60">Stripe Level 1 ✓</td>
+                <td class="py-3 text-center text-encre/50">Attestation Stripe</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p class="mt-8 text-sm text-encre/50 max-w-2xl mx-auto">
+            <strong>Règle :</strong> Optibilan ne revendique JAMAIS une certification détenue uniquement par un fournisseur.
+            La distinction "Optibilan vs Fournisseur" est systématique. Seuls les engagements contractuels vérifiés sont listés.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <CTA
+      title="Vous avez une question technique précise ?"
+      subtitle="L'équipe sécurité répond en <4h ouvrées pour les clients Cabinet."
+      primaryCTA={{ href: 'mailto:security@optibilan.com', label: 'Contacter l\'équipe sécurité' }}
+      secondaryCTA={{ href: '/legal/confidentialite', label: 'Politique de confidentialité' }}
+      variant="gold"
+    />
+  </main>
+
+  <Footer />
+</Layout>

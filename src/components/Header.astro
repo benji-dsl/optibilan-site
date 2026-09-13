@@ -1,19 +1,42 @@
 ---
 import Icon from './Icon.astro';
 
-const navLinks = [
-  { href: '/fonctionnalites', label: 'Fonctionnalités' },
-  { href: '/tarifs', label: 'Tarifs' },
-  { href: '/blog', label: 'Blog' },
+const produitLinks = [
+  { href: '/product/overview', label: 'Vue d\'ensemble', desc: 'Plateforme complète de pilotage' },
+  { href: '/product/check-ins', label: 'Bilans & progression', desc: 'Suivi centralisé des accompagnements' },
+  { href: '/product/nutrition', label: 'Nutrition', desc: 'Plans, habitudes, compléments, courses' },
+  { href: '/product/training', label: 'Sport & programmes', desc: 'Bibliothèque, séances, progression' },
+  { href: '/product/health', label: 'Santé & biomarqueurs', desc: 'Biologie, wearables, tendances' },
+  { href: '/product/mental', label: 'Préparation mentale', desc: 'Exercices, ressources, journal, adhérence' },
+  { href: '/product/engagement', label: 'Engagement & habitudes', desc: 'Gamification, objectifs, jalons' },
+  { href: '/product/crm', label: 'Journal & CRM', desc: 'Entrées typées, pipeline, relances' },
+  { href: '/product/agenda', label: 'Agenda & appels', desc: 'Cadence, rappels, calendrier ICS' },
+  { href: '/product/ai', label: 'IA & Automatisations', desc: 'Structuration, synthèses, alertes' },
+  { href: '/product/white-label', label: 'Marque blanche', desc: 'Logo, couleurs, domaine, emails' },
+  { href: '/product/integrations', label: 'Intégrations & API', desc: 'Santé, agenda, webhooks, OpenAPI' },
+  { href: '/product/admin', label: 'Administration', desc: 'Utilisateurs, modules, conformité' },
+];
+
+const solutionsLinks = [
+  { href: '/solutions/coaches', label: 'Coach sportif', desc: 'Programmes, bilans, progression, adhérence' },
+  { href: '/solutions/nutrition', label: 'Nutritionniste / Diététicien', desc: 'Plans, habitudes, suivi, évolution, documents' },
+  { href: '/solutions/mental', label: 'Préparateur mental', desc: 'Exercices, ressources, journal, adhérence, permissions' },
+  { href: '/solutions/cabinets', label: 'Cabinet / Équipe', desc: 'Multi-praticiens, permissions, coordination, audit, marque blanche' },
+];
+
+const ressourcesLinks = [
+  { href: '/help', label: 'Centre d\'aide', desc: 'Guides, FAQ, démarrage rapide' },
+  { href: '/docs', label: 'API & Documentation', desc: 'OpenAPI, SDK, exemples, sandbox' },
+  { href: '/contact', label: 'Contact & Support', desc: 'Démo, support, partenariats, presse' },
 ];
 
 const ctaButtons = [
-  { href: 'https://app.optibilan.com/inscription', label: 'Essai gratuit 30 jours', primary: true },
   { href: 'https://app.optibilan.com/login', label: 'Connexion', primary: false },
+  { href: 'https://calendly.com/optibilan/demo', label: 'Réserver une démo', primary: true },
 ];
 ---
 
-<header class="fixed top-0 left-0 right-0 z-50 bg-blanc/95 backdrop-blur-sm border-b border-encre/10 transition-shadow duration-300" data-header>
+<header class="fixed top-0 left-0 right-0 z-50 bg-blanc/95 backdrop-blur-sm border-b border-encre/10 transition-all duration-300" data-header>
   <nav class="container" aria-label="Navigation principale">
     <div class="flex h-16 items-center justify-between gap-4">
       <a href="/" class="flex items-center gap-2 shrink-0" aria-label="Optibilan - Accueil">
@@ -21,20 +44,75 @@ const ctaButtons = [
         <span class="font-display font-bold text-xl text-encre">Optibilan</span>
       </a>
 
-      <div class="hidden md:flex items-center gap-8">
-        {navLinks.map(link => (
-          <a href={link.href} class="text-sm font-medium text-encre/60 hover:text-bleu-signature transition-colors relative after:absolute after:bottom-[-4px] after:left-0 after:right-0 after:h-[2px] after:bg-bleu-signature after:scale-x-0 after:origin-center after:transition-transform hover:after:scale-x-100">
-            {link.label}
-          </a>
-        ))}
+      <div class="hidden md:flex items-center gap-1">
+        <!-- PRODUIT dropdown -->
+        <div class="relative group" data-dropdown>
+          <button class="flex items-center gap-1.5 px-3 py-2 text-sm font-medium text-encre/60 hover:text-encre rounded-lg transition-colors" aria-haspopup="true" aria-expanded="false" aria-label="Menu Produit">
+            Produit
+            <Icon name="chevronDown" class="w-4 h-4 transition-transform group-open:rotate-180" />
+          </button>
+          <div class="absolute left-0 top-full mt-2 w-[480px] opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition-all duration-200 bg-blanc rounded-xl border border-encre/10 shadow-elevated p-3 z-50" role="menu">
+            <div class="grid grid-cols-2 gap-1">
+              {produitLinks.map(link => (
+                <a href={link.href} class="p-3 rounded-lg hover:bg-papier transition-colors" role="menuitem">
+                  <span class="block font-medium text-encre">{link.label}</span>
+                  <span class="block text-xs text-encre/50 mt-0.5">{link.desc}</span>
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <!-- SOLUTIONS dropdown -->
+        <div class="relative group" data-dropdown>
+          <button class="flex items-center gap-1.5 px-3 py-2 text-sm font-medium text-encre/60 hover:text-encre rounded-lg transition-colors" aria-haspopup="true" aria-expanded="false" aria-label="Menu Solutions">
+            Solutions
+            <Icon name="chevronDown" class="w-4 h-4 transition-transform group-open:rotate-180" />
+          </button>
+          <div class="absolute left-0 top-full mt-2 w-[400px] opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition-all duration-200 bg-blanc rounded-xl border border-encre/10 shadow-elevated p-3 z-50" role="menu">
+            <div class="grid grid-cols-1 gap-1">
+              {solutionsLinks.map(link => (
+                <a href={link.href} class="p-3 rounded-lg hover:bg-papier transition-colors" role="menuitem">
+                  <span class="block font-medium text-encre">{link.label}</span>
+                  <span class="block text-xs text-encre/50 mt-0.5">{link.desc}</span>
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <!-- SÉCURITÉ -->
+        <a href="/security" class="px-3 py-2 text-sm font-medium text-encre/60 hover:text-encre rounded-lg transition-colors" aria-label="Sécurité et conformité">
+          Sécurité
+        </a>
+
+        <!-- RESSOURCES dropdown -->
+        <div class="relative group" data-dropdown>
+          <button class="flex items-center gap-1.5 px-3 py-2 text-sm font-medium text-encre/60 hover:text-encre rounded-lg transition-colors" aria-haspopup="true" aria-expanded="false" aria-label="Menu Ressources">
+            Ressources
+            <Icon name="chevronDown" class="w-4 h-4 transition-transform group-open:rotate-180" />
+          </button>
+          <div class="absolute left-0 top-full mt-2 w-[360px] opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition-all duration-200 bg-blanc rounded-xl border border-encre/10 shadow-elevated p-3 z-50" role="menu">
+            <div class="grid grid-cols-1 gap-1">
+              {ressourcesLinks.map(link => (
+                <a href={link.href} class="p-3 rounded-lg hover:bg-papier transition-colors" role="menuitem">
+                  <span class="block font-medium text-encre">{link.label}</span>
+                  <span class="block text-xs text-encre/50 mt-0.5">{link.desc}</span>
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div class="hidden md:flex items-center gap-3">
-        {ctaButtons.map(btn => (
-          <a href={btn.href} class={btn.primary ? 'btn-primary text-sm' : 'btn-secondary text-sm'}>
-            {btn.label}
-          </a>
-        ))}
+      <div class="hidden md:flex items-center gap-2">
+        <a href="https://app.optibilan.com/login" class="btn-secondary text-sm">
+          Connexion
+        </a>
+        <a href="https://calendly.com/optibilan/demo" class="btn-primary text-sm" data-track="header_demo">
+          Réserver une démo
+          <Icon name="arrowRight" class="w-4 h-4" />
+        </a>
       </div>
 
       <button class="md:hidden p-2 rounded-lg text-encre/60 hover:bg-encre/5" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobile-menu" data-menu-toggle>
@@ -43,18 +121,36 @@ const ctaButtons = [
     </div>
 
     <div class="md:hidden hidden py-4 border-t border-encre/10" id="mobile-menu" role="navigation" aria-label="Menu mobile">
-      <div class="flex flex-col gap-4">
-        {navLinks.map(link => (
-          <a href={link.href} class="text-base font-medium text-encre/60 hover:text-bleu-signature transition-colors px-2 py-1" data-mobile-link>
+      <div class="flex flex-col gap-2">
+        <div class="px-2 py-1 font-semibold text-encre/50 uppercase tracking-wider text-xs">Produit</div>
+        {produitLinks.map(link => (
+          <a href={link.href} class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>
+            {link.label}
+          </a>
+        ))}
+        <div class="px-2 py-1 font-semibold text-encre/50 uppercase tracking-wider text-xs border-t border-encre/10 mt-2">Solutions</div>
+        {solutionsLinks.map(link => (
+          <a href={link.href} class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>
+            {link.label}
+          </a>
+        ))}
+        <div class="px-2 py-1 font-semibold text-encre/50 uppercase tracking-wider text-xs border-t border-encre/10 mt-2">Sécurité</div>
+        <a href="/security" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>
+          Sécurité & conformité
+        </a>
+        <div class="px-2 py-1 font-semibold text-encre/50 uppercase tracking-wider text-xs border-t border-encre/10 mt-2">Ressources</div>
+        {ressourcesLinks.map(link => (
+          <a href={link.href} class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>
             {link.label}
           </a>
         ))}
         <div class="flex flex-col gap-2 pt-2 border-t border-encre/10">
-          {ctaButtons.map(btn => (
-            <a href={btn.href} class={btn.primary ? 'btn-primary text-center' : 'btn-secondary text-center'}>
-              {btn.label}
-            </a>
-          ))}
+          <a href="https://calendly.com/optibilan/demo" class="btn-primary text-center" data-track="mobile_demo">
+            Réserver une démo
+          </a>
+          <a href="https://app.optibilan.com/login" class="btn-secondary text-center">
+            Connexion
+          </a>
         </div>
       </div>
     </div>
@@ -72,8 +168,10 @@ const ctaButtons = [
     const currentScroll = window.pageYOffset;
     if (currentScroll > 100) {
       header?.classList.add('shadow-soft');
+      header?.classList.add('bg-blanc/98');
     } else {
       header?.classList.remove('shadow-soft');
+      header?.classList.remove('bg-blanc/98');
     }
     lastScroll = currentScroll;
   });
@@ -92,6 +190,13 @@ const ctaButtons = [
       toggle?.setAttribute('aria-expanded', 'false');
       toggle.innerHTML = '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>';
     });
+  });
+
+  // Close dropdowns on escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('[data-dropdown]').forEach(d => d.blur());
+    }
   });
 </script>
 
