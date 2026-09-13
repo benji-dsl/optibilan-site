@@ -3,45 +3,31 @@ import Icon from './Icon.astro';
 
 const footerLinks = {
   produit: [
-    { href: '/product/overview', label: 'Vue d\'ensemble' },
-    { href: '/product/check-ins', label: 'Bilans & progression' },
+    { href: '/product/overview', label: 'Fonctionnalités' },
+    { href: '/product/check-ins', label: 'Bilans' },
     { href: '/product/nutrition', label: 'Nutrition' },
-    { href: '/product/training', label: 'Sport & programmes' },
-    { href: '/product/health', label: 'Santé & biomarqueurs' },
-    { href: '/product/mental', label: 'Préparation mentale' },
-    { href: '/product/engagement', label: 'Engagement & habitudes' },
-    { href: '/product/crm', label: 'Journal & CRM' },
-    { href: '/product/agenda', label: 'Agenda & appels' },
-    { href: '/product/ai', label: 'IA & Automatisations' },
+    { href: '/product/training', label: 'Sport' },
+    { href: '/product/health', label: 'Santé' },
     { href: '/product/white-label', label: 'Marque blanche' },
-    { href: '/product/integrations', label: 'Intégrations & API' },
-    { href: '/product/admin', label: 'Administration' },
   ],
   solutions: [
-    { href: '/solutions/coaches', label: 'Coach sportif' },
-    { href: '/solutions/nutrition', label: 'Nutritionniste / Diététicien' },
-    { href: '/solutions/mental', label: 'Préparateur mental' },
-    { href: '/solutions/cabinets', label: 'Cabinet / Équipe' },
+    { href: '/solutions/coaches', label: 'Indépendants' },
+    { href: '/solutions/cabinets', label: 'Équipes' },
+    { href: '/solutions/cabinets', label: 'Cabinets' },
   ],
-  securite: [
-    { href: '/security', label: 'Sécurité & conformité' },
-    { href: '/legal/confidentialite', label: 'RGPD & Confidentialité' },
+  confiance: [
+    { href: '/security', label: 'Sécurité' },
+    { href: '/legal/confidentialite', label: 'Confidentialité' },
     { href: '/legal/sous-traitance', label: 'Sous-traitants' },
-  ],
-  ressources: [
-    { href: '/help', label: 'Centre d\'aide' },
-    { href: '/docs', label: 'API & Documentation' },
-    { href: '/blog', label: 'Blog' },
-    { href: '/contact', label: 'Contact & Support' },
   ],
   entreprise: [
     { href: '/contact', label: 'Contact' },
   ],
   legal: [
     { href: '/legal/mentions', label: 'Mentions légales' },
-    { href: '/legal/cgv', label: 'CGV' },
     { href: '/legal/confidentialite', label: 'Confidentialité' },
-    { href: '/legal/sous-traitance', label: 'Sous-traitance' },
+    { href: '/legal/cgv', label: 'CGU' },
+    { href: '/legal/cookies', label: 'Cookies' },
   ],
 };
 
@@ -54,10 +40,11 @@ const socialLinks = [
 ---
 
 <footer class="bg-encre text-craie" role="contentinfo">
-  <div class="container py-16 md:py-24 lg:py-32">
-    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 md:gap-12">
-      <div class="col-span-2 lg:col-span-1">
-        <a href="/" class="flex items-center gap-2 mb-6" aria-label="Optibilan - Accueil">
+  <div class="container py-12 md:py-16 lg:py-20">
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 md:gap-10">
+      <!-- Colonne 1 : Brand -->
+      <div class="col-span-2 lg:col-span-2">
+        <a href="/" class="flex items-center gap-2 mb-4" aria-label="Optibilan - Accueil">
           <Icon name="logo" class="w-9 h-9 text-bleu-signature" />
           <span class="font-display font-bold text-xl text-craie">Optibilan</span>
         </a>
@@ -73,6 +60,7 @@ const socialLinks = [
         </div>
       </div>
 
+      <!-- Colonne 2 : Produit -->
       <nav aria-label="Produit">
         <h3 class="font-semibold text-craie mb-4">Produit</h3>
         <ul class="space-y-3">
@@ -82,6 +70,7 @@ const socialLinks = [
         </ul>
       </nav>
 
+      <!-- Colonne 3 : Solutions -->
       <nav aria-label="Solutions">
         <h3 class="font-semibold text-craie mb-4">Solutions</h3>
         <ul class="space-y-3">
@@ -91,24 +80,27 @@ const socialLinks = [
         </ul>
       </nav>
 
-      <nav aria-label="Sécurité">
-        <h3 class="font-semibold text-craie mb-4">Sécurité</h3>
+      <!-- Colonne 4 : Confiance -->
+      <nav aria-label="Confiance">
+        <h3 class="font-semibold text-craie mb-4">Confiance</h3>
         <ul class="space-y-3">
-          {footerLinks.securite.map(link => (
+          {footerLinks.confiance.map(link => (
             <li><a href={link.href} class="text-sm hover:text-bleu-signature transition-colors">{link.label}</a></li>
           ))}
         </ul>
       </nav>
 
-      <nav aria-label="Ressources">
-        <h3 class="font-semibold text-craie mb-4">Ressources</h3>
+      <!-- Colonne 5 : Entreprise -->
+      <nav aria-label="Entreprise">
+        <h3 class="font-semibold text-craie mb-4">Entreprise</h3>
         <ul class="space-y-3">
-          {footerLinks.ressources.map(link => (
+          {footerLinks.entreprise.map(link => (
             <li><a href={link.href} class="text-sm hover:text-bleu-signature transition-colors">{link.label}</a></li>
           ))}
         </ul>
       </nav>
 
+      <!-- Colonne 6 : Légal -->
       <nav aria-label="Légal">
         <h3 class="font-semibold text-craie mb-4">Légal</h3>
         <ul class="space-y-3">
@@ -119,7 +111,7 @@ const socialLinks = [
       </nav>
     </div>
 
-    <div class="mt-12 md:mt-16 pt-8 border-t border-encre/20">
+    <div class="mt-10 md:mt-12 pt-8 border-t border-encre/20">
       <div class="flex flex-col md:flex-row items-center justify-between gap-4">
         <p class="text-craie/40 text-sm">
           © {new Date().getFullYear()} Optibilan. Tous droits réservés.
@@ -127,8 +119,8 @@ const socialLinks = [
         <div class="flex items-center gap-6 text-sm text-craie/40">
           <a href="/legal/mentions" class="hover:text-bleu-signature transition-colors">Mentions légales</a>
           <a href="/legal/confidentialite" class="hover:text-bleu-signature transition-colors">Confidentialité</a>
-          <a href="/legal/cgv" class="hover:text-bleu-signature transition-colors">CGV</a>
-          <a href="/legal/sous-traitance" class="hover:text-bleu-signature transition-colors">Sous-traitance</a>
+          <a href="/legal/cgv" class="hover:text-bleu-signature transition-colors">CGU</a>
+          <a href="/legal/cookies" class="hover:text-bleu-signature transition-colors">Cookies</a>
         </div>
       </div>
     </div>
