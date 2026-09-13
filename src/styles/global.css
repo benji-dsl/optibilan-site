@@ -174,7 +174,7 @@ h1, h2, h3, h4, h5, h6 {
   border: none;
   cursor: pointer;
   text-decoration: none;
-  transition: all 200ms ease;
+  transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
   white-space: nowrap;
   position: relative;
   overflow: hidden;
@@ -183,6 +183,8 @@ h1, h2, h3, h4, h5, h6 {
 .btn:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
 }
 
 .btn::before {
@@ -198,26 +200,40 @@ h1, h2, h3, h4, h5, h6 {
   opacity: 1;
 }
 
+.btn:focus-visible {
+  outline: none;
+  ring: 2px;
+  ring-offset: 2px;
+  ring-color: var(--color-bleu-signature);
+  ring-offset-color: var(--color-papier);
+}
+
 .btn-primary,
 .btn-gold,
 .btn-demo {
   background-image: var(--gradient-btn-primary);
   color: #FFFFFF;
-  box-shadow: 0 4px 14px -2px color-mix(in oklab, var(--color-bleu-signature) 35%, transparent), 0 2px 6px -2px color-mix(in oklab, var(--color-bleu-signature) 25%, transparent);
+  box-shadow:
+    0 4px 14px -2px color-mix(in oklab, var(--color-bleu-signature) 35%, transparent),
+    0 2px 6px -2px color-mix(in oklab, var(--color-bleu-signature) 25%, transparent);
 }
 
 .btn-primary:hover,
 .btn-gold:hover,
 .btn-demo:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px -4px color-mix(in oklab, var(--color-bleu-signature) 45%, transparent), 0 4px 12px -4px color-mix(in oklab, var(--color-bleu-signature) 35%, transparent);
+  box-shadow:
+    0 12px 28px -4px color-mix(in oklab, var(--color-bleu-signature) 45%, transparent),
+    0 6px 16px -4px color-mix(in oklab, var(--color-bleu-signature) 35%, transparent);
 }
 
 .btn-primary:active,
 .btn-gold:active,
 .btn-demo:active {
-  transform: translateY(0);
-  box-shadow: 0 2px 8px -2px color-mix(in oklab, var(--color-bleu-signature) 30%, transparent);
+  transform: translateY(0) scale(0.98);
+  box-shadow:
+    0 2px 8px -2px color-mix(in oklab, var(--color-bleu-signature) 30%, transparent);
+  transition: all 100ms ease;
 }
 
 .btn-secondary {
@@ -227,9 +243,20 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .btn-secondary:hover {
-  background-color: color-mix(in oklab, var(--color-encre-texte) 4%, transparent);
+  background-color: color-mix(in oklab, var(--color-encre-texte) 6%, transparent);
   border-color: var(--color-encre-texte);
   transform: translateY(-1px);
+  box-shadow: 0 4px 12px -2px color-mix(in oklab, var(--color-encre-texte) 10%, transparent);
+}
+
+.btn-secondary:active {
+  transform: translateY(0) scale(0.98);
+  background-color: color-mix(in oklab, var(--color-encre-texte) 10%, transparent);
+  transition: all 100ms ease;
+}
+
+.btn-secondary:focus-visible {
+  ring-color: var(--color-encre-texte);
 }
 
 .btn-ghost {
@@ -237,11 +264,24 @@ h1, h2, h3, h4, h5, h6 {
   color: color-mix(in oklab, var(--color-encre-texte) 70%, transparent);
   padding-left: 1rem;
   padding-right: 1rem;
+  border: 1.5px solid transparent;
 }
 
 .btn-ghost:hover {
   color: var(--color-encre-texte);
-  background-color: color-mix(in oklab, var(--color-encre-texte) 4%, transparent);
+  background-color: color-mix(in oklab, var(--color-encre-texte) 6%, transparent);
+  border-color: color-mix(in oklab, var(--color-encre-texte) 15%, transparent);
+  transform: translateY(-1px);
+}
+
+.btn-ghost:active {
+  transform: translateY(0) scale(0.98);
+  background-color: color-mix(in oklab, var(--color-encre-texte) 10%, transparent);
+  transition: all 100ms ease;
+}
+
+.btn-ghost:focus-visible {
+  ring-color: var(--color-encre-texte);
 }
 
 .btn-demo {
@@ -364,3 +404,104 @@ h1, h2, h3, h4, h5, h6 {
 .gradient-blue-deep { background-image: var(--gradient-blue-deep); }
 .gradient-dark-section { background-image: var(--gradient-dark-section); }
 .gradient-card-light { background-image: var(--gradient-card-light); }
+
+/* ===== ACCESSIBILITÉ & UX ===== */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-bleu-signature);
+  outline-offset: 2px;
+}
+
+::selection {
+  background-color: color-mix(in oklab, var(--color-bleu-signature) 30%, transparent);
+  color: var(--color-encre-texte);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-papier);
+}
+::-webkit-scrollbar-thumb {
+  background: color-mix(in oklab, var(--color-encre-texte) 30%, transparent);
+  border-radius: 4px;
+  border: 2px solid var(--color-papier);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: color-mix(in oklab, var(--color-encre-texte) 50%, transparent);
+}
+
+@supports (scrollbar-color: red blue) {
+  * {
+    scrollbar-color: color-mix(in oklab, var(--color-encre-texte) 30%, transparent) var(--color-papier);
+    scrollbar-width: thin;
+  }
+}
+
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 1rem 1.5rem;
+  background: var(--color-encre);
+  color: var(--color-craie);
+  font-weight: 600;
+  border-radius: var(--radius-pill);
+  z-index: 9999;
+  transition: top 200ms ease;
+}
+.skip-link:focus {
+  top: 1rem;
+}
+
+.text-balance { text-wrap: balance; }
+.text-pretty { text-wrap: pretty; }
+
+img { height: auto; max-width: 100%; }
+
+.table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+.anchor-link { scroll-margin-top: 6rem; }
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.skeleton {
+  background: linear-gradient(90deg, var(--color-ink-200) 25%, var(--color-ink-100) 50%, var(--color-ink-200) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: var(--radius-card-sm);
+}
+
+@media (max-width: 640px) {
+  .section { padding-top: 2.5rem; padding-bottom: 2.5rem; }
+  .section-lg { padding-top: 3.5rem; padding-bottom: 3.5rem; }
+  .container { padding-left: 1rem; padding-right: 1rem; }
+  .btn { padding: 0.75rem 1.25rem; font-size: 0.875rem; }
+  .btn-demo { padding: 0.875rem 1.5rem; font-size: 0.9375rem; }
+  h1 { font-size: 2.5rem; line-height: 1.2; }
+  h2 { font-size: 2rem; }
+  .card, .card-hover { padding: 1rem; }
+  .icon-wrapper { width: 2.5rem; height: 2.5rem; border-radius: var(--radius-card); }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  .section { padding-top: 3rem; padding-bottom: 3rem; }
+  .section-lg { padding-top: 4rem; padding-bottom: 4rem; }
+  .container { padding-left: 1.5rem; padding-right: 1.5rem; }
+}

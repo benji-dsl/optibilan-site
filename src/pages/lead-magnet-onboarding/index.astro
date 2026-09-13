@@ -1,0 +1,130 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import Hero from '../../components/Hero.astro';
+import CTA from '../../components/CTA.astro';
+import TrustBar from '../../components/TrustBar.astro';
+import Icon from '../../components/Icon.astro';
+
+const pageTitle = 'Le protocole d\'onboarding parfait — Guide gratuit Optibilan';
+const pageDescription = 'Téléchargez le guide PDF 28 pages utilisé par 150+ cabinets pour structurer leur premier mois d\'accompagnement : questionnaire lancement, bilan initial, fixation objectifs, contractualisation, mise en place outils.';
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  canonical="/lead-magnet-onboarding"
+  ogImage="/og-lead-magnet.jpg"
+>
+  <Header />
+
+  <main>
+    <Hero
+      title="Le protocole d'onboarding\nparfait pour +2000€/mois"
+      subtitle="Le guide PDF (28 pages) utilisé par 150+ cabinets pour structurer leur premier mois d'accompagnement : questionnaire lancement, bilan initial, fixation objectifs, contractualisation, mise en place outils."
+      badge="Gratuit — Téléchargement immédiat — Sans engagement"
+    />
+
+    <TrustBar />
+
+    <section class="section bg-blanc" aria-labelledby="preview-title">
+      <div class="container">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          <div>
+            <h2 id="preview-title" class="font-display text-2xl md:text-3xl font-bold text-encre mb-6">Ce que contient le guide</h2>
+            <ul class="space-y-4 mb-8">
+              {[
+                'Semaine 1 : Questionnaire lancement + Bilan initial complet (30+ points de données)',
+                'Semaine 2 : Fixation objectifs SMART + Dreamboard + Objectif ultime',
+                'Semaine 3 : Contractualisation (CGV, DPA, consentements RGPD, mentions légales)',
+                'Semaine 4 : Mise en place outils (wearables, app client, notifications, agenda ICS)',
+                'Checklist complète de validation avant le premier appel client',
+                'Templates emails/WhatsApp pour chaque étape (copier-coller)',
+                'Grille d\'évaluation adhérence semaine 1-4 (signaux faibles, observance)',
+              ].map(item => (
+                <li class="flex items-start gap-3 text-encre/70">
+                  <Icon name="check" class="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+
+            <div class="flex flex-col sm:flex-row gap-4">
+              <a href="#download" class="btn-demo w-full sm:w-auto" data-track="lead_magnet_download">
+                <Icon name="download" class="w-5 h-5 mr-2" /> Télécharger le guide PDF (28 pages)
+              </a>
+              <a href="/newsletter" class="btn-secondary w-full sm:w-auto">
+                <Icon name="mail" class="w-5 h-5 mr-2" /> S'abonner à la newsletter
+              </a>
+            </div>
+          </div>
+
+          <div class="relative">
+            <div class="aspect-[3/4] max-w-md mx-auto bg-encre/5 rounded-card-lg border border-encre/10 p-6 flex flex-col items-center justify-center relative shadow-elevated">
+              <div class="absolute inset-0 grid grid-cols-4 gap-3 p-6 opacity-10" aria-hidden="true">
+                {[...Array(20)].map((_, i) => (
+                  <div key={i} class="col-span-1 h-6 bg-bleu-signature/20 rounded animate-pulse" style={{animationDelay: `${i * 60}ms`}} />
+                ))}
+              </div>
+              <Icon name="document" class="w-20 h-20 text-bleu-signature/30 relative z-10 mb-6" />
+              <div class="relative z-10 text-center">
+                <h3 class="font-display text-xl font-bold text-encre mb-2">Guide Onboarding Optibilan</h3>
+                <p class="text-encre/50 mb-2">28 pages • PDF • 2.4 Mo</p>
+                <p class="text-xs text-encre/40">Aperçu — Téléchargement après formulaire</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="download" class="section bg-gradient-to-br from-bleu-signature/5 via-papier to-bleu-lecture/5 rounded-card-lg relative overflow-hidden" aria-labelledby="form-title">
+      <div class="container">
+        <div class="max-w-xl mx-auto text-center">
+          <h2 id="form-title" class="font-display text-2xl md:text-3xl font-bold text-encre mb-4">Téléchargement immédiat</h2>
+          <p class="text-encre/60 mb-8 max-w-lg mx-auto">Remplissez le formulaire ci-dessous pour recevoir le lien de téléchargement par email (vérifiez vos spams).</p>
+
+          <form action="https://api.optibilan.com/lead-magnet/onboarding" method="POST" class="space-y-4 max-w-md mx-auto" data-track="lead_magnet_form">
+            <div>
+              <label for="email" class="block text-sm font-medium text-encre mb-1">Email professionnel</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="vous@votrecabinet.fr"
+                required
+                class="w-full px-4 py-3 rounded-lg bg-blanc border border-encre/20 focus:outline-none focus:border-bleu-signature focus:ring-2 focus:ring-bleu-signature/20 transition-all"
+                aria-label="Votre email professionnel"
+              />
+            </div>
+            <div>
+              <label for="cabinet" class="block text-sm font-medium text-encre mb-1">Nom du cabinet (optionnel)</label>
+              <input
+                type="text"
+                id="cabinet"
+                name="cabinet"
+                placeholder="Cabinet Vitalité Plus"
+                class="w-full px-4 py-3 rounded-lg bg-blanc border border-encre/20 focus:outline-none focus:border-bleu-signature focus:ring-2 focus:ring-bleu-signature/20 transition-all"
+              />
+            </div>
+            <button type="submit" class="btn-demo w-full" data-track="lead_magnet_submit">
+              <Icon name="download" class="w-5 h-5 mr-2" /> Recevoir le guide gratuit
+            </button>
+            <p class="text-xs text-encre/50 text-center">En téléchargeant, vous acceptez notre <a href="/legal/confidentialite" class="underline hover:text-bleu-signature">Politique de confidentialité</a>. Pas de spam, désinscription 1 clic.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <CTA
+      title="Vous voulez aller plus loin ?"
+      subtitle="Découvrez comment Optibilan automatise tout ce protocole pour vous."
+      primaryCTA={{ href: 'https://app.optibilan.com/inscription', label: 'Essai gratuit 30 jours' }}
+      secondaryCTA={{ href: '/contact', label: 'Parler à l\'équipe' }}
+      variant="primary"
+    />
+  </main>
+
+  <Footer />
+</Layout>

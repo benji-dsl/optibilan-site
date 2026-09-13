@@ -6,6 +6,10 @@ Allow: /
 Sitemap: https://optibilan.com/sitemap-index.xml
 
 # Disallow admin/private areas (none on static site)
+Disallow: /api/
+Disallow: /admin/
+Disallow: /private/
+
 # Crawl-delay respectueux
 Crawl-delay: 10
 
