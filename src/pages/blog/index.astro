@@ -1,0 +1,227 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import Hero from '../../components/Hero.astro';
+import CTA from '../../components/CTA.astro';
+import TrustBar from '../../components/TrustBar.astro';
+import Icon from '../../components/Icon.astro';
+
+const pageTitle = 'Blog — Optibilan';
+const pageDescription = 'Articles, guides et études de cas pour cabinets, studios et coachs indépendants : nutrition, sport, prépa mentale, santé connectée, croissance business.';
+
+const categories = [
+  { slug: 'nutrition', label: 'Nutrition', count: 12, color: 'bleu-signature', icon: 'document' },
+  { slug: 'sport', label: 'Sport & Performance', count: 8, color: 'bleu-lecture', icon: 'zap' },
+  { slug: 'mental', label: 'Préparation mentale', count: 6, color: 'indigo', icon: 'brain' },
+  { slug: 'sante', label: 'Santé connectée', count: 7, color: 'bleu-ardoise', icon: 'globe' },
+  { slug: 'business', label: 'Business & Croissance', count: 10, color: 'bordeaux', icon: 'chart' },
+  { slug: 'cas-clients', label: 'Cas clients', count: 5, color: 'bleu-clair', icon: 'users' },
+];
+
+const articles = [
+  {
+    slug: 'bilans-hebdo-automatises',
+    title: 'Comment automatiser vos bilans hebdo et gagner 10h par semaine',
+    excerpt: 'Découvrez comment les cabinets qui utilisent les bilans guidés Optibilan réduisent leur temps administratif de 75% tout en améliorant la qualité du suivi.',
+    category: 'business',
+    author: 'Marie Dubois',
+    date: '2024-01-15',
+    readTime: '8 min',
+    featured: true,
+  },
+  {
+    slug: 'nutrition-personnalisee-echelle',
+    title: 'Nutrition personnalisée à grande échelle : la méthode des templates',
+    excerpt: 'Comment créer des plans nutritionnels individualisés pour 50+ coachés sans y passer vos soirées. La puissance des templates réutilisables.',
+    category: 'nutrition',
+    author: 'Thomas Bertrand',
+    date: '2024-01-10',
+    readTime: '6 min',
+    featured: false,
+  },
+  {
+    slug: 'prepa-mentale-difference',
+    title: 'Pourquoi la prépa mentale fait la différence sur la rétention à 6 mois',
+    excerpt: 'Étude sur 2000+ coachés : ceux qui ont un suivi prépa mentale restent engagés 40% plus longtemps. Les exercices transversaux qui fonctionnent.',
+    category: 'mental',
+    author: 'Sophie Martin',
+    date: '2024-01-05',
+    readTime: '7 min',
+    featured: false,
+  },
+  {
+    slug: 'sync-sante-biomarqueurs',
+    title: 'Synchroniser Apple Health, Oura et Garmin : guide complet',
+    excerpt: 'Configuration pas à pas de la sync santé via Raccourcis iOS ou n8n. 130+ biomarqueurs disponibles automatiquement dans le dossier coaché.',
+    category: 'sante',
+    author: 'Dr. Pierre Lambert',
+    date: '2024-01-02',
+    readTime: '10 min',
+    featured: false,
+  },
+  {
+    slug: 'marque-blanche-cabinet-pro',
+    title: 'Marque blanche totale : comment faire passer votre cabinet au niveau pro',
+    excerpt: 'Logo, couleurs, domaine, vocabulaire, emails : tout ce qu\'il faut configurer pour que vos clients ne voient que votre marque. Checklist complète.',
+    category: 'business',
+    author: 'Julie Moreau',
+    date: '2023-12-28',
+    readTime: '5 min',
+    featured: false,
+  },
+  {
+    slug: 'gamification-engagement-coaches',
+    title: 'Gamification : XP, badges et habitudes qui boostent l\'adhérence',
+    excerpt: 'Analyse des mécaniques qui fonctionnent vraiment : objectif ultime, dreamboard, observance compléments. +40% d\'adhérence sur les habitudes quotidiennes.',
+    category: 'sport',
+    author: 'Antoine Roux',
+    date: '2023-12-22',
+    readTime: '6 min',
+    featured: false,
+  },
+  {
+    slug: 'cas-client-studio-performance',
+    title: 'Cas client : Studio Performance Bordeaux — de 20 à 150 coachés en 8 mois',
+    excerpt: 'Comment Thomas Bertrand a structuré son studio avec Optibilan : onboarding staff, automatisation bilans, marque blanche. Le retour d\'expérience complet.',
+    category: 'cas-clients',
+    author: 'Équipe Optibilan',
+    date: '2023-12-18',
+    readTime: '9 min',
+    featured: true,
+  },
+  {
+    slug: 'api-webhooks-integration-n8n',
+    title: 'Intégrer Optibilan à votre stack via API et webhooks (n8n, Make, Zapier)',
+    excerpt: 'Exemples concrets : nouveau client → créer dossier Notion, bilan déposé → alerte Slack, paiement → email personnalisé. Clés API scopées, HMAC, idempotence.',
+    category: 'business',
+    author: 'Dev Team',
+    date: '2023-12-12',
+    readTime: '12 min',
+    featured: false,
+  },
+];
+
+const categoryLabels: Record<string, string> = {
+  nutrition: 'Nutrition',
+  sport: 'Sport & Performance',
+  mental: 'Préparation mentale',
+  sante: 'Santé connectée',
+  business: 'Business & Croissance',
+  'cas-clients': 'Cas clients',
+};
+
+function formatDate(dateStr: string) {
+  return new Date(dateStr).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
+}
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  canonical="/blog"
+  ogImage="/og-blog.jpg"
+>
+  <Header />
+
+  <main>
+    <Hero
+      title="Ressources pour cabinets\nqui veulent grandir"
+      subtitle="Guides pratiques, études de cas, méthodes éprouvées. Écrit par des coachs, pour des coachs."
+      badge="Nouveau : newsletter hebdo — 2 000+ abonnés"
+    />
+
+    <TrustBar />
+
+    <section class="section bg-papier" aria-labelledby="categories-title">
+      <div class="container">
+        <header class="text-center max-w-3xl mx-auto mb-12">
+          <h2 id="categories-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">Explorer par catégorie</h2>
+          <p class="text-lg text-encre/60">Chaque catégorie regroupe des articles spécialisés pour votre pratique.</p>
+        </header>
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+          {categories.map(cat => (
+            <a href={`/blog/${cat.slug}`} class="card-hover group p-5 md:p-6 text-center" style="--pillar-color: var(--color-{cat.color})">
+              <div class="icon-wrapper mx-auto mb-4" aria-hidden="true" style="background-color: var(--color-{cat.color}); background-color: color-mix(in oklab, var(--color-{cat.color}) 15%, transparent);">
+                <Icon name={cat.icon} class="w-6 h-6" style="color: var(--color-{cat.color});" />
+              </div>
+              <h3 class="font-display text-lg font-bold text-encre mb-1">{cat.label}</h3>
+              <p class="text-sm text-encre/50">{cat.count} articles</p>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-blanc" aria-labelledby="articles-title">
+      <div class="container">
+        <header class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12">
+          <div>
+            <h2 id="articles-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-2">Derniers articles</h2>
+            <p class="text-encre/60">{articles.length} articles publiés — mis à jour chaque semaine</p>
+          </div>
+          <a href="/newsletter" class="btn-secondary self-start whitespace-nowrap">
+            <Icon name="mail" class="w-4 h-4" /> S'abonner à la newsletter
+          </a>
+        </header>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {articles.map((article, i) => (
+            <article class="card-hover group relative overflow-hidden" style="animation-delay: {i * 100}ms">
+              <div class="absolute top-0 left-0 right-0 h-1 bg-[var(--color-bleu-signature)] opacity-0 group-hover:opacity-100 transition-opacity duration-300" aria-hidden="true"></div>
+              <div class="p-6 md:p-7">
+                <div class="flex items-center gap-2 mb-3">
+                  <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-puce text-xs font-medium text-[var(--color-{article.category})] bg-[color-mix(in_oklab,_var(--color-{article.category})_10%,_transparent)]">
+                    {categoryLabels[article.category]}
+                  </span>
+                  <time class="text-xs text-encre/40" datetime={article.date}>{formatDate(article.date)}</time>
+                </div>
+                <h3 class="font-display text-xl font-bold text-encre mb-3 line-clamp-2 group-hover:text-bleu-signature transition-colors">
+                  <a href={`/blog/${article.slug}`}>{article.title}</a>
+                </h3>
+                <p class="text-encre/60 leading-relaxed mb-4 line-clamp-3">{article.excerpt}</p>
+                <div class="flex items-center justify-between pt-4 border-t border-encre/10">
+                  <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 rounded-full bg-gradient-to-br from-bleu-signature to-bleu-lecture flex items-center justify-center text-craie font-bold text-xs">
+                      {article.author.split(' ').map(n => n[0]).join('')}
+                    </div>
+                    <span class="text-sm font-medium text-encre/70">{article.author}</span>
+                  </div>
+                  <span class="text-xs text-encre/40 flex items-center gap-1">
+                    <Icon name="clock" class="w-3 h-3" /> {article.readTime}
+                  </span>
+                </div>
+              </div>
+              {article.featured && (
+                <div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-bleu-signature to-indigo" aria-hidden="true"></div>
+              )}
+            </article>
+          ))}
+        </div>
+
+        <div class="text-center mt-12">
+          <CTA
+            variant="secondary"
+            title="Vous voulez plus de contenu ?"
+            subtitle="Recevez chaque mardi un article, une astuce ou un cas client directement dans votre boîte mail."
+            primaryCTA={{ href: '/newsletter', label: 'S\'abonner gratuitement' }}
+          />
+        </div>
+      </div>
+    </section>
+
+    <CTA
+      title="Vous avez un sujet à proposer ?"
+      subtitle="On cherche toujours des experts pour écrire : nutrition, sport, mental, santé, business. Contactez l'équipe éditoriale."
+      primaryCTA={{ href: '/contact', label: 'Proposer un article' }}
+      variant="gold"
+    />
+  </main>
+
+  <Footer />
+</Layout>
+
+<style is:global>
+  .line-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .line-clamp-3 { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+</style>
