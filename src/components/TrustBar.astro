@@ -2,21 +2,24 @@
 import Icon from './Icon.astro';
 
 interface Props {
-  logos?: string[];
+  badges?: Array<{
+    label: string;
+    icon: string;
+    description?: string;
+  }>;
   title?: string;
 }
 
 const {
-  logos = [
-    'Supabase',
-    'Stripe',
-    'Cloudflare',
-    'Tailwind CSS',
-    'Next.js',
-    'TypeScript',
-    'PostgreSQL',
+  badges = [
+    { label: 'HDS certifié', icon: 'shield', description: 'Hébergement Données de Santé (France/EU)' },
+    { label: 'RGPD by design', icon: 'lock', description: 'Export 1-clic, purge auto, DPA signé' },
+    { label: 'Supabase', icon: 'database', description: 'PostgreSQL managé EU West (Irlande)' },
+    { label: 'Stripe', icon: 'credit-card', description: 'Paiements, facturation, abonnements PCI DSS' },
+    { label: 'Cloudflare', icon: 'cloud', description: 'CDN, WAF, DDoS, Tunnel zero-trust' },
+    { label: 'OpenAPI 3.1', icon: 'code', description: 'API REST documentée, sandbox de test' },
   ],
-  title = 'Ils nous font confiance',
+  title = 'Infrastructure de confiance',
 } = Astro.props;
 ---
 
@@ -25,11 +28,17 @@ const {
     <p id="trust-title" class="text-center text-sm font-semibold text-encre/50 uppercase tracking-wider mb-8">
       {title}
     </p>
-    <div class="flex flex-wrap items-center justify-center gap-8 md:gap-16 opacity-60 hover:opacity-100 transition-opacity duration-300">
-      {logos.map(logo => (
-        <span class="text-lg font-semibold text-encre/40 hover:text-encre/60 transition-colors" aria-label={logo}>
-          {logo}
-        </span>
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-6">
+      {badges.map(badge => (
+        <div class="group flex flex-col items-center gap-2 p-4 rounded-card bg-papier/50 hover:bg-papier transition-colors duration-300 border border-encre/5 hover:border-bleu-signature/30" aria-label={badge.label}>
+          <div class="icon-wrapper group-hover:bg-bleu-signature/10 group-hover:text-bleu-lecture" aria-hidden="true">
+            <Icon name={badge.icon} class="w-6 h-6 text-bleu-signature" />
+          </div>
+          <span class="text-sm font-semibold text-encre text-center">{badge.label}</span>
+          {badge.description && (
+            <span class="text-xs text-encre/50 text-center">{badge.description}</span>
+          )}
+        </div>
       ))}
     </div>
   </div>

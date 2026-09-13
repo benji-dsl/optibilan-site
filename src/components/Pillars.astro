@@ -9,56 +9,137 @@ interface Props {
     title: string;
     description: string;
     features: string[];
-    image?: string;
-    color?: string;
+    techSpecs: string[];
+    color: string;
+    screenshot?: string;
   }>;
 }
 
 const {
   title = "6 modules, une plateforme unifiée",
-  subtitle = "Activez seulement ce dont vous avez besoin. Chaque module est complet, sans surcoût.",
+  subtitle = "Activez seulement ce dont vous avez besoin. Chaque module est complet, sans surcoût. Données de santé, IA, API — tout est natif.",
   pillars = [
     {
       icon: "chart",
       title: "Bilans & Progression",
-      description: "Bilans hebdo guidés, mensurations, photos avant/après, biomarqueurs, score longévité. Graphiques interactifs, détection signaux faibles, export PDF.",
-      features: ["Poids, mensurations, ressenti", "Sommeil, faim, motivation", "Photos avant/après mensuelles", "Score longévité automatique", "Détection signaux faibles"],
-      color: "bleu-signature"
+      description: "Le cœur du suivi : bilans hebdo guidés, mensurations, photos avant/après, score de performance. L'IA détecte les signaux faibles (stagnation, baisse motivation) avant qu'ils ne deviennent critiques.",
+      features: [
+        "Bilans hebdo guidés (poids, mensurations, ressenti, sommeil, faim, motivation, pas)",
+        "Photos avant/après mensuelles avec alignement visuel",
+        "Score de progression composite (adhérence, évolution, bien-être)",
+        "Graphiques interactifs : tendances, corrélations, régression",
+        "Détection signaux faibles IA : stagnation, désengagement, risque abandon",
+        "Export PDF brandé pour le client (rapport mensuel/trimestriel)",
+      ],
+      techSpecs: [
+        "30+ points de données par bilan",
+        "Historique illimité, requêtables via API",
+        "Webhook checkin.submitted temps réel",
+      ],
+      color: "bleu-signature",
     },
     {
       icon: "document",
       title: "Nutrition Complète",
-      description: "Plan alimentaire (protéines/glucides/lipides/légumes/fruits/plaisirs), listes de courses, compléments classés, méthodes OK/à éviter, templates réutilisables.",
-      features: ["Plan par macro/micro-nutriments", "Listes de courses automatisées", "Compléments classés (indispensable/optionnel)", "Templates réutilisables", "Notes coach visibles/privées"],
-      color: "bleu-lecture"
+      description: "Plans alimentaires individualisés (protéines/glucides/lipides/légumes/fruits/plaisirs), listes de courses auto-générées, compléments classés (indispensable/optionnel), méthodes OK/à éviter. Templates réutilisables par pathologie/objectif.",
+      features: [
+        "Répartition macro/micro-nutriments par repas et par jour",
+        "Listes de courses hebdo auto-générées (quantités, catégories)",
+        "Compléments : dosage, timing, marque recommandée, niveau de preuve",
+        "Méthodes validées vs à éviter (basé sur niveau de preuve scientifique)",
+        "Templates réutilisables : perte de gras, prise de masse, longévité, pathologie",
+        "Notes coach : visibles client / privées staff",
+        "Journal alimentaire client (photo/texte) + validation coach",
+      ],
+      techSpecs: [
+        "Base CIQUAL + USDA intégrée (3000+ aliments)",
+        "Calcul automatique besoins (Mifflin-St Jeor + facteur activité)",
+        "API nutrition : GET/POST /api/v1/clients/:id/nutrition",
+      ],
+      color: "bleu-lecture",
     },
     {
       icon: "zap",
       title: "Sport & Programmes",
-      description: "Bibliothèque d'exercices (force/cardio/mobilité), programmes types réutilisables, séances validées par le coaché, ressenti, notes. Import FitFocus.",
-      features: ["Bibliothèque exercices (force/cardio/mobilité)", "Programmes types réutilisables", "Séances validées + ressenti", "Import FitFocus", "Suivi progression charge/volume"],
-      color: "indigo"
+      description: "Bibliothèque d'exercices (force/cardio/mobilité) avec vidéos, programmes types réutilisables, séances validées par le coaché avec ressenti/RPE. Import FitFocus. Suivi charge/volume/progression par exercice.",
+      features: [
+        "200+ exercices (vidéo, points d'attention, régressions/progressions)",
+        "Programmes types : force, hypertrophie, endurance, mobilité, réathlétisation",
+        "Création séances drag-and-drop, séries/répos/tempo/RPE",
+        "Validation coaché : charge réelle, RPE, ressenti, vidéo optionnelle",
+        "Graphiques progression : charge, volume, tonnage, 1RM estimé",
+        "Import FitFocus (JSON/CSV) — migration zéro friction",
+        "Périodisation : macros/mesos/microcycles visualisables",
+      ],
+      techSpecs: [
+        "Bibliothèque extensible (ajout exercices custom illimités)",
+        "API sport : programmes, séances, exercices, progression",
+        "Webhook session.completed pour sync externes",
+      ],
+      color: "indigo",
     },
     {
       icon: "brain",
       title: "Préparation Mentale",
-      description: "Exercices déposés par le préparateur mental (transversaux), bibliothèque ressources (vidéos, PDF), journal d'appels dédié, techniques visualisation/respiration.",
-      features: ["Exercices transversaux (réutilisables)", "Bibliothèque vidéos/PDF", "Journal d'appels dédié", "Techniques visualisation", "Suivi adhérence mental"],
-      color: "bleu-ardoise"
+      description: "Exercices transversaux déposés par le préparateur mental (visualisation, respiration, routine pré-compétition), bibliothèque ressources (vidéos, PDF, audio), journal d'appels dédié, suivi adhérence. Séparation stricte des données mentales (confidentialité renforcée).",
+      features: [
+        "Exercices transversaux réutilisables : visualisation, cohérence cardiaque, ancrage",
+        "Bibliothèque ressources : vidéos, PDF, audio guidés (streaming sécurisé)",
+        "Journal d'appels dédié : compte-rendu, objectifs, plan d'action",
+        "Techniques : respiration box, cohérence cardiaque, scan corporel, routine",
+        "Suivi adhérence mental : fréquence, durée, ressentis",
+        "Cloisonnement données : le coach sport ne voit pas le contenu mental",
+        "Partage sélectif client : ce que le client autorise à voir",
+      ],
+      techSpecs: [
+        "Chiffrement supplémentaire au repos pour données mentales",
+        "Rôle 'préparateur mental' avec périmètre strict",
+        "API mental : exercices, ressources, journal, adhérence",
+      ],
+      color: "bleu-ardoise",
     },
     {
       icon: "globe",
-      title: "Santé Connectée",
-      description: "Sync Apple Health/Oura/Whoop/Garmin, saisie manuelle : sommeil, VFC, FC repos, VO2max, pas, poids, %MG. Biomarqueurs structurés (glycémie, HbA1c, CRP, vit D, ferritine...).",
-      features: ["Sync Apple Health/Oura/Whoop/Garmin", "Biomarqueurs structurés (130+)", "Habitudes quotidiennes", "Observance compléments", "Graphiques tendances temporelles"],
-      color: "bleu-clair"
+      title: "Santé Connectée & Biomarqueurs",
+      description: "Sync native Apple Health, Oura, Whoop, Garmin (via Raccourcis iOS ou n8n/Make). 130+ biomarqueurs structurés : sommeil (stades, score, régularité), VFC (rmssd, tendance), FC repos, VO2max, pas, poids, %MG. Analyses sanguines : glycémie, HbA1c, CRP, vit D, ferritine, lipidogramme, thyroïde, hormones. IA lit les PDF de labo et pré-remplit.",
+      features: [
+        "Sync native : Apple Health, Oura, Whoop, Garmin (Raccourcis iOS / n8n / Make)",
+        "Métriques quotidiennes : sommeil (stades, score, latency, régularité), VFC (rmssd, cv, tendance), FC repos, VO2max, pas, poids, %MG, température",
+        "130+ biomarqueurs sanguins structurés : glycémie, HbA1c, insuline, HOMA-IR, CRP, vit D, B9/B12, ferritine, lipidogramme complet, thyroïde (TSH, T3, T4), hormones (testostérone, œstradiol, SHBG, cortisol)",
+        "Import PDF labo : IA extrait, structure, pré-remplit, signale anomalies",
+        "Graphiques tendances temporelles avec seuils cliniques de référence",
+        "Habitudes quotidiennes : eau, suppléments, exposition lumière, respiration",
+        "Observance compléments : rappels, validation, taux d'adhérence",
+      ],
+      techSpecs: [
+        "Token santé par client (hsk_...) — scope granulaire",
+        "Endpoint /api/health-sync (HMAC signé) pour n8n/Make",
+        "Stockage Supabase bucket privé, chiffré AES-256",
+        "Conformité HDS (hébergement données de santé) — Supabase EU West",
+      ],
+      color: "bleu-clair",
     },
     {
       icon: "lock",
-      title: "API, Webhooks & Conformité",
-      description: "REST v1 + OpenAPI, clés API scopées, webhooks signés HMAC, rate-limit, sync santé, export RGPD complet, audit trail, purge paramétrable, hébergement EU.",
-      features: ["API REST v1 + OpenAPI", "Webhooks HMAC (8 événements)", "Export RGPD complet (37 modèles)", "Audit trail double niveau", "Purge auto paramétrable", "Hébergement EU (Supabase France)"],
-      color: "bordeaux"
+      title: "Marque Blanche, API & Conformité",
+      description: "Votre marque, pas la nôtre. Logo, couleurs, domaine, vocabulaire (coaché/patient/membre), assistant IA nommé, emails, mentions légales, CGV — tout est à vous. API REST v1 OpenAPI, clés scopées, webhooks HMAC. Export RGPD 1-clic (37 modèles), audit trail double niveau, purge auto. Hébergement HDS (France).",
+      features: [
+        "Marque blanche totale : logo, thème, domaine, vocabulaire, IA, emails, mentions, CGV",
+        "API REST v1 + OpenAPI 3.1 : clients, bilans, nutrition, sport, santé, webhooks",
+        "Clés API scopées (clients:read, checkins:write, cron, health:sync...)",
+        "Webhooks HMAC signés : 8 événements (client.created, checkin.submitted, badge.earned...)",
+        "Export RGPD complet 1-clic (JSON, 37 modèles) + purge paramétrable",
+        "Audit trail double niveau : org (actions staff) + plateforme (actions Optibilan)",
+        "Hébergement HDS certifié (Supabase EU West, VPS France) — zéro transfert hors UE",
+        "SSO/SAML (offre Cabinet), 2FA obligatoire admins, CSP stricte, rate-limit persistant",
+      ],
+      techSpecs: [
+        "Architecture multi-tenant fail-closed (extension Prisma tenant-guard)",
+        "13/13 tests d'isolation en CI (test:isolation.mts)",
+        "DPA signé, registre sous-traitants Art.28 RGPD à jour",
+        "PITR 7j + snapshots quotidiens + backups chiffrés S3 EU 30j",
+      ],
+      color: "bordeaux",
     },
   ],
 } = Astro.props;
@@ -77,7 +158,7 @@ const {
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {pillars.map((pillar, index) => (
-        <article class="card-hover group relative overflow-hidden" style={{ '--pillar-color': `var(--color-${pillar.color})` }}>
+        <article class="card-hover group relative overflow-hidden" style="--pillar-color: var(--color-{pillar.color})">
           <div class="absolute top-0 left-0 right-0 h-1 bg-[var(--pillar-color)] opacity-0 group-hover:opacity-100 transition-opacity duration-300" aria-hidden="true"></div>
 
           <div class="p-6 md:p-8">
@@ -92,7 +173,7 @@ const {
               {pillar.description}
             </p>
 
-            <ul class="space-y-2 mb-6" role="list">
+            <ul class="space-y-2 mb-5" role="list">
               {pillar.features.map(feature => (
                 <li key={feature} class="flex items-start gap-2 text-sm text-encre/60 group">
                   <Icon name="check" class="w-4 h-4 text-[var(--pillar-color)] flex-shrink-0 mt-0.5 transition-transform group-hover:translate-x-0.5" />
@@ -101,7 +182,22 @@ const {
               ))}
             </ul>
 
-            <a href={`/fonctionnalites#${pillar.title.toLowerCase().replace(/ & /g, '-').replace(/\s+/g, '-')}`} class="inline-flex items-center gap-1.5 text-sm font-medium text-[var(--pillar-color)] hover:opacity-80 transition-opacity group">
+            <details class="group border-t border-encre/10 pt-4">
+              <summary class="flex items-center gap-2 text-sm font-medium text-[var(--pillar-color)] cursor-pointer list-none">
+                <span>Spécifications techniques</span>
+                <Icon name="chevronDown" class="w-4 h-4 transition-transform group-open:rotate-180" />
+              </summary>
+              <ul class="mt-3 space-y-1.5 text-xs text-encre/50" role="list">
+                {pillar.techSpecs.map(spec => (
+                  <li key={spec} class="flex items-start gap-1.5">
+                    <span class="w-1.5 h-1.5 rounded-full bg-[var(--pillar-color)] flex-shrink-0 mt-2" />
+                    <span>{spec}</span>
+                  </li>
+                ))}
+              </ul>
+            </details>
+
+            <a href={`/fonctionnalites#${pillar.title.toLowerCase().replace(/ & /g, '-').replace(/\s+/g, '-')}`} class="inline-flex items-center gap-1.5 text-sm font-medium text-[var(--pillar-color)] hover:opacity-80 transition-opacity group mt-4 block">
               Voir le détail
               <Icon name="arrowRight" class="w-4 h-4 transition-transform group-hover:translate-x-1" />
             </a>

@@ -9,34 +9,49 @@ interface Props {
     title: string;
     description: string;
     icon: string;
-    image?: string;
+    details: string[];
   }>;
 }
 
 const {
   title = "Votre cabinet opérationnel en 3 étapes",
-  subtitle = "De la création à l'accompagnement de vos premiers clients, tout est pensé pour aller à l'essentiel.",
+  subtitle = "Fluidité totale : de l'onboarding automatisé au pilotage de 50+ clients sans perdre l'exigence du sur-mesure.",
   steps = [
     {
       number: "01",
-      title: "Créez votre cabinet",
-      description: "Inscrivez-vous, choisissez votre offre, personnalisez votre marque (logo, couleurs, vocabulaire, domaine). Votre espace est prêt en 5 minutes.",
-      icon: "document",
-      image: "/images/process-1.jpg"
+      title: "Onboarding client automatisé",
+      description: "Le client reçoit son lien, remplit son bilan initial (objectifs, antécédents, mode de vie), connecte sa montre (Apple Health, Oura, Garmin) ou importe ses analyses sanguines. Tout est pré-rempli avant votre premier échange.",
+      icon: "calendar",
+      details: [
+        "Bilans guidés + questionnaires intelligents",
+        "Sync Apple Health / Oura / Garmin en 1 clic",
+        "Import analyses sanguines (PDF/CSV) — IA pré-remplit",
+        "Dreamboard & objectif ultime dès l'inscription",
+      ],
     },
     {
       number: "02",
-      title: "Invitez votre équipe",
-      description: "Ajoutez vos coachs, diététiciens, préparateurs mentaux. Définissez leurs rôles et spécialités. Ils reçoivent leur lien d'activation instantanément.",
-      icon: "users",
-      image: "/images/process-2.jpg"
+      title: "Création du protocole unifié",
+      description: "Depuis une seule vue, vous assignez les modules (sport, nutrition, prépa mentale, journal, habitudes). Les templates réutilisables et l'IA génèrent le plan en minutes. Chaque praticien (coach, diététicien, mental) voit exactement son périmètre.",
+      icon: "document",
+      details: [
+        "Templates sport/nutrition/mental réutilisables",
+        "Assignation modules par praticien (rôles cloisonnés)",
+        "Assistant IA : plans alimentaires, séances, exercices mentaux",
+        "Vocabulaire & marque blanche appliqués auto",
+      ],
     },
     {
       number: "03",
-      title: "Accompagnez vos clients",
-      description: "Créez vos premiers clients, ils reçoivent leur lien d'activation. Bilans, nutrition, sport, mental, santé : tout est centralisé dans un seul espace.",
-      icon: "chart",
-      image: "/images/process-3.jpg"
+      title: "Suivi & Scalabilité pilotés par l'IA",
+      description: "Gérez 50+ clients avec l'exigence du sur-mesure. La gamification (XP, badges, habitudes) engage vos clients. L'IA détecte signaux faibles (stagnation, baisse motivation, observance) et vous alerte. Vous intervenez au bon moment, sur le bon client.",
+      icon: "zap",
+      details: [
+        "Gamification : XP, badges, habitudes quotidiennes, dreamboard",
+        "Alertes IA : signaux faibles, stagnation, observance compléments",
+        "Vue cohortes : rétention, progression, NPS par praticien",
+        "Appels planifiés + rappels auto (Slack/Email/Push/ICS)",
+      ],
     },
   ],
 } = Astro.props;
@@ -54,33 +69,42 @@ const {
     </header>
 
     <div class="relative">
-      <div class="hidden lg:absolute top-[50px] left-1/2 -translate-x-1/2 w-[calc(100%-4rem)] max-w-5xl h-px bg-gradient-to-r from-transparent via-bleu-signature/30 to-transparent" aria-hidden="true"></div>
+      <div class="hidden lg:absolute top-[60px] left-1/2 -translate-x-1/2 w-[calc(100%-4rem)] max-w-5xl h-px bg-gradient-to-r from-transparent via-bleu-signature/30 to-transparent" aria-hidden="true"></div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
         {steps.map((step, index) => (
-          <article class="relative group" style={{ '--step-index': index }}>
+          <article class="relative group" style="--step-index: {index}">
             <div class="absolute -top-3 left-1/2 -translate-x-1/2 z-10">
-              <div class="w-10 h-10 rounded-full bg-bleu-signature text-craie flex items-center justify-center font-display text-lg font-bold shadow-lg shadow-bleu-signature/30">
+              <div class="w-12 h-12 rounded-full bg-gradient-to-br from-bleu-signature to-bleu-lecture text-craie flex items-center justify-center font-display text-lg font-bold shadow-lg shadow-bleu-signature/30">
                 {step.number}
               </div>
               {index < steps.length - 1 && (
-                <div class="hidden lg:absolute top-[50px] left-full w-full h-px bg-gradient-to-r from-bleu-signature/30 via-transparent to-transparent" aria-hidden="true"></div>
+                <div class="hidden lg:absolute top-[60px] left-full w-full h-px bg-gradient-to-r from-bleu-signature/30 via-transparent to-transparent" aria-hidden="true"></div>
               )}
             </div>
 
-            <div class="card-hover relative pt-12">
-              <div class="aspect-[4/3] w-full rounded-card-lg overflow-hidden mb-6 bg-gradient-to-br from-bleu-clair via-papier to-blanc border border-encre/10 relative">
-                <div class="absolute inset-0 flex items-center justify-center">
-                  <Icon name={step.icon as any} class="w-10 h-10 text-bleu-signature/30 group-hover:text-bleu-signature/50 transition-colors" />
-                </div>
+            <div class="card-hover relative pt-14">
+              <div class="icon-wrapper mx-auto mb-6" aria-hidden="true">
+                <Icon name={step.icon as any} class="w-7 h-7" />
               </div>
 
-              <h3 class="font-display text-xl font-bold text-encre mb-3">
+              <h3 class="font-display text-xl font-bold text-encre mb-3 text-center">
                 {step.title}
               </h3>
-              <p class="text-encre/60 leading-relaxed">
+              <p class="text-encre/60 leading-relaxed mb-6 text-center">
                 {step.description}
               </p>
+
+              <ul class="space-y-3" role="list">
+                {step.details.map((detail, i) => (
+                  <li key={i} class="flex items-start gap-3 text-sm text-encre/70 group">
+                    <span class="inline-flex w-5 h-5 text-bleu-signature flex-shrink-0 mt-0.5 transition-transform group-hover:translate-x-0.5" aria-hidden="true">
+                      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                    </span>
+                    <span>{detail}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
           </article>
         ))}

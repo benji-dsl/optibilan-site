@@ -2,23 +2,34 @@
 import Icon from './Icon.astro';
 
 interface Props {
+  variant?: 'home' | 'page';
   title?: string;
   subtitle?: string;
   badge?: string;
   stats?: Array<{ value: string; label: string }>;
+  primaryCTA?: { href: string; label: string };
+  secondaryCTA?: { href: string; label: string };
 }
 
 const {
-  title = "Le SaaS de suivi coaching pour cabinets, studios et coachs indépendants",
-  subtitle = "Bilans, nutrition, sport, prépa mentale, santé connectée. Multi-tenant natif, marque blanche totale, API, webhooks, hébergement EU. Lancez votre espace en 5 minutes.",
-  badge = "Nouveau : Assistant IA + Sync Apple Health",
-  stats = [
-    { value: "150+", label: "Cabinets équipés" },
-    { value: "2 500+", label: "Coachs actifs" },
-    { value: "50 000+", label: "Clients suivis" },
-    { value: "99,9%", label: "Disponibilité" },
-  ],
+  variant = 'home',
+  title,
+  subtitle,
+  badge,
+  stats,
+  primaryCTA = { href: 'https://app.optibilan.com/inscription', label: 'Essai gratuit 30 jours' },
+  secondaryCTA = { href: '/fonctionnalites', label: 'Voir les fonctionnalités' },
 } = Astro.props;
+
+const homeTitle = title || "Le système d'exploitation des pros de la santé et de la performance";
+const homeSubtitle = subtitle || "Digitalisez, suivez et scalez vos accompagnements haut de gamme. Bilans, nutrition, sport, prépa mentale, santé connectée (Apple Health, Oura, Garmin), biomarqueurs sanguins. Multi-tenant, marque blanche, API.";
+const homeBadge = badge || "Nouveau : Assistant IA + Sync Apple Health/Oura/Garmin";
+const homeStats = stats || [
+  { value: "150+", label: "Cabinets équipés" },
+  { value: "2 500+", label: "Coachs actifs" },
+  { value: "50 000+", label: "Clients suivis" },
+  { value: "4 000+", label: "Transformations documentées" },
+];
 ---
 
 <section class="relative section-lg pt-32 md:pt-40 lg:pt-48 overflow-hidden" aria-labelledby="hero-title">
@@ -30,22 +41,22 @@ const {
       {badge && (
         <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-bleu-clair text-bleu-lecture text-sm font-medium mb-8 animate-fade-in" role="status">
           <span class="w-2 h-2 rounded-full bg-bleu-signature animate-pulse" aria-hidden="true"></span>
-          {badge}
+          {homeBadge}
         </span>
       )}
 
       <h1 id="hero-title" class="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-encre tracking-tight leading-[1.1] mb-6 animate-slide-up">
-        {title.split('\n').map((line, i) => (
+        {homeTitle.split('\n').map((line, i) => (
           <span key={i} class="block">{line}</span>
         ))}
       </h1>
 
       <p class="text-lg md:text-xl text-encre/70 leading-relaxed mb-10 max-w-2xl mx-auto animate-slide-up delay-200">
-        {subtitle}
+        {homeSubtitle}
       </p>
 
       <div class="flex flex-wrap items-center justify-center gap-8 md:gap-12 mb-10 animate-slide-up delay-300" role="list" aria-label="Statistiques de confiance">
-        {stats.map((stat, i) => (
+        {homeStats.map((stat, i) => (
           <div key={i} class="flex flex-col items-center" role="listitem">
             <div class="font-display text-3xl md:text-4xl font-bold text-bleu-signature">{stat.value}</div>
             <div class="text-sm text-encre/60 font-medium">{stat.label}</div>
@@ -54,27 +65,51 @@ const {
       </div>
 
       <div class="flex flex-col sm:flex-row items-center justify-center gap-4 animate-slide-up delay-300">
-        <a href="https://app.optibilan.com/inscription" class="btn-primary w-full sm:w-auto group">
-          Essai gratuit 30 jours
+        <a href={primaryCTA.href} class="btn-demo w-full sm:w-auto group" data-track="hero_cta_demo">
+          Réserver une démo
           <Icon name="arrowRight" class="w-5 h-5 transition-transform group-hover:translate-x-1" />
         </a>
-        <a href="/fonctionnalites" class="btn-secondary w-full sm:w-auto">
-          Voir les fonctionnalités
+        <a href={secondaryCTA.href} class="btn-secondary w-full sm:w-auto" data-track="hero_cta_features">
+          {secondaryCTA.label}
         </a>
       </div>
 
-      <p class="mt-6 text-sm text-encre/50 animate-fade-in delay-400">
-        Aucune carte bancaire requise · Annulation en 1 clic · Conforme RGPD · Hébergement EU
+      <div class="mt-8 flex flex-wrap items-center justify-center gap-6 animate-fade-in delay-400">
+        <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-blanc border border-encre/10 text-xs font-medium text-encre/60">
+          <Icon name="shield" class="w-3 h-3 text-bleu-signature" /> RGPD by design
+        </span>
+        <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-blanc border border-encre/10 text-xs font-medium text-encre/60">
+          <Icon name="lock" class="w-3 h-3 text-bleu-signature" /> Hébergement HDS (EU)
+        </span>
+        <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-blanc border border-encre/10 text-xs font-medium text-encre/60">
+          <Icon name="check" class="w-3 h-3 text-emerald-500" /> Export données 1-clic
+        </span>
+      </div>
+
+      <p class="mt-4 text-sm text-encre/50">
+        Aucune carte bancaire · Annulation 1 clic · Onboarding dédié
       </p>
     </div>
 
-    <div class="mt-16 relative animate-scale-in delay-500 hidden lg:block" aria-hidden="true">
-      <div class="aspect-[4/3] max-w-4xl mx-auto rounded-card-lg bg-gradient-to-br from-bleu-clair via-papier to-blanc border border-encre/10 shadow-elevated flex items-center justify-center">
-        <div class="text-center p-8">
-          <Icon name="chart" class="w-12 h-12 mx-auto mb-4 text-bleu-signature/50" />
-          <p class="text-encre/40 text-sm">Dashboard Optibilan — Illustration à venir</p>
+    {variant === 'home' && (
+      <div class="mt-16 relative animate-scale-in delay-500 hidden lg:block" aria-hidden="true">
+        <div class="aspect-[16/10] max-w-5xl mx-auto rounded-card-lg bg-encre/5 border border-encre/10 shadow-elevated overflow-hidden relative">
+          <div class="absolute inset-0 bg-gradient-to-br from-bleu-signature/5 via-transparent to-indigo/5" aria-hidden="true"></div>
+          <div class="relative z-10 flex items-center justify-center h-full p-4">
+            <div class="text-center max-w-md">
+              <div class="aspect-video bg-encre/10 rounded-lg mb-4 border border-encre/10 flex items-center justify-center relative overflow-hidden">
+                <div class="absolute inset-0 grid grid-cols-12 gap-2 p-4 opacity-10" aria-hidden="true">
+                  {[...Array(24)].map((_, i) => (
+                    <div key={i} class="col-span-1 h-4 bg-bleu-signature/20 rounded animate-pulse" style={{animationDelay: `${i * 50}ms`}} />
+                  ))}
+                </div>
+                <Icon name="chart" class="w-16 h-16 text-bleu-signature/30 relative z-10" />
+              </div>
+              <p class="text-encre/40 text-sm font-medium">Dashboard Optibilan — Graphiques d'évolution, habitudes, biomarqueurs, IA</p>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+    )}
   </div>
 </section>

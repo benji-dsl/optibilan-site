@@ -166,7 +166,7 @@ h1, h2, h3, h4, h5, h6 {
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  padding: 0.75rem 1.25rem;
+  padding: 0.875rem 1.5rem;
   border-radius: var(--radius-pill);
   font-weight: 600;
   font-size: 0.875rem;
@@ -176,6 +176,8 @@ h1, h2, h3, h4, h5, h6 {
   text-decoration: none;
   transition: all 200ms ease;
   white-space: nowrap;
+  position: relative;
+  overflow: hidden;
 }
 
 .btn:disabled {
@@ -183,36 +185,69 @@ h1, h2, h3, h4, h5, h6 {
   cursor: not-allowed;
 }
 
+.btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.15), rgba(255,255,255,0));
+  opacity: 0;
+  transition: opacity 200ms ease;
+}
+
+.btn:hover::before {
+  opacity: 1;
+}
+
 .btn-primary,
-.btn-gold {
+.btn-gold,
+.btn-demo {
   background-image: var(--gradient-btn-primary);
   color: #FFFFFF;
-  box-shadow: 0 10px 15px -3px color-mix(in oklab, var(--color-bleu-signature) 25%, transparent), 0 4px 6px -4px color-mix(in oklab, var(--color-bleu-signature) 25%, transparent);
+  box-shadow: 0 4px 14px -2px color-mix(in oklab, var(--color-bleu-signature) 35%, transparent), 0 2px 6px -2px color-mix(in oklab, var(--color-bleu-signature) 25%, transparent);
 }
 
 .btn-primary:hover,
-.btn-gold:hover {
-  opacity: 0.9;
+.btn-gold:hover,
+.btn-demo:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px -4px color-mix(in oklab, var(--color-bleu-signature) 45%, transparent), 0 4px 12px -4px color-mix(in oklab, var(--color-bleu-signature) 35%, transparent);
+}
+
+.btn-primary:active,
+.btn-gold:active,
+.btn-demo:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px -2px color-mix(in oklab, var(--color-bleu-signature) 30%, transparent);
 }
 
 .btn-secondary {
   background-color: transparent;
-  border: 1px solid color-mix(in oklab, var(--color-encre-texte) 20%, transparent);
+  border: 1.5px solid color-mix(in oklab, var(--color-encre-texte) 25%, transparent);
   color: var(--color-encre-texte);
 }
 
 .btn-secondary:hover {
-  background-color: color-mix(in oklab, var(--color-encre-texte) 5%, transparent);
+  background-color: color-mix(in oklab, var(--color-encre-texte) 4%, transparent);
+  border-color: var(--color-encre-texte);
+  transform: translateY(-1px);
 }
 
 .btn-ghost {
   background-color: transparent;
   color: color-mix(in oklab, var(--color-encre-texte) 70%, transparent);
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .btn-ghost:hover {
   color: var(--color-encre-texte);
-  background-color: color-mix(in oklab, var(--color-encre-texte) 5%, transparent);
+  background-color: color-mix(in oklab, var(--color-encre-texte) 4%, transparent);
+}
+
+.btn-demo {
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  font-weight: 700;
 }
 
 /* ===== CARTES ===== */

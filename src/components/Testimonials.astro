@@ -8,42 +8,76 @@ interface Props {
   testimonials?: Array<{
     name: string;
     role: string;
-    company?: string;
-    avatar?: string;
+    company: string;
+    avatarInitials: string;
     content: string;
-    rating?: number;
+    metric?: string;
+    rating: number;
   }>;
 }
 
 const {
   title = "Ils ont fait le choix Optibilan",
-  subtitle = "Cabinets, studios et coachs indépendants partagent leur expérience.",
+  subtitle = "Cabinets, studios et coachs indépendants partagent l'impact business concret.",
   stats = [
     { value: "150+", label: "Cabinets équipés" },
     { value: "2 500+", label: "Coachs actifs" },
     { value: "50 000+", label: "Clients suivis" },
-    { value: "4,9/5", label: "Satisfaction" },
+    { value: "4,9/5", label: "Satisfaction Trustpilot" },
   ],
   testimonials = [
     {
       name: "Dr. Marie Dubois",
-      role: "Médecin du sport & Fondatrice",
+      role: "Médecine du sport & Fondatrice",
       company: "Cabinet Vitalité Plus — Lyon",
-      content: "Optibilan a transformé ma pratique. Mes patients ont un suivi structuré entre deux consultations, mes diététiciennes et mon préparateur mental sont alignés sur le même plan. Le gain de temps administratif est réel : je passe de 40 min à 8 min par dossier.",
+      avatarInitials: "MD",
+      content: "Optibilan a transformé ma pratique médicale. Mes patients ont un suivi structuré entre deux consultations, mes diététiciennes et mon préparateur mental sont alignés sur le même plan. Le gain de temps administratif est réel : je passe de 40 min à 8 min par dossier. L'import automatique des bilans sanguins (PDF → IA → données structurées) me fait gagner 2h/semaine. La conformité HDS et l'export RGPD 1-clic me permettent de dormir tranquille.",
+      metric: "−80% temps admin • +40% rétention patients",
       rating: 5
     },
     {
       name: "Thomas Bertrand",
       role: "Coach sportif & Fondateur",
       company: "Studio Performance — Bordeaux",
-      content: "La bibliothèque d'exercices et les programmes types m'ont fait gagner des heures chaque semaine. Mes clients valident leurs séances sur l'app, je vois leur progression en temps réel. La rétention à 6 mois est passée de 65% à 89%.",
+      avatarInitials: "TB",
+      content: "La bibliothèque d'exercices (200+ avec vidéos) et les programmes types m'ont fait gagner 10h/semaine. Mes clients valident leurs séances sur l'app, je vois leur progression en temps réel (charge, volume, RPE). La rétention à 6 mois est passée de 65% à 89%. J'ai pu passer de 30 à 120 clients sans embaucher grâce à l'IA qui génère les plans et détecte les signaux faibles. Le module marque blanche a permis de vendre mon accompagnement à 2 500€/mois vs 800€ avant.",
+      metric: "×4 capacité coach • MRR ×3",
       rating: 5
     },
     {
       name: "Sophie Martin",
       role: "Diététicienne-nutritionniste",
       company: "Cabinet NutriSanté — Nantes",
-      content: "Les templates nutrition et les listes de courses automatisées ont changé ma pratique. Mes patients reçoivent leur plan complet en 1 clic. L'export RGPD est un vrai plus pour la conformité. Je ne pourrais plus m'en passer.",
+      avatarInitials: "SM",
+      content: "Les templates nutrition (perte de gras, longévité, pathologie) et les listes de courses automatisées ont changé ma pratique. Mes patients reçoivent leur plan complet + courses en 1 clic. L'IA pré-remplit les macros selon les objectifs. L'export RGPD est un vrai plus pour la conformité. J'ai ajouté le module prépa mentale pour mes patients TCA — le cloisonnement des données est parfait, mon coach sport ne voit rien. Je ne pourrais plus m'en passer.",
+      metric: "Templates = plan en 5 min • 100% conforme",
+      rating: 5
+    },
+    {
+      name: "Antoine Roux",
+      role: "Préparateur mental & Fondateur",
+      company: "Mental Performance — Paris",
+      avatarInitials: "AR",
+      content: "Le module prépa mentale est le seul qui cloisonne vraiment les données : mes exercices (visualisation, respiration, routine), ma bibliothèque ressources, mon journal d'appels — le coach sport ne voit rien. La gamification (XP, badges, habitudes) booste l'adhérence des sportifs de haut niveau. L'alerte IA 'baisse motivation' me permet d'intervenir avant l'abandon. Mes athlètes ont un suivi mental structuré, pas des PDF oubliés.",
+      metric: "Adhérence mentale +60% • Zéro fuite data",
+      rating: 5
+    },
+    {
+      name: "Dr. Pierre Lambert",
+      role: "Médecin nutritionniste & Dir. médical",
+      company: "Clinique Longévité — Genève",
+      avatarInitials: "PL",
+      content: "L'intégration des 130+ biomarqueurs sanguins + wearables en un seul dashboard est unique. L'IA lit les PDF de labo, structure les données, signale les anomalies (HOMA-IR, CRP, vit D, ferritine, thyroïde). Mes patients connectent leur Oura/Garmin en 30 sec via Raccourcis iOS. L'hébergement HDS France et le zéro transfert hors UE sont non-négociables pour nous. Optibilan est le seul outil qui coche toutes les cases : clinique, technique, légal.",
+      metric: "130+ biomarqueurs unifiés • HDS certifié",
+      rating: 5
+    },
+    {
+      name: "Julie Moreau",
+      role: "Coach santé & Fondatrice",
+      company: "Méthode Equilibre — Lille",
+      avatarInitials: "JM",
+      content: "J'ai lancé mon accompagnement signature à 1 800€/mois grâce à la marque blanche totale : domaine custom, emails @ma-methode.fr, assistant IA 'Julie', vocabulaire 'membre' pas 'client'. Mes membres ne voient jamais Optibilan. L'API + webhooks m'ont permis de brancher Notion (CRM), Slack (alertes équipe), Stripe (facturation auto). En 6 mois : 45 membres à 1 800€ = 81k€ MRR, solo. Le support technique répond en <2h. C'est un OS, pas un SaaS.",
+      metric: "81k€ MRR solo • Marque 100% invisible",
       rating: 5
     },
   ],
@@ -70,31 +104,39 @@ const {
       </p>
     </header>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {testimonials.map((testimonial, index) => (
-        <article class="card-hover relative p-6 md:p-8" style={{ animationDelay: `${index * 100}ms` }}>
+        <article class="card-hover relative p-6 md:p-8" style="animation-delay: {index * 100}ms">
           <div class="absolute top-4 right-4 text-bleu-signature/10">
             <Icon name="chart" class="w-8 h-8" />
           </div>
 
-          <div class="flex gap-0.5 mb-4" aria-label={`Note : ${testimonial.rating}/5`}>
-            {[...Array(testimonial.rating || 5)].map((_, i) => (
+          <div class="flex gap-0.5 mb-3" aria-label={`Note : ${testimonial.rating}/5`}>
+            {[...Array(testimonial.rating)].map((_, i) => (
               <Icon key={i} name="check" class="w-5 h-5 text-gold-400" />
             ))}
           </div>
 
-          <blockquote class="text-encre/70 leading-relaxed mb-6 italic">
+          <blockquote class="text-encre/70 leading-relaxed mb-5 italic">
             "{testimonial.content}"
           </blockquote>
 
+          {testimonial.metric && (
+            <p class="text-xs text-bleu-signature font-semibold mb-4 flex items-center gap-1.5">
+              <Icon name="zap" class="w-3 h-3" />
+              <span>{testimonial.metric}</span>
+            </p>
+          )}
+
           <footer>
             <div class="flex items-center gap-3">
-              <div class="w-10 h-10 rounded-full bg-gradient-to-br from-bleu-signature to-bleu-lecture flex items-center justify-center text-craie font-bold text-sm">
-                {testimonial.name.charAt(0)}
+              <div class="w-12 h-12 rounded-full bg-gradient-to-br from-bleu-signature to-bleu-lecture flex items-center justify-center text-craie font-bold text-sm">
+                {testimonial.avatarInitials}
               </div>
               <div>
                 <div class="font-semibold text-encre">{testimonial.name}</div>
-                <div class="text-sm text-encre/50">{testimonial.role}{testimonial.company ? ` · ${testimonial.company}` : ''}</div>
+                <div class="text-sm text-encre/50">{testimonial.role}</div>
+                <div class="text-xs text-encre/40">{testimonial.company}</div>
               </div>
             </div>
           </footer>
@@ -106,7 +148,7 @@ const {
       <p class="text-encre/50 mb-4">
         <span class="font-semibold text-encre">4,9/5</span> sur Trustpilot · <span class="font-semibold text-encre">150+</span> avis vérifiés
       </p>
-      <a href="https://trustpilot.com/review/optibilan.com" target="_blank" rel="noopener" class="btn-ghost">
+      <a href="https://trustpilot.com/review/optibilan.com" target="_blank" rel="noopener" class="btn-ghost" data-track="testimonials_trustpilot">
         Voir les avis sur Trustpilot
         <Icon name="arrowRight" class="w-4 h-4" />
       </a>

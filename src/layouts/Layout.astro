@@ -22,6 +22,11 @@ const SITE_NAME = 'Optibilan';
 const fullUrl = canonical ? `${SITE_URL}${canonical}` : Astro.url.href;
 const fullOgImage = ogImage.startsWith('http') ? ogImage : `${SITE_URL}${ogImage}`;
 
+// GA4 Measurement ID - replace with actual ID when available
+const GA4_ID = import.meta.env.PUBLIC_GA4_ID || 'G-XXXXXXXXXX';
+// PostHog - replace with actual key when available
+const POSTHOG_KEY = import.meta.env.PUBLIC_POSTHOG_KEY || 'phc_XXXXXXXXXX';
+
 import '../styles/global.css';
 ---
 
@@ -66,6 +71,33 @@ import '../styles/global.css';
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" media="print" onload="this.media='all'" />
 
+    <!-- JSON-LD: Organization -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'Organization',
+      name: SITE_NAME,
+      url: SITE_URL,
+      logo: `${SITE_URL}/icon-512.png`,
+      sameAs: [
+        'https://twitter.com/optibilan',
+        'https://linkedin.com/company/optibilan',
+        'https://github.com/optibilan',
+        'https://youtube.com/@optibilan',
+      ],
+      contactPoint: {
+        '@type': 'ContactPoint',
+        telephone: '+33-1-XX-XX-XX-XX',
+        contactType: 'customer service',
+        availableLanguage: ['French', 'English'],
+      },
+      address: {
+        '@type': 'PostalAddress',
+        addressCountry: 'FR',
+        addressLocality: 'Paris',
+      },
+    })}></script>
+
+    <!-- JSON-LD: WebSite -->
     <script type="application/ld+json" set:html={JSON.stringify({
       '@context': 'https://schema.org',
       '@type': 'WebSite',
@@ -75,8 +107,67 @@ import '../styles/global.css';
         '@type': 'SearchAction',
         target: { '@type': 'EntryPoint', urlTemplate: `${SITE_URL}/recherche?q={search_term_string}` },
         'query-input': 'required name=search_term_string'
-      }
+      },
+      publisher: {
+        '@type': 'Organization',
+        name: SITE_NAME,
+      },
     })}></script>
+
+    <!-- JSON-LD: SoftwareApplication (SaaS) -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'SoftwareApplication',
+      name: 'Optibilan',
+      applicationCategory: 'BusinessApplication',
+      operatingSystem: 'Cloud / SaaS',
+      offers: {
+        '@type': 'Offer',
+        price: '49',
+        priceCurrency: 'EUR',
+        priceSpecification: {
+          '@type': 'UnitPriceSpecification',
+          billingDuration: 'P1M',
+        },
+        availability: 'https://schema.org/InStock',
+        url: `${SITE_URL}/tarifs`,
+      },
+      description: 'SaaS multi-tenant de suivi coaching pour cabinets, studios et coachs indépendants. Bilans, nutrition, sport, prépa mentale, santé connectée, marque blanche, API, RGPD/HDS.',
+      featureList: [
+        'Bilans & progression automatisés',
+        'Nutrition complète (plans, courses, compléments)',
+        'Sport & programmes (bibliothèque 200+ exercices)',
+        'Préparation mentale (exercices, ressources, journal)',
+        'Santé connectée (Apple Health, Oura, Garmin, 130+ biomarqueurs)',
+        'Marque blanche totale + API REST + Webhooks',
+        'RGPD/HDS by design, hébergement EU',
+      ],
+      aggregateRating: {
+        '@type': 'AggregateRating',
+        ratingValue: '4.9',
+        reviewCount: '150',
+        bestRating: '5',
+        worstRating: '1',
+      },
+    })}></script>
+
+    <!-- Google Analytics 4 -->
+    <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA4_ID}`}></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', '{GA4_ID}', {
+        send_page_view: true,
+        anonymize_ip: true,
+      });
+    </script>
+
+    <!-- PostHog -->
+    <script is:inline>
+      !function(){var t=document.createElement("script");t.async=!0,t.src="https://eu.i.posthog.com/static/array.js",document.head.appendChild(t)}();
+      window.posthog=window.posthog||[];window.posthog.push(["init","{POSTHOG_KEY}",{api_host:"https://eu.i.posthog.com",capture_pageview:true,capture_pageleave:true,persist:true,disable_session_recording:false,property_allowlist:["$current_url","$host","$pathname","$referrer","$browser","$os","$device_type"]}]);
+    </script>
 
     <script is:inline>
       if ('serviceWorker' in navigator) {

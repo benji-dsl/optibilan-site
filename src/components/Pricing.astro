@@ -127,19 +127,19 @@ const displayPlans = plans && plans.length > 0 ? plans : defaultPlans;
             <p class="text-sm text-encre/50">{plan.tagline}</p>
           </div>
 
-          <div class="mb-6" data-price-container>
-            <div class="flex items-baseline gap-1" data-monthly>
-              <span class="text-4xl font-bold text-encre">{plan.priceMonthly}</span>
-              <span class="text-encre/50">/mois</span>
+<div class="mb-6" data-price-container>
+              <div class="flex items-baseline gap-1" data-monthly>
+                <span class="text-4xl font-bold text-encre">{plan.priceMonthly}</span>
+                <span class="text-encre/50">€/mois</span>
+              </div>
+              <div class="flex items-baseline gap-1 hidden" data-yearly>
+                <span class="text-4xl font-bold text-encre">{plan.priceYearly}</span>
+                <span class="text-encre/50">€/mois</span>
+              </div>
+              <p class="text-sm text-encre/50 mt-1" data-yearly-note hidden>
+                Facturé {plan.priceYearly * 12}€ / an
+              </p>
             </div>
-            <div class="flex items-baseline gap-1 hidden" data-yearly>
-              <span class="text-4xl font-bold text-encre">{plan.priceYearly}</span>
-              <span class="text-encre/50">/mois</span>
-            </div>
-            <p class="text-sm text-encre/50 mt-1" data-yearly-note hidden>
-              Facturé {plan.priceYearly * 12}€ / an
-            </p>
-          </div>
 
           <ul class="flex-1 space-y-3 mb-8" role="list">
             {plan.features.map(feature => (
