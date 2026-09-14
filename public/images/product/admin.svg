@@ -1,0 +1,132 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" width="1200" height="700">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F7F5F1"/>
+      <stop offset="100%" style="stop-color:#FFFFFF"/>
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFFFFF"/>
+      <stop offset="100%" style="stop-color:#F7F5F1"/>
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#7D3037"/>
+      <stop offset="100%" style="stop-color:#BE185D"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#7D3037" flood-opacity="0.15"/>
+    </filter>
+  </defs>
+  
+  <rect width="1200" height="700" fill="url(#bgGrad)"/>
+  
+  <!-- Header Bar -->
+  <rect x="40" y="30" width="1120" height="56" rx="12" fill="#FFFFFF" stroke="#E4E9E6" stroke-width="1" filter="url(#shadow)"/>
+  <text x="60" y="65" font-family="Inter, system-ui" font-size="15" font-weight="600" fill="#23211C">Administration</text>
+  <circle cx="1120" cy="58" r="16" fill="#FCE7F3"/>
+  <text x="1120" y="62" font-family="Inter" font-size="14" fill="#BE185D" text-anchor="middle" dominant-baseline="middle">⋯</text>
+  
+  <!-- Sidebar -->
+  <rect x="40" y="110" width="240" height="540" rx="16" fill="#FFFFFF" stroke="#E4E9E6" stroke-width="1"/>
+  <text x="60" y="145" font-family="Inter" font-size="13" font-weight="600" fill="#23211C">MENU</text>
+  <g font-family="Inter" font-size="14" fill="#64748B">
+    <text x="60" y="185">Utilisateurs</text>
+    <text x="60" y="220" font-weight="600" fill="#23211C">Offres</text>
+    <text x="60" y="255">Marque blanche</text>
+    <text x="60" y="290">Modules</text>
+    <text x="60" y="325">Questionnaire</text>
+    <text x="60" y="360">RGPD</text>
+    <text x="60" y="395">Audit</text>
+    <text x="60" y="430">Webhooks</text>
+    <text x="60" y="460" font-weight="600" fill="#23211C">API Keys</text>
+  </g>
+  
+  <!-- Main Content -->
+  <rect x="300" y="110" width="860" height="540" rx="16" fill="#FFFFFF" stroke="#E4E9E6" stroke-width="1"/>
+  
+  <!-- Header -->
+  <text x="340" y="155" font-family="Inter" font-size="22" font-weight="700" fill="#23211C">Administration</text>
+  <text x="340" y="185" font-size="14" fill="#64748B">Utilisateurs, offres, marque blanche, modules, conformité, audit, webhooks, API.</text>
+  
+  <!-- Admin Sections -->
+  <g transform="translate(340, 220)">
+    <rect x="0" y="0" width="410" height="160" rx="12" fill="url(#cardGrad)" stroke="#E4E9E6"/>
+    <rect x="10" y="10" width="120" height="30" rx="6" fill="#E8E8F5"/>
+    <text x="70" y="30" font-family="Inter" font-size="12" font-weight="600" fill="#2A8AFF" text-anchor="middle">Gestion utilisateurs</text>
+    <text x="70" y="65" font-size="11" fill="#64748B" text-anchor="middle">Rôles: admin, coach, mental, diet, support</text>
+    <text x="70" y="85" font-size="11" fill="#64748B" text-anchor="middle">Spécialités par praticien</text>
+    <text x="70" y="105" font-size="11" fill="#64748B" text-anchor="middle">2FA TOTP obligatoire admins</text>
+    <text x="70" y="140" font-size="11" fill="#64748B" text-anchor="middle">Historique connexions + audit</text>
+    
+    <rect x="430" y="0" width="410" height="160" rx="12" fill="url(#cardGrad)" stroke="#E4E9E6"/>
+    <rect x="440" y="10" width="120" height="30" rx="6" fill="#E8F5E9"/>
+    <text x="645" y="30" font-family="Inter" font-size="12" font-weight="600" fill="#16A34A" text-anchor="middle">Offres d'appel personnalisées</text>
+    <text x="645" y="65" font-size="11" fill="#64748B" text-anchor="middle">Création libre: durée, fréquence, tarif</text>
+    <text x="645" y="85" font-size="11" fill="#64748B" text-anchor="middle">Inclus/exclus: modules, limites, SLA</text>
+    <text x="645" y="140" font-size="11" fill="#64748B" text-anchor="middle">Renouvellement auto / manuel / prorata</text>
+    
+    <rect x="0" y="180" width="410" height="160" rx="12" fill="url(#cardGrad)" stroke="#E4E9E6"/>
+    <rect x="10" y="10" width="120" height="30" rx="6" fill="#FEF3C7"/>
+    <text x="70" y="30" font-family="Inter" font-size="12" font-weight="600" fill="#CA8A04" text-anchor="middle">Marque blanche</text>
+    <text x="70" y="65" font-size="11" fill="#64748B" text-anchor="middle">Page unique: logo, thème, domaine, IA</text>
+    <text x="70" y="85" font-size="11" fill="#64748B" text-anchor="middle">Aperçu temps réel (desktop + mobile)</text>
+    <text x="70" y="105" font-size="11" fill="#64748B" text-anchor="middle">Niveaux: Solo / Studio / Cabinet</text>
+    <text x="70" y="140" font-size="11" fill="#64748B" text-anchor="middle">Activation instantanée, rollback 1-clic</text>
+    
+    <rect x="430" y="180" width="410" height="160" rx="12" fill="url(#cardGrad)" stroke="#E4E9E6"/>
+    <rect x="440" y="10" width="120" height="30" rx="6" fill="#E8E8F5"/>
+    <text x="645" y="30" font-family="Inter" font-size="12" font-weight="600" fill="#433BFF" text-anchor="middle">Modules on/off</text>
+    <text x="645" y="65" font-size="11" fill="#64748B" text-anchor="middle">12 modules indépendants, toggle unique</text>
+    <text x="645" y="85" font-size="11" fill="#64748B" text-anchor="middle">Pas de migration, pas de surcoût</text>
+    <text x="645" y="105" font-size="11" fill="#64748B" text-anchor="middle">Audit: qui a activé quoi, quand</text>
+    
+    <rect x="0" y="360" width="410" height="160" rx="12" fill="url(#cardGrad)" stroke="#E4E9E6"/>
+    <rect x="10" y="10" width="120" height="30" rx="6" fill="#E8F5E9"/>
+    <text x="70" y="30" font-family="Inter" font-size="12" font-weight="600" fill="#16A34A" text-anchor="middle">Questionnaire lancement</text>
+    <text x="70" y="65" font-size="11" fill="#64748B" text-anchor="middle">8 types champs + conditionnels + drag-drop</text>
+    <text x="70" y="85" font-size="11" fill="#64748B" text-anchor="middle">Logique conditionnelle (si X → afficher Y)</text>
+    <text x="70" y="105" font-size="11" fill="#64748B" text-anchor="middle">Pré-remplissage IA depuis données</text>
+    <text x="70" y="140" font-size="11" fill="#64748B" text-anchor="middle">Prévisualisation temps réel</text>
+    
+    <rect x="430" y="360" width="410" height="160" rx="12" fill="url(#cardGrad)" stroke="#E4E9E6"/>
+    <rect x="440" y="10" width="120" height="30" rx="6" fill="#FEF3C7"/>
+    <text x="645" y="30" font-family="Inter" font-size="12" font-weight="600" fill="#CA8A04" text-anchor="middle">RGPD & Conformité</text>
+    <text x="645" y="65" font-size="11" fill="#64748B" text-anchor="middle">Export 1-clic (37 modèles JSON)</text>
+    <text x="645" y="85" font-size="11" fill="#64748B" text-anchor="middle">Purge auto: durée + flag suppression</text>
+    <text x="645" y="105" font-size="11" fill="#64748B" text-anchor="middle">Droit à l'oubli: suppression cascade</text>
+    <text x="645" y="140" font-size="11" fill="#64748B" text-anchor="middle">DPA annexé, registre Art.28 à jour</text>
+  </g>
+  
+  <g transform="translate(340, 540)">
+    <rect x="0" y="0" width="410" height="100" rx="12" fill="url(#cardGrad)" stroke="#E4E9E6"/>
+    <rect x="10" y="10" width="120" height="30" rx="6" fill="#E8F5FF"/>
+    <text x="70" y="30" font-family="Inter" font-size="12" font-weight="600" fill="#2A8AFF" text-anchor="middle">Audit trail double niveau</text>
+    <text x="70" y="65" font-size="11" fill="#64748B" text-anchor="middle">Niveau org: actions staff (création, export...)</text>
+    <text x="70" y="85" font-size="11" fill="#64748B" text-anchor="middle">Niveau plateforme: équipe Optibilan (support, plan...)"
+    
+    <rect x="430" y="0" width="410" height="100" rx="12" fill="url(#cardGrad)" stroke="#E4E9E6"/>
+    <rect x="440" y="10" width="120" height="30" rx="6" fill="#E8F5E9"/>
+    <text x="645" y="30" font-family="Inter" font-size="12" font-weight="600" fill="#16A34A" text-anchor="middle">Webhooks & API Keys</text>
+    <text x="645" y="65" font-size="11" fill="#64748B" text-anchor="middle">8 événements, HMAC, retry, idempotence"
+    <text x="645" y="85" font-size="11" fill="#64748B" text-anchor="middle">Clés scopées, rotation, sandbox test"
+  </g>
+  
+  <!-- Tech Specs -->
+  <rect x="340" y="580" width="840" height="56" rx="12" fill="#F7F5F1" stroke="#E4E9E6"/>
+  <text x="380" y="625" font-family="Inter" font-size="15" font-weight="600" fill="#2A8AFF">Spécifications techniques</text>
+  <g font-family="Inter" font-size="12" fill="#64748B">
+    <text x="380" y="620">🏗️ Architecture multi-tenant fail-closed (extension Prisma tenant-guard)</text>
+    <text x="620" y="620">✅ 13/13 tests d'isolation en CI (test:isolation.mts)</text>
+    <text x="380" y="635">📋 DPA signé, registre sous-traitants Art.28 RGPD à jour</text>
+    <text x="620" y="635">💾 PITR 7j + snapshots quotidiens + backups chiffrés S3 EU 30j</text>
+    <text x="380" y="650">🏢 Certifications fournisseurs: SOC 2, ISO 27001, HIPAA, RGPD, HDS</text>
+  </g>
+  
+  <!-- Bottom Actions -->
+  <rect x="340" y="600" width="380" height="56" rx="12" fill="url(#accentGrad)" filter="url(#shadow)"/>
+  <text x="530" y="35" font-family="Inter" font-size="15" font-weight="700" fill="#FFFFFF" text-anchor="middle">Réserver une démo Admin</text>
+  <text x="510" y="35" font-size="14" fill="#FFFFFF" text-anchor="middle" dominant-baseline="middle">→</text>
+  
+  <rect x="760" y="600" width="180" height="56" rx="12" stroke="#7D3037" stroke-width="1.5" fill="transparent"/>
+  <text x="850" y="35" font-family="Inter" font-size="15" font-weight="600" fill="#7D3037" text-anchor="middle">Configurer l'admin</text>
+  
+</svg>

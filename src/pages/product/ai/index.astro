@@ -8,7 +8,7 @@ import TrustBar from '../../../components/TrustBar.astro';
 import Icon from '../../../components/Icon.astro';
 
 const pageTitle = 'IA & Automatisations — Optibilan';
-const pageDescription = 'L\'IA prépare, le professionnel décide. Structuration documents, synthèse bilans, alertes proactives. Transparence totale sur le pipeline IA.';
+const pageDescription = "L'IA prépare, le professionnel décide. Structuration documents, synthèse bilans, alertes proactives. Transparence totale sur le pipeline IA.";
 
 ---
 <Layout
@@ -24,7 +24,7 @@ const pageDescription = 'L\'IA prépare, le professionnel décide. Structuration
       title="L'IA prépare.<br>Le professionnel décide."
       subtitle="Structuration documents, synthèse bilans, alertes proactives. Transparence totale sur le pipeline IA : fournisseur, données envoyées, rétention, pseudonymisation."
       badge="Module IA — Inclus selon offre (1k/5k/20k msg/mois)"
-      primaryCTA={{ href: 'https://calendly.com/optibilan/demo', label: 'Voir l\'IA en démo' }}
+      primaryCTA={{ href: 'https://calendly.com/optibilan/demo', label: "Voir l'IA en démo" }}
       secondaryCTA={{ href: '/product/overview', label: 'Retour au produit' }}
     />
 
@@ -87,64 +87,57 @@ const pageDescription = 'L\'IA prépare, le professionnel décide. Structuration
         <h2 class="font-display text-2xl font-bold text-encre mb-8">Trois usages concrets</h2>
 
         <div class="space-y-8">
-          {[
-            {
-              icon: 'document',
-              title: 'PDF → Données structurées',
-              desc: 'Le client / pro upload un bilan sanguin, une lettre médecin, un compte-rendu. L\'IA extrait : biomarqueurs, valeurs, unités, seuils, commentaires. Pré-remplit les champs dans Optibilan. Flags anomalies selon seuils configurés. Gain : 15 min → 30 sec par document.',
-              features: [
-                'OCR + extraction structurée (biomarqueurs, valeurs, unités, seuils)',
-                'Flags auto : rouge (critique), orange (limite), vert (optimal)',
-                'Pré-remplissage champs Optibilan (gain 95% temps saisie)',
-                'Historique des imports pour audit',
-              ],
-              icon: 'document',
-            },
-            {
-              icon: 'chart',
-              title: 'Bilan → Synthèse',
-              desc: 'À chaque bilan client, l\'IA génère : résumé pro (points d\'attention, tendances, alertes), résumé client (langage accessible, encouragements, prochaines étapes). Ton configurable par cabinet (formel, bienveillant, direct). Gain : 10 min → 30 sec par bilan.',
-              features: [
-                'Double sortie : pro (technique) + client (accessible)',
-                'Ton personnalisable par cabinet (formel / bienveillant / direct)',
-                'Inclut : évolution, points d\'attention, prochaines étapes',
-                'Validation pro avant envoi (jamais auto-envoyé)',
-              ],
-              icon: 'chart',
-            },
-            {
-              icon: 'zap',
-              title: 'Données → Proposition / Alerte',
-              desc: 'L\'IA surveille en continu : stagnation > 2 sem, motivation ↓ > 30%, observance < 70%, corrélation charge/sommeil/RPE anormale. Génère : alerte cockpit pro, proposition d\'ajustement (charge, récup, nutrition), suggestion message client. Le pro valide / modifie / rejette.',
-              features: [
-                'Surveillance continue (tous nouveaux bilans / sync wearables)',
-                'Types : stagnation, désengagement, observance, surentraînement, corrélations',
-                'Sortie : alerte + proposition concrète (ex: "Réduire charge -10% cette semaine")',
-                'Validation pro obligatoire (jamais auto-appliqué)',
-              ],
-              icon: 'zap',
-            },
-          ].map((section, i) => (
-            <article id={section.icon} class="py-8 border-t border-encre/10 first:border-0">
-              <header class="flex items-center gap-4 mb-6">
-                <div class="icon-wrapper flex-shrink-0" aria-hidden="true" style="background-color: var(--color-bleu-clair);">
-                  <Icon name={section.icon} class="w-7 h-7 text-indigo" />
-                </div>
-                <div>
-                  <h3 class="font-display text-2xl font-bold text-encre">{section.title}</h3>
-                  <p class="text-encre/60 mt-1">{section.desc}</p>
-                </div>
-              </header>
-              <ul class="space-y-2 text-encre/60">
-                {section.features.map(f => (
-                  <li key={f} class="flex items-start gap-2">
-                    <Icon name="check" class="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5" />
-                    <span>{f}</span>
-                  </li>
-                ))}
-              </ul>
-            </article>
-          ))}
+          <article class="py-8 border-t border-encre/10 first:border-0">
+            <header class="flex items-center gap-4 mb-6">
+              <div class="icon-wrapper flex-shrink-0" aria-hidden="true" style="background-color: var(--color-bleu-clair);">
+                <Icon name="document" class="w-7 h-7 text-indigo" />
+              </div>
+              <div>
+                <h3 class="font-display text-2xl font-bold text-encre">PDF → Données structurées</h3>
+                <p class="text-encre/60 mt-1">Le client/pro upload un bilan sanguin, une lettre médecin, un compte-rendu. L'IA extrait : biomarqueurs, valeurs, unités, seuils, commentaires. Pré-remplit les champs dans Optibilan. Flags anomalies selon seuils configurés. Gain : 15 min → 30 sec par document.</p>
+              </div>
+            </header>
+            <ul class="space-y-2 text-encre/60">
+              <li class="flex items-start gap-2"><Icon name="check" class="w-5 h-5 text-emerald-500 flex-shrink-0" /> OCR + extraction structurée (biomarqueurs, valeurs, unités, seuils)</li>
+              <li class="flex items-start gap-2"><Icon name="check" class="w-5 h-5 text-emerald-500 flex-shrink-0" /> Flags auto : rouge (critique), orange (limite), vert (optimal)</li>
+              <li class="flex items-start gap-2"><Icon name="check" class="w-5 h-5 text-emerald-500 flex-shrink-0" /> Pré-remplissage champs Optibilan (gain 95% temps saisie)</li>
+              <li class="flex items-start gap-2"><Icon name="check" class="w-5 h-5 text-emerald-500 flex-shrink-0" /> Historique des imports pour audit</li>
+            </ul>
+          </article>
+          <article class="py-8 border-t border-encre/10 first:border-0">
+            <header class="flex items-center gap-4 mb-6">
+              <div class="icon-wrapper flex-shrink-0" aria-hidden="true" style="background-color: var(--color-bleu-clair);">
+                <Icon name="chart" class="w-7 h-7 text-indigo" />
+              </div>
+              <div>
+                <h3 class="font-display text-2xl font-bold text-encre">Bilan → Synthèse</h3>
+                <p class="text-encre/60 mt-1">À chaque bilan client, l'IA génère : résumé pro (points d'attention, tendances, alertes), résumé client (langage accessible, encouragements, prochaines étapes). Ton configurable par cabinet (formel, bienveillant, direct). Gain : 10 min → 30 sec par bilan.</p>
+              </div>
+            </header>
+            <ul class="space-y-2 text-encre/60">
+              <li class="flex items-start gap-2"><Icon name="check" class="w-5 h-5 text-emerald-500 flex-shrink-0" /> Double sortie : pro (technique) + client (accessible)</li>
+              <li class="flex items-start gap-2"><Icon name="check" class="w-5 h-5 text-emerald-500 flex-shrink-0" /> Ton personnalisable par cabinet (formel / bienveillant / direct)</li>
+              <li class="flex items-start gap-2"><Icon name="check" class="w-5 h-5 text-emerald-500 flex-shrink-0" /> Inclut : évolution, points d'attention, prochaines étapes</li>
+              <li class="flex items-start gap-2"><Icon name="check" class="w-5 h-5 text-emerald-500 flex-shrink-0" /> Validation pro avant envoi (jamais auto-envoyé)</li>
+            </ul>
+          </article>
+          <article class="py-8 border-t border-encre/10 first:border-0">
+            <header class="flex items-center gap-4 mb-6">
+              <div class="icon-wrapper flex-shrink-0" aria-hidden="true" style="background-color: var(--color-bleu-clair);">
+                <Icon name="zap" class="w-7 h-7 text-indigo" />
+              </div>
+              <div>
+                <h3 class="font-display text-2xl font-bold text-encre">Données → Proposition / Alerte</h3>
+                <p class="text-encre/60 mt-1">L'IA surveille en continu : stagnation > 2 sem, motivation ↓ > 30%, observance < 70%, corrélation charge/sommeil/RPE anormale. Génère : alerte cockpit pro, proposition d'ajustement (charge, récup, nutrition), suggestion message client. Le pro valide / modifie / rejette.</p>
+              </div>
+            </header>
+            <ul class="space-y-2 text-encre/60">
+              <li class="flex items-start gap-2"><Icon name="check" class="w-5 h-5 text-emerald-500 flex-shrink-0" /> Surveillance continue (tous nouveaux bilans / sync wearables)</li>
+              <li class="flex items-start gap-2"><Icon name="check" class="w-5 h-5 text-emerald-500 flex-shrink-0" /> Types : stagnation, désengagement, observance, surentraînement, corrélations</li>
+              <li class="flex items-start gap-2"><Icon name="check" class="w-5 h-5 text-emerald-500 flex-shrink-0" /> Sortie : alerte + proposition concrète (ex: "Réduire charge -10% cette semaine")</li>
+              <li class="flex items-start gap-2"><Icon name="check" class="w-5 h-5 text-emerald-500 flex-shrink-0" /> Validation pro obligatoire (jamais auto-appliqué)</li>
+            </ul>
+          </article>
         </div>
 
         <div class="mt-12 p-6 rounded-xl bg-papier border border-encre/10">

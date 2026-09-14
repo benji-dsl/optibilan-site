@@ -1,0 +1,119 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" width="1200" height="700">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F7F5F1"/>
+      <stop offset="100%" style="stop-color:#FFFFFF"/>
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFFFFF"/>
+      <stop offset="100%" style="stop-color:#F7F5F1"/>
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#1466C4"/>
+      <stop offset="100%" style="stop-color:#433BFF"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#1466C4" flood-opacity="0.15"/>
+    </filter>
+  </defs>
+  
+  <rect width="1200" height="700" fill="url(#bgGrad)"/>
+  
+  <!-- Header Bar -->
+  <rect x="40" y="30" width="1120" height="56" rx="12" fill="#FFFFFF" stroke="#E4E9E6" stroke-width="1" filter="url(#shadow)"/>
+  <text x="60" y="65" font-family="Inter, system-ui" font-size="15" font-weight="600" fill="#23211C">Nutrition Complète</text>
+  <circle cx="1120" cy="58" r="16" fill="#E8F5FF"/>
+  <text x="1120" y="62" font-family="Inter" font-size="14" fill="#1466C4" text-anchor="middle" dominant-baseline="middle">⋯</text>
+  
+  <!-- Sidebar -->
+  <rect x="40" y="110" width="240" height="540" rx="16" fill="#FFFFFF" stroke="#E4E9E6" stroke-width="1"/>
+  <text x="60" y="145" font-family="Inter" font-size="13" font-weight="600" fill="#23211C">MENU</text>
+  
+  <g font-family="Inter" font-size="14" fill="#64748B">
+    <text x="60" y="185">Plan alimentaire</text>
+    <text x="60" y="220" font-weight="600" fill="#23211C">Liste de courses</text>
+    <text x="60" y="255">Compléments</text>
+    <text x="60" y="290">Journal alimentaire</text>
+    <text x="60" y="325">Templates</text>
+    <text x="60" y="360">Analyses</text>
+  </g>
+  
+  <!-- Main Content -->
+  <rect x="300" y="110" width="860" height="540" rx="16" fill="#FFFFFF" stroke="#E4E9E6" stroke-width="1"/>
+  
+  <!-- Header -->
+  <text x="340" y="155" font-family="Inter" font-size="22" font-weight="700" fill="#23211C">Plan Nutritionnel - Semaine 3</text>
+  <text x="340" y="185" font-size="14" fill="#64748B">Marie Dubois • Perte de gras • 1800 kcal/jour</text>
+  
+  <!-- Meal Cards -->
+  <g transform="translate(340, 220)">
+    <g font-family="Inter">
+      <!-- Breakfast -->
+      <rect x="0" y="0" width="200" height="180" rx="12" fill="url(#cardGrad)" stroke="#E4E9E6"/>
+      <rect x="10" y="10" width="180" height="30" rx="6" fill="#E8F5FF"/>
+      <text x="100" y="30" font-family="Inter" font-size="12" font-weight="600" fill="#1466C4" text-anchor="middle">Petit-déjeuner</text>
+      <text x="100" y="65" font-size="24" font-weight="700" fill="#1466C4" text-anchor="middle">420 kcal</text>
+      <text x="100" y="90" font-size="11" fill="#64748B" text-anchor="middle">P: 35g • G: 45g • L: 12g</text>
+      <text x="100" y="115" font-size="10" fill="#64748B" text-anchor="middle">Fromage blanc, fruits rouges, granola</text>
+      <text x="100" y="145" font-size="10" fill="#1466C4" text-anchor="middle">✓ Validé par le coach</text>
+      
+      <!-- Lunch -->
+      <rect x="220" y="0" width="200" height="180" rx="12" fill="url(#cardGrad)" stroke="#E4E9E6"/>
+      <rect x="230" y="10" width="180" height="30" rx="6" fill="#E8F5E9"/>
+      <text x="320" y="30" font-size="12" font-weight="600" fill="#16A34A" text-anchor="middle">Déjeuner</text>
+      <text x="320" y="65" font-size="24" font-weight="700" fill="#16A34A" text-anchor="middle">680 kcal</text>
+      <text x="320" y="90" font-size="11" fill="#64748B" text-anchor="middle">P: 45g • G: 55g • L: 18g</text>
+      <text x="320" y="115" font-size="10" fill="#64748B" text-anchor="middle">Poulet, riz complet, légumes verts</text>
+      <text x="320" y="145" font-size="10" fill="#16A34A" text-anchor="middle">✓ Validé par le coach</text>
+      
+      <!-- Dinner -->
+      <rect x="440" y="0" width="200" height="180" rx="12" fill="url(#cardGrad)" stroke="#E4E9E6"/>
+      <rect x="450" y="10" width="180" height="30" rx="6" fill="#FEF3C7"/>
+      <text x="540" y="30" font-size="12" font-weight="600" fill="#CA8A04" text-anchor="middle">Dîner</text>
+      <text x="540" y="65" font-size="24" font-weight="700" fill="#CA8A04" text-anchor="middle">520 kcal</text>
+      <text x="540" y="90" font-size="11" fill="#64748B" text-anchor="middle">P: 38g • G: 40g • L: 15g</text>
+      <text x="540" y="115" font-size="10" fill="#64748B" text-anchor="middle">Poisson, patate douce, brocolis</text>
+      <text x="540" y="145" font-size="10" fill="#CA8A04" text-anchor="middle">✓ Validé par le coach</text>
+      
+      <!-- Snack -->
+      <rect x="660" y="0" width="180" height="180" rx="12" fill="url(#cardGrad)" stroke="#E4E9E6"/>
+      <rect x="670" y="10" width="160" height="30" rx="6" fill="#FCE7F3"/>
+      <text x="750" y="30" font-size="12" font-weight="600" fill="#BE185D" text-anchor="middle">Collation</text>
+      <text x="750" y="65" font-size="24" font-weight="700" fill="#BE185D" text-anchor="middle">180 kcal</text>
+      <text x="750" y="90" font-size="11" fill="#64748B" text-anchor="middle">P: 15g • G: 18g • L: 6g</text>
+      <text x="750" y="115" font-size="10" fill="#64748B" text-anchor="middle">Yaourt, amandes, fruit</text>
+      <text x="750" y="145" font-size="10" fill="#BE185D" text-anchor="middle">✓ Validé par le coach</text>
+    </g>
+    
+    <!-- Macro Summary -->
+    <rect x="0" y="200" width="840" height="100" rx="12" fill="#E8F5FF" stroke="#BFDBFE"/>
+    <text x="420" y="230" font-family="Inter" font-size="16" font-weight="700" fill="#1466C4" text-anchor="middle">Répartition journalière</text>
+    <g font-family="Inter" font-size="14" font-weight="600" text-anchor="middle">
+      <text x="150" y="270" fill="#1466C4">Protéines: 133g (30%)</text>
+      <text x="300" y="270" fill="#16A34A">Glucides: 180g (40%)</text>
+      <text x="450" y="270" fill="#CA8A04">Lipides: 51g (30%)</text>
+      <text x="600" y="270" fill="#BE185D">Collation: 5% (flexible)</text>
+    </g>
+    
+    <!-- Shopping List Preview -->
+    <rect x="0" y="320" width="840" height="140" rx="12" fill="#FEFCE8" stroke="#FDE047"/>
+    <text x="20" y="350" font-family="Inter" font-size="16" font-weight="700" fill="#CA8A04">🛒 Liste de courses générée automatiquement</text>
+    <text x="20" y="375" font-size="12" fill="#64748B">• Poulet 1.2kg • Riz complet 500g • Brocolis 800g • Fromage blanc 1kg</text>
+    <text x="20" y="395" font-size="12" fill="#64748B">• Fruits rouges 400g • Granola 300g • Amandes 200g • Poisson 600g</text>
+    <text x="20" y="415" font-size="12" fill="#64748B">• Patates douces 1kg • Brocolis 600g • Yaourt 700g • Œufs 24</text>
+    
+    <!-- Action Buttons -->
+    <rect x="340" y="480" width="300" height="50" rx="12" fill="#1466C4" filter="url(#shadow)"/>
+    <text x="190" y="35" font-family="Inter" font-size="15" font-weight="700" fill="#FFFFFF" text-anchor="middle">Générer la liste de courses</text>
+    
+    <rect x="660" y="480" width="180" height="50" rx="12" stroke="#1466C4" stroke-width="1.5" fill="transparent"/>
+    <text x="430" y="35" font-family="Inter" font-size="15" font-weight="600" fill="#1466C4" text-anchor="middle">Voir le plan complet</text>
+    
+  </g>
+  
+  <!-- Bottom Bar -->
+  <rect x="340" y="640" width="840" height="56" rx="12" fill="#1466C4" filter="url(#shadow)"/>
+  <text x="760" y="665" font-family="Inter" font-size="15" font-weight="700" fill="#FFFFFF" text-anchor="middle">Générer la liste de courses</text>
+  <text x="1100" y="665" font-size="14" fill="#FFFFFF" text-anchor="middle" dominant-baseline="middle">→</text>
+  
+</svg>

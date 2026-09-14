@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" width="1200" height="700">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F7F5F1"/>
+      <stop offset="100%" style="stop-color:#FFFFFF"/>
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFFFFF"/>
+      <stop offset="100%" style="stop-color:#F7F5F1"/>
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#433BFF"/>
+      <stop offset="100%" style="stop-color:#1466C4"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#433BFF" flood-opacity="0.15"/>
+    </filter>
+  </defs>
+  
+  <rect width="1200" height="700" fill="url(#bgGrad)"/>
+  
+  <!-- Header Bar -->
+  <rect x="40" y="30" width="1120" height="56" rx="12" fill="#FFFFFF" stroke="#E4E9E6" stroke-width="1" filter="url(#shadow)"/>
+  <text x="60" y="65" font-family="Inter, system-ui" font-size="15" font-weight="600" fill="#23211C">Préparation Mentale</text>
+  <circle cx="1120" cy="58" r="16" fill="#E8E8F5"/>
+  <text x="1120" y="62" font-family="Inter" font-size="14" fill="#433BFF" text-anchor="middle" dominant-baseline="middle">⋯</text>
+  
+  <!-- Sidebar -->
+  <rect x="40" y="110" width="240" height="540" rx="16" fill="#FFFFFF" stroke="#E4E9E6" stroke-width="1"/>
+  <text x="60" y="145" font-family="Inter" font-size="13" font-weight="600" fill="#23211C">MENU</text>
+  <g font-family="Inter" font-size="14" fill="#64748B">
+    <text x="60" y="185">Exercices</text>
+    <text x="60" y="220" font-weight="600" fill="#23211C">Ressources</text>
+    <text x="60" y="255">Journal d'appels</text>
+    <text x="60" y="290">Adhérence</text>
+  </g>
+  
+  <!-- Main Content -->
+  <rect x="300" y="110" width="860" height="540" rx="16" fill="#FFFFFF" stroke="#E4E9E6" stroke-width="1"/>
+  
+  <!-- Header -->
+  <text x="340" y="155" font-family="Inter" font-size="22" font-weight="700" fill="#23211C">Préparation Mentale</text>
+  <text x="340" y="185" font-size="14" fill="#64748B">Visualisation, respiration, routine, journal d'appels, adhérence</text>
+  
+  <!-- Exercises Cards -->
+  <g transform="translate(340, 220)">
+    <!-- Visualization -->
+    <rect x="0" y="0" width="410" height="200" rx="12" fill="url(#cardGrad)" stroke="#E4E9E6"/>
+    <rect x="10" y="10" width="120" height="30" rx="6" fill="#E8E8F5"/>
+    <text x="70" y="30" font-family="Inter" font-size="12" font-weight="600" fill="#433BFF" text-anchor="middle">Visualisation performance</text>
+    <text x="70" y="65" font-size="11" fill="#64748B" text-anchor="middle">15 min • Niveau intermédiaire</text>
+    <text x="70" y="85" font-size="11" fill="#64748B" text-anchor="middle">Visualisez votre geste parfait</text>
+    <text x="70" y="100" font-size="11" fill="#64748B" text-anchor="middle">Avant la compétition</text>
+    <text x="70" y="120" font-size="11" fill="#64748B" text-anchor="middle">Durée: 15 min • Audio guidé</text>
+    <text x="70" y="140" font-size="11" fill="#64748B" text-anchor="middle">Niveau: Intermédiaire</text>
+    <text x="70" y="160" font-size="11" fill="#433BFF" text-anchor="middle">▶ Lancer l'exercice</text>
+    
+    <!-- Cohérence cardiaque -->
+    <rect x="430" y="0" width="410" height="200" rx="12" fill="url(#cardGrad)" stroke="#E4E9E6"/>
+    <rect x="440" y="10" width="120" height="30" rx="6" fill="#E8F5E9"/>
+    <text x="645" y="30" font-family="Inter" font-size="12" font-weight="600" fill="#16A34A" text-anchor="middle">Cohérence cardiaque 5-5-5</text>
+    <text x="645" y="65" font-size="11" fill="#64748B" text-anchor="middle">5 min • Niveau débutant</text>
+    <text x="645" y="85" font-size="11" fill="#64748B" text-anchor="middle">Respiration guidée 5-5-5</text>
+    <text x="645" y="100" font-size="11" fill="#64748B" text-anchor="middle">HRV temps réel (si wearable)</text>
+    <text x="645" y="115" font-size="11" fill="#64748B" text-anchor="middle">Durée: 5 min • Audio guidé</text>
+    <text x="645" y="130" font-size="11" fill="#64748B" text-anchor="middle">Niveau: Débutant</text>
+    <text x="645" y="150" font-size="11" fill="#16A34A" text-anchor="middle">▶ Lancer l'exercice</text>
+  </g>
+  
+  <!-- Resources & Journal -->
+  <g transform="translate(340, 440)">
+    <rect x="0" y="0" width="410" height="200" rx="12" fill="url(#cardGrad)" stroke="#E4E9E6"/>
+    <rect x="10" y="10" width="120" height="30" rx="6" fill="#E8E8F5"/>
+    <text x="70" y="30" font-family="Inter" font-size="12" font-weight="600" fill="#433BFF" text-anchor="middle">Bibliothèque ressources</text>
+    <text x="70" y="65" font-size="11" fill="#64748B" text-anchor="middle">12 vidéos • 8 PDF • 6 audios</text>
+    <text x="70" y="85" font-size="11" fill="#64748B" text-anchor="middle">Visualisation, respiration, routine</text>
+    <text x="70" y="100" font-size="11" fill="#64748B" text-anchor="middle">Partage sélectif: Niveau 1/2/3</text>
+    <text x="70" y="120" font-size="11" fill="#433BFF" text-anchor="middle">📁 Ouvrir la bibliothèque</text>
+    
+    <rect x="430" y="0" width="410" height="200" rx="12" fill="url(#cardGrad)" stroke="#E4E9E6"/>
+    <rect x="440" y="10" width="120" height="30" rx="6" fill="#E8F5E9"/>
+    <text x="645" y="30" font-family="Inter" font-size="12" font-weight="600" fill="#16A34A" text-anchor="middle">Journal d'appels</text>
+    <text x="645" y="65" font-size="11" fill="#64748B" text-anchor="middle">Dernier appel: 12 janv. • 45 min</text>
+    <text x="645" y="85" font-size="11" fill="#64748B" text-anchor="middle">Prochain RDV: 19 janv. • 18h30</text>
+    <text x="645" y="100" font-size="11" fill="#64748B" text-anchor="middle">Objectifs: Visualisation + Routine</text>
+    <text x="645" y="120" font-size="11" fill="#64748B" text-anchor="middle">Plan action: Cohérence 5-5-5 quotidienne</text>
+    <text x="645" y="140" font-size="11" fill="#433BFF" text-anchor="middle">📝 Ouvrir le journal</text>
+  </g>
+  
+  <!-- Adherence Tracking -->
+  <g transform="translate(340, 480)">
+    <rect x="0" y="0" width="420" height="140" rx="12" fill="#FAFAFA" stroke="#E4E9E6"/>
+    <text x="20" y="25" font-family="Inter" font-size="16" font-weight="600" fill="#23211C">Adhérence mentale (30 jours)</text>
+    <g fill="#433BFF" opacity="0.8">
+      <rect x="20" y="80" width="40" height="-70" rx="3"/>
+      <rect x="80" y="80" width="40" height="-65" rx="3"/>
+      <rect x="140" y="80" width="40" height="-75" rx="3"/>
+      <rect x="200" y="80" width="40" height="-80" rx="3"/>
+      <rect x="260" y="80" width="40" height="-70" rx="3"/>
+      <rect x="320" y="80" width="40" height="-65" rx="3"/>
+    </g>
+    
+    <rect x="440" y="0" width="420" height="140" rx="12" fill="#FAFAFA" stroke="#E4E9E6"/>
+    <text x="460" y="25" font-family="Inter" font-size="16" font-weight="600" fill="#23211C">Adhérence exercices (30 jours)</text>
+    <g fill="#433BFF" opacity="0.8">
+      <rect x="460" y="90" width="40" height="-60" rx="3"/>
+      <rect x="520" y="90" width="40" height="-65" rx="3"/>
+      <rect x="580" y="90" width="40" height="-75" rx="3"/>
+      <rect x="640" y="90" width="40" height="-80" rx="3"/>
+      <rect x="700" y="90" width="40" height="-75" rx="3"/>
+      <rect x="820" y="90" width="40" height="-65" rx="3"/>
+    </g>
+  </g>
+  
+  <!-- Bottom Actions -->
+  <rect x="340" y="640" width="380" height="56" rx="12" fill="#433BFF" filter="url(#shadow)"/>
+  <text x="230" y="35" font-family="Inter" font-size="15" font-weight="700" fill="#FFFFFF" text-anchor="middle">Voir le dashboard mental</text>
+  <text x="370" y="35" font-size="14" fill="#FFFFFF" text-anchor="middle" dominant-baseline="middle">→</text>
+  
+  <rect x="760" y="640" width="180" height="56" rx="12" stroke="#433BFF" stroke-width="1.5" fill="transparent"/>
+  <text x="850" y="35" font-family="Inter" font-size="15" font-weight="600" fill="#433BFF" text-anchor="middle">Ajouter exercice</text>
+  
+</svg>
