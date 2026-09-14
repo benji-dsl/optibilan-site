@@ -67,11 +67,9 @@ const homeBadge = badge || "";
               <div class="text-center max-w-md">
                 <div class="aspect-video bg-encre/10 rounded-lg mb-4 border border-encre/10 flex items-center justify-center relative overflow-hidden">
                   <div class="absolute inset-0 grid grid-cols-12 gap-2 p-4 opacity-10" aria-hidden="true">
-                    {
-                      [...Array(24)].map((_, i) => (
-                        <div key={i} class="col-span-1 h-4 bg-bleu-signature/20 rounded animate-pulse" />
-                      ))
-                    }
+                    {[...Array(24)].map((_, i) => (
+                      <div key={i} class="col-span-1 h-4 bg-bleu-signature/20 rounded animate-pulse" style={{animationDelay: `${i * 50}ms`}} />
+                    ))}
                   </div>
                   <Icon name="chart" class="w-16 h-16 text-bleu-signature/30 relative z-10" />
                 </div>
