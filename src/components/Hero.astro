@@ -9,6 +9,7 @@ interface Props {
   stats?: Array<{ value: string; label: string }>;
   primaryCTA?: { href: string; label: string };
   secondaryCTA?: { href: string; label: string };
+  illustration?: string; // imported SVG string
 }
 
 const {
@@ -19,6 +20,7 @@ const {
   stats = [],
   primaryCTA = { href: 'https://calendly.com/optibilan/demo', label: 'Réserver une démo' },
   secondaryCTA = { href: '/product/overview', label: 'Découvrir la plateforme' },
+  illustration,
 } = Astro.props;
 
 const homeTitle = title || "Pilotez tous vos accompagnements.\nDepuis un seul endroit.";

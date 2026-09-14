@@ -3,15 +3,14 @@ import Layout from '../../../layouts/Layout.astro';
 import Header from '../../../components/Header.astro';
 import Footer from '../../../components/Footer.astro';
 import Hero from '../../../components/Hero.astro';
-import HealthScreenshot from '../../../../images/product/health.svg?raw';
 import CTA from '../../../components/CTA.astro';
 import TrustBar from '../../../components/TrustBar.astro';
 import Icon from '../../../components/Icon.astro';
 
-const pageTitle = 'Santé & biomarqueurs — Optibilan';
+const pageTitle = 'Santé Connectée & Biomarqueurs — Optibilan';
 const pageDescription = 'Centralisez les données autorisées issues des bilans, analyses et appareils compatibles pour suivre leur évolution dans le temps. 130+ biomarqueurs.';
----
 
+---
 <Layout
   title={pageTitle}
   description={pageDescription}
@@ -22,7 +21,8 @@ const pageDescription = 'Centralisez les données autorisées issues des bilans,
 
   <main>
     <Hero
-      title="Les données de santé prennent du sens\nquand elles sont réunies."
+      title="Les données de santé prennent du sens
+quand elles sont réunies."
       subtitle="Centralisez les données autorisées issues des bilans, analyses et appareils compatibles pour suivre leur évolution dans le temps."
       badge="Module avancé — Inclus Studio & Cabinet"
       primaryCTA={{ href: 'https://calendly.com/optibilan/demo', label: 'Voir la santé en démo' }}
@@ -66,7 +66,7 @@ const pageDescription = 'Centralisez les données autorisées issues des bilans,
               features: [
                 '130+ biomarqueurs sanguins pré-configurés (unités, seuils, références)',
                 'Import PDF labo : IA OCR → extraction → structuration → pré-remplissage',
-                'Flags automatiques : rouge (hors seuils critiques), orange (limite), vert (optimal)',
+                'Flags auto : rouge (hors seuils critiques), orange (limite), vert (optimal)',
                 'Graphiques tendances temporelles avec seuils de référence superposés',
                 'Corrélations auto : ex: HbA1c vs glycémie à jeun, ferritine vs fatigue',
               ],
@@ -77,7 +77,7 @@ const pageDescription = 'Centralisez les données autorisées issues des bilans,
               desc: 'Via Raccourcis iOS (client) ou n8n/Make/Zapier (cabinet). Métriques quotidiennes : sommeil (stades, score, régularité), VFC (rmssd, CV, tendance), FC repos, VO2max, pas, poids, %MG, température cutanée. Token santé par client (hsk_…) — scope granulaire.',
               features: [
                 'Sync compatible : Apple Health, Oura, Whoop, Garmin (Raccourcis iOS / n8n / Make / Zapier)',
-                'Métriques : sommeil (stades, score, régularité), VFC (rmssd, CV), FC repos, VO2max, pas, poids, %MG, température',
+                'Métriques : sommeil (stades, score, régularité), VFC (rmssd, CV, tendance), FC repos, VO2max, pas, poids, %MG, température',
                 'Endpoint /api/health-sync (HMAC signé) pour n8n/Make/Zapier',
                 'Stockage Supabase bucket privé, chiffré AES-256',
                 'Hébergement EU (Supabase EU West, VPS France)',

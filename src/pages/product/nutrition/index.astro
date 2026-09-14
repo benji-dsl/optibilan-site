@@ -3,15 +3,14 @@ import Layout from '../../../layouts/Layout.astro';
 import Header from '../../../components/Header.astro';
 import Footer from '../../../components/Footer.astro';
 import Hero from '../../../components/Hero.astro';
-import NutritionScreenshot from '../../../../images/product/nutrition.svg?raw';
 import CTA from '../../../components/CTA.astro';
 import TrustBar from '../../../components/TrustBar.astro';
 import Icon from '../../../components/Icon.astro';
 
 const pageTitle = 'Nutrition — Optibilan';
 const pageDescription = 'Plans alimentaires, habitudes, listes de courses, compléments et suivi réunis dans le dossier client. La nutrition à l\'échelle.';
----
 
+---
 <Layout
   title={pageTitle}
   description={pageDescription}
@@ -22,7 +21,8 @@ const pageDescription = 'Plans alimentaires, habitudes, listes de courses, compl
 
   <main>
     <Hero
-      title="Construisez le suivi nutritionnel.\nPas une pile de PDF."
+      title="Construisez le suivi nutritionnel.
+Pas une pile de PDF."
       subtitle="Plans, habitudes alimentaires, listes de courses, compléments, évolution et documents réunis. La nutrition à l'échelle."
       badge="Module cœur — Inclus dans toutes les offres"
       primaryCTA={{ href: 'https://calendly.com/optibilan/demo', label: 'Voir la nutrition en démo' }}

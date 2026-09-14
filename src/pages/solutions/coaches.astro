@@ -21,7 +21,9 @@ const pageDescription = 'Passez moins de temps à gérer. Plus de temps à coach
 
   <main>
     <Hero
-      title="Passez moins de temps\na gérer.\nPlus de temps à coacher."
+      title="Passez moins de temps
+à gérer.
+Plus de temps à coacher."
       subtitle="Programmes, bilans, progression, adhérence, communication dans une seule plateforme. Conçue pour les coaches qui veulent scaler sans perdre la qualité."
       badge="Offre Solo / Studio / Cabinet"
       primaryCTA={{ href: 'https://calendly.com/optibilan/demo', label: 'Voir la démo Coach' }}
@@ -78,10 +80,10 @@ const pageDescription = 'Passez moins de temps à gérer. Plus de temps à coach
           {[
             { href: '/product/training', icon: 'zap', title: 'Sport & Programmes', desc: 'Bibliothèque 200+, drag-and-drop, progression auto, import FitFocus', color: 'indigo' },
             { href: '/product/check-ins', icon: 'chart', title: 'Bilans & Progression', desc: 'Questionnaires guidés, graphiques, détection plateaux, export PDF', color: 'bleu-signature' },
-            { href: '/product/engagement', icon: 'users', title: 'Gamification & Habitudes', desc: 'XP, badges, dreamboard, alertes IA, relances auto', color: 'bordeaux' },
-            { href: '/product/crm', icon: 'lock', title: 'Journal Coaching & CRM', desc: 'Entrées typées, pipeline, relances, sync Notion', color: 'bleu-ardoise' },
+            { href: '/product/engagement', icon: 'users', title: 'Gamification & Habitudes', desc: 'XP, badges, dreamboard, habitudes, alertes IA, relances auto', color: 'bordeaux' },
+            { href: '/product/crm', icon: 'lock', title: 'Journal Coaching & CRM', desc: 'Entrées typées, pipeline, relances, partage, sync Notion', color: 'bleu-ardoise' },
             { href: '/product/agenda', icon: 'calendar', title: 'Appels & Agenda ICS', desc: 'Cadence auto, rappels multi-canal, calendrier partagé', color: 'bleu-signature' },
-            { href: '/product/white-label', icon: 'shield', title: 'Marque Blanche', desc: 'Logo, couleurs, domaine, emails, vocabulaire à vous', color: 'bordeaux' },
+            { href: '/product/white-label', icon: 'shield', title: 'Marque Blanche', desc: 'Logo, thème, domaine, vocabulaire, emails à vous', color: 'bordeaux' },
           ].map(mod => (
             <a href={mod.href} class="card-hover p-6 text-center group" style={`--mod-color: var(--color-${mod.color})`}>
               <div class="icon-wrapper mx-auto mb-4" aria-hidden="true" style={`background-color: color-mix(in oklab, var(--color-${mod.color}) 15%, transparent);`}>

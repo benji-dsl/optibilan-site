@@ -22,23 +22,76 @@ const {
 } = Astro.props;
 ---
 
-<section class="py-12 bg-blanc border-y border-encre/10" aria-labelledby="trust-title">
-  <div class="container">
-    <p id="trust-title" class="text-center text-sm font-semibold text-encre/50 uppercase tracking-wider mb-8">
+<section class="relative py-16 bg-encre/95" aria-labelledby="trust-title">
+  <div class="absolute inset-0 bg-gradient-to-r from-encre/90 via-encre/95 to-encre/90" aria-hidden="true"></div>
+  
+  <div class="container relative">
+    <p id="trust-title" class="text-center text-sm font-semibold text-craie/50 uppercase tracking-wider mb-12">
       {title}
     </p>
-    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6">
-      {badges.map(badge => (
-        <div class="group flex flex-col items-center gap-2 p-4 rounded-card bg-papier/50 hover:bg-papier transition-colors duration-300 border border-encre/5 hover:border-bleu-signature/30" aria-label={badge.label}>
-          <div class="icon-wrapper group-hover:bg-bleu-signature/10 group-hover:text-bleu-lecture" aria-hidden="true">
-            <Icon name={badge.icon} class="w-6 h-6 text-bleu-signature" />
-          </div>
-          <span class="text-sm font-semibold text-encre text-center">{badge.label}</span>
-          {badge.description && (
-            <span class="text-xs text-encre/50 text-center">{badge.description}</span>
-          )}
+
+    <div class="relative max-w-5xl mx-auto">
+      <div class="overflow-hidden">
+        <div class="flex gap-4 md:gap-6" id="trust-carousel" role="region" aria-label="Infrastructure de confiance">
+          {badges.map((badge, index) => (
+            <article
+              class="flex-shrink-0 w-full sm:w-[calc(50%-0.5rem)] lg:w-[calc(20%-0.8rem)] group"
+              aria-label={badge.label}
+              style={`animation-delay: ${index * 100}ms`}
+            >
+              <div class="bg-encre/80 backdrop-blur-sm rounded-2xl border border-craie/10 p-6 md:p-8 h-full flex flex-col items-center text-center transition-all duration-300 hover:border-bleu-signature/30 hover:shadow-lg hover:shadow-bleu-signature/10">
+                <div class="icon-wrapper mb-4 group-hover:scale-110 transition-transform duration-300" aria-hidden="true">
+                  <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-bleu-signature/20 to-bleu-lecture/20 flex items-center justify-center group-hover:from-bleu-signature/30 group-hover:to-bleu-lecture/30 transition-all duration-300">
+                    <Icon name={badge.icon} class="w-7 h-7 text-bleu-signature" />
+                  </div>
+                </div>
+                <h3 class="font-display text-lg font-semibold text-craie mb-2 text-center">{badge.label}</h3>
+                <p class="text-xs text-craie/50 text-center leading-relaxed">{badge.description || ''}</p>
+              </div>
+            </article>
+          ))}
         </div>
+      </div>
+    </div>
+
+    <button
+      class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:left-4 w-10 h-10 rounded-full bg-encre/80 backdrop-blur-sm border border-craie/10 text-craie/50 hover:text-bleu-signature hover:border-bleu-signature/30 hover:bg-encre/90 flex items-center justify-center transition-all duration-300 hidden md:flex z-10"
+      aria-label="Précédent"
+      onclick="document.getElementById('trust-carousel').scrollBy({left: -300, behavior: 'smooth'})"
+    >
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+    </button>
+    <button
+      class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:right-4 w-10 h-10 rounded-full bg-encre/80 backdrop-blur-sm border border-craie/10 text-craie/50 hover:text-bleu-signature hover:border-bleu-signature/30 hover:bg-encre/90 flex items-center justify-center transition-all duration-300 hidden md:flex z-10"
+      aria-label="Suivant"
+      onclick="document.getElementById('trust-carousel').scrollBy({left: 300, behavior: 'smooth'})"
+    >
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+    </button>
+
+    <div class="flex justify-center gap-2 mt-8" role="tablist" aria-label="Indicateurs de navigation">
+      {badges.map((_, index) => (
+        <button
+          class="w-2 h-2 rounded-full bg-craie/30 hover:bg-bleu-signature/50 transition-colors duration-300"
+          role="tab"
+          aria-label={`Aller à ${badges[index].label}`}
+          aria-selected={index === 0}
+          onclick={`document.getElementById('trust-carousel').scrollTo({left: ${index * 300}, behavior: 'smooth'})`}
+        />
       ))}
     </div>
-  </div>
+</div>
 </section>
+
+<style>
+  @media (max-width: 768px) {
+    #trust-carousel {
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+    }
+    #trust-carousel > * {
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
+    }
+  }
+</style>

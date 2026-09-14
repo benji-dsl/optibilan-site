@@ -9,8 +9,8 @@ import Icon from '../../components/Icon.astro';
 
 const pageTitle = 'Solution Cabinet / Équipe — Optibilan';
 const pageDescription = 'Toute votre équipe. Une seule vision du client. Multi-praticiens, permissions, coordination, administration, sécurité, audit, marque blanche.';
----
 
+---
 <Layout
   title={pageTitle}
   description={pageDescription}
@@ -21,7 +21,8 @@ const pageDescription = 'Toute votre équipe. Une seule vision du client. Multi-
 
   <main>
     <Hero
-      title="Toute votre équipe.\nUne seule vision du client."
+      title="Toute votre équipe.
+Une seule vision du client."
       subtitle="Multi-praticiens, permissions granulaires, coordination, administration, sécurité, audit, marque blanche totale. L'OS de votre cabinet."
       badge="Offre Cabinet — Multi-praticiens illimités"
       primaryCTA={{ href: 'https://calendly.com/optibilan/demo', label: 'Voir la démo Cabinet' }}
@@ -34,7 +35,8 @@ const pageDescription = 'Toute votre équipe. Une seule vision du client. Multi-
       <div class="container max-w-3xl">
         <header class="text-center mb-16">
           <h2 id="promise-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
-            Toute votre équipe.<br>Une seule vision du client.
+            Toute votre équipe.
+            Une seule vision du client.
           </h2>
           <p class="text-lg text-encre/60 max-w-2xl mx-auto">
             Coach, diététicien, préparateur mental, médecin, admin… Chacun son périmètre. Le client au centre. La coordination fluide.
@@ -45,7 +47,7 @@ const pageDescription = 'Toute votre équipe. Une seule vision du client. Multi-
           {[
             { icon: 'users', title: 'Multi-praticiens, permissions granulaires', desc: 'Rôles : admin, coach, mental, diet, support. Spécialités par praticien. Accès cloisonnés : le coach ne voit pas le mental, le mental ne voit pas la nutrition (sauf partage autorisé).' },
             { icon: 'shield', title: 'Coordination fluide, zéro info perdue', desc: 'Journal coaching partagé (selon permissions), appels planifiés synchronisés, relances auto, rappels équipe Slack/email. 0 info perdue entre praticiens.' },
-            { icon: 'shield', title: 'Administration & conformité intégrées', desc: 'Gestion utilisateurs (2FA obligatoire admins), offres d\'appel custom, mentions légales cabinet, modules on/off, questionnaire lancement, RGPD (export, purge), audit trail double niveau, webhooks, API keys.' },
+            { icon: 'shield', title: 'Administration & conformité natives', desc: 'Gestion utilisateurs (2FA obligatoire admins), offres d\'appel custom, mentions légales cabinet, modules on/off, questionnaire lancement, RGPD (export, purge), audit trail double niveau, webhooks, API keys.' },
             { icon: 'globe', title: 'Marque blanche totale = votre cabinet', desc: 'Logo, thème, domaine, vocabulaire, assistant IA nommé, emails @votrecabinet.fr, mentions légales, CGV — tout est à vous. Vos clients ne voient jamais Optibilan.' },
           ].map(item => (
             <article class="p-6 rounded-xl border border-encre/10 hover:border-bordeaux/30 hover:shadow-soft transition-all">

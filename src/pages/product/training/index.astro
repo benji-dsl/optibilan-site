@@ -3,16 +3,14 @@ import Layout from '../../../layouts/Layout.astro';
 import Header from '../../../components/Header.astro';
 import Footer from '../../../components/Footer.astro';
 import Hero from '../../../components/Hero.astro';
-import AiScreenshot from '../../../../images/product/ai.svg?raw';
-import TrainingScreenshot from '../../../../images/product/training.svg?raw';
 import CTA from '../../../components/CTA.astro';
 import TrustBar from '../../../components/TrustBar.astro';
 import Icon from '../../../components/Icon.astro';
 
 const pageTitle = 'Sport & programmes — Optibilan';
 const pageDescription = 'Bibliothèque d\'exercices, programmes types, séances validées, progression charge/volume. Construisez, suivez, ajustez.';
----
 
+---
 <Layout
   title={pageTitle}
   description={pageDescription}
@@ -23,7 +21,9 @@ const pageDescription = 'Bibliothèque d\'exercices, programmes types, séances 
 
   <main>
     <Hero
-      title="Programme.\nSuivez.\nAjustez."
+      title="Programme.
+Suivez.
+Ajustez."
       subtitle="Construisez vos séances, suivez leur réalisation et visualisez la progression sans changer d'outil."
       badge="Module cœur — Inclus dans toutes les offres"
       primaryCTA={{ href: 'https://calendly.com/optibilan/demo', label: 'Voir le sport en démo' }}

@@ -3,12 +3,11 @@ import Layout from '../../../layouts/Layout.astro';
 import Header from '../../../components/Header.astro';
 import Footer from '../../../components/Footer.astro';
 import Hero from '../../../components/Hero.astro';
-import MentalScreenshot from '../../../../images/product/mental.svg?raw';
 import CTA from '../../../components/CTA.astro';
 import TrustBar from '../../../components/TrustBar.astro';
 import Icon from '../../../components/Icon.astro';
 
-const pageTitle = 'Préparation mentale — Optibilan';
+const pageTitle = 'Préparation Mentale — Optibilan';
 const pageDescription = 'Exercices transversaux, ressources, journal d\'appels, suivi adhérence. Structurez le mental pour la performance durable. Cloisonnement des données garanti.';
 
 ---
@@ -22,7 +21,10 @@ const pageDescription = 'Exercices transversaux, ressources, journal d\'appels, 
 
   <main>
     <Hero
-      title="Le mental fait partie de\nl'accompagnement.\nSes données méritent leur\npropre espace."
+      title="Le mental fait partie de
+l'accompagnement.
+Ses données méritent leur
+propre espace."
       subtitle="Visualisation, respiration, routine, journal d'appels, adhérence. Cloisonnement strict des données. Le mental structuré."
       badge="Module avancé — Inclus Studio & Cabinet"
       primaryCTA={{ href: 'https://calendly.com/optibilan/demo', label: 'Voir le mental en démo' }}
@@ -75,7 +77,7 @@ const pageDescription = 'Exercices transversaux, ressources, journal d\'appels, 
               title: 'Bibliothèque ressources sécurisée',
               desc: 'Dépôt sécurisé : vidéos (technique, mental), PDF (articles, protocoles), audio (guidés, relaxations). Streaming sécurisé (pas de téléchargement, pas de partage). Organisation par dossiers/tags. Partage sélectif client (niveau 1/2/3). Versioning ressources.',
               features: [
-                'Streaming vidéo/audio sécurisé (token court, pas de DL)',
+                'Streaming vidéo/audio sécurisé (pas de téléchargement, pas de partage)',
                 'Organisation : dossiers + tags + recherche full-text',
                 'Partage client : niveau 1 (visible) / 2 (commentaire) / 3 (privé préparateur)',
                 'Versioning des ressources (historique modifications)',
@@ -87,7 +89,7 @@ const pageDescription = 'Exercices transversaux, ressources, journal d\'appels, 
               desc: 'Compte-rendu structuré : date, durée, objectifs séance, points clés, plan d\'action, prochaine échéance. Liaison bidirectionnelle avec le journal coaching (si autorisé). Historique complet, recherche full-text, export PDF pour le sportif ou le staff.',
               features: [
                 'Structure : objectifs → déroulement → plan action → prochain RDV',
-                'Liaison journal coaching (si autorisation client)',
+                'Liaison bidirectionnelle journal coaching (si autorisé)',
                 'Recherche full-text sur tout l\'historique',
                 'Export PDF brandé pour le sportif / staff',
               ],

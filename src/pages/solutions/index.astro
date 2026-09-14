@@ -8,7 +8,7 @@ import TrustBar from '../../components/TrustBar.astro';
 import Icon from '../../components/Icon.astro';
 
 const pageTitle = 'Solutions — Optibilan';
-const pageDescription = 'Optibilan s\'adapte à votre pratique : Coach sportif, Nutritionniste, Préparateur mental, Cabinet multi-praticiens. Une plateforme, quatre façons de l\'utiliser.';
+const pageDescription = 'Optibilan s\'adapte à votre pratique : Coach sportif, Nutritionniste, Préparateur mental, Cabinet. Une plateforme, quatre façons de l\'utiliser.';
 
 const solutions = [
   {
@@ -48,6 +48,12 @@ const solutions = [
     featured: true,
   },
 ];
+
+const solutionsCross = [
+  { icon: 'users', title: 'Coach + Nutrition', desc: 'Le coach gère l\'entraînement, le nutritionniste le plan alimentaire. Données partagées selon permissions. Le client a un seul dossier.' },
+  { icon: 'brain', title: 'Coach + Mental', desc: 'Le coach suit la performance, le préparateur mental l\'adhérence. Données cloisonnées, partage sélectif. Le sportif au centre.' },
+  { icon: 'users', title: 'Cabinet complet', desc: 'Coach + Nutritionniste + Mental + Médecin. Permissions granulaires, journal partagé selon permissions, coordination fluide. Une vision 360°.' },
+];
 ---
 
 <Layout
@@ -60,7 +66,8 @@ const solutions = [
 
   <main>
     <Hero
-      title="Une plateforme.\nQuatre façons de l'utiliser."
+      title="Une plateforme.
+Quatre façons de l'utiliser."
       subtitle="Optibilan s'adapte à votre pratique : Coach, Nutritionniste, Préparateur mental, Cabinet. Chaque solution active les modules pertinents, avec les permissions adaptées."
       badge="4 solutions, 1 plateforme"
       primaryCTA={{ href: 'https://calendly.com/optibilan/demo', label: 'Choisir ma solution' }}
@@ -89,7 +96,7 @@ const solutions = [
                 </div>
               )}
               <div class="p-6 md:p-8">
-                <div class="icon-wrapper mb-4" aria-hidden="true" style={`background-color: color-mix(in oklab, var(--color-${sol.color}) 15%, transparent);`}>
+                <div class="icon-wrapper mb-4" aria-hidden="true" style={`--mod-color: var(--color-${sol.color})`}>
                   <Icon name={sol.icon} class="w-8 h-8" style={`color: var(--color-${sol.color});`} />
                 </div>
                 <h3 class="font-display text-xl font-bold text-encre mb-3">{sol.title}</h3>
@@ -106,14 +113,11 @@ const solutions = [
                 <a href={sol.href} class="inline-flex items-center gap-1.5 text-sm font-medium" style={`color: var(--color-${sol.color});`} data-track={`solution_${sol.title.toLowerCase().replace(/\s+/g, '_')}_cta`}>
                   Découvrir la solution
                   <Icon name="arrowRight" class="w-4 h-4 transition-transform group-hover:translate-x-1" />
-                </a>
+</a>
               </div>
-              {sol.featured && (
-                <div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-bleu-signature to-indigo" aria-hidden="true"></div>
-              )}
-            </article>
-          ))}
-        </div>
+              </article>
+            ))}
+          </div>
 
         <div class="text-center mt-16">
           <p class="text-encre/60 mb-8 max-w-xl mx-auto">
@@ -137,21 +141,19 @@ const solutions = [
           </p>
         </header>
 
-        <div class="grid md:grid-cols-3 gap-8">
-          {[
-            { icon: 'users', title: 'Coach + Nutrition', desc: 'Le coach gère l\'entraînement, le nutritionniste le plan alimentaire. Données partagées selon permissions. Le client a un seul dossier.' },
-            { icon: 'brain', title: 'Coach + Mental', desc: 'Le coach suit la performance, le préparateur mental l\'adhérence. Données cloisonnées, partage sélectif. Le sportif au centre.' },
-            { icon: 'users', title: 'Cabinet complet', desc: 'Coach + Nutritionniste + Mental + Médecin. Permissions granulaires, journal partagé selon permissions, coordination fluide. Une vision 360°.' },
-          ].map((item, i) => (
-            <article class="card-hover p-6 md:p-8 text-center" style={`animation-delay: ${i * 100}ms`}>
-              <div class="icon-wrapper mx-auto mb-4" aria-hidden="true" style="background-color: var(--color-bleu-clair);">
-                <Icon name={item.icon} class="w-8 h-8 text-bleu-signature" />
-              </div>
-              <h3 class="font-display text-xl font-bold text-encre mb-3">{item.title}</h3>
-              <p class="text-encre/60 leading-relaxed">{item.desc}</p>
-            </article>
-          ))}
-        </div>
+<div class="grid md:grid-cols-3 gap-8">
+          {solutionsCross.map((item, i) => {
+            return (
+              <article key={item.title} class="card-hover p-6 md:p-8 text-center" style={`animation-delay: ${i * 100}ms`}>
+                <div class="icon-wrapper mx-auto mb-4" aria-hidden="true" style="background-color: var(--color-bleu-clair);">
+                  <Icon name={item.icon} class="w-8 h-8 text-bleu-signature" />
+                </div>
+                <h3 class="font-display text-xl font-bold text-encre mb-3">{item.title}</h3>
+                <p class="text-encre/60 leading-relaxed">{item.desc}</p>
+              </article>
+            );
+          })}
+</div>
       </div>
     </section>
 
