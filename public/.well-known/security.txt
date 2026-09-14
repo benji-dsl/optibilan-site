@@ -1,0 +1,17 @@
+# Security.txt for optibilan.com
+# Updated: 2024
+
+Contact: mailto:security@optibilan.com
+Contact: https://optibilan.com/contact
+
+Encryption: https://optibilan.com/.well-known/pgp-key.txt
+
+Canonical: https://optibilan.com/.well-known/security.txt
+
+Preferred-Languages: fr, en
+
+Policy: https://optibilan.com/legal/confidentialite
+
+Hiring: https://optibilan.com/carrieres
+
+Expires: 2025-12-31T23:59:59.000Z
