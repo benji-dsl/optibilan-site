@@ -5,7 +5,7 @@ import Footer from '../../components/Footer.astro';
 import Hero from '../../components/Hero.astro';
 import Icon from '../../components/Icon.astro';
 
-const pageTitle = 'Registre des sous-traitants — Optibilan';
+const pageTitle = 'Registre des sous-traitants - Optibilan';
 const pageDescription = 'Liste des sous-traitants d\'Optibilan (Art. 28 RGPD) : Supabase, Stripe, Resend, Cloudflare, Anthropic, Plausible. Localisation, finalités, mesures de sécurité, DPA, SCC.';
 const lastUpdated = new Date().toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
 ---
@@ -42,8 +42,8 @@ const lastUpdated = new Date().toLocaleDateString('fr-FR', { day: 'numeric', mon
               {
                 name: 'Supabase',
                 role: 'Base de données PostgreSQL managée, Auth, Storage, Realtime, Edge Functions',
-                location: 'EU West (Irlande) — Données stockées exclusivement en UE',
-                purposes: ['Hébergement base de données (toutes données Abonnés + Coachés)', 'Authentification (email/password, providers)', 'Stockage fichiers (photos, PDF, dreamboard) — bucket privé', 'Fonctions edge (webhooks, cron, sync santé)'],
+                location: 'EU West (Irlande) - Données stockées exclusivement en UE',
+                purposes: ['Hébergement base de données (toutes données Abonnés + Coachés)', 'Authentification (email/password, providers)', 'Stockage fichiers (photos, PDF, dreamboard) - bucket privé', 'Fonctions edge (webhooks, cron, sync santé)'],
                 security: ['Chiffrement au repos (AES-256) et en transit (TLS 1.3)', 'Isolation réseau (VPC dédié)', 'PITR 7 jours + snapshots quotidiens', 'Certifications : SOC 2 Type II, ISO 27001, HIPAA, RGPD'],
                 dpa: true,
                 scc: 'Non requis (UE)',
@@ -53,7 +53,7 @@ const lastUpdated = new Date().toLocaleDateString('fr-FR', { day: 'numeric', mon
               {
                 name: 'Stripe',
                 role: 'Paiements, facturation, abonnements, portail client',
-                location: 'UE (Irlande) — Entité contractuelle : Stripe Technology Europe Ltd',
+                location: 'UE (Irlande) - Entité contractuelle : Stripe Technology Europe Ltd',
                 purposes: ['Encaissement cartes, virements SEPA, prélèvements', 'Gestion abonnements (création, modification, annulation)', 'Portail client autogéré (moyens de paiement, factures)', 'Webhooks événements (payment_failed, invoice.paid, subscription.updated)'],
                 security: ['PCI DSS Level 1', 'Chiffrement bout en bout', 'Certifications : SOC 1/2, ISO 27001, PCI DSS'],
                 dpa: true,
@@ -64,7 +64,7 @@ const lastUpdated = new Date().toLocaleDateString('fr-FR', { day: 'numeric', mon
               {
                 name: 'Resend',
                 role: 'Envoi emails transactionnels (activation, reset MDP, rappels bilans, notifications équipe)',
-                location: 'UE (Allemagne) — Serveurs en UE',
+                location: 'UE (Allemagne) - Serveurs en UE',
                 purposes: ['Emails transactionnels uniquement (pas de marketing)', 'Templates HTML/texte avec variables', 'Tracking ouverture/clic (anonymisé, opt-out possible)'],
                 security: ['TLS 1.3', 'DKIM, SPF, DMARC sur domaine optibilan.com', 'Rétention logs 30 jours max'],
                 dpa: true,
@@ -75,7 +75,7 @@ const lastUpdated = new Date().toLocaleDateString('fr-FR', { day: 'numeric', mon
               {
                 name: 'Cloudflare',
                 role: 'CDN, DNS, WAF, DDoS Protection, Cloudflare Tunnel, Analytics',
-                location: 'Réseau mondial (300+ PoP) — Trafic routé via PoP EU pour utilisateurs EU',
+                location: 'Réseau mondial (300+ PoP) - Trafic routé via PoP EU pour utilisateurs EU',
                 purposes: ['Terminaison TLS, cache statique, compression Brotli', 'WAF (règles OWASP Top 10, rate-limit, bot fight)', 'DDoS mitigation L3/L4/L7', 'Tunnel zero-trust (pas de port ouvert sur VPS)', 'Analytics agrégés (pas d\'IP complète)'],
                 security: ['Chiffrement TLS 1.3', 'Certifications : SOC 2 Type II, ISO 27001, FedRAMP'],
                 dpa: true,
@@ -86,7 +86,7 @@ const lastUpdated = new Date().toLocaleDateString('fr-FR', { day: 'numeric', mon
               {
                 name: 'Anthropic',
                 role: 'Modèle de langage (Claude) pour l\'assistant IA intégrée',
-                location: 'USA — Traitement via API (pas de stockage de données)',
+                location: 'USA - Traitement via API (pas de stockage de données)',
                 purposes: ['Génération réponses assistant IA (lecture bilans, prises de sang, biomarqueurs)', 'Analyse transcriptions appels (n8n)', 'Extraction pré-remplissage questionnaire lancement'],
                 security: ['API zero-retention (pas d\'entraînement, pas de log complet)', 'Prompts anonymisés (pas de données identifiantes envoyées)', 'Contrat Enterprise avec DPA, zero-retention garanti'],
                 dpa: true,
@@ -97,7 +97,7 @@ const lastUpdated = new Date().toLocaleDateString('fr-FR', { day: 'numeric', mon
               {
                 name: 'Plausible Analytics',
                 role: 'Analytique web respectueuse de la vie privée (alternative GA4)',
-                location: 'UE (Allemagne) — Données stockées en UE',
+                location: 'UE (Allemagne) - Données stockées en UE',
                 purposes: ['Métriques site public (pages vues, événements, référents, pays)', 'Pas de cookies, pas de données personnelles, anonymisation IP'],
                 security: ['Open source, auto-hébergé possible', 'RGPD by design, ePrivacy compliant'],
                 dpa: true,
@@ -202,8 +202,8 @@ const lastUpdated = new Date().toLocaleDateString('fr-FR', { day: 'numeric', mon
                 <tr><td class="py-2 font-medium">Stripe</td><td>AWS (EU), Google Cloud (EU), Twilio (US/EU pour SMS)</td><td>UE (principal)</td></tr>
                 <tr><td class="py-2 font-medium">Resend</td><td>AWS (EU), SendGrid (US) pour relais</td><td>UE (principal)</td></tr>
                 <tr><td class="py-2 font-medium">Cloudflare</td><td>Réseau propre (300+ PoP mondiaux)</td><td>Mondial (routing EU)</td></tr>
-                <tr><td class="py-2 font-medium">Anthropic</td><td>AWS (US), Google Cloud (US) — zero-retention</td><td>US (zero-retention)</td></tr>
-                <tr><td class="py-2 font-medium">Plausible</td><td>Hetzner (DE) — auto-hébergé</td><td>UE</td></tr>
+                <tr><td class="py-2 font-medium">Anthropic</td><td>AWS (US), Google Cloud (US) - zero-retention</td><td>US (zero-retention)</td></tr>
+                <tr><td class="py-2 font-medium">Plausible</td><td>Hetzner (DE) - auto-hébergé</td><td>UE</td></tr>
               </tbody>
             </table>
           </div>

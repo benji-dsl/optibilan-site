@@ -43,25 +43,7 @@ const socialLinks = [
 <footer class="bg-encre text-craie" role="contentinfo">
   <div class="container py-12 md:py-16 lg:py-20">
     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 md:gap-10">
-      <!-- Colonne 1 : Brand -->
-      <div class="col-span-2 lg:col-span-2">
-        <a href="/" class="flex items-center gap-2 mb-4" aria-label="Optibilan - Accueil">
-          <Icon name="logo" class="w-9 h-9 text-bleu-signature" />
-          <span class="font-display font-bold text-xl text-craie">Optibilan</span>
-        </a>
-        <p class="text-craie/60 text-sm leading-relaxed mb-6 max-w-xs">
-          La plateforme de pilotage des accompagnements santé & performance. Multi-tenant, marque blanche, RGPD/HDS by design.
-        </p>
-        <div class="flex gap-4">
-          {socialLinks.map(social => (
-            <a href={social.href} target="_blank" rel="noopener noreferrer" class="text-craie/50 hover:text-bleu-signature transition-colors" aria-label={social.label} title={social.label}>
-              <Icon name={social.icon} class="w-5 h-5" />
-            </a>
-          ))}
-        </div>
-      </div>
-
-      <!-- Colonne 2 : Produit -->
+      <!-- Colonne 1 : Produit -->
       <nav aria-label="Produit">
         <h3 class="font-semibold text-craie mb-4">Produit</h3>
         <ul class="space-y-3">
@@ -71,7 +53,7 @@ const socialLinks = [
         </ul>
       </nav>
 
-      <!-- Colonne 3 : Solutions -->
+      <!-- Colonne 2 : Solutions -->
       <nav aria-label="Solutions">
         <h3 class="font-semibold text-craie mb-4">Solutions</h3>
         <ul class="space-y-3">
@@ -81,7 +63,7 @@ const socialLinks = [
         </ul>
       </nav>
 
-      <!-- Colonne 4 : Confiance -->
+      <!-- Colonne 3 : Confiance -->
       <nav aria-label="Confiance">
         <h3 class="font-semibold text-craie mb-4">Confiance</h3>
         <ul class="space-y-3">
@@ -91,7 +73,7 @@ const socialLinks = [
         </ul>
       </nav>
 
-      <!-- Colonne 5 : Entreprise -->
+      <!-- Colonne 4 : Entreprise -->
       <nav aria-label="Entreprise">
         <h3 class="font-semibold text-craie mb-4">Entreprise</h3>
         <ul class="space-y-3">
@@ -101,7 +83,7 @@ const socialLinks = [
         </ul>
       </nav>
 
-      <!-- Colonne 6 : Légal -->
+      <!-- Colonne 5 : Légal -->
       <nav aria-label="Légal">
         <h3 class="font-semibold text-craie mb-4">Légal</h3>
         <ul class="space-y-3">
@@ -110,16 +92,34 @@ const socialLinks = [
           ))}
         </ul>
       </nav>
+
+      <!-- Colonne 6 : Brand -->
+      <div class="col-span-2 lg:col-span-1">
+        <a href="/" class="flex items-center gap-2 mb-4" aria-label="Optibilan - Accueil">
+          <Icon name="logo" class="w-9 h-9 text-bleu-signature" />
+          <span class="font-display font-bold text-xl text-craie">Optibilan</span>
+        </a>
+        <div class="flex gap-4">
+          {socialLinks.map(social => (
+            <a href={social.href} target="_blank" rel="noopener noreferrer" class="text-craie/50 hover:text-bleu-signature transition-colors" aria-label={social.label} title={social.label}>
+              <Icon name={social.icon} class="w-5 h-5" />
+            </a>
+          ))}
+        </div>
+      </div>
     </div>
 
     <div class="mt-10 md:mt-12 pt-8 border-t border-encre/20">
+      <p class="text-center text-craie/60 text-sm leading-relaxed max-w-3xl mx-auto mb-8">
+        La plateforme de pilotage des accompagnements sante et performance. Multi-tenant, marque blanche, RGPD/HDS by design.
+      </p>
       <div class="flex flex-col md:flex-row items-center justify-between gap-4">
         <p class="text-craie/40 text-sm">
-          © {new Date().getFullYear()} Optibilan. Tous droits réservés.
+          {new Date().getFullYear()} Optibilan. Tous droits reserves.
         </p>
         <div class="flex items-center gap-6 text-sm text-craie/40">
-          <a href="/legal/mentions" class="hover:text-bleu-signature transition-colors">Mentions légales</a>
-          <a href="/legal/confidentialite" class="hover:text-bleu-signature transition-colors">Confidentialité</a>
+          <a href="/legal/mentions" class="hover:text-bleu-signature transition-colors">Mentions legales</a>
+          <a href="/legal/confidentialite" class="hover:text-bleu-signature transition-colors">Confidentialite</a>
           <a href="/legal/cgv" class="hover:text-bleu-signature transition-colors">CGU</a>
           <a href="/legal/cookies" class="hover:text-bleu-signature transition-colors">Cookies</a>
         </div>

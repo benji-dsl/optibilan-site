@@ -4,7 +4,7 @@ import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import Hero from '../../components/Hero.astro';
 
-const pageTitle = 'Mentions légales — Optibilan';
+const pageTitle = 'Mentions légales - Optibilan';
 const pageDescription = 'Mentions légales d\'Optibilan : éditeur, hébergeur, directeur de publication, propriété intellectuelle, contact, RGPD.';
 const lastUpdated = new Date().toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
 ---
@@ -34,12 +34,12 @@ const lastUpdated = new Date().toLocaleDateString('fr-FR', { day: 'numeric', mon
         <article class="prose max-w-none" id="legal-content">
           <div class="mb-8 p-4 bg-papier rounded-card border border-encre/10">
             <p class="text-sm text-encre/60">
-              <strong>Dernière mise à jour :</strong> {lastUpdated} — Version 2.0
+              <strong>Dernière mise à jour :</strong> {lastUpdated} - Version 2.0
             </p>
           </div>
 
           <h2 class="font-display text-2xl font-bold text-encre mb-4 pb-2 border-b border-encre/10">1. Éditeur</h2>
-          <p class="text-encre/70 mb-4"><strong>Optibilan</strong> — Marque exploitée par Benjamin Sant, entrepreneur individuel.</p>
+          <p class="text-encre/70 mb-4"><strong>Optibilan</strong> - Marque exploitée par Benjamin Sant, entrepreneur individuel.</p>
           <dl class="space-y-2 mb-8 text-encre/70">
             <div class="flex gap-4"><dt class="font-medium text-encre min-w-[180px]">SIREN :</dt><dd class="font-mono">987 654 321</dd></div>
             <div class="flex gap-4"><dt class="font-medium text-encre min-w-[180px]">SIRET :</dt><dd class="font-mono">987 654 321 00012</dd></div>
@@ -55,23 +55,23 @@ const lastUpdated = new Date().toLocaleDateString('fr-FR', { day: 'numeric', mon
           <h2 class="font-display text-2xl font-bold text-encre mb-4 pb-2 border-b border-encre/10">3. Hébergeurs</h2>
           <div class="space-y-6 mb-8">
             <div class="p-4 bg-papier/50 rounded-card border border-encre/10">
-              <h3 class="font-semibold text-encre mb-2 flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-bleu-signature"></span> Hostinger — VPS Cloud (Application)</h3>
+              <h3 class="font-semibold text-encre mb-2 flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-bleu-signature"></span> Hostinger - VPS Cloud (Application)</h3>
               <ul class="space-y-1 text-encre/70 text-sm">
                 <li>Adresse : 61 Lordou Vironos Street, 6023 Larnaca, Chypre</li>
                 <li>Site : <a href="https://hostinger.com" target="_blank" rel="noopener noreferrer" class="text-bleu-signature hover:underline">hostinger.com</a></li>
               </ul>
             </div>
             <div class="p-4 bg-papier/50 rounded-card border border-encre/10">
-              <h3 class="font-semibold text-encre mb-2 flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-bleu-signature"></span> Supabase — Base de données PostgreSQL (Données)</h3>
+              <h3 class="font-semibold text-encre mb-2 flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-bleu-signature"></span> Supabase - Base de données PostgreSQL (Données)</h3>
               <ul class="space-y-1 text-encre/70 text-sm">
-                <li>Région : EU West (Irlande) — Données stockées exclusivement en UE</li>
+                <li>Région : EU West (Irlande) - Données stockées exclusivement en UE</li>
                 <li>Site : <a href="https://supabase.com" target="_blank" rel="noopener noreferrer" class="text-bleu-signature hover:underline">supabase.com</a></li>
               </ul>
             </div>
             <div class="p-4 bg-papier/50 rounded-card border border-encre/10">
-              <h3 class="font-semibold text-encre mb-2 flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-bleu-signature"></span> Cloudflare — CDN, DNS, WAF, Tunnel</h3>
+              <h3 class="font-semibold text-encre mb-2 flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-bleu-signature"></span> Cloudflare - CDN, DNS, WAF, Tunnel</h3>
               <ul class="space-y-1 text-encre/70 text-sm">
-                <li>Réseau : 300+ PoP mondiaux — Routage EU pour utilisateurs EU</li>
+                <li>Réseau : 300+ PoP mondiaux - Routage EU pour utilisateurs EU</li>
                 <li>Site : <a href="https://cloudflare.com" target="_blank" rel="noopener noreferrer" class="text-bleu-signature hover:underline">cloudflare.com</a></li>
               </ul>
             </div>
@@ -92,10 +92,10 @@ const lastUpdated = new Date().toLocaleDateString('fr-FR', { day: 'numeric', mon
           <h2 class="font-display text-2xl font-bold text-encre mb-4 pb-2 border-b border-encre/10">6. Cookies & traceurs</h2>
           <p class="text-encre/70 mb-4">Le site utilise des cookies strictement nécessaires (session, sécurité, préférences) et, avec votre consentement, des cookies d'analyse (GA4/Plausible). Aucun cookie publicitaire tiers.</p>
           <ul class="space-y-2 mb-8 text-encre/70">
-            <li><code class="bg-papier px-1.5 py-0.5 rounded text-sm">optibilan_session</code> — Session JWT (30 jours, nécessaire)</li>
-            <li><code class="bg-papier px-1.5 py-0.5 rounded text-sm">optibilan_2fa_pending</code> — Étape 2FA (5 min, nécessaire)</li>
-            <li><code class="bg-papier px-1.5 py-0.5 rounded text-sm">vocab</code> — Vocabulaire cabinet (30 jours, nécessaire)</li>
-            <li><code class="bg-papier px-1.5 py-0.5 rounded text-sm">_ga* / plausible_*</code> — Analytique anonymisée (13 mois, consentement)</li>
+            <li><code class="bg-papier px-1.5 py-0.5 rounded text-sm">optibilan_session</code> - Session JWT (30 jours, nécessaire)</li>
+            <li><code class="bg-papier px-1.5 py-0.5 rounded text-sm">optibilan_2fa_pending</code> - Étape 2FA (5 min, nécessaire)</li>
+            <li><code class="bg-papier px-1.5 py-0.5 rounded text-sm">vocab</code> - Vocabulaire cabinet (30 jours, nécessaire)</li>
+            <li><code class="bg-papier px-1.5 py-0.5 rounded text-sm">_ga* / plausible_*</code> - Analytique anonymisée (13 mois, consentement)</li>
           </ul>
           <p class="text-encre/70 mb-8">Gérez vos préférences via le bandeau « Cookies » ou les paramètres de votre navigateur.</p>
 

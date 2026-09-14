@@ -7,7 +7,7 @@ import CTA from '../../../components/CTA.astro';
 import TrustBar from '../../../components/TrustBar.astro';
 import Icon from '../../../components/Icon.astro';
 
-const pageTitle = 'Intégrations — Optibilan';
+const pageTitle = 'Intégrations - Optibilan';
 const pageDescription = 'API REST v1 OpenAPI, webhooks HMAC, clés API scopées. Santé, agenda, communication, automatisation, paiement. Connectez ce que vous utilisez déjà.';
 
 ---
@@ -48,11 +48,11 @@ const pageDescription = 'API REST v1 OpenAPI, webhooks HMAC, clés API scopées.
               icon: 'globe',
               color: 'bleu-clair',
               integrations: [
-                { name: 'Apple Health', type: 'compatible', desc: 'Sync via Raccourcis iOS (client) — sommeil, VFC, FC, VO2max, pas, poids, %MG', status: 'Fonctionne' },
-                { name: 'Oura', type: 'compatible', desc: 'Anneaux Oura Gen 2/3 — sommeil, VFC, température, score récupération, activité', status: 'Fonctionne' },
-                { name: 'Whoop', type: 'compatible', desc: 'Ceinture Whoop 4.0 — strain, recovery, sleep, HRV, respiratory rate', status: 'Fonctionne' },
-                { name: 'Garmin', type: 'compatible', desc: 'Montres Garmin Connect — activité, sommeil, VFC, VO2max, training status', status: 'Fonctionne' },
-                { name: 'n8n / Make / Zapier', type: 'automation', desc: 'Sync santé côté cabinet — récupération API partenaire → push /api/health-sync', status: 'Fonctionne' },
+                { name: 'Apple Health', type: 'compatible', desc: 'Sync via Raccourcis iOS (client) - sommeil, VFC, FC, VO2max, pas, poids, %MG', status: 'Fonctionne' },
+                { name: 'Oura', type: 'compatible', desc: 'Anneaux Oura Gen 2/3 - sommeil, VFC, température, score récupération, activité', status: 'Fonctionne' },
+                { name: 'Whoop', type: 'compatible', desc: 'Ceinture Whoop 4.0 - strain, recovery, sleep, HRV, respiratory rate', status: 'Fonctionne' },
+                { name: 'Garmin', type: 'compatible', desc: 'Montres Garmin Connect - activité, sommeil, VFC, VO2max, training status', status: 'Fonctionne' },
+                { name: 'n8n / Make / Zapier', type: 'automation', desc: 'Sync santé côté cabinet - récupération API partenaire → push /api/health-sync', status: 'Fonctionne' },
               ],
             },
             {
@@ -60,9 +60,9 @@ const pageDescription = 'API REST v1 OpenAPI, webhooks HMAC, clés API scopées.
               icon: 'calendar',
               color: 'bleu-signature',
               integrations: [
-                { name: 'Google Calendar', type: 'compatible', desc: 'Abonnement ICS par staff — appels planifiés, titre, date, lien fiche client', status: 'Fonctionne' },
-                { name: 'Apple Calendar', type: 'compatible', desc: 'Abonnement ICS natif — mêmes données que Google Calendar', status: 'Fonctionne' },
-                { name: 'Outlook / Office 365', type: 'compatible', desc: 'Abonnement ICS — compatible Outlook desktop, web, mobile', status: 'Fonctionne' },
+                { name: 'Google Calendar', type: 'compatible', desc: 'Abonnement ICS par staff - appels planifiés, titre, date, lien fiche client', status: 'Fonctionne' },
+                { name: 'Apple Calendar', type: 'compatible', desc: 'Abonnement ICS natif - mêmes données que Google Calendar', status: 'Fonctionne' },
+                { name: 'Outlook / Office 365', type: 'compatible', desc: 'Abonnement ICS - compatible Outlook desktop, web, mobile', status: 'Fonctionne' },
                 { name: 'Calendly', type: 'webhook', desc: 'Nouveau RDV Calendly → webhook → création appel dans Optibilan', status: 'Fonctionne' },
               ],
             },
@@ -71,10 +71,10 @@ const pageDescription = 'API REST v1 OpenAPI, webhooks HMAC, clés API scopées.
               icon: 'users',
               color: 'bordeaux',
               integrations: [
-                { name: 'Slack', type: 'compatible', desc: 'Webhook entrant — nouveau client, bilan déposé, appel en retard, signal faible, demande RGPD', status: 'Fonctionne' },
-                { name: 'Email (Resend)', type: 'compatible', desc: 'Emails transactionnels — activation, reset MDP, rappels bilans, notifications équipe', status: 'Fonctionne' },
-                { name: 'Push (Web)', type: 'compatible', desc: 'Notifications navigateur — rappel bilan, séance, message, alerte IA', status: 'Fonctionne' },
-                { name: 'WhatsApp Business', type: 'webhook', desc: 'Via n8n/Make — notifications WhatsApp pour rappels, alertes', status: 'Via automatisation' },
+                { name: 'Slack', type: 'compatible', desc: 'Webhook entrant - nouveau client, bilan déposé, appel en retard, signal faible, demande RGPD', status: 'Fonctionne' },
+                { name: 'Email (Resend)', type: 'compatible', desc: 'Emails transactionnels - activation, reset MDP, rappels bilans, notifications équipe', status: 'Fonctionne' },
+                { name: 'Push (Web)', type: 'compatible', desc: 'Notifications navigateur - rappel bilan, séance, message, alerte IA', status: 'Fonctionne' },
+                { name: 'WhatsApp Business', type: 'webhook', desc: 'Via n8n/Make - notifications WhatsApp pour rappels, alertes', status: 'Via automatisation' },
               ],
             },
             {
@@ -82,9 +82,9 @@ const pageDescription = 'API REST v1 OpenAPI, webhooks HMAC, clés API scopées.
               icon: 'zap',
               color: 'indigo',
               integrations: [
-                { name: 'n8n', type: 'automation', desc: 'Auto-hébergé ou cloud — webhooks Optibilan → actions n8n (Notion, Sheets, Airtable, HTTP)', status: 'Fonctionne' },
-                { name: 'Make (Integromat)', type: 'automation', desc: 'Scénarios visuels — nouveaux clients, bilans, paiements → actions multiples', status: 'Fonctionne' },
-                { name: 'Zapier', type: 'automation', desc: 'Zaps — trigger Optibilan (client.created, checkin.submitted…) → 5000+ apps', status: 'Fonctionne' },
+                { name: 'n8n', type: 'automation', desc: 'Auto-hébergé ou cloud - webhooks Optibilan → actions n8n (Notion, Sheets, Airtable, HTTP)', status: 'Fonctionne' },
+                { name: 'Make (Integromat)', type: 'automation', desc: 'Scénarios visuels - nouveaux clients, bilans, paiements → actions multiples', status: 'Fonctionne' },
+                { name: 'Zapier', type: 'automation', desc: 'Zaps - trigger Optibilan (client.created, checkin.submitted…) → 5000+ apps', status: 'Fonctionne' },
                 { name: 'Notion', type: 'webhook', desc: 'Webhook note.created → base Notion (client, coach, date, type, contenu, visibilité)', status: 'Fonctionne' },
               ],
             },
@@ -94,8 +94,8 @@ const pageDescription = 'API REST v1 OpenAPI, webhooks HMAC, clés API scopées.
               color: 'bleu-lecture',
               integrations: [
                 { name: 'Stripe', type: 'compatible', desc: 'Paiements, abonnements, portail client, factures, webhooks (payment_failed, invoice.paid, subscription.updated)', status: 'Fonctionne' },
-                { name: 'Systeme.io', type: 'manual', desc: 'Facturation manuelle / virement — export CSV factures → import Systeme.io', status: 'Sur demande' },
-                { name: 'Virement SEPA', type: 'compatible', desc: 'Prélèvement SEPA via Stripe — mandate, réconciliation auto, relances impayés', status: 'Fonctionne' },
+                { name: 'Systeme.io', type: 'manual', desc: 'Facturation manuelle / virement - export CSV factures → import Systeme.io', status: 'Sur demande' },
+                { name: 'Virement SEPA', type: 'compatible', desc: 'Prélèvement SEPA via Stripe - mandate, réconciliation auto, relances impayés', status: 'Fonctionne' },
               ],
             },
             {
@@ -103,10 +103,10 @@ const pageDescription = 'API REST v1 OpenAPI, webhooks HMAC, clés API scopées.
               icon: 'code',
               color: 'bleu-ardoise',
               integrations: [
-                { name: 'API REST v1', type: 'compatible', desc: 'OpenAPI 3.1 complet — clients, bilans, nutrition, sport, santé, webhooks, admin', status: 'Fonctionne' },
-                { name: 'Webhooks HMAC', type: 'compatible', desc: '8 événements signés — client.created, checkin.submitted, badge.earned, nutrition.updated, call.overdue, client.weak_signal…', status: 'Fonctionne' },
-                { name: 'Sandbox API', type: 'compatible', desc: 'Environnement test — clés API test, données factices, playground Swagger/Redoc', status: 'Fonctionne' },
-                { name: 'SSO / SAML', type: 'compatible', desc: 'Offre Cabinet — SAML 2.0, OIDC, provisioning SCIM (bientôt)', status: 'Bientôt' },
+                { name: 'API REST v1', type: 'compatible', desc: 'OpenAPI 3.1 complet - clients, bilans, nutrition, sport, santé, webhooks, admin', status: 'Fonctionne' },
+                { name: 'Webhooks HMAC', type: 'compatible', desc: '8 événements signés - client.created, checkin.submitted, badge.earned, nutrition.updated, call.overdue, client.weak_signal…', status: 'Fonctionne' },
+                { name: 'Sandbox API', type: 'compatible', desc: 'Environnement test - clés API test, données factices, playground Swagger/Redoc', status: 'Fonctionne' },
+                { name: 'SSO / SAML', type: 'compatible', desc: 'Offre Cabinet - SAML 2.0, OIDC, provisioning SCIM (bientôt)', status: 'Bientôt' },
               ],
             },
           ].map((category, catIdx) => (
@@ -154,7 +154,7 @@ const pageDescription = 'API REST v1 OpenAPI, webhooks HMAC, clés API scopées.
 
       <div class="container relative text-center max-w-3xl mx-auto py-16 md:py-24">
         <h2 id="api-title" class="font-display text-3xl md:text-4xl font-bold mb-4 text-craie">
-          API REST v1 — OpenAPI 3.1
+          API REST v1 - OpenAPI 3.1
         </h2>
         <p class="text-lg mb-8 text-craie/80 max-w-2xl mx-auto">
           Documentation complète, sandbox de test, exemples cURL/Node/Python. Clés API scopées, rate limiting, webhooks HMAC.

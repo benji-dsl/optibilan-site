@@ -7,7 +7,7 @@ import CTA from '../../../components/CTA.astro';
 import TrustBar from '../../../components/TrustBar.astro';
 import Icon from '../../../components/Icon.astro';
 
-const pageTitle = 'Administration — Optibilan';
+const pageTitle = 'Administration - Optibilan';
 const pageDescription = 'Gestion utilisateurs (rôles, spécialités, 2FA), offres d\'appel personnalisées, mentions légales du cabinet, modules on/off, questionnaire lancement configurable, RGPD (export, purge), audit trail, webhooks, API keys.';
 
 ---
@@ -24,7 +24,7 @@ const pageDescription = 'Gestion utilisateurs (rôles, spécialités, 2FA), offr
       title="L'admin qui ne vous
 prend pas la tête."
       subtitle="Utilisateurs, offres, marque blanche, modules, conformité, audit, webhooks, API. Tout configuré en quelques clics. Pas de ticket support pour changer un paramètre."
-      badge="Module cœur — Accès admin selon rôle"
+      badge="Module cœur - Accès admin selon rôle"
       primaryCTA={{ href: 'https://calendly.com/optibilan/demo', label: 'Voir l\'admin en démo' }}
       secondaryCTA={{ href: '/product/overview', label: 'Retour au produit' }}
     />
@@ -47,13 +47,13 @@ prend pas la tête."
           {[
             {
               icon: 'users',
-              title: 'Gestion utilisateurs — rôles, spécialités, 2FA',
+              title: 'Gestion utilisateurs - rôles, spécialités, 2FA',
               desc: 'Création / invitation / suspension / suppression en 1 clic. Rôles : admin, coach, mental, diet, support. Spécialités par praticien (coach force, diet clinique, mental performance…). 2FA TOTP obligatoire admins (RFC 6238). Lock 5 échecs/15min. Historique connexions.',
               features: [
-                'CRUD complet utilisateurs (créer, inviter, suspendre, supprimer)',
-                'Rôles : admin, coach, mental, diet, support + spécialités',
-                '2FA TOTP obligatoire admins (RFC 6238), lock 5 échecs/15min',
-                'Historique connexions + audit trail par utilisateur',
+                'CRUD utilisateurs complet',
+                'Rôles : admin, coach, mental, diet, support',
+                '2FA TOTP obligatoire admins',
+                'Historique connexions + audit trail',
               ],
               icon: 'users',
             },
@@ -62,19 +62,19 @@ prend pas la tête."
               title: 'Offres d\'appel personnalisées',
               desc: 'Créez vos propres offres : nom, description, durée, fréquence appels, tarif, inclus/exclus, renouvellement auto. Associez à un client en 1 clic. Facturation auto selon offre. Historique offres par client.',
               features: [
-                'Création libre : nom, description, durée, fréquence, tarif',
-                'Inclus/exclus : modules, limites, support, SLA',
+                'Création libre : nom, durée, fréquence, tarif',
+                'Inclus/exclus : modules, limites, support',
                 'Renouvellement auto / manuel / prorata',
-                'Historique complet offres par client',
+                'Historique offres par client',
               ],
               icon: 'document',
             },
             {
               icon: 'shield',
-              title: 'Marque blanche — configuration complète',
+              title: 'Marque blanche - configuration complète',
               desc: 'Logo, thème, domaine, vocabulaire, assistant IA, emails, mentions légales, CGV, mentions légales cabinet. Tout dans une seule page. Aperçu temps réel. Activation instantanée. Niveaux : Solo (basique), Studio (avancée), Cabinet (totale).',
               features: [
-                'Page unique : logo, thème, domaine, vocabulaire, IA, emails, mentions, CGV',
+                'Page unique : logo, thème, domaine, vocabulaire, IA, emails',
                 'Aperçu temps réel (desktop + mobile)',
                 'Niveaux : Solo / Studio / Cabinet',
                 'Activation instantanée, rollback 1-clic',
@@ -83,13 +83,13 @@ prend pas la tête."
             },
             {
               icon: 'code',
-              title: 'Modules on/off — activation instantanée',
+              title: 'Modules on/off - activation instantanée',
               desc: '12 modules activables indépendamment. Pas de migration, pas de surcoût. Désactivation = masquage UI + désactivation API + arrêt webhooks. Réactivation = restauration données intactes. Audit : qui a activé quoi, quand.',
               features: [
                 '12 modules indépendants, toggle unique',
-                'Pas de migration, pas de surcoût, données préservées',
-                'Désactivation = masquage UI + API + webhooks arrêtés',
-                'Audit trail : qui a activé/désactivé quoi, quand',
+                'Pas de migration, pas de surcoût',
+                'Désactivation = masquage UI + API + webhooks',
+                'Audit trail : qui a activé quoi, quand',
               ],
               icon: 'code',
             },
@@ -98,46 +98,46 @@ prend pas la tête."
               title: 'Questionnaire lancement configurable',
               desc: 'Champs : texte, nombre, choix unique, choix multiple, fichier, date, échelle, oui/non. Ordre par drag-and-drop. Conditionnels (si objectif = perte de gras → tour de taille requis). Pré-remplissage IA depuis données existantes. Prévisualisation temps réel.',
               features: [
-                '8 types de champs + conditionnels + drag-and-drop ordre',
+                '8 types champs + conditionnels + drag-and-drop',
                 'Logique conditionnelle (si X → afficher Y)',
-                'Pré-remplissage IA depuis données existantes',
-                'Prévisualisation temps réel (desktop + mobile)',
+                'Pré-remplissage IA depuis données',
+                'Prévisualisation temps réel',
               ],
               icon: 'document',
             },
             {
               icon: 'lock',
-              title: 'RGPD & Conformité — pilotage natif',
+              title: 'RGPD & Conformité - pilotage natif',
               desc: 'Export 1-clic (37 modèles JSON), purge paramétrable (durée + flag), droit à l\'oubli cascade, DPA annexé, mentions légales, registre sous-traitants. Vérifié en CI (check-tenant.mjs) : aucun modèle cloisonné oublié.',
               features: [
-                'Export RGPD 1-clic (JSON, 37 modèles Prisma)',
-                'Purge auto paramétrable : durée (défaut 3 ans) + flag suppression',
-                'Droit à l\'oubli : suppression client cascade par admin',
-                'DPA annexé, registre sous-traitants Art.28 à jour',
+                'Export RGPD 1-clic (37 modèles JSON)',
+                'Purge auto paramétrable (durée + flag)',
+                'Droit à l\'oubli : suppression cascade',
+                'DPA annexé, registre Art.28 à jour',
               ],
               icon: 'lock',
             },
             {
               icon: 'chart',
-              title: 'Audit trail double niveau — transparence totale',
+              title: 'Audit trail double niveau - transparence totale',
               desc: 'Niveau organisation : actions staff (création client, modification bilan, export RGPD, invitation staff…). Niveau plateforme : actions équipe Optibilan (suspension org, changement plan, dépannage, accès support). Horodaté, IP, user-agent, meta JSON. Export CSV/JSON.',
               features: [
-                'Niveau org : actions staff (création, modif, export, invitation)',
-                'Niveau plateforme : actions équipe Optibilan (suspension, plan, support)',
-                'Horodaté, IP, user-agent, meta JSON complet',
-                'Export CSV/JSON pour investigation / conformité',
+                'Niveau org : actions staff (création, modif, export)',
+                'Niveau plateforme : actions équipe Optibilan',
+                'Horodaté, IP, user-agent, meta JSON',
+                'Export CSV/JSON pour conformité',
               ],
               icon: 'chart',
             },
             {
               icon: 'zap',
-              title: 'Webhooks & API Keys — pilotage externe',
+              title: 'Webhooks & API Keys - pilotage externe',
               desc: 'Webhooks : 8 événements, HMAC signé, retry exponentiel (max 5x), idempotence externalId. API Keys : scopées (clients:read, checkins:write, cron, health:sync…), rotation, expiration, rate limit 120 req/min (Studio), sans limite (Cabinet). Sandbox de test.',
               features: [
-                '8 événements : client.created, checkin.submitted, badge.earned…',
-                'HMAC signé, retry exponentiel max 5x, idempotence externalId',
-                'Clés API scopées (clients:read, checkins:write, cron, health:sync…)',
-                'Rate limit : 120 req/min (Studio), sans limite (Cabinet), sandbox test',
+                '8 événements : client.created, checkin.submitted...',
+                'HMAC signé, retry exponentiel, idempotence',
+                'Clés API scopées (clients:read, checkins:write...)',
+                'Rate limit : 120/min (Studio), illimité (Cabinet)',
               ],
               icon: 'zap',
             },

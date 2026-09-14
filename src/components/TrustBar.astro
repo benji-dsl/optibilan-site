@@ -12,13 +12,13 @@ interface Props {
 
 const {
   badges = [
-    { label: 'RGPD by design', icon: 'lock', description: 'Export, purge auto, DPA' },
-    { label: 'Données en France/EU', icon: 'database', description: 'PostgreSQL managé (Irlande)' },
-    { label: 'Paiements sécurisés', icon: 'credit-card', description: 'Stripe, PCI DSS' },
-    { label: 'Protection DDoS/WAF', icon: 'cloud', description: 'Cloudflare, zero-trust' },
-    { label: 'API documentée', icon: 'code', description: 'OpenAPI 3.1, sandbox' },
+    { label: 'Biomarqueurs sanguins', icon: 'chart', description: 'Suivi taux, ferritine, vit D, CRP, homocysteine' },
+    { label: 'Metriques quotidiennes', icon: 'activity', description: 'FCV, sommeil, HRV, charge, recuperation' },
+    { label: 'Nutrition precision', icon: 'apple', description: 'Macros, micronutriments, timing, supplements' },
+    { label: 'Entrainement adapte', icon: 'dumbbell', description: 'RPE, volume, intensite, progression auto' },
+    { label: 'Sante cognitive', icon: 'brain', description: 'Tests cognitifs, stress, sommeil, humeur' },
   ],
-  title = 'Infrastructure de confiance',
+  title = 'accompagnez a la meilleure longevite en bonne sante',
 } = Astro.props;
 ---
 
@@ -32,7 +32,7 @@ const {
 
     <div class="relative max-w-5xl mx-auto">
       <div class="overflow-hidden">
-        <div class="flex gap-4 md:gap-6" id="trust-carousel" role="region" aria-label="Infrastructure de confiance">
+        <div class="flex gap-4 md:gap-6" id="trust-carousel" role="region" aria-label="Piliers longévité">
           {badges.map((badge, index) => (
             <article
               class="flex-shrink-0 w-full sm:w-[calc(50%-0.5rem)] lg:w-[calc(20%-0.8rem)] group"
@@ -53,35 +53,40 @@ const {
         </div>
       </div>
     </div>
-
-    <button
-      class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:left-4 w-10 h-10 rounded-full bg-encre/80 backdrop-blur-sm border border-craie/10 text-craie/50 hover:text-bleu-signature hover:border-bleu-signature/30 hover:bg-encre/90 flex items-center justify-center transition-all duration-300 hidden md:flex z-10"
-      aria-label="Précédent"
-      onclick="document.getElementById('trust-carousel').scrollBy({left: -300, behavior: 'smooth'})"
-    >
-      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
-    </button>
-    <button
-      class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:right-4 w-10 h-10 rounded-full bg-encre/80 backdrop-blur-sm border border-craie/10 text-craie/50 hover:text-bleu-signature hover:border-bleu-signature/30 hover:bg-encre/90 flex items-center justify-center transition-all duration-300 hidden md:flex z-10"
-      aria-label="Suivant"
-      onclick="document.getElementById('trust-carousel').scrollBy({left: 300, behavior: 'smooth'})"
-    >
-      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-    </button>
-
-    <div class="flex justify-center gap-2 mt-8" role="tablist" aria-label="Indicateurs de navigation">
-      {badges.map((_, index) => (
-        <button
-          class="w-2 h-2 rounded-full bg-craie/30 hover:bg-bleu-signature/50 transition-colors duration-300"
-          role="tab"
-          aria-label={`Aller à ${badges[index].label}`}
-          aria-selected={index === 0}
-          onclick={`document.getElementById('trust-carousel').scrollTo({left: ${index * 300}, behavior: 'smooth'})`}
-        />
-      ))}
-    </div>
 </div>
 </section>
+
+<script is:inline>
+  const carousel = document.getElementById('trust-carousel');
+  if (carousel) {
+    let scrollInterval;
+    const scrollAmount = 300;
+    const scrollDelay = 4000;
+    
+    function autoScroll() {
+      if (carousel.scrollLeft + carousel.clientWidth >= carousel.scrollWidth - 10) {
+        carousel.scrollTo({ left: 0, behavior: 'smooth' });
+      } else {
+        carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+      }
+    }
+    
+    function startAutoScroll() {
+      scrollInterval = setInterval(autoScroll, scrollDelay);
+    }
+    
+    function stopAutoScroll() {
+      clearInterval(scrollInterval);
+    }
+    
+    carousel.addEventListener('mouseenter', stopAutoScroll);
+    carousel.addEventListener('mouseleave', startAutoScroll);
+    carousel.addEventListener('focusin', stopAutoScroll);
+    carousel.addEventListener('focusout', startAutoScroll);
+    
+    startAutoScroll();
+  }
+</script>
 
 <style>
   @media (max-width: 768px) {

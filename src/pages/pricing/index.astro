@@ -8,7 +8,7 @@ import CTA from '../../components/CTA.astro';
 import TrustBar from '../../components/TrustBar.astro';
 import Features from '../../components/Features.astro';
 
-const pageTitle = 'Tarifs — Optibilan';
+const pageTitle = 'Tarifs - Optibilan';
 const pageDescription = '3 offres simples : Solo 49€/mois, Studio 149€/mois, Cabinet 349€/mois. 30 jours essai gratuit, sans CB. -20% en annuel. Tout inclus, pas de surcoût caché.';
 ---
 
@@ -120,7 +120,7 @@ const pageDescription = '3 offres simples : Solo 49€/mois, Studio 149€/mois,
             { q: 'Puis-je changer d\'offre en cours de mois ?', a: 'Oui. Le changement prend effet immédiatement. Le prorata est calculé automatiquement sur votre prochaine facture Stripe.' },
             { q: 'Y a-t-il un engagement ?', a: 'Non. Résiliation en 1 clic depuis l\'admin. L\'accès reste actif jusqu\'à la fin de la période payée.' },
             { q: 'Que se passe-t-il à la fin de l\'essai de 30 jours ?', a: 'Votre espace passe en lecture seule (consultation possible, création bloquée). Vous avez 7 jours de grâce pour choisir une offre sans perdre l\'accès staff.' },
-            { q: 'La marque blanche est-elle vraiment totale ?', a: 'Sur l\'offre Cabinet : logo, couleurs, nom assistant IA, vocabulaire (coaché/patient/membre...), domaine, mentions légales, CGV, email d\'expédition — tout est à vous. Sur Studio : avancée (logo, couleurs, assistant, vocabulaire). Sur Solo : basique (logo, couleurs).' },
+            { q: 'La marque blanche est-elle vraiment totale ?', a: 'Sur l\'offre Cabinet : logo, couleurs, nom assistant IA, vocabulaire (coaché/patient/membre...), domaine, mentions légales, CGV, email d\'expédition - tout est à vous. Sur Studio : avancée (logo, couleurs, assistant, vocabulaire). Sur Solo : basique (logo, couleurs).' },
             { q: 'Mes données sont-elles hébergées en France ?', a: 'La base PostgreSQL est hébergée sur Supabase (région EU West, Irlande), le VPS sur Hostinger en France, les backups chiffrés stockés en EU (S3-compatible EU). Aucune donnée ne sort de l\'UE. Certifications fournisseurs : SOC 2 Type II, ISO 27001, HIPAA, RGPD.' },
             { q: 'Comment fonctionne l\'export RGPD et la purge des données ?', a: 'Admin → Export : JSON complet de TOUTES les données du cabinet (37 modèles Prisma) en 1 clic. Purge auto paramétrable : durée de conservation (défaut 3 ans) + flag de suppression. Droit à l\'oubli : suppression client en cascade par admin. Vérifié en CI (check-tenant.mjs) : aucun modèle cloisonné oublié.' },
             { q: 'Comment fonctionne la facturation ?', a: 'Via Stripe (carte bancaire, virement SEPA, prélèvement SEPA) ou par virement manuel / Systeme.io (sur demande). Les factures sont émises automatiquement à chaque échéance et disponibles dans l\'admin. TVA en sus pour les assujettis (20% France).' },

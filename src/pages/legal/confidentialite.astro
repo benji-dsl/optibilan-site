@@ -4,7 +4,7 @@ import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import Hero from '../../components/Hero.astro';
 
-const pageTitle = 'Politique de confidentialité — Optibilan';
+const pageTitle = 'Politique de confidentialité - Optibilan';
 const pageDescription = 'Politique de confidentialité d\'Optibilan : données collectées, finalités, base légale, destinataires, transferts, durée de conservation, droits RGPD, cookies, contact DPO.';
 const lastUpdated = new Date().toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
 ---
@@ -34,13 +34,13 @@ const lastUpdated = new Date().toLocaleDateString('fr-FR', { day: 'numeric', mon
         <article class="prose max-w-none" id="privacy-content">
           <div class="mb-8 p-4 bg-papier rounded-card border border-encre/10">
             <p class="text-sm text-encre/60">
-              <strong>Date d'entrée en vigueur :</strong> {lastUpdated} — Version 2.0
+              <strong>Date d'entrée en vigueur :</strong> {lastUpdated} - Version 2.0
             </p>
           </div>
 
           <h2 class="font-display text-2xl font-bold text-encre mb-4 pb-2 border-b border-encre/10">1. Responsable de traitement</h2>
           <dl class="space-y-2 mb-8 text-encre/70">
-            <div class="flex gap-4"><dt class="font-medium text-encre min-w-[180px]">Identité :</dt><dd><strong>Optibilan</strong> — Benjamin Sant, entrepreneur individuel</dd></div>
+            <div class="flex gap-4"><dt class="font-medium text-encre min-w-[180px]">Identité :</dt><dd><strong>Optibilan</strong> - Benjamin Sant, entrepreneur individuel</dd></div>
             <div class="flex gap-4"><dt class="font-medium text-encre min-w-[180px]">SIREN :</dt><dd>987 654 321</dd></div>
             <div class="flex gap-4"><dt class="font-medium text-encre min-w-[180px]">Adresse :</dt><dd>123 Rue de la Santé, 75000 Paris, France</dd></div>
             <div class="flex gap-4"><dt class="font-medium text-encre min-w-[180px]">DPO :</dt><dd><a href="mailto:privacy@optibilan.com" class="text-bleu-signature hover:underline">privacy@optibilan.com</a></dd></div>
@@ -74,7 +74,7 @@ const lastUpdated = new Date().toLocaleDateString('fr-FR', { day: 'numeric', mon
 
           <h3 class="font-semibold text-xl text-encre mb-3">2.3 Données techniques & analytiques</h3>
           <ul class="space-y-2 mb-8 text-encre/70">
-            <li><strong>Analytique (GA4/Plausible, avec consentement) :</strong> pages vues, événements, référents, pays, device, navigateur — anonymisé (pas d'IP complète).</li>
+            <li><strong>Analytique (GA4/Plausible, avec consentement) :</strong> pages vues, événements, référents, pays, device, navigateur - anonymisé (pas d'IP complète).</li>
             <li><strong>Sécurité :</strong> taux de réussite login, échecs 2FA, erreurs 5xx, webhooks échoués, rate-limit hits.</li>
           </ul>
 
@@ -102,14 +102,14 @@ const lastUpdated = new Date().toLocaleDateString('fr-FR', { day: 'numeric', mon
 
           <h2 class="font-display text-2xl font-bold text-encre mb-4 pb-2 border-b border-encre/10">4. Destinataires</h2>
           <ul class="space-y-3 mb-8 text-encre/70">
-            <li><strong>Interne :</strong> Équipe Optibilan (support, dev, sécurité) — accès strictement nécessaire (principe du moindre privilège).</li>
-            <li><strong>Sous-traitants (Art. 28 RGPD) :</strong> <a href="/legal/sous-traitance" class="text-bleu-signature hover:underline">Registre complet</a> — Supabase (DB), Stripe (paiement), Resend (email), Cloudflare (CDN/WAF/DNS), Anthropic (IA), Plausible (analytics). Tous signent un DPA, hébergement EU pour les données de santé.</li>
+            <li><strong>Interne :</strong> Équipe Optibilan (support, dev, sécurité) - accès strictement nécessaire (principe du moindre privilège).</li>
+            <li><strong>Sous-traitants (Art. 28 RGPD) :</strong> <a href="/legal/sous-traitance" class="text-bleu-signature hover:underline">Registre complet</a> - Supabase (DB), Stripe (paiement), Resend (email), Cloudflare (CDN/WAF/DNS), Anthropic (IA), Plausible (analytics). Tous signent un DPA, hébergement EU pour les données de santé.</li>
             <li><strong>Autorités :</strong> Sur réquisition judiciaire ou administrative légitime.</li>
           </ul>
 
           <h2 class="font-display text-2xl font-bold text-encre mb-4 pb-2 border-b border-encre/10">5. Transferts hors UE</h2>
           <p class="text-encre/70 mb-4"><strong>Aucun transfert de données de santé hors UE.</strong> Les données restent sur Supabase (région EU West) et VPS Hostinger (France).</p>
-          <p class="text-encre/70 mb-8">Les sous-traitants suivants peuvent accéder à des données techniques non-sensibles depuis les US : Anthropic (IA — prompts anonymisés, pas de données identifiantes, zero-retention), Cloudflare (métadonnées trafic, logs WAF). Des clauses contractuelles types (SCC 2021) et mesures techniques (chiffrement, pseudonymisation) encadrent ces accès.</p>
+          <p class="text-encre/70 mb-8">Les sous-traitants suivants peuvent accéder à des données techniques non-sensibles depuis les US : Anthropic (IA - prompts anonymisés, pas de données identifiantes, zero-retention), Cloudflare (métadonnées trafic, logs WAF). Des clauses contractuelles types (SCC 2021) et mesures techniques (chiffrement, pseudonymisation) encadrent ces accès.</p>
 
           <h2 class="font-display text-2xl font-bold text-encre mb-4 pb-2 border-b border-encre/10">6. Durée de conservation</h2>
           <ul class="space-y-2 mb-8 text-encre/70">
@@ -126,7 +126,7 @@ const lastUpdated = new Date().toLocaleDateString('fr-FR', { day: 'numeric', mon
             <li><strong>Chiffrement au repos :</strong> AES-256 (Supabase, disques VPS).</li>
             <li><strong>Chiffrement en transit :</strong> TLS 1.3 partout (Cloudflare + app).</li>
             <li><strong>Authentification :</strong> JWT HS256 (cookie httpOnly, secure, sameSite=lax), rotation <code>sessionVersion</code> au changement MDP, 2FA TOTP obligatoire admins (RFC 6238), lock 5 échecs/15min.</li>
-            <li><strong>Architecture multi-tenant fail-closed :</strong> injection auto <code>orgId</code> sur toute requête Prisma (extension <code>tenant-guard</code>). Testé en CI (<code>test:isolation.mts</code> — 13/13).</li>
+            <li><strong>Architecture multi-tenant fail-closed :</strong> injection auto <code>orgId</code> sur toute requête Prisma (extension <code>tenant-guard</code>). Testé en CI (<code>test:isolation.mts</code> - 13/13).</li>
             <li><strong>Headers sécurité :</strong> CSP stricte, HSTS, X-Frame-Options: DENY, X-Content-Type-Options: nosniff, Referrer-Policy: strict-origin-when-cross-origin.</li>
             <li><strong>SSRF protection :</strong> validation sorties réseau (<code>net.ts</code>), validation entrées/sorties.</li>
             <li><strong>Rate-limiting persistant en base :</strong> survit aux redémarrages, fail-open.</li>
@@ -138,12 +138,12 @@ const lastUpdated = new Date().toLocaleDateString('fr-FR', { day: 'numeric', mon
           <ul class="space-y-2 mb-4 text-encre/70">
             <li><strong>Accès (Art. 15) :</strong> obtenir copie de vos données.</li>
             <li><strong>Rectification (Art. 16) :</strong> corriger des données inexactes.</li>
-            <li><strong>Effacement (Art. 17) :</strong> « droit à l'oubli » — dans les limites des obligations légales.</li>
+            <li><strong>Effacement (Art. 17) :</strong> « droit à l'oubli » - dans les limites des obligations légales.</li>
             <li><strong>Limitation (Art. 18) :</strong> geler l'usage.</li>
-            <li><strong>Portabilité (Art. 20) :</strong> recevoir vos données dans un format structuré — export JSON complet dispo dans l'admin.</li>
+            <li><strong>Portabilité (Art. 20) :</strong> recevoir vos données dans un format structuré - export JSON complet dispo dans l'admin.</li>
             <li><strong>Opposition (Art. 21) :</strong> au traitement pour motif légitime ou prospection.</li>
             <li><strong>Retrait du consentement (Art. 7.3) :</strong> à tout moment pour les traitements basés sur le consentement.</li>
-            <li><strong>Décisions automatisées (Art. 22) :</strong> droit à l'intervention humaine — l'IA est assistante, jamais décideuse.</li>
+            <li><strong>Décisions automatisées (Art. 22) :</strong> droit à l'intervention humaine - l'IA est assistante, jamais décideuse.</li>
           </ul>
           <p class="text-encre/70 mb-8">Exercice des droits : <a href="mailto:privacy@optibilan.com" class="text-bleu-signature hover:underline">privacy@optibilan.com</a> ou via l'admin (Mon compte → Mes données). Réponse sous 30 jours.</p>
 
@@ -177,7 +177,7 @@ const lastUpdated = new Date().toLocaleDateString('fr-FR', { day: 'numeric', mon
           <h2 class="font-display text-2xl font-bold text-encre mb-4 pb-2 border-b border-encre/10">12. Contact DPO</h2>
           <ul class="space-y-2 mb-4 text-encre/70">
             <li>Email : <a href="mailto:privacy@optibilan.com" class="text-bleu-signature hover:underline">privacy@optibilan.com</a></li>
-            <li>Courrier : Optibilan — DPO, 123 Rue de la Santé, 75000 Paris</li>
+            <li>Courrier : Optibilan - DPO, 123 Rue de la Santé, 75000 Paris</li>
           </ul>
           <p class="text-encre/70 mb-8">Vous avez le droit d'introduire une réclamation auprès de la CNIL (<a href="https://cnil.fr" target="_blank" rel="noopener noreferrer" class="text-bleu-signature hover:underline">cnil.fr</a>).</p>
 

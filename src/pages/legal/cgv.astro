@@ -4,7 +4,7 @@ import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import Hero from '../../components/Hero.astro';
 
-const pageTitle = 'Conditions Générales de Vente — Optibilan';
+const pageTitle = 'Conditions Générales de Vente - Optibilan';
 const pageDescription = 'CGV d\'Optibilan : abonnements, tarifs, paiement, résiliation, SLA, support, responsabilités, RGPD, droit applicable.';
 const lastUpdated = new Date().toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
 ---
@@ -36,30 +36,30 @@ const lastUpdated = new Date().toLocaleDateString('fr-FR', { day: 'numeric', mon
             Les présentes Conditions Générales de Vente (ci-après « CGV ») régissent l'abonnement au service Optibilan (ci-après « le Service ») entre la société Optibilan (ci-après « l'Éditeur ») et le Cabinet professionnel de santé, de coaching ou de bien-être (ci-après « l'Abonné » ou « le Cabinet »).
           </p>
 
-          <h2 class="font-display text-2xl font-bold text-encre mb-4 pb-2 border-b border-encre/10">Article 1 — Objet</h2>
+          <h2 class="font-display text-2xl font-bold text-encre mb-4 pb-2 border-b border-encre/10">Article 1 - Objet</h2>
           <p class="text-encre/70 mb-8">Le Service est une plateforme SaaS multi-tenant de suivi coaching (bilans, nutrition, sport, préparation mentale, santé connectée, gamification, journal coaching, appels planifiés, assistant IA) mise à disposition de l'Abonné via l'URL <code>app.optibilan.com</code> et ses sous-domaines. L'Abonné bénéficie d'un espace isolé (organisation) configurable en marque blanche pour ses propres coachés.</p>
 
-          <h2 class="font-display text-2xl font-bold text-encre mb-4 pb-2 border-b border-encre/10">Article 2 — Offres et tarifs</h2>
+          <h2 class="font-display text-2xl font-bold text-encre mb-4 pb-2 border-b border-encre/10">Article 2 - Offres et tarifs</h2>
           <p class="text-encre/70 mb-4">Trois offres sont proposées, payables mensuellement ou annuellement (réduction 20% en annuel) :</p>
           <ul class="space-y-3 mb-8">
-            <li class="p-4 bg-papier/50 rounded-card border border-encre/10"><strong>Solo</strong> : 49 €/mois (39 €/mois en annuel) — 30 coachés, 1 staff, IA 1 000 msg/mois, API non incluse, marque blanche basique.</li>
-            <li class="p-4 bg-papier/50 rounded-card border border-encre/10"><strong>Studio</strong> : 149 €/mois (119 €/mois en annuel) — 150 coachés, 5 staff, IA 5 000 msg/mois, API incluse, marque blanche avancée, webhooks, Slack.</li>
-            <li class="p-4 bg-papier/50 rounded-card border border-encre/10"><strong>Cabinet</strong> : 349 €/mois (279 €/mois en annuel) — Coachés illimités, staff illimité, IA 20 000 msg/mois, API sans limite, SSO/SAML, SLA, support dédié, onboarding équipe offert.</li>
+            <li class="p-4 bg-papier/50 rounded-card border border-encre/10"><strong>Solo</strong> : 49 €/mois (39 €/mois en annuel) - 30 coachés, 1 staff, IA 1 000 msg/mois, API non incluse, marque blanche basique.</li>
+            <li class="p-4 bg-papier/50 rounded-card border border-encre/10"><strong>Studio</strong> : 149 €/mois (119 €/mois en annuel) - 150 coachés, 5 staff, IA 5 000 msg/mois, API incluse, marque blanche avancée, webhooks, Slack.</li>
+            <li class="p-4 bg-papier/50 rounded-card border border-encre/10"><strong>Cabinet</strong> : 349 €/mois (279 €/mois en annuel) - Coachés illimités, staff illimité, IA 20 000 msg/mois, API sans limite, SSO/SAML, SLA, support dédié, onboarding équipe offert.</li>
           </ul>
           <p class="text-encre/70 mb-8">Les tarifs s'entendent HT. La TVA (20% en France) s'ajoute pour les assujettis. L'Éditeur se réserve le droit de modifier les tarifs à tout moment, avec un préavis de 30 jours pour les abonnements en cours. La modification ne s'applique qu'au renouvellement suivant.</p>
 
-          <h2 class="font-display text-2xl font-bold text-encre mb-4 pb-2 border-b border-encre/10">Article 3 — Essai gratuit</h2>
+          <h2 class="font-display text-2xl font-bold text-encre mb-4 pb-2 border-b border-encre/10">Article 3 - Essai gratuit</h2>
           <p class="text-encre/70 mb-8">Tout nouvel Abonné bénéficie d'un essai gratuit de 30 jours, sans carte bancaire, avec accès complet à l'offre choisie. À l'issue de l'essai, l'espace passe en lecture seule (consultation possible, création bloquée) pendant 7 jours de grâce. Passé ce délai, l'accès staff est verrouillé jusqu'à la souscription.</p>
 
-          <h2 class="font-display text-2xl font-bold text-encre mb-4 pb-2 border-b border-encre/10">Article 4 — Paiement et facturation</h2>
+          <h2 class="font-display text-2xl font-bold text-encre mb-4 pb-2 border-b border-encre/10">Article 4 - Paiement et facturation</h2>
           <p class="text-encre/70 mb-4">Le paiement s'effectue via Stripe (carte bancaire, virement SEPA, prélèvement SEPA) ou par virement manuel / Systeme.io (sur demande). Les factures sont émises automatiquement à chaque échéance et disponibles dans l'admin.</p>
           <p class="text-encre/70 mb-8">En cas d'impayé, l'abonnement passe en statut <code>PAST_DUE</code> (lecture seule), puis <code>SUSPENDED</code> après 7 jours, puis <code>CANCELED</code> après 30 jours. Les relances sont automatiques (email + Slack).</p>
 
-          <h2 class="font-display text-2xl font-bold text-encre mb-4 pb-2 border-b border-encre/10">Article 5 — Durée et résiliation</h2>
+          <h2 class="font-display text-2xl font-bold text-encre mb-4 pb-2 border-b border-encre/10">Article 5 - Durée et résiliation</h2>
           <p class="text-encre/70 mb-4">L'abonnement est conclu pour une durée indéterminée (mensuelle ou annuelle). L'Abonné peut résilier à tout moment depuis l'admin (1 clic). La résiliation prend effet à la fin de la période en cours (aucun remboursement au prorata).</p>
           <p class="text-encre/70 mb-8">L'Éditeur peut résilier pour manquement grave (impayé non régularisé après mise en demeure, usage frauduleux, violation sécurité) avec un préavis de 15 jours.</p>
 
-          <h2 class="font-display text-2xl font-bold text-encre mb-4 pb-2 border-b border-encre/10">Article 6 — Service Level Agreement (SLA)</h2>
+          <h2 class="font-display text-2xl font-bold text-encre mb-4 pb-2 border-b border-encre/10">Article 6 - Service Level Agreement (SLA)</h2>
           <ul class="space-y-2 mb-8 text-encre/70">
             <li><strong>Disponibilité cible :</strong> 99,5% par mois (hors maintenance planifiée)</li>
             <li><strong>Maintenance hebdomadaire :</strong> Dimanche 03h-05h UTC (notification 48h à l'avance)</li>
@@ -67,46 +67,46 @@ const lastUpdated = new Date().toLocaleDateString('fr-FR', { day: 'numeric', mon
             <li><strong>Restauration incident majeur (P1) :</strong> <4h</li>
           </ul>
 
-          <h2 class="font-display text-2xl font-bold text-encre mb-4 pb-2 border-b border-encre/10">Article 7 — Support et maintenance</h2>
+          <h2 class="font-display text-2xl font-bold text-encre mb-4 pb-2 border-b border-encre/10">Article 7 - Support et maintenance</h2>
           <p class="text-encre/70 mb-4">Support inclus : email (toutes offres), Slack partagé (Studio, Cabinet), téléphone/visio dédié (Cabinet).</p>
           <p class="text-encre/70 mb-8">Maintenance corrective et évolutive incluse. Nouvelles versions déployées sans interruption (blue/green). Changelog public.</p>
 
-          <h2 class="font-display text-2xl font-bold text-encre mb-4 pb-2 border-b border-encre/10">Article 8 — Données personnelles et RGPD</h2>
+          <h2 class="font-display text-2xl font-bold text-encre mb-4 pb-2 border-b border-encre/10">Article 8 - Données personnelles et RGPD</h2>
           <p class="text-encre/70 mb-4">L'Éditeur est sous-traitant de l'Abonné (responsable de traitement vis-à-vis de ses coachés). Un DPA (Data Processing Agreement) est annexé aux CGV.</p>
           <ul class="space-y-2 mb-8 text-encre/70">
             <li>Export complet (JSON, 37 modèles) et purge paramétrable</li>
             <li>Hébergement EU (Supabase EU West, VPS France)</li>
             <li>Chiffrement au repos (AES-256) et en transit (TLS 1.3)</li>
-            <li>Pas de transfert hors UE — Notification violation sous 72h</li>
+            <li>Pas de transfert hors UE - Notification violation sous 72h</li>
           </ul>
 
-          <h2 class="font-display text-2xl font-bold text-encre mb-4 pb-2 border-b border-encre/10">Article 9 — Propriété intellectuelle</h2>
+          <h2 class="font-display text-2xl font-bold text-encre mb-4 pb-2 border-b border-encre/10">Article 9 - Propriété intellectuelle</h2>
           <p class="text-encre/70 mb-8">L'Éditeur conserve tous droits sur le Service, son code, sa documentation, ses marques. L'Abonné conserve tous droits sur ses données (coachés, bilans, notes, configurations). L'Abonné accorde à l'Éditeur une licence d'utilisation de ses données strictement nécessaire à la fourniture du Service (hébergement, backup, support).</p>
 
-          <h2 class="font-display text-2xl font-bold text-encre mb-4 pb-2 border-b border-encre/10">Article 10 — Responsabilité</h2>
+          <h2 class="font-display text-2xl font-bold text-encre mb-4 pb-2 border-b border-encre/10">Article 10 - Responsabilité</h2>
           <p class="text-encre/70 mb-4">La responsabilité de l'Éditeur est limitée au montant total des sommes versées par l'Abonné au cours des 12 derniers mois.</p>
           <p class="text-encre/70 mb-8">L'Éditeur n'est pas responsable des dommages indirects (perte de clientèle, préjudice commercial, perte de données non due à sa faute). L'Abonné s'engage à utiliser le Service conformément à la réglementation (Code de la santé publique, déontologie de sa profession).</p>
 
-          <h2 class="font-display text-2xl font-bold text-encre mb-4 pb-2 border-b border-encre/10">Article 11 — Force majeure</h2>
+          <h2 class="font-display text-2xl font-bold text-encre mb-4 pb-2 border-b border-encre/10">Article 11 - Force majeure</h2>
           <p class="text-encre/70 mb-8">Aucune partie n'est responsable d'un manquement dû à un cas de force majeure (catastrophe naturelle, grève, panne infrastructure tiers, cyberattaque majeure). La partie affectée en informe l'autre sans délai. Si l'empêchement dure plus de 30 jours, l'autre partie peut résilier sans indemnité.</p>
 
-          <h2 class="font-display text-2xl font-bold text-encre mb-4 pb-2 border-b border-encre/10">Article 12 — Confidentialité</h2>
+          <h2 class="font-display text-2xl font-bold text-encre mb-4 pb-2 border-b border-encre/10">Article 12 - Confidentialité</h2>
           <p class="text-encre/70 mb-8">Chaque partie s'engage à garder confidentiels les informations non publiques de l'autre partie (données techniques, commerciales, financières, coachés). Cette obligation survit 3 ans après la fin du contrat.</p>
 
-          <h2 class="font-display text-2xl font-bold text-encre mb-4 pb-2 border-b border-encre/10">Article 13 — Cession</h2>
+          <h2 class="font-display text-2xl font-bold text-encre mb-4 pb-2 border-b border-encre/10">Article 13 - Cession</h2>
           <p class="text-encre/70 mb-8">L'Abonné ne peut céder son contrat sans accord écrit de l'Éditeur. L'Éditeur peut céder dans le cadre d'une fusion, acquisition, restructuration (notification 30 jours avant).</p>
 
-          <h2 class="font-display text-2xl font-bold text-encre mb-4 pb-2 border-b border-encre/10">Article 14 — Dispositions générales</h2>
+          <h2 class="font-display text-2xl font-bold text-encre mb-4 pb-2 border-b border-encre/10">Article 14 - Dispositions générales</h2>
           <p class="text-encre/70 mb-8">Si une clause est déclarée nulle, les autres restent en vigueur. Le fait de ne pas invoquer une clause ne vaut pas renonciation. Les CGV constituent l'intégralité de l'accord entre les parties.</p>
 
-          <h2 class="font-display text-2xl font-bold text-encre mb-4 pb-2 border-b border-encre/10">Article 15 — Droit applicable et juridiction</h2>
+          <h2 class="font-display text-2xl font-bold text-encre mb-4 pb-2 border-b border-encre/10">Article 15 - Droit applicable et juridiction</h2>
           <p class="text-encre/70 mb-8">Les CGV sont régies par le droit français. Tout litige relève de la compétence exclusive des tribunaux de Paris, même en cas d'appel en garantie ou de pluralité de défendeurs.</p>
 
-          <h2 class="font-display text-2xl font-bold text-encre mb-4 pb-2 border-b border-encre/10">Article 16 — Acceptation</h2>
+          <h2 class="font-display text-2xl font-bold text-encre mb-4 pb-2 border-b border-encre/10">Article 16 - Acceptation</h2>
           <p class="text-encre/70 mb-8">L'Abonné accepte les présentes CGV en cochant la case d'acceptation lors de la souscription ou du passage à une offre payante. La version en vigueur est celle publiée sur <a href="https://optibilan.com/legal/cgv" class="text-bleu-signature hover:underline">optibilan.com/legal/cgv</a> à la date d'acceptation.</p>
 
           <p class="mt-12 pt-8 border-t border-encre/10 text-sm text-encre/50">
-            Version du {lastUpdated} — Remplace toutes versions antérieures.
+            Version du {lastUpdated} - Remplace toutes versions antérieures.
           </p>
         </article>
       </div>
