@@ -16,20 +16,14 @@ const {
   title,
   subtitle,
   badge,
-  stats,
-  primaryCTA = { href: 'https://app.optibilan.com/inscription', label: 'Essai gratuit 30 jours' },
-  secondaryCTA = { href: '/fonctionnalites', label: 'Voir les fonctionnalités' },
+  stats = [],
+  primaryCTA = { href: 'https://calendly.com/optibilan/demo', label: 'Réserver une démo' },
+  secondaryCTA = { href: '/product/overview', label: 'Découvrir la plateforme' },
 } = Astro.props;
 
-const homeTitle = title || "Le système d'exploitation des pros de la santé et de la performance";
-const homeSubtitle = subtitle || "Digitalisez, suivez et scalez vos accompagnements haut de gamme. Bilans, nutrition, sport, prépa mentale, santé connectée (Apple Health, Oura, Garmin), biomarqueurs sanguins. Multi-tenant, marque blanche, API.";
-const homeBadge = badge || "Nouveau : Assistant IA + Sync Apple Health/Oura/Garmin";
-const homeStats = stats || [
-  { value: "150+", label: "Cabinets équipés" },
-  { value: "2 500+", label: "Coachs actifs" },
-  { value: "50 000+", label: "Clients suivis" },
-  { value: "4 000+", label: "Transformations documentées" },
-];
+const homeTitle = title || "Pilotez tous vos accompagnements.\nDepuis un seul endroit.";
+const homeSubtitle = subtitle || "Bilans, programmes, nutrition, données de santé et suivi client réunis dans une plateforme pensée pour les professionnels de la santé et de la performance.";
+const homeBadge = badge || "";
 ---
 
 <section class="relative section-lg pt-32 md:pt-40 lg:pt-48 overflow-hidden" aria-labelledby="hero-title">
@@ -41,7 +35,7 @@ const homeStats = stats || [
       {badge && (
         <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-bleu-clair text-bleu-lecture text-sm font-medium mb-8 animate-fade-in" role="status">
           <span class="w-2 h-2 rounded-full bg-bleu-signature animate-pulse" aria-hidden="true"></span>
-          {homeBadge}
+          {badge}
         </span>
       )}
 
@@ -55,15 +49,6 @@ const homeStats = stats || [
         {homeSubtitle}
       </p>
 
-      <div class="flex flex-wrap items-center justify-center gap-8 md:gap-12 mb-10 animate-slide-up delay-300" role="list" aria-label="Statistiques de confiance">
-        {homeStats.map((stat, i) => (
-          <div key={i} class="flex flex-col items-center" role="listitem">
-            <div class="font-display text-3xl md:text-4xl font-bold text-bleu-signature">{stat.value}</div>
-            <div class="text-sm text-encre/60 font-medium">{stat.label}</div>
-          </div>
-        ))}
-      </div>
-
       <div class="flex flex-col sm:flex-row items-center justify-center gap-4 animate-slide-up delay-300">
         <a href={primaryCTA.href} class="btn-demo w-full sm:w-auto group" data-track="hero_cta_demo">
           Réserver une démo
@@ -74,42 +59,28 @@ const homeStats = stats || [
         </a>
       </div>
 
-      <div class="mt-8 flex flex-wrap items-center justify-center gap-6 animate-fade-in delay-400">
-        <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-blanc border border-encre/10 text-xs font-medium text-encre/60">
-          <Icon name="shield" class="w-3 h-3 text-bleu-signature" /> RGPD by design
-        </span>
-        <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-blanc border border-encre/10 text-xs font-medium text-encre/60">
-          <Icon name="lock" class="w-3 h-3 text-bleu-signature" /> Hébergement HDS (EU)
-        </span>
-        <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-blanc border border-encre/10 text-xs font-medium text-encre/60">
-          <Icon name="check" class="w-3 h-3 text-emerald-500" /> Export données 1-clic
-        </span>
-      </div>
-
-      <p class="mt-4 text-sm text-encre/50">
-        Aucune carte bancaire · Annulation 1 clic · Onboarding dédié
-      </p>
-    </div>
-
-    {variant === 'home' && (
-      <div class="mt-16 relative animate-scale-in delay-500 hidden lg:block" aria-hidden="true">
-        <div class="aspect-[16/10] max-w-5xl mx-auto rounded-card-lg bg-encre/5 border border-encre/10 shadow-elevated overflow-hidden relative">
-          <div class="absolute inset-0 bg-gradient-to-br from-bleu-signature/5 via-transparent to-indigo/5" aria-hidden="true"></div>
-          <div class="relative z-10 flex items-center justify-center h-full p-4">
-            <div class="text-center max-w-md">
-              <div class="aspect-video bg-encre/10 rounded-lg mb-4 border border-encre/10 flex items-center justify-center relative overflow-hidden">
-                <div class="absolute inset-0 grid grid-cols-12 gap-2 p-4 opacity-10" aria-hidden="true">
-                  {[...Array(24)].map((_, i) => (
-                    <div key={i} class="col-span-1 h-4 bg-bleu-signature/20 rounded animate-pulse" style={{animationDelay: `${i * 50}ms`}} />
-                  ))}
+      {variant === 'home' && (
+        <div class="mt-16 relative animate-scale-in delay-500 hidden lg:block" aria-hidden="true">
+          <div class="aspect-[16/10] max-w-5xl mx-auto rounded-card-lg bg-encre/5 border border-encre/10 shadow-elevated overflow-hidden relative">
+            <div class="absolute inset-0 bg-gradient-to-br from-bleu-signature/5 via-transparent to-indigo/5" aria-hidden="true"></div>
+            <div class="relative z-10 flex items-center justify-center h-full p-4">
+              <div class="text-center max-w-md">
+                <div class="aspect-video bg-encre/10 rounded-lg mb-4 border border-encre/10 flex items-center justify-center relative overflow-hidden">
+                  <div class="absolute inset-0 grid grid-cols-12 gap-2 p-4 opacity-10" aria-hidden="true">
+                    {
+                      [...Array(24)].map((_, i) => (
+                        <div key={i} class="col-span-1 h-4 bg-bleu-signature/20 rounded animate-pulse" />
+                      ))
+                    }
+                  </div>
+                  <Icon name="chart" class="w-16 h-16 text-bleu-signature/30 relative z-10" />
                 </div>
-                <Icon name="chart" class="w-16 h-16 text-bleu-signature/30 relative z-10" />
+                <p class="text-encre/40 text-sm font-medium">Dashboard Optibilan — Bilans, programmes, nutrition, santé, suivi client</p>
               </div>
-              <p class="text-encre/40 text-sm font-medium">Dashboard Optibilan — Graphiques d'évolution, habitudes, biomarqueurs, IA</p>
             </div>
           </div>
         </div>
-      </div>
-    )}
+      )}
+    </div>
   </div>
 </section>

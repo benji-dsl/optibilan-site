@@ -8,56 +8,42 @@ interface Props {
     icon: string;
     title: string;
     description: string;
-    metric: string;
-    proof?: string;
   }>;
 }
 
 const {
-  title = "L'impact business, mesuré",
-  subtitle = "Ce que change Optibilan pour votre cabinet : du temps récupéré, de la rétention, du chiffre d'affaires. Basé sur 4 000+ transformations documentées.",
+  title = "Ce que change Optibilan pour votre cabinet",
+  subtitle = "Moins d'admin, plus de suivi, une vision claire de chaque client.",
   benefits = [
     {
       icon: "chart",
-      title: "Temps administratif divisé par 4",
-      description: "Bilans guidés, templates réutilisables, automatisations (rappels, listes de courses, emails) : vous passez de 45 min à 10 min par client pour l'admin. Soit ~10h/semaine récupérées sur 30 clients.",
-      metric: "−75% temps admin",
-      proof: "~10h/semaine récupérées • 30 clients",
+      title: "Moins de temps sur l'admin",
+      description: "Bilans guidés, templates réutilisables, rappels automatiques : vous passez moins de temps sur la paperasse et plus sur l'accompagnement.",
     },
     {
       icon: "users",
-      title: "Rétention clients +40% à 6 mois",
-      description: "Suivi structuré, gamification (XP, badges, habitudes), détection signaux faibles IA, rappels auto : vos clients restent engagés. La structure de l'outil a été forgée sur 4 000+ cas réels — elle fonctionne.",
-      metric: "+40% rétention 6 mois",
-      proof: "Basé sur 4 000+ transformations documentées",
+      title: "Clients plus engagés sur la durée",
+      description: "Suivi structuré, habitudes, objectifs, rappels automatiques : vos clients restent accompagnés plus longtemps.",
     },
     {
       icon: "zap",
-      title: "MRR multiplié sans équipe supplémentaire",
-      description: "Un coach solo gère 50+ clients avec l'exigence du sur-mesure grâce à l'IA (plans, alertes, détection). Passez de 30 à 100+ clients sans embaucher. Levier direct sur votre revenu récurrent.",
-      metric: "×2 à ×3 capacité coach",
-      proof: "Solo : 30 → 80 clients • Studio : 150 → 300+",
+      title: "Capacité d'accompagnement démultipliée",
+      description: "L'IA prépare les plans, détecte les signaux, propose les ajustements. Vous gérez plus de clients sans perdre en qualité.",
     },
     {
       icon: "brain",
-      title: "Décisions cliniques basées sur la data",
-      description: "130+ biomarqueurs (sang, wearable, subjektif), graphiques tendances, corrélations, seuils de référence. Chaque ajustement nutrition/sport/mental part d'une mesure, pas d'un ressenti. Niveau exécutif/médical.",
-      metric: "130+ biomarqueurs",
-      proof: "Sang + Wearable + Subjectif unifiés",
+      title: "Une vue claire des données de chaque client",
+      description: "Bilan, nutrition, sport, santé, biomarqueurs réunis en un endroit. Vous voyez les tendances, corrélations, signaux faibles.",
     },
     {
       icon: "lock",
-      title: "Conformité RGPD/HDS — charge mentale zéro",
-      description: "Export RGPD 1-clic (37 modèles), audit trail double niveau, purge auto paramétrable, contrats/DPA intégrés, hébergement HDS France. La conformité est gérée nativement. Vous signez, on exécute.",
-      metric: "Export RGPD 1-clic",
-      proof: "HDS certifié • Zéro transfert hors UE",
+      title: "Conformité gérée pour vous",
+      description: "Export RGPD, audit trail, purge auto, contrats intégrés. La conformité est prise en charge, vous vous concentrez sur l'accompagnement.",
     },
     {
       icon: "globe",
-      title: "Marque blanche = valorisation de VOTRE cabinet",
-      description: "Logo, couleurs, domaine, vocabulaire (coaché/patient/membre), assistant IA nommé, emails, mentions légales, CGV — 100% votre marque. Vos clients ne voient jamais Optibilan. Vous vendez VOTRE méthode à VOTRE prix.",
-      metric: "100% votre identité",
-      proof: "Domaine custom • Emails @votrecabinet.fr",
+      title: "Votre marque, votre méthode",
+      description: "Logo, couleurs, domaine, vocabulaire, emails : vos clients ne voient que votre marque. Optibilan s'efface totalement.",
     },
   ],
 } = Astro.props;
@@ -81,25 +67,12 @@ const {
             <Icon name={benefit.icon as any} class="w-10 h-10" />
           </div>
 
-          {benefit.metric && (
-            <div class="absolute top-6 right-6 text-right opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <div class="font-display text-xl font-bold text-bleu-signature">{benefit.metric}</div>
-            </div>
-          )}
-
           <h3 class="font-display text-xl font-bold text-encre mb-3">
             {benefit.title}
           </h3>
-          <p class="text-encre/60 leading-relaxed mb-4">
+          <p class="text-encre/60 leading-relaxed">
             {benefit.description}
           </p>
-
-          {benefit.proof && (
-            <p class="text-xs text-encre/40 font-medium flex items-center gap-1.5">
-              <Icon name="check" class="w-3 h-3 text-emerald-500" />
-              <span>{benefit.proof}</span>
-            </p>
-          )}
         </article>
       ))}
     </div>

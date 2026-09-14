@@ -17,7 +17,7 @@ interface Props {
 
 const {
   title = "6 modules, une plateforme unifiée",
-  subtitle = "Activez seulement ce dont vous avez besoin. Chaque module est complet, sans surcoût. Données de santé, IA, API — tout est natif.",
+  subtitle = "Activez seulement ce dont vous avez besoin. Chaque module est complet, sans surcoût. Données de santé, IA, API — tout est intégré.",
   pillars = [
     {
       icon: "chart",
@@ -100,14 +100,14 @@ const {
     },
     {
       icon: "globe",
-      title: "Santé Connectée & Biomarqueurs",
-      description: "Sync native Apple Health, Oura, Whoop, Garmin (via Raccourcis iOS ou n8n/Make). 130+ biomarqueurs structurés : sommeil (stades, score, régularité), VFC (rmssd, tendance), FC repos, VO2max, pas, poids, %MG. Analyses sanguines : glycémie, HbA1c, CRP, vit D, ferritine, lipidogramme, thyroïde, hormones. IA lit les PDF de labo et pré-remplit.",
+title: "Santé Connectée & Biomarqueurs",
+      description: "Sync compatible Apple Health, Oura, Whoop, Garmin (via Raccourcis iOS ou n8n/Make). 130+ biomarqueurs structurés : sommeil (stades, score, régularité), VFC (rmssd, tendance), FC repos, VO2max, pas, poids, %MG. Analyses sanguines : glycémie, HbA1c, CRP, vit D, ferritine, lipidogramme, thyroïde, hormones. IA lit les PDF de labo et pré-remplit.",
       features: [
-        "Sync native : Apple Health, Oura, Whoop, Garmin (Raccourcis iOS / n8n / Make)",
+        "Sync compatible : Apple Health, Oura, Whoop, Garmin (Raccourcis iOS / n8n / Make)",
         "Métriques quotidiennes : sommeil (stades, score, latency, régularité), VFC (rmssd, cv, tendance), FC repos, VO2max, pas, poids, %MG, température",
         "130+ biomarqueurs sanguins structurés : glycémie, HbA1c, insuline, HOMA-IR, CRP, vit D, B9/B12, ferritine, lipidogramme complet, thyroïde (TSH, T3, T4), hormones (testostérone, œstradiol, SHBG, cortisol)",
         "Import PDF labo : IA extrait, structure, pré-remplit, signale anomalies",
-        "Graphiques tendances temporelles avec seuils cliniques de référence",
+        "Graphiques tendances temporelles avec seuils de référence",
         "Habitudes quotidiennes : eau, suppléments, exposition lumière, respiration",
         "Observance compléments : rappels, validation, taux d'adhérence",
       ],
@@ -115,22 +115,22 @@ const {
         "Token santé par client (hsk_...) — scope granulaire",
         "Endpoint /api/health-sync (HMAC signé) pour n8n/Make",
         "Stockage Supabase bucket privé, chiffré AES-256",
-        "Conformité HDS (hébergement données de santé) — Supabase EU West",
+        "Hébergement EU (Supabase EU West, VPS France)",
       ],
       color: "bleu-clair",
     },
     {
-      icon: "lock",
+icon: "lock",
       title: "Marque Blanche, API & Conformité",
-      description: "Votre marque, pas la nôtre. Logo, couleurs, domaine, vocabulaire (coaché/patient/membre), assistant IA nommé, emails, mentions légales, CGV — tout est à vous. API REST v1 OpenAPI, clés scopées, webhooks HMAC. Export RGPD 1-clic (37 modèles), audit trail double niveau, purge auto. Hébergement HDS (France).",
+      description: "Votre marque, pas la nôtre. Logo, couleurs, domaine, vocabulaire (coaché/patient/membre), assistant IA nommé, emails, mentions légales, CGV — tout est à vous. API REST v1 OpenAPI, clés scopées, webhooks HMAC. Export RGPD 1-clic (37 modèles), audit trail double niveau, purge auto. Hébergement France/EU.",
       features: [
         "Marque blanche totale : logo, thème, domaine, vocabulaire, IA, emails, mentions, CGV",
         "API REST v1 + OpenAPI 3.1 : clients, bilans, nutrition, sport, santé, webhooks",
         "Clés API scopées (clients:read, checkins:write, cron, health:sync...)",
         "Webhooks HMAC signés : 8 événements (client.created, checkin.submitted, badge.earned...)",
         "Export RGPD complet 1-clic (JSON, 37 modèles) + purge paramétrable",
-        "Audit trail double niveau : org (actions staff) + plateforme (actions Optibilan)",
-        "Hébergement HDS certifié (Supabase EU West, VPS France) — zéro transfert hors UE",
+        "Audit trail double niveau : org (actions staff) + plateforme (équipe Optibilan)",
+        "Hébergement France/EU (Supabase EU West, VPS France)",
         "SSO/SAML (offre Cabinet), 2FA obligatoire admins, CSP stricte, rate-limit persistant",
       ],
       techSpecs: [
@@ -138,6 +138,7 @@ const {
         "13/13 tests d'isolation en CI (test:isolation.mts)",
         "DPA signé, registre sous-traitants Art.28 RGPD à jour",
         "PITR 7j + snapshots quotidiens + backups chiffrés S3 EU 30j",
+        "Certifications fournisseurs : SOC 2 Type II, ISO 27001, HIPAA, RGPD",
       ],
       color: "bordeaux",
     },

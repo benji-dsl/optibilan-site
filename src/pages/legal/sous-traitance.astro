@@ -27,12 +27,13 @@ const lastUpdated = new Date().toLocaleDateString('fr-FR', { day: 'numeric', mon
 
     <section class="section bg-blanc" aria-labelledby="subprocessors-content">
       <div class="container max-w-5xl">
+        <div class="mb-8 p-4 bg-amber-50 border border-amber-200 rounded-lg" role="alert">
+          <p class="text-sm text-amber-800">
+            <strong>⚠ Attention :</strong> Ce registre contient des informations qui doivent être validées contractuellement (DPA signés, SCC, certifications) avant la mise en production.
+          </p>
+        </div>
+
         <article class="prose max-w-none" id="subprocessors-content">
-          <div class="mb-8 p-4 bg-papier rounded-card border border-encre/10">
-            <p class="text-sm text-encre/60">
-              <strong>Dernière mise à jour :</strong> {lastUpdated} — Version 2.0
-            </p>
-          </div>
 
           <h2 class="font-display text-2xl font-bold text-encre mb-6 pb-2 border-b border-encre/10">Sous-traitants actuels</h2>
 

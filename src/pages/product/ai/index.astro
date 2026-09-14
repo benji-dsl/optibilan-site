@@ -1,0 +1,174 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import Hero from '../../../components/Hero.astro';
+import CTA from '../../../components/CTA.astro';
+import TrustBar from '../../../components/TrustBar.astro';
+import Icon from '../../../components/Icon.astro';
+
+const pageTitle = 'IA & Automatisations — Optibilan';
+const pageDescription = 'L\'IA prépare, le professionnel décide. Structuration documents, synthèse bilans, alertes proactives. Transparence totale sur le pipeline IA.';
+
+---
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  canonical="/product/ai"
+  ogImage="/og-ai.jpg"
+>
+  <Header />
+
+  <main>
+    <Hero
+      title="L'IA prépare.<br>Le professionnel décide."
+      subtitle="Structuration documents, synthèse bilans, alertes proactives. Transparence totale sur le pipeline IA : fournisseur, données envoyées, rétention, pseudonymisation."
+      badge="Module IA — Inclus selon offre (1k/5k/20k msg/mois)"
+      primaryCTA={{ href: 'https://calendly.com/optibilan/demo', label: 'Voir l\'IA en démo' }}
+      secondaryCTA={{ href: '/product/overview', label: 'Retour au produit' }}
+    />
+
+    <TrustBar />
+
+    <section class="section bg-gradient-to-br from-encre/5 via-papier to-indigo/5 rounded-card-lg relative overflow-hidden" aria-labelledby="ai-disclaimer-title">
+      <div class="container relative py-6 px-6 md:py-8 md:px-8">
+        <div class="flex items-start gap-4 p-4 bg-encre/5 rounded-lg border border-encre/10">
+          <Icon name="brain" class="w-6 h-6 text-indigo flex-shrink-0 mt-0.5" />
+          <div>
+            <h3 id="ai-disclaimer-title" class="font-semibold text-encre mb-1">Transparence & cadre IA</h3>
+            <p class="text-encre/70 text-sm">
+              <strong>L'IA n'établit pas de diagnostic. Elle n'agit pas de façon autonome. Le professionnel garde le contrôle total.</strong><br>
+              Fournisseur : Anthropic (Claude) via API Enterprise. Région : US (zero-retention garanti). Données pseudonymisées avant envoi. DPA signé. SCC 2021 + Addendum UK.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-blanc" aria-labelledby="ai-problem-title">
+      <div class="container max-w-3xl">
+        <header class="mb-12">
+          <h2 id="ai-problem-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+            Ce que l'IA fait (et ne fait pas)
+          </h2>
+          <p class="text-lg text-encre/60">
+            L'IA réduit le travail répétitif, structure l'information et fait remonter les éléments utiles.<br>
+            Elle assiste le professionnel. Elle ne prend pas la décision à sa place.
+          </p>
+        </header>
+
+        <div class="grid md:grid-cols-2 gap-6 mb-16">
+          <article class="p-6 rounded-xl border border-encre/10 bg-emerald-50">
+            <h3 class="font-display text-xl font-bold text-emerald-700 mb-3 flex items-center gap-2">
+              <Icon name="check" class="w-5 h-5" /> Ce que l'IA FAIT
+            </h3>
+            <ul class="space-y-2 text-encre/70">
+              <li class="flex items-start gap-2"><Icon name="check" class="w-4 h-4 text-emerald-500 flex-shrink-0" /> Lit PDF (bilans, analyses, lettres) → extrait, structure, pré-remplit</li>
+              <li class="flex items-start gap-2"><Icon name="check" class="w-4 h-4 text-emerald-500 flex-shrink-0" /> Génère synthèses bilans pour pro + client (ton adaptable)</li>
+              <li class="flex items-start gap-2"><Icon name="check" class="w-4 h-4 text-emerald-500 flex-shrink-0" /> Détecte signaux faibles : stagnation, baisse motivation, observance ↓</li>
+              <li class="flex items-start gap-2"><Icon name="check" class="w-4 h-4 text-emerald-500 flex-shrink-0" /> Propose ajustements : nutrition, charge, récupération</li>
+              <li class="flex items-start gap-2"><Icon name="check" class="w-4 h-4 text-emerald-500 flex-shrink-0" /> Structure prompts par cabinet (vocabulaire, méthode, objectifs)</li>
+            </ul>
+          </article>
+          <article class="p-6 rounded-xl border border-encre/10 bg-rose-50">
+            <h3 class="font-display text-xl font-bold text-rose-700 mb-3 flex items-center gap-2">
+              <Icon name="shield" class="w-5 h-5" /> Ce que l'IA NE FAIT PAS
+            </h3>
+            <ul class="space-y-2 text-encre/70">
+              <li class="flex items-start gap-2"><Icon name="shield" class="w-4 h-4 text-rose-500 flex-shrink-0" /> N'établit PAS de diagnostic médical / nutritionnel / psychologique</li>
+              <li class="flex items-start gap-2"><Icon name="shield" class="w-4 h-4 text-rose-500 flex-shrink-0" /> Ne prescrit PAS (médicaments, compléments, doses, exercices)</li>
+              <li class="flex items-start gap-2"><Icon name="shield" class="w-4 h-4 text-rose-500 flex-shrink-0" /> N'agit PAS de façon autonome (validation pro obligatoire)</li>
+              <li class="flex items-start gap-2"><Icon name="shield" class="w-4 h-4 text-rose-500 flex-shrink-0" /> Ne remplace PAS le jugement clinique / professionnel</li>
+              <li class="flex items-start gap-2"><Icon name="shield" class="w-4 h-4 text-rose-500 flex-shrink-0" /> N'entraîne PAS sur vos données (zero-retention Anthropic)</li>
+            </ul>
+          </article>
+        </div>
+
+        <h2 class="font-display text-2xl font-bold text-encre mb-8">Trois usages concrets</h2>
+
+        <div class="space-y-8">
+          {[
+            {
+              icon: 'document',
+              title: 'PDF → Données structurées',
+              desc: 'Le client / pro upload un bilan sanguin, une lettre médecin, un compte-rendu. L\'IA extrait : biomarqueurs, valeurs, unités, seuils, commentaires. Pré-remplit les champs dans Optibilan. Flags anomalies selon seuils configurés. Gain : 15 min → 30 sec par document.',
+              features: [
+                'OCR + extraction structurée (biomarqueurs, valeurs, unités, seuils)',
+                'Flags auto : rouge (critique), orange (limite), vert (optimal)',
+                'Pré-remplissage champs Optibilan (gain 95% temps saisie)',
+                'Historique des imports pour audit',
+              ],
+              icon: 'document',
+            },
+            {
+              icon: 'chart',
+              title: 'Bilan → Synthèse',
+              desc: 'À chaque bilan client, l\'IA génère : résumé pro (points d\'attention, tendances, alertes), résumé client (langage accessible, encouragements, prochaines étapes). Ton configurable par cabinet (formel, bienveillant, direct). Gain : 10 min → 30 sec par bilan.',
+              features: [
+                'Double sortie : pro (technique) + client (accessible)',
+                'Ton personnalisable par cabinet (formel / bienveillant / direct)',
+                'Inclut : évolution, points d\'attention, prochaines étapes',
+                'Validation pro avant envoi (jamais auto-envoyé)',
+              ],
+              icon: 'chart',
+            },
+            {
+              icon: 'zap',
+              title: 'Données → Proposition / Alerte',
+              desc: 'L\'IA surveille en continu : stagnation > 2 sem, motivation ↓ > 30%, observance < 70%, corrélation charge/sommeil/RPE anormale. Génère : alerte cockpit pro, proposition d\'ajustement (charge, récup, nutrition), suggestion message client. Le pro valide / modifie / rejette.',
+              features: [
+                'Surveillance continue (tous nouveaux bilans / sync wearables)',
+                'Types : stagnation, désengagement, observance, surentraînement, corrélations',
+                'Sortie : alerte + proposition concrète (ex: "Réduire charge -10% cette semaine")',
+                'Validation pro obligatoire (jamais auto-appliqué)',
+              ],
+              icon: 'zap',
+            },
+          ].map((section, i) => (
+            <article id={section.icon} class="py-8 border-t border-encre/10 first:border-0">
+              <header class="flex items-center gap-4 mb-6">
+                <div class="icon-wrapper flex-shrink-0" aria-hidden="true" style="background-color: var(--color-bleu-clair);">
+                  <Icon name={section.icon} class="w-7 h-7 text-indigo" />
+                </div>
+                <div>
+                  <h3 class="font-display text-2xl font-bold text-encre">{section.title}</h3>
+                  <p class="text-encre/60 mt-1">{section.desc}</p>
+                </div>
+              </header>
+              <ul class="space-y-2 text-encre/60">
+                {section.features.map(f => (
+                  <li key={f} class="flex items-start gap-2">
+                    <Icon name="check" class="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5" />
+                    <span>{f}</span>
+                  </li>
+                ))}
+              </ul>
+            </article>
+          ))}
+        </div>
+
+        <div class="mt-12 p-6 rounded-xl bg-papier border border-encre/10">
+          <h3 class="font-display text-xl font-bold text-encre mb-3">Pipeline IA — Transparence technique</h3>
+          <ul class="space-y-2 text-sm text-encre/60">
+            <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-indigo flex-shrink-0 mt-1.5" /> Fournisseur : Anthropic (Claude) — API Enterprise</li>
+            <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-indigo flex-shrink-0 mt-1.5" /> Région : US — Zero-retention garanti (pas d'entraînement, pas de log complet)</li>
+            <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-indigo flex-shrink-0 mt-1.5" /> Pseudonymisation avant envoi : nom → ID, email/tel/adresse supprimés</li>
+            <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-indigo flex-shrink-0 mt-1.5" /> DPA signé + SCC 2021 + Addendum UK + mesures techniques (pseudonymisation, zero-retention)</li>
+            <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-indigo flex-shrink-0 mt-1.5" /> Prompting par cabinet : vocabulaire, méthode, objectifs, ton, garde-fous</li>
+            <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-indigo flex-shrink-0 mt-1.5" /> Plafonds mensuels par offre : Solo 1k / Studio 5k / Cabinet 20k messages</li>
+            <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-indigo flex-shrink-0 mt-1.5" /> Désactivable par cabinet (toggle admin) — zéro appel IA si désactivé</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <CTA
+      title="Vous voulez tester l'IA sur VOS documents ?"
+      subtitle="30 minutes pour voir comment l'IA structure vos bilans, analyses et lettres."
+      primaryCTA={{ href: 'https://calendly.com/optibilan/demo', label: 'Réserver une démo IA' }}
+      variant="primary"
+    />
+  </main>
+
+  <Footer />
+</Layout>

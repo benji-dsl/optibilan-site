@@ -1,0 +1,146 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import Hero from '../../../components/Hero.astro';
+import CTA from '../../../components/CTA.astro';
+import TrustBar from '../../../components/TrustBar.astro';
+import Icon from '../../../components/Icon.astro';
+
+const pageTitle = 'Sport & programmes — Optibilan';
+const pageDescription = 'Bibliothèque d\'exercices, programmes types, séances validées, progression charge/volume. Construisez, suivez, ajustez.';
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  canonical="/product/training"
+  ogImage="/og-training.jpg"
+>
+  <Header />
+
+  <main>
+    <Hero
+      title="Programme.\nSuivez.\nAjustez."
+      subtitle="Construisez vos séances, suivez leur réalisation et visualisez la progression sans changer d'outil."
+      badge="Module cœur — Inclus dans toutes les offres"
+      primaryCTA={{ href: 'https://calendly.com/optibilan/demo', label: 'Voir le sport en démo' }}
+      secondaryCTA={{ href: '/product/overview', label: 'Retour au produit' }}
+    />
+
+    <TrustBar />
+
+    <section class="section bg-blanc" aria-labelledby="problem-title">
+      <div class="container max-w-3xl">
+        <header class="mb-12">
+          <h2 id="problem-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+            Le problème : l'entraînement dans le noir
+          </h2>
+          <p class="text-lg text-encre/60">
+            Programme sur Excel, séances sur papier, charges dans la tête, progression invisible…<br>
+            Le client ne progresse pas. Le coach ne pilote pas.
+          </p>
+        </header>
+
+        <div class="space-y-8">
+          {[
+            {
+              title: 'Bibliothèque de 200+ exercices (vidéo, points d\'attention, régressions/progressions)',
+              desc: 'Chaque exercice : vidéo démo, muscles ciblés, points d\'attention, régressions (plus facile) / progressions (plus dur), matériel requis. Filtres : pattern (push/pull/legs/hinge/squat/carry), matériel, niveau, durée. Ajout d\'exercices custom illimités.',
+              features: [
+                'Vidéo intégrée (streaming sécurisé, pas de téléchargement)',
+                'Mapping muscle / pattern / matériel / niveau',
+                'Régressions / progressions prédéfinies',
+                'Import d\'exercices custom (vidéo + métadonnées)',
+              ],
+              icon: 'zap',
+            },
+            {
+              title: 'Construction de séances drag-and-drop',
+              desc: 'Séries / récup / tempo / RPE / charges cibles. Progression auto (ex: +2.5kg si RPE < 8 deux séances de suite). Périodisation : macros / mesos / microcycles visualisables, deloads programmés. Duplicata de séance en 1 clic.',
+              features: [
+                'Interface type "constructeur" : glisser-déposer exercices',
+                'Paramètres complets : séries, repos, tempo, RPE cible, %1RM',
+                'Progression auto configurable (règles par exercice)',
+                'Périodisation visuelle : semaines, blocs, deloads',
+              ],
+              icon: 'document',
+            },
+            {
+              title: 'Expérience client : validation de séance en temps réel',
+              desc: 'Le client ouvre sa séance sur mobile : vidéo exercice, charges cibles, RPE cible. Il saisit : charge réelle, RPE ressenti, vidéo optionnelle, commentaire. Validation en < 60 sec. Le coach voit tout en temps réel.',
+              features: [
+                'Vidéo exercice intégrée dans la fiche séance',
+                'Saisie : charge, RPE, reps réelles, vidéo optionnelle',
+                'Validation coach : ✓ / commenter / reprogrammer',
+                'Notifications push/email si séance non faite > 24h',
+              ],
+              icon: 'users',
+            },
+            {
+              title: 'Progression : charge, volume, tonnage, 1RM estimé',
+              desc: 'Graphiques par exercice et globaux : charge moyenne, volume (séries × reps × charge), tonnage hebdo, 1RM estimé (Epley/Brzycki), fatigue estimée (RPE × volume). Corrélation charge × RPE × récupération.',
+              features: [
+                'Courbes multi-exercices synchronisées',
+                '1RM estimé par exercice (historique)',
+                'Fatigue estimée = f(RPE, volume, fréquence)',
+                'Export CSV pour analyse externe',
+              ],
+              icon: 'chart',
+            },
+            {
+              title: 'Import FitFocus & migration zéro friction',
+              desc: 'Import JSON/CSV FitFocus : exercices, programmes, historiques. Mapping automatique des exercices (correspondance nom/muscle). Migration en < 5 min. Pas de perte de données.',
+              features: [
+                'Mapping auto exercices (nom + muscle + pattern)',
+                'Historique charges/volumes conservé',
+                'Programmes migrés = prêts à l\'emploi',
+                'Rollback possible 30 jours',
+              ],
+              icon: 'calendar',
+            },
+          ].map((section, i) => (
+            <article id={section.icon} class="py-8 border-t border-encre/10 first:border-0">
+              <header class="flex items-center gap-4 mb-6">
+                <div class="icon-wrapper flex-shrink-0" aria-hidden="true" style="background-color: var(--color-bleu-clair);">
+                  <Icon name={section.icon} class="w-7 h-7 text-indigo" />
+                </div>
+                <div>
+                  <h3 class="font-display text-2xl font-bold text-encre">{section.title}</h3>
+                  <p class="text-encre/60 mt-1">{section.desc}</p>
+                </div>
+              </header>
+              <ul class="space-y-2 text-encre/60">
+                {section.features.map(f => (
+                  <li key={f} class="flex items-start gap-2">
+                    <Icon name="check" class="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5" />
+                    <span>{f}</span>
+                  </li>
+                ))}
+              </ul>
+            </article>
+          ))}
+        </div>
+
+        <div class="mt-12 p-6 rounded-xl bg-papier border border-encre/10">
+          <h3 class="font-display text-xl font-bold text-encre mb-3">Spécifications techniques</h3>
+          <ul class="space-y-2 text-sm text-encre/60">
+            <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-indigo flex-shrink-0 mt-1.5" /> 200+ exercices (vidéo, points d'attention, régressions/progressions)</li>
+            <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-indigo flex-shrink-0 mt-1.5" /> Bibliothèque extensible (ajout exercices custom illimités)</li>
+            <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-indigo flex-shrink-0 mt-1.5" /> API sport : programmes, séances, exercices, progression</li>
+            <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-indigo flex-shrink-0 mt-1.5" /> Webhook session.completed pour sync externes (Notion, Slack)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <CTA
+      title="Prêt à programmer plus vite ?"
+      subtitle="30 minutes pour voir comment construire et piloter l'entraînement de vos clients."
+      primaryCTA={{ href: 'https://calendly.com/optibilan/demo', label: 'Voir le sport en démo' }}
+      variant="primary"
+    />
+  </main>
+
+  <Footer />
+</Layout>

@@ -12,12 +12,11 @@ interface Props {
 
 const {
   badges = [
-    { label: 'HDS certifié', icon: 'shield', description: 'Hébergement Données de Santé (France/EU)' },
-    { label: 'RGPD by design', icon: 'lock', description: 'Export 1-clic, purge auto, DPA signé' },
-    { label: 'Supabase', icon: 'database', description: 'PostgreSQL managé EU West (Irlande)' },
-    { label: 'Stripe', icon: 'credit-card', description: 'Paiements, facturation, abonnements PCI DSS' },
-    { label: 'Cloudflare', icon: 'cloud', description: 'CDN, WAF, DDoS, Tunnel zero-trust' },
-    { label: 'OpenAPI 3.1', icon: 'code', description: 'API REST documentée, sandbox de test' },
+    { label: 'RGPD by design', icon: 'lock', description: 'Export, purge auto, DPA' },
+    { label: 'Données en France/EU', icon: 'database', description: 'PostgreSQL managé (Irlande)' },
+    { label: 'Paiements sécurisés', icon: 'credit-card', description: 'Stripe, PCI DSS' },
+    { label: 'Protection DDoS/WAF', icon: 'cloud', description: 'Cloudflare, zero-trust' },
+    { label: 'API documentée', icon: 'code', description: 'OpenAPI 3.1, sandbox' },
   ],
   title = 'Infrastructure de confiance',
 } = Astro.props;
@@ -28,7 +27,7 @@ const {
     <p id="trust-title" class="text-center text-sm font-semibold text-encre/50 uppercase tracking-wider mb-8">
       {title}
     </p>
-    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-6">
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6">
       {badges.map(badge => (
         <div class="group flex flex-col items-center gap-2 p-4 rounded-card bg-papier/50 hover:bg-papier transition-colors duration-300 border border-encre/5 hover:border-bleu-signature/30" aria-label={badge.label}>
           <div class="icon-wrapper group-hover:bg-bleu-signature/10 group-hover:text-bleu-lecture" aria-hidden="true">
