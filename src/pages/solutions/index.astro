@@ -26,7 +26,6 @@ const solutions = [
     title: 'Coach sportif',
     desc: 'Programmes, bilans, progression, adhérence, communication. Passez moins de temps à gérer, plus de temps à coacher.',
     color: 'indigo',
-    stats: ['×4 capacité coach', '−75% temps admin', '+40% rétention'],
     featured: true,
   },
   {
@@ -35,7 +34,6 @@ const solutions = [
     title: 'Nutritionniste / Diététicien',
     desc: 'Plans, habitudes, listes de courses, compléments, évolution. La nutrition à l\'échelle. Templates, validation 1 clic, conformité.',
     color: 'bleu-lecture',
-    stats: ['Plan en 5 min', 'Courses auto', '100% conforme'],
     featured: false,
   },
   {
@@ -44,16 +42,14 @@ const solutions = [
     title: 'Préparateur mental',
     desc: 'Exercices, ressources, journal d\'appels, adhérence. Cloisonnement strict des données. Le mental structuré.',
     color: 'indigo',
-    stats: ['Adhérence +60%', 'Zéro fuite data', '100% cloisonné'],
     featured: false,
   },
   {
     href: '/solutions/cabinets',
     icon: 'users',
     title: 'Cabinet / Équipe',
-    desc: 'Multi-praticiens, permissions, coordination, administration, sécurité, audit, marque blanche. L\'OS de votre cabinet.',
+    desc: 'Multi-praticiens, permissions, coordination, administration, sécurité, audit, marque blanche.',
     color: 'bordeaux',
-    stats: ['Staff illimité', 'Marque 100% invisible', 'SLA + audit trail'],
     featured: true,
   },
 ];
@@ -80,8 +76,8 @@ const solutionsCross = [
 Quatre façons de l'utiliser."
       subtitle="Optibilan s'adapte à votre pratique : Coach, Nutritionniste, Préparateur mental, Cabinet. Chaque solution active les modules pertinents, avec les permissions adaptées."
       badge="4 solutions, 1 plateforme"
-      primaryCTA={{ href: 'https://calendly.com/optibilan/demo', label: 'Choisir ma solution' }}
-      secondaryCTA={{ href: '/product/overview', label: 'Voir tous les modules' }}
+      primaryCTA={{ href: 'https://calendly.com/optibilan/demo', label: 'Rejoindre Optibilan' }}
+      secondaryCTA={{ href: '/product/overview', label: 'Essai offert' }}
     />
 
     <TrustBar />
@@ -105,25 +101,17 @@ Quatre façons de l'utiliser."
                   Recommandé
                 </div>
               )}
-              <div class="p-6 md:p-8">
+<div class="p-6 md:p-8">
                 <div class="icon-wrapper mb-4" aria-hidden="true" style={`--mod-color: var(--color-${sol.color})`}>
                   <Icon name={sol.icon} class="w-8 h-8" style={`color: var(--color-${sol.color});`} />
                 </div>
                 <h3 class="font-display text-xl font-bold text-encre mb-3">{sol.title}</h3>
                 <p class="text-encre/60 leading-relaxed mb-5">{sol.desc}</p>
 
-                <div class="flex flex-wrap gap-2 mb-6">
-                  {sol.stats.map(stat => (
-                    <span key={stat} class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-puce text-xs font-medium" style={`color: var(--color-${sol.color}); background-color: color-mix(in oklab, var(--color-${sol.color}) 10%, transparent);`}>
-                      {stat}
-                    </span>
-                  ))}
-                </div>
-
                 <a href={sol.href} class="inline-flex items-center gap-1.5 text-sm font-medium" style={`color: var(--color-${sol.color});`} data-track={`solution_${sol.title.toLowerCase().replace(/\s+/g, '_')}_cta`}>
                   Découvrir la solution
                   <Icon name="arrowRight" class="w-4 h-4 transition-transform group-hover:translate-x-1" />
-</a>
+                </a>
               </div>
               </article>
             ))}
@@ -170,8 +158,8 @@ Quatre façons de l'utiliser."
     <CTA
       title="Vous ne trouvez pas votre profil ?"
       subtitle="Optibilan est modulaire. Activez seulement les modules dont vous avez besoin."
-      primaryCTA={{ href: '/product/overview', label: 'Voir tous les modules' }}
-      secondaryCTA={{ href: 'https://calendly.com/optibilan/demo', label: 'Réserver une démo' }}
+      primaryCTA={{ href: '/product/overview', label: 'Rejoindre Optibilan' }}
+      secondaryCTA={{ href: 'https://calendly.com/optibilan/demo', label: 'Essai offert' }}
       variant="gold"
     />
   </main>

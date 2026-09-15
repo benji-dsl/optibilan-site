@@ -4,11 +4,10 @@ import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import Hero from '../../components/Hero.astro';
 import CTA from '../../components/CTA.astro';
-import TrustBar from '../../components/TrustBar.astro';
 import Icon from '../../components/Icon.astro';
 
 const pageTitle = 'Contact - Optibilan';
-const pageDescription = 'Contactez l\'équipe Optibilan : démo, support technique, partenariats, presse. Réponse sous 4h ouvrées.';
+const pageDescription = 'Une question sur Optibilan ? Découvrez la plateforme, contactez le support ou proposez un partenariat. Réponse sous 4h ouvrées.';
 
 const contactJsonLd = {
   '@context': 'https://schema.org',
@@ -74,101 +73,112 @@ const contactJsonLd = {
 
   <main>
     <Hero
-      title="Parlons de votre cabinet"
-      subtitle="Démo personnalisée, questions techniques, partenariats, presse. L'équipe répond en <4h ouvrées."
-      badge="Support : support@optibilan.com • Partenariats : partners@optibilan.com • Presse : press@optibilan.com"
+      title="Une question ?
+Parlons-en."
+      subtitle="Démo personnalisée, support technique, partenariats. L'équipe répond sous 4h ouvrées."
     />
 
-    <TrustBar />
-
     <section class="section bg-blanc" aria-labelledby="contact-title">
-      <div class="container">
-        <div class="grid lg:grid-cols-2 gap-12">
-          <div>
-            <h2 id="contact-title" class="font-display text-2xl md:text-3xl font-bold text-encre mb-6">Comment pouvons-nous vous aider ?</h2>
+      <div class="container max-w-4xl">
+        <header class="text-center mb-16">
+          <h2 id="contact-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+            Trois façons d'échanger
+          </h2>
+          <p class="text-lg text-encre/60 max-w-2xl mx-auto">
+            Choisissez le parcours qui correspond à votre besoin.
+          </p>
+        </header>
 
-            <div class="space-y-4 mb-8">
-              {[
-                { icon: 'calendar', title: 'Réserver une démo', desc: '30 min avec un expert pour voir la plateforme en action', href: 'https://calendly.com/optibilan/demo', external: true },
-                { icon: 'mail', title: 'Support technique', desc: 'Bug, question config, migration données - réponse <4h', href: 'mailto:support@optibilan.com', external: false },
-                { icon: 'users', title: 'Partenariats / Intégrations', desc: 'n8n, Make, Zapier, Notion, Slack, webhooks, API', href: 'mailto:partners@optibilan.com', external: false },
-                { icon: 'globe', title: 'Presse / Médias', desc: 'Kit presse, interviews, communiqués, logos HD', href: 'mailto:press@optibilan.com', external: false },
-              ].map(item => (
-                <a href={item.href} class={`flex items-center gap-4 p-4 rounded-card border border-encre/10 hover:border-bleu-signature/30 hover:shadow-soft transition-all duration-200 ${item.external ? 'group' : ''}`} {item.external ? 'target="_blank" rel="noopener noreferrer"' : ''} data-track={`contact_${item.title.toLowerCase().replace(/\s+/g, '_')}`}>
-                  <div class="icon-wrapper flex-shrink-0" aria-hidden="true">
-                    <Icon name={item.icon} class="w-6 h-6" />
-                  </div>
-                  <div class="flex-1">
-                    <h3 class="font-semibold text-encre group-hover:text-bleu-signature transition-colors">{item.title}</h3>
-                    <p class="text-sm text-encre/50 mt-0.5">{item.desc}</p>
-                  </div>
-                  {item.external && <Icon name="arrowRight" class="w-5 h-5 text-encre/40 group-hover:text-bleu-signature transition-colors" />}
-                </a>
-              ))}
+        <div class="grid md:grid-cols-3 gap-6 mb-16">
+          <article class="p-6 md:p-8 rounded-xl border border-encre/10 hover:border-bleu-signature/30 hover:shadow-soft transition-all duration-200 text-center">
+            <div class="icon-wrapper mx-auto mb-4" aria-hidden="true" style="background-color: var(--color-bleu-clair);">
+              <Icon name="calendar" class="w-10 h-10 text-bleu-signature" />
             </div>
+            <h3 class="font-display text-xl font-bold text-encre mb-3">Découvrir Optibilan</h3>
+            <p class="text-encre/60 mb-6">30 minutes pour voir la plateforme adaptée à votre pratique. Pas de pitch, juste votre cas concret.</p>
+            <a href="https://calendly.com/optibilan/demo" class="btn-primary w-full sm:w-auto group" data-track="contact_demo">
+              Réserver une démo
+              <Icon name="arrowRight" class="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />
+            </a>
+          </article>
 
-            <div class="p-4 bg-papier rounded-card border border-encre/10">
-              <h3 class="font-semibold text-encre mb-3 flex items-center gap-2">
-                <Icon name="shield" class="w-5 h-5 text-bleu-signature" />
-                Besoin d'une réponse urgente ?
-              </h3>
-              <p class="text-encre/60 mb-2">Pour les clients actifs : support prioritaire via l'admin (icône bulle en bas à droite) ou Slack partagé (offres Studio/Cabinet).</p>
-              <p class="text-sm text-encre/50">SLA Cabinet : <4h ouvrées • Studio : <8h • Solo : <24h</p>
+          <article class="p-6 md:p-8 rounded-xl border border-encre/10 hover:border-emerald/30 hover:shadow-soft transition-all duration-200 text-center">
+            <div class="icon-wrapper mx-auto mb-4" aria-hidden="true" style="background-color: color-mix(in oklab, var(--color-emerald-500) 15%, transparent);">
+              <Icon name="mail" class="w-10 h-10 text-emerald-500" />
             </div>
-          </div>
+            <h3 class="font-display text-xl font-bold text-encre mb-3">Support</h3>
+            <p class="text-encre/60 mb-6">Clients actifs : bulle d'aide dans l'admin, email support@optibilan.com, Slack partagé (Studio/Cabinet). Réponse <4h ouvrées.</p>
+            <a href="mailto:support@optibilan.com" class="btn-secondary w-full sm:w-auto group" data-track="contact_support">
+              Écrire au support
+              <Icon name="arrowRight" class="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />
+            </a>
+          </article>
 
-          <div class="bg-gradient-to-br from-bleu-signature/5 via-papier to-bleu-lecture/5 rounded-card-lg p-8">
-            <h3 class="font-display text-xl font-bold text-encre mb-6">Ou envoyez-nous un message direct</h3>
+          <article class="p-6 md:p-8 rounded-xl border border-encre/10 hover:border-bordeaux/30 hover:shadow-soft transition-all duration-200 text-center">
+            <div class="icon-wrapper mx-auto mb-4" aria-hidden="true" style="background-color: var(--color-rose-bordeaux);">
+              <Icon name="users" class="w-10 h-10 text-bordeaux" />
+            </div>
+            <h3 class="font-display text-xl font-bold text-encre mb-3">Partenariats</h3>
+            <p class="text-encre/60 mb-6">Intégrations (n8n, Make, Zapier), co-marketing, revendeurs, presse. Contactez partners@optibilan.com.</p>
+            <a href="mailto:partners@optibilan.com" class="btn-secondary w-full sm:w-auto group" data-track="contact_partnerships">
+              Proposer un partenariat
+              <Icon name="arrowRight" class="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />
+            </a>
+          </article>
+        </div>
 
-            <form action="https://api.optibilan.com/contact" method="POST" class="space-y-4" data-track="contact_form">
-              <div class="grid sm:grid-cols-2 gap-4">
-                <div>
-                  <label for="firstName" class="block text-sm font-medium text-encre mb-1">Prénom *</label>
-                  <input type="text" id="firstName" name="firstName" required class="w-full px-4 py-3 rounded-lg bg-blanc border border-encre/20 focus:outline-none focus:border-bleu-signature focus:ring-2 focus:ring-bleu-signature/20 transition-all" />
-                </div>
-                <div>
-                  <label for="lastName" class="block text-sm font-medium text-encre mb-1">Nom *</label>
-                  <input type="text" id="lastName" name="lastName" required class="w-full px-4 py-3 rounded-lg bg-blanc border border-encre/20 focus:outline-none focus:border-bleu-signature focus:ring-2 focus:ring-bleu-signature/20 transition-all" />
-                </div>
+        <div class="bg-gradient-to-br from-bleu-signature/5 via-papier to-bleu-lecture/5 rounded-card-lg p-8 md:p-12">
+          <h3 class="font-display text-xl md:text-2xl font-bold text-encre mb-6 text-center">Ou envoyez-nous un message direct</h3>
+
+          <form action="https://api.optibilan.com/contact" method="POST" class="space-y-4 max-w-2xl mx-auto" data-track="contact_form">
+            <div class="grid sm:grid-cols-2 gap-4">
+              <div>
+                <label for="firstName" class="block text-sm font-medium text-encre mb-1">Prénom *</label>
+                <input type="text" id="firstName" name="firstName" required class="w-full px-4 py-3 rounded-lg bg-blanc border border-encre/20 focus:outline-none focus:border-bleu-signature focus:ring-2 focus:ring-bleu-signature/20 transition-all" />
               </div>
               <div>
-                <label for="email" class="block text-sm font-medium text-encre mb-1">Email professionnel *</label>
-                <input type="email" id="email" name="email" required placeholder="vous@votrecabinet.fr" class="w-full px-4 py-3 rounded-lg bg-blanc border border-encre/20 focus:outline-none focus:border-bleu-signature focus:ring-2 focus:ring-bleu-signature/20 transition-all" />
+                <label for="lastName" class="block text-sm font-medium text-encre mb-1">Nom *</label>
+                <input type="text" id="lastName" name="lastName" required class="w-full px-4 py-3 rounded-lg bg-blanc border border-encre/20 focus:outline-none focus:border-bleu-signature focus:ring-2 focus:ring-bleu-signature/20 transition-all" />
               </div>
-              <div>
-                <label for="cabinet" class="block text-sm font-medium text-encre mb-1">Nom du cabinet</label>
-                <input type="text" id="cabinet" name="cabinet" placeholder="Cabinet Vitalité Plus" class="w-full px-4 py-3 rounded-lg bg-blanc border border-encre/20 focus:outline-none focus:border-bleu-signature focus:ring-2 focus:ring-bleu-signature/20 transition-all" />
-              </div>
-              <div>
-                <label for="subject" class="block text-sm font-medium text-encre mb-1">Sujet *</label>
-                <select id="subject" name="subject" required class="w-full px-4 py-3 rounded-lg bg-blanc border border-encre/20 focus:outline-none focus:border-bleu-signature focus:ring-2 focus:ring-bleu-signature/20 transition-all">
-                  <option value="">Sélectionnez un sujet</option>
-                  <option value="demo">Demande de démo</option>
-                  <option value="technical">Question technique / Support</option>
-                  <option value="pricing">Tarifs / Offres</option>
-                  <option value="partnership">Partenariat / Intégration</option>
-                  <option value="press">Presse / Médias</option>
-                  <option value="other">Autre</option>
-                </select>
-              </div>
-              <div>
-                <label for="message" class="block text-sm font-medium text-encre mb-1">Message *</label>
-                <textarea id="message" name="message" rows="5" required placeholder="Décrivez votre besoin..." class="w-full px-4 py-3 rounded-lg bg-blanc border border-encre/20 focus:outline-none focus:border-bleu-signature focus:ring-2 focus:ring-bleu-signature/20 transition-all resize-none"></textarea>
-              </div>
-              <button type="submit" class="btn-demo w-full sm:w-auto" data-track="contact_submit">
-                <Icon name="send" class="w-5 h-5 mr-2" /> Envoyer le message
-              </button>
-              <p class="text-xs text-encre/50 text-center">En envoyant, vous acceptez notre <a href="/legal/confidentialite" class="underline hover:text-bleu-signature">Politique de confidentialité</a>. Réponse sous 4h ouvrées.</p>
-            </form>
-          </div>
+            </div>
+            <div>
+              <label for="email" class="block text-sm font-medium text-encre mb-1">Email professionnel *</label>
+              <input type="email" id="email" name="email" required placeholder="vous@votrecabinet.fr" class="w-full px-4 py-3 rounded-lg bg-blanc border border-encre/20 focus:outline-none focus:border-bleu-signature focus:ring-2 focus:ring-bleu-signature/20 transition-all" />
+            </div>
+            <div>
+              <label for="cabinet" class="block text-sm font-medium text-encre mb-1">Nom du cabinet</label>
+              <input type="text" id="cabinet" name="cabinet" placeholder="Cabinet Vitalité Plus" class="w-full px-4 py-3 rounded-lg bg-blanc border border-encre/20 focus:outline-none focus:border-bleu-signature focus:ring-2 focus:ring-bleu-signature/20 transition-all" />
+            </div>
+            <div>
+              <label for="subject" class="block text-sm font-medium text-encre mb-1">Sujet *</label>
+              <select id="subject" name="subject" required class="w-full px-4 py-3 rounded-lg bg-blanc border border-encre/20 focus:outline-none focus:border-bleu-signature focus:ring-2 focus:ring-bleu-signature/20 transition-all">
+                <option value="">Sélectionnez un sujet</option>
+                <option value="demo">Demande de démo</option>
+                <option value="technical">Question technique / Support</option>
+                <option value="pricing">Tarifs / Offres</option>
+                <option value="partnership">Partenariat / Intégration</option>
+                <option value="press">Presse / Médias</option>
+                <option value="other">Autre</option>
+              </select>
+            </div>
+            <div>
+              <label for="message" class="block text-sm font-medium text-encre mb-1">Message *</label>
+              <textarea id="message" name="message" rows="5" required placeholder="Décrivez votre besoin..." class="w-full px-4 py-3 rounded-lg bg-blanc border border-encre/20 focus:outline-none focus:border-bleu-signature focus:ring-2 focus:ring-bleu-signature/20 transition-all resize-none"></textarea>
+            </div>
+            <button type="submit" class="btn-demo w-full sm:w-auto mx-auto block" data-track="contact_submit">
+              <Icon name="send" class="w-5 h-5 mr-2" /> Envoyer le message
+            </button>
+            <p class="text-xs text-encre/50 text-center">En envoyant, vous acceptez notre <a href="/legal/confidentialite" class="underline hover:text-bleu-signature">Politique de confidentialité</a>. Réponse sous 4h ouvrées.</p>
+          </form>
         </div>
       </div>
     </section>
 
     <CTA
-      title="Prêt à tester par vous-même ?"
-      subtitle="30 jours gratuits, toutes fonctionnalités, sans carte bancaire. Créez votre cabinet en 5 minutes."
-      primaryCTA={{ href: 'https://app.optibilan.com/inscription', label: 'Lancer mon essai gratuit' }}
+      title="Prêt à démarrer ?"
+      subtitle="30 jours gratuits, toutes fonctionnalités, sans carte bancaire. Votre cabinet en 5 minutes."
+      primaryCTA={{ href: 'https://app.optibilan.com/inscription', label: 'Rejoindre Optibilan' }}
+      secondaryCTA={{ href: '/inscription', label: 'Essai offert' }}
       variant="primary"
     />
   </main>

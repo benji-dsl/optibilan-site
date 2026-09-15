@@ -13,15 +13,15 @@ interface Props {
 const {
   badges = [
     { label: 'Biomarqueurs sanguins', icon: 'chart', description: 'Suivi taux, ferritine, vit D, CRP, homocystéine' },
-    { label: 'Métriques quotidiennes', icon: 'activity', description: 'FCV, sommeil, HRV, charge, récupération' },
-    { label: 'Nutrition précision', icon: 'apple', description: 'Macros, micronutriments, timing, suppléments' },
+    { label: 'Métriques quotidiennes', icon: 'activity', description: 'VFC, sommeil, HRV, charge, récupération' },
+    { label: 'Nutrition de précision', icon: 'apple', description: 'Macros, micronutriments, timing, suppléments' },
     { label: 'Entraînement adapté', icon: 'dumbbell', description: 'RPE, volume, intensité, progression auto' },
     { label: 'Santé cognitive', icon: 'brain', description: 'Tests cognitifs, stress, sommeil, humeur' },
   ],
-  title = 'accompagnez à la meilleure longévité en bonne santé',
+  title = 'Pilotez les leviers d\'une meilleure longévité en bonne santé',
 } = Astro.props;
 
-// Duplicate badges for seamless infinite scroll
+// Duplicate badges for seamless infinite scroll (clones hidden from AT)
 const allBadges = [...badges, ...badges, ...badges];
 ---
 
@@ -37,22 +37,26 @@ const allBadges = [...badges, ...badges, ...badges];
     <div class="relative max-w-7xl mx-auto">
       <div class="overflow-hidden" style="mask-image: linear-gradient(90deg, transparent, black 20%, black 80%, transparent); -webkit-mask-image: linear-gradient(90deg, transparent, black 20%, black 80%, transparent);">
         <div class="flex gap-4 md:gap-6" id="trust-carousel" role="region" aria-label="Piliers longévité" style="animation: scroll 30s linear infinite;">
-          {allBadges.map((badge, index) => (
-            <article
-              class="flex-shrink-0 w-full sm:w-[calc(50%-0.5rem)] lg:w-[calc(20%-0.8rem)] group"
-              aria-label={badge.label}
-            >
-              <div class="bg-blanc/5 backdrop-blur-sm rounded-2xl border border-craie/10 p-5 md:p-6 h-full flex flex-col items-center text-center transition-all duration-300 hover:border-bleu-signature/30 hover:shadow-lg hover:shadow-bleu-signature/10 hover:bg-blanc/10">
-                <div class="icon-wrapper mb-3 group-hover:scale-110 transition-transform duration-300" aria-hidden="true">
-                  <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-bleu-signature/20 to-bleu-lecture/20 flex items-center justify-center group-hover:from-bleu-signature/30 group-hover:to-bleu-lecture/30 transition-all duration-300">
-                    <Icon name={badge.icon} class="w-6 h-6 text-bleu-signature" />
+          {allBadges.map((badge, index) => {
+            const isClone = index >= badges.length;
+            return (
+              <article
+                class="flex-shrink-0 w-full sm:w-[calc(50%-0.5rem)] lg:w-[calc(20%-0.8rem)] group"
+                aria-label={badge.label}
+                aria-hidden={isClone}
+              >
+                <div class="bg-blanc/5 backdrop-blur-sm rounded-2xl border border-craie/10 p-5 md:p-6 h-full flex flex-col items-center text-center transition-all duration-300 hover:border-bleu-signature/30 hover:shadow-lg hover:shadow-bleu-signature/10 hover:bg-blanc/10">
+                  <div class="icon-wrapper mb-3 group-hover:scale-110 transition-transform duration-300" aria-hidden="true">
+                    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-bleu-signature/20 to-bleu-lecture/20 flex items-center justify-center group-hover:from-bleu-signature/30 group-hover:to-bleu-lecture/30 transition-all duration-300">
+                      <Icon name={badge.icon} class="w-6 h-6 text-bleu-signature" />
+                    </div>
                   </div>
+                  <h3 class="font-display text-base font-semibold text-craie mb-1.5 text-center">{badge.label}</h3>
+                  <p class="text-xs text-craie/50 text-center leading-relaxed">{badge.description || ''}</p>
                 </div>
-                <h3 class="font-display text-base font-semibold text-craie mb-1.5 text-center">{badge.label}</h3>
-                <p class="text-xs text-craie/50 text-center leading-relaxed">{badge.description || ''}</p>
-              </div>
-            </article>
-          ))}
+              </article>
+            );
+          })}
         </div>
       </div>
     </div>

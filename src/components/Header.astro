@@ -33,6 +33,7 @@ const ressourcesLinks = [
 const ctaButtons = [
   { href: 'https://app.optibilan.com/login', icon: 'user', primary: false, ariaLabel: 'Connexion' },
   { href: 'https://calendly.com/optibilan/demo', icon: 'calendar', primary: true, ariaLabel: 'Réserver une démo' },
+  { href: 'https://calendly.com/optibilan/demo', icon: 'arrowRight', primary: true, ariaLabel: 'Rejoindre Optibilan' },
 ];
 ---
 
@@ -106,17 +107,17 @@ const ctaButtons = [
       </div>
 
       <div class="hidden md:flex items-center gap-2">
-        <a href="https://app.optibilan.com/login" class="btn-header-secondary p-2" data-track="header_login" aria-label="Connexion">
-          <Icon name="user" class="w-5 h-5" />
-        </a>
-        <a href="https://calendly.com/optibilan/demo" class="btn-header-primary" data-track="header_demo" aria-label="Réserver une démo">
-          <Icon name="calendar" class="w-5 h-5" />
-          <span class="hidden sm:inline">Démo</span>
-        </a>
-        <a href="https://calendly.com/optibilan/demo" class="btn-header-primary ml-2" data-track="header_join" aria-label="Rejoindre Optibilan">
-          <Icon name="arrowRight" class="w-5 h-5" />
-          <span class="hidden md:inline">Rejoindre Optibilan</span>
-        </a>
+        {ctaButtons.map((btn, index) => (
+          <a
+            href={btn.href}
+            class={`btn-header-${btn.primary ? 'primary' : 'secondary'} ${btn.primary && index === 1 ? 'ml-2' : ''} ${!btn.primary ? 'p-2' : ''}`}
+            data-track={`header_${btn.ariaLabel.toLowerCase().replace(/ /g, '_')}`}
+            aria-label={btn.ariaLabel}
+          >
+            <Icon name={btn.icon} class="w-5 h-5" />
+            {btn.primary && index === 2 && <span class="hidden md:inline">Rejoindre Optibilan</span>}
+          </a>
+        ))}
       </div>
 
       <button class="md:hidden p-2 rounded-lg text-encre/60 hover:bg-encre/5" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobile-menu" data-menu-toggle>
@@ -151,11 +152,15 @@ const ctaButtons = [
         <div class="flex flex-col gap-2 pt-2 border-t border-encre/10">
           <a href="https://calendly.com/optibilan/demo" class="btn-header-primary text-center flex items-center justify-center gap-2" data-track="mobile_demo">
             <Icon name="calendar" class="w-5 h-5" />
-            Réserver une démo
+            Rejoindre Optibilan
           </a>
           <a href="https://app.optibilan.com/login" class="btn-header-secondary text-center flex items-center justify-center gap-2">
             <Icon name="user" class="w-5 h-5" />
             Connexion
+          </a>
+          <a href="/inscription" class="btn-header-secondary text-center flex items-center justify-center gap-2">
+            <Icon name="sparkles" class="w-5 h-5" />
+            Essai offert
           </a>
         </div>
       </div>
