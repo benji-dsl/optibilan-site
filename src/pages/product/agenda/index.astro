@@ -4,18 +4,28 @@ import Header from '../../../components/Header.astro';
 import Footer from '../../../components/Footer.astro';
 import Hero from '../../../components/Hero.astro';
 import CTA from '../../../components/CTA.astro';
-import TrustBar from '../../../components/TrustBar.astro';
 import Icon from '../../../components/Icon.astro';
 
 const pageTitle = 'Appels planifiés & Agenda - Optibilan';
 const pageDescription = 'Cadence auto selon l\'offre, rappels Slack/email/push, gestion retards, calendrier ICS abonnable, vue agenda coach. Intégré au journal coaching.';
 
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Accueil', item: 'https://optibilan.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Produit', item: 'https://optibilan.com/produit' },
+    { '@type': 'ListItem', position: 3, name: 'Agenda & appels', item: 'https://optibilan.com/product/agenda' },
+  ],
+};
 ---
+
 <Layout
   title={pageTitle}
   description={pageDescription}
   canonical="/product/agenda"
   ogImage="/og-agenda.svg"
+  jsonLd={breadcrumbJsonLd}
 >
   <Header />
 
@@ -24,11 +34,9 @@ const pageDescription = 'Cadence auto selon l\'offre, rappels Slack/email/push, 
       title="L'agenda qui suit
 votre cadence."
       subtitle="Cadence auto selon l'offre, rappels multi-canal, gestion retards, calendrier ICS abonnable, vue agenda coach. Intégré au journal coaching."
-      primaryCTA={{ href: 'https://calendly.com/optibilan/demo', label: 'Voir l\'agenda en démo' }}
-      secondaryCTA={{ href: '/product/overview', label: 'Retour au produit' }}
+      primaryCTA={{ href: 'https://calendly.com/optibilan/demo', label: 'Rejoindre Optibilan' }}
+      secondaryCTA={{ href: '/inscription', label: 'Essayer Optibilan' }}
     />
-
-    <TrustBar />
 
     <section class="section bg-blanc" aria-labelledby="problem-title">
       <div class="container max-w-3xl">
@@ -127,15 +135,6 @@ votre cadence."
           ))}
         </div>
 
-        <div class="mt-12 p-6 rounded-xl bg-papier border border-encre/10">
-          <h3 class="font-display text-xl font-bold text-encre mb-3">Spécifications techniques</h3>
-          <ul class="space-y-2 text-sm text-encre/60">
-            <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-bleu-signature flex-shrink-0 mt-1.5" /> Token calendrier par staff (régénérable, révocable, scope)</li>
-            <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-bleu-signature flex-shrink-0 mt-1.5" /> Sync Google Calendar / Apple Calendar / Outlook natif</li>
-            <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-bleu-signature flex-shrink-0 mt-1.5" /> Webhook call.scheduled / call.completed / call.missed</li>
-            <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-bleu-signature flex-shrink-0 mt-1.5" /> Intégré journal : entrée auto post-appel (client, date, type, durée)</li>
-          </ul>
-        </div>
       </div>
     </section>
 
@@ -143,6 +142,7 @@ votre cadence."
       title="Prêt à ne plus jamais rater un rendez-vous ?"
       subtitle="30 minutes pour voir comment automatiser votre agenda et vos rappels."
       primaryCTA={{ href: 'https://calendly.com/optibilan/demo', label: 'Rejoindre Optibilan' }}
+      secondaryCTA={{ href: '/inscription', label: 'Essayer Optibilan' }}
       variant="primary"
     />
   </main>

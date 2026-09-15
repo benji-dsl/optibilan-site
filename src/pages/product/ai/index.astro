@@ -3,20 +3,29 @@ import Layout from '../../../layouts/Layout.astro';
 import Header from '../../../components/Header.astro';
 import Footer from '../../../components/Footer.astro';
 import Hero from '../../../components/Hero.astro';
-import AiScreenshot from '../../../../images/product/ai.svg?raw';
 import CTA from '../../../components/CTA.astro';
-import TrustBar from '../../../components/TrustBar.astro';
 import Icon from '../../../components/Icon.astro';
 
 const pageTitle = 'IA & Automatisations - Optibilan';
 const pageDescription = "L'IA prépare, le professionnel décide. Structuration documents, synthèse bilans, alertes proactives. Transparence totale sur le pipeline IA.";
 
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Accueil', item: 'https://optibilan.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Produit', item: 'https://optibilan.com/produit' },
+    { '@type': 'ListItem', position: 3, name: 'IA & Automatisations', item: 'https://optibilan.com/product/ai' },
+  ],
+};
 ---
+
 <Layout
   title={pageTitle}
   description={pageDescription}
   canonical="/product/ai"
   ogImage="/og-ai.svg"
+  jsonLd={breadcrumbJsonLd}
 >
   <Header />
 
@@ -24,11 +33,9 @@ const pageDescription = "L'IA prépare, le professionnel décide. Structuration 
     <Hero
       title="L'IA prépare.<br>Le professionnel décide."
       subtitle="Structuration documents, synthèse bilans, alertes proactives. Transparence totale sur le pipeline IA : fournisseur, données envoyées, rétention, pseudonymisation."
-      primaryCTA={{ href: 'https://calendly.com/optibilan/demo', label: "Voir l'IA en démo" }}
-      secondaryCTA={{ href: '/product/overview', label: 'Retour au produit' }}
+      primaryCTA={{ href: 'https://calendly.com/optibilan/demo', label: 'Rejoindre Optibilan' }}
+      secondaryCTA={{ href: '/inscription', label: 'Essayer Optibilan' }}
     />
-
-    <TrustBar />
 
     <section class="section bg-gradient-to-br from-encre/5 via-papier to-indigo/5 rounded-card-lg relative overflow-hidden" aria-labelledby="ai-disclaimer-title">
       <div class="container relative py-6 px-6 md:py-8 md:px-8">
@@ -159,6 +166,7 @@ const pageDescription = "L'IA prépare, le professionnel décide. Structuration 
       title="Vous voulez tester l'IA sur VOS documents ?"
       subtitle="30 minutes pour voir comment l'IA structure vos bilans, analyses et lettres."
       primaryCTA={{ href: 'https://calendly.com/optibilan/demo', label: 'Rejoindre Optibilan' }}
+      secondaryCTA={{ href: '/inscription', label: 'Essayer Optibilan' }}
       variant="primary"
     />
   </main>

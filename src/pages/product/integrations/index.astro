@@ -4,12 +4,20 @@ import Header from '../../../components/Header.astro';
 import Footer from '../../../components/Footer.astro';
 import Hero from '../../../components/Hero.astro';
 import CTA from '../../../components/CTA.astro';
-import TrustBar from '../../../components/TrustBar.astro';
 import Icon from '../../../components/Icon.astro';
 
 const pageTitle = 'Intégrations - Optibilan';
 const pageDescription = 'API REST v1 OpenAPI, webhooks HMAC, clés API scopées. Santé, agenda, communication, automatisation, paiement. Connectez ce que vous utilisez déjà.';
 
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Accueil', item: 'https://optibilan.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Produit', item: 'https://optibilan.com/produit' },
+    { '@type': 'ListItem', position: 3, name: 'Intégrations', item: 'https://optibilan.com/product/integrations' },
+  ],
+};
 ---
 
 <Layout
@@ -17,6 +25,7 @@ const pageDescription = 'API REST v1 OpenAPI, webhooks HMAC, clés API scopées.
   description={pageDescription}
   canonical="/product/integrations"
   ogImage="/og-integrations.svg"
+  jsonLd={breadcrumbJsonLd}
 >
   <Header />
 
@@ -26,10 +35,8 @@ const pageDescription = 'API REST v1 OpenAPI, webhooks HMAC, clés API scopées.
 à votre environnement."
       subtitle="API REST v1 OpenAPI, webhooks HMAC, clés API scopées. Santé, agenda, communication, automatisation, paiement. Connectez ce que vous utilisez déjà."
       primaryCTA={{ href: '/docs', label: 'Documentation API' }}
-      secondaryCTA={{ href: 'https://calendly.com/optibilan/demo', label: 'Voir les intégrations en démo' }}
+      secondaryCTA={{ href: 'https://calendly.com/optibilan/demo', label: 'Rejoindre Optibilan' }}
     />
-
-    <TrustBar />
 
     <section class="section bg-blanc" aria-labelledby="categories-title">
       <div class="container">
@@ -144,38 +151,39 @@ const pageDescription = 'API REST v1 OpenAPI, webhooks HMAC, clés API scopées.
             ))}
           </div>
         </div>
-    </section>
+      </section>
 
-    <section class="section bg-gradient-to-br from-bleu-signature via-bleu-lecture to-indigo rounded-card-lg relative overflow-hidden" aria-labelledby="api-title">
-      <div class="absolute inset-0" style={{ backgroundImage: 'radial-gradient(ellipse at center, var(--tw-gradient-stops))', backgroundColor: 'var(--color-bleu-signature-20)' }} aria-hidden="true"></div>
-      <div class="absolute top-0 right-0 w-96 h-96 bg-bleu-signature/10 rounded-full blur-3xl" aria-hidden="true"></div>
-      <div class="absolute bottom-0 left-0 w-96 h-96 bg-bleu-signature/10 rounded-full blur-3xl" aria-hidden="true"></div>
+      <section class="section bg-gradient-to-br from-bleu-signature via-bleu-lecture to-indigo rounded-card-lg relative overflow-hidden" aria-labelledby="api-title">
+        <div class="absolute inset-0" style={{ backgroundImage: 'radial-gradient(ellipse at center, var(--tw-gradient-stops))', backgroundColor: 'var(--color-bleu-signature-20)' }} aria-hidden="true"></div>
+        <div class="absolute top-0 right-0 w-96 h-96 bg-bleu-signature/10 rounded-full blur-3xl" aria-hidden="true"></div>
+        <div class="absolute bottom-0 left-0 w-96 h-96 bg-bleu-signature/10 rounded-full blur-3xl" aria-hidden="true"></div>
 
-      <div class="container relative text-center max-w-3xl mx-auto py-16 md:py-24">
-        <h2 id="api-title" class="font-display text-3xl md:text-4xl font-bold mb-4 text-craie">
-          API REST v1 - OpenAPI 3.1
-        </h2>
-        <p class="text-lg mb-8 text-craie/80 max-w-2xl mx-auto">
-          Documentation complète, sandbox de test, exemples cURL/Node/Python. Clés API scopées, rate limiting, webhooks HMAC.
-        </p>
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <a href="/docs" class="btn-demo w-full sm:w-auto" data-track="integrations_api_docs">
-            <Icon name="code" class="w-5 h-5 mr-2" /> Documentation API
-          </a>
-          <a href="/docs/sandbox" class="btn-secondary w-full sm:w-auto border-craie/30 text-craie hover:bg-craie/10">
-            <Icon name="terminal" class="w-5 h-5 mr-2" /> Sandbox de test
-          </a>
+        <div class="container relative text-center max-w-3xl mx-auto py-16 md:py-24">
+          <h2 id="api-title" class="font-display text-3xl md:text-4xl font-bold mb-4 text-craie">
+            API REST v1 - OpenAPI 3.1
+          </h2>
+          <p class="text-lg mb-8 text-craie/80 max-w-2xl mx-auto">
+            Documentation complète, sandbox de test, exemples cURL/Node/Python. Clés API scopées, rate limiting, webhooks HMAC.
+          </p>
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a href="/docs" class="btn-demo w-full sm:w-auto" data-track="integrations_api_docs">
+              <Icon name="code" class="w-5 h-5 mr-2" /> Documentation API
+            </a>
+            <a href="/docs/sandbox" class="btn-secondary w-full sm:w-auto border-craie/30 text-craie hover:bg-craie/10">
+              <Icon name="terminal" class="w-5 h-5 mr-2" /> Sandbox de test
+            </a>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <CTA
-      title="Vous avez un besoin d'intégration spécifique ?"
-      subtitle="L'équipe technique étudie votre stack et propose la meilleure architecture."
-      primaryCTA={{ href: '/contact', label: 'Parler à l\'équipe technique' }}
-      variant="gold"
-    />
-  </main>
+      <CTA
+        title="Vous avez un besoin d'intégration spécifique ?"
+        subtitle="L'équipe technique étudie votre stack et propose la meilleure architecture."
+        primaryCTA={{ href: '/contact', label: 'Rejoindre Optibilan' }}
+        secondaryCTA={{ href: '/inscription', label: 'Essayer Optibilan' }}
+        variant="gold"
+      />
+    </main>
 
-  <Footer />
-</Layout>
+    <Footer />
+  </Layout>

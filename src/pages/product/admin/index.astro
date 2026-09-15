@@ -4,18 +4,28 @@ import Header from '../../../components/Header.astro';
 import Footer from '../../../components/Footer.astro';
 import Hero from '../../../components/Hero.astro';
 import CTA from '../../../components/CTA.astro';
-import TrustBar from '../../../components/TrustBar.astro';
 import Icon from '../../../components/Icon.astro';
 
 const pageTitle = 'Administration - Optibilan';
-const pageDescription = 'Gestion utilisateurs (rôles, spécialités, 2FA), offres d\'appel personnalisées, mentions légales du cabinet, modules on/off, questionnaire lancement configurable, RGPD (export, purge), audit trail, webhooks, API keys.';
+const pageDescription = 'Gestion utilisateurs, offres d\'appel, marque blanche, modules, conformité, audit, webhooks, API. Tout configuré en quelques clics. Pas de ticket support pour changer un paramètre.';
 
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Accueil', item: 'https://optibilan.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Produit', item: 'https://optibilan.com/produit' },
+    { '@type': 'ListItem', position: 3, name: 'Administration', item: 'https://optibilan.com/product/admin' },
+  ],
+};
 ---
+
 <Layout
   title={pageTitle}
   description={pageDescription}
   canonical="/product/admin"
   ogImage="/og-admin.svg"
+  jsonLd={breadcrumbJsonLd}
 >
   <Header />
 
@@ -24,11 +34,9 @@ const pageDescription = 'Gestion utilisateurs (rôles, spécialités, 2FA), offr
       title="L'admin qui ne vous
 prend pas la tête."
       subtitle="Utilisateurs, offres, marque blanche, modules, conformité, audit, webhooks, API. Tout configuré en quelques clics. Pas de ticket support pour changer un paramètre."
-      primaryCTA={{ href: 'https://calendly.com/optibilan/demo', label: 'Voir l\'admin en démo' }}
-      secondaryCTA={{ href: '/product/overview', label: 'Retour au produit' }}
+      primaryCTA={{ href: 'https://calendly.com/optibilan/demo', label: 'Rejoindre Optibilan' }}
+      secondaryCTA={{ href: '/inscription', label: 'Essayer Optibilan' }}
     />
-
-    <TrustBar />
 
     <section class="section bg-blanc" aria-labelledby="problem-title">
       <div class="container max-w-3xl">
@@ -163,16 +171,6 @@ prend pas la tête."
           ))}
         </div>
 
-        <div class="mt-12 p-6 rounded-xl bg-papier border border-encre/10">
-          <h3 class="font-display text-xl font-bold text-encre mb-3">Spécifications techniques</h3>
-          <ul class="space-y-2 text-sm text-encre/60">
-            <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-bleu-signature flex-shrink-0 mt-1.5" /> Architecture multi-tenant fail-closed (extension Prisma tenant-guard)</li>
-            <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-bleu-signature flex-shrink-0 mt-1.5" /> 13/13 tests d'isolation en CI (test:isolation.mts)</li>
-            <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-bleu-signature flex-shrink-0 mt-1.5" /> DPA signé, registre sous-traitants Art.28 RGPD à jour</li>
-            <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-bleu-signature flex-shrink-0 mt-1.5" /> PITR 7j + snapshots quotidiens + backups chiffrés S3 EU 30j</li>
-            <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-bleu-signature flex-shrink-0 mt-1.5" /> Certifications fournisseurs : SOC 2 Type II, ISO 27001, HIPAA, RGPD, HDS</li>
-          </ul>
-        </div>
       </div>
     </section>
 
@@ -180,6 +178,7 @@ prend pas la tête."
       title="Prêt à configurer votre cabinet en autonomie ?"
       subtitle="30 minutes pour voir comme l'admin vous rend libre."
       primaryCTA={{ href: 'https://calendly.com/optibilan/demo', label: 'Rejoindre Optibilan' }}
+      secondaryCTA={{ href: '/inscription', label: 'Essayer Optibilan' }}
       variant="primary"
     />
   </main>

@@ -4,32 +4,39 @@ import Header from '../../../components/Header.astro';
 import Footer from '../../../components/Footer.astro';
 import Hero from '../../../components/Hero.astro';
 import CTA from '../../../components/CTA.astro';
-import TrustBar from '../../../components/TrustBar.astro';
 import Icon from '../../../components/Icon.astro';
 
 const pageTitle = 'Sport & programmes - Optibilan';
 const pageDescription = 'Bibliothèque d\'exercices, programmes types, séances validées, progression charge/volume. Construisez, suivez, ajustez.';
 
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Accueil', item: 'https://optibilan.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Produit', item: 'https://optibilan.com/produit' },
+    { '@type': 'ListItem', position: 3, name: 'Sport & programmes', item: 'https://optibilan.com/product/training' },
+  ],
+};
 ---
+
 <Layout
   title={pageTitle}
   description={pageDescription}
   canonical="/product/training"
   ogImage="/og-training.svg"
+  jsonLd={breadcrumbJsonLd}
 >
   <Header />
 
   <main>
     <Hero
-      title="Programme.
-Suivez.
-Ajustez."
-      subtitle="Construisez vos séances, suivez leur réalisation et visualisez la progression sans changer d'outil."
-      primaryCTA={{ href: 'https://calendly.com/optibilan/demo', label: 'Voir le sport en démo' }}
-      secondaryCTA={{ href: '/product/overview', label: 'Retour au produit' }}
+      title="Construisez vos programmes.
+Suivez chaque progression."
+      subtitle="Bibliothèque d'exercices, séances validées, progression charge/volume/RPE. L'entraînement structuré."
+      primaryCTA={{ href: 'https://calendly.com/optibilan/demo', label: 'Rejoindre Optibilan' }}
+      secondaryCTA={{ href: '/inscription', label: 'Essayer Optibilan' }}
     />
-
-    <TrustBar />
 
     <section class="section bg-blanc" aria-labelledby="problem-title">
       <div class="container max-w-3xl">
@@ -123,22 +130,14 @@ Ajustez."
           ))}
         </div>
 
-        <div class="mt-12 p-6 rounded-xl bg-papier border border-encre/10">
-          <h3 class="font-display text-xl font-bold text-encre mb-3">Spécifications techniques</h3>
-          <ul class="space-y-2 text-sm text-encre/60">
-            <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-indigo flex-shrink-0 mt-1.5" /> 200+ exercices (vidéo, points d'attention, régressions/progressions)</li>
-            <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-indigo flex-shrink-0 mt-1.5" /> Bibliothèque extensible (ajout exercices custom illimités)</li>
-            <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-indigo flex-shrink-0 mt-1.5" /> API sport : programmes, séances, exercices, progression</li>
-            <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-indigo flex-shrink-0 mt-1.5" /> Webhook session.completed pour sync externes (Notion, Slack)</li>
-          </ul>
-        </div>
       </div>
     </section>
 
     <CTA
       title="Prêt à programmer plus vite ?"
       subtitle="30 minutes pour voir comment construire et piloter l'entraînement de vos clients."
-      primaryCTA={{ href: 'https://calendly.com/optibilan/demo', label: 'Voir le sport en démo' }}
+      primaryCTA={{ href: 'https://calendly.com/optibilan/demo', label: 'Rejoindre Optibilan' }}
+      secondaryCTA={{ href: '/inscription', label: 'Essayer Optibilan' }}
       variant="primary"
     />
   </main>
