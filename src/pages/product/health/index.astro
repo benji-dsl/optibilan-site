@@ -81,12 +81,11 @@ enfin lisibles dans le temps."
             },
             {
               title: 'Wearables : sync Apple Health, Oura, Whoop, Garmin',
-              desc: 'Via Raccourcis iOS (client) ou n8n/Make/Zapier (cabinet). Métriques quotidiennes : sommeil (stades, score, régularité), VFC (rmssd, CV, tendance), FC repos, VO2max, pas, poids, %MG, température cutanée. Token santé par client (hsk_…) - scope granulaire.',
+              desc: 'Via Raccourcis iOS (client) ou connecteurs d\'automatisation (cabinet). Métriques quotidiennes : sommeil (stades, score, régularité), VFC (rmssd, CV, tendance), FC repos, VO2max, pas, poids, %MG, température cutanée.',
               features: [
                 'Sync : Apple Health, Oura, Whoop, Garmin',
                 'Métriques : sommeil, VFC, FC repos, VO2max, pas, poids',
-                'Endpoint /api/health-sync HMAC pour n8n/Make/Zapier',
-                'Stockage Supabase EU chiffré AES-256',
+                'Stockage EU chiffré',
                 'Hébergement EU (Irlande + France)',
               ],
               icon: 'globe',
@@ -135,19 +134,6 @@ enfin lisibles dans le temps."
               </ul>
             </article>
           ))}
-        </div>
-
-        <div class="mt-12 p-6 rounded-xl bg-papier border border-encre/10">
-          <h3 class="font-display text-xl font-bold text-encre mb-3">Spécifications techniques & conformité</h3>
-          <ul class="space-y-2 text-sm text-encre/60">
-            <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-bleu-ardoise flex-shrink-0 mt-1.5" /> Sync : Apple Health, Oura, Whoop, Garmin (Raccourcis iOS / n8n / Make / Zapier)</li>
-            <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-bleu-ardoise flex-shrink-0 mt-1.5" /> 130+ biomarqueurs sanguins structurés (unités, seuils, références OMS/sociétés savantes)</li>
-            <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-bleu-ardoise flex-shrink-0 mt-1.5" /> Import PDF labo : IA OCR → extraction → structuration → flags anomalies</li>
-            <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-bleu-ardoise flex-shrink-0 mt-1.5" /> Endpoint /api/health-sync (HMAC signé) pour n8n/Make/Zapier</li>
-            <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-bleu-ardoise flex-shrink-0 mt-1.5" /> Stockage Supabase bucket privé, chiffré AES-256</li>
-            <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-bleu-ardoise flex-shrink-0 mt-1.5" /> Hébergement EU (Supabase EU West, VPS France)</li>
-            <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-bleu-ardoise flex-shrink-0 mt-1.5" /> Token santé par client (hsk_…) - scope granulaire (read/write par métrique)</li>
-          </ul>
         </div>
       </div>
     </section>

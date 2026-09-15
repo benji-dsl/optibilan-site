@@ -124,11 +124,11 @@ l'accompagnement."
             },
             {
               title: 'Confidentialité & permissions (cœur du module)',
-              desc: 'Séparation stricte des données : le coach sport ne voit PAS le contenu mental. Le préparateur décide ce que le client partage (niveau 1/2/3). Rôle "préparateur mental" avec périmètre RBAC strict. Chiffrement supplémentaire au repos (AES-256 + envelope encryption). Audit trail dédié.',
+              desc: 'Séparation stricte des données : le coach sport ne voit PAS le contenu mental. Le préparateur décide ce que le client partage (3 niveaux de visibilité). Accès dédiés, chiffrement renforcé, traçabilité dédiée.',
               features: [
-                'RBAC : rôle préparateur mental strict',
-                'Partage client : 3 niveaux visibilité',
-                'Chiffrement AES-256 + envelope encryption',
+                'Rôle préparateur mental : périmètre strict',
+                'Partage client : 3 niveaux de visibilité',
+                'Chiffrement renforcé + traçabilité dédiée',
                 'Audit trail dédié mental',
               ],
               icon: 'lock',
@@ -154,18 +154,6 @@ l'accompagnement."
               </ul>
             </article>
           ))}
-        </div>
-
-        <div class="mt-12 p-6 rounded-xl bg-papier border border-encre/10">
-          <h3 class="font-display text-xl font-bold text-encre mb-3">Spécifications techniques</h3>
-          <ul class="space-y-2 text-sm text-encre/60">
-            <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-indigo flex-shrink-0 mt-1.5" /> Streaming audio/vidéo sécurisé (token court, pas de DL, pas de partage)</li>
-            <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-indigo flex-shrink-0 mt-1.5" /> Chiffrement supplémentaire au repos : AES-256 + envelope encryption</li>
-            <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-indigo flex-shrink-0 mt-1.5" /> RBAC : rôle "préparateur mental" = périmètre strict (mental seulement)</li>
-            <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-indigo flex-shrink-0 mt-1.5" /> API mental : exercices, ressources, journal, adhérence</li>
-            <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-indigo flex-shrink-0 mt-1.5" /> Partage client : niveau 1/2/3 configurable par le préparateur</li>
-            <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-indigo flex-shrink-0 mt-1.5" /> Audit trail dédié mental (accès, modifications, partages)</li>
-          </ul>
         </div>
       </div>
     </section>
