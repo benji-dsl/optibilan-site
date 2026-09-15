@@ -4,31 +4,39 @@ import Header from '../../../components/Header.astro';
 import Footer from '../../../components/Footer.astro';
 import Hero from '../../../components/Hero.astro';
 import CTA from '../../../components/CTA.astro';
-import TrustBar from '../../../components/TrustBar.astro';
 import Icon from '../../../components/Icon.astro';
 
-const pageTitle = 'Santé Connectée & Biomarqueurs - Optibilan';
-const pageDescription = 'Centralisez les données autorisées issues des bilans, analyses et appareils compatibles pour suivre leur évolution dans le temps. 130+ biomarqueurs.';
+const pageTitle = 'Santé & biomarqueurs - Optibilan';
+const pageDescription = 'Toutes les données de santé, enfin lisibles dans le temps. Analyses biologiques, sommeil, activité, fréquence cardiaque, VFC et données issues des appareils compatibles réunies dans une seule vue.';
 
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Accueil', item: 'https://optibilan.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Produit', item: 'https://optibilan.com/produit' },
+    { '@type': 'ListItem', position: 3, name: 'Santé & biomarqueurs', item: 'https://optibilan.com/product/health' },
+  ],
+};
 ---
+
 <Layout
   title={pageTitle}
   description={pageDescription}
   canonical="/product/health"
   ogImage="/og-health.svg"
+  jsonLd={breadcrumbJsonLd}
 >
   <Header />
 
   <main>
     <Hero
-      title="Les données de santé prennent du sens
-quand elles sont réunies."
-      subtitle="Centralisez les données autorisées issues des bilans, analyses et appareils compatibles pour suivre leur évolution dans le temps."
-      primaryCTA={{ href: 'https://calendly.com/optibilan/demo', label: 'Voir la santé en démo' }}
-      secondaryCTA={{ href: '/product/overview', label: 'Retour au produit' }}
+      title="Toutes les données de santé,
+enfin lisibles dans le temps."
+      subtitle="Analyses biologiques, sommeil, activité, fréquence cardiaque, VFC et données issues des appareils compatibles réunies dans une seule vue."
+      primaryCTA={{ href: 'https://calendly.com/optibilan/demo', label: 'Rejoindre Optibilan' }}
+      secondaryCTA={{ href: '/inscription', label: 'Essayer Optibilan' }}
     />
-
-    <TrustBar />
 
     <section class="section bg-gradient-to-br from-encre/5 via-papier to-bleu-signature/5 rounded-card-lg relative overflow-hidden" aria-labelledby="disclaimer-title">
       <div class="container relative py-6 px-6 md:py-8 md:px-8">
@@ -72,7 +80,7 @@ quand elles sont réunies."
               icon: 'document',
             },
             {
-              title: 'Wearables : sync compatible Apple Health, Oura, Whoop, Garmin',
+              title: 'Wearables : sync Apple Health, Oura, Whoop, Garmin',
               desc: 'Via Raccourcis iOS (client) ou n8n/Make/Zapier (cabinet). Métriques quotidiennes : sommeil (stades, score, régularité), VFC (rmssd, CV, tendance), FC repos, VO2max, pas, poids, %MG, température cutanée. Token santé par client (hsk_…) - scope granulaire.',
               features: [
                 'Sync : Apple Health, Oura, Whoop, Garmin',
@@ -132,7 +140,7 @@ quand elles sont réunies."
         <div class="mt-12 p-6 rounded-xl bg-papier border border-encre/10">
           <h3 class="font-display text-xl font-bold text-encre mb-3">Spécifications techniques & conformité</h3>
           <ul class="space-y-2 text-sm text-encre/60">
-            <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-bleu-ardoise flex-shrink-0 mt-1.5" /> Sync compatible : Apple Health, Oura, Whoop, Garmin (Raccourcis iOS / n8n / Make / Zapier)</li>
+            <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-bleu-ardoise flex-shrink-0 mt-1.5" /> Sync : Apple Health, Oura, Whoop, Garmin (Raccourcis iOS / n8n / Make / Zapier)</li>
             <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-bleu-ardoise flex-shrink-0 mt-1.5" /> 130+ biomarqueurs sanguins structurés (unités, seuils, références OMS/sociétés savantes)</li>
             <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-bleu-ardoise flex-shrink-0 mt-1.5" /> Import PDF labo : IA OCR → extraction → structuration → flags anomalies</li>
             <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-bleu-ardoise flex-shrink-0 mt-1.5" /> Endpoint /api/health-sync (HMAC signé) pour n8n/Make/Zapier</li>
@@ -148,6 +156,7 @@ quand elles sont réunies."
       title="Prêt à unifier les données de santé de vos clients ?"
       subtitle="30 minutes pour voir comment centraliser biologie, wearables et habitudes."
       primaryCTA={{ href: 'https://calendly.com/optibilan/demo', label: 'Rejoindre Optibilan' }}
+      secondaryCTA={{ href: '/inscription', label: 'Essayer Optibilan' }}
       variant="primary"
     />
   </main>

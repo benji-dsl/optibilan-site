@@ -4,18 +4,28 @@ import Header from '../../../components/Header.astro';
 import Footer from '../../../components/Footer.astro';
 import Hero from '../../../components/Hero.astro';
 import CTA from '../../../components/CTA.astro';
-import TrustBar from '../../../components/TrustBar.astro';
 import Icon from '../../../components/Icon.astro';
 
 const pageTitle = 'Nutrition - Optibilan';
-const pageDescription = 'Plans alimentaires, habitudes, listes de courses, compléments et suivi réunis dans le dossier client. La nutrition à l\'échelle.';
+const pageDescription = 'Construisez le suivi nutritionnel. Pas une pile de PDF. Plans, habitudes alimentaires, listes de courses, compléments documentés et personnalisables, évolution réunis dans le dossier client.';
 
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Accueil', item: 'https://optibilan.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Produit', item: 'https://optibilan.com/produit' },
+    { '@type': 'ListItem', position: 3, name: 'Nutrition', item: 'https://optibilan.com/product/nutrition' },
+  ],
+};
 ---
+
 <Layout
   title={pageTitle}
   description={pageDescription}
   canonical="/product/nutrition"
   ogImage="/og-nutrition.svg"
+  jsonLd={breadcrumbJsonLd}
 >
   <Header />
 
@@ -23,12 +33,10 @@ const pageDescription = 'Plans alimentaires, habitudes, listes de courses, compl
     <Hero
       title="Construisez le suivi nutritionnel.
 Pas une pile de PDF."
-      subtitle="Plans, habitudes alimentaires, listes de courses, compléments, évolution et documents réunis. La nutrition à l'échelle."
-      primaryCTA={{ href: 'https://calendly.com/optibilan/demo', label: 'Voir la nutrition en démo' }}
-      secondaryCTA={{ href: '/product/overview', label: 'Retour au produit' }}
+      subtitle="Plans, habitudes alimentaires, listes de courses, compléments documentés et personnalisables, évolution réunis dans le dossier client. La nutrition à l'échelle."
+      primaryCTA={{ href: 'https://calendly.com/optibilan/demo', label: 'Rejoindre Optibilan' }}
+      secondaryCTA={{ href: '/inscription', label: 'Essayer Optibilan' }}
     />
-
-    <TrustBar />
 
     <section class="section bg-blanc" aria-labelledby="problem-title">
       <div class="container max-w-3xl">
@@ -46,11 +54,11 @@ Pas une pile de PDF."
           {[
             {
               title: 'Créer un protocole nutritionnel en minutes',
-              desc: 'Répartition macro/micro-nutriments par repas et par jour, calcul automatique des besoins (Mifflin-St Jeor + facteur d\'activité). Base CIQUAL + USDA intégrée (3000+ aliments). Templates réutilisables : perte de gras, prise de masse, longévité, pathologie (diabète, thyroïde, SOPK…).',
+              desc: 'Répartition macro/micro-nutriments par repas et par jour, calcul automatique des besoins. Base CIQUAL + USDA intégrée (3000+ aliments). Modèles adaptés à différents objectifs et contextes d\'accompagnement.',
               features: [
                 'Calcul auto besoins + répartition repas',
-                'Templates par objectif / pathologie',
-                'Méthodes niveau de preuve A/B/C',
+                'Modèles par objectif / pathologie',
+                'Compléments documentés et personnalisables',
                 'Notes coach visibles / privées',
               ],
               icon: 'document',
@@ -67,8 +75,8 @@ Pas une pile de PDF."
               icon: 'chart',
             },
             {
-              title: 'Compléments classés par niveau de preuve',
-              desc: 'Pour chaque complément : dosage, timing, marque recommandée, niveau de preuve scientifique (A = méta-analyses, B = RCTs, C = observationnel). Indispensable / Optionnel / Déconseillé. Alertes interactions médicamenteuses basiques.',
+              title: 'Compléments documentés et personnalisables',
+              desc: 'Pour chaque complément : dosage, timing, marque recommandée. Alertes interactions, contre-indications, surdosage. Observance : rappels, validation scan code-barres, taux d\'adhérence.',
               features: [
                 '200+ compléments documentés',
                 'Dosage personnalisé (poids, biologie)',
@@ -123,22 +131,12 @@ Pas une pile de PDF."
         </div>
 
         <div class="mt-12 p-6 rounded-xl bg-papier border border-encre/10">
-          <h3 class="font-display text-xl font-bold text-encre mb-3">⚠ Cadre réglementaire & éthique</h3>
+          <h3 class="font-display text-xl font-bold text-encre mb-3">Cadre réglementaire & éthique</h3>
           <ul class="space-y-2 text-sm text-encre/60">
             <li class="flex items-start gap-2"><Icon name="check" class="w-4 h-4 text-emerald-500 flex-shrink-0 mt-0.5" /> Optibilan est un outil d'organisation. Il <strong>ne remplace pas</strong> l'avis d'un professionnel de santé qualifié.</li>
             <li class="flex items-start gap-2"><Icon name="check" class="w-4 h-4 text-emerald-500 flex-shrink-0 mt-0.5" /> Aucune recommandation de supplémentation n'est "validée" automatiquement. Le professionnel reste décisionnaire.</li>
             <li class="flex items-start gap-2"><Icon name="check" class="w-4 h-4 text-emerald-500 flex-shrink-0 mt-0.5" /> L'IA structure, suggère, alerte. Elle <strong>n'établit pas de diagnostic</strong> ni de prescription.</li>
             <li class="flex items-start gap-2"><Icon name="check" class="w-4 h-4 text-emerald-500 flex-shrink-0 mt-0.5" /> Conformité Art. 9 RGPD : données de santé traitées sous responsabilité du cabinet (vous = responsable, Optibilan = sous-traitant).</li>
-          </ul>
-        </div>
-
-        <div class="mt-12 p-6 rounded-xl bg-papier border border-encre/10">
-          <h3 class="font-display text-xl font-bold text-encre mb-3">Spécifications techniques</h3>
-          <ul class="space-y-2 text-sm text-encre/60">
-            <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-bleu-lecture flex-shrink-0 mt-1.5" /> Base CIQUAL + USDA (3000+ aliments)</li>
-            <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-bleu-lecture flex-shrink-0 mt-1.5" /> Calcul auto besoins (Mifflin-St Jeor + facteur activité)</li>
-            <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-bleu-lecture flex-shrink-0 mt-1.5" /> API nutrition : GET/POST /api/v1/clients/:id/nutrition</li>
-            <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-bleu-lecture flex-shrink-0 mt-1.5" /> Import/Export JSON pour partage templates entre coachs</li>
           </ul>
         </div>
       </div>
@@ -147,7 +145,8 @@ Pas une pile de PDF."
     <CTA
       title="Prêt à structurer votre suivi nutritionnel ?"
       subtitle="30 minutes pour découvrir comment créer des plans en minutes, pas en heures."
-      primaryCTA={{ href: 'https://calendly.com/optibilan/demo', label: 'Voir la nutrition en démo' }}
+      primaryCTA={{ href: 'https://calendly.com/optibilan/demo', label: 'Rejoindre Optibilan' }}
+      secondaryCTA={{ href: '/inscription', label: 'Essayer Optibilan' }}
       variant="primary"
     />
   </main>

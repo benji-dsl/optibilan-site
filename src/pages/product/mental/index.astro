@@ -4,33 +4,39 @@ import Header from '../../../components/Header.astro';
 import Footer from '../../../components/Footer.astro';
 import Hero from '../../../components/Hero.astro';
 import CTA from '../../../components/CTA.astro';
-import TrustBar from '../../../components/TrustBar.astro';
 import Icon from '../../../components/Icon.astro';
 
 const pageTitle = 'Préparation Mentale - Optibilan';
-const pageDescription = 'Exercices transversaux, ressources, journal d\'appels, suivi adhérence. Structurez le mental pour la performance durable. Cloisonnement des données garanti.';
+const pageDescription = 'Intégrez le mental à l\'accompagnement. Exercices transversaux, ressources, journal d\'appels, suivi adhérence. Cloisonnement strict des données.';
 
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Accueil', item: 'https://optibilan.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Produit', item: 'https://optibilan.com/produit' },
+    { '@type': 'ListItem', position: 3, name: 'Préparation Mentale', item: 'https://optibilan.com/product/mental' },
+  ],
+};
 ---
+
 <Layout
   title={pageTitle}
   description={pageDescription}
   canonical="/product/mental"
   ogImage="/og-mental.svg"
+  jsonLd={breadcrumbJsonLd}
 >
   <Header />
 
   <main>
     <Hero
-      title="Le mental fait partie de
-l'accompagnement.
-Ses données méritent leur
-propre espace."
-      subtitle="Visualisation, respiration, routine, journal d'appels, adhérence. Cloisonnement strict des données. Le mental structuré."
-      primaryCTA={{ href: 'https://calendly.com/optibilan/demo', label: 'Voir le mental en démo' }}
-      secondaryCTA={{ href: '/product/overview', label: 'Retour au produit' }}
+      title="Intégrez le mental à
+l'accompagnement."
+      subtitle="Exercices transversaux, ressources, journal d'appels, adhérence. Cloisonnement strict des données. Le mental structuré."
+      primaryCTA={{ href: 'https://calendly.com/optibilan/demo', label: 'Rejoindre Optibilan' }}
+      secondaryCTA={{ href: '/inscription', label: 'Essayer Optibilan' }}
     />
-
-    <TrustBar />
 
     <section class="section bg-gradient-to-br from-encre/5 via-papier to-indigo/5 rounded-card-lg relative overflow-hidden" aria-labelledby="disclaimer-title">
       <div class="container relative py-6 px-6 md:py-8 md:px-8">
@@ -63,7 +69,7 @@ propre espace."
           {[
             {
               title: 'Exercices transversaux réutilisables',
-              desc: 'Visualisation (objectif, performance, récupération), cohérence cardiaque (5-5-5, 4-7-8), ancrage (gestuel, verbal, sensoriel), routine pré-performance, scan corporel, respiration box. Chaque exercice : audio guidé (streaming), PDF fiche, durée, niveau. Bibliothèque personnelle du préparateur + templates Optibilan.',
+              desc: 'Visualisation, cohérence cardiaque, ancrage, routine pré-performance, scan corporel, respiration box. Audio guidé streaming, fiche PDF, durée, niveau. Bibliothèque personnelle + templates Optibilan.',
               features: [
                 '6 catégories : visualisation, respiration, ancrage, routine, scan, cohérence',
                 'Audio guidé streaming sécurisé',
@@ -74,11 +80,11 @@ propre espace."
             },
             {
               title: 'Bibliothèque ressources sécurisée',
-              desc: 'Dépôt sécurisé : vidéos (technique, mental), PDF (articles, protocoles), audio (guidés, relaxations). Streaming sécurisé (pas de téléchargement, pas de partage). Organisation par dossiers/tags. Partage sélectif client (niveau 1/2/3). Versioning ressources.',
+              desc: 'Vidéos, PDF, audio guidés. Streaming sécurisé (pas de téléchargement, pas de partage). Organisation par dossiers/tags. Partage sélectif client (niveau 1/2/3). Versioning ressources.',
               features: [
                 'Streaming vidéo/audio sécurisé',
                 'Organisation dossiers + tags + recherche',
-                'Partage client : 3 niveaux de visibilité',
+                'Partage client : 3 niveaux visibilité',
                 'Versioning ressources',
               ],
               icon: 'document',
@@ -96,7 +102,7 @@ propre espace."
             },
             {
               title: 'Techniques : respiration, visualisation, routine',
-              desc: 'Modules guidés intégrés : cohérence cardiaque (5-5-5 temps réel avec graphique HRV simulé), respiration box (4-4-4-4), scan corporel, routine pré-sommeil, routine pré-compétition. Chronomètre visuel + audio + vibration.',
+              desc: 'Cohérence cardiaque (5-5-5 temps réel), respiration box (4-4-4-4), scan corporel, routine pré-sommeil, routine pré-compétition. Chronomètre visuel + audio + vibration.',
               features: [
                 'Cohérence cardiaque : visuel + audio + HRV',
                 'Respiration box 4-4-4-4 guidée',
@@ -118,7 +124,7 @@ propre espace."
             },
             {
               title: 'Confidentialité & permissions (cœur du module)',
-              desc: 'Séparation stricte des données : le coach sport ne voit PAS le contenu mental. Le préparateur mental décide ce que le client partage (niveau 1/2/3). Rôle "préparateur mental" avec périmètre RBAC strict. Chiffrement supplémentaire au repos (AES-256 + envelope encryption). Audit trail dédié.',
+              desc: 'Séparation stricte des données : le coach sport ne voit PAS le contenu mental. Le préparateur décide ce que le client partage (niveau 1/2/3). Rôle "préparateur mental" avec périmètre RBAC strict. Chiffrement supplémentaire au repos (AES-256 + envelope encryption). Audit trail dédié.',
               features: [
                 'RBAC : rôle préparateur mental strict',
                 'Partage client : 3 niveaux visibilité',
@@ -167,7 +173,8 @@ propre espace."
     <CTA
       title="Prêt à structurer le suivi mental de vos sportifs ?"
       subtitle="30 minutes pour voir comment organiser exercices, ressources et adhérence."
-      primaryCTA={{ href: 'https://calendly.com/optibilan/demo', label: 'Voir le mental en démo' }}
+      primaryCTA={{ href: 'https://calendly.com/optibilan/demo', label: 'Rejoindre Optibilan' }}
+      secondaryCTA={{ href: '/inscription', label: 'Essayer Optibilan' }}
       variant="primary"
     />
   </main>
