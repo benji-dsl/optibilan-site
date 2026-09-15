@@ -332,6 +332,98 @@
       padding: 1.25rem 2.25rem;
       font-size: 1.0625rem;
     }
+    .btn-header-primary,
+    .btn-header-secondary {
+      padding: 0.625rem 1.25rem;
+      font-size: 0.8125rem;
+    }
+  }
+
+  /* Header button variants - plus compacts */
+  .btn-header-primary {
+    background-image: var(--gradient-btn-primary);
+    color: #FFFFFF;
+    padding: 0.75rem 1.5rem;
+    font-size: 0.875rem;
+    font-weight: 700;
+    border-radius: 9999px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 300ms cubic-bezier(0.34, 1.56, 0.64, 1);
+    position: relative;
+    overflow: hidden;
+    box-shadow:
+      0 4px 16px -4px color-mix(in oklab, var(--color-bleu-signature) 45%, transparent),
+      inset 0 1px 0 rgba(255,255,255,0.2);
+  }
+
+  .btn-header-primary::after {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: 9999px;
+    background: var(--gradient-btn-primary);
+    opacity: 0;
+    filter: blur(12px);
+    transition: opacity 300ms ease;
+    z-index: -1;
+  }
+
+  .btn-header-primary:hover::after {
+    opacity: 0.5;
+  }
+
+  .btn-header-primary:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow:
+      0 16px 32px -6px color-mix(in oklab, var(--color-bleu-signature) 55%, transparent),
+      inset 0 1px 0 rgba(255,255,255,0.25);
+  }
+
+  .btn-header-primary:active {
+    transform: translateY(-1px) scale(0.96);
+    transition: all 80ms ease;
+  }
+
+  .btn-header-secondary {
+    background-color: var(--color-papier);
+    border: 2px solid color-mix(in oklab, var(--color-encre-texte) 40%, transparent);
+    color: var(--color-encre-texte);
+    padding: 0.75rem 1.5rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    border-radius: 9999px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 300ms cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.1),
+      0 2px 8px -2px color-mix(in oklab, var(--color-encre-texte) 10%, transparent);
+  }
+
+  .btn-header-secondary:hover {
+    background-color: var(--color-encre-texte);
+    border-color: var(--color-encre-texte);
+    color: var(--color-craie);
+    transform: translateY(-2px) scale(1.02);
+    box-shadow:
+      0 12px 28px -4px color-mix(in oklab, var(--color-encre-texte) 30%, transparent);
+  }
+
+  .btn-header-secondary:active {
+    transform: translateY(0) scale(0.97);
+    transition: all 80ms ease.
+  }
+
+  /* Secondary - fond papier, bordure encre, devient plein au hover */
+  .btn-secondary {
+    background-color: var(--color-papier);
+    border: 2.5px solid color-mix(in oklab, var(--color-encre-texte) 40%, transparent);
+    color: var(--color-encre-texte);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.1),
+      0 2px 8px -2px color-mix(in oklab, var(--color-encre-texte) 10%, transparent);
   }
 
   /* ===== CARTES ===== */
