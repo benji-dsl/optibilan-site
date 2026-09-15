@@ -12,13 +12,20 @@
 /*.webmanifest /:splat 200
 /*.xml /:splat 200
 
-# Pages légales (statiques)
+# Pages légales (statiques) - français vers anglais
 /mentions-legales /legal/mentions 200
 /cgv /legal/cgv 200
 /confidentialite /legal/confidentialite 200
 /sous-traitance /legal/sous-traitance 200
 
-# Redirections legacy
+# Routes françaises vers anglais (SEO)
+/produit /product/overview 301
+/solutions /solutions 200
+/securite /security 301
 /tarifs /pricing 301
-/fonctionnalites /features 301
+/blog /blog 200
+/contact /contact 200
+
+# Redirections legacy
+/fonctionnalites /product/overview 301
 /docs /docs 200

@@ -16,7 +16,7 @@ const pricingJsonLd = {
   '@type': 'PriceSpecification',
   priceCurrency: 'EUR',
   minPrice: '39',
-  maxPrice: '279',
+  maxPrice: '349',
   billingIncrement: 'P1M',
   eligibleTransactionVolume: {
     '@type': 'PriceSpecification',
@@ -28,24 +28,45 @@ const pricingJsonLd = {
   priceSpecification: [
     {
       '@type': 'UnitPriceSpecification',
-      name: 'Solo',
-      price: '39',
+      name: 'Solo Mensuel',
+      price: '49',
       billingDuration: 'P1M',
       description: '30 coachés, 1 staff, IA 1k msg/mois, marque blanche basique'
     },
     {
       '@type': 'UnitPriceSpecification',
-      name: 'Studio',
-      price: '119',
+      name: 'Solo Annuel',
+      price: '39',
+      billingDuration: 'P1M',
+      description: '30 coachés, 1 staff, IA 1k msg/mois, marque blanche basique (-20%)'
+    },
+    {
+      '@type': 'UnitPriceSpecification',
+      name: 'Studio Mensuel',
+      price: '149',
       billingDuration: 'P1M',
       description: '150 coachés, 5 staff, IA 5k msg/mois, API, marque blanche avancée'
     },
     {
       '@type': 'UnitPriceSpecification',
-      name: 'Cabinet',
-      price: '279',
+      name: 'Studio Annuel',
+      price: '119',
+      billingDuration: 'P1M',
+      description: '150 coachés, 5 staff, IA 5k msg/mois, API, marque blanche avancée (-20%)'
+    },
+    {
+      '@type': 'UnitPriceSpecification',
+      name: 'Cabinet Mensuel',
+      price: '349',
       billingDuration: 'P1M',
       description: 'Coachés illimités, staff illimité, IA 20k msg/mois, SSO/SAML, SLA'
+    },
+    {
+      '@type': 'UnitPriceSpecification',
+      name: 'Cabinet Annuel',
+      price: '279',
+      billingDuration: 'P1M',
+      description: 'Coachés illimités, staff illimité, IA 20k msg/mois, SSO/SAML, SLA (-20%)'
     }
   ]
 };
@@ -58,6 +79,24 @@ const breadcrumbJsonLd = {
     { '@type': 'ListItem', position: 2, name: 'Tarifs', item: 'https://optibilan.com/tarifs' },
   ],
 };
+
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    { '@type': 'Question', name: "Puis-je changer d'offre en cours de mois ?", acceptedAnswer: { '@type': 'Answer', text: "Oui. Le changement prend effet immédiatement. Le prorata est calculé automatiquement sur votre prochaine facture Stripe." } },
+    { '@type': 'Question', name: "Y a-t-il un engagement ?", acceptedAnswer: { '@type': 'Answer', text: "Non. Résiliation en 1 clic depuis l'admin. L'accès reste actif jusqu'à la fin de la période payée." } },
+    { '@type': 'Question', name: "Que se passe-t-il à la fin de l'essai de 30 jours ?", acceptedAnswer: { '@type': 'Answer', text: "Votre espace passe en lecture seule (consultation possible, création bloquée). Vous avez 7 jours de grâce pour choisir une offre sans perdre l'accès staff." } },
+    { '@type': 'Question', name: "La marque blanche est-elle vraiment totale ?", acceptedAnswer: { '@type': 'Answer', text: "Sur l'offre Cabinet : logo, couleurs, nom assistant IA, vocabulaire (coaché/patient/membre...), domaine, mentions légales, CGV, email d'expédition - tout est à vous. Sur Studio : avancée (logo, couleurs, assistant, vocabulaire). Sur Solo : basique (logo, couleurs)." } },
+    { '@type': 'Question', name: "Mes données sont-elles hébergées en France ?", acceptedAnswer: { '@type': 'Answer', text: "La base PostgreSQL est hébergée sur Supabase (région EU West, Irlande), le VPS sur Hostinger en France, les backups chiffrés stockés en EU (S3-compatible EU). Aucune donnée ne sort de l'UE. Certifications fournisseurs : SOC 2 Type II, ISO 27001, HIPAA, RGPD." } },
+    { '@type': 'Question', name: "Comment fonctionne l'export RGPD et la purge des données ?", acceptedAnswer: { '@type': 'Answer', text: "Admin → Export : JSON complet de TOUTES les données du cabinet (37 modèles Prisma) en 1 clic. Purge auto paramétrable : durée de conservation (défaut 3 ans) + flag de suppression. Droit à l'oubli : suppression client en cascade par admin. Vérifié en CI (check-tenant.mjs) : aucun modèle cloisonné oublié." } },
+    { '@type': 'Question', name: "Comment fonctionne la facturation ?", acceptedAnswer: { '@type': 'Answer', text: "Via Stripe (carte bancaire, virement SEPA, prélèvement SEPA) ou par virement manuel / Systeme.io (sur demande). Les factures sont émises automatiquement à chaque échéance et disponibles dans l'admin. TVA en sus pour les assujettis (20% France)." } },
+    { '@type': 'Question', name: "Puis-je tester avant de m'engager ?", acceptedAnswer: { '@type': 'Answer', text: "Oui. 30 jours gratuits, toutes fonctionnalités de l'offre choisie, sans carte bancaire. Créez votre cabinet, invitez des coachs, testez l'espace coaché." } },
+    { '@type': 'Question', name: "Y a-t-il des frais cachés ?", acceptedAnswer: { '@type': 'Answer', text: "Non. Le prix affiché = prix payé. Seule la TVA s'ajoute pour les assujettis. Stripe prend sa commission (1,4% + 0,25€ EU) sur les paiements clients si vous activez le paiement intégré." } },
+    { '@type': 'Question', name: "Qu'est-ce qui est inclus dans le support dédié + SLA (Cabinet) ?", acceptedAnswer: { '@type': 'Answer', text: "Support email + Slack partagé + téléphone/visio dédié. Temps de réponse <4h ouvrées. Maintenance corrective et évolutive incluse. Nouvelles versions déployées sans interruption (blue/green). Changelog public." } },
+    { '@type': 'Question', name: "L'API REST est-elle documentée ?", acceptedAnswer: { '@type': 'Answer', text: "Oui. OpenAPI 3.1 complète (Swagger/Redoc), exemples cURL/Node/Python, sandbox de test. Clés API scopées (clients:read, checkins:write, cron, health:sync...). Rate limit : 120 req/min (Studio), sans limite pratique (Cabinet). Webhooks HMAC signés, retry exponentiel, idempotence via externalId." } },
+  ],
+};
 ---
 
 <Layout
@@ -65,7 +104,7 @@ const breadcrumbJsonLd = {
   description={pageDescription}
   canonical="/tarifs"
   ogImage="/og-pricing.svg"
-  jsonLd={[pricingJsonLd, breadcrumbJsonLd]}
+  jsonLd={[pricingJsonLd, breadcrumbJsonLd, faqJsonLd]}
 >
   <Header />
 
