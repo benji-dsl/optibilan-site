@@ -1,0 +1,187 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import Hero from '../../../components/Hero.astro';
+import CTA from '../../../components/CTA.astro';
+import Icon from '../../../components/Icon.astro';
+
+const pageTitle = 'Bilans & progression - Optibilan';
+const pageDescription = 'Comprenez ce qui évolue. Sans reconstruire l\'historique de votre client. Bilans, mensurations, photos, ressentis et habitudes réunis dans une seule chronologie.';
+
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Accueil', item: 'https://optibilan.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Produit', item: 'https://optibilan.com/produit' },
+    { '@type': 'ListItem', position: 3, name: 'Bilans & progression', item: 'https://optibilan.com/product/check-ins' },
+  ],
+};
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  canonical="/product/check-ins"
+  ogImage="/og-checkins.svg"
+  jsonLd={breadcrumbJsonLd}
+>
+  <Header />
+
+  <main>
+    <Hero
+      title="Comprenez ce qui évolue.
+Sans reconstruire l'historique de votre client."
+      subtitle="Bilans, mensurations, photos, ressentis et habitudes réunis dans une seule chronologie."
+      primaryCTA={{ href: 'https://calendly.com/optibilan/demo', label: 'Réserver une démo' }}
+      secondaryCTA={{ href: '/inscription', label: 'Essayer Optibilan' }}
+    />
+
+    <section class="section bg-blanc" aria-labelledby="create-title">
+      <div class="container">
+        <header class="mb-16">
+          <h2 id="create-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+            Créez vos propres bilans
+          </h2>
+          <p class="text-lg text-encre/60 max-w-2xl mx-auto">
+            Un builder visuel pour définir exactement ce que vous suivez. Poids, mensurations, photos avant/après, ressenti, sommeil, faim, motivation, pas, texte libre. Champs obligatoires, ordre, conditionnels : vous configurez.
+          </p>
+        </header>
+
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <h3 class="font-display text-2xl font-bold text-encre mb-4">30+ champs disponibles, activation granulaire</h3>
+            <ul class="space-y-3 text-encre/60 mb-8">
+              <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-bleu-signature flex-shrink-0 mt-0.5" /> Poids, mensurations, photos, ressenti global</li>
+              <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-bleu-signature flex-shrink-0 mt-0.5" /> Sommeil (qualité, durée), faim, motivation, pas</li>
+              <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-bleu-signature flex-shrink-0 mt-0.5" /> Texte libre pour vos spécificités</li>
+              <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-bleu-signature flex-shrink-0 mt-0.5" /> Questionnaires conditionnels selon l'objectif</li>
+            </ul>
+            <p class="text-sm text-encre/50">Pré-remplissage automatique depuis le dernier bilan. Validation mobile en moins de 2 minutes.</p>
+          </div>
+          <div class="aspect-video bg-encre/5 rounded-xl border border-encre/10 flex items-center justify-center relative overflow-hidden">
+            <div class="absolute inset-0 grid grid-cols-12 gap-2 p-4 opacity-10" aria-hidden="true">
+              {[...Array(24)].map((_, i) => (
+                <div key={i} class="col-span-1 h-4 bg-bleu-signature/20 rounded animate-pulse" style={{animationDelay: `${i * 50}ms`}} />
+              ))}
+            </div>
+            <Icon name="document" class="w-16 h-16 text-bleu-signature/30 relative z-10" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-papier" aria-labelledby="visualize-title">
+      <div class="container">
+        <header class="mb-16">
+          <h2 id="visualize-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+            Visualisez la progression
+          </h2>
+          <p class="text-lg text-encre/60 max-w-2xl mx-auto">
+            Courbes de poids, mensurations, score de progression composite. Zooms temporels (semaine, mois, trimestre, année). Corrélations automatiques : sommeil vs faim, charge vs récupération.
+          </p>
+        </header>
+
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div class="aspect-video bg-encre/5 rounded-xl border border-encre/10 flex items-center justify-center relative overflow-hidden">
+            <div class="absolute inset-0 grid grid-cols-12 gap-2 p-4 opacity-10" aria-hidden="true">
+              {[...Array(24)].map((_, i) => (
+                <div key={i} class="col-span-1 h-4 bg-bleu-lecture/20 rounded animate-pulse" style={{animationDelay: `${i * 50}ms`}} />
+              ))}
+            </div>
+            <Icon name="chart" class="w-16 h-16 text-bleu-lecture/30 relative z-10" />
+          </div>
+          <div>
+            <h3 class="font-display text-2xl font-bold text-encre mb-4">Tout l'historique, lisible d'un coup d'œil</h3>
+            <ul class="space-y-3 text-encre/60 mb-8">
+              <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-bleu-signature flex-shrink-0 mt-0.5" /> Courbes multi-séries synchronisées (poids + mensurations + sommeil)</li>
+              <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-bleu-signature flex-shrink-0 mt-0.5" /> Score de progression pondéré configurable</li>
+              <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-bleu-signature flex-shrink-0 mt-0.5" /> Détection automatique de plateaux et régressions</li>
+              <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-bleu-signature flex-shrink-0 mt-0.5" /> Export PDF à vos couleurs pour le client</li>
+            </ul>
+            <p class="text-sm text-encre/50">Photos avant/après avec alignement visuel automatique. Corrélations croisées automatiques.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-blanc" aria-labelledby="spotlight-title">
+      <div class="container">
+        <header class="mb-16">
+          <h2 id="spotlight-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+            Repérez ce qui mérite votre attention
+          </h2>
+          <p class="text-lg text-encre/60 max-w-2xl mx-auto">
+            Optibilan fait remonter les évolutions et informations à examiner : stagnation, baisse de motivation, observance en baisse, désengagement. Vous intervenez au bon moment, sur le bon client.
+          </p>
+        </header>
+
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <h3 class="font-display text-2xl font-bold text-encre mb-4">Des alertes actionnables, pas du bruit</h3>
+            <ul class="space-y-3 text-encre/60 mb-8">
+              <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-bleu-signature flex-shrink-0 mt-0.5" /> Stagnation prolongée, motivation en baisse, observance faible</li>
+              <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-bleu-signature flex-shrink-0 mt-0.5" /> Seuils personnalisables par client ou globaux</li>
+              <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-bleu-signature flex-shrink-0 mt-0.5" /> Historique des alertes traitées / en cours</li>
+              <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-bleu-signature flex-shrink-0 mt-0.5" /> Corrélation multi-facteurs (charge ↑ + sommeil ↓ = vigilance)</li>
+            </ul>
+            <p class="text-sm text-encre/50">Alertes temps réel dans votre cockpit. Vous gardez la main sur l'action à mener.</p>
+          </div>
+          <div class="aspect-video bg-encre/5 rounded-xl border border-encre/10 flex items-center justify-center relative overflow-hidden">
+            <div class="absolute inset-0 grid grid-cols-12 gap-2 p-4 opacity-10" aria-hidden="true">
+              {[...Array(24)].map((_, i) => (
+                <div key={i} class="col-span-1 h-4 bg-emerald/20 rounded animate-pulse" style={{animationDelay: `${i * 50}ms`}} />
+              ))}
+            </div>
+            <Icon name="zap" class="w-16 h-16 text-emerald/30 relative z-10" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-papier" aria-labelledby="share-title">
+      <div class="container">
+        <header class="mb-16">
+          <h2 id="share-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+            Partagez un bilan clair avec le client
+          </h2>
+          <p class="text-lg text-encre/60 max-w-2xl mx-auto">
+            Rapport mensuel ou trimestriel auto-généré : graphiques, photos, commentaires coach, prochaines étapes. Le client reçoit un lien sécurisé, sans connexion. Version PDF à vos couleurs pour impression.
+          </p>
+        </header>
+
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div class="aspect-video bg-encre/5 rounded-xl border border-encre/10 flex items-center justify-center relative overflow-hidden">
+            <div class="absolute inset-0 grid grid-cols-12 gap-2 p-4 opacity-10" aria-hidden="true">
+              {[...Array(24)].map((_, i) => (
+                <div key={i} class="col-span-1 h-4 bg-bordeaux/20 rounded animate-pulse" style={{animationDelay: `${i * 50}ms`}} />
+              ))}
+            </div>
+            <Icon name="users" class="w-16 h-16 text-bordeaux/30 relative z-10" />
+          </div>
+          <div>
+            <h3 class="font-display text-2xl font-bold text-encre mb-4">Votre marque, votre rapport</h3>
+            <ul class="space-y-3 text-encre/60 mb-8">
+              <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-bleu-signature flex-shrink-0 mt-0.5" /> Branding automatique (logo, couleurs, domaine)</li>
+              <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-bleu-signature flex-shrink-0 mt-0.5" /> Niveau de détail configurable (complet / synthèse)</li>
+              <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-bleu-signature flex-shrink-0 mt-0.5" /> Commentaires coach visibles ou privés</li>
+              <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-bleu-signature flex-shrink-0 mt-0.5" /> Partage par lien, email ou espace client</li>
+            </ul>
+            <p class="text-sm text-encre/50">Automatisation des rappels et relances. Vous validez avant envoi, commentez si besoin.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <CTA
+      title="Prêt à voir les bilans en action ?"
+      subtitle="30 minutes pour découvrir comment centraliser le suivi de vos clients."
+      primaryCTA={{ href: 'https://calendly.com/optibilan/demo', label: 'Réserver une démo' }}
+      secondaryCTA={{ href: '/inscription', label: 'Essayer Optibilan' }}
+      variant="primary"
+    />
+  </main>
+
+  <Footer />
+</Layout>

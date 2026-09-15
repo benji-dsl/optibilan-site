@@ -3,15 +3,72 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Hero from '../components/Hero.astro';
-import Process from '../components/Process.astro';
-import Pillars from '../components/Pillars.astro';
-import Benefits from '../components/Benefits.astro';
 import CTA from '../components/CTA.astro';
-import TrustBar from '../components/TrustBar.astro';
+import Icon from '../components/Icon.astro';
 
 const pageTitle = 'Optibilan - Plateforme de pilotage des accompagnements santé & performance';
 const pageDescription = 'Pilotez tous vos accompagnements depuis un seul endroit : bilans, programmes, nutrition, données de santé et suivi client réunis dans une plateforme pour les professionnels de la santé et de la performance.';
+
+const modules = [
+  {
+    id: 'check-ins',
+    title: 'Bilans & progression',
+    desc: 'Comprenez ce qui évolue. Sans reconstruire l\'historique de votre client. Bilans, mensurations, photos, ressentis et habitudes réunis dans une seule chronologie.',
+    screenshot: '/images/product/check-ins.svg',
+    href: '/product/check-ins',
+    layout: 'text-left',
+  },
+  {
+    id: 'nutrition',
+    title: 'Nutrition',
+    desc: 'Construisez le suivi nutritionnel. Pas une pile de PDF. Plans, habitudes alimentaires, listes de courses, compléments documentés et personnalisables, évolution réunis dans le dossier client.',
+    screenshot: '/images/product/nutrition.svg',
+    href: '/product/nutrition',
+    layout: 'text-right',
+  },
+  {
+    id: 'training',
+    title: 'Sport & programmes',
+    desc: 'Construisez vos programmes. Suivez chaque progression. Bibliothèque d\'exercices, séances validées, progression charge/volume/RPE. L\'entraînement structuré.',
+    screenshot: '/images/product/training.svg',
+    href: '/product/training',
+    layout: 'text-left',
+  },
+  {
+    id: 'health',
+    title: 'Santé & biomarqueurs',
+    desc: 'Toutes les données de santé, enfin lisibles dans le temps. Analyses biologiques, sommeil, activité, fréquence cardiaque, VFC et données issues des appareils compatibles réunies dans une seule vue.',
+    screenshot: '/images/product/health.svg',
+    href: '/product/health',
+    layout: 'full-width',
+  },
+  {
+    id: 'mental',
+    title: 'Préparation mentale',
+    desc: 'Intégrez le mental à l\'accompagnement. Exercices, ressources, routines et suivi réunis dans un espace dédié, avec des accès adaptés à chaque professionnel.',
+    screenshot: '/images/product/mental.svg',
+    href: '/product/mental',
+    layout: 'text-right',
+  },
+  {
+    id: 'white-label',
+    title: 'Marque blanche',
+    desc: 'Votre méthode. Votre marque. Logo, couleurs, domaine, emails, vocabulaire. Une démonstration visuelle : Optibilan disparaît, votre cabinet apparaît.',
+    screenshot: '/images/product/white-label.svg',
+    href: '/product/white-label',
+    layout: 'text-left',
+  },
+  {
+    id: 'ai',
+    title: 'IA & Automatisations',
+    desc: 'L\'IA prépare. Vous décidez. Structuration documents, synthèse bilans, identification des évolutions importantes. Le professionnel valide.',
+    screenshot: '/images/product/ai.svg',
+    href: '/product/ai',
+    layout: 'workflow',
+  },
+];
 ---
+
 <Layout
   title={pageTitle}
   description={pageDescription}
@@ -27,23 +84,231 @@ Depuis un seul endroit."
       subtitle="Bilans, programmes, nutrition, données de santé et suivi client réunis dans une plateforme pensée pour les professionnels de la santé et de la performance."
       badge=""
       primaryCTA={{ href: 'https://calendly.com/optibilan/demo', label: 'Réserver une démo' }}
-      secondaryCTA={{ href: '/product/overview', label: 'Découvrir la plateforme' }}
+      secondaryCTA={{ href: '/inscription', label: 'Essayer Optibilan' }}
       stats={[]}
     />
 
-    <TrustBar />
+    <section class="section bg-blanc" aria-labelledby="workflow-title">
+      <div class="container">
+        <header class="text-center max-w-3xl mx-auto mb-16">
+          <h2 id="workflow-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+            Du premier bilan au suivi quotidien
+          </h2>
+          <p class="text-lg text-encre/60">Trois étapes pour transformer votre pratique.</p>
+        </header>
 
-    <Process />
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <article class="relative group" style="--step-color: var(--color-bleu-signature)">
+            <div class="absolute -top-3 left-1/2 -translate-x-1/2 z-10">
+              <div class="w-12 h-12 rounded-full bg-gradient-to-br from-[var(--step-color)] to-[var(--step-color)] text-craie flex items-center justify-center font-display text-lg font-bold shadow-lg">
+                01
+              </div>
+            </div>
+            <div class="card-hover relative pt-14">
+              <div class="icon-wrapper mx-auto mb-6" aria-hidden="true" style={`background-color: color-mix(in oklab, var(--step-color) 15%, transparent);`}>
+                <Icon name="calendar" class="w-7 h-7" style={`color: var(--step-color);`} />
+              </div>
+              <h3 class="font-display text-xl font-bold text-encre mb-3 text-center">Centralisez les informations</h3>
+              <p class="text-encre/60 leading-relaxed text-center">Bilans, questionnaires, données de santé et documents sont réunis dans le même dossier avant même votre premier échange.</p>
+            </div>
+          </article>
+          <article class="relative group" style="--step-color: var(--color-bleu-lecture)">
+            <div class="absolute -top-3 left-1/2 -translate-x-1/2 z-10">
+              <div class="w-12 h-12 rounded-full bg-gradient-to-br from-[var(--step-color)] to-[var(--step-color)] text-craie flex items-center justify-center font-display text-lg font-bold shadow-lg">
+                02
+              </div>
+            </div>
+            <div class="card-hover relative pt-14">
+              <div class="icon-wrapper mx-auto mb-6" aria-hidden="true" style={`background-color: color-mix(in oklab, var(--step-color) 15%, transparent);`}>
+                <Icon name="document" class="w-7 h-7" style={`color: var(--step-color);`} />
+              </div>
+              <h3 class="font-display text-xl font-bold text-encre mb-3 text-center">Construisez l'accompagnement</h3>
+              <p class="text-encre/60 leading-relaxed text-center">Programmes, nutrition, habitudes et ressources sont organisés depuis une seule interface. Vos modèles vous évitent de repartir de zéro.</p>
+            </div>
+          </article>
+          <article class="relative group" style="--step-color: var(--color-indigo)">
+            <div class="absolute -top-3 left-1/2 -translate-x-1/2 z-10">
+              <div class="w-12 h-12 rounded-full bg-gradient-to-br from-[var(--step-color)] to-[var(--step-color)] text-craie flex items-center justify-center font-display text-lg font-bold shadow-lg">
+                03
+              </div>
+            </div>
+            <div class="card-hover relative pt-14">
+              <div class="icon-wrapper mx-auto mb-6" aria-hidden="true" style={`background-color: color-mix(in oklab, var(--step-color) 15%, transparent);`}>
+                <Icon name="chart" class="w-7 h-7" style={`color: var(--step-color);`} />
+              </div>
+              <h3 class="font-display text-xl font-bold text-encre mb-3 text-center">Suivez ce qui évolue</h3>
+              <p class="text-encre/60 leading-relaxed text-center">Progression, adhérence et informations importantes restent visibles au même endroit pour savoir où concentrer votre attention.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
 
-    <Pillars />
+    {modules.map((mod, index) => (
+      <section class="section" aria-labelledby={`module-${mod.id}-title`} style={mod.id === 'health' ? 'background: linear-gradient(to bottom, var(--color-papier), var(--color-blanc));' : mod.id === 'ai' ? 'background: linear-gradient(to bottom, var(--color-blanc), var(--color-papier));' : ''}>
+        <div class="container">
+          {mod.layout === 'full-width' && (
+            <>
+              <header class="text-center max-w-3xl mx-auto mb-12">
+                <h2 id={`module-${mod.id}-title`} class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+                  {mod.title}
+                </h2>
+                <p class="text-lg text-encre/60 max-w-2xl mx-auto mb-8">
+                  {mod.desc}
+                </p>
+              </header>
+              <div class="aspect-[16/9] max-w-6xl mx-auto rounded-xl border border-encre/10 bg-encre/5 overflow-hidden relative">
+                <div class="absolute inset-0 flex items-center justify-center" set:html={mod.screenshot} />
+              </div>
+              <p class="text-center text-sm text-encre/50 mt-4">Dashboard Optibilan — {mod.title}</p>
+              <div class="text-center mt-8">
+                <a href={mod.href} class="btn-secondary group inline-flex items-center gap-2" data-track={`home_${mod.id}_cta`}>
+                  Découvrir {mod.title}
+                  <Icon name="arrowRight" class="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                </a>
+              </div>
+            </>
+          )}
 
-    <Benefits />
+          {mod.layout === 'text-left' && (
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+              <div>
+                <h2 id={`module-${mod.id}-title`} class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+                  {mod.title}
+                </h2>
+                <p class="text-lg text-encre/60 mb-8 max-w-xl">
+                  {mod.desc}
+                </p>
+                <a href={mod.href} class="btn-secondary group inline-flex items-center gap-2" data-track={`home_${mod.id}_cta`}>
+                  Découvrir {mod.title}
+                  <Icon name="arrowRight" class="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                </a>
+              </div>
+              <div class="aspect-video max-w-2xl mx-auto rounded-xl border border-encre/10 bg-encre/5 overflow-hidden relative">
+                <div class="absolute inset-0 flex items-center justify-center" set:html={mod.screenshot} />
+              </div>
+            </div>
+          )}
 
-    <CTA
-      variant="primary"
-      title="Prêt à structurer votre cabinet ?"
-      subtitle="Découvrez comment Optibilan s'adapte à votre pratique."
-    />
+          {mod.layout === 'text-right' && (
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+              <div class="aspect-video max-w-2xl mx-auto rounded-xl border border-encre/10 bg-encre/5 overflow-hidden relative">
+                <div class="absolute inset-0 flex items-center justify-center" set:html={mod.screenshot} />
+              </div>
+              <div>
+                <h2 id={`module-${mod.id}-title`} class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+                  {mod.title}
+                </h2>
+                <p class="text-lg text-encre/60 mb-8 max-w-xl">
+                  {mod.desc}
+                </p>
+                <a href={mod.href} class="btn-secondary group inline-flex items-center gap-2" data-track={`home_${mod.id}_cta`}>
+                  Découvrir {mod.title}
+                  <Icon name="arrowRight" class="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                </a>
+              </div>
+            </div>
+          )}
+
+          {mod.layout === 'workflow' && (
+            <>
+              <header class="text-center max-w-3xl mx-auto mb-12">
+                <h2 id={`module-${mod.id}-title`} class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+                  {mod.title}
+                </h2>
+                <p class="text-lg text-encre/60 max-w-2xl mx-auto mb-8">
+                  {mod.desc}
+                </p>
+              </header>
+              <div class="aspect-[16/9] max-w-5xl mx-auto rounded-xl border border-encre/10 bg-encre/5 overflow-hidden relative">
+                <div class="absolute inset-0 flex items-center justify-center" set:html={mod.screenshot} />
+              </div>
+              <p class="text-center text-sm text-encre/50 mt-4">Workflow IA : Document → structuration → professionnel</p>
+              <div class="text-center mt-8">
+                <a href={mod.href} class="btn-secondary group inline-flex items-center gap-2" data-track={`home_${mod.id}_cta`}>
+                  Découvrir {mod.title}
+                  <Icon name="arrowRight" class="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                </a>
+              </div>
+            </>
+          )}
+
+          {mod.layout === 'text-left' && mod.id === 'white-label' && (
+            <div class="mt-12 grid lg:grid-cols-2 gap-8 items-center">
+              <div class="aspect-square max-w-md mx-auto rounded-xl border border-encre/10 bg-encre/5 overflow-hidden relative">
+                <div class="absolute inset-0 flex items-center justify-center" set:html={'/images/product/white-label.svg'} />
+              </div>
+              <div>
+                <h3 class="font-display text-2xl font-bold text-encre mb-4">Desktop + mobile, votre cabinet partout</h3>
+                <ul class="space-y-3 text-encre/60 mb-8">
+                  <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-bleu-signature flex-shrink-0 mt-0.5" /> Logo, couleurs, thème complet</li>
+                  <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-bleu-signature flex-shrink-0 mt-0.5" /> Domaine custom (app.votrecabinet.fr)</li>
+                  <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-bleu-signature flex-shrink-0 mt-0.5" /> Emails @votrecabinet.fr (DKIM/SPF/DMARC)</li>
+                  <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-bleu-signature flex-shrink-0 mt-0.5" /> Vocabulaire : membre / patient / client / sportif</li>
+                  <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-bleu-signature flex-shrink-0 mt-0.5" /> Assistant IA nommé, mentions légales, CGV à vous</li>
+                </ul>
+                <p class="text-sm text-encre/50">Activation instantanée. Aucune ligne de code.</p>
+              </div>
+            </div>
+          )}
+        </div>
+      </section>
+    ))}
+
+    <section class="section bg-papier" aria-labelledby="security-title">
+      <div class="container text-center">
+        <h2 id="security-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+          Une infrastructure pensée pour les données sensibles
+        </h2>
+        <p class="text-lg text-encre/60 max-w-2xl mx-auto mb-10">
+          Contrôle des accès, traçabilité et protection des données font partie de l'architecture d'Optibilan.
+        </p>
+        <a href="/security" class="btn-secondary group inline-flex items-center gap-2" data-track="home_security_cta">
+          Découvrir notre approche de la sécurité
+          <Icon name="arrowRight" class="w-4 h-4 transition-transform group-hover:translate-x-1" />
+        </a>
+      </div>
+    </section>
+
+    <section class="section bg-encre text-craie" aria-labelledby="cta-final-title">
+      <div class="container">
+        <header class="text-center max-w-3xl mx-auto mb-10">
+          <h2 id="cta-final-title" class="font-display text-3xl md:text-4xl font-bold mb-4">
+            AVANT
+          </h2>
+        </header>
+        <div class="grid md:grid-cols-2 gap-8 mb-16">
+          <div class="p-6 md:p-8 rounded-xl border border-encre/20 bg-craie/10">
+            <h3 class="font-display text-xl font-bold text-encre mb-4">AVANT</h3>
+            <ul class="space-y-3 text-encre/70">
+              <li class="flex items-center gap-3"><span class="w-6 h-6 rounded-full bg-bordeaux/20 flex items-center justify-center text-bordeaux">1</span> Formulaires dispersés</li>
+              <li class="flex items-center gap-3"><span class="w-6 h-6 rounded-full bg-bordeaux/20 flex items-center justify-center text-bordeaux">2</span> Excel / PDF</li>
+              <li class="flex items-center gap-3"><span class="w-6 h-6 rounded-full bg-bordeaux/20 flex items-center justify-center text-bordeaux">3</span> Applications différentes</li>
+              <li class="flex items-center gap-3"><span class="w-6 h-6 rounded-full bg-bordeaux/20 flex items-center justify-center text-bordeaux">4</span> Informations éparpillées</li>
+              <li class="flex items-center gap-3"><span class="w-6 h-6 rounded-full bg-bordeaux/20 flex items-center justify-center text-bordeaux">5</span> Suivi manuel</li>
+            </ul>
+          </div>
+          <div class="p-6 md:p-8 rounded-xl border border-bleu-signature/30 bg-bleu-signature/5">
+            <h3 class="font-display text-xl font-bold text-encre mb-4">AVEC OPTIBILAN</h3>
+            <ul class="space-y-3 text-encre/70">
+              <li class="flex items-center gap-3"><span class="w-6 h-6 rounded-full bg-bleu-signature/20 flex items-center justify-center text-bleu-signature">1</span> Un dossier client</li>
+              <li class="flex items-center gap-3"><span class="w-6 h-6 rounded-full bg-bleu-signature/20 flex items-center justify-center text-bleu-signature">2</span> Une vision de la progression</li>
+              <li class="flex items-center gap-3"><span class="w-6 h-6 rounded-full bg-bleu-signature/20 flex items-center justify-center text-bleu-signature">3</span> Programmes centralisés</li>
+              <li class="flex items-center gap-3"><span class="w-6 h-6 rounded-full bg-bleu-signature/20 flex items-center justify-center text-bleu-signature">4</span> Données structurées</li>
+              <li class="flex items-center gap-3"><span class="w-6 h-6 rounded-full bg-bleu-signature/20 flex items-center justify-center text-bleu-signature">5</span> Équipe coordonnée</li>
+            </ul>
+          </div>
+        </div>
+
+        <CTA
+          title="Prêt à structurer votre cabinet ?"
+          subtitle="Découvrez comment Optibilan s'adapte à votre pratique."
+          primaryCTA={{ href: 'https://calendly.com/optibilan/demo', label: 'Réserver une démo' }}
+          secondaryCTA={{ href: '/inscription', label: 'Essayer Optibilan' }}
+          variant="gold"
+        />
+      </div>
+    </section>
   </main>
 
   <Footer />

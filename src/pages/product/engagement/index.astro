@@ -1,0 +1,154 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import Hero from '../../../components/Hero.astro';
+import CTA from '../../../components/CTA.astro';
+import Icon from '../../../components/Icon.astro';
+
+const pageTitle = 'Habitudes & engagement - Optibilan';
+const pageDescription = 'Les bonnes habitudes ne se construisent pas dans un tableur. Objectifs, routines, rappels et progression réunis pour aider vos clients à rester engagés dans la durée.';
+
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Accueil', item: 'https://optibilan.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Produit', item: 'https://optibilan.com/produit' },
+    { '@type': 'ListItem', position: 3, name: 'Habitudes & engagement', item: 'https://optibilan.com/product/engagement' },
+  ],
+};
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  canonical="/product/engagement"
+  ogImage="/og-engagement.svg"
+  jsonLd={breadcrumbJsonLd}
+>
+  <Header />
+
+  <main>
+    <Hero
+      title="Les bonnes habitudes
+ne se construisent pas
+dans un tableur."
+      subtitle="Objectifs, routines, rappels et progression réunis pour aider vos clients à rester engagés dans la durée."
+      primaryCTA={{ href: 'https://calendly.com/optibilan/demo', label: 'Réserver une démo' }}
+      secondaryCTA={{ href: '/inscription', label: 'Essayer Optibilan' }}
+    />
+
+    <section class="section bg-blanc" aria-labelledby="habits-title">
+      <div class="container">
+        <header class="mb-16">
+          <h2 id="habits-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+            Habitudes quotidiennes
+          </h2>
+          <p class="text-lg text-encre/60 max-w-2xl mx-auto">
+            Le client coche ses habitudes sur mobile : eau, suppléments, exposition lumière, respiration, jeûne, médication. Rappels push/email, validation simple, taux d'adhérence visible.
+          </p>
+        </header>
+
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <h3 class="font-display text-2xl font-bold text-encre mb-4">Configurable par client, simple pour tous</h3>
+            <ul class="space-y-3 text-encre/60 mb-8">
+              <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-bleu-signature flex-shrink-0 mt-0.5" /> Type, fréquence, rappel personnalisés par habitude</li>
+              <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-bleu-signature flex-shrink-0 mt-0.5" /> Validation scan code-barres (suppléments, médicaments)</li>
+              <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-bleu-signature flex-shrink-0 mt-0.5" /> Taux d'adhérence hebdo/mensuel, alertes si < 80%</li>
+              <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-bleu-signature flex-shrink-0 mt-0.5" /> Corrélation habitude → biomarqueur (ex: magnésium → crampes ↓)</li>
+            </ul>
+            <p class="text-sm text-encre/50">Rappels push/email automatiques. Rupture de stock signalée.</p>
+          </div>
+          <div class="aspect-video bg-encre/5 rounded-xl border border-encre/10 flex items-center justify-center relative overflow-hidden">
+            <div class="absolute inset-0 grid grid-cols-12 gap-2 p-4 opacity-10" aria-hidden="true">
+              {[...Array(24)].map((_, i) => (
+                <div key={i} class="col-span-1 h-4 bg-bordeaux/20 rounded animate-pulse" style={{animationDelay: `${i * 50}ms`}} />
+              ))}
+            </div>
+            <Icon name="apple" class="w-16 h-16 text-bordeaux/30 relative z-10" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-papier" aria-labelledby="goals-title">
+      <div class="container">
+        <header class="mb-16">
+          <h2 id="goals-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+            Objectifs & jalons
+          </h2>
+          <p class="text-lg text-encre/60 max-w-2xl mx-auto">
+            L'objectif ultime (dreamboard) posé dès l'inscription. Objectifs intermédiaires, jalons datés, progression visible. Le client voit où il va, vous voyez où il en est.
+          </p>
+        </header>
+
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div class="aspect-video bg-encre/5 rounded-xl border border-encre/10 flex items-center justify-center relative overflow-hidden">
+            <div class="absolute inset-0 grid grid-cols-12 gap-2 p-4 opacity-10" aria-hidden="true">
+              {[...Array(24)].map((_, i) => (
+                <div key={i} class="col-span-1 h-4 bg-bleu-signature/20 rounded animate-pulse" style={{animationDelay: `${i * 50}ms`}} />
+              ))}
+            </div>
+            <Icon name="zap" class="w-16 h-16 text-bleu-signature/30 relative z-10" />
+          </div>
+          <div>
+            <h3 class="font-display text-2xl font-bold text-encre mb-4">Une vision claire du chemin</h3>
+            <ul class="space-y-3 text-encre/60 mb-8">
+              <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-bleu-signature flex-shrink-0 mt-0.5" /> Dreamboard + objectif ultime dès l'inscription</li>
+              <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-bleu-signature flex-shrink-0 mt-0.5" /> Objectifs intermédiaires datés, jalons visibles</li>
+              <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-bleu-signature flex-shrink-0 mt-0.5" /> Progression visible côté client et côté coach</li>
+              <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-bleu-signature flex-shrink-0 mt-0.5" /> Alertes si dérive par rapport au plan</li>
+            </ul>
+            <p class="text-sm text-encre/50">Le client sait où il va. Vous savez où il en est.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-blanc" aria-labelledby="reminders-title">
+      <div class="container">
+        <header class="mb-16">
+          <h2 id="reminders-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+            Rappels & progression
+          </h2>
+          <p class="text-lg text-encre/60 max-w-2xl mx-auto">
+            Rappels push/email aux bons moments. Taux d'adhérence hebdo et mensuel. Alertes si chute. Le coach voit l'engagement global sans micro-gestion.
+          </p>
+        </header>
+
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <h3 class="font-display text-2xl font-bold text-encre mb-4">Restez informés sans micro-gérer</h3>
+            <ul class="space-y-3 text-encre/60 mb-8">
+              <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-bleu-signature flex-shrink-0 mt-0.5" /> Rappels multi-canal (push, email, Slack équipe)</li>
+              <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-bleu-signature flex-shrink-0 mt-0.5" /> Taux d'adhérence hebdo/mensuel par client</li>
+              <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-bleu-signature flex-shrink-0 mt-0.5" /> Alertes si adhérence < 80% ou inactivité prolongée</li>
+              <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-bleu-signature flex-shrink-0 mt-0.5" /> Vue d'ensemble engagement pour le coach</li>
+            </ul>
+            <p class="text-sm text-encre/50">Le client est autonome. Vous êtes informé quand ça compte.</p>
+          </div>
+          <div class="aspect-video bg-encre/5 rounded-xl border border-encre/10 flex items-center justify-center relative overflow-hidden">
+            <div class="absolute inset-0 grid grid-cols-12 gap-2 p-4 opacity-10" aria-hidden="true">
+              {[...Array(24)].map((_, i) => (
+                <div key={i} class="col-span-1 h-4 bg-indigo/20 rounded animate-pulse" style={{animationDelay: `${i * 50}ms`}} />
+              ))}
+            </div>
+            <Icon name="chart" class="w-16 h-16 text-indigo/30 relative z-10" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <CTA
+      title="Prêt à engager vos clients sur la durée ?"
+      subtitle="30 minutes pour voir comment structurer habitudes, objectifs et rappels."
+      primaryCTA={{ href: 'https://calendly.com/optibilan/demo', label: 'Réserver une démo' }}
+      secondaryCTA={{ href: '/inscription', label: 'Essayer Optibilan' }}
+      variant="primary"
+    />
+  </main>
+
+  <Footer />
+</Layout>
