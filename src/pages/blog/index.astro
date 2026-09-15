@@ -180,6 +180,15 @@ const categoryLabels: Record<string, string> = {
 function formatDate(dateStr: string) {
   return new Date(dateStr).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
 }
+
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Accueil', item: 'https://optibilan.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://optibilan.com/blog' },
+  ],
+};
 ---
 
 <Layout
@@ -187,7 +196,7 @@ function formatDate(dateStr: string) {
   description={pageDescription}
   canonical="/blog"
   ogImage="/og-blog.svg"
-  jsonLd={blogJsonLd}
+  jsonLd={[blogJsonLd, breadcrumbJsonLd]}
 >
   <Header />
 

@@ -9,6 +9,15 @@ import Icon from '../../components/Icon.astro';
 
 const pageTitle = 'Sécurité & Conformité - Optibilan';
 const pageDescription = 'Découvrez comment Optibilan protège les données, contrôle les accès et organise son infrastructure. Sécurité, RGPD, HDS, audit trail, infrastructure européenne.';
+
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Accueil', item: 'https://optibilan.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Sécurité', item: 'https://optibilan.com/security' },
+  ],
+};
 ---
 
 <Layout
@@ -16,6 +25,7 @@ const pageDescription = 'Découvrez comment Optibilan protège les données, con
   description={pageDescription}
   canonical="/security"
   ogImage="/og-security.svg"
+  jsonLd={breadcrumbJsonLd}
 >
   <Header />
 

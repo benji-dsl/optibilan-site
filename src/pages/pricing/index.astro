@@ -49,6 +49,15 @@ const pricingJsonLd = {
     }
   ]
 };
+
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Accueil', item: 'https://optibilan.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Tarifs', item: 'https://optibilan.com/tarifs' },
+  ],
+};
 ---
 
 <Layout
@@ -56,7 +65,7 @@ const pricingJsonLd = {
   description={pageDescription}
   canonical="/tarifs"
   ogImage="/og-pricing.svg"
-  jsonLd={pricingJsonLd}
+  jsonLd={[pricingJsonLd, breadcrumbJsonLd]}
 >
   <Header />
 
