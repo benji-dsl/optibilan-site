@@ -10,6 +10,15 @@ import Icon from '../../components/Icon.astro';
 const pageTitle = 'Solutions - Optibilan';
 const pageDescription = 'Optibilan s\'adapte à votre pratique : Coach sportif, Nutritionniste, Préparateur mental, Cabinet. Une plateforme, quatre façons de l\'utiliser.';
 
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Accueil', item: 'https://optibilan.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Solutions', item: 'https://optibilan.com/solutions' },
+  ],
+};
+
 const solutions = [
   {
     href: '/solutions/coaches',
@@ -60,7 +69,8 @@ const solutionsCross = [
   title={pageTitle}
   description={pageDescription}
   canonical="/solutions"
-  ogImage="/og-solutions.jpg"
+  ogImage="/og-solutions.svg"
+  jsonLd={breadcrumbJsonLd}
 >
   <Header />
 

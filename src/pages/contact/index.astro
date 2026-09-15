@@ -9,13 +9,66 @@ import Icon from '../../components/Icon.astro';
 
 const pageTitle = 'Contact - Optibilan';
 const pageDescription = 'Contactez l\'équipe Optibilan : démo, support technique, partenariats, presse. Réponse sous 4h ouvrées.';
+
+const contactJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ContactPage',
+  name: 'Contact Optibilan',
+  description: 'Contactez l\'équipe Optibilan pour une démo, du support, des partenariats ou de la presse.',
+  url: 'https://optibilan.com/contact',
+  mainEntity: {
+    '@type': 'Organization',
+    name: 'Optibilan',
+    url: 'https://optibilan.com',
+    contactPoint: [
+      {
+        '@type': 'ContactPoint',
+        telephone: '+33-1-XX-XX-XX-XX',
+        contactType: 'customer service',
+        availableLanguage: ['French', 'English'],
+        areaServed: 'FR',
+        hoursAvailable: {
+          '@type': 'OpeningHoursSpecification',
+          dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+          opens: '09:00',
+          closes: '18:00',
+        },
+      },
+      {
+        '@type': 'ContactPoint',
+        contactType: 'technical support',
+        email: 'support@optibilan.com',
+        availableLanguage: ['French', 'English'],
+      },
+      {
+        '@type': 'ContactPoint',
+        contactType: 'business development',
+        email: 'partners@optibilan.com',
+        availableLanguage: ['French', 'English'],
+      },
+      {
+        '@type': 'ContactPoint',
+        contactType: 'press',
+        email: 'press@optibilan.com',
+        availableLanguage: ['French', 'English'],
+      },
+    ],
+    sameAs: [
+      'https://twitter.com/optibilan',
+      'https://linkedin.com/company/optibilan',
+      'https://github.com/optibilan',
+      'https://youtube.com/@optibilan',
+    ],
+  },
+};
 ---
 
 <Layout
   title={pageTitle}
   description={pageDescription}
   canonical="/contact"
-  ogImage="/og-contact.jpg"
+  ogImage="/og-contact.svg"
+  jsonLd={contactJsonLd}
 >
   <Header />
 

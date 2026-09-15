@@ -1,0 +1,66 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Hero from '../components/Hero.astro';
+import CTA from '../components/CTA.astro';
+import Icon from '../components/Icon.astro';
+
+const pageTitle = 'Page introuvable - Optibilan';
+const pageDescription = 'La page que vous cherchez n\'existe pas ou a été déplacée. Retournez à l\'accueil ou explorez nos solutions.';
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  canonical="/404"
+  ogImage="/og-default.svg"
+  noIndex={true}
+>
+  <Header />
+  <main class="min-h-[60vh] flex items-center justify-center">
+    <div class="container text-center py-16 md:py-24">
+      <div class="mb-8" aria-hidden="true">
+        <span class="font-display text-9xl md:text-12xl font-bold text-bleu-signature/20">404</span>
+      </div>
+      <h1 class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">Page introuvable</h1>
+      <p class="text-lg text-encre/60 mb-10 max-w-md mx-auto">
+        Cette page n'existe pas ou a été déplacée. Pas de panique, ça arrive aux meilleurs.
+      </p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+        <a href="/" class="btn-primary group" data-track="404_home">
+          <Icon name="home" class="w-5 h-5 mr-2" />
+          Retour à l'accueil
+        </a>
+        <a href="/product/overview" class="btn-secondary group" data-track="404_product">
+          <Icon name="grid" class="w-5 h-5 mr-2" />
+          Voir la plateforme
+        </a>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+        <a href="/solutions" class="p-6 rounded-xl border border-encre/10 hover:border-bleu-signature/30 hover:shadow-soft transition-all duration-200 text-left" data-track="404_solutions">
+          <div class="icon-wrapper mb-3" aria-hidden="true" style="background-color: var(--color-bleu-clair);">
+            <Icon name="users" class="w-7 h-7 text-bleu-signature" />
+          </div>
+          <h3 class="font-display text-lg font-bold text-encre mb-2">Nos solutions</h3>
+          <p class="text-encre/60 text-sm">Coach, Nutritionniste, Prépa mentale, Cabinet</p>
+        </a>
+        <a href="/pricing" class="p-6 rounded-xl border border-encre/10 hover:border-bleu-signature/30 hover:shadow-soft transition-all duration-200 text-left" data-track="404_pricing">
+          <div class="icon-wrapper mb-3" aria-hidden="true" style="background-color: var(--color-bleu-clair);">
+            <Icon name="credit-card" class="w-7 h-7 text-bleu-signature" />
+          </div>
+          <h3 class="font-display text-lg font-bold text-encre mb-2">Tarifs</h3>
+          <p class="text-encre/60 text-sm">Solo 39€, Studio 119€, Cabinet 279€/mois</p>
+        </a>
+        <a href="/contact" class="p-6 rounded-xl border border-encre/10 hover:border-bleu-signature/30 hover:shadow-soft transition-all duration-200 text-left" data-track="404_contact">
+          <div class="icon-wrapper mb-3" aria-hidden="true" style="background-color: var(--color-bleu-clair);">
+            <Icon name="mail" class="w-7 h-7 text-bleu-signature" />
+          </div>
+          <h3 class="font-display text-lg font-bold text-encre mb-2">Contactez-nous</h3>
+          <p class="text-encre/60 text-sm">Démo, support, partenariats, presse</p>
+        </a>
+      </div>
+    </div>
+  </main>
+  <Footer />
+</Layout>
