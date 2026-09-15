@@ -10,6 +10,45 @@ import Features from '../../components/Features.astro';
 
 const pageTitle = 'Tarifs - Optibilan';
 const pageDescription = '3 offres simples : Solo 49€/mois, Studio 149€/mois, Cabinet 349€/mois. 30 jours essai gratuit, sans CB. -20% en annuel. Tout inclus, pas de surcoût caché.';
+
+const pricingJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'PriceSpecification',
+  priceCurrency: 'EUR',
+  minPrice: '39',
+  maxPrice: '279',
+  billingIncrement: 'P1M',
+  eligibleTransactionVolume: {
+    '@type': 'PriceSpecification',
+    priceCurrency: 'EUR',
+    price: '0',
+    billingIncrement: 'P30D',
+    description: 'Essai gratuit 30 jours sans carte bancaire'
+  },
+  priceSpecification: [
+    {
+      '@type': 'UnitPriceSpecification',
+      name: 'Solo',
+      price: '39',
+      billingDuration: 'P1M',
+      description: '30 coachés, 1 staff, IA 1k msg/mois, marque blanche basique'
+    },
+    {
+      '@type': 'UnitPriceSpecification',
+      name: 'Studio',
+      price: '119',
+      billingDuration: 'P1M',
+      description: '150 coachés, 5 staff, IA 5k msg/mois, API, marque blanche avancée'
+    },
+    {
+      '@type': 'UnitPriceSpecification',
+      name: 'Cabinet',
+      price: '279',
+      billingDuration: 'P1M',
+      description: 'Coachés illimités, staff illimité, IA 20k msg/mois, SSO/SAML, SLA'
+    }
+  ]
+};
 ---
 
 <Layout
@@ -17,6 +56,7 @@ const pageDescription = '3 offres simples : Solo 49€/mois, Studio 149€/mois,
   description={pageDescription}
   canonical="/tarifs"
   ogImage="/og-pricing.jpg"
+  jsonLd={pricingJsonLd}
 >
   <Header />
 

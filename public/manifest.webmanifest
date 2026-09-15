@@ -1,12 +1,15 @@
 {
-  "name": "Optibilan",
+  "name": "Optibilan - Plateforme coaching santé & performance",
   "short_name": "Optibilan",
-  "description": "SaaS de suivi coaching multi-tenant, marque blanche, RGPD",
+  "description": "SaaS multi-tenant de pilotage des accompagnements : bilans, nutrition, sport, prépa mentale, santé connectée. Marque blanche, API, RGPD/HDS.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#1E3A8A",
+  "background_color": "#F7F5F1",
+  "theme_color": "#1466C4",
   "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "fr",
+  "dir": "ltr",
   "icons": [
     {
       "src": "/icon-192.png",
@@ -21,22 +24,30 @@
       "purpose": "any maskable"
     }
   ],
-  "categories": ["business", "health", "productivity"],
+  "categories": ["business", "health", "productivity", "medical"],
   "screenshots": [],
   "shortcuts": [
     {
-      "name": "Connexion",
+      "name": "Connexion espace cabinet",
       "short_name": "Connexion",
-      "description": "Se connecter à son espace",
+      "description": "Accéder à son espace Optibilan",
       "url": "https://app.optibilan.com/login",
       "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
     },
     {
-      "name": "Essai gratuit",
-      "short_name": "Essai",
-      "description": "Créer son cabinet (30 jours gratuits)",
+      "name": "Essai gratuit 30 jours",
+      "short_name": "Essai gratuit",
+      "description": "Créer son cabinet sans engagement",
       "url": "https://app.optibilan.com/inscription",
       "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Réserver une démo",
+      "short_name": "Démo",
+      "description": "Voir la plateforme en 30 min",
+      "url": "https://calendly.com/optibilan/demo",
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
     }
-  ]
+  ],
+  "prefer_related_applications": false
 }

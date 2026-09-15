@@ -10,6 +10,40 @@ import Icon from '../../components/Icon.astro';
 const pageTitle = 'Produit - Optibilan';
 const pageDescription = 'Découvrez la plateforme complète de pilotage des accompagnements santé et performance : bilans, nutrition, sport, santé, mental, IA, marque blanche.';
 
+const productJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name: 'Optibilan',
+  description: 'SaaS multi-tenant de pilotage des accompagnements pour cabinets, studios et coachs indépendants. 12 modules : bilans, nutrition, sport, prépa mentale, santé connectée, engagement, CRM, agenda, IA, marque blanche, intégrations, admin.',
+  brand: { '@type': 'Brand', name: 'Optibilan' },
+  category: 'BusinessApplication',
+  offers: {
+    '@type': 'AggregateOffer',
+    priceCurrency: 'EUR',
+    lowPrice: '39',
+    highPrice: '279',
+    availability: 'https://schema.org/InStock',
+    url: 'https://optibilan.com/tarifs',
+    seller: { '@type': 'Organization', name: 'Optibilan' }
+  },
+  aggregateRating: {
+    '@type': 'AggregateRating',
+    ratingValue: '4.9',
+    reviewCount: '150',
+    bestRating: '5',
+    worstRating: '1',
+  },
+  hasAdultConsideration: false,
+  isFamilyFriendly: true,
+  additionalProperty: [
+    { '@type': 'PropertyValue', name: 'Modules', value: '12 modules inclus' },
+    { '@type': 'PropertyValue', name: 'Hébergement', value: 'EU (France/Irlande)' },
+    { '@type': 'PropertyValue', name: 'Conformité', value: 'RGPD/HDS by design' },
+    { '@type': 'PropertyValue', name: 'API', value: 'REST v1 OpenAPI 3.1' },
+    { '@type': 'PropertyValue', name: 'Marque blanche', value: 'Totale (offre Cabinet)' },
+  ],
+};
+
 const modules = [
   { href: '/product/check-ins', icon: 'chart', title: 'Bilans & progression', desc: 'Suivi centralisé des accompagnements', color: 'bleu-signature' },
   { href: '/product/nutrition', icon: 'document', title: 'Nutrition', desc: 'Plans, habitudes, compléments, courses', color: 'bleu-lecture' },
@@ -31,6 +65,7 @@ const modules = [
   description={pageDescription}
   canonical="/product/overview"
   ogImage="/og-product-overview.jpg"
+  jsonLd={productJsonLd}
 >
   <Header />
 

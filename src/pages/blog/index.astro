@@ -10,6 +10,72 @@ import Icon from '../../components/Icon.astro';
 const pageTitle = 'Blog - Optibilan';
 const pageDescription = 'Articles, guides et études de cas pour cabinets, studios et coachs indépendants : nutrition, sport, prépa mentale, santé connectée, croissance business.';
 
+const blogJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Blog',
+  name: 'Blog Optibilan',
+  description: 'Articles, guides et études de cas pour cabinets, studios et coachs indépendants',
+  url: 'https://optibilan.com/blog',
+  blogPosts: [
+    {
+      '@type': 'BlogPosting',
+      headline: 'Comment automatiser vos bilans hebdo et gagner 10h par semaine',
+      url: 'https://optibilan.com/blog/bilans-hebdo-automatises',
+      datePublished: '2024-01-15',
+      author: { '@type': 'Person', name: 'Marie Dubois' },
+    },
+    {
+      '@type': 'BlogPosting',
+      headline: 'Cas client : Studio Performance Bordeaux — de 20 à 150 coachés en 8 mois',
+      url: 'https://optibilan.com/blog/cas-client-studio-performance-bordeaux',
+      datePublished: '2024-01-22',
+      author: { '@type': 'Person', name: 'Thomas Martin' },
+    },
+    {
+      '@type': 'BlogPosting',
+      headline: 'Santé connectée : pourquoi la VFC change tout pour vos sportifs',
+      url: 'https://optibilan.com/blog/sante-connectee-vfc-sportifs',
+      datePublished: '2024-02-05',
+      author: { '@type': 'Person', name: 'Dr. Sophie Laurent' },
+    },
+    {
+      '@type': 'BlogPosting',
+      headline: 'Nutrition : créer un plan en 5 minutes avec les templates Optibilan',
+      url: 'https://optibilan.com/blog/nutrition-templates-5-minutes',
+      datePublished: '2024-02-12',
+      author: { '@type': 'Person', name: 'Julie Rousseau' },
+    },
+    {
+      '@type': 'BlogPosting',
+      headline: 'Prépa mentale : les 3 exercices qui boostent l\'adhérence à 80%+',
+      url: 'https://optibilan.com/blog/prepa-mentale-3-exercices-adherence',
+      datePublished: '2024-02-19',
+      author: { '@type': 'Person', name: 'Antoine Moreau' },
+    },
+    {
+      '@type': 'BlogPosting',
+      headline: 'Marque blanche : comment faire croire à vos clients que vous avez codé l\'app',
+      url: 'https://optibilan.com/blog/marque-blanche-cabinet-invisible',
+      datePublished: '2024-02-26',
+      author: { '@type': 'Person', name: 'Benjamin Sant' },
+    },
+    {
+      '@type': 'BlogPosting',
+      headline: 'RGPD & données de santé : le guide complet pour cabinets 2024',
+      url: 'https://optibilan.com/blog/rgpd-donnees-sante-cabinets-2024',
+      datePublished: '2024-03-04',
+      author: { '@type': 'Person', name: 'Léa Garnier' },
+    },
+    {
+      '@type': 'BlogPosting',
+      headline: 'IA dans le coaching : assistant, pas décideur — notre charte éthique',
+      url: 'https://optibilan.com/blog/ia-coaching-charte-ethique',
+      datePublished: '2024-03-11',
+      author: { '@type': 'Person', name: 'Benjamin Sant' },
+    },
+  ]
+};
+
 const categories = [
   { slug: 'digitalisation', label: 'Digitalisation des cabinets', icon: 'chart', color: 'bleu-signature' },
   { slug: 'performance', label: 'Optimisation de la performance', icon: 'zap', color: 'bleu-lecture' },
@@ -121,6 +187,7 @@ function formatDate(dateStr: string) {
   description={pageDescription}
   canonical="/blog"
   ogImage="/og-blog.jpg"
+  jsonLd={blogJsonLd}
 >
   <Header />
 
