@@ -52,13 +52,12 @@ const homeBadge = badge || "";
       </p>
 
       <div class="flex flex-col sm:flex-row items-center justify-center gap-4 animate-slide-up delay-300">
-        <a href={primaryCTA.href} class="btn-demo w-full sm:w-auto group" data-track="hero_cta_demo">
-          Réserver une démo
+        <a href={primaryCTA.href} class="btn-header-primary w-full sm:w-auto group" data-track="hero_cta_demo">
+          Rejoindre Optibilan
           <Icon name="arrowRight" class="w-5 h-5 transition-transform group-hover:translate-x-1" />
         </a>
-        <a href={secondaryCTA.href} class="btn-secondary w-full sm:w-auto group" data-track="hero_cta_features">
-          <Icon name="sparkles" class="w-5 h-5 transition-transform group-hover:translate-x-1" />
-          {secondaryCTA.label}
+        <a href="/inscription" class="btn-header-secondary w-full sm:w-auto text-sm px-4 py-2.5" data-track="hero_cta_trial">
+          Essai offert
         </a>
       </div>
 

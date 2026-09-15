@@ -31,8 +31,8 @@ const ressourcesLinks = [
 ];
 
 const ctaButtons = [
-  { href: 'https://app.optibilan.com/login', label: 'Connexion', primary: false },
-  { href: 'https://calendly.com/optibilan/demo', label: 'Réserver une démo', primary: true },
+  { href: 'https://app.optibilan.com/login', icon: 'user', primary: false, ariaLabel: 'Connexion' },
+  { href: 'https://calendly.com/optibilan/demo', icon: 'calendar', primary: true, ariaLabel: 'Réserver une démo' },
 ];
 ---
 
@@ -106,12 +106,12 @@ const ctaButtons = [
       </div>
 
       <div class="hidden md:flex items-center gap-2">
-        <a href="https://app.optibilan.com/login" class="btn-header-secondary" data-track="header_login">
-          Connexion
+        <a href="https://app.optibilan.com/login" class="btn-header-secondary p-2" data-track="header_login" aria-label="Connexion">
+          <Icon name="user" class="w-5 h-5" />
         </a>
-        <a href="https://calendly.com/optibilan/demo" class="btn-header-primary" data-track="header_demo">
-          Réserver une démo
-          <Icon name="arrowRight" class="w-4 h-4 ml-1" />
+        <a href="https://calendly.com/optibilan/demo" class="btn-header-primary" data-track="header_demo" aria-label="Réserver une démo">
+          <Icon name="calendar" class="w-5 h-5" />
+          <span class="hidden sm:inline">Démo</span>
         </a>
       </div>
 
@@ -145,10 +145,12 @@ const ctaButtons = [
           </a>
         ))}
         <div class="flex flex-col gap-2 pt-2 border-t border-encre/10">
-          <a href="https://calendly.com/optibilan/demo" class="btn-header-primary text-center" data-track="mobile_demo">
+          <a href="https://calendly.com/optibilan/demo" class="btn-header-primary text-center flex items-center justify-center gap-2" data-track="mobile_demo">
+            <Icon name="calendar" class="w-5 h-5" />
             Réserver une démo
           </a>
-          <a href="https://app.optibilan.com/login" class="btn-header-secondary text-center">
+          <a href="https://app.optibilan.com/login" class="btn-header-secondary text-center flex items-center justify-center gap-2">
+            <Icon name="user" class="w-5 h-5" />
             Connexion
           </a>
         </div>
