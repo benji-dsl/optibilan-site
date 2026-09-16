@@ -7,7 +7,7 @@ import CTA from '../../../components/CTA.astro';
 import Icon from '../../../components/Icon.astro';
 
 const pageTitle = 'Administration - Optibilan';
-const pageDescription = 'Gestion utilisateurs, offres d\'appel, marque blanche, modules, conformité, audit, webhooks, API. Tout configuré en quelques clics. Pas de ticket support pour changer un paramètre.';
+const pageDescription = 'Gestion utilisateurs, offres d\'appel, marque blanche, modules, conformité, audit. Tout configuré en quelques clics. Pas de ticket support pour changer un paramètre.';
 
 const breadcrumbJsonLd = {
   '@context': 'https://schema.org',
@@ -33,7 +33,7 @@ const breadcrumbJsonLd = {
     <Hero
       title="L'admin qui ne vous
 prend pas la tête."
-      subtitle="Utilisateurs, offres, marque blanche, modules, conformité, audit, webhooks, API. Tout configuré en quelques clics. Pas de ticket support pour changer un paramètre."
+      subtitle="Utilisateurs, offres, marque blanche, modules, conformité, audit. Tout configuré en quelques clics. Pas de ticket support pour changer un paramètre."
       primaryCTA={{ href: 'https://calendly.com/optibilan/demo', label: 'Rejoindre Optibilan' }}
       secondaryCTA={{ href: '/inscription', label: 'Essayer Optibilan' }}
     />
@@ -55,7 +55,7 @@ prend pas la tête."
             {
               icon: 'users',
               title: 'Gestion utilisateurs - rôles, spécialités, 2FA',
-              desc: 'Création / invitation / suspension / suppression en 1 clic. Rôles : admin, coach, mental, diet, support. Spécialités par praticien (coach force, diet clinique, mental performance…). 2FA TOTP obligatoire admins (RFC 6238). Lock 5 échecs/15min. Historique connexions.',
+              desc: 'Création / invitation / suspension / suppression en 1 clic. Rôles : admin, coach, mental, diet, support. Spécialités par praticien (coach force, diet clinique, mental performance…). 2FA TOTP obligatoire admins. Lock 5 échecs/15min. Historique connexions.',
               features: [
                 'CRUD utilisateurs complet',
                 'Rôles : admin, coach, mental, diet, support',
@@ -91,11 +91,11 @@ prend pas la tête."
             {
               icon: 'code',
               title: 'Modules on/off - activation instantanée',
-              desc: '12 modules activables indépendamment. Pas de migration, pas de surcoût. Désactivation = masquage UI + désactivation API + arrêt webhooks. Réactivation = restauration données intactes. Audit : qui a activé quoi, quand.',
+              desc: '12 modules activables indépendamment. Pas de migration, pas de surcoût. Désactivation = masquage UI + arrêt des fonctionnalités. Réactivation = restauration données intactes. Audit : qui a activé quoi, quand.',
               features: [
                 '12 modules indépendants, toggle unique',
                 'Pas de migration, pas de surcoût',
-                'Désactivation = masquage UI + API + webhooks',
+                'Désactivation = masquage UI + fonctionnalités',
                 'Audit trail : qui a activé quoi, quand',
               ],
               icon: 'code',
@@ -115,7 +115,7 @@ prend pas la tête."
             {
               icon: 'lock',
               title: 'RGPD & Conformité - pilotage natif',
-              desc: 'Export 1-clic (37 modèles JSON), purge paramétrable (durée + flag), droit à l\'oubli cascade, DPA annexé, mentions légales, registre sous-traitants. Vérifié en CI (check-tenant.mjs) : aucun modèle cloisonné oublié.',
+              desc: 'Export 1-clic (37 modèles JSON), purge paramétrable (durée + flag), droit à l\'oubli cascade, DPA annexé, mentions légales, registre sous-traitants. Vérifié en CI : aucun modèle cloisonné oublié.',
               features: [
                 'Export RGPD 1-clic (37 modèles JSON)',
                 'Purge auto paramétrable (durée + flag)',
@@ -138,11 +138,11 @@ prend pas la tête."
             },
             {
               icon: 'zap',
-              title: 'Webhooks & API Keys - pilotage externe',
-              desc: 'Webhooks : 8 événements, HMAC signé, retry exponentiel (max 5x), idempotence externalId. API Keys : scopées (clients:read, checkins:write, cron, health:sync…), rotation, expiration, rate limit 120 req/min (Studio), sans limite (Cabinet). Sandbox de test.',
+              title: 'Clés API & Webhooks - pilotage externe',
+              desc: 'Webhooks : 8 événements, signature, retry exponentiel, idempotence. API Keys : scopées (clients:read, checkins:write, cron, health:sync…), rotation, expiration, rate limit 120 req/min (Studio), sans limite (Cabinet). Sandbox de test.',
               features: [
-                '8 événements : client.created, checkin.submitted...',
-                'HMAC signé, retry exponentiel, idempotence',
+                '8 événements : client créé, bilan soumis...',
+                'Signature, retry exponentiel, idempotence',
                 'Clés API scopées (clients:read, checkins:write...)',
                 'Rate limit : 120/min (Studio), illimité (Cabinet)',
               ],

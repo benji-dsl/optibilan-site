@@ -7,7 +7,7 @@ import CTA from '../../../components/CTA.astro';
 import Icon from '../../../components/Icon.astro';
 
 const pageTitle = 'Intégrations - Optibilan';
-const pageDescription = 'API REST v1 OpenAPI, webhooks HMAC, clés API scopées. Santé, agenda, communication, automatisation, paiement. Connectez ce que vous utilisez déjà.';
+const pageDescription = 'Connectez Optibilan à votre écosystème. Santé, agenda, communication, automatisation, paiement - tout s\'intègre nativement ou via connecteurs.';
 
 const breadcrumbJsonLd = {
   '@context': 'https://schema.org',
@@ -32,8 +32,8 @@ const breadcrumbJsonLd = {
   <main>
     <Hero
       title="Optibilan s'intègre
-à votre environnement."
-      subtitle="API REST v1 OpenAPI, webhooks HMAC, clés API scopées. Santé, agenda, communication, automatisation, paiement. Connectez ce que vous utilisez déjà."
+à votre écosystème."
+      subtitle="Santé, agenda, communication, automatisation, paiement. Connectez ce que vous utilisez déjà."
       primaryCTA={{ href: '/docs', label: 'Documentation API' }}
       secondaryCTA={{ href: 'https://calendly.com/optibilan/demo', label: 'Rejoindre Optibilan' }}
     />
@@ -42,9 +42,9 @@ const breadcrumbJsonLd = {
       <div class="container">
         <header class="text-center max-w-3xl mx-auto mb-16">
           <h2 id="categories-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
-            Intégrations par catégorie
+            Un catalogue d'intégrations qui fonctionnent
           </h2>
-          <p class="text-lg text-encre/60">Ne montrer le logo d'une intégration QUE si elle fonctionne réellement.</p>
+          <p class="text-lg text-encre/60">Chaque connexion est catégorisée par son mode de fonctionnement.</p>
         </header>
 
         <div class="space-y-12">
@@ -54,11 +54,11 @@ const breadcrumbJsonLd = {
               icon: 'globe',
               color: 'bleu-clair',
               integrations: [
-                { name: 'Apple Health', type: 'compatible', desc: 'Sync via Raccourcis iOS (client) - sommeil, VFC, FC, VO2max, pas, poids, %MG', status: 'Fonctionne' },
-                { name: 'Oura', type: 'compatible', desc: 'Anneaux Oura Gen 2/3 - sommeil, VFC, température, score récupération, activité', status: 'Fonctionne' },
-                { name: 'Whoop', type: 'compatible', desc: 'Ceinture Whoop 4.0 - strain, recovery, sleep, HRV, respiratory rate', status: 'Fonctionne' },
-                { name: 'Garmin', type: 'compatible', desc: 'Montres Garmin Connect - activité, sommeil, VFC, VO2max, training status', status: 'Fonctionne' },
-                { name: 'n8n / Make / Zapier', type: 'automation', desc: 'Sync santé côté cabinet - récupération API partenaire → push /api/health-sync', status: 'Fonctionne' },
+                { name: 'Apple Health', type: 'NATIF', desc: 'Synchronisation via Raccourcis iOS - sommeil, VFC, fréquence cardiaque, VO2max, pas, poids, %MG', status: 'Disponible' },
+                { name: 'Oura', type: 'NATIF', desc: 'Anneaux Oura Gen 2/3 - sommeil, VFC, température, score récupération, activité', status: 'Disponible' },
+                { name: 'Whoop', type: 'NATIF', desc: 'Ceinture Whoop 4.0 - strain, recovery, sleep, HRV, respiratory rate', status: 'Disponible' },
+                { name: 'Garmin', type: 'NATIF', desc: 'Montres Garmin Connect - activité, sommeil, VFC, VO2max, training status', status: 'Disponible' },
+                { name: 'Autres via automatisation', type: 'AUTOMATISATION', desc: 'Via n8n / Make / Zapier - récupération API partenaire → push /api/health-sync', status: 'Disponible' },
               ],
             },
             {
@@ -66,10 +66,10 @@ const breadcrumbJsonLd = {
               icon: 'calendar',
               color: 'bleu-signature',
               integrations: [
-                { name: 'Google Calendar', type: 'compatible', desc: 'Abonnement ICS par staff - appels planifiés, titre, date, lien fiche client', status: 'Fonctionne' },
-                { name: 'Apple Calendar', type: 'compatible', desc: 'Abonnement ICS natif - mêmes données que Google Calendar', status: 'Fonctionne' },
-                { name: 'Outlook / Office 365', type: 'compatible', desc: 'Abonnement ICS - compatible Outlook desktop, web, mobile', status: 'Fonctionne' },
-                { name: 'Calendly', type: 'webhook', desc: 'Nouveau RDV Calendly → webhook → création appel dans Optibilan', status: 'Fonctionne' },
+                { name: 'Google Calendar', type: 'NATIF', desc: 'Abonnement ICS par staff - appels planifiés, titre, date, lien fiche client', status: 'Disponible' },
+                { name: 'Apple Calendar', type: 'NATIF', desc: 'Abonnement ICS natif - mêmes données que Google Calendar', status: 'Disponible' },
+                { name: 'Outlook / Office 365', type: 'NATIF', desc: 'Abonnement ICS - compatible Outlook desktop, web, mobile', status: 'Disponible' },
+                { name: 'Calendly', type: 'CONNECTEUR', desc: 'Nouveau RDV Calendly → webhook → création appel dans Optibilan', status: 'Disponible' },
               ],
             },
             {
@@ -77,10 +77,10 @@ const breadcrumbJsonLd = {
               icon: 'users',
               color: 'bordeaux',
               integrations: [
-                { name: 'Slack', type: 'compatible', desc: 'Webhook entrant - nouveau client, bilan déposé, appel en retard, signal faible, demande RGPD', status: 'Fonctionne' },
-                { name: 'Email (Resend)', type: 'compatible', desc: 'Emails transactionnels - activation, reset MDP, rappels bilans, notifications équipe', status: 'Fonctionne' },
-                { name: 'Push (Web)', type: 'compatible', desc: 'Notifications navigateur - rappel bilan, séance, message, alerte IA', status: 'Fonctionne' },
-                { name: 'WhatsApp Business', type: 'webhook', desc: 'Via n8n/Make - notifications WhatsApp pour rappels, alertes', status: 'Via automatisation' },
+                { name: 'Slack', type: 'CONNECTEUR', desc: 'Webhook entrant - nouveau client, bilan déposé, appel en retard, demande RGPD', status: 'Disponible' },
+                { name: 'Email (Resend)', type: 'NATIF', desc: 'Emails transactionnels - activation, reset MDP, rappels bilans, notifications équipe', status: 'Disponible' },
+                { name: 'Push (Web)', type: 'NATIF', desc: 'Notifications navigateur - rappel bilan, séance, message, alerte', status: 'Disponible' },
+                { name: 'WhatsApp Business', type: 'AUTOMATISATION', desc: 'Via n8n / Make - notifications WhatsApp pour rappels, alertes', status: 'Disponible' },
               ],
             },
             {
@@ -88,10 +88,10 @@ const breadcrumbJsonLd = {
               icon: 'zap',
               color: 'indigo',
               integrations: [
-                { name: 'n8n', type: 'automation', desc: 'Auto-hébergé ou cloud - webhooks Optibilan → actions n8n (Notion, Sheets, Airtable, HTTP)', status: 'Fonctionne' },
-                { name: 'Make (Integromat)', type: 'automation', desc: 'Scénarios visuels - nouveaux clients, bilans, paiements → actions multiples', status: 'Fonctionne' },
-                { name: 'Zapier', type: 'automation', desc: 'Zaps - trigger Optibilan (client.created, checkin.submitted…) → 5000+ apps', status: 'Fonctionne' },
-                { name: 'Notion', type: 'webhook', desc: 'Webhook note.created → base Notion (client, coach, date, type, contenu, visibilité)', status: 'Fonctionne' },
+                { name: 'n8n', type: 'AUTOMATISATION', desc: 'Auto-hébergé ou cloud - webhooks Optibilan → actions n8n (Notion, Sheets, Airtable, HTTP)', status: 'Disponible' },
+                { name: 'Make (Integromat)', type: 'AUTOMATISATION', desc: 'Scénarios visuels - nouveaux clients, bilans, paiements → actions multiples', status: 'Disponible' },
+                { name: 'Zapier', type: 'AUTOMATISATION', desc: 'Zaps - trigger Optibilan (client créé, bilan soumis…) → 5000+ apps', status: 'Disponible' },
+                { name: 'Notion', type: 'CONNECTEUR', desc: 'Webhook note.created → base Notion (client, coach, date, type, contenu, visibilité)', status: 'Disponible' },
               ],
             },
             {
@@ -99,9 +99,9 @@ const breadcrumbJsonLd = {
               icon: 'credit-card',
               color: 'bleu-lecture',
               integrations: [
-                { name: 'Stripe', type: 'compatible', desc: 'Paiements, abonnements, portail client, factures, webhooks (payment_failed, invoice.paid, subscription.updated)', status: 'Fonctionne' },
-                { name: 'Systeme.io', type: 'manual', desc: 'Facturation manuelle / virement - export CSV factures → import Systeme.io', status: 'Sur demande' },
-                { name: 'Virement SEPA', type: 'compatible', desc: 'Prélèvement SEPA via Stripe - mandate, réconciliation auto, relances impayés', status: 'Fonctionne' },
+                { name: 'Stripe', type: 'NATIF', desc: 'Paiements, abonnements, portail client, factures, webhooks (échec paiement, facture payée, abonnement mis à jour)', status: 'Disponible' },
+                { name: 'Systeme.io', type: 'AUTOMATISATION', desc: 'Facturation manuelle / virement - export CSV factures → import Systeme.io', status: 'Sur demande' },
+                { name: 'Virement SEPA', type: 'NATIF', desc: 'Prélèvement SEPA via Stripe - mandat, réconciliation auto, relances impayés', status: 'Disponible' },
               ],
             },
             {
@@ -109,10 +109,10 @@ const breadcrumbJsonLd = {
               icon: 'code',
               color: 'bleu-ardoise',
               integrations: [
-                { name: 'API REST v1', type: 'compatible', desc: 'OpenAPI 3.1 complet - clients, bilans, nutrition, sport, santé, webhooks, admin', status: 'Fonctionne' },
-                { name: 'Webhooks HMAC', type: 'compatible', desc: '8 événements signés - client.created, checkin.submitted, badge.earned, nutrition.updated, call.overdue, client.weak_signal…', status: 'Fonctionne' },
-                { name: 'Sandbox API', type: 'compatible', desc: 'Environnement test - clés API test, données factices, playground Swagger/Redoc', status: 'Fonctionne' },
-                { name: 'SSO / SAML', type: 'compatible', desc: 'Offre Cabinet - SAML 2.0, OIDC, provisioning SCIM (bientôt)', status: 'Bientôt' },
+                { name: 'API REST v1', type: 'API', desc: 'OpenAPI 3.1 complet - clients, bilans, nutrition, sport, santé, webhooks, admin', status: 'Disponible' },
+                { name: 'Webhooks signés', type: 'API', desc: '8 événements signés - client créé, bilan soumis, badge obtenu, nutrition mise à jour, appel en retard…', status: 'Disponible' },
+                { name: 'Sandbox API', type: 'API', desc: 'Environnement test - clés API test, données factices, playground Swagger/Redoc', status: 'Disponible' },
+                { name: 'SSO / SAML', type: 'API', desc: 'Offre Cabinet - SAML 2.0, OIDC, provisioning SCIM (bientôt)', status: 'Bientôt' },
               ],
             },
           ].map((category, catIdx) => (
@@ -132,7 +132,7 @@ const breadcrumbJsonLd = {
                         <h4 class="font-semibold text-encre mb-1">{int.name}</h4>
                         <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-puce text-xs font-medium"
                               style={`color: var(--color-${category.color}); background-color: color-mix(in oklab, var(--color-${category.color}) 10%, transparent);`}>
-                          {int.type === 'compatible' ? 'Compatible' : int.type === 'webhook' ? 'Via webhook' : int.type === 'automation' ? 'Via automatisation' : int.type === 'manual' ? 'Manuel / Sur demande' : 'Bientôt'}
+                          {int.type}
                         </span>
                       </div>
                       <span class="text-xs font-medium px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700">
@@ -163,7 +163,7 @@ const breadcrumbJsonLd = {
             API REST v1 - OpenAPI 3.1
           </h2>
           <p class="text-lg mb-8 text-craie/80 max-w-2xl mx-auto">
-            Documentation complète, sandbox de test, exemples cURL/Node/Python. Clés API scopées, rate limiting, webhooks HMAC.
+            Documentation complète, sandbox de test, exemples cURL/Node/Python. Clés API scopées, rate limiting, webhooks signés.
           </p>
           <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a href="/docs" class="btn-demo w-full sm:w-auto" data-track="integrations_api_docs">
