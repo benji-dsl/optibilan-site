@@ -13,7 +13,7 @@ import Icon from './Icon.astro';
       <div class="hidden md:flex items-center gap-1">
         <!-- PRODUIT dropdown -->
         <div class="relative group" data-dropdown>
-          <button class="flex items-center gap-1.5 px-3 py-2 text-sm font-medium text-encre/60 hover:text-encre rounded-lg transition-colors" aria-haspopup="true" aria-expanded="false" aria-label="Menu Produit">
+          <button class="flex items-center gap-1.5 px-3 py-2 text-sm font-medium text-encre/60 hover:text-encre rounded-lg transition-colors" aria-haspopup="true" aria-expanded="false" aria-label="Menu Produit" data-dropdown-trigger>
             Produit
             <Icon name="chevronDown" class="w-4 h-4 transition-transform group-open:rotate-180" />
           </button>
@@ -87,7 +87,7 @@ import Icon from './Icon.astro';
 
         <!-- SOLUTIONS dropdown -->
         <div class="relative group" data-dropdown>
-          <button class="flex items-center gap-1.5 px-3 py-2 text-sm font-medium text-encre/60 hover:text-encre rounded-lg transition-colors" aria-haspopup="true" aria-expanded="false" aria-label="Menu Solutions">
+          <button class="flex items-center gap-1.5 px-3 py-2 text-sm font-medium text-encre/60 hover:text-encre rounded-lg transition-colors" aria-haspopup="true" aria-expanded="false" aria-label="Menu Solutions" data-dropdown-trigger>
             Solutions
             <Icon name="chevronDown" class="w-4 h-4 transition-transform group-open:rotate-180" />
           </button>
@@ -120,7 +120,7 @@ import Icon from './Icon.astro';
 
         <!-- RESSOURCES dropdown -->
         <div class="relative group" data-dropdown>
-          <button class="flex items-center gap-1.5 px-3 py-2 text-sm font-medium text-encre/60 hover:text-encre rounded-lg transition-colors" aria-haspopup="true" aria-expanded="false" aria-label="Menu Ressources">
+          <button class="flex items-center gap-1.5 px-3 py-2 text-sm font-medium text-encre/60 hover:text-encre rounded-lg transition-colors" aria-haspopup="true" aria-expanded="false" aria-label="Menu Ressources" data-dropdown-trigger>
             Ressources
             <Icon name="chevronDown" class="w-4 h-4 transition-transform group-open:rotate-180" />
           </button>
@@ -144,7 +144,7 @@ import Icon from './Icon.astro';
 
         <!-- POUR LES CABINETS -->
         <div class="relative group" data-dropdown>
-          <button class="flex items-center gap-1.5 px-3 py-2 text-sm font-medium text-encre/60 hover:text-encre rounded-lg transition-colors" aria-haspopup="true" aria-expanded="false" aria-label="Menu Cabinets">
+          <button class="flex items-center gap-1.5 px-3 py-2 text-sm font-medium text-encre/60 hover:text-encre rounded-lg transition-colors" aria-haspopup="true" aria-expanded="false" aria-label="Menu Cabinets" data-dropdown-trigger>
             Pour les cabinets
             <Icon name="chevronDown" class="w-4 h-4 transition-transform group-open:rotate-180" />
           </button>
@@ -190,52 +190,72 @@ import Icon from './Icon.astro';
       <div class="flex flex-col gap-2">
         <div class="px-2 py-1 font-semibold text-encre/50 uppercase tracking-wider text-xs">Produit</div>
         <div class="px-2 py-1 font-semibold text-encre/50 uppercase tracking-wider text-xs">Découvrir Optibilan</div>
-        <a href="/product/overview" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors">Vue d'ensemble</a>
+        <a href="/product/overview" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>Vue d'ensemble</a>
         <div class="px-2 py-1 font-semibold text-encre/50 uppercase tracking-wider text-xs border-t border-encre/10 mt-2">Accompagner</div>
-        <a href="/product/check-ins" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors">Bilans & progression</a>
-        <a href="/product/nutrition" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors">Nutrition</a>
-        <a href="/product/training" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors">Sport & programmes</a>
-        <a href="/product/mental" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors">Préparation mentale</a>
+        <a href="/product/check-ins" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>Bilans & progression</a>
+        <a href="/product/nutrition" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>Nutrition</a>
+        <a href="/product/training" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>Sport & programmes</a>
+        <a href="/product/mental" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>Préparation mentale</a>
         <div class="px-2 py-1 font-semibold text-encre/50 uppercase tracking-wider text-xs border-t border-encre/10 mt-2">Suivre</div>
-        <a href="/product/health" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors">Santé & biomarqueurs</a>
-        <a href="/product/engagement" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors">Habitudes & engagement</a>
+        <a href="/product/health" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>Santé & biomarqueurs</a>
+        <a href="/product/engagement" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>Habitudes & engagement</a>
         <div class="px-2 py-1 font-semibold text-encre/50 uppercase tracking-wider text-xs border-t border-encre/10 mt-2">Dossier client</div>
-        <a href="/product/crm" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors">Journal & CRM</a>
+        <a href="/product/crm" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>Journal & CRM</a>
         <div class="px-2 py-1 font-semibold text-encre/50 uppercase tracking-wider text-xs border-t border-encre/10 mt-2">Automatiser</div>
-        <a href="/product/ai" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors">IA & Automatisations</a>
-        <a href="/product/integrations" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors">Intégrations & API</a>
+        <a href="/product/ai" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>IA & Automatisations</a>
+        <a href="/product/integrations" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>Intégrations & API</a>
         <div class="px-2 py-1 font-semibold text-encre/50 uppercase tracking-wider text-xs border-t border-encre/10 mt-2">Personnaliser</div>
-        <a href="/product/white-label" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors">Marque blanche</a>
+        <a href="/product/white-label" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>Marque blanche</a>
 
         <div class="px-2 py-1 font-semibold text-encre/50 uppercase tracking-wider text-xs border-t border-encre/10 mt-2">Solutions</div>
-        <a href="/solutions/coaches" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors">Coach sportif</a>
-        <a href="/solutions/nutrition" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors">Nutritionniste / Diététicien</a>
-        <a href="/solutions/mental" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors">Préparateur mental</a>
-        <a href="/solutions/cabinets" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors">Cabinet / Équipe</a>
+        <a href="/solutions/coaches" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>Coach sportif</a>
+        <a href="/solutions/nutrition" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>Nutritionniste / Diététicien</a>
+        <a href="/solutions/mental" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>Préparateur mental</a>
+        <a href="/solutions/cabinets" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>Cabinet / Équipe</a>
 
         <div class="px-2 py-1 font-semibold text-encre/50 uppercase tracking-wider text-xs border-t border-encre/10 mt-2">Sécurité</div>
-        <a href="/security" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors">Sécurité & conformité</a>
+        <a href="/security" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>Sécurité & conformité</a>
 
         <div class="px-2 py-1 font-semibold text-encre/50 uppercase tracking-wider text-xs border-t border-encre/10 mt-2">Ressources</div>
-        <a href="/help" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors">Centre d'aide</a>
-        <a href="/docs" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors">API & Documentation</a>
-        <a href="/contact" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors">Contact & Support</a>
+        <a href="/help" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>Centre d'aide</a>
+        <a href="/docs" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>API & Documentation</a>
+        <a href="/contact" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>Contact & Support</a>
 
         <div class="px-2 py-1 font-semibold text-encre/50 uppercase tracking-wider text-xs border-t border-encre/10 mt-2">Pour les cabinets</div>
-        <a href="/product/crm" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors">Équipes & permissions</a>
-        <a href="/product/agenda" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors">Agenda & appels</a>
-        <a href="/product/admin" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors">Administration</a>
+        <!-- POUR LES CABINETS dropdown (mobile) -->
+        <div class="relative group" data-dropdown>
+          <button class="flex items-center gap-1.5 px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors w-full" aria-haspopup="true" aria-expanded="false" aria-label="Menu Pour les cabinets" data-dropdown-trigger>
+            Pour les cabinets
+            <Icon name="chevronDown" class="w-4 h-4 transition-transform group-open:rotate-180" />
+          </button>
+          <div class="absolute left-0 top-full mt-1 w-full opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition-all duration-200 bg-blanc rounded-xl border border-encre/10 shadow-elevated p-3 z-50" role="menu">
+            <div class="grid grid-cols-1 gap-1">
+              <a href="/product/crm" class="p-3 rounded-lg hover:bg-papier transition-colors" role="menuitem" data-mobile-link>
+                <span class="block font-medium text-encre">Équipes & permissions</span>
+                <span class="block text-xs text-encre/50 mt-0.5">Rôles, spécialités, 2FA, administration</span>
+              </a>
+              <a href="/product/agenda" class="p-3 rounded-lg hover:bg-papier transition-colors" role="menuitem" data-mobile-link>
+                <span class="block font-medium text-encre">Agenda & appels</span>
+                <span class="block text-xs text-encre/50 mt-0.5">Cadence, rappels, calendrier ICS partagé</span>
+              </a>
+              <a href="/product/admin" class="p-3 rounded-lg hover:bg-papier transition-colors" role="menuitem" data-mobile-link>
+                <span class="block font-medium text-encre">Administration</span>
+                <span class="block text-xs text-encre/50 mt-0.5">Utilisateurs, modules, conformité, audit</span>
+              </a>
+            </div>
+          </div>
+        </div>
 
         <div class="flex flex-col gap-2 pt-2 border-t border-encre/10">
-          <a href="https://calendly.com/optibilan/demo" class="btn-header-primary text-center flex items-center justify-center gap-2">
+          <a href="https://calendly.com/optibilan/demo" class="btn-header-primary text-center flex items-center justify-center gap-2" data-mobile-link>
             <Icon name="arrowRight" class="w-5 h-5" />
             Rejoindre
           </a>
-          <a href="https://app.optibilan.com/login" class="btn-header-secondary text-center flex items-center justify-center gap-2">
+          <a href="https://app.optibilan.com/login" class="btn-header-secondary text-center flex items-center justify-center gap-2" data-mobile-link>
             <Icon name="user" class="w-5 h-5" />
             Connexion
           </a>
-          <a href="/inscription" class="btn-header-secondary text-center flex items-center justify-center gap-2">
+          <a href="/inscription" class="btn-header-secondary text-center flex items-center justify-center gap-2" data-mobile-link>
             <Icon name="sparkles" class="w-5 h-5" />
             Essai offert
           </a>
@@ -246,6 +266,50 @@ import Icon from './Icon.astro';
 </header>
 
 <script is:inline>
+  // Desktop dropdown handling
+  const dropdownTriggers = document.querySelectorAll('[data-dropdown-trigger]');
+  const dropdowns = document.querySelectorAll('[data-dropdown]');
+  
+  // Close all dropdowns
+  function closeAllDropdowns() {
+    dropdowns.forEach(dropdown => {
+      dropdown.classList.add('opacity-0', 'invisible');
+      dropdown.classList.remove('opacity-100', 'visible');
+    });
+    dropdownTriggers.forEach(trigger => {
+      trigger.setAttribute('aria-expanded', 'false');
+    });
+  }
+
+  // Desktop dropdown hover/focus handling
+  dropdowns.forEach(dropdown => {
+    const trigger = dropdown.querySelector('[data-dropdown-trigger]');
+    
+    dropdown.addEventListener('mouseenter', () => {
+      closeAllDropdowns();
+      dropdown.classList.remove('opacity-0', 'invisible');
+      dropdown.classList.add('opacity-100', 'visible');
+      trigger?.setAttribute('aria-expanded', 'true');
+    });
+    
+    dropdown.addEventListener('mouseleave', () => {
+      dropdown.classList.add('opacity-0', 'invisible');
+      dropdown.classList.remove('opacity-100', 'visible');
+      trigger?.setAttribute('aria-expanded', 'false');
+    });
+    
+    // Focus handling for accessibility
+    dropdown.querySelectorAll('a, button').forEach(el => {
+      el.addEventListener('focusin', () => {
+        closeAllDropdowns();
+        dropdown.classList.remove('opacity-0', 'invisible');
+        dropdown.classList.add('opacity-100', 'visible');
+        trigger?.setAttribute('aria-expanded', 'true');
+      });
+    });
+  });
+
+  // Mobile menu toggle
   const header = document.querySelector('[data-header]');
   const toggle = document.querySelector('[data-menu-toggle]');
   const mobileMenu = document.querySelector('#mobile-menu');
@@ -280,9 +344,61 @@ import Icon from './Icon.astro';
     });
   });
 
+  // Mobile dropdown handling
+  const mobileDropdowns = document.querySelectorAll('#mobile-menu [data-dropdown]');
+  const mobileDropdownTriggers = document.querySelectorAll('#mobile-menu [data-dropdown-trigger]');
+  
+  mobileDropdownTriggers.forEach((trigger, index) => {
+    const dropdown = mobileDropdowns[index];
+    
+    trigger.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      
+      // Close other mobile dropdowns
+      mobileDropdowns.forEach((d, i) => {
+        if (i !== index) {
+          d.classList.add('opacity-0', 'invisible');
+          d.classList.remove('opacity-100', 'visible');
+          mobileDropdownTriggers[i]?.setAttribute('aria-expanded', 'false');
+        }
+      });
+      
+      const isOpen = dropdown.classList.toggle('hidden') === false;
+      dropdown.classList.toggle('opacity-0', !isOpen);
+      dropdown.classList.toggle('invisible', !isOpen);
+      dropdown.classList.toggle('opacity-100', isOpen);
+      dropdown.classList.toggle('visible', isOpen);
+      trigger.setAttribute('aria-expanded', String(isOpen));
+    });
+  });
+
+  // Close dropdowns on escape
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
-      document.querySelectorAll('[data-dropdown]').forEach(d => d.blur());
+      closeAllDropdowns();
+      mobileDropdowns.forEach(d => {
+        d.classList.add('opacity-0', 'invisible', 'hidden');
+        d.classList.remove('opacity-100', 'visible');
+      });
+      mobileDropdownTriggers.forEach(t => t.setAttribute('aria-expanded', 'false'));
+    }
+  });
+
+  function closeAllDropdowns() {
+    document.querySelectorAll('[data-dropdown]').forEach(dropdown => {
+      dropdown.classList.add('opacity-0', 'invisible');
+      dropdown.classList.remove('opacity-100', 'visible');
+    });
+    document.querySelectorAll('[data-dropdown-trigger]').forEach(trigger => {
+      trigger.setAttribute('aria-expanded', 'false');
+    });
+  }
+
+  // Close dropdowns when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('[data-dropdown]')) {
+      closeAllDropdowns();
     }
   });
 </script>
@@ -290,5 +406,25 @@ import Icon from './Icon.astro';
 <style is:global>
   [data-header].shadow-soft {
     box-shadow: 0 2px 15px -3px rgba(0, 0, 0, 0.07), 0 10px 20px -2px rgba(0, 0, 0, 0.04);
+  }
+  
+  /* Ensure dropdowns are above everything */
+  [data-dropdown] {
+    z-index: 50;
+  }
+  
+  /* Mobile dropdown animations */
+  #mobile-menu [data-dropdown] > div {
+    transition: opacity 200ms ease, transform 200ms ease, visibility 200ms ease;
+  }
+  
+  #mobile-menu [data-dropdown].hidden > div {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  
+  #mobile-menu [data-dropdown]:not(.hidden) > div {
+    opacity: 1;
+    transform: translateY(0);
   }
 </style>
