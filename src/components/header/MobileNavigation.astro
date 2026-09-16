@@ -1,0 +1,143 @@
+---
+import Icon from '../Icon.astro';
+---
+
+<div class="md:hidden hidden py-4 border-t border-encre/10" id="mobile-menu" role="navigation" aria-label="Menu mobile">
+  <div class="flex flex-col gap-2 pb-8">
+    <!-- Produit accordion -->
+    <div class="relative" data-mobile-dropdown>
+      <button class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors flex items-center justify-between" 
+              aria-haspopup="true" aria-expanded="false" aria-controls="mobile-produit" data-mobile-dropdown-trigger>
+        Produit
+        <svg class="w-5 h-5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 9l6 6 6-6"/>
+        </svg>
+      </button>
+      <div id="mobile-produit" class="hidden overflow-hidden transition-all duration-300" role="menu" data-mobile-dropdown-menu>
+        <div class="px-2 py-2 space-y-1">
+          <div class="px-2 py-1 font-semibold text-encre/50 uppercase tracking-wider text-xs">Découvrir Optibilan</div>
+          <a href="/product/overview" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors block" data-mobile-link>Vue d'ensemble</a>
+          <div class="px-2 py-1 font-semibold text-encre/50 uppercase tracking-wider text-xs border-t border-encre/10 mt-2">Accompagner</div>
+          <a href="/product/check-ins" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>Bilans & progression</a>
+          <a href="/product/nutrition" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>Nutrition</a>
+          <a href="/product/training" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>Sport & programmes</a>
+          <a href="/product/mental" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>Préparation mentale</a>
+          <div class="px-2 py-1 font-semibold text-encre/50 uppercase tracking-wider text-xs border-t border-encre/10 mt-2">Suivre</div>
+          <a href="/product/health" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>Santé & biomarqueurs</a>
+          <a href="/product/engagement" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>Habitudes & engagement</a>
+          <div class="px-2 py-1 font-semibold text-encre/50 uppercase tracking-wider text-xs border-t border-encre/10 mt-2">Dossier client</div>
+          <a href="/product/crm" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>Journal & CRM</a>
+          <div class="px-2 py-1 font-semibold text-encre/50 uppercase tracking-wider text-xs border-t border-encre/10 mt-2">Automatiser</div>
+          <a href="/product/ai" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>IA & Automatisations</a>
+          <a href="/product/integrations" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>Intégrations & API</a>
+          <div class="px-2 py-1 font-semibold text-encre/50 uppercase tracking-wider text-xs border-t border-encre/10 mt-2">Personnaliser</div>
+          <a href="/product/white-label" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>Marque blanche</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- SOLUTIONS accordion -->
+    <div class="relative" data-mobile-dropdown>
+      <button class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors flex items-center justify-between" 
+              aria-haspopup="true" aria-expanded="false" aria-controls="mobile-solutions" data-mobile-dropdown-trigger>
+        Solutions
+        <svg class="w-5 h-5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 9l6 6 6-6"/>
+        </svg>
+      </button>
+      <div id="mobile-solutions" class="hidden overflow-hidden transition-all duration-300" role="menu">
+        <div class="px-2 py-2 space-y-1">
+          <a href="/solutions/coaches" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors block" data-mobile-link>Coach sportif</a>
+          <a href="/solutions/nutrition" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>Nutritionniste / Diététicien</a>
+          <a href="/solutions/mental" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>Préparateur mental</a>
+          <a href="/solutions/cabinets" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>Cabinet / Équipe</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONTACT -->
+    <a href="/contact" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>Contact</a>
+
+    <div class="flex flex-col gap-2 pt-2 border-t border-encre/10">
+      <a href="https://calendly.com/optibilan/demo" class="btn-header-primary text-center flex items-center justify-center gap-2" data-mobile-link>
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+        Rejoindre
+      </a>
+      <a href="https://app.optibilan.com/login" class="btn-header-secondary text-center flex items-center justify-center gap-2" data-mobile-link>
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+          <circle cx="12" cy="7" r="4"/>
+        </svg>
+        Connexion
+      </a>
+      <a href="/inscription" class="btn-header-secondary text-center flex items-center justify-center gap-2" data-mobile-link>
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 5v14M5 12h14"/>
+        </svg>
+        Essai offert
+      </a>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  // Mobile menu toggle
+  const toggle = document.querySelector('[data-menu-toggle]');
+  const mobileMenu = document.querySelector('#mobile-menu');
+  
+  toggle?.addEventListener('click', () => {
+    const isOpen = mobileMenu?.classList.toggle('hidden') === false;
+    toggle.setAttribute('aria-expanded', String(isOpen));
+    toggle.innerHTML = isOpen
+      ? `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>`
+      : `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>`;
+    
+    // Lock body scroll when menu is open
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+
+  // Mobile accordion handling
+  const mobileDropdownTriggers = document.querySelectorAll('[data-mobile-dropdown-trigger]');
+  const mobileDropdownMenus = document.querySelectorAll('[data-mobile-dropdown-menu]');
+  
+  document.querySelectorAll('[data-mobile-dropdown-trigger]').forEach((trigger, index) => {
+    const menu = document.querySelectorAll('[data-mobile-dropdown-menu]')[index];
+    
+    trigger.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      
+      // Close other mobile dropdowns
+      document.querySelectorAll('[data-mobile-dropdown-menu]').forEach((menu, i) => {
+        if (i !== index) {
+          menu.classList.add('hidden');
+          menu.style.maxHeight = '0';
+          document.querySelectorAll('[data-mobile-dropdown-trigger]')[i]?.setAttribute('aria-expanded', 'false');
+        }
+      });
+      
+      const menu = document.querySelectorAll('[data-mobile-dropdown-menu]')[index];
+      const isOpen = menu.classList.toggle('hidden') === false;
+      trigger.setAttribute('aria-expanded', String(isOpen));
+      
+      if (isOpen) {
+        menu.style.maxHeight = menu.scrollHeight + 'px';
+      } else {
+        menu.style.maxHeight = '0';
+      }
+    });
+  });
+
+  // Close mobile dropdowns on escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('[data-mobile-dropdown-menu]').forEach(menu => {
+        menu.classList.add('hidden');
+        menu.style.maxHeight = '0';
+      });
+      document.querySelectorAll('[data-mobile-dropdown-trigger]').forEach(t => t.setAttribute('aria-expanded', 'false'));
+    }
+  });
+</script>
