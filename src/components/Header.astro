@@ -86,12 +86,12 @@ import Icon from './Icon.astro';
         </div>
 
         <!-- SOLUTIONS dropdown -->
-        <div class="relative" data-dropdown>
+        <div class="relative group" data-dropdown>
           <button class="flex items-center gap-1.5 px-3 py-2 text-sm font-medium text-encre/60 hover:text-encre rounded-lg transition-colors" aria-haspopup="true" aria-expanded="false" aria-label="Menu Solutions" data-dropdown-trigger>
             Solutions
-            <Icon name="chevronDown" class="w-4 h-4 transition-transform" />
+            <Icon name="chevronDown" class="w-4 h-4 transition-transform group-open:rotate-180" />
           </button>
-          <div class="absolute left-0 top-full mt-2 w-[400px] opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition-all duration-200 bg-blanc rounded-xl border border-encre/10 shadow-elevated p-3 z-50" role="menu" data-dropdown-menu>
+          <div class="absolute left-0 top-full mt-2 w-[400px] opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition-all duration-200 bg-blanc rounded-xl border border-encre/10 shadow-elevated p-3 z-50" role="menu">
             <div class="grid grid-cols-1 gap-1">
               <a href="/solutions/coaches" class="p-3 rounded-lg hover:bg-papier transition-colors" role="menuitem">
                 <span class="block font-medium text-encre">Coach sportif</span>
@@ -141,8 +141,8 @@ import Icon from './Icon.astro';
     <div class="md:hidden hidden py-4 border-t border-encre/10" id="mobile-menu" role="navigation" aria-label="Menu mobile">
       <div class="flex flex-col gap-2">
         <a href="/product/overview" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>Produit</a>
-        <a href="/solutions" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors">Solutions</a>
-        <a href="/contact" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors">Contact</a>
+        <a href="/solutions" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>Solutions</a>
+        <a href="/contact" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>Contact</a>
         <div class="flex flex-col gap-2 pt-2 border-t border-encre/10">
           <a href="https://calendly.com/optibilan/demo" class="btn-header-primary text-center flex items-center justify-center gap-2" data-mobile-link>
             <Icon name="arrowRight" class="w-5 h-5" />
@@ -186,12 +186,7 @@ import Icon from './Icon.astro';
     if (!trigger || !menu) return;
     
     dropdown.addEventListener('mouseenter', () => {
-      document.querySelectorAll('[data-dropdown-menu]').forEach(m => {
-        m.classList.add('opacity-0', 'invisible');
-        m.classList.remove('opacity-100', 'visible');
-      });
-      document.querySelectorAll('[data-dropdown-trigger]').forEach(t => t.setAttribute('aria-expanded', 'false'));
-      
+      closeAllDropdowns();
       menu.classList.remove('opacity-0', 'invisible');
       menu.classList.add('opacity-100', 'visible');
       trigger.setAttribute('aria-expanded', 'true');
@@ -206,12 +201,7 @@ import Icon from './Icon.astro';
     // Focus handling for accessibility
     dropdown.querySelectorAll('a, button').forEach(el => {
       el.addEventListener('focusin', () => {
-        document.querySelectorAll('[data-dropdown-menu]').forEach(m => {
-          m.classList.add('opacity-0', 'invisible');
-          m.classList.remove('opacity-100', 'visible');
-        });
-        document.querySelectorAll('[data-dropdown-trigger]').forEach(t => t.setAttribute('aria-expanded', 'false'));
-        
+        closeAllDropdowns();
         dropdown.querySelector('[data-dropdown-menu]')?.classList.remove('opacity-0', 'invisible');
         dropdown.querySelector('[data-dropdown-menu]')?.classList.add('opacity-100', 'visible');
         trigger?.setAttribute('aria-expanded', 'true');
@@ -223,6 +213,7 @@ import Icon from './Icon.astro';
   const header = document.querySelector('[data-header]');
   const toggle = document.querySelector('[data-menu-toggle]');
   const mobileMenu = document.querySelector('#mobile-menu');
+  const mobileLinks = document.querySelectorAll('[data-mobile-link]');
 
   let lastScroll = 0;
   window.addEventListener('scroll', () => {
