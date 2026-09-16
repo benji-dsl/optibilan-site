@@ -47,7 +47,7 @@ Une seule vision du client."
           {[
             { icon: 'users', title: 'Multi-praticiens, permissions granulaires', desc: 'Rôles : admin, coach, mental, diet, support. Spécialités par praticien. Accès cloisonnés : le coach ne voit pas le mental, le mental ne voit pas la nutrition (sauf partage autorisé).' },
             { icon: 'shield', title: 'Coordination fluide, zéro info perdue', desc: 'Journal coaching partagé (selon permissions), appels planifiés synchronisés, relances auto, rappels équipe Slack/email. 0 info perdue entre praticiens.' },
-            { icon: 'shield', title: 'Administration & conformité natives', desc: 'Gestion utilisateurs (2FA obligatoire admins), offres d\'appel custom, mentions légales cabinet, modules on/off, questionnaire lancement, RGPD (export, purge), audit trail double niveau, webhooks, API keys.' },
+            { icon: 'shield', title: 'Administration & conformité natives', desc: 'Gestion utilisateurs (2FA obligatoire admins), offres d\'appel custom, mentions légales cabinet, modules on/off, questionnaire lancement, RGPD (export, purge), audit trail double niveau, clés API, webhooks.' },
             { icon: 'globe', title: 'Marque blanche totale = votre cabinet', desc: 'Logo, thème, domaine, vocabulaire, assistant IA nommé, emails @votrecabinet.fr, mentions légales, CGV - tout est à vous. Vos clients ne voient jamais Optibilan.' },
           ].map(item => (
             <article class="p-6 rounded-xl border border-encre/10 hover:border-bordeaux/30 hover:shadow-soft transition-all">
@@ -63,7 +63,7 @@ Une seule vision du client."
         <div class="p-6 md:p-8 rounded-xl bg-gradient-to-br from-bordeaux/5 via-papier to-rose-bordeaux/5 border border-encre/10 mb-16">
           <h3 class="font-display text-xl md:text-2xl font-bold text-encre mb-4">Retour d'expérience cabinet</h3>
           <blockquote class="text-encre/70 leading-relaxed mb-4 italic max-w-2xl">
-            "J'ai lancé mon accompagnement signature à 1 800€/mois grâce à la marque blanche totale : domaine custom, emails @ma-methode.fr, assistant IA 'Julie', vocabulaire 'membre'. Mes membres ne voient jamais Optibilan. L'API + webhooks m'ont permis de brancher Notion (CRM), Slack (alertes équipe), Stripe (facturation auto). En 6 mois : 45 membres à 1 800€ = 81k€ MRR, solo. Le support technique répond en <2h. C'est un OS, pas un SaaS."
+            "J'ai lancé mon accompagnement signature à 1 800€/mois grâce à la marque blanche totale : domaine custom, emails @ma-methode.fr, assistant IA 'Julie', vocabulaire 'membre'. Mes membres ne voient jamais Optibilan. Les intégrations m'ont permis de brancher Notion (CRM), Slack (alertes équipe), Stripe (facturation auto). En 6 mois : 45 membres à 1 800€ = 81k€ MRR, solo. Le support technique répond en <2h. C'est un OS, pas un SaaS."
           </blockquote>
           <footer class="flex items-center gap-3">
             <div class="w-12 h-12 rounded-full bg-gradient-to-br from-bleu-signature to-bleu-lecture flex items-center justify-center text-craie font-bold text-sm">JM</div>
@@ -82,7 +82,7 @@ Une seule vision du client."
             { href: '/product/white-label', icon: 'shield', title: 'Marque Blanche Totale', desc: 'Logo, thème, domaine, vocabulaire, IA, emails, mentions, CGV', color: 'bordeaux' },
             { href: '/product/crm', icon: 'lock', title: 'Journal Coaching & CRM', desc: 'Entrées typées, pipeline, relances, partage, sync Notion', color: 'bleu-ardoise' },
             { href: '/product/check-ins', icon: 'chart', title: 'Bilans & Progression', desc: 'Questionnaires, graphiques, détection alertes d\'adhérence, export PDF', color: 'bleu-signature' },
-            { href: '/product/integrations', icon: 'code', title: 'API, Webhooks & SSO', desc: 'REST v1, OpenAPI, clés scopées, HMAC, SSO/SAML, webhooks', color: 'bleu-ardoise' },
+            { href: '/product/integrations', icon: 'code', title: 'Intégrations & SSO', desc: 'REST v1, OpenAPI, clés scopées, SSO/SAML, connecteurs', color: 'bleu-ardoise' },
             { href: '/product/health', icon: 'globe', title: 'Santé & Biomarqueurs', desc: 'Biologie 130+, wearables, IA lit PDF, corrélations, HDS', color: 'bleu-clair' },
           ].map(mod => (
             <a href={mod.href} class="card-hover p-6 text-center group" style={`--mod-color: var(--color-${mod.color})`}>
