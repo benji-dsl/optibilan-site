@@ -317,8 +317,35 @@
     z-index: -1;
   }
 
-  .btn:hover::after {
-    opacity: 0.45;
+  @layer components {
+  /* ===== BOUTONS - DESIGN SYSTEM UNIFIÉ ===== */
+  /* Petits boutons unifiés : 36-38px hauteur, radius 8px, 14px semi-bold */
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem; /* 12px 16px -> ~36-38px height */
+    border-radius: 0.5rem; /* 8px */
+    font-weight: 600; /* semi-bold */
+    font-size: 0.875rem; /* 14px */
+    line-height: 1.25;
+    border: 1px solid transparent;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 150ms ease;
+    white-space: nowrap;
+    position: relative;
+    overflow: hidden;
+    letter-spacing: 0.01em;
+  }
+
+  .btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none !important;
+    box-shadow: none !important;
   }
 
   .btn:focus-visible {
@@ -326,213 +353,205 @@
     box-shadow: var(--focus-ring);
   }
 
-  /* Primary / Demo / Gold - CONTRASTE WCAG AA SUR FOND CLAIR ET FONCÉ */
-  .btn-primary,
-  .btn-gold,
-  .btn-demo {
-    background-image: var(--gradient-btn-primary);
+  /* Primary - Vert principal */
+  .btn-primary {
+    background: var(--color-vert);
     color: #FFFFFF;
-    box-shadow:
-      0 8px 28px -6px color-mix(in oklab, var(--color-bleu-signature) 45%, transparent),
-      0 4px 12px -4px color-mix(in oklab, var(--color-bleu-signature) 35%, transparent),
-      inset 0 1px 0 rgba(255,255,255,0.2),
-      inset 0 -1px 0 rgba(0,0,0,0.1);
+    border-color: var(--color-vert);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
   }
 
-  .btn-primary:hover,
-  .btn-gold:hover,
-  .btn-demo:hover {
-    transform: translateY(-4px) scale(1.02);
-    box-shadow:
-      0 24px 48px -8px color-mix(in oklab, var(--color-bleu-signature) 55%, transparent),
-      0 12px 28px -6px color-mix(in oklab, var(--color-bleu-signature) 45%, transparent),
-      inset 0 1px 0 rgba(255,255,255,0.25),
-      inset 0 -1px 0 rgba(0,0,0,0.1);
+  .btn-primary:hover {
+    background: color-mix(in oklab, var(--color-vert) 85%, white);
+    border-color: color-mix(in oklab, var(--color-vert) 85%, white);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px color-mix(in oklab, var(--color-vert) 30%, transparent);
   }
 
-  .btn-primary:active,
-  .btn-gold:active,
-  .btn-demo:active {
-    transform: translateY(-1px) scale(0.97);
-    box-shadow:
-      0 6px 20px -4px color-mix(in oklab, var(--color-bleu-signature) 40%, transparent),
-      inset 0 3px 6px rgba(0,0,0,0.15);
-    transition: all 80ms ease;
+  .btn-primary:active {
+    transform: translateY(0) scale(0.98);
+    transition: all 50ms ease;
   }
 
-  .btn-primary:focus-visible,
-  .btn-gold:focus-visible,
-  .btn-demo:focus-visible {
-    box-shadow: var(--focus-ring);
+  .btn-primary:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px color-mix(in oklab, var(--color-vert) 40%, transparent);
   }
 
-  /* Secondary - fond papier, bordure encre, devient plein au hover */
+  /* Secondary - Fond clair, bordure encre, devient plein au hover */
   .btn-secondary {
     background-color: var(--color-surface);
-    border: 2.5px solid color-mix(in oklab, var(--color-encre-texte) 35%, transparent);
+    border: 1px solid color-mix(in oklab, var(--color-encre-texte) 25%, transparent);
     color: var(--color-encre-texte);
-    box-shadow:
-      inset 0 1px 0 rgba(255,255,255,0.1),
-      0 2px 8px -2px color-mix(in oklab, var(--color-encre-texte) 10%, transparent);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
   }
 
   .btn-secondary:hover {
     background-color: var(--color-encre-texte);
     border-color: var(--color-encre-texte);
     color: var(--color-craie);
-    transform: translateY(-3px) scale(1.01);
-    box-shadow:
-      0 16px 36px -6px color-mix(in oklab, var(--color-encre-texte) 30%, transparent),
-      0 6px 16px -4px color-mix(in oklab, var(--color-encre-texte) 20%, transparent),
-      inset 0 1px 0 rgba(255,255,255,0.1);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px color-mix(in oklab, var(--color-encre-texte) 25%, transparent);
   }
 
   .btn-secondary:active {
-    transform: translateY(0) scale(0.97);
-    background-color: color-mix(in oklab, var(--color-encre-texte) 95%, transparent);
-    transition: all 80ms ease.
+    transform: scale(0.98);
+    transition: all 50ms ease;
   }
 
   .btn-secondary:focus-visible {
-    box-shadow: var(--focus-ring);
+    outline: none;
+    box-shadow: 0 0 0 3px color-mix(in oklab, var(--color-encre-texte) 30%, transparent);
   }
 
+  /* Ghost - Transparent avec bordure au hover */
   .btn-ghost {
     background-color: transparent;
     color: color-mix(in oklab, var(--color-encre-texte) 60%, transparent);
-    padding-left: 2rem;
-    padding-right: 2rem;
-    border: 2.5px solid transparent;
+    border: 1px solid transparent;
+    padding: 0.5rem 1rem;
   }
 
   .btn-ghost:hover {
     color: var(--color-encre-texte);
-    background-color: color-mix(in oklab, var(--color-encre-texte) 10%, transparent);
-    border-color: color-mix(in oklab, var(--color-encre-texte) 25%, transparent);
-    transform: translateY(-3px) scale(1.01);
+    background-color: color-mix(in oklab, var(--color-encre-texte) 5%, transparent);
+    border-color: color-mix(in oklab, var(--color-encre-texte) 15%, transparent);
   }
 
   .btn-ghost:active {
-    transform: translateY(0) scale(0.97);
-    background-color: color-mix(in oklab, var(--color-encre-texte) 15%, transparent);
-    transition: all 80ms ease.
+    transform: scale(0.98);
+    transition: all 50ms ease.
   }
 
   .btn-ghost:focus-visible {
-    box-shadow: var(--focus-ring);
+    outline: none;
+    box-shadow: 0 0 0 3px color-mix(in oklab, var(--color-encre-texte) 30%, transparent);
   }
 
-  .btn-demo {
-    padding: 1.5rem 3rem;
-    font-size: 1.1875rem;
+  /* Demo / Gold - Garde le style plus grand pour les CTA principaux */
+  .btn-demo,
+  .btn-gold {
+    background-image: var(--gradient-btn-primary);
+    color: #FFFFFF;
+    padding: 1rem 2rem;
+    font-size: 1.125rem;
     font-weight: 700;
+    border-radius: 0.75rem;
+    border: none;
+    box-shadow:
+      0 4px 16px -4px color-mix(in oklab, var(--color-bleu-signature) 45%, transparent),
+      inset 0 1px 0 rgba(255,255,255,0.2),
+      inset 0 -1px 0 rgba(0,0,0,0.1);
+  }
+
+  .btn-demo:hover,
+  .btn-gold:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow:
+      0 16px 32px -6px color-mix(in oklab, var(--color-bleu-signature) 50%, transparent),
+      inset 0 1px 0 rgba(255,255,255,0.25);
+  }
+
+  .btn-demo:active,
+  .btn-gold:active {
+    transform: translateY(-1px) scale(0.98);
+    transition: all 80ms ease;
+  }
+
+  .btn-demo:focus-visible,
+  .btn-gold:focus-visible {
+    box-shadow: var(--focus-ring);
   }
 
   @media (max-width: 640px) {
     .btn {
-      padding: 1.125rem 2rem;
-      font-size: 1rem;
+      padding: 0.5rem 1rem;
+      font-size: 0.875rem;
     }
     .btn-demo {
-      padding: 1.25rem 2.25rem;
-      font-size: 1.0625rem;
+      padding: 0.875rem 1.5rem;
+      font-size: 1rem;
     }
     .btn-header-primary,
     .btn-header-secondary {
-      padding: 0.625rem 1.25rem;
+      padding: 0.5rem 0.875rem;
       font-size: 0.8125rem;
     }
   }
 
-  /* Header button variants - plus compacts */
+  /* Header button variants - Premium compact buttons */
   .btn-header-primary {
-    background-image: var(--gradient-btn-primary);
+    background: var(--color-vert);
     color: #FFFFFF;
-    padding: 0.75rem 1.5rem;
-    font-size: 0.875rem;
-    font-weight: 700;
-    border-radius: 9999px;
+    padding: 0.625rem 1rem; /* 10px 16px -> ~40px height */
+    font-size: 0.875rem; /* 14px */
+    font-weight: 600;
+    border-radius: 0.625rem; /* 10px */
     border: none;
     cursor: pointer;
     text-decoration: none;
-    transition: all 300ms cubic-bezier(0.34, 1.56, 0.64, 1);
-    position: relative;
-    overflow: hidden;
-    box-shadow:
-      0 4px 16px -4px color-mix(in oklab, var(--color-bleu-signature) 45%, transparent),
-      inset 0 1px 0 rgba(255,255,255,0.2);
-  }
-
-  .btn-header-primary::after {
-    content: '';
-    position: absolute;
-    inset: -2px;
-    border-radius: 9999px;
-    background: var(--gradient-btn-primary);
-    opacity: 0;
-    filter: blur(12px);
-    transition: opacity 300ms ease;
-    z-index: -1;
-  }
-
-  .btn-header-primary:hover::after {
-    opacity: 0.5;
+    transition: all 200ms ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem; /* 8px */
+    gap: 0.5rem;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
   }
 
   .btn-header-primary:hover {
-    transform: translateY(-3px) scale(1.03);
-    box-shadow:
-      0 16px 32px -6px color-mix(in oklab, var(--color-bleu-signature) 55%, transparent),
-      inset 0 1px 0 rgba(255,255,255,0.25);
+    background: color-mix(in oklab, var(--color-vert) 85%, white);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px color-mix(in oklab, var(--color-vert) 30%, transparent);
   }
 
   .btn-header-primary:active {
-    transform: translateY(-1px) scale(0.96);
-    transition: all 80ms ease.
+    transform: translateY(0) scale(0.98);
+    transition: all 50ms ease;
+  }
+
+  .btn-header-primary:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px color-mix(in oklab, var(--color-vert) 40%, transparent);
   }
 
   .btn-header-secondary {
-    background-color: var(--color-papier);
-    border: 2px solid color-mix(in oklab, var(--color-encre-texte) 40%, transparent);
+    background-color: var(--color-surface);
+    border: 1px solid color-mix(in oklab, var(--color-encre-texte) 20%, transparent);
     color: var(--color-encre-texte);
-    padding: 0.75rem 1.5rem;
-    font-size: 0.875rem;
+    padding: 0.5rem 1rem; /* 8px 16px */
+    font-size: 0.875rem; /* 14px */
     font-weight: 600;
-    border-radius: 9999px;
+    border-radius: 0.625rem; /* 10px */
     cursor: pointer;
     text-decoration: none;
-    transition: all 300ms cubic-bezier(0.34, 1.56, 0.64, 1).
-    box-shadow:
-      inset 0 1px 0 rgba(255,255,255,0.1),
-      0 2px 8px -2px color-mix(in oklab, var(--color-encre-texte) 10%, transparent).
+    transition: all 200ms ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.03);
   }
 
   .btn-header-secondary:hover {
-    background-color: var(--color-encre-texte);
-    border-color: var(--color-encre-texte);
-    color: var(--color-craie);
-    transform: translateY(-2px) scale(1.02).
-    box-shadow:
-      0 12px 28px -4px color-mix(in oklab, var(--color-encre-texte) 30%, transparent).
+    background-color: color-mix(in oklab, var(--color-encre-texte) 5%, transparent);
+    border-color: color-mix(in oklab, var(--color-encre-texte) 30%, transparent);
   }
 
   .btn-header-secondary:active {
-    transform: translateY(0) scale(0.97).
-    transition: all 80ms ease.
+    transform: scale(0.98);
+    transition: all 50ms ease;
+  }
+
+  .btn-header-secondary:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px color-mix(in oklab, var(--color-encre-texte) 30%, transparent);
   }
 
   @media (max-width: 640px) {
-    .btn {
-      padding: 1.125rem 2rem;
-      font-size: 1rem;
-    }
-    .btn-demo {
-      padding: 1.25rem 2.25rem;
-      font-size: 1.0625rem;
-    }
     .btn-header-primary,
     .btn-header-secondary {
-      padding: 0.625rem 1.25rem;
+      padding: 0.5rem 0.875rem;
       font-size: 0.8125rem;
     }
   }
@@ -877,6 +896,320 @@
     .text-craie\/70 { color: var(--color-body-light); }
     .text-craie\/80 { color: var(--color-heading-light); }
   }
+}
+@layer components {
+  /* ===== CARTES ===== */
+  .card {
+    background-color: var(--color-surface);
+    border-radius: var(--radius-card);
+    border: 1px solid var(--color-border);
+    padding: 1.5rem;
+    transition: all 300ms ease;
+  }
+
+  .card-hover {
+    background-color: var(--color-surface);
+    border-radius: var(--radius-card);
+    border: 1px solid var(--color-border);
+    padding: 1.5rem;
+    transition: all 300ms ease;
+  }
+
+  .card-hover:hover {
+    box-shadow: var(--shadow-card);
+    transform: translateY(-4px);
+  }
+
+  @media (min-width: 768px) {
+    .card,
+    .card-hover {
+      padding: 2rem;
+    }
+  }
+
+  /* ===== WRAPPER ICONES ===== */
+  .icon-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: var(--radius-card-lg);
+    background-color: var(--color-bleu-clair);
+    color: var(--color-bleu-signature);
+    transition: background-color 300ms ease, color 300ms ease;
+  }
+
+  .group:hover .icon-wrapper {
+    background-color: color-mix(in oklab, var(--color-bleu-signature) 10%, transparent);
+    color: var(--color-bleu-lecture);
+  }
+
+  @media (max-width: 640px) {
+    .icon-wrapper {
+      width: 2.75rem;
+      height: 2.75rem;
+      border-radius: var(--radius-card);
+    }
+  }
+
+  .icon-wrapper-sm {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: var(--radius-card);
+  }
+
+  .icon-wrapper-lg {
+    width: 4.5rem;
+    height: 4.5rem;
+    border-radius: var(--radius-card-lg);
+  }
+
+  /* ===== SECTIONS ===== */
+  .section {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+
+  .section-lg {
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+  }
+
+  .section-sm {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  .container {
+    max-width: 80rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  @media (min-width: 640px) {
+    .container {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container {
+      padding-left: 3rem;
+      padding-right: 3rem;
+    }
+  }
+
+  .text-balance { text-wrap: balance; }
+  .text-pretty { text-wrap: pretty; }
+
+  /* ===== ANIMATIONS ===== */
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.7s ease-out forwards;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.5s ease-out forwards;
+  }
+
+  .delay-100 { animation-delay: 100ms; }
+  .delay-200 { animation-delay: 200ms; }
+  .delay-300 { animation-delay: 300ms; }
+  .delay-400 { animation-delay: 400ms; }
+  .delay-500 { animation-delay: 500ms; }
+  .delay-600 { animation-delay: 600ms; }
+  .delay-700 { animation-delay: 700ms; }
+  .delay-800 { animation-delay: 800ms; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes scaleIn {
+    from { opacity: 0; transform: scale(0.97); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  /* ===== FILES & BORDURES SPECIFIQUES ===== */
+  .border-encre-6 {
+    border-color: var(--color-encre);
+    opacity: 0.06;
+  }
+
+  .border-bordeaux-1-5 {
+    border-color: var(--color-bordeaux);
+    border-width: 1.5px;
+  }
+
+  /* ===== DEGRADES UTILES ===== */
+  .gradient-btn-primary { background-image: var(--gradient-btn-primary); }
+  .gradient-progress { background-image: var(--gradient-progress); }
+  .gradient-blue-deep { background-image: var(--gradient-blue-deep); }
+  .gradient-dark-section { background-image: var(--gradient-dark-section); }
+  .gradient-card-light { background-image: var(--gradient-card-light); }
+
+  /* ===== ACCESSIBILITÉ & UX ===== */
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-bleu-signature);
+    outline-offset: 2px;
+  }
+
+  ::selection {
+    background-color: color-mix(in oklab, var(--color-bleu-signature) 30%, transparent);
+    color: var(--color-encre-texte);
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-page);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: color-mix(in oklab, var(--color-encre-texte) 30%, transparent);
+    border-radius: 4px;
+    border: 2px solid var(--color-page);
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: color-mix(in oklab, var(--color-encre-texte) 50%, transparent);
+  }
+
+  @supports (scrollbar-color: red blue) {
+    * {
+      scrollbar-color: color-mix(in oklab, var(--color-encre-texte) 30%, transparent) var(--color-page);
+      scrollbar-width: thin;
+    }
+  }
+
+  .skip-link {
+    position: absolute;
+    top: -100%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 1rem 1.5rem;
+    background: var(--color-encre);
+    color: var(--color-craie);
+    font-weight: 600;
+    border-radius: var(--radius-pill);
+    z-index: 9999;
+    transition: top 200ms ease;
+  }
+  .skip-link:focus {
+    top: 1rem;
+  }
+
+  .text-balance { text-wrap: balance; }
+  .text-pretty { text-wrap: pretty; }
+
+  img { height: auto; max-width: 100%; }
+
+  .table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+  .anchor-link { scroll-margin-top: 6rem; }
+
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+  .skeleton {
+    background: linear-gradient(90deg, var(--color-ink-200) 25%, var(--color-ink-100) 50%, var(--color-ink-200) 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: var(--radius-card-sm);
+  }
+
+  @media (max-width: 640px) {
+    .section { padding-top: 3rem; padding-bottom: 3rem; }
+    .section-lg { padding-top: 4rem; padding-bottom: 4rem; }
+    .section-sm { padding-top: 2rem; padding-bottom: 2rem; }
+    .container { padding-left: 1rem; padding-right: 1rem; }
+    .btn { padding: 0.875rem 1.5rem; font-size: 0.875rem; }
+    .btn-demo { padding: 1rem 2rem; font-size: 1rem; }
+    h1 { font-size: clamp(2.5rem, 5vw, 4rem); }
+    h2 { font-size: clamp(2rem, 4vw, 3rem); }
+    .card, .card-hover { padding: 1.25rem; }
+    .icon-wrapper { width: 2.75rem; height: 2.75rem; border-radius: var(--radius-card); }
+  }
+
+  @media (min-width: 641px) and (max-width: 1024px) {
+    .section { padding-top: 4rem; padding-bottom: 4rem; }
+    .section-lg { padding-top: 5rem; padding-bottom: 5rem; }
+    .container { padding-left: 2rem; padding-right: 2rem; }
+  }
+
+  /* ===== SUPPRESSION OPACITÉS PROBLÉMATIQUES ===== */
+  /* Pas de text-*-40, text-*-50, text-*-60 pour le texte */
+  /* Utiliser plutôt les variables de couleur muted appropriées */
+
+  /* Remplacer les opacités problématiques par les bonnes variables */
+  .text-muted-light { color: var(--color-muted-light); }
+  .text-muted-dark { color: var(--color-muted-dark); }
+  .text-body-light { color: var(--color-body-light); }
+  .text-body-dark { color: var(--color-body-dark); }
+  .text-heading-light { color: var(--color-heading-light); }
+  .text-heading-dark { color: var(--color-heading-dark); }
+
+  /* Supprimer les opacités tailwind sur le texte */
+  .text-encre\/40 { color: var(--color-muted-light); }
+  .text-encre\/50 { color: var(--color-muted-light); }
+  .text-encre\/60 { color: var(--color-body-light); }
+  .text-encre\/70 { color: var(--color-body-light); }
+  .text-craie\/40 { color: var(--color-muted-dark); }
+  .text-craie\/50 { color: var(--color-muted-dark); }
+  .text-craie\/60 { color: var(--color-body-dark); }
+  .text-craie\/70 { color: var(--color-body-dark); }
+  .text-craie\/80 { color: var(--color-heading-dark); }
+
+  @media (prefers-color-scheme: dark) {
+    .text-encre\/40 { color: var(--color-muted-dark); }
+    .text-encre\/50 { color: var(--color-muted-dark); }
+    .text-encre\/60 { color: var(--color-body-dark); }
+    .text-encre\/70 { color: var(--color-body-dark); }
+    .text-craie\/40 { color: var(--color-muted-light); }
+    .text-craie\/50 { color: var(--color-muted-light); }
+    .text-craie\/60 { color: var(--color-body-light); }
+    .text-craie\/70 { color: var(--color-body-light); }
+    .text-craie\/80 { color: var(--color-heading-light); }
+  }
+
+  @media (min-width: 641px) and (max-width: 1024px) {
+    .section { padding-top: 4rem; padding-bottom: 4rem; }
+    .section-lg { padding-top: 5rem; padding-bottom: 5rem; }
+    .container { padding-left: 2rem; padding-right: 2rem; }
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  .section { padding-top: 4rem; padding-bottom: 4rem; }
+  .section-lg { padding-top: 5rem; padding-bottom: 5rem; }
+  .container { padding-left: 2rem; padding-right: 2rem; }
+}
 }
 @layer components {
 }
