@@ -18,13 +18,12 @@ const {
   subtitle,
   badge,
   stats = [],
-  primaryCTA = { href: 'https://calendly.com/optibilan/demo', label: 'Réserver une démo' },
+  primaryCTA = { href: 'https://calendly.com/optibilan/demo', label: 'Rejoindre Optibilan' },
   secondaryCTA = { href: '/inscription', label: 'Essayer Optibilan' },
   illustration,
 } = Astro.props;
 
-const homeTitle = title || `Pilotez tous vos accompagnements.
-Depuis un seul endroit.`;
+const homeTitle = title || 'Pilotez tous vos accompagnements.\nDepuis un seul endroit.';
 const homeSubtitle = subtitle || "Bilans, programmes, nutrition, données de santé et suivi client réunis dans une plateforme pensée pour les professionnels de la santé et de la performance.";
 const homeBadge = badge || "";
 ---
@@ -43,7 +42,7 @@ const homeBadge = badge || "";
       )}
 
       <h1 id="hero-title" class="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-encre tracking-tight leading-[1.1] mb-6 animate-slide-up">
-        {homeTitle.split('\n').map((line, i) => (
+        {homeTitle.split(/\n|\\n/).map((line, i) => (
           <span key={i} class="block">{line}</span>
         ))}
       </h1>
@@ -54,7 +53,7 @@ const homeBadge = badge || "";
 
       <div class="flex flex-col sm:flex-row items-center justify-center gap-5 animate-slide-up delay-300">
         <a href={primaryCTA.href} class="btn-demo w-full sm:w-auto group text-lg px-10 py-5" data-track="hero_cta_demo">
-          Réserver une démo
+          Rejoindre Optibilan
           <Icon name="arrowRight" class="w-6 h-6 transition-transform group-hover:translate-x-1" />
         </a>
         <a href="/inscription" class="btn-header-secondary w-full sm:w-auto group bg-papier border-encre/40 text-base px-8 py-3.5" data-track="hero_cta_trial">

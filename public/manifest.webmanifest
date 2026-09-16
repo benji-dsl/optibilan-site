@@ -42,8 +42,8 @@
       "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
     },
     {
-      "name": "Réserver une démo",
-      "short_name": "Démo",
+      "name": "Rejoindre Optibilan",
+      "short_name": "Rejoindre",
       "description": "Voir la plateforme en 30 min",
       "url": "https://calendly.com/optibilan/demo",
       "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]

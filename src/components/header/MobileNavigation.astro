@@ -2,142 +2,225 @@
 import Icon from '../Icon.astro';
 ---
 
-<div class="md:hidden hidden py-4 border-t border-encre/10" id="mobile-menu" role="navigation" aria-label="Menu mobile">
-  <div class="flex flex-col gap-2 pb-8">
-    <!-- Produit accordion -->
-    <div class="relative" data-mobile-dropdown>
-      <button class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors flex items-center justify-between" 
-              aria-haspopup="true" aria-expanded="false" aria-controls="mobile-produit" data-mobile-dropdown-trigger>
-        Produit
-        <svg class="w-5 h-5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M6 9l6 6 6-6"/>
-        </svg>
-      </button>
-      <div id="mobile-produit" class="hidden overflow-hidden transition-all duration-300" role="menu" data-mobile-dropdown-menu>
-        <div class="px-2 py-2 space-y-1">
-          <div class="px-2 py-1 font-semibold text-encre/50 uppercase tracking-wider text-xs">Découvrir Optibilan</div>
-          <a href="/product/overview" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors block" data-mobile-link>Vue d'ensemble</a>
-          <div class="px-2 py-1 font-semibold text-encre/50 uppercase tracking-wider text-xs border-t border-encre/10 mt-2">Accompagner</div>
-          <a href="/product/check-ins" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>Bilans & progression</a>
-          <a href="/product/nutrition" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>Nutrition</a>
-          <a href="/product/training" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>Sport & programmes</a>
-          <a href="/product/mental" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>Préparation mentale</a>
-          <div class="px-2 py-1 font-semibold text-encre/50 uppercase tracking-wider text-xs border-t border-encre/10 mt-2">Suivre</div>
-          <a href="/product/health" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>Santé & biomarqueurs</a>
-          <a href="/product/engagement" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>Habitudes & engagement</a>
-          <div class="px-2 py-1 font-semibold text-encre/50 uppercase tracking-wider text-xs border-t border-encre/10 mt-2">Dossier client</div>
-          <a href="/product/crm" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>Journal & CRM</a>
-          <div class="px-2 py-1 font-semibold text-encre/50 uppercase tracking-wider text-xs border-t border-encre/10 mt-2">Automatiser</div>
-          <a href="/product/ai" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>IA & Automatisations</a>
-          <a href="/product/integrations" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>Intégrations & API</a>
-          <div class="px-2 py-1 font-semibold text-encre/50 uppercase tracking-wider text-xs border-t border-encre/10 mt-2">Personnaliser</div>
-          <a href="/product/white-label" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>Marque blanche</a>
+<div class="md:hidden" data-mobile-nav>
+  <button
+    class="md:hidden p-2 rounded-lg text-encre/60 hover:bg-encre/5"
+    aria-label="Ouvrir le menu"
+    aria-expanded="false"
+    aria-controls="mobile-menu"
+    data-menu-toggle>
+    <span data-menu-icon="closed">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+    </span>
+    <span data-menu-icon="open" class="hidden">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M6 18L18 6M6 6l12 12"/>
+      </svg>
+    </span>
+  </button>
+
+  <div
+    id="mobile-menu"
+    class="md:hidden hidden py-4 border-t border-encre/10"
+    role="navigation"
+    aria-label="Menu mobile"
+    data-mobile-menu>
+    <div class="flex flex-col gap-2 pb-8">
+      <!-- Produit accordion -->
+      <div class="relative" data-mobile-accordion>
+        <button
+          class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors flex items-center justify-between w-full"
+          aria-haspopup="true"
+          aria-expanded="false"
+          aria-controls="mobile-produit"
+          data-mobile-accordion-trigger>
+          Produit
+          <Icon name="chevronDown" class="w-5 h-5 transition-transform duration-200" data-accordion-icon />
+        </button>
+        <div
+          id="mobile-produit"
+          class="hidden overflow-hidden transition-all duration-300"
+          role="menu"
+          data-mobile-accordion-content>
+          <div class="px-2 py-2 space-y-1">
+            <div class="px-2 py-1 font-semibold text-encre/50 uppercase tracking-wider text-xs">Découvrir Optibilan</div>
+            <a href="/product/overview" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors block" data-mobile-link>Vue d'ensemble</a>
+            <div class="px-2 py-1 font-semibold text-encre/50 uppercase tracking-wider text-xs border-t border-encre/10 mt-2">Accompagner</div>
+            <a href="/product/check-ins" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>Bilans & progression</a>
+            <a href="/product/nutrition" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>Nutrition</a>
+            <a href="/product/training" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>Sport & programmes</a>
+            <a href="/product/mental" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>Préparation mentale</a>
+            <div class="px-2 py-1 font-semibold text-encre/50 uppercase tracking-wider text-xs border-t border-encre/10 mt-2">Suivre</div>
+            <a href="/product/health" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>Santé & biomarqueurs</a>
+            <a href="/product/engagement" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>Habitudes & engagement</a>
+            <div class="px-2 py-1 font-semibold text-encre/50 uppercase tracking-wider text-xs border-t border-encre/10 mt-2">Dossier client</div>
+            <a href="/product/crm" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>Journal & CRM</a>
+            <div class="px-2 py-1 font-semibold text-encre/50 uppercase tracking-wider text-xs border-t border-encre/10 mt-2">Automatiser</div>
+            <a href="/product/ai" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>IA & Automatisations</a>
+            <a href="/product/integrations" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>Intégrations & API</a>
+            <div class="px-2 py-1 font-semibold text-encre/50 uppercase tracking-wider text-xs border-t border-encre/10 mt-2">Personnaliser</div>
+            <a href="/product/white-label" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>Marque blanche</a>
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- SOLUTIONS accordion -->
-    <div class="relative" data-mobile-dropdown>
-      <button class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors flex items-center justify-between" 
-              aria-haspopup="true" aria-expanded="false" aria-controls="mobile-solutions" data-mobile-dropdown-trigger>
-        Solutions
-        <svg class="w-5 h-5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M6 9l6 6 6-6"/>
-        </svg>
-      </button>
-      <div id="mobile-solutions" class="hidden overflow-hidden transition-all duration-300" role="menu">
-        <div class="px-2 py-2 space-y-1">
-          <a href="/solutions/coaches" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors block" data-mobile-link>Coach sportif</a>
-          <a href="/solutions/nutrition" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>Nutritionniste / Diététicien</a>
-          <a href="/solutions/mental" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>Préparateur mental</a>
-          <a href="/solutions/cabinets" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>Cabinet / Équipe</a>
+      <!-- SOLUTIONS accordion -->
+      <div class="relative" data-mobile-accordion>
+        <button
+          class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors flex items-center justify-between w-full"
+          aria-haspopup="true"
+          aria-expanded="false"
+          aria-controls="mobile-solutions"
+          data-mobile-accordion-trigger>
+          Solutions
+          <Icon name="chevronDown" class="w-5 h-5 transition-transform duration-200" data-accordion-icon />
+        </button>
+        <div
+          id="mobile-solutions"
+          class="hidden overflow-hidden transition-all duration-300"
+          role="menu"
+          data-mobile-accordion-content>
+          <div class="px-2 py-2 space-y-1">
+            <a href="/solutions/coaches" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors block" data-mobile-link>Coach sportif</a>
+            <a href="/solutions/nutrition" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>Nutritionniste / Diététicien</a>
+            <a href="/solutions/mental" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>Préparateur mental</a>
+            <a href="/solutions/cabinets" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>Cabinet / Équipe</a>
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- CONTACT -->
-    <a href="/contact" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>Contact</a>
+      <!-- CONTACT -->
+      <a href="/contact" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>Contact</a>
 
-    <div class="flex flex-col gap-2 pt-2 border-t border-encre/10">
-      <a href="https://calendly.com/optibilan/demo" class="btn-header-primary text-center flex items-center justify-center gap-2" data-mobile-link>
-        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M5 12h14M12 5l7 7-7 7"/>
-        </svg>
-        Rejoindre
-      </a>
-      <a href="https://app.optibilan.com/login" class="btn-header-secondary text-center flex items-center justify-center gap-2" data-mobile-link>
-        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-          <circle cx="12" cy="7" r="4"/>
-        </svg>
-        Connexion
-      </a>
-      <a href="/inscription" class="btn-header-secondary text-center flex items-center justify-center gap-2" data-mobile-link>
-        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M12 5v14M5 12h14"/>
-        </svg>
-        Essai offert
-      </a>
+      <div class="flex flex-col gap-2 pt-2 border-t border-encre/10">
+        <a href="https://calendly.com/optibilan/demo" class="btn-header-primary text-center flex items-center justify-center gap-2" data-mobile-link>
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+          Rejoindre Optibilan
+        </a>
+        <a href="https://app.optibilan.com/login" class="btn-header-secondary text-center flex items-center justify-center gap-2" data-mobile-link>
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+            <circle cx="12" cy="7" r="4"/>
+          </svg>
+          Connexion
+        </a>
+        <a href="/inscription" class="btn-header-secondary text-center flex items-center justify-center gap-2" data-mobile-link>
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 5v14M5 12h14"/>
+          </svg>
+          Essai offert
+        </a>
+      </div>
     </div>
   </div>
 </div>
 
-<script is:inline>
+<script>
   // Mobile menu toggle
-  const toggle = document.querySelector('[data-menu-toggle]');
-  const mobileMenu = document.querySelector('#mobile-menu');
-  
-  toggle?.addEventListener('click', () => {
-    const isOpen = mobileMenu?.classList.toggle('hidden') === false;
-    toggle.setAttribute('aria-expanded', String(isOpen));
-    toggle.innerHTML = isOpen
-      ? `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>`
-      : `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>`;
-    
-    // Lock body scroll when menu is open
-    document.body.style.overflow = isOpen ? 'hidden' : '';
-  });
+  const mobileNav = document.querySelector('[data-mobile-nav]');
+  if (mobileNav) {
+    const toggle = mobileNav.querySelector('[data-menu-toggle]');
+    const mobileMenu = mobileNav.querySelector('[data-mobile-menu]');
+    const closedIcon = mobileNav.querySelector('[data-menu-icon="closed"]');
+    const openIcon = mobileNav.querySelector('[data-menu-icon="open"]');
+
+    toggle?.addEventListener('click', () => {
+      const isOpen = mobileMenu?.classList.toggle('hidden') === false;
+      toggle.setAttribute('aria-expanded', String(isOpen));
+      closedIcon?.classList.toggle('hidden', isOpen);
+      openIcon?.classList.toggle('hidden', !isOpen);
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+  }
 
   // Mobile accordion handling
-  const mobileDropdownTriggers = document.querySelectorAll('[data-mobile-dropdown-trigger]');
-  const mobileDropdownMenus = document.querySelectorAll('[data-mobile-dropdown-menu]');
-  
-  document.querySelectorAll('[data-mobile-dropdown-trigger]').forEach((trigger, index) => {
-    const menu = document.querySelectorAll('[data-mobile-dropdown-menu]')[index];
-    
+  document.querySelectorAll('[data-mobile-accordion]').forEach(accordion => {
+    const trigger = accordion.querySelector('[data-mobile-accordion-trigger]');
+    const content = accordion.querySelector('[data-mobile-accordion-content]');
+    const icon = accordion.querySelector('[data-accordion-icon]');
+
+    if (!trigger || !content) return;
+
     trigger.addEventListener('click', (e) => {
       e.preventDefault();
       e.stopPropagation();
-      
-      // Close other mobile dropdowns
-      document.querySelectorAll('[data-mobile-dropdown-menu]').forEach((menu, i) => {
-        if (i !== index) {
-          menu.classList.add('hidden');
-          menu.style.maxHeight = '0';
-          document.querySelectorAll('[data-mobile-dropdown-trigger]')[i]?.setAttribute('aria-expanded', 'false');
+
+      // Close other accordions
+      document.querySelectorAll('[data-mobile-accordion]').forEach(other => {
+        if (other !== accordion) {
+          const otherContent = other.querySelector('[data-mobile-accordion-content]');
+          const otherTrigger = other.querySelector('[data-mobile-accordion-trigger]');
+          const otherIcon = other.querySelector('[data-accordion-icon]');
+          otherContent?.classList.add('hidden');
+          otherContent?.style.removeProperty('max-height');
+          otherTrigger?.setAttribute('aria-expanded', 'false');
+          otherIcon?.classList.remove('rotate-180');
         }
       });
-      
-      const menu = document.querySelectorAll('[data-mobile-dropdown-menu]')[index];
-      const isOpen = menu.classList.toggle('hidden') === false;
+
+      const isOpen = content.classList.toggle('hidden') === false;
       trigger.setAttribute('aria-expanded', String(isOpen));
-      
+      icon?.classList.toggle('rotate-180', isOpen);
+
       if (isOpen) {
-        menu.style.maxHeight = menu.scrollHeight + 'px';
+        content.style.maxHeight = content.scrollHeight + 'px';
       } else {
-        menu.style.maxHeight = '0';
+        content.style.maxHeight = '0';
       }
     });
   });
 
-  // Close mobile dropdowns on escape
+  // Close mobile menu on escape
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
-      document.querySelectorAll('[data-mobile-dropdown-menu]').forEach(menu => {
-        menu.classList.add('hidden');
-        menu.style.maxHeight = '0';
+      const mobileMenu = document.querySelector('[data-mobile-menu]');
+      const toggle = document.querySelector('[data-menu-toggle]');
+      const closedIcon = document.querySelector('[data-menu-icon="closed"]');
+      const openIcon = document.querySelector('[data-menu-icon="open"]');
+      
+      if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+        mobileMenu.classList.add('hidden');
+        toggle?.setAttribute('aria-expanded', 'false');
+        closedIcon?.classList.remove('hidden');
+        openIcon?.classList.add('hidden');
+        document.body.style.overflow = '';
+      }
+      
+      // Close all accordions
+      document.querySelectorAll('[data-mobile-accordion-content]').forEach(content => {
+        content.classList.add('hidden');
+        content.style.removeProperty('max-height');
       });
-      document.querySelectorAll('[data-mobile-dropdown-trigger]').forEach(t => t.setAttribute('aria-expanded', 'false'));
+      document.querySelectorAll('[data-mobile-accordion-trigger]').forEach(trigger => {
+        trigger.setAttribute('aria-expanded', 'false');
+      });
+      document.querySelectorAll('[data-accordion-icon]').forEach(icon => {
+        icon.classList.remove('rotate-180');
+      });
     }
   });
+
+  // Close mobile menu when clicking a link
+  document.querySelectorAll('[data-mobile-link]').forEach(link => {
+    link.addEventListener('click', () => {
+      const mobileMenu = document.querySelector('[data-mobile-menu]');
+      const toggle = document.querySelector('[data-menu-toggle]');
+      const closedIcon = document.querySelector('[data-menu-icon="closed"]');
+      const openIcon = document.querySelector('[data-menu-icon="open"]');
+      
+      if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+        mobileMenu.classList.add('hidden');
+        toggle?.setAttribute('aria-expanded', 'false');
+        closedIcon?.classList.remove('hidden');
+        openIcon?.classList.add('hidden');
+        document.body.style.overflow = '';
+      }
+    });
+  });
 </script>
+
+</div>

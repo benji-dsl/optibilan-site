@@ -5,6 +5,7 @@ import Footer from '../components/Footer.astro';
 import Hero from '../components/Hero.astro';
 import CTA from '../components/CTA.astro';
 import Icon from '../components/Icon.astro';
+import DiscoverCTA from '../components/DiscoverCTA.astro';
 
 const pageTitle = 'Optibilan - Plateforme de pilotage des accompagnements santé & performance';
 const pageDescription = 'Pilotez tous vos accompagnements depuis un seul endroit : bilans, programmes, nutrition, données de santé et suivi client réunis dans une plateforme pour les professionnels de la santé et de la performance.';
@@ -49,14 +50,6 @@ const modules = [
     screenshot: '/images/product/mental.svg',
     href: '/product/mental',
     layout: 'text-right',
-  },
-  {
-    id: 'white-label',
-    title: 'Marque blanche',
-    desc: 'Votre méthode. Votre marque. Logo, couleurs, domaine, emails, vocabulaire. Une démonstration visuelle : Optibilan disparaît, votre cabinet apparaît.',
-    screenshot: '/images/product/white-label.svg',
-    href: '/product/white-label',
-    layout: 'text-left',
   },
   {
     id: 'ai',
@@ -162,10 +155,7 @@ Depuis un seul endroit."
               </div>
               <p class="text-center text-sm text-encre/50 mt-4">Dashboard Optibilan — {mod.title}</p>
               <div class="text-center mt-8">
-                <a href={mod.href} class="btn-secondary group inline-flex items-center gap-2" data-track={`home_${mod.id}_cta`}>
-                  Découvrir {mod.title}
-                  <Icon name="arrowRight" class="w-4 h-4 transition-transform group-hover:translate-x-1" />
-                </a>
+<DiscoverCTA href={mod.href} label={`Découvrir ${mod.title}`} />
               </div>
             </>
           )}
@@ -202,10 +192,7 @@ Depuis un seul endroit."
                 <p class="text-lg text-encre/60 mb-8 max-w-xl">
                   {mod.desc}
                 </p>
-                <a href={mod.href} class="btn-secondary group inline-flex items-center gap-2" data-track={`home_${mod.id}_cta`}>
-                  Découvrir {mod.title}
-                  <Icon name="arrowRight" class="w-4 h-4 transition-transform group-hover:translate-x-1" />
-                </a>
+<DiscoverCTA href={mod.href} label={`Découvrir ${mod.title}`} />
               </div>
             </div>
           )}
@@ -225,10 +212,7 @@ Depuis un seul endroit."
               </div>
               <p class="text-center text-sm text-encre/50 mt-4">Workflow IA : Document → structuration → professionnel</p>
               <div class="text-center mt-8">
-                <a href={mod.href} class="btn-secondary group inline-flex items-center gap-2" data-track={`home_${mod.id}_cta`}>
-                  Découvrir {mod.title}
-                  <Icon name="arrowRight" class="w-4 h-4 transition-transform group-hover:translate-x-1" />
-                </a>
+<DiscoverCTA href={mod.href} label={`Découvrir ${mod.title}`} />
               </div>
             </>
           )}
@@ -279,8 +263,8 @@ Depuis un seul endroit."
         </header>
         <div class="grid md:grid-cols-2 gap-8 mb-16">
           <div class="p-6 md:p-8 rounded-xl border border-encre/20 bg-craie/10">
-            <h3 class="font-display text-xl font-bold text-encre mb-4">Avant Optibilan</h3>
-            <ul class="space-y-3 text-encre/70">
+            <h3 class="font-display text-xl font-bold text-encre mb-4">AVANT</h3>
+            <ul class="space-y-3 text-craie/80">
               <li class="flex items-center gap-3"><span class="w-6 h-6 rounded-full bg-bordeaux/20 flex items-center justify-center text-bordeaux">1</span> Formulaires dispersés</li>
               <li class="flex items-center gap-3"><span class="w-6 h-6 rounded-full bg-bordeaux/20 flex items-center justify-center text-bordeaux">2</span> Excel / PDF</li>
               <li class="flex items-center gap-3"><span class="w-6 h-6 rounded-full bg-bordeaux/20 flex items-center justify-center text-bordeaux">3</span> Applications différentes</li>
@@ -290,7 +274,7 @@ Depuis un seul endroit."
           </div>
           <div class="p-6 md:p-8 rounded-xl border border-bleu-signature/30 bg-bleu-signature/5">
             <h3 class="font-display text-xl font-bold text-encre mb-4">AVEC OPTIBILAN</h3>
-            <ul class="space-y-3 text-encre/70">
+            <ul class="space-y-3 text-craie/80">
               <li class="flex items-center gap-3"><span class="w-6 h-6 rounded-full bg-bleu-signature/20 flex items-center justify-center text-bleu-signature">1</span> Un dossier client</li>
               <li class="flex items-center gap-3"><span class="w-6 h-6 rounded-full bg-bleu-signature/20 flex items-center justify-center text-bleu-signature">2</span> Une vision de la progression</li>
               <li class="flex items-center gap-3"><span class="w-6 h-6 rounded-full bg-bleu-signature/20 flex items-center justify-center text-bleu-signature">3</span> Programmes centralisés</li>

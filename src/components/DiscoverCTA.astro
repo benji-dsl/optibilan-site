@@ -1,0 +1,60 @@
+---
+import Icon from './Icon.astro';
+
+interface Props {
+  href: string;
+  label: string;
+  dark?: boolean;
+  icon?: 'arrowRight' | 'arrowDown' | 'sparkles' | 'chart' | 'document';
+}
+
+const {
+  href,
+  label,
+  dark = false,
+  icon = 'arrowRight',
+} = Astro.props;
+
+const isDark = dark;
+---
+
+<a 
+  href={href}
+  class={`inline-flex items-center gap-7 text-sm font-semibold transition-all duration-160 hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-vert
+    ${dark 
+      ? 'text-white/90 hover:text-white' 
+      : 'text-[#1F493C] hover:text-[#1A6B2E]'}`}
+  style="padding: 8px 0;"
+  href={href}
+>
+  <span class="font-semibold">{label}</span>
+  <Icon 
+    name={icon} 
+    class="w-4 h-4 transition-transform duration-160 ease-out group-hover:translate-x-1"
+    aria-hidden="true"
+  />
+</a>
+
+<style is:global>
+  .btn-discover {
+    background: transparent;
+    border: none;
+    padding: 8px 0;
+    width: fit-content;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 160ms ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+  }
+  
+  .btn-discover:hover {
+    text-decoration: none;
+  }
+  
+  .btn-discover:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px #1A7A2E66;
+  }
+</style>

@@ -107,7 +107,7 @@
   
   <!-- Bottom Actions -->
   <rect x="340" y="600" width="380" height="56" rx="12" fill="url(#accentGrad)" filter="url(#shadow)"/>
-  <text x="530" y="35" font-family="Inter" font-size="15" font-weight="700" fill="#FFFFFF" text-anchor="middle">Réserver une démo Agenda</text>
+  <text x="530" y="35" font-family="Inter" font-size="15" font-weight="700" fill="#FFFFFF" text-anchor="middle">Rejoindre Optibilan Agenda</text>
   <text x="510" y="35" font-size="14" fill="#FFFFFF" text-anchor="middle" dominant-baseline="middle">→</text>
   
   <rect x="760" y="600" width="180" height="56" rx="12" stroke="#2A8AFF" stroke-width="1.5" fill="transparent"/>

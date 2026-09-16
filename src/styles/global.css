@@ -1198,18 +1198,89 @@
     .text-craie\/80 { color: var(--color-heading-light); }
   }
 
-  @media (min-width: 641px) and (max-width: 1024px) {
-    .section { padding-top: 4rem; padding-bottom: 4rem; }
-    .section-lg { padding-top: 5rem; padding-bottom: 5rem; }
-    .container { padding-left: 2rem; padding-right: 2rem; }
-  }
-}
-
 @media (min-width: 641px) and (max-width: 1024px) {
   .section { padding-top: 4rem; padding-bottom: 4rem; }
   .section-lg { padding-top: 5rem; padding-bottom: 5rem; }
   .container { padding-left: 2rem; padding-right: 2rem; }
 }
 }
-@layer components {
+
+/* ===== SMALL BUTTONS (Site-wide) ===== */
+.btn-sm {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  height: 38px;
+  padding: 0 14px;
+  border-radius: 9px;
+  background-color: #FFFFFF;
+  border: 1px solid #D8E2DD;
+  color: #1A7A2E;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 150ms ease;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.btn-sm:hover {
+  background-color: #F0FDF4;
+  border-color: #1A7A2E;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(26, 122, 46, 0.15);
+}
+
+.btn-sm:hover .btn-sm-arrow {
+  transform: translateX(2px);
+}
+
+.btn-sm:active {
+  transform: scale(0.98);
+  transition: all 50ms ease;
+}
+
+.btn-sm:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--color-vert) 40%, transparent);
+}
+
+.btn-sm-arrow {
+  display: inline-block;
+  transition: transform 150ms ease;
+}
+
+.btn-sm-light {
+  background-color: #FFFFFF;
+  border: 1px solid #D8E2DD;
+  color: #1A7A2E;
+}
+
+.btn-sm-light:hover {
+  background-color: #F0FDF4;
+  border-color: #1A7A2E;
+}
+
+.btn-sm-dark {
+  background-color: #10221C;
+  border: 1px solid #D1D9D4;
+  color: #E5ECE8;
+}
+
+.btn-sm-dark:hover {
+  background-color: #1A2A22;
+  border-color: #1A7A2E;
+}
+
+@media (max-width: 640px) {
+  .btn-header-primary,
+  .btn-header-secondary {
+    padding: 0.5rem 0.875rem;
+    font-size: 0.8125rem;
+  }
+}
 }
