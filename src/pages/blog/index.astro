@@ -4,12 +4,11 @@ import Header from '@/components/Header.astro';
 import Footer from '@/components/Footer.astro';
 import Hero from '@/components/Hero.astro';
 import CTA from '@/components/CTA.astro';
-import TrustBar from '@/components/TrustBar.astro';
 import Icon from '@/components/Icon.astro';
 import { getAllPosts, getCategories, CATEGORY_MAP, type OptibilanArticle } from '@/utils/wordpress';
 
 const pageTitle = 'Blog - Optibilan';
-const pageDescription = 'Articles, guides et études de cas pour cabinets, studios et coachs indépendants : nutrition, sport, prépa mentale, santé connectée, croissance business.';
+const pageDescription = 'Articles, guides et études de cas pour cabinets, studios et coachs : coaching, santé, business.';
 
 const allPosts = await getAllPosts();
 const wpCategories = await getCategories();
@@ -29,7 +28,7 @@ const blogJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Blog',
   name: 'Blog Optibilan',
-  description: 'Articles, guides et études de cas pour cabinets, studios et coachs indépendants',
+  description: 'Articles, guides et études de cas pour cabinets, studios et coachs',
   url: 'https://optibilan.com/blog',
   blogPosts: articles.slice(0, 10).map(a => ({
     '@type': 'BlogPosting',
@@ -69,90 +68,27 @@ function formatDate(dateStr: string) {
 
   <main>
     <Hero
-      title="Ressources pour cabinets
-qui veulent grandir"
-      subtitle="Guides pratiques, études de cas, méthodes éprouvées. Écrit par des coachs, pour des coachs."
-      badge={allPosts.length > 0 ? `Propulsé par WordPress · ${allPosts.length} articles` : 'Nouveau : newsletter hebdo - 2 000+ abonnés'}
+      title="Notre blog"
+      subtitle="Guides pratiques, études de cas, méthodes éprouvées. Écrit par des pros, pour des pros."
     />
-
-    <TrustBar />
-
-    <section class="section bg-papier" aria-labelledby="categories-title">
-      <div class="container">
-        <header class="text-center max-w-3xl mx-auto mb-12">
-          <h2 id="categories-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">Explorer par catégorie</h2>
-          <p class="text-lg text-encre/60">Chaque catégorie regroupe des articles spécialisés pour votre pratique.</p>
-        </header>
-        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-          {categories.map(cat => (
-            <a href={`/blog/${cat.slug}`} class="card-hover group p-5 md:p-6 text-center" style="--pillar-color: var(--color-{cat.color})">
-              <div class="icon-wrapper mx-auto mb-4" aria-hidden="true" style="background-color: color-mix(in oklab, var(--color-{cat.color}) 15%, transparent);">
-                <Icon name={cat.icon} class="w-6 h-6" style="color: var(--color-{cat.color});" />
-              </div>
-              <h3 class="font-display text-lg font-bold text-encre mb-1">{cat.label}</h3>
-              <p class="text-sm text-encre/50">{cat.count > 0 ? `${cat.count} articles` : 'Articles'}</p>
-            </a>
-          ))}
-        </div>
-      </div>
-    </section>
-
-    <section class="section bg-gradient-to-br from-bleu-signature/5 via-papier to-bleu-lecture/5 rounded-card-lg relative overflow-hidden" aria-labelledby="lead-magnet-title">
-      <div class="absolute inset-0 bg-gradient-to-r from-bleu-signature/5 via-transparent to-bleu-lecture/5" aria-hidden="true"></div>
-      <div class="container relative">
-        <div class="grid md:grid-cols-2 gap-8 items-center py-12 md:py-16">
-          <div class="text-center md:text-left">
-            <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-bleu-clair text-bleu-lecture text-sm font-medium mb-4">
-              <Icon name="document" class="w-4 h-4" /> Lead Magnet
-            </span>
-            <h2 id="lead-magnet-title" class="font-display text-2xl md:text-3xl font-bold text-encre mb-4">
-              Le protocole d'onboarding parfait pour un accompagnement à +2000€
-            </h2>
-            <p class="text-encre/60 leading-relaxed mb-6 max-w-xl mx-auto md:mx-0">
-              Le guide PDF (28 pages) utilisé par 150+ cabinets pour structurer leur premier mois d'accompagnement : questionnaire lancement, bilan initial, fixation objectifs, contractualisation, mise en place outils. Téléchargement immédiat, sans engagement.
-            </p>
-            <div class="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">
-              <a href="/lead-magnet-onboarding" class="btn-demo w-full sm:w-auto" data-track="blog_lead_magnet">
-                Télécharger le guide gratuit
-                <Icon name="arrowRight" class="w-5 h-5" />
-              </a>
-              <a href="/newsletter" class="btn-secondary w-full sm:w-auto">
-                Ou s'abonner à la newsletter
-              </a>
-            </div>
-          </div>
-          <div class="hidden md:block relative">
-            <div class="aspect-[3/4] max-w-md mx-auto bg-encre/5 rounded-lg border border-encre/10 p-4 flex flex-col items-center justify-center relative">
-              <div class="absolute inset-0 grid grid-cols-4 gap-2 p-4 opacity-10" aria-hidden="true">
-                {[...Array(16)].map((_, i) => (
-                  <div key={i} class="col-span-1 h-6 bg-bleu-signature/20 rounded animate-pulse" style={{animationDelay: `${i * 80}ms`}} />
-                ))}
-              </div>
-              <Icon name="document" class="w-16 h-16 text-bleu-signature/30 relative z-10 mb-4" />
-              <p class="text-encre/40 text-sm text-center relative z-10">Guide PDF 28 pages - Aperçu</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
 
     <section class="section bg-blanc" aria-labelledby="articles-title">
       <div class="container">
         <header class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12">
           <div>
             <h2 id="articles-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-2">Derniers articles</h2>
-            <p class="text-encre/60">{allPosts.length} articles publiés - mis à jour chaque semaine</p>
+            <p class="text-encre/60">{allPosts.length} articles publiés</p>
           </div>
           <a href="/newsletter" class="btn-secondary self-start whitespace-nowrap">
-            <Icon name="mail" class="w-4 h-4" /> S'abonner à la newsletter
+            <Icon name="mail" class="w-4 h-4" /> Newsletter
           </a>
         </header>
 
         {articles.length === 0 ? (
           <div class="text-center py-16">
             <Icon name="document" class="w-16 h-16 text-encre/20 mx-auto mb-4" />
-            <h3 class="font-display text-xl font-bold text-encre mb-2">Aucun article pour cette page</h3>
-            <p class="text-encre/50">Revenez plus tard ou essayez une autre page.</p>
+            <h3 class="font-display text-xl font-bold text-encre mb-2">Aucun article pour l'instant</h3>
+            <p class="text-encre/50">Revenez plus tard.</p>
           </div>
         ) : (
           <>
@@ -209,21 +145,14 @@ qui veulent grandir"
               <CTA
                 variant="secondary"
                 title="Vous voulez plus de contenu ?"
-                subtitle="Recevez chaque mardi un article, une astuce ou un cas client directement dans votre boîte mail."
-                primaryCTA={{ href: '/newsletter', label: 'S\'abonner gratuitement' }}
+                subtitle="Recevez chaque mardi un article, une astuce ou un cas client."
+                primaryCTA={{ href: '/newsletter', label: "S'abonner" }}
               />
             </div>
           </>
         )}
       </div>
     </section>
-
-    <CTA
-      title="Vous avez un sujet à proposer ?"
-      subtitle="On cherche toujours des experts pour écrire : nutrition, sport, mental, santé, business. Contactez l'équipe éditoriale."
-      primaryCTA={{ href: '/contact', label: 'Proposer un article' }}
-      variant="gold"
-    />
   </main>
 
   <Footer />
