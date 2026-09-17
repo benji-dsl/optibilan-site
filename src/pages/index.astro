@@ -169,10 +169,7 @@ Depuis un seul endroit."
                 <p class="text-lg text-encre/60 mb-8 max-w-xl">
                   {mod.desc}
                 </p>
-                <a href={mod.href} class="btn-secondary group inline-flex items-center gap-2" data-track={`home_${mod.id}_cta`}>
-                  Découvrir {mod.title}
-                  <Icon name="arrowRight" class="w-4 h-4 transition-transform group-hover:translate-x-1" />
-                </a>
+                <DiscoverCTA href={mod.href} label={`Découvrir ${mod.title}`} icon="arrowRight" />
               </div>
               <div class="aspect-video max-w-2xl mx-auto rounded-xl border border-encre/10 bg-encre/5 overflow-hidden relative">
                 <div class="absolute inset-0 flex items-center justify-center" set:html={mod.screenshot} />

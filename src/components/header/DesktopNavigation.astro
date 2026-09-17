@@ -9,66 +9,72 @@ import Icon from '../Icon.astro';
       Produit
       <Icon name="chevronDown" class="w-4 h-4 transition-transform group-open:rotate-180" />
     </button>
-    <div class="absolute left-0 top-full mt-2 w-[560px] opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition-all duration-200 bg-blanc rounded-xl border border-encre/10 shadow-elevated p-4 z-50" role="menu" data-dropdown-menu>
-      <div class="grid grid-cols-2 lg:grid-cols-3 gap-4">
+    <div class="absolute left-0 top-full mt-2 w-[600px] opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition-all duration-200 bg-blanc rounded-xl border border-encre/10 shadow-elevated p-5 z-50" role="menu" data-dropdown-menu>
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Découvrir Optibilan -->
         <div class="lg:col-span-2">
-          <div class="px-2 py-1 font-semibold text-encre/50 uppercase tracking-wider text-xs">Découvrir Optibilan</div>
-          <a href="/product/overview" class="p-3 rounded-lg hover:bg-papier transition-colors" role="menuitem">
+          <div class="px-2 py-2 font-semibold text-encre/50 uppercase tracking-wider text-xs border-b border-encre/10 mb-2">Découvrir Optibilan</div>
+          <a href="/product/overview" class="block p-3 rounded-lg hover:bg-papier transition-colors" role="menuitem">
             <span class="block font-medium text-encre">Vue d'ensemble</span>
             <span class="block text-xs text-encre/50 mt-0.5">Plateforme complète de pilotage</span>
           </a>
         </div>
+        <!-- Accompagner -->
         <div>
-          <div class="px-2 py-1 font-semibold text-encre/50 uppercase tracking-wider text-xs">Accompagner</div>
-          <a href="/product/check-ins" class="p-3 rounded-lg hover:bg-papier transition-colors" role="menuitem">
+          <div class="px-2 py-2 font-semibold text-encre/50 uppercase tracking-wider text-xs border-b border-encre/10 mb-2">Accompagner</div>
+          <a href="/product/check-ins" class="block p-3 rounded-lg hover:bg-papier transition-colors" role="menuitem">
             <span class="block font-medium text-encre">Bilans & progression</span>
             <span class="block text-xs text-encre/50 mt-0.5">Suivi centralisé des accompagnements</span>
           </a>
-          <a href="/product/nutrition" class="p-3 rounded-lg hover:bg-papier transition-colors" role="menuitem">
+          <a href="/product/nutrition" class="block p-3 rounded-lg hover:bg-papier transition-colors" role="menuitem">
             <span class="block font-medium text-encre">Nutrition</span>
             <span class="block text-xs text-encre/50 mt-0.5">Plans, habitudes, compléments, listes de courses</span>
           </a>
-          <a href="/product/training" class="p-3 rounded-lg hover:bg-papier transition-colors" role="menuitem">
+          <a href="/product/training" class="block p-3 rounded-lg hover:bg-papier transition-colors" role="menuitem">
             <span class="block font-medium text-encre">Sport & programmes</span>
             <span class="block text-xs text-encre/50 mt-0.5">Bibliothèque, séances, progression</span>
           </a>
-          <a href="/product/mental" class="p-3 rounded-lg hover:bg-papier transition-colors" role="menuitem">
+          <a href="/product/mental" class="block p-3 rounded-lg hover:bg-papier transition-colors" role="menuitem">
             <span class="block font-medium text-encre">Préparation mentale</span>
             <span class="block text-xs text-encre/50 mt-0.5">Exercices, ressources, journal, adhérence</span>
           </a>
         </div>
+        <!-- Suivre -->
         <div>
-          <div class="px-2 py-1 font-semibold text-encre/50 uppercase tracking-wider text-xs">Suivre</div>
-          <a href="/product/health" class="p-3 rounded-lg hover:bg-papier transition-colors" role="menuitem">
+          <div class="px-2 py-2 font-semibold text-encre/50 uppercase tracking-wider text-xs border-b border-encre/10 mb-2">Suivre</div>
+          <a href="/product/health" class="block p-3 rounded-lg hover:bg-papier transition-colors" role="menuitem">
             <span class="block font-medium text-encre">Santé & biomarqueurs</span>
             <span class="block text-xs text-encre/50 mt-0.5">Biologie, wearables, tendances</span>
           </a>
-          <a href="/product/engagement" class="p-3 rounded-lg hover:bg-papier transition-colors" role="menuitem">
+          <a href="/product/engagement" class="block p-3 rounded-lg hover:bg-papier transition-colors" role="menuitem">
             <span class="block font-medium text-encre">Habitudes & engagement</span>
             <span class="block text-xs text-encre/50 mt-0.5">Objectifs, routines, rappels, progression</span>
           </a>
         </div>
-        <div class="lg:col-span-3">
-          <div class="px-2 py-1 font-semibold text-encre/50 uppercase tracking-wider text-xs">Dossier client</div>
-          <a href="/product/crm" class="p-3 rounded-lg hover:bg-papier transition-colors" role="menuitem">
+        <!-- Dossier client -->
+        <div class="lg:col-span-2">
+          <div class="px-2 py-2 font-semibold text-encre/50 uppercase tracking-wider text-xs border-b border-encre/10 mb-2">Dossier client</div>
+          <a href="/product/crm" class="block p-3 rounded-lg hover:bg-papier transition-colors" role="menuitem">
             <span class="block font-medium text-encre">Journal & CRM</span>
             <span class="block text-xs text-encre/50 mt-0.5">Entrées typées, pipeline, relances</span>
           </a>
         </div>
-        <div>
-          <div class="px-2 py-1 font-semibold text-encre/50 uppercase tracking-wider text-xs">Automatiser</div>
-          <a href="/product/ai" class="p-3 rounded-lg hover:bg-papier transition-colors" role="menuitem">
+        <!-- Automatiser -->
+        <div class="lg:col-span-2">
+          <div class="px-2 py-2 font-semibold text-encre/50 uppercase tracking-wider text-xs border-b border-encre/10 mb-2">Automatiser</div>
+          <a href="/product/ai" class="block p-3 rounded-lg hover:bg-papier transition-colors" role="menuitem">
             <span class="block font-medium text-encre">IA & Automatisations</span>
             <span class="block text-xs text-encre/50 mt-0.5">Structuration, synthèses, alertes</span>
           </a>
-          <a href="/product/integrations" class="p-3 rounded-lg hover:bg-papier transition-colors" role="menuitem">
+          <a href="/product/integrations" class="block p-3 rounded-lg hover:bg-papier transition-colors" role="menuitem">
             <span class="block font-medium text-encre">Intégrations & API</span>
             <span class="block text-xs text-encre/50 mt-0.5">Santé, agenda, connecteurs, OpenAPI</span>
           </a>
         </div>
-        <div>
-          <div class="px-2 py-1 font-semibold text-encre/50 uppercase tracking-wider text-xs">Personnaliser</div>
-          <a href="/product/white-label" class="p-3 rounded-lg hover:bg-papier transition-colors" role="menuitem">
+        <!-- Personnaliser -->
+        <div class="lg:col-span-4">
+          <div class="px-2 py-2 font-semibold text-encre/50 uppercase tracking-wider text-xs border-b border-encre/10 mb-2">Personnaliser</div>
+          <a href="/product/white-label" class="block p-3 rounded-lg hover:bg-papier transition-colors" role="menuitem">
             <span class="block font-medium text-encre">Marque blanche</span>
             <span class="block text-xs text-encre/50 mt-0.5">Logo, couleurs, domaine, emails</span>
           </a>
@@ -83,21 +89,21 @@ import Icon from '../Icon.astro';
       Solutions
       <Icon name="chevronDown" class="w-4 h-4 transition-transform group-open:rotate-180" />
     </button>
-    <div class="absolute left-0 top-full mt-2 w-[400px] opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition-all duration-200 bg-blanc rounded-xl border border-encre/10 shadow-elevated p-3 z-50" role="menu">
-      <div class="grid grid-cols-1 gap-1">
-        <a href="/solutions/coaches" class="p-3 rounded-lg hover:bg-papier transition-colors" role="menuitem">
+    <div class="absolute left-0 top-full mt-2 w-[360px] opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition-all duration-200 bg-blanc rounded-xl border border-encre/10 shadow-elevated p-4 z-50" role="menu">
+      <div class="space-y-1">
+        <a href="/solutions/coaches" class="block p-3 rounded-lg hover:bg-papier transition-colors" role="menuitem">
           <span class="block font-medium text-encre">Coach sportif</span>
           <span class="block text-xs text-encre/50 mt-0.5">Programmes, bilans, progression, adhérence</span>
         </a>
-        <a href="/solutions/nutrition" class="p-3 rounded-lg hover:bg-papier transition-colors" role="menuitem">
+        <a href="/solutions/nutrition" class="block p-3 rounded-lg hover:bg-papier transition-colors" role="menuitem">
           <span class="block font-medium text-encre">Nutritionniste / Diététicien</span>
           <span class="block text-xs text-encre/50 mt-0.5">Plans, habitudes, suivi, évolution, documents</span>
         </a>
-        <a href="/solutions/mental" class="p-3 rounded-lg hover:bg-papier transition-colors" role="menuitem">
+        <a href="/solutions/mental" class="block p-3 rounded-lg hover:bg-papier transition-colors" role="menuitem">
           <span class="block font-medium text-encre">Préparateur mental</span>
           <span class="block text-xs text-encre/50 mt-0.5">Exercices, ressources, journal, adhérence, permissions</span>
         </a>
-        <a href="/solutions/cabinets" class="p-3 rounded-lg hover:bg-papier transition-colors" role="menuitem">
+        <a href="/solutions/cabinets" class="block p-3 rounded-lg hover:bg-papier transition-colors" role="menuitem">
           <span class="block font-medium text-encre">Cabinet / Équipe</span>
           <span class="block text-xs text-encre/50 mt-0.5">Multi-praticiens, permissions, coordination, audit, marque blanche</span>
         </a>
@@ -126,11 +132,7 @@ import Icon from '../Icon.astro';
 </div>
 
 <script is:inline>
-  // Desktop dropdown handling
-  const dropdownTriggers = document.querySelectorAll('[data-dropdown-trigger]');
-  const dropdownMenus = document.querySelectorAll('[data-dropdown-menu]');
-  
-  // Close all dropdowns
+  // Desktop dropdown handling - close on escape/outside click only
   function closeAllDropdowns() {
     document.querySelectorAll('[data-dropdown-menu]').forEach(menu => {
       menu.classList.add('opacity-0', 'invisible');
@@ -141,44 +143,34 @@ import Icon from '../Icon.astro';
     });
   }
 
-  // Desktop dropdown click handling (not hover)
-  document.querySelectorAll('[data-dropdown]').forEach(dropdown => {
-    const trigger = dropdown.querySelector('[data-dropdown-trigger]');
-    const menu = dropdown.querySelector('[data-dropdown-menu]');
-    
-    if (!trigger || !menu) return;
-    
-    dropdown.addEventListener('click', (e) => {
-      e.stopPropagation();
-      closeAllDropdowns();
-      menu.classList.remove('opacity-0', 'invisible');
-      menu.classList.add('opacity-100', 'visible');
-      trigger.setAttribute('aria-expanded', 'true');
-    });
-    
-    // Close on escape
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        closeAllDropdowns();
-      }
-    });
-    
-    // Focus handling for accessibility
-    dropdown.querySelectorAll('a, button').forEach(el => {
-      el.addEventListener('focusin', () => {
-        closeAllDropdowns();
-        dropdown.querySelector('[data-dropdown-menu]')?.classList.remove('opacity-0', 'invisible');
-        dropdown.querySelector('[data-dropdown-menu]')?.classList.add('opacity-100', 'visible');
-        trigger?.setAttribute('aria-expanded', 'true');
-      });
-    });
+  // Close on escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeAllDropdowns();
   });
 
   // Close dropdowns when clicking outside
   document.addEventListener('click', (e) => {
-    if (!e.target.closest('[data-dropdown]')) {
-      closeAllDropdowns();
-    }
+    if (!e.target.closest('[data-dropdown]')) closeAllDropdowns();
+  });
+
+  // Update aria-expanded on hover/focus for accessibility
+  document.querySelectorAll('[data-dropdown]').forEach(dropdown => {
+    const trigger = dropdown.querySelector('[data-dropdown-trigger]');
+    const menu = dropdown.querySelector('[data-dropdown-menu]');
+    if (!trigger || !menu) return;
+
+    dropdown.addEventListener('mouseenter', () => {
+      trigger.setAttribute('aria-expanded', 'true');
+    });
+    dropdown.addEventListener('focusin', () => {
+      trigger.setAttribute('aria-expanded', 'true');
+    });
+    dropdown.addEventListener('mouseleave', () => {
+      if (!menu.matches(':hover')) trigger.setAttribute('aria-expanded', 'false');
+    });
+    dropdown.addEventListener('focusout', (e) => {
+      if (!dropdown.contains(e.relatedTarget)) trigger.setAttribute('aria-expanded', 'false');
+    });
   });
 </script>
 
@@ -192,8 +184,14 @@ import Icon from '../Icon.astro';
     z-index: 110;
   }
   
-  /* Dropdown menu animation */
+  /* Dropdown menu animation - smooth and performant */
   [data-dropdown-menu] {
-    transition: opacity 200ms ease, transform 200ms ease, visibility 200ms ease;
+    transition: opacity 150ms ease, transform 150ms ease, visibility 150ms ease;
+    transform: translateY(4px);
+  }
+  
+  [data-dropdown]:hover [data-dropdown-menu],
+  [data-dropdown]:focus-within [data-dropdown-menu] {
+    transform: translateY(0);
   }
 </style>
