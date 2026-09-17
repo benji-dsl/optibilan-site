@@ -1,0 +1,169 @@
+---
+interface Props {
+  currentPage: number;
+  totalPages: number;
+  baseUrl: string;
+  showFirstLast?: boolean;
+  maxVisible?: number;
+}
+
+const {
+  currentPage,
+  totalPages,
+  baseUrl,
+  showFirstLast = true,
+  maxVisible = 5,
+} = Astro.props;
+
+if (totalPages <= 1) {
+  // No pagination needed
+  return null;
+}
+
+const pages: (number | 'ellipsis')[] = [];
+
+if (totalPages <= maxVisible) {
+  for (let i = 1; i <= totalPages; i++) pages.push(i);
+} else {
+  const half = Math.floor(maxVisible / 2);
+  let start = Math.max(1, currentPage - half);
+  let end = Math.min(totalPages, start + maxVisible - 1);
+
+  if (end - start + 1 < maxVisible) {
+    start = Math.max(1, end - maxVisible + 1);
+  }
+
+  if (start > 1) {
+    if (showFirstLast) pages.push(1);
+    if (start > 2) pages.push('ellipsis');
+  }
+
+  for (let i = start; i <= end; i++) pages.push(i);
+
+  if (end < totalPages) {
+    if (end < totalPages - 1) pages.push('ellipsis');
+    if (showFirstLast) pages.push(totalPages);
+  }
+}
+
+const pageUrl = (page: number) => page === 1 ? baseUrl : `${baseUrl.replace(/\/+$/, '')}/page/${page}`;
+---
+
+<nav class="pagination" aria-label="Pagination" role="navigation">
+  <ul class="flex items-center justify-center gap-1.5 flex-wrap">
+    {showFirstLast && currentPage > 1 && (
+      <li>
+        <a href={baseUrl} class="pagination-btn" aria-label="Première page" rel="first">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 19l-7-7 7-7m8 14l-7-7 7-7" />
+          </svg>
+        </a>
+      </li>
+    )}
+
+    <li>
+      <a
+        href={currentPage > 1 ? pageUrl(currentPage - 1) : '#'}
+        class={`pagination-btn ${currentPage === 1 ? 'opacity-40 pointer-events-none' : ''}`}
+        aria-label="Page précédente"
+        rel={currentPage > 1 ? 'prev' : undefined}
+        aria-disabled={currentPage === 1}
+      >
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+      </a>
+    </li>
+
+    {pages.map((p) => (
+      <li>
+        {p === 'ellipsis' ? (
+          <span class="pagination-ellipsis" aria-hidden="true">…</span>
+        ) : (
+          <a
+            href={pageUrl(p)}
+            class={`pagination-btn ${p === currentPage ? 'active' : ''}`}
+            aria-label={`Page ${p}`}
+            aria-current={p === currentPage ? 'page' : undefined}
+          >
+            {p}
+          </a>
+        )}
+      </li>
+    ))}
+
+    <li>
+      <a
+        href={currentPage < totalPages ? pageUrl(currentPage + 1) : '#'}
+        class={`pagination-btn ${currentPage === totalPages ? 'opacity-40 pointer-events-none' : ''}`}
+        aria-label="Page suivante"
+        rel={currentPage < totalPages ? 'next' : undefined}
+        aria-disabled={currentPage === totalPages}
+      >
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </a>
+    </li>
+
+    {showFirstLast && currentPage < totalPages && (
+      <li>
+        <a href={pageUrl(totalPages)} class="pagination-btn" aria-label="Dernière page" rel="last">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M5 5l7 7-7 7" />
+          </svg>
+        </a>
+      </li>
+    )}
+
+    <li class="pagination-info" aria-live="polite">
+      <span class="text-sm text-encre/50">
+        Page {currentPage} / {totalPages}
+      </span>
+    </li>
+  </ul>
+</nav>
+
+<style is:global>
+  .pagination {
+    margin-top: 3rem;
+  }
+
+  .pagination ul {
+    display: flex; align-items: center; justify-content: center; gap: 0.375rem; flex-wrap: wrap;
+  }
+
+  .pagination-btn {
+    display: inline-flex; align-items: center; justify-content: center; min-width: 40px; height: 2.5rem; padding: 0 0.75rem; font-size: 0.875rem; font-weight: 500; border-radius: 0.5rem; transition: all 150ms;
+    background-color: var(--color-blanc); border: 1px solid color-mix(in oklab, var(--color-encre-texte) 20%, transparent); color: color-mix(in oklab, var(--color-encre-texte) 70%, transparent);
+    background-color: var(--color-encre); color: var(--color-craie); border-color: var(--color-encre);
+    outline: none; box-shadow: 0 0 0 2px var(--color-bleu-signature);
+  }
+
+  .pagination-btn.active {
+    background-color: var(--color-bleu-signature); border-color: var(--color-bleu-signature); color: white;
+    background-color: var(--color-bleu-lecture); border-color: var(--color-bleu-lecture);
+  }
+
+  .pagination-btn:disabled,
+  .pagination-btn[aria-disabled="true"] {
+    opacity: 0.4; pointer-events: none;
+  }
+
+  .pagination-ellipsis {
+    padding-left: 0.5rem; padding-right: 0.5rem; color: color-mix(in oklab, var(--color-encre-texte) 40%, transparent);
+  }
+
+  .pagination-info {
+    margin-left: 1rem; font-size: 0.875rem; color: color-mix(in oklab, var(--color-encre-texte) 50%, transparent);
+  }
+
+  @media (max-width: 640px) {
+    .pagination-info {
+      margin-left: 0; margin-top: 0.5rem; width: 100%; text-align: center;
+    }
+    .pagination-btn {
+      min-width: 36px; height: 2.25rem; padding-left: 0.5rem; padding-right: 0.5rem; font-size: 0.75rem;
+    }
+  }
+</style>
