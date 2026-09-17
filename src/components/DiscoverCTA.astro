@@ -4,28 +4,24 @@ import Icon from './Icon.astro';
 interface Props {
   href: string;
   label: string;
-  dark?: boolean;
+  variant?: 'primary' | 'secondary';
   icon?: 'arrowRight' | 'arrowDown' | 'sparkles' | 'chart' | 'document';
 }
 
 const {
   href,
   label,
-  dark = false,
+  variant = 'secondary',
   icon = 'arrowRight',
 } = Astro.props;
-
-const isDark = dark;
 ---
 
 <a 
   href={href}
-  class={`inline-flex items-center gap-7 text-sm font-semibold transition-all duration-160 hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-vert
-    ${dark 
-      ? 'text-white/90 hover:text-white' 
-      : 'text-[#1F493C] hover:text-[#1A6B2E]'}`}
-  style="padding: 8px 0;"
-  href={href}
+  class={`btn btn-sm-discover group inline-flex items-center gap-2 text-sm font-semibold transition-all duration-160 focus:outline-none focus:ring-2 focus:ring-offset-2
+    ${variant === 'primary'
+      ? 'bg-bleu-signature text-white hover:bg-bleu-lecture focus:ring-bleu-signature/40'
+      : 'bg-blanc text-encre border border-encre/20 hover:bg-encre hover:text-craie hover:border-encre focus:ring-encre/30'}`}
 >
   <span class="font-semibold">{label}</span>
   <Icon 
@@ -36,25 +32,30 @@ const isDark = dark;
 </a>
 
 <style is:global>
-  .btn-discover {
-    background: transparent;
-    border: none;
-    padding: 8px 0;
-    width: fit-content;
-    font-size: 14px;
-    font-weight: 600;
-    transition: all 160ms ease;
+  .btn-sm-discover {
     display: inline-flex;
     align-items: center;
-    gap: 7px;
-  }
-  
-  .btn-discover:hover {
+    justify-content: center;
+    gap: 0.5rem;
+    height: 38px;
+    padding: 0 14px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.25;
     text-decoration: none;
+    transition: all 150ms ease;
+    white-space: nowrap;
+    letter-spacing: 0.01em;
   }
   
-  .btn-discover:focus-visible {
+  .btn-sm-discover:focus-visible {
     outline: none;
-    box-shadow: 0 0 0 3px #1A7A2E66;
+    box-shadow: var(--focus-ring);
+  }
+  
+  .btn-sm-discover:active {
+    transform: scale(0.98);
+    transition: all 50ms ease;
   }
 </style>
