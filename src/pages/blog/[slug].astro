@@ -4,7 +4,7 @@ import Header from '@/components/Header.astro';
 import Footer from '@/components/Footer.astro';
 import CTA from '@/components/CTA.astro';
 import Icon from '@/components/Icon.astro';
-import { getAllPosts, type OptibilanArticle } from '@/utils/wordpress';
+import { getAllPosts, CATEGORY_MAP, type OptibilanArticle } from '@/utils/wordpress';
 
 export async function getStaticPaths() {
   const allPosts = await getAllPosts();
@@ -16,6 +16,11 @@ if (!slug || typeof slug !== 'string') throw new Error('Slug requis');
 
 const allPosts = await getAllPosts();
 const post = allPosts.find(p => p.slug === slug);
+
+const categoryLabels: Record<string, string> = {};
+for (const [slug, info] of Object.entries(CATEGORY_MAP)) {
+  categoryLabels[slug] = info.label;
+}
 
 if (!post) return Astro.redirect('/blog');
 
