@@ -1,0 +1,13 @@
+---
+import { getCategories, CATEGORY_MAP } from "@/utils/wordpress";
+
+export async function getStaticPaths() {
+  const categories = await getCategories();
+  return categories.map(cat => ({ params: { slug: cat.slug } }));
+}
+
+const { slug } = Astro.params;
+if (!slug || typeof slug !== "string") throw new Error("Slug requis");
+
+return Astro.redirect(`/blog/${slug}/1`);
+---
