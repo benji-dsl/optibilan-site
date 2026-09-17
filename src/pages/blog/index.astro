@@ -6,9 +6,25 @@ import Hero from '../../components/Hero.astro';
 import CTA from '../../components/CTA.astro';
 import TrustBar from '../../components/TrustBar.astro';
 import Icon from '../../components/Icon.astro';
+import { getAllPosts, getCategories, CATEGORY_MAP, type OptibilanArticle } from '../../utils/wordpress';
 
 const pageTitle = 'Blog - Optibilan';
 const pageDescription = 'Articles, guides et études de cas pour cabinets, studios et coachs indépendants : nutrition, sport, prépa mentale, santé connectée, croissance business.';
+
+const allPosts = await getAllPosts();
+const wpCategories = await getCategories();
+
+const categoryLabels: Record<string, string> = {};
+const categories = wpCategories.length > 0 ? wpCategories : Object.entries(CATEGORY_MAP).map(([slug, info]) => ({ slug, ...info, count: 0 }));
+
+for (const cat of categories) {
+  categoryLabels[cat.slug] = cat.label;
+}
+
+const articles: OptibilanArticle[] = allPosts.length > 0 ? allPosts : [
+  { slug: 'bilans-hebdo-automatises', title: 'Comment automatiser vos bilans hebdo et gagner 10h par semaine', excerpt: 'Découvrez comment les cabinets qui utilisent les bilans guidés Optibilan réduisent leur temps administratif de 75% tout en améliorant la qualité du suivi.', category: 'digitalisation', author: 'Marie Dubois', date: '2024-01-15', readTime: '8 min', featured: true },
+  { slug: 'cas-client-studio-performance', title: 'Cas client : Studio Performance Bordeaux — de 20 à 150 coachés en 8 mois', excerpt: 'Comment Thomas Bertrand a structuré son studio avec Optibilan : onboarding staff, automatisation bilans, marque blanche.', category: 'business', author: 'Équipe Optibilan', date: '2023-12-18', readTime: '9 min', featured: true },
+];
 
 const blogJsonLd = {
   '@context': 'https://schema.org',
@@ -16,170 +32,14 @@ const blogJsonLd = {
   name: 'Blog Optibilan',
   description: 'Articles, guides et études de cas pour cabinets, studios et coachs indépendants',
   url: 'https://optibilan.com/blog',
-  blogPosts: [
-    {
-      '@type': 'BlogPosting',
-      headline: 'Comment automatiser vos bilans hebdo et gagner 10h par semaine',
-      url: 'https://optibilan.com/blog/bilans-hebdo-automatises',
-      datePublished: '2024-01-15',
-      author: { '@type': 'Person', name: 'Marie Dubois' },
-    },
-    {
-      '@type': 'BlogPosting',
-      headline: 'Cas client : Studio Performance Bordeaux — de 20 à 150 coachés en 8 mois',
-      url: 'https://optibilan.com/blog/cas-client-studio-performance-bordeaux',
-      datePublished: '2024-01-22',
-      author: { '@type': 'Person', name: 'Thomas Martin' },
-    },
-    {
-      '@type': 'BlogPosting',
-      headline: 'Santé connectée : pourquoi la VFC change tout pour vos sportifs',
-      url: 'https://optibilan.com/blog/sante-connectee-vfc-sportifs',
-      datePublished: '2024-02-05',
-      author: { '@type': 'Person', name: 'Dr. Sophie Laurent' },
-    },
-    {
-      '@type': 'BlogPosting',
-      headline: 'Nutrition : créer un plan en 5 minutes avec les templates Optibilan',
-      url: 'https://optibilan.com/blog/nutrition-templates-5-minutes',
-      datePublished: '2024-02-12',
-      author: { '@type': 'Person', name: 'Julie Rousseau' },
-    },
-    {
-      '@type': 'BlogPosting',
-      headline: 'Prépa mentale : les 3 exercices qui boostent l\'adhérence à 80%+',
-      url: 'https://optibilan.com/blog/prepa-mentale-3-exercices-adherence',
-      datePublished: '2024-02-19',
-      author: { '@type': 'Person', name: 'Antoine Moreau' },
-    },
-    {
-      '@type': 'BlogPosting',
-      headline: 'Marque blanche : comment faire croire à vos clients que vous avez codé l\'app',
-      url: 'https://optibilan.com/blog/marque-blanche-cabinet-invisible',
-      datePublished: '2024-02-26',
-      author: { '@type': 'Person', name: 'Benjamin Sant' },
-    },
-    {
-      '@type': 'BlogPosting',
-      headline: 'RGPD & données de santé : le guide complet pour cabinets 2024',
-      url: 'https://optibilan.com/blog/rgpd-donnees-sante-cabinets-2024',
-      datePublished: '2024-03-04',
-      author: { '@type': 'Person', name: 'Léa Garnier' },
-    },
-    {
-      '@type': 'BlogPosting',
-      headline: 'IA dans le coaching : assistant, pas décideur — notre charte éthique',
-      url: 'https://optibilan.com/blog/ia-coaching-charte-ethique',
-      datePublished: '2024-03-11',
-      author: { '@type': 'Person', name: 'Benjamin Sant' },
-    },
-  ]
+  blogPosts: articles.slice(0, 10).map(a => ({
+    '@type': 'BlogPosting',
+    headline: a.title,
+    url: `https://optibilan.com/blog/${a.slug}`,
+    datePublished: a.date,
+    author: { '@type': 'Person', name: a.author },
+  })),
 };
-
-const categories = [
-  { slug: 'digitalisation', label: 'Digitalisation des cabinets', icon: 'chart', color: 'bleu-signature' },
-  { slug: 'performance', label: 'Optimisation de la performance', icon: 'zap', color: 'bleu-lecture' },
-  { slug: 'business', label: 'Business & Croissance', icon: 'users', color: 'bordeaux' },
-  { slug: 'sante-connectee', label: 'Santé connectée', icon: 'globe', color: 'bleu-ardoise' },
-  { slug: 'mental', label: 'Préparation mentale', icon: 'brain', color: 'indigo' },
-  { slug: 'nutrition', label: 'Nutrition', icon: 'document', color: 'bleu-clair' },
-];
-
-const articles = [
-  {
-    slug: 'bilans-hebdo-automatises',
-    title: 'Comment automatiser vos bilans hebdo et gagner 10h par semaine',
-    excerpt: 'Découvrez comment les cabinets qui utilisent les bilans guidés Optibilan réduisent leur temps administratif de 75% tout en améliorant la qualité du suivi.',
-    category: 'digitalisation',
-    author: 'Marie Dubois',
-    date: '2024-01-15',
-    readTime: '8 min',
-    featured: true,
-  },
-  {
-    slug: 'nutrition-personnalisee-echelle',
-    title: 'Nutrition personnalisée à grande échelle : la méthode des templates',
-    excerpt: 'Comment créer des plans nutritionnels individualisés pour 50+ coachés sans y passer vos soirées. La puissance des templates réutilisables.',
-    category: 'nutrition',
-    author: 'Thomas Bertrand',
-    date: '2024-01-10',
-    readTime: '6 min',
-    featured: false,
-  },
-  {
-    slug: 'prepa-mentale-difference',
-    title: 'Pourquoi la prépa mentale fait la différence sur la rétention à 6 mois',
-    excerpt: 'Étude sur 2000+ coachés : ceux qui ont un suivi prépa mentale restent engagés 40% plus longtemps. Les exercices transversaux qui fonctionnent.',
-    category: 'mental',
-    author: 'Sophie Martin',
-    date: '2024-01-05',
-    readTime: '7 min',
-    featured: false,
-  },
-  {
-    slug: 'sync-sante-biomarqueurs',
-    title: 'Synchroniser Apple Health, Oura et Garmin : guide complet',
-    excerpt: 'Configuration pas à pas de la sync santé via Raccourcis iOS ou n8n. 130+ biomarqueurs disponibles automatiquement dans le dossier coaché.',
-    category: 'sante-connectee',
-    author: 'Dr. Pierre Lambert',
-    date: '2024-01-02',
-    readTime: '10 min',
-    featured: false,
-  },
-  {
-    slug: 'marque-blanche-cabinet-pro',
-    title: 'Marque blanche totale : comment faire passer votre cabinet au niveau pro',
-    excerpt: 'Logo, couleurs, domaine, vocabulaire, emails : tout ce qu\'il faut configurer pour que vos clients ne voient que votre marque. Checklist complète.',
-    category: 'business',
-    author: 'Julie Moreau',
-    date: '2023-12-28',
-    readTime: '5 min',
-    featured: false,
-  },
-  {
-    slug: 'gamification-engagement',
-    title: 'Gamification : XP, badges et habitudes qui boostent l\'adhérence',
-    excerpt: 'Analyse des mécaniques qui fonctionnent vraiment : objectif ultime, dreamboard, observance compléments. +40% d\'adhérence sur les habitudes quotidiennes.',
-    category: 'performance',
-    author: 'Antoine Roux',
-    date: '2023-12-22',
-    readTime: '6 min',
-    featured: false,
-  },
-  {
-    slug: 'cas-client-studio-performance',
-    title: 'Cas client : Studio Performance Bordeaux - de 20 à 150 coachés en 8 mois',
-    excerpt: 'Comment Thomas Bertrand a structuré son studio avec Optibilan : onboarding staff, automatisation bilans, marque blanche. Le retour d\'expérience complet.',
-    category: 'business',
-    author: 'Équipe Optibilan',
-    date: '2023-12-18',
-    readTime: '9 min',
-    featured: true,
-  },
-  {
-    slug: 'api-webhooks-integration',
-    title: 'Intégrer Optibilan à votre stack via API et webhooks (n8n, Make, Zapier)',
-    excerpt: 'Exemples concrets : nouveau client → créer dossier Notion, bilan déposé → alerte Slack, paiement → email personnalisé. Clés API scopées, HMAC, idempotence.',
-    category: 'digitalisation',
-    author: 'Dev Team',
-    date: '2023-12-12',
-    readTime: '12 min',
-    featured: false,
-  },
-];
-
-const categoryLabels: Record<string, string> = {
-  digitalisation: 'Digitalisation des cabinets',
-  performance: 'Optimisation de la performance',
-  business: 'Business & Croissance',
-  'sante-connectee': 'Santé connectée',
-  mental: 'Préparation mentale',
-  nutrition: 'Nutrition & coaching',
-};
-
-function formatDate(dateStr: string) {
-  return new Date(dateStr).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
-}
 
 const breadcrumbJsonLd = {
   '@context': 'https://schema.org',
@@ -189,6 +49,14 @@ const breadcrumbJsonLd = {
     { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://optibilan.com/blog' },
   ],
 };
+
+function formatDate(dateStr: string) {
+  try {
+    return new Date(dateStr).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
+  } catch {
+    return dateStr;
+  }
+}
 ---
 
 <Layout
@@ -205,7 +73,7 @@ const breadcrumbJsonLd = {
       title="Ressources pour cabinets
 qui veulent grandir"
       subtitle="Guides pratiques, études de cas, méthodes éprouvées. Écrit par des coachs, pour des coachs."
-      badge="Nouveau : newsletter hebdo - 2 000+ abonnés"
+      badge={allPosts.length > 0 ? `Propulsé par WordPress · ${allPosts.length} articles` : 'Nouveau : newsletter hebdo - 2 000+ abonnés'}
     />
 
     <TrustBar />
@@ -223,7 +91,7 @@ qui veulent grandir"
                 <Icon name={cat.icon} class="w-6 h-6" style="color: var(--color-{cat.color});" />
               </div>
               <h3 class="font-display text-lg font-bold text-encre mb-1">{cat.label}</h3>
-              <p class="text-sm text-encre/50">Articles</p>
+              <p class="text-sm text-encre/50">{cat.count > 0 ? `${cat.count} articles` : 'Articles'}</p>
             </a>
           ))}
         </div>
@@ -298,9 +166,13 @@ qui veulent grandir"
                 <p class="text-encre/60 leading-relaxed mb-4 line-clamp-3">{article.excerpt}</p>
                 <div class="flex items-center justify-between pt-4 border-t border-encre/10">
                   <div class="flex items-center gap-2">
-                    <div class="w-8 h-8 rounded-full bg-gradient-to-br from-bleu-signature to-bleu-lecture flex items-center justify-center text-craie font-bold text-xs">
-                      {article.author.split(' ').map(n => n[0]).join('')}
-                    </div>
+                    {article.authorAvatar ? (
+                      <img src={article.authorAvatar} alt="" class="w-8 h-8 rounded-full" loading="lazy" />
+                    ) : (
+                      <div class="w-8 h-8 rounded-full bg-gradient-to-br from-bleu-signature to-bleu-lecture flex items-center justify-center text-craie font-bold text-xs">
+                        {article.author.split(' ').map(n => n[0]).join('')}
+                      </div>
+                    )}
                     <span class="text-sm font-medium text-encre/70">{article.author}</span>
                   </div>
                   <span class="text-xs text-encre/40 flex items-center gap-1">
@@ -310,6 +182,9 @@ qui veulent grandir"
               </div>
               {article.featured && (
                 <div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-bleu-signature to-indigo" aria-hidden="true"></div>
+              )}
+              {article.featuredImage && (
+                <div class="absolute top-0 left-0 right-0 h-48 bg-cover bg-center opacity-10" style={`background-image: url(${article.featuredImage})`} aria-hidden="true"></div>
               )}
             </article>
           ))}

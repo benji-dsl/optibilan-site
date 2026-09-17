@@ -11,14 +11,6 @@ import Icon from '../Icon.astro';
     </button>
     <div class="absolute left-0 top-full mt-2 w-[600px] opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition-all duration-200 bg-blanc rounded-xl border border-encre/10 shadow-elevated p-5 z-50" role="menu" data-dropdown-menu>
       <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
-        <!-- Découvrir Optibilan -->
-        <div class="lg:col-span-2">
-          <div class="px-2 py-2 font-semibold text-encre/50 uppercase tracking-wider text-xs border-b border-encre/10 mb-2">Découvrir Optibilan</div>
-          <a href="/product/overview" class="block p-3 rounded-lg hover:bg-papier transition-colors" role="menuitem">
-            <span class="block font-medium text-encre">Vue d'ensemble</span>
-            <span class="block text-xs text-encre/50 mt-0.5">Plateforme complète de pilotage</span>
-          </a>
-        </div>
         <!-- Accompagner -->
         <div>
           <div class="px-2 py-2 font-semibold text-encre/50 uppercase tracking-wider text-xs border-b border-encre/10 mb-2">Accompagner</div>
@@ -110,6 +102,11 @@ import Icon from '../Icon.astro';
       </div>
     </div>
   </div>
+
+  <!-- BLOG -->
+  <a href="/blog" class="px-3 py-2 text-sm font-medium text-encre/60 hover:text-encre rounded-lg transition-colors" aria-label="Blog Optibilan">
+    Blog
+  </a>
 
   <!-- CONTACT -->
   <a href="/contact" class="px-3 py-2 text-sm font-medium text-encre/60 hover:text-encre rounded-lg transition-colors" aria-label="Contact et support">

@@ -1,0 +1,219 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import CTA from '@/components/CTA.astro';
+import Icon from '@/components/Icon.astro';
+import { getAllPosts, type OptibilanArticle } from '@/utils/wordpress';
+
+export async function getStaticPaths() {
+  const allPosts = await getAllPosts();
+  return allPosts.map(p => ({ params: { slug: p.slug } }));
+}
+
+const { slug } = Astro.params;
+if (!slug || typeof slug !== 'string') throw new Error('Slug requis');
+
+const allPosts = await getAllPosts();
+const post = allPosts.find(p => p.slug === slug);
+
+if (!post) return Astro.redirect('/blog');
+
+const pageTitle = `${post.title} - Blog Optibilan`;
+const pageDescription = post.excerpt.length > 150 ? post.excerpt.substring(0, 147) + '...' : post.excerpt;
+
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Accueil', item: 'https://optibilan.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://optibilan.com/blog' },
+    { '@type': 'ListItem', position: 3, name: post.title, item: `https://optibilan.com/blog/${post.slug}` },
+  ],
+};
+
+const articleJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: post.title,
+  description: post.excerpt,
+  image: post.featuredImage || 'https://optibilan.com/og-blog.svg',
+  datePublished: post.date,
+  dateModified: post.date,
+  author: { '@type': 'Person', name: post.author },
+  publisher: { '@type': 'Organization', name: 'Optibilan', logo: { '@type': 'ImageObject', url: 'https://optibilan.com/icon-512.png' } },
+  mainEntityOfPage: { '@type': 'WebPage', '@id': `https://optibilan.com/blog/${post.slug}` },
+  articleSection: post.categoryLabel,
+  wordCount: Math.round(post.content.replace(/<[^>]+>/g, '').split(/\s+/).length),
+};
+
+function formatDate(dateStr: string) {
+  try { return new Date(dateStr).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' }); }
+  catch { return dateStr; }
+}
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  canonical={`/blog/${post.slug}`}
+  ogImage={post.featuredImage || '/og-blog.svg'}
+  jsonLd={[articleJsonLd, breadcrumbJsonLd]}
+>
+  <Header />
+
+  <main>
+    <article class="section bg-blanc">
+      <div class="container max-w-3xl">
+        <header class="mb-12 text-center">
+          <div class="flex items-center justify-center gap-2 mb-4">
+            <span class="inline-flex items-center gap-1 px-3 py-1 rounded-puce text-sm font-medium" style="color: var(--color-{post.category}); background-color: color-mix(in oklab, var(--color-{post.category}) 10%, transparent);">
+              {post.categoryLabel}
+            </span>
+            {post.featured && <span class="inline-flex items-center gap-1 px-3 py-1 rounded-puce text-sm font-medium bg-gold/20 text-gold">À la une</span>}
+          </div>
+          <h1 class="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-encre mb-6 leading-[1.1]">{post.title}</h1>
+          <div class="flex items-center justify-center gap-4 text-sm text-encre/60 mb-8 flex-wrap">
+            <div class="flex items-center gap-1.5">
+              {post.authorAvatar ? (
+                <img src={post.authorAvatar} alt="" class="w-8 h-8 rounded-full" loading="lazy" />
+              ) : (
+                <div class="w-8 h-8 rounded-full bg-gradient-to-br from-bleu-signature to-bleu-lecture flex items-center justify-center text-craie font-bold text-xs">
+                  {post.author.split(' ').map(n => n[0]).join('')}
+                </div>
+              )}
+              <span class="font-medium text-encre/70">{post.author}</span>
+            </div>
+            <time datetime={post.date} class="flex items-center gap-1">
+              <Icon name="calendar" class="w-3.5 h-3.5" />
+              {formatDate(post.date)}
+            </time>
+            <span class="flex items-center gap-1">
+              <Icon name="clock" class="w-3.5 h-3.5" />
+              {post.readTime}
+            </span>
+          </div>
+        </header>
+
+        {post.featuredImage && (
+          <div class="mb-12 relative aspect-video rounded-xl overflow-hidden">
+            <img src={post.featuredImage} alt={post.title} loading="eager" class="w-full h-full object-cover" />
+          </div>
+        )}
+
+        <div class="prose prose-lg prose-encre max-w-none" set:html={post.content} />
+
+        <hr class="my-12 border-encre/10" />
+
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-4 p-6 rounded-xl bg-papier/50 border border-encre/10">
+          <div class="flex items-center gap-3">
+            {post.authorAvatar ? (
+              <img src={post.authorAvatar} alt={post.author} class="w-10 h-10 rounded-full" loading="lazy" />
+            ) : (
+              <div class="w-10 h-10 rounded-full bg-gradient-to-br from-bleu-signature to-bleu-lecture flex items-center justify-center text-craie font-bold text-sm">
+                {post.author.split(' ').map(n => n[0]).join('')}
+              </div>
+            )}
+            <div>
+              <p class="font-medium text-encre">{post.author}</p>
+              <p class="text-xs text-encre/50">Expert Optibilan</p>
+            </div>
+          </div>
+          <a href="/newsletter" class="btn-secondary whitespace-nowrap">
+            <Icon name="mail" class="w-4 h-4" /> Newsletter
+          </a>
+        </div>
+
+        <div class="mt-12 pt-8 border-t border-encre/10">
+          <CTA
+            variant="secondary"
+            title="Vous avez aimé cet article ?"
+            subtitle="Recevez le prochain directement dans votre boîte mail — un mardi sur deux, zéro spam."
+            primaryCTA={{ href: '/newsletter', label: 'S\'abonner à la newsletter' }}
+          />
+        </div>
+
+        <div class="mt-10 grid md:grid-cols-2 gap-4">
+          <CTA
+            variant="gold"
+            title="Besoin d'aide pour l'implémenter ?"
+            subtitle="On vous accompagne : audit, onboarding staff, migration données."
+            primaryCTA={{ href: 'https://calendly.com/optibilan/demo', label: 'Réserver un appel' }}
+          />
+          <CTA
+            variant="secondary"
+            title="Proposer un sujet ?"
+            subtitle="Vous avez une expertise à partager : nutrition, sport, mental, business."
+            primaryCTA={{ href: '/contact', label: 'Contacter l\'équipe' }}
+          />
+        </div>
+      </div>
+    </article>
+
+    <section class="section bg-papier" aria-labelledby="related-title">
+      <div class="container">
+        <h2 id="related-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-8 text-center">Continuer la lecture</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {allPosts
+            .filter(p => p.slug !== post.slug && p.category === post.category)
+            .slice(0, 3)
+            .map(related => (
+              <article class="card-hover group overflow-hidden">
+                {related.featuredImage && (
+                  <div class="aspect-video relative overflow-hidden">
+                    <img src={related.featuredImage} alt={related.title} loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                  </div>
+                )}
+                <div class="p-6">
+                  <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-puce text-xs font-medium mb-2" style="color: var(--color-{related.category}); background-color: color-mix(in oklab, var(--color-{related.category}) 10%, transparent);">
+                    {categoryLabels[related.category] || related.category}
+                  </span>
+                  <h3 class="font-display text-lg font-bold text-encre mb-2 line-clamp-2 group-hover:text-bleu-signature transition-colors">
+                    <a href={`/blog/${related.slug}`}>{related.title}</a>
+                  </h3>
+                  <p class="text-encre/60 text-sm line-clamp-2">{related.excerpt}</p>
+                  <div class="flex items-center justify-between mt-4 pt-3 border-t border-encre/10">
+                    <time class="text-xs text-encre/40 flex items-center gap-1" datetime={related.date}>
+                      <Icon name="calendar" class="w-3 h-3" />
+                      {formatDate(related.date)}
+                    </time>
+                    <span class="text-xs text-encre/40 flex items-center gap-1">
+                      <Icon name="clock" class="w-3 h-3" />
+                      {related.readTime}
+                    </span>
+                  </div>
+                </div>
+              </article>
+            ))}
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style is:global>
+  .prose-encre {
+    color: var(--color-encre-texte);
+    line-height: 1.8;
+  }
+  .prose-encre h2 { font-family: var(--font-display); font-size: 1.875rem; font-weight: 700; color: var(--color-encre-texte); margin-top: 2.5rem; margin-bottom: 1rem; }
+  .prose-encre h3 { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; color: var(--color-encre-texte); margin-top: 2rem; margin-bottom: 0.75rem; }
+  .prose-encre p { margin-bottom: 1.25rem; }
+  .prose-encre ul, .prose-encre ol { margin-bottom: 1.25rem; padding-left: 1.5rem; }
+  .prose-encre li { margin-bottom: 0.5rem; }
+  .prose-encre a { color: var(--color-bleu-signature); text-decoration: underline; text-underline-offset: 2px; }
+  .prose-encre a:hover { color: var(--color-bleu-lecture); }
+  .prose-encre blockquote { border-left: 3px solid var(--color-bleu-signature); padding-left: 1rem; margin: 1.5rem 0; font-style: italic; color: var(--color-body-light); }
+  .prose-encre img { border-radius: var(--radius-card); margin: 1.5rem 0; }
+  .prose-encre strong { font-weight: 700; color: var(--color-encre-texte); }
+  .prose-encre code { background: var(--color-bleu-clair); padding: 0.125rem 0.375rem; border-radius: 4px; font-size: 0.9em; }
+  .prose-encre pre { background: var(--color-encre); color: var(--color-craie); padding: 1rem; border-radius: var(--radius-card); overflow-x: auto; margin: 1.5rem 0; }
+  .prose-encre pre code { background: none; padding: 0; color: inherit; font-size: inherit; }
+  .prose-encre table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; }
+  .prose-encre th, .prose-encre td { border: 1px solid var(--color-border); padding: 0.75rem; text-align: left; }
+  .prose-encre th { background: var(--color-bleu-clair); font-weight: 600; }
+  .line-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .prose-encre h2, .prose-encre h3 { scroll-margin-top: 6rem; }
+</style>
