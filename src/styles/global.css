@@ -353,19 +353,23 @@
     box-shadow: var(--focus-ring);
   }
 
-  /* Primary - Vert principal */
+  /* Primary - Dégradé bleu DA : #1466C4 → #433BFF, pill, texte blanc */
   .btn-primary {
-    background: var(--color-vert);
+    background-image: var(--gradient-btn-primary);
     color: #FFFFFF;
-    border-color: var(--color-vert);
-    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    border: none;
+    box-shadow:
+      0 1px 2px rgba(0,0,0,0.05),
+      inset 0 1px 0 rgba(255,255,255,0.2),
+      inset 0 -1px 0 rgba(0,0,0,0.1);
   }
 
   .btn-primary:hover {
-    background: color-mix(in oklab, var(--color-vert) 85%, white);
-    border-color: color-mix(in oklab, var(--color-vert) 85%, white);
     transform: translateY(-1px);
-    box-shadow: 0 4px 12px color-mix(in oklab, var(--color-vert) 30%, transparent);
+    box-shadow:
+      0 4px 12px color-mix(in oklab, var(--color-bleu-signature) 30%, transparent),
+      inset 0 1px 0 rgba(255,255,255,0.2),
+      inset 0 -1px 0 rgba(0,0,0,0.1);
   }
 
   .btn-primary:active {
@@ -375,7 +379,7 @@
 
   .btn-primary:focus-visible {
     outline: none;
-    box-shadow: 0 0 0 3px color-mix(in oklab, var(--color-vert) 40%, transparent);
+    box-shadow: 0 0 0 3px color-mix(in oklab, var(--color-bleu-signature) 40%, transparent);
   }
 
   /* Secondary - Fond clair, bordure encre, devient plein au hover */
@@ -479,9 +483,9 @@
     }
   }
 
-  /* Header button variants - Premium compact buttons */
+  /* Header button variants - Premium compact buttons (DA: bleu gradient primary) */
   .btn-header-primary {
-    background: var(--color-vert);
+    background-image: var(--gradient-btn-primary);
     color: #FFFFFF;
     padding: 0.625rem 1rem; /* 10px 16px -> ~40px height */
     font-size: 0.875rem; /* 14px */
@@ -496,13 +500,18 @@
     justify-content: center;
     gap: 0.5rem; /* 8px */
     gap: 0.5rem;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    box-shadow:
+      0 1px 2px rgba(0,0,0,0.05),
+      inset 0 1px 0 rgba(255,255,255,0.2),
+      inset 0 -1px 0 rgba(0,0,0,0.1);
   }
 
   .btn-header-primary:hover {
-    background: color-mix(in oklab, var(--color-vert) 85%, white);
     transform: translateY(-1px);
-    box-shadow: 0 4px 12px color-mix(in oklab, var(--color-vert) 30%, transparent);
+    box-shadow:
+      0 4px 12px color-mix(in oklab, var(--color-bleu-signature) 30%, transparent),
+      inset 0 1px 0 rgba(255,255,255,0.2),
+      inset 0 -1px 0 rgba(0,0,0,0.1);
   }
 
   .btn-header-primary:active {
@@ -512,7 +521,7 @@
 
   .btn-header-primary:focus-visible {
     outline: none;
-    box-shadow: 0 0 0 3px color-mix(in oklab, var(--color-vert) 40%, transparent);
+    box-shadow: 0 0 0 3px color-mix(in oklab, var(--color-bleu-signature) 40%, transparent);
   }
 
   .btn-header-secondary {

@@ -41,18 +41,11 @@ const variants = {
       {subtitle}
     </p>
     <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-      <a href={primaryCTA.href} class={
-        variant === 'primary' ? 'btn-primary text-lg px-8 py-4' :
-        variant === 'gold' ? 'btn-primary text-lg px-8 py-4' :
-        'bg-blanc text-encre hover:bg-encre/5 text-lg px-8 py-4 rounded-pill font-semibold transition-colors'
-      }>
+      <a href={primaryCTA.href} class="btn-primary text-lg px-8 py-4">
         {primaryCTA.label}
         <Icon name="arrowRight" class="w-5 h-5" />
       </a>
-      <a href={secondaryCTA.href} class={
-        variant !== 'minimal' ? 'btn-secondary text-lg px-8 py-4 border-craie/30 text-craie hover:bg-craie/10' :
-        'btn-secondary text-lg px-8 py-4'
-      }>
+      <a href={secondaryCTA.href} class="btn-secondary text-lg px-8 py-4">
         {secondaryCTA.label}
       </a>
     </div>
