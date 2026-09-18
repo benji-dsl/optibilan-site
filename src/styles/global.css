@@ -483,22 +483,21 @@
     }
   }
 
-  /* Header button variants - Premium compact buttons (DA: bleu gradient primary) */
+  /* Header button variants - DA: petits boutons unifiés 36-38px, radius 8px, 14px semi-bold */
   .btn-header-primary {
     background-image: var(--gradient-btn-primary);
     color: #FFFFFF;
-    padding: 0.625rem 1rem; /* 10px 16px -> ~40px height */
+    padding: 0.5rem 1rem; /* 8px 16px -> 36-38px height */
     font-size: 0.875rem; /* 14px */
     font-weight: 600;
-    border-radius: 0.625rem; /* 10px */
+    border-radius: 0.5rem; /* 8px */
     border: none;
     cursor: pointer;
     text-decoration: none;
-    transition: all 200ms ease;
+    transition: all 150ms ease;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 0.5rem; /* 8px */
     gap: 0.5rem;
     box-shadow:
       0 1px 2px rgba(0,0,0,0.05),
@@ -528,13 +527,13 @@
     background-color: var(--color-surface);
     border: 1px solid color-mix(in oklab, var(--color-encre-texte) 20%, transparent);
     color: var(--color-encre-texte);
-    padding: 0.5rem 1rem; /* 8px 16px */
+    padding: 0.5rem 1rem; /* 8px 16px -> 36-38px height */
     font-size: 0.875rem; /* 14px */
     font-weight: 600;
-    border-radius: 0.625rem; /* 10px */
+    border-radius: 0.5rem; /* 8px */
     cursor: pointer;
     text-decoration: none;
-    transition: all 200ms ease;
+    transition: all 150ms ease;
     display: inline-flex;
     align-items: center;
     justify-content: center;
