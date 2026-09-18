@@ -202,23 +202,31 @@ import '../styles/global.css';
       })}></script>
     )}
 
+    {GA4_ID !== 'G-XXXXXXXXXX' && (
+    <>
     <!-- Google Analytics 4 -->
     <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA4_ID}`}></script>
     <script is:inline>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', '{GA4_ID}', {
+      gtag('config', GA4_ID, {
         send_page_view: true,
         anonymize_ip: true,
       });
     </script>
+    </>
+    )}
 
+    {POSTHOG_KEY !== 'phc_XXXXXXXXXX' && (
+    <>
     <!-- PostHog -->
     <script is:inline>
       !function(){var t=document.createElement("script");t.async=!0,t.src="https://eu.i.posthog.com/static/array.js",document.head.appendChild(t)}();
-      window.posthog=window.posthog||[];window.posthog.push(["init","{POSTHOG_KEY}",{api_host:"https://eu.i.posthog.com",capture_pageview:true,capture_pageleave:true,persist:true,disable_session_recording:false,property_allowlist:["$current_url","$host","$pathname","$referrer","$browser","$os","$device_type"]}]);
+      window.posthog=window.posthog||[];window.posthog.push(["init",POSTHOG_KEY,{api_host:"https://eu.i.posthog.com",capture_pageview:true,capture_pageleave:true,persist:true,disable_session_recording:false,property_allowlist:["$current_url","$host","$pathname","$referrer","$browser","$os","$device_type"]}]);
     </script>
+    </>
+    )}
 
     <script is:inline>
       if ('serviceWorker' in navigator) {

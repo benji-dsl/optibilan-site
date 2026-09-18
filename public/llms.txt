@@ -1,0 +1,32 @@
+# Optibilan - Plateforme de pilotage des accompagnements santé & performance
+
+## Offre
+Optibilan est une plateforme SaaS multi-tenant (B2B2C) de coaching santé/performance pour les professionnels : coachs sportifs, nutritionnistes, préparateurs mentaux, cabinets de santé.
+
+**Modules :**
+- Bilans & progression : bilans hebdo, mensurations, photos, biomarqueurs, score longévité
+- Nutrition : plans, habitudes, compléments, courses, évolution
+- Sport & programmes : bibliothèque 200+ exercices, séances validées, progression charge/volume/RPE
+- Santé connectée : Apple Health, Oura, Garmin, 130+ biomarqueurs
+- Préparation mentale : exercices, ressources, journal, adhérence
+- Engagement : gamification (XP, badges), objectifs, jalons, rappels
+- CRM & journal : entrées typées, pipeline, relances
+- Agenda & appels : cadence auto, rappels Slack/email/push, calendrier ICS
+- IA & automatisations : structuration docs, synthèses bilans, alertes
+- Marque blanche : logo, couleurs, domaine, vocabulaire, emails
+- Intégrations & API : REST v1, OpenAPI, webhooks signés, sync santé
+
+**Offres :** Trial 30j gratuit, Solo 39€/mois, Studio 119€/mois, Cabinet 279€/mois
+**Hébergement :** Supabase (Irlande) + VPS Hostinger (France) + Cloudflare CDN
+**Conformité :** RGPD, 2FA, CSP stricte, audit trail, export RGPD, purge paramétrable
+
+## Équipe
+- Benjamin Sant - Fondateur & CEO
+- Équipe produit & technique (5 personnes)
+
+## Contact
+- Site : https://optibilan.com
+- Email : contact@optibilan.com
+- Démo : https://calendly.com/optibilan/demo
+- GitHub : https://github.com/optibilan
+- LinkedIn : https://linkedin.com/company/optibilan

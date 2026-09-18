@@ -1,0 +1,97 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+
+const pageTitle = 'Cookies - Optibilan';
+const pageDescription = 'Gestion des cookies et traceurs sur Optibilan : cookies nécessaires, analytiques, préférences.';
+
+const cookies = [
+  {
+    name: 'optibilan_session',
+    category: 'Nécessaire',
+    duration: '30 jours',
+    description: 'Session JWT pour l\'authentification utilisateur. Nécessaire pour maintenir la session connectée.',
+  },
+  {
+    name: 'optibilan_2fa_pending',
+    category: 'Nécessaire',
+    duration: '5 minutes',
+    description: 'Stockage temporaire de l\'étape 2FA en cours de validation.',
+  },
+  {
+    name: 'vocab',
+    category: 'Nécessaire',
+    duration: '30 jours',
+    description: 'Vocabulaire personnalisé du cabinet (coaché/patient/membre) pour l\'interface.',
+  },
+  {
+    name: '_ga* / _gid / _gat',
+    category: 'Analytique',
+    duration: '13 mois / 24h / 1min',
+    description: 'Google Analytics 4 - Mesure d\'audience anonymisée (IP masquée). Consentement requis.',
+  },
+  {
+    name: 'plausible_*',
+    category: 'Analytique',
+    duration: '13 mois',
+    description: 'Plausible Analytics - Alternative légère à GA4, respectueuse de la vie privée.',
+  },
+];
+
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  canonical="/legal/cookies"
+  ogImage="/og-legal.svg"
+>
+  <Header />
+
+  <main>
+    <section class="section-lg bg-papier" aria-labelledby="cookies-title">
+      <div class="container max-w-3xl">
+        <header class="mb-12 text-center">
+          <h1 id="cookies-title" class="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-encre mb-4">
+            Cookies & traceurs
+          </h1>
+          <p class="text-lg text-encre/60 max-w-2xl mx-auto">
+            Optibilan n\'utilise que des cookies strictement nécessaires au fonctionnement du service,
+            et, avec votre consentement, des cookies d\'analyse anonymisés. Aucun cookie publicitaire tiers.
+          </p>
+        </header>
+
+        <div class="space-y-6">
+          {cookies.map((cookie) => (
+            <article class="p-6 md:p-6 bg-blanc rounded-xl border border-encre/10 hover:border-bleu-signature/30 transition-colors">
+              <header class="flex flex-wrap items-start justify-between gap-4 mb-3">
+                <div>
+                  <code class="bg-encre/5 px-2.5 py-0.5 rounded font-mono text-sm font-medium text-encre mb-2 inline-block">{cookie.name}</code>
+                  <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-puce text-xs font-medium"
+                    style={`background-color: ${cookie.category === 'Nécessaire' ? 'var(--color-bleu-signature)' : cookie.category === 'Analytique' ? 'var(--color-vert)' : 'var(--color-bleu-ardoise)'}15; color: ${cookie.category === 'Nécessaire' ? 'var(--color-bleu-signature)' : cookie.category === 'Analytique' ? 'var(--color-vert)' : 'var(--color-bleu-ardoise)'}`}>
+                    {cookie.category}
+                  </span>
+                </div>
+                <time class="text-xs text-encre/40 whitespace-nowrap" datetime={cookie.duration}>{cookie.duration}</time>
+              </header>
+              <p class="text-encre/70 text-sm leading-relaxed">{cookie.description}</p>
+            </article>
+          ))}
+        </div>
+
+        <div class="mt-12 p-6 rounded-xl bg-gradient-to-br from-bleu-signature/5 via-papier to-bleu-lecture/5 rounded-card-lg">
+          <h2 class="font-display text-xl font-bold text-encre mb-3">Vos droits</h2>
+          <p class="text-encre/60 mb-4">Conformément au RGPD, vous disposez d\'un droit d\'accès, de rectification, d\'effacement, de limitation, de portabilité et d\'opposition au traitement de vos données.</p>
+          <ul class="space-y-2 text-encre/60 text-sm">
+            <li>Gérez vos préférences via le bandeau « Cookies » en bas de page.</li>
+            <li>Supprimez les cookies via les paramètres de votre navigateur.</li>
+            <li>Exercez vos droits RGPD via <a href="/legal/confidentialite" class="text-bleu-signature hover:underline">la politique de confidentialité</a> ou l\'admin (Mon compte → Mes données).</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
