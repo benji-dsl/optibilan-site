@@ -1,6 +1,8 @@
 @import "tailwindcss";
 
 @theme {
+  --force-hash-change: v3;
+  --cache-bust: v2;
   /* === DA OPTIBILAN === */
 
   /* FONDS DA */
@@ -24,7 +26,7 @@
   --color-craie: #F1EADD;
 
   /* ACCENTS DA */
-  --color-bleu-signature: #2A8AFF;
+  --color-bleu-signature: #2A8BFF; /* v3 */
   --color-bleu-lecture: #1466C4;
   --color-indigo: #433BFF;
   --color-saumon: #E88690;
