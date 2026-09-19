@@ -3,8 +3,6 @@ import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import Hero from '../../components/Hero.astro';
-import CTA from '../../components/CTA.astro';
-import DiscoverCTA from '../../components/DiscoverCTA.astro';
 import Icon from '../../components/Icon.astro';
 
 const pageTitle = 'Tarifs - Optibilan';
@@ -78,7 +76,7 @@ const breadcrumbJsonLd = {
     <Hero
       title="Tarification simple,
 transparente, évolutive"
-      subtitle="Quatre offres qui couvrent tous les besoins. Changez quand vous voulez. 30 jours gratuits, sans carte bancaire."
+      subtitle="Quatre offres qui couvrent tous les besoins. Changez quand vous voulez. 30 jours gratuits."
     />
 
     <section class="section bg-blanc" aria-labelledby="plans-title">
@@ -116,13 +114,13 @@ transparente, évolutive"
 
               <p class="text-encre/60 text-sm mb-8 leading-relaxed">{plan.promise}</p>
 
-              <DiscoverCTA
+              <a
                 href="https://calendly.com/optibilan/demo"
-                label={plan.cta}
-                variant="primary"
-                icon="arrowRight"
-                class="w-full"
-              />
+                class="btn-primary w-full group text-center py-4 px-6 text-lg font-semibold transition-all duration-200"
+              >
+                {plan.cta}
+                <Icon name="arrowRight" class="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1 inline-block" />
+              </a>
             </article>
           ))}
         </div>
@@ -199,12 +197,6 @@ transparente, évolutive"
         </dl>
       </div>
     </section>
-
-    <CTA
-      variant="primary"
-      title="Prêt à démarrer ?"
-      subtitle="30 jours pour tester, zéro risque, annulation en 1 clic."
-    />
   </main>
 
   <Footer />
