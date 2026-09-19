@@ -1,0 +1,234 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import Hero from '../../components/Hero.astro';
+import CTA from '../../components/CTA.astro';
+import DiscoverCTA from '../../components/DiscoverCTA.astro';
+import Icon from '../../components/Icon.astro';
+
+const pageTitle = 'Tarifs - Optibilan';
+const pageDescription = 'Tarification simple et transparente : Solo 49€, Studio 99€, Cabinet 199€. 2 mois offerts en annuel. Essai gratuit 30 jours.';
+
+const plans = [
+  {
+    name: 'Solo',
+    monthly: 49,
+    yearly: 490,
+    quotas: '30 clients · 2 accès · 1500 messages IA',
+    promise: 'Pour le praticien ou le coach indépendant qui veut arrêter les tableurs.',
+    featured: false,
+    cta: 'Rejoindre Optibilan',
+  },
+  {
+    name: 'Studio',
+    monthly: 99,
+    yearly: 990,
+    quotas: '100 clients · 6 accès · 5000 messages IA',
+    promise: 'Pour l\'équipe : praticien, diététicien, préparateur mental.',
+    featured: true,
+    cta: 'Rejoindre Optibilan',
+  },
+  {
+    name: 'Cabinet',
+    monthly: 199,
+    yearly: 1990,
+    quotas: 'Clients illimités · Accès illimités · 15000 messages IA',
+    promise: 'Pour les cabinets et structures qui branchent leur écosystème.',
+    featured: false,
+    cta: 'Rejoindre Optibilan',
+  },
+];
+
+const enterprisePlan = {
+  name: 'Entreprise',
+  description: 'Sur mesure',
+  features: [
+    'Volume et besoins spécifiques',
+    'Intégrations dédiées (SSO, SAML, API custom)',
+    'Accompagnement onboarding équipe',
+    'SLA garanti, support prioritaire',
+    'Hébergement dédié possible',
+    'Contrat cadre et facturation adaptée',
+  ],
+  cta: 'Nous contacter',
+  href: '/contact',
+};
+
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Accueil', item: 'https://optibilan.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Tarifs', item: 'https://optibilan.com/tarifs' },
+  ],
+};
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  canonical="/tarifs"
+  ogImage="/og-pricing.svg"
+  jsonLd={breadcrumbJsonLd}
+>
+  <Header />
+
+  <main>
+    <Hero
+      title="Tarification simple,
+transparente, évolutive"
+      subtitle="Quatre offres qui couvrent tous les besoins. Changez quand vous voulez. 30 jours gratuits, sans carte bancaire."
+      badge="2 mois offerts en annuel"
+    />
+
+    <section class="section bg-blanc" aria-labelledby="plans-title">
+      <div class="container">
+        <header class="text-center max-w-3xl mx-auto mb-16">
+          <h2 id="plans-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+            Choisissez l'offre qui vous correspond
+          </h2>
+          <p class="text-lg text-encre/60">
+            Tout est inclus dans chaque offre. Seules les limites changent.
+          </p>
+        </header>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          {plans.map((plan, i) => (
+            <article class={`relative p-6 md:p-8 rounded-xl border transition-all duration-300 ${plan.featured ? 'ring-2 ring-bleu-signature bg-gradient-to-br from-bleu-signature/5 via-blanc to-bleu-lecture/5' : 'bg-blanc border-encre/10 hover:border-bleu-signature/30 hover:shadow-soft'}`}>
+              {plan.featured && (
+                <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-bleu-signature text-craie text-xs font-semibold rounded-full">
+                  Le plus choisi
+                </div>
+              )}
+              <header class="mb-6">
+                <h3 class="font-display text-2xl font-bold text-encre mb-2">{plan.name}</h3>
+                <div class="flex items-baseline gap-4 mb-2">
+                  <span class="font-display text-4xl font-bold text-encre">{plan.monthly} €</span>
+                  <span class="text-encre/50">/mois</span>
+                </div>
+                <p class="text-sm text-bleu-signature font-medium">Soit {plan.yearly} €/an <span class="font-bold">(2 mois offerts)</span></p>
+              </header>
+
+              <div class="mb-6 p-4 rounded-lg bg-papier/50 border border-encre/10">
+                <p class="text-sm text-encre/70 font-medium mb-2">Quotas inclus</p>
+                <p class="text-sm text-encre/60">{plan.quotas}</p>
+              </div>
+
+              <p class="text-encre/60 text-sm mb-8 leading-relaxed">{plan.promise}</p>
+
+              <DiscoverCTA
+                href="https://calendly.com/optibilan/demo"
+                label={plan.cta}
+                variant="primary"
+                icon="arrowRight"
+                class="w-full"
+              />
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-papier" aria-labelledby="enterprise-title">
+      <div class="container">
+        <header class="text-center max-w-3xl mx-auto mb-12">
+          <h2 id="enterprise-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+            Besoin de plus ? <span class="text-bleu-signature">Entreprise</span>
+          </h2>
+          <p class="text-lg text-encre/60">
+            Volume important, contraintes réglementaires, intégrations complexes. On construit ensemble.
+          </p>
+        </header>
+
+        <article class="max-w-3xl mx-auto p-8 md:p-12 rounded-xl bg-blanc border border-encre/10 shadow-soft">
+          <div class="flex items-center justify-between mb-8">
+            <div>
+              <h3 class="font-display text-3xl font-bold text-encre mb-2">{enterprisePlan.name}</h3>
+              <p class="text-bleu-signature font-semibold text-lg">{enterprisePlan.description}</p>
+            </div>
+            <div class="w-20 h-20 rounded-full bg-gradient-to-br from-bleu-signature to-bleu-lecture flex items-center justify-center text-craie font-display font-bold text-3xl">
+              ∞
+            </div>
+          </div>
+
+          <ul class="grid md:grid-cols-2 gap-4 mb-8">
+            {enterprisePlan.features.map(feature => (
+              <li class="flex items-center gap-3">
+                <Icon name="check" class="w-5 h-5 text-emerald-500 flex-shrink-0" />
+                <span class="text-encre/70">{feature}</span>
+              </li>
+            ))}
+          </ul>
+
+          <div class="text-center pt-8 border-t border-encre/10">
+            <a href={enterprisePlan.href} class="btn-secondary group inline-flex items-center gap-2">
+              {enterprisePlan.cta}
+              <Icon name="arrowRight" class="w-5 h-5 transition-transform group-hover:translate-x-1" />
+            </a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section bg-blanc" aria-labelledby="faq-title">
+      <div class="container max-w-3xl">
+        <header class="text-center mb-16">
+          <h2 id="faq-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+            Questions fréquentes
+          </h2>
+        </header>
+
+        <dl class="space-y-4" style="max-width: 48rem; margin: 0 auto;">
+          {[
+            { q: 'Puis-je changer d\'offre en cours de mois ?', a: 'Oui. Le changement prend effet immédiatement. Le prorata est calculé automatiquement sur votre prochaine facture.' },
+            { q: 'Y a-t-il un engagement ?', a: 'Non. Résiliation en 1 clic depuis l\'admin. L\'accès reste actif jusqu\'à la fin de la période payée.' },
+            { q: 'Que se passe-t-il à la fin de l\'essai de 30 jours ?', a: 'Votre espace passe en lecture seule (consultation possible, création bloquée). Vous avez 7 jours de grâce pour choisir une offre sans perdre l\'accès staff.' },
+            { q: 'La marque blanche est-elle incluse ?', a: 'Solo : basique (logo, couleurs). Studio : avancée (logo, couleurs, assistant, vocabulaire, domaine). Cabinet : totale (domaine, emails @votrecabinet.fr, mentions, CGV, assistant IA nommé).' },
+            { q: 'Mes données sont-elles hébergées en France ?', a: 'La base PostgreSQL est sur Supabase (EU West, Irlande), le VPS sur Hostinger (France), backups chiffrés en EU. Aucune donnée ne sort de l\'UE. Certifications : SOC 2 Type II, ISO 27001, HIPAA, RGPD.' },
+            { q: 'Comment fonctionne l\'export RGPD ?', a: 'Admin → Export : JSON complet de TOUTES les données du cabinet (37 modèles Prisma) en 1 clic. Purge auto paramétrable (défaut 3 ans). Droit à l\'oubli : suppression client en cascade par admin.' },
+            { q: 'Y a-t-il des frais cachés ?', a: 'Non. Le prix affiché = prix payé. Seule la TVA s\'ajoute pour les assujettis (20% France). Stripe prend sa commission (1,4% + 0,25€ EU) sur les paiements clients si vous activez le paiement intégré.' },
+          ].map((faq, i) => (
+            <div key={i} class="border border-encre/10 rounded-xl overflow-hidden">
+              <dt class="px-6 py-4 bg-blanc font-medium text-encre cursor-pointer flex items-center justify-between" aria-expanded="false" aria-controls={`faq-answer-${i}`}>
+                {faq.q}
+                <svg class="w-5 h-5 text-encre/40 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+              </dt>
+              <dd id={`faq-answer-${i}`} class="px-6 pb-4 text-encre/60 hidden">{faq.a}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    </section>
+
+    <CTA
+      variant="primary"
+      title="Prêt à démarrer ?"
+      subtitle="30 jours pour tester, zéro risque, annulation en 1 clic."
+    />
+  </main>
+
+  <Footer />
+</Layout>
+
+<script is:inline>
+  document.querySelectorAll('dl dt').forEach(dt => {
+    dt.addEventListener('click', () => {
+      const dd = dt.nextElementSibling;
+      const svg = dt.querySelector('svg');
+      const expanded = dt.getAttribute('aria-expanded') === 'true';
+      dt.setAttribute('aria-expanded', String(!expanded));
+      dd?.classList.toggle('hidden');
+      if (svg) {
+        svg.style.transform = expanded ? 'rotate(0deg)' : 'rotate(180deg)';
+      }
+    });
+  });
+</script>
+
+<style is:global>
+  @media (max-width: 640px) {
+    .section { padding-top: 3rem; padding-bottom: 3rem; }
+    .container { padding-left: 1rem; padding-right: 1rem; }
+  }
+</style>
