@@ -2,7 +2,6 @@
 import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
-import Hero from '../../components/Hero.astro';
 
 const pageTitle = 'Mentions légales - Optibilan';
 const pageDescription = 'Mentions légales d\'Optibilan : éditeur, hébergeur, directeur de publication, propriété intellectuelle, contact, RGPD.';
@@ -18,39 +17,23 @@ const lastUpdated = new Date().toLocaleDateString('fr-FR', { day: 'numeric', mon
   <Header />
 
   <main>
-    <Hero
-      title="Mentions légales"
-      subtitle="Informations légales relatives à l'éditeur, l'hébergement et l'exploitation du site optibilan.com et de l'application app.optibilan.com."
-      variant="minimal"
-    />
-
     <section class="section bg-blanc" aria-labelledby="legal-content">
       <div class="container max-w-3xl">
-        <div class="mb-8 p-4 bg-amber-50 border border-amber-200 rounded-lg" role="alert">
-          <p class="text-sm text-amber-800">
-            <strong>⚠ Attention :</strong> Cette page contient des données d'exemple (SIREN, adresse, etc.) qui doivent être remplacées par les vraies informations juridiques d'Optibilan avant la mise en production.
-          </p>
-        </div>
-        <article class="prose max-w-none" id="legal-content">
-          <div class="mb-8 p-4 bg-papier rounded-card border border-encre/10">
-            <p class="text-sm text-encre/60">
-              <strong>Dernière mise à jour :</strong> {lastUpdated} - Version 2.0
-            </p>
-          </div>
+        <header class="mb-12 pb-8 border-b border-encre/10">
+          <h1 id="legal-content" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">Mentions légales</h1>
+          <p class="text-sm text-encre/60"><strong>Dernière mise à jour :</strong> {lastUpdated} - Version 2.0</p>
+        </header>
+        <article class="prose max-w-none">
 
           <h2 class="font-display text-2xl font-bold text-encre mb-4 pb-2 border-b border-encre/10">1. Éditeur</h2>
-          <p class="text-encre/70 mb-4"><strong>Optibilan</strong> - Marque exploitée par Benjamin Sant, entrepreneur individuel.</p>
+          <p class="text-encre/70 mb-4"><strong>Optibilan</strong> - Marque exploitée par Elite Longevity LLC.</p>
           <dl class="space-y-2 mb-8 text-encre/70">
-            <div class="flex gap-4"><dt class="font-medium text-encre min-w-[180px]">SIREN :</dt><dd class="font-mono">987 654 321</dd></div>
-            <div class="flex gap-4"><dt class="font-medium text-encre min-w-[180px]">SIRET :</dt><dd class="font-mono">987 654 321 00012</dd></div>
-            <div class="flex gap-4"><dt class="font-medium text-encre min-w-[180px]">Code APE :</dt><dd>6201Z (Programmation informatique)</dd></div>
-            <div class="flex gap-4"><dt class="font-medium text-encre min-w-[180px]">TVA intracommunautaire :</dt><dd class="font-mono">FR12 987654321</dd></div>
-            <div class="flex gap-4"><dt class="font-medium text-encre min-w-[180px]">Adresse :</dt><dd>123 Rue de la Santé, 75000 Paris, France</dd></div>
+            <div class="flex gap-4"><dt class="font-medium text-encre min-w-[180px]">Adresse :</dt><dd>Wyoming, USA</dd></div>
             <div class="flex gap-4"><dt class="font-medium text-encre min-w-[180px]">Email légal :</dt><dd><a href="mailto:legal@optibilan.com" class="text-bleu-signature hover:underline">legal@optibilan.com</a></dd></div>
           </dl>
 
           <h2 class="font-display text-2xl font-bold text-encre mb-4 pb-2 border-b border-encre/10">2. Directeur de la publication</h2>
-          <p class="text-encre/70 mb-8">Benjamin Sant, en sa qualité de représentant légal d'Optibilan.</p>
+          <p class="text-encre/70 mb-8">Elite Longevity LLC, en sa qualité d'éditeur d'Optibilan.</p>
 
           <h2 class="font-display text-2xl font-bold text-encre mb-4 pb-2 border-b border-encre/10">3. Hébergeurs</h2>
           <div class="space-y-6 mb-8">
@@ -112,9 +95,11 @@ const lastUpdated = new Date().toLocaleDateString('fr-FR', { day: 'numeric', mon
           <h2 class="font-display text-2xl font-bold text-encre mb-4 pb-2 border-b border-encre/10">10. Contact</h2>
           <p class="text-encre/70 mb-8">Pour toute question relative aux mentions légales : <a href="mailto:legal@optibilan.com" class="text-bleu-signature hover:underline">legal@optibilan.com</a></p>
 
-          <p class="mt-12 pt-8 border-t border-encre/10 text-sm text-encre/50">
-            Dernière mise à jour : {lastUpdated}
-          </p>
+          <address class="not-italic mt-12 pt-8 border-t border-encre/10 text-sm text-encre/50">
+            Elite Longevity LLC<br>
+            Wyoming, USA<br>
+            Email : <a href="mailto:legal@optibilan.com" class="text-bleu-signature hover:underline">legal@optibilan.com</a>
+          </address>
         </article>
       </div>
     </section>

@@ -4,12 +4,24 @@ import Icon from '../Icon.astro';
 
 <div class="hidden md:flex items-center gap-4">
   <!-- PRODUIT dropdown -->
-  <div class="relative group" data-dropdown>
-    <button class="flex items-center gap-1.5 px-3 py-2 text-sm font-medium text-encre/60 hover:text-encre rounded-lg transition-colors" aria-haspopup="true" aria-expanded="false" aria-label="Menu Produit" data-dropdown-trigger>
+  <div class="relative" data-dropdown>
+    <button
+      class="flex items-center gap-1.5 px-3 py-2 text-sm font-medium text-encre/60 hover:text-encre rounded-lg transition-colors"
+      aria-haspopup="true"
+      aria-expanded="false"
+      aria-label="Menu Produit"
+      data-dropdown-trigger
+      type="button"
+    >
       Produit
-      <Icon name="chevronDown" class="w-4 h-4 transition-transform group-open:rotate-180" />
+      <Icon name="chevronDown" class="w-4 h-4 transition-transform duration-200" data-dropdown-icon />
     </button>
-    <div class="absolute left-0 top-full mt-2 w-[600px] opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition-all duration-200 bg-blanc rounded-xl border border-encre/10 shadow-elevated p-5 z-50" role="menu" data-dropdown-menu>
+    <div
+      class="absolute left-0 top-full mt-2 w-[600px] opacity-0 invisible transition-all duration-200 bg-blanc rounded-xl border border-encre/10 shadow-elevated p-5 z-[110]"
+      role="menu"
+      data-dropdown-menu
+      style="transform: translateY(4px);"
+    >
       <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
         <!-- Accompagner -->
         <div>
@@ -59,12 +71,24 @@ import Icon from '../Icon.astro';
   </div>
 
   <!-- SOLUTIONS dropdown -->
-  <div class="relative group" data-dropdown>
-    <button class="flex items-center gap-1.5 px-3 py-2 text-sm font-medium text-encre/60 hover:text-encre rounded-lg transition-colors" aria-haspopup="true" aria-expanded="false" aria-label="Menu Solutions" data-dropdown-trigger>
+  <div class="relative" data-dropdown>
+    <button
+      class="flex items-center gap-1.5 px-3 py-2 text-sm font-medium text-encre/60 hover:text-encre rounded-lg transition-colors"
+      aria-haspopup="true"
+      aria-expanded="false"
+      aria-label="Menu Solutions"
+      data-dropdown-trigger
+      type="button"
+    >
       Solutions
-      <Icon name="chevronDown" class="w-4 h-4 transition-transform group-open:rotate-180" />
+      <Icon name="chevronDown" class="w-4 h-4 transition-transform duration-200" data-dropdown-icon />
     </button>
-    <div class="absolute left-0 top-full mt-2 w-[360px] opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition-all duration-200 bg-blanc rounded-xl border border-encre/10 shadow-elevated p-4 z-50" role="menu">
+    <div
+      class="absolute left-0 top-full mt-2 w-[360px] opacity-0 invisible transition-all duration-200 bg-blanc rounded-xl border border-encre/10 shadow-elevated p-4 z-[110]"
+      role="menu"
+      data-dropdown-menu
+      style="transform: translateY(4px);"
+    >
       <div class="space-y-1">
         <a href="/solutions/coaches" class="block p-3 rounded-lg hover:bg-papier transition-colors" role="menuitem">
           <span class="block font-medium text-encre">Coach sportif</span>
@@ -94,30 +118,65 @@ import Icon from '../Icon.astro';
 </div>
 
 <div class="hidden md:flex items-center gap-2">
-  <a href="https://app.optibilan.com/login" class="btn btn-header-secondary p-2" aria-label="Connexion">
+  <a href="https://app.optibilan.com/login" class="btn-header-secondary" aria-label="Connexion">
     <Icon name="user" class="w-5 h-5" />
   </a>
-  <a href="https://calendly.com/optibilan/demo" class="btn btn-header-primary" aria-label="Rejoindre Optibilan">
+  <a href="https://calendly.com/optibilan/demo" class="btn-header-primary" aria-label="Rejoindre Optibilan">
     <Icon name="arrowRight" class="w-5 h-5" />
     <span class="hidden sm:inline">Rejoindre Optibilan</span>
   </a>
-  <a href="/contact" class="btn btn-header-secondary ml-2" aria-label="Essayer Optibilan">
+  <a href="/contact" class="btn-header-secondary" aria-label="Essayer Optibilan">
     <Icon name="sparkles" class="w-5 h-5" />
     <span class="hidden md:inline">Essayer Optibilan</span>
   </a>
 </div>
 
 <script is:inline>
-  // Desktop dropdown handling - close on escape/outside click only
+  // Desktop dropdown handling - click to open/close, close on escape/outside click
   function closeAllDropdowns() {
     document.querySelectorAll('[data-dropdown-menu]').forEach(menu => {
       menu.classList.add('opacity-0', 'invisible');
       menu.classList.remove('opacity-100', 'visible');
+      menu.style.transform = 'translateY(4px)';
     });
     document.querySelectorAll('[data-dropdown-trigger]').forEach(trigger => {
       trigger.setAttribute('aria-expanded', 'false');
+      const icon = trigger.querySelector('[data-dropdown-icon]');
+      if (icon) icon.style.transform = 'rotate(0deg)';
     });
   }
+
+  function openDropdown(dropdown) {
+    closeAllDropdowns();
+    const menu = dropdown.querySelector('[data-dropdown-menu]');
+    const trigger = dropdown.querySelector('[data-dropdown-trigger]');
+    const icon = trigger?.querySelector('[data-dropdown-icon]');
+    
+    if (menu && trigger) {
+      menu.classList.remove('opacity-0', 'invisible');
+      menu.classList.add('opacity-100', 'visible');
+      menu.style.transform = 'translateY(0)';
+      trigger.setAttribute('aria-expanded', 'true');
+      if (icon) icon.style.transform = 'rotate(180deg)';
+    }
+  }
+
+  // Click on trigger to toggle dropdown
+  document.querySelectorAll('[data-dropdown-trigger]').forEach(trigger => {
+    trigger.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      
+      const dropdown = trigger.closest('[data-dropdown]');
+      const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
+      
+      if (isExpanded) {
+        closeAllDropdowns();
+      } else {
+        openDropdown(dropdown);
+      }
+    });
+  });
 
   // Close on escape
   document.addEventListener('keydown', (e) => {
@@ -129,24 +188,9 @@ import Icon from '../Icon.astro';
     if (!e.target.closest('[data-dropdown]')) closeAllDropdowns();
   });
 
-  // Update aria-expanded on hover/focus for accessibility
-  document.querySelectorAll('[data-dropdown]').forEach(dropdown => {
-    const trigger = dropdown.querySelector('[data-dropdown-trigger]');
-    const menu = dropdown.querySelector('[data-dropdown-menu]');
-    if (!trigger || !menu) return;
-
-    dropdown.addEventListener('mouseenter', () => {
-      trigger.setAttribute('aria-expanded', 'true');
-    });
-    dropdown.addEventListener('focusin', () => {
-      trigger.setAttribute('aria-expanded', 'true');
-    });
-    dropdown.addEventListener('mouseleave', () => {
-      if (!menu.matches(':hover')) trigger.setAttribute('aria-expanded', 'false');
-    });
-    dropdown.addEventListener('focusout', (e) => {
-      if (!dropdown.contains(e.relatedTarget)) trigger.setAttribute('aria-expanded', 'false');
-    });
+  // Close dropdown when clicking a link inside it
+  document.querySelectorAll('[data-dropdown-menu] a').forEach(link => {
+    link.addEventListener('click', () => closeAllDropdowns());
   });
 </script>
 
@@ -163,11 +207,5 @@ import Icon from '../Icon.astro';
   /* Dropdown menu animation - smooth and performant */
   [data-dropdown-menu] {
     transition: opacity 150ms ease, transform 150ms ease, visibility 150ms ease;
-    transform: translateY(4px);
-  }
-  
-  [data-dropdown]:hover [data-dropdown-menu],
-  [data-dropdown]:focus-within [data-dropdown-menu] {
-    transform: translateY(0);
   }
 </style>

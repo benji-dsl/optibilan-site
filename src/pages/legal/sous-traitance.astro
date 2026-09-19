@@ -2,7 +2,6 @@
 import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
-import Hero from '../../components/Hero.astro';
 import Icon from '../../components/Icon.astro';
 
 const pageTitle = 'Registre des sous-traitants - Optibilan';
@@ -19,19 +18,12 @@ const lastUpdated = new Date().toLocaleDateString('fr-FR', { day: 'numeric', mon
   <Header />
 
   <main>
-    <Hero
-      title="Registre des sous-traitants"
-      subtitle="Conformément à l'article 28 du RGPD, Optibilan tient à jour la liste de ses sous-traitants. Tous ont signé un DPA et offrent des garanties suffisantes. 5/6 hébergent en UE."
-      variant="minimal"
-    />
-
     <section class="section bg-blanc" aria-labelledby="subprocessors-content">
       <div class="container max-w-5xl">
-        <div class="mb-8 p-4 bg-amber-50 border border-amber-200 rounded-lg" role="alert">
-          <p class="text-sm text-amber-800">
-            <strong>⚠ Attention :</strong> Ce registre contient des informations qui doivent être validées contractuellement (DPA signés, SCC, certifications) avant la mise en production.
-          </p>
-        </div>
+        <header class="mb-12 pb-8 border-b border-encre/10">
+          <h1 id="subprocessors-content" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">Registre des sous-traitants</h1>
+          <p class="text-sm text-encre/60"><strong>Version du :</strong> {lastUpdated}</p>
+        </header>
 
         <article class="prose max-w-none" id="subprocessors-content">
 
@@ -211,9 +203,11 @@ const lastUpdated = new Date().toLocaleDateString('fr-FR', { day: 'numeric', mon
           <h2 class="font-display text-2xl font-bold text-encre mb-4 pb-2 border-b border-encre/10">Contact</h2>
           <p class="text-encre/60 mb-8">Pour toute question sur la sous-traitance : <a href="mailto:privacy@optibilan.com" class="text-bleu-signature hover:underline">privacy@optibilan.com</a></p>
 
-          <p class="mt-8 pt-8 border-t border-encre/10 text-sm text-encre/50">
-            Ce registre est mis à jour à chaque changement de sous-traitant. Version du {lastUpdated}.
-          </p>
+          <address class="not-italic mt-8 pt-8 border-t border-encre/10 text-sm text-encre/50">
+            Elite Longevity LLC<br>
+            Wyoming, USA<br>
+            Email : <a href="mailto:privacy@optibilan.com" class="text-bleu-signature hover:underline">privacy@optibilan.com</a>
+          </address>
         </article>
       </div>
     </section>

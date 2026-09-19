@@ -32,6 +32,7 @@
   --color-saumon: #E88690;
   --color-bleu-ardoise: #8FAFC2;
   --color-vert: #14A85C;
+  --color-vert-fonce: #0D7A3E;
   --color-vert-clair: #E8F8F0;
 
   /* PALETTES FONCTIONNELLES */
@@ -433,25 +434,33 @@
     }
   }
 
-  /* Header button variants - DA: petits boutons unifiés 36-38px, radius 8px, 14px semi-bold
-   Ne surchargent que les couleurs/background/border/shadow.
-   Le layout (padding, gap, font-size, radius, display) vient de .btn */
+  /* Header button variants - DA: boutons unifiés 40px hauteur, radius 10px, 14px semi-bold
+   Hauteur fixe, padding horizontal cohérent, parfaitement centrés, pas de grosse ombre */
   .btn-header-primary {
+    height: 40px;
+    padding: 0 16px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
     background-image: var(--gradient-btn-primary);
     color: #FFFFFF;
     border: none;
     box-shadow:
       0 1px 2px rgba(0,0,0,0.05),
-      inset 0 1px 0 rgba(255,255,255,0.2),
-      inset 0 -1px 0 rgba(0,0,0,0.1);
+      inset 0 1px 0 rgba(255,255,255,0.15);
+    white-space: nowrap;
   }
 
   .btn-header-primary:hover {
     transform: translateY(-1px);
     box-shadow:
       0 4px 12px color-mix(in oklab, var(--color-bleu-signature) 30%, transparent),
-      inset 0 1px 0 rgba(255,255,255,0.2),
-      inset 0 -1px 0 rgba(0,0,0,0.1);
+      inset 0 1px 0 rgba(255,255,255,0.15);
   }
 
   .btn-header-primary:active {
@@ -465,10 +474,21 @@
   }
 
   .btn-header-secondary {
+    height: 40px;
+    padding: 0 16px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
     background-color: var(--color-surface);
     border: 1px solid color-mix(in oklab, var(--color-encre-texte) 20%, transparent);
     color: var(--color-encre-texte);
     box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+    white-space: nowrap;
   }
 
   .btn-header-secondary:hover {
@@ -764,34 +784,34 @@
   /* Utiliser plutôt les variables de couleur muted appropriées */
 
   /* Remplacer les opacités problématiques par les bonnes variables */
-  .text-muted-light { color: var(--color-muted-light); }
-  .text-muted-dark { color: var(--color-muted-dark); }
-  .text-body-light { color: var(--color-body-light); }
-  .text-body-dark { color: var(--color-body-dark); }
-  .text-heading-light { color: var(--color-heading-light); }
-  .text-heading-dark { color: var(--color-heading-dark); }
+  .text-muted-light { color: var(--color-muted-light) !important; }
+  .text-muted-dark { color: var(--color-muted-dark) !important; }
+  .text-body-light { color: var(--color-body-light) !important; }
+  .text-body-dark { color: var(--color-body-dark) !important; }
+  .text-heading-light { color: var(--color-heading-light) !important; }
+  .text-heading-dark { color: var(--color-heading-dark) !important; }
 
   /* Supprimer les opacités tailwind sur le texte */
-  .text-encre\/40 { color: var(--color-muted-light); }
-  .text-encre\/50 { color: var(--color-muted-light); }
-  .text-encre\/60 { color: var(--color-body-light); }
-  .text-encre\/70 { color: var(--color-body-light); }
-  .text-craie\/40 { color: var(--color-muted-dark); }
-  .text-craie\/50 { color: var(--color-muted-dark); }
-  .text-craie\/60 { color: var(--color-body-dark); }
-  .text-craie\/70 { color: var(--color-body-dark); }
-  .text-craie\/80 { color: var(--color-heading-dark); }
+  .text-encre\/40 { color: var(--color-muted-light) !important; }
+  .text-encre\/50 { color: var(--color-muted-light) !important; }
+  .text-encre\/60 { color: var(--color-body-light) !important; }
+  .text-encre\/70 { color: var(--color-body-light) !important; }
+  .text-craie\/40 { color: var(--color-muted-dark) !important; }
+  .text-craie\/50 { color: var(--color-muted-dark) !important; }
+  .text-craie\/60 { color: var(--color-body-dark) !important; }
+  .text-craie\/70 { color: var(--color-body-dark) !important; }
+  .text-craie\/80 { color: var(--color-heading-dark) !important; }
 
   @media (prefers-color-scheme: dark) {
-    .text-encre\/40 { color: var(--color-muted-dark); }
-    .text-encre\/50 { color: var(--color-muted-dark); }
-    .text-encre\/60 { color: var(--color-body-dark); }
-    .text-encre\/70 { color: var(--color-body-dark); }
-    .text-craie\/40 { color: var(--color-muted-light); }
-    .text-craie\/50 { color: var(--color-muted-light); }
-    .text-craie\/60 { color: var(--color-body-light); }
-    .text-craie\/70 { color: var(--color-body-light); }
-    .text-craie\/80 { color: var(--color-heading-light); }
+    .text-encre\/40 { color: var(--color-muted-dark) !important; }
+    .text-encre\/50 { color: var(--color-muted-dark) !important; }
+    .text-encre\/60 { color: var(--color-body-dark) !important; }
+    .text-encre\/70 { color: var(--color-body-dark) !important; }
+    .text-craie\/40 { color: var(--color-muted-light) !important; }
+    .text-craie\/50 { color: var(--color-muted-light) !important; }
+    .text-craie\/60 { color: var(--color-body-light) !important; }
+    .text-craie\/70 { color: var(--color-body-light) !important; }
+    .text-craie\/80 { color: var(--color-heading-light) !important; }
   }
 
   @media (min-width: 641px) and (max-width: 1024px) {
@@ -805,34 +825,34 @@
   /* Utiliser plutôt les variables de couleur muted appropriées */
 
   /* Remplacer les opacités problématiques par les bonnes variables */
-  .text-muted-light { color: var(--color-muted-light); }
-  .text-muted-dark { color: var(--color-muted-dark); }
-  .text-body-light { color: var(--color-body-light); }
-  .text-body-dark { color: var(--color-body-dark); }
-  .text-heading-light { color: var(--color-heading-light); }
-  .text-heading-dark { color: var(--color-heading-dark); }
+  .text-muted-light { color: var(--color-muted-light) !important; }
+  .text-muted-dark { color: var(--color-muted-dark) !important; }
+  .text-body-light { color: var(--color-body-light) !important; }
+  .text-body-dark { color: var(--color-body-dark) !important; }
+  .text-heading-light { color: var(--color-heading-light) !important; }
+  .text-heading-dark { color: var(--color-heading-dark) !important; }
 
   /* Supprimer les opacités tailwind sur le texte */
-  .text-encre\/40 { color: var(--color-muted-light); }
-  .text-encre\/50 { color: var(--color-muted-light); }
-  .text-encre\/60 { color: var(--color-body-light); }
-  .text-encre\/70 { color: var(--color-body-light); }
-  .text-craie\/40 { color: var(--color-muted-dark); }
-  .text-craie\/50 { color: var(--color-muted-dark); }
-  .text-craie\/60 { color: var(--color-body-dark); }
-  .text-craie\/70 { color: var(--color-body-dark); }
-  .text-craie\/80 { color: var(--color-heading-dark); }
+  .text-encre\/40 { color: var(--color-muted-light) !important; }
+  .text-encre\/50 { color: var(--color-muted-light) !important; }
+  .text-encre\/60 { color: var(--color-body-light) !important; }
+  .text-encre\/70 { color: var(--color-body-light) !important; }
+  .text-craie\/40 { color: var(--color-muted-dark) !important; }
+  .text-craie\/50 { color: var(--color-muted-dark) !important; }
+  .text-craie\/60 { color: var(--color-body-dark) !important; }
+  .text-craie\/70 { color: var(--color-body-dark) !important; }
+  .text-craie\/80 { color: var(--color-heading-dark) !important; }
 
   @media (prefers-color-scheme: dark) {
-    .text-encre\/40 { color: var(--color-muted-dark); }
-    .text-encre\/50 { color: var(--color-muted-dark); }
-    .text-encre\/60 { color: var(--color-body-dark); }
-    .text-encre\/70 { color: var(--color-body-dark); }
-    .text-craie\/40 { color: var(--color-muted-light); }
-    .text-craie\/50 { color: var(--color-muted-light); }
-    .text-craie\/60 { color: var(--color-body-light); }
-    .text-craie\/70 { color: var(--color-body-light); }
-    .text-craie\/80 { color: var(--color-heading-light); }
+    .text-encre\/40 { color: var(--color-muted-dark) !important; }
+    .text-encre\/50 { color: var(--color-muted-dark) !important; }
+    .text-encre\/60 { color: var(--color-body-dark) !important; }
+    .text-encre\/70 { color: var(--color-body-dark) !important; }
+    .text-craie\/40 { color: var(--color-muted-light) !important; }
+    .text-craie\/50 { color: var(--color-muted-light) !important; }
+    .text-craie\/60 { color: var(--color-body-light) !important; }
+    .text-craie\/70 { color: var(--color-body-light) !important; }
+    .text-craie\/80 { color: var(--color-heading-light) !important; }
   }
 }
 @layer components {

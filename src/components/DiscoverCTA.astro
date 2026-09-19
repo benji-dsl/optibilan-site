@@ -18,28 +18,25 @@ const {
 
 <a 
   href={href}
-  class={`btn btn-sm-discover group inline-flex items-center gap-2 text-sm font-semibold transition-all duration-160 focus:outline-none focus:ring-2 focus:ring-offset-2
-    ${variant === 'primary'
-      ? 'bg-bleu-signature text-white hover:bg-bleu-lecture focus:ring-bleu-signature/40'
-      : 'bg-blanc text-encre border border-encre/20 hover:bg-encre hover:text-craie hover:border-encre focus:ring-encre/30'}`}
+  class="discover-cta group inline-flex items-center gap-2 text-sm font-semibold transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2"
 >
-  <span class="font-semibold">{label}</span>
+  <span class="font-semibold group-hover:translate-x-[-2px] transition-transform duration-200">{label}</span>
   <Icon 
     name={icon} 
-    class="w-4 h-4 transition-transform duration-160 ease-out group-hover:translate-x-1"
+    class="w-4 h-4 transition-transform duration-200 ease-out group-hover:translate-x-1"
     aria-hidden="true"
   />
 </a>
 
 <style is:global>
-  .btn-sm-discover {
+  .discover-cta {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    height: 38px;
-    padding: 0 14px;
-    border-radius: 999px;
+    height: 40px;
+    padding: 0 16px;
+    border-radius: 10px;
     font-size: 14px;
     font-weight: 600;
     line-height: 1.25;
@@ -47,14 +44,21 @@ const {
     transition: all 150ms ease;
     white-space: nowrap;
     letter-spacing: 0.01em;
+    color: var(--color-vert);
+    background: transparent;
+    border: none;
   }
   
-  .btn-sm-discover:focus-visible {
+  .discover-cta:hover {
+    color: var(--color-vert-fonce);
+  }
+  
+  .discover-cta:focus-visible {
     outline: none;
     box-shadow: var(--focus-ring);
   }
   
-  .btn-sm-discover:active {
+  .discover-cta:active {
     transform: scale(0.98);
     transition: all 50ms ease;
   }

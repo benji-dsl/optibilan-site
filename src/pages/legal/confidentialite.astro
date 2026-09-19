@@ -2,7 +2,6 @@
 import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
-import Hero from '../../components/Hero.astro';
 
 const pageTitle = 'Politique de confidentialité - Optibilan';
 const pageDescription = 'Politique de confidentialité d\'Optibilan : données collectées, finalités, base légale, destinataires, transferts, durée de conservation, droits RGPD, cookies, contact DPO.';
@@ -18,31 +17,18 @@ const lastUpdated = new Date().toLocaleDateString('fr-FR', { day: 'numeric', mon
   <Header />
 
   <main>
-    <Hero
-      title="Politique de confidentialité"
-      subtitle="Optibilan respecte votre vie privée. Cette politique explique quelles données nous collectons, pourquoi, comment nous les protégeons, et quels sont vos droits."
-      variant="minimal"
-    />
-
     <section class="section bg-blanc" aria-labelledby="privacy-content">
       <div class="container max-w-3xl">
-        <div class="mb-8 p-4 bg-amber-50 border border-amber-200 rounded-lg" role="alert">
-          <p class="text-sm text-amber-800">
-            <strong>⚠ Attention :</strong> Cette page contient des données d'exemple (SIREN, adresse, etc.) qui doivent être remplacées par les vraies informations juridiques d'Optibilan avant la mise en production.
-          </p>
-        </div>
-        <article class="prose max-w-none" id="privacy-content">
-          <div class="mb-8 p-4 bg-papier rounded-card border border-encre/10">
-            <p class="text-sm text-encre/60">
-              <strong>Date d'entrée en vigueur :</strong> {lastUpdated} - Version 2.0
-            </p>
-          </div>
+        <header class="mb-12 pb-8 border-b border-encre/10">
+          <h1 id="privacy-content" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">Politique de confidentialité</h1>
+          <p class="text-sm text-encre/60"><strong>Date d'entrée en vigueur :</strong> {lastUpdated} - Version 2.0</p>
+        </header>
+        <article class="prose max-w-none">
 
           <h2 class="font-display text-2xl font-bold text-encre mb-4 pb-2 border-b border-encre/10">1. Responsable de traitement</h2>
           <dl class="space-y-2 mb-8 text-encre/70">
-            <div class="flex gap-4"><dt class="font-medium text-encre min-w-[180px]">Identité :</dt><dd><strong>Optibilan</strong> - Benjamin Sant, entrepreneur individuel</dd></div>
-            <div class="flex gap-4"><dt class="font-medium text-encre min-w-[180px]">SIREN :</dt><dd>987 654 321</dd></div>
-            <div class="flex gap-4"><dt class="font-medium text-encre min-w-[180px]">Adresse :</dt><dd>123 Rue de la Santé, 75000 Paris, France</dd></div>
+            <div class="flex gap-4"><dt class="font-medium text-encre min-w-[180px]">Identité :</dt><dd><strong>Elite Longevity LLC</strong></dd></div>
+            <div class="flex gap-4"><dt class="font-medium text-encre min-w-[180px]">Adresse :</dt><dd>Wyoming, USA</dd></div>
             <div class="flex gap-4"><dt class="font-medium text-encre min-w-[180px]">DPO :</dt><dd><a href="mailto:privacy@optibilan.com" class="text-bleu-signature hover:underline">privacy@optibilan.com</a></dd></div>
           </dl>
 
@@ -177,13 +163,15 @@ const lastUpdated = new Date().toLocaleDateString('fr-FR', { day: 'numeric', mon
           <h2 class="font-display text-2xl font-bold text-encre mb-4 pb-2 border-b border-encre/10">12. Contact DPO</h2>
           <ul class="space-y-2 mb-4 text-encre/70">
             <li>Email : <a href="mailto:privacy@optibilan.com" class="text-bleu-signature hover:underline">privacy@optibilan.com</a></li>
-            <li>Courrier : Optibilan - DPO, 123 Rue de la Santé, 75000 Paris</li>
+            <li>Courrier : Elite Longevity LLC - DPO, Wyoming, USA</li>
           </ul>
           <p class="text-encre/70 mb-8">Vous avez le droit d'introduire une réclamation auprès de la CNIL (<a href="https://cnil.fr" target="_blank" rel="noopener noreferrer" class="text-bleu-signature hover:underline">cnil.fr</a>).</p>
 
-          <p class="mt-12 pt-8 border-t border-encre/10 text-sm text-encre/50">
-            Dernière mise à jour : {lastUpdated}
-          </p>
+          <address class="not-italic mt-12 pt-8 border-t border-encre/10 text-sm text-encre/50">
+            Elite Longevity LLC<br>
+            Wyoming, USA<br>
+            Email : <a href="mailto:privacy@optibilan.com" class="text-bleu-signature hover:underline">privacy@optibilan.com</a>
+          </address>
         </article>
       </div>
     </section>
