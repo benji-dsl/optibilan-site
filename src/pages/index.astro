@@ -198,25 +198,45 @@ Depuis un seul endroit."
           <div class="relative z-10 flex items-center justify-center h-full p-2 md:p-4">
             <div class="text-center max-w-md">
               <div class="aspect-video bg-encre/5 rounded-lg mb-4 border border-encre/10 flex items-center justify-center relative overflow-hidden shadow-xl">
-                <!-- Floating UI cards -->
-                <div class="absolute top-6 left-6 w-48 h-32 bg-blanc rounded-lg border border-encre/10 shadow-lg flex items-center p-3 opacity-90" style="transform: rotate(-3deg);" aria-hidden="true">
-                  <div class="text-xs font-medium text-encre/60">Bilan hebdo</div>
-                  <div class="text-2xl font-bold text-bleu-signature mt-1">87%</div>
-                  <div class="text-xs text-emerald-500">Adhérence</div>
-                </div>
-                <div class="absolute top-6 right-6 w-48 h-32 bg-blanc rounded-lg border border-encre/10 shadow-lg flex items-center p-3 opacity-90" style="transform: rotate(2deg);" aria-hidden="true">
-                  <div class="text-xs font-medium text-encre/60">Progression</div>
-                  <div class="text-2xl font-bold text-emerald-500 mt-1">+2.3kg</div>
-                  <div class="text-xs text-encre/50">Poids muscle</div>
-                </div>
-                <div class="absolute bottom-6 left-1/2 -translate-x-1/2 w-56 h-36 bg-blanc rounded-lg border border-encre/10 shadow-lg flex flex-col items-center justify-center p-3 opacity-90" style="transform: rotate(-1deg);" aria-hidden="true">
-                  <div class="text-xs font-medium text-encre/60 mb-1">VFC (rmssd)</div>
-                  <div class="text-3xl font-bold text-encre">68ms</div>
-                  <div class="flex items-center gap-1 text-xs text-emerald-500">
-                    <span>▲</span> <span>+12% vs S-1</span>
+                <!-- Floating UI cards with real data -->
+                <div class="absolute top-6 left-6 w-52 h-36 bg-blanc rounded-lg border border-encre/10 shadow-lg p-3 opacity-95" style="transform: rotate(-2deg);" aria-hidden="true">
+                  <div class="text-xs font-medium text-encre/60 mb-1">Bilan hebdo — Marie D.</div>
+                  <div class="flex items-baseline gap-1 mb-1">
+                    <span class="text-3xl font-bold text-bleu-signature">87%</span>
+                    <span class="text-xs text-emerald-500">Adhérence</span>
+                  </div>
+                  <div class="flex items-center gap-1 text-xs text-encre/50">
+                    <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                    <span>Validé il y a 2h</span>
                   </div>
                 </div>
-                <!-- Main dashboard -->
+                <div class="absolute top-6 right-6 w-52 h-36 bg-blanc rounded-lg border border-encre/10 shadow-lg p-3 opacity-95" style="transform: rotate(1deg);" aria-hidden="true">
+                  <div class="text-xs font-medium text-encre/60 mb-1">Progression — Programme Force</div>
+                  <div class="flex items-baseline gap-1 mb-1">
+                    <span class="text-3xl font-bold text-emerald-500">+2.3kg</span>
+                    <span class="text-xs text-encre/50">Poids muscle</span>
+                  </div>
+                  <div class="flex items-center gap-1 text-xs text-bleu-signature">
+                    <Icon name="chart" class="w-3 h-3" /> Semaine 4/12
+                  </div>
+                </div>
+                <div class="absolute bottom-6 left-1/2 -translate-x-1/2 w-60 h-40 bg-blanc rounded-lg border border-encre/10 shadow-lg p-3 opacity-95" aria-hidden="true">
+                  <div class="text-xs font-medium text-encre/60 mb-1">VFC (rmssd) — Tendances 7j</div>
+                  <div class="text-4xl font-bold text-encre">68ms</div>
+                  <div class="flex items-center justify-center gap-1 text-xs text-emerald-500 mt-1">
+                    <span>▲</span> <span>+12% vs S-1</span>
+                  </div>
+                  <div class="flex items-center justify-center gap-4 mt-2 text-[10px] text-encre/40">
+                    <span>● Lundi</span>
+                    <span>● Mardi</span>
+                    <span>● Mercredi</span>
+                    <span>● Jeudi</span>
+                    <span>● Vendredi</span>
+                    <span>● Samedi</span>
+                    <span>● Dimanche</span>
+                  </div>
+                </div>
+                <!-- Main dashboard background -->
                 <div class="relative z-10 aspect-video bg-encre/5 rounded-lg flex items-center justify-center">
                   <div class="absolute inset-0 grid grid-cols-12 gap-2 p-4 opacity-10" aria-hidden="true">
                     {[...Array(24)].map((_, i) => (
@@ -441,17 +461,21 @@ Depuis un seul endroit."
           </h2>
           <p class="text-lg text-encre/60">Une démonstration rapide du vrai logiciel en conditions réelles.</p>
         </header>
-        <div class="aspect-video max-w-4xl mx-auto rounded-xl border border-encre/10 bg-encre/5 overflow-hidden relative cursor-pointer" style="background-image: url('/images/product/integrations.svg'); background-size: cover; background-position: center;">
-          <div class="absolute inset-0 flex items-center justify-center">
-            <button class="w-20 h-20 md:w-24 md:h-24 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center shadow-xl hover:bg-white hover:scale-105 transition-all duration-300" aria-label="Lancer la vidéo de démonstration">
+        <div class="aspect-video max-w-4xl mx-auto rounded-xl border border-encre/10 bg-encre/5 overflow-hidden relative" style="background-image: url('/images/product/integrations.svg'); background-size: cover; background-position: center;">
+          <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" rel="noopener noreferrer" class="absolute inset-0 flex items-center justify-center" aria-label="Voir la démo vidéo sur YouTube">
+            <div class="w-20 h-20 md:w-24 md:h-24 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center shadow-xl hover:bg-white hover:scale-105 transition-all duration-300">
               <svg class="w-8 h-8 md:w-10 md:h-10 text-bleu-signature ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-            </button>
-          </div>
-          <div class="absolute bottom-4 left-1/2 -translate-x-1/2 text-center text-white/80 text-sm">
-            <span class="flex items-center justify-center gap-1">
+            </div>
+          </a>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" aria-hidden="true"></div>
+          <div class="absolute bottom-4 left-1/2 -translate-x-1/2 text-center text-white/90 text-sm">
+            <span class="flex items-center justify-center gap-1 bg-black/30 px-3 py-1 rounded-full">
               <Icon name="clock" class="w-4 h-4" />
               60 secondes
             </span>
+          </div>
+          <div class="absolute top-4 right-4">
+            <svg class="w-10 h-10 text-white/80" fill="currentColor" viewBox="0 0 24 24"><path d="M21.6 4.8a10 10 0 0 0-14.4 0c-1.2.8-2 2.2-2 3.6v9.6c0 1.4.8 2.8 2 3.6a10 10 0 0 0 14.4 0c1.2-.8 2-2.2 2-3.6V8.4c0-1.4-.8-2.8-2-3.6zm-1.2 9.6a7 7 0 0 1-10.4 0c-.7-.5-1.2-1.4-1.2-2.4V8.4c0-1 .5-1.9 1.2-2.4a7 7 0 0 1 10.4 0c.7.5 1.2 1.4 1.2 2.4v9.6c0 1-.5 1.9-1.2 2.4zm-7.2-4.8v9.6l6.4-4.8z"/></svg>
           </div>
         </div>
       </div>
@@ -470,19 +494,32 @@ Depuis un seul endroit."
         </header>
         <div class="grid md:grid-cols-2 lg:grid-cols-6 gap-6 mb-12">
           {marqueBlancheDemo.map((item, i) => (
-            <article key={i} class="p-6 rounded-xl bg-blanc border border-encre/10 text-center hover:border-bleu-signature/30 hover:shadow-soft transition-all">
+            <article key={i} class="p-6 rounded-xl bg-blanc border border-encre/10 text-center hover:border-bleu-signature/30 hover:shadow-soft transition-all group">
               <div class="icon-wrapper mx-auto mb-4" aria-hidden="true" style="background-color: var(--color-bleu-clair);">
-                <Icon name={item.icon} class="w-7 h-7 text-bleu-signature" />
+                <Icon name={item.icon} class="w-7 h-7 text-bleu-signature group-hover:scale-110 transition-transform" />
               </div>
               <h3 class="font-display text-lg font-bold text-encre mb-2">{item.label}</h3>
               <p class="text-encre/60 text-sm">{item.desc}</p>
             </article>
           ))}
         </div>
-        <div class="aspect-video max-w-4xl mx-auto rounded-xl border border-encre/10 bg-encre/5 overflow-hidden relative shadow-xl">
-          <div class="absolute inset-0 flex items-center justify-center" set:html={'/images/product/white-label.svg'} />
+        <div class="relative mb-10">
+          <div class="aspect-video max-w-4xl mx-auto rounded-xl border border-encre/10 bg-encre/5 overflow-hidden relative shadow-xl">
+            <div class="absolute inset-0 flex items-center justify-center" set:html={'/images/product/white-label.svg'} />
+          </div>
+          <div class="absolute -bottom-6 left-1/2 -translate-x-1/2 flex gap-4">
+            <div class="w-40 h-28 bg-blanc rounded-lg border border-encre/10 shadow-lg p-2 flex items-center justify-center">
+              <div class="text-xs font-medium text-encre/60 text-center">app.votrecabinet.fr</div>
+            </div>
+            <div class="w-40 h-28 bg-blanc rounded-lg border border-encre/10 shadow-lg p-2 flex items-center justify-center">
+              <div class="text-xs font-medium text-encre/60 text-center">emails @vous</div>
+            </div>
+            <div class="w-40 h-28 bg-blanc rounded-lg border border-encre/10 shadow-lg p-2 flex items-center justify-center">
+              <div class="text-xs font-medium text-encre/60 text-center">PWA installable</div>
+            </div>
+          </div>
         </div>
-        <div class="text-center mt-10">
+        <div class="text-center mt-16">
           <a href="/product/white-label" class="btn-secondary group inline-flex items-center gap-2">
             Voir la démonstration complète marque blanche
             <Icon name="arrowRight" class="w-5 h-5 transition-transform group-hover:translate-x-1" />
