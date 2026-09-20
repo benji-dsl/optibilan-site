@@ -85,47 +85,26 @@ const defaultPlans = [
 ];
 
 const {
-  title = 'Des offres qui grandissent avec vous',
-  subtitle = '30 jours d\'essai gratuit, sans CB. Changez d\'offre à tout moment.',
+  title,
+  subtitle,
   plans,
 } = Astro.props;
 
 const displayPlans = plans && plans.length > 0 ? plans : defaultPlans;
 ---
 
-<section class="section bg-blanc" aria-labelledby="pricing-title">
-  <div class="container">
-    <header class="text-center max-w-3xl mx-auto mb-12">
-      <h2 id="pricing-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
-        {title}
-      </h2>
-      <p class="text-lg text-encre/60">
-        {subtitle}
-      </p>
-    </header>
-
-    <div class="mb-10 flex justify-center">
-      <div class="inline-flex items-center gap-2 p-1 bg-blanc rounded-pill border border-encre/10 shadow-sm">
-        <button id="monthly-btn" class="px-4 py-2 rounded-pill text-sm font-medium text-craie bg-bleu-signature text-craie shadow-sm" aria-pressed="true" data-period="monthly">Mensuel</button>
-        <button id="yearly-btn" class="px-4 py-2 rounded-pill text-sm font-medium text-encre/60 hover:text-encre" aria-pressed="false" data-period="yearly">
-          Annuel
-          <span class="ml-2 px-2 py-0.5 text-xs font-bold text-bordeaux bg-rose-bordeaux rounded-full">-20%</span>
-        </button>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+  {displayPlans.map((plan, index) => (
+    <article class={`relative card flex flex-col ${plan.popular ? 'ring-2 ring-bleu-signature shadow-card' : ''}`} data-plan={plan.name}>
+      {plan.popular && (
+        <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-bleu-signature text-craie text-xs font-semibold rounded-full">
+          Le plus choisi
+        </div>
+      )}
+      <div class="mb-6">
+        <h3 class="text-xl font-bold text-encre mb-1">{plan.name}</h3>
+        <p class="text-sm text-encre/50">{plan.tagline}</p>
       </div>
-    </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-      {displayPlans.map((plan, index) => (
-        <article class={`relative card flex flex-col ${plan.popular ? 'ring-2 ring-bleu-signature shadow-card' : ''}`} data-plan={plan.name}>
-          {plan.popular && (
-            <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-bleu-signature text-craie text-xs font-semibold rounded-full">
-              Le plus choisi
-            </div>
-          )}
-          <div class="mb-6">
-            <h3 class="text-xl font-bold text-encre mb-1">{plan.name}</h3>
-            <p class="text-sm text-encre/50">{plan.tagline}</p>
-          </div>
 
 <div class="mb-6" data-price-container>
               <div class="flex items-baseline gap-1" data-monthly>
@@ -175,42 +154,5 @@ const displayPlans = plans && plans.length > 0 ? plans : defaultPlans;
             </details>
           )}
         </article>
-      ))}
-    </div>
-
-    <p class="text-center text-sm text-encre/50 mt-10">
-      TVA en sus pour les assujettis. Paiement sécurisé par Stripe. Annulation quand vous voulez.
-    </p>
-  </div>
-</section>
-
-<script is:inline>
-  const monthlyBtn = document.getElementById('monthly-btn');
-  const yearlyBtn = document.getElementById('yearly-btn');
-  const monthlyPrices = document.querySelectorAll('[data-monthly]');
-  const yearlyPrices = document.querySelectorAll('[data-yearly]');
-  const yearlyNotes = document.querySelectorAll('[data-yearly-note]');
-
-  function setPeriod(period) {
-    const isYearly = period === 'yearly';
-    monthlyBtn?.classList.toggle('bg-bleu-signature', !isYearly);
-    monthlyBtn?.classList.toggle('text-craie', !isYearly);
-    monthlyBtn?.classList.toggle('shadow-sm', !isYearly);
-    monthlyBtn?.classList.toggle('bg-blanc', isYearly);
-    monthlyBtn?.classList.toggle('text-encre/60', isYearly);
-    monthlyBtn?.setAttribute('aria-pressed', String(!isYearly));
-
-    yearlyBtn?.classList.toggle('bg-bleu-signature', isYearly);
-    yearlyBtn?.classList.toggle('text-craie', isYearly);
-    yearlyBtn?.classList.toggle('shadow-sm', isYearly);
-    yearlyBtn?.classList.toggle('text-encre/60', !isYearly);
-    yearlyBtn?.setAttribute('aria-pressed', String(isYearly));
-
-    monthlyPrices.forEach(el => el.classList.toggle('hidden', isYearly));
-    yearlyPrices.forEach(el => el.classList.toggle('hidden', !isYearly));
-    yearlyNotes.forEach(el => el.classList.toggle('hidden', !isYearly));
-  }
-
-  monthlyBtn?.addEventListener('click', () => setPeriod('monthly'));
-  yearlyBtn?.addEventListener('click', () => setPeriod('yearly'));
-</script>
+  ))}
+</div>
