@@ -51,16 +51,20 @@ const homeBadge = badge || "";
         {homeSubtitle}
       </p>
 
+      {primaryCTA.label && (
       <div class="flex flex-col sm:flex-row items-center justify-center gap-5 animate-slide-up delay-300">
         <a href={primaryCTA.href} class="btn btn-demo w-full sm:w-auto group text-lg px-10 py-5" data-track="hero_cta_demo">
-          Rejoindre Optibilan
+          {primaryCTA.label}
           <Icon name="arrowRight" class="w-6 h-6 transition-transform group-hover:translate-x-1" />
         </a>
-        <a href="/contact" class="btn btn-secondary text-lg px-8 py-4" data-track="hero_cta_trial">
-          Essayer Optibilan
-          <Icon name="sparkles" class="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />
-        </a>
+        {secondaryCTA.label && (
+          <a href={secondaryCTA.href} class="btn btn-secondary text-lg px-8 py-4" data-track="hero_cta_trial">
+            {secondaryCTA.label}
+            <Icon name="sparkles" class="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />
+          </a>
+        )}
       </div>
+    )}
 
       {variant === 'home' && (
         <div class="mt-16 relative animate-scale-in delay-500 hidden lg:block" aria-hidden="true">
