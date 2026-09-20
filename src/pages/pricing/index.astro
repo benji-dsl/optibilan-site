@@ -5,71 +5,9 @@ import Footer from '../../components/Footer.astro';
 import Hero from '../../components/Hero.astro';
 import Pricing from '../../components/Pricing.astro';
 import CTA from '../../components/CTA.astro';
-import TrustBar from '../../components/TrustBar.astro';
-import Features from '../../components/Features.astro';
 
 const pageTitle = 'Tarifs - Optibilan';
-const pageDescription = '3 offres simples : Solo 49€/mois, Studio 149€/mois, Cabinet 349€/mois. 30 jours essai gratuit, sans CB. -20% en annuel. Tout inclus, pas de surcoût caché.';
-
-const pricingJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'PriceSpecification',
-  priceCurrency: 'EUR',
-  minPrice: '39',
-  maxPrice: '349',
-  billingIncrement: 'P1M',
-  eligibleTransactionVolume: {
-    '@type': 'PriceSpecification',
-    priceCurrency: 'EUR',
-    price: '0',
-    billingIncrement: 'P30D',
-    description: 'Essai gratuit 30 jours sans carte bancaire'
-  },
-  priceSpecification: [
-    {
-      '@type': 'UnitPriceSpecification',
-      name: 'Solo Mensuel',
-      price: '49',
-      billingDuration: 'P1M',
-      description: '30 coachés, 1 staff, IA 1k msg/mois, marque blanche basique'
-    },
-    {
-      '@type': 'UnitPriceSpecification',
-      name: 'Solo Annuel',
-      price: '39',
-      billingDuration: 'P1M',
-      description: '30 coachés, 1 staff, IA 1k msg/mois, marque blanche basique (-20%)'
-    },
-    {
-      '@type': 'UnitPriceSpecification',
-      name: 'Studio Mensuel',
-      price: '149',
-      billingDuration: 'P1M',
-      description: '150 coachés, 5 staff, IA 5k msg/mois, API, marque blanche avancée'
-    },
-    {
-      '@type': 'UnitPriceSpecification',
-      name: 'Studio Annuel',
-      price: '119',
-      billingDuration: 'P1M',
-      description: '150 coachés, 5 staff, IA 5k msg/mois, API, marque blanche avancée (-20%)'
-    },
-    {
-      '@type': 'UnitPriceSpecification',
-      name: 'Cabinet Mensuel',
-      price: '349',
-      billingDuration: 'P1M',
-      description: 'Coachés illimités, staff illimité, IA 20k msg/mois, SSO/SAML, SLA'
-    },
-    {
-      '@type': 'UnitPriceSpecification',
-      name: 'Cabinet Annuel',
-      price: '279',
-      billingDuration: 'P1M',
-      description: 'Coachés illimités, staff illimité, IA 20k msg/mois, SSO/SAML, SLA (-20%)'
-    }
-  ]
-};
+const pageDescription = 'Tarification simple et transparente : Solo 49€/mois, Studio 99€/mois, Cabinet 199€/mois. 2 mois offerts en annuel. Essai gratuit 30 jours.';
 
 const breadcrumbJsonLd = {
   '@context': 'https://schema.org',
@@ -79,24 +17,6 @@ const breadcrumbJsonLd = {
     { '@type': 'ListItem', position: 2, name: 'Tarifs', item: 'https://optibilan.com/tarifs' },
   ],
 };
-
-const faqJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: [
-    { '@type': 'Question', name: "Puis-je changer d'offre en cours de mois ?", acceptedAnswer: { '@type': 'Answer', text: "Oui. Le changement prend effet immédiatement. Le prorata est calculé automatiquement sur votre prochaine facture Stripe." } },
-    { '@type': 'Question', name: "Y a-t-il un engagement ?", acceptedAnswer: { '@type': 'Answer', text: "Non. Résiliation en 1 clic depuis l'admin. L'accès reste actif jusqu'à la fin de la période payée." } },
-    { '@type': 'Question', name: "Que se passe-t-il à la fin de l'essai de 30 jours ?", acceptedAnswer: { '@type': 'Answer', text: "Votre espace passe en lecture seule (consultation possible, création bloquée). Vous avez 7 jours de grâce pour choisir une offre sans perdre l'accès staff." } },
-    { '@type': 'Question', name: "La marque blanche est-elle vraiment totale ?", acceptedAnswer: { '@type': 'Answer', text: "Sur l'offre Cabinet : logo, couleurs, nom assistant IA, vocabulaire (coaché/patient/membre...), domaine, mentions légales, CGV, email d'expédition - tout est à vous. Sur Studio : avancée (logo, couleurs, assistant, vocabulaire). Sur Solo : basique (logo, couleurs)." } },
-    { '@type': 'Question', name: "Mes données sont-elles hébergées en France ?", acceptedAnswer: { '@type': 'Answer', text: "La base PostgreSQL est hébergée sur Supabase (région EU West, Irlande), le VPS sur Hostinger en France, les backups chiffrés stockés en EU (S3-compatible EU). Aucune donnée ne sort de l'UE. Certifications fournisseurs : SOC 2 Type II, ISO 27001, HIPAA, RGPD." } },
-    { '@type': 'Question', name: "Comment fonctionne l'export RGPD et la purge des données ?", acceptedAnswer: { '@type': 'Answer', text: "Admin → Export : JSON complet de TOUTES les données du cabinet (37 modèles Prisma) en 1 clic. Purge auto paramétrable : durée de conservation (défaut 3 ans) + flag de suppression. Droit à l'oubli : suppression client en cascade par admin. Vérifié en CI (check-tenant.mjs) : aucun modèle cloisonné oublié." } },
-    { '@type': 'Question', name: "Comment fonctionne la facturation ?", acceptedAnswer: { '@type': 'Answer', text: "Via Stripe (carte bancaire, virement SEPA, prélèvement SEPA) ou par virement manuel / Systeme.io (sur demande). Les factures sont émises automatiquement à chaque échéance et disponibles dans l'admin. TVA en sus pour les assujettis (20% France)." } },
-    { '@type': 'Question', name: "Puis-je tester avant de m'engager ?", acceptedAnswer: { '@type': 'Answer', text: "Oui. 30 jours gratuits, toutes fonctionnalités de l'offre choisie, sans carte bancaire. Créez votre cabinet, invitez des coachs, testez l'espace coaché." } },
-    { '@type': 'Question', name: "Y a-t-il des frais cachés ?", acceptedAnswer: { '@type': 'Answer', text: "Non. Le prix affiché = prix payé. Seule la TVA s'ajoute pour les assujettis. Stripe prend sa commission (1,4% + 0,25€ EU) sur les paiements clients si vous activez le paiement intégré." } },
-    { '@type': 'Question', name: "Qu'est-ce qui est inclus dans le support dédié + SLA (Cabinet) ?", acceptedAnswer: { '@type': 'Answer', text: "Support email + Slack partagé + téléphone/visio dédié. Temps de réponse <4h ouvrées. Maintenance corrective et évolutive incluse. Nouvelles versions déployées sans interruption (blue/green). Changelog public." } },
-    { '@type': 'Question', name: "L'API REST est-elle documentée ?", acceptedAnswer: { '@type': 'Answer', text: "Oui. OpenAPI 3.1 complète (Swagger/Redoc), exemples cURL/Node/Python, sandbox de test. Clés API scopées (clients:read, checkins:write, cron, health:sync...). Rate limit : 120 req/min (Studio), sans limite pratique (Cabinet). Webhooks HMAC signés, retry exponentiel, idempotence via externalId." } },
-  ],
-};
 ---
 
 <Layout
@@ -104,131 +24,17 @@ const faqJsonLd = {
   description={pageDescription}
   canonical="/tarifs"
   ogImage="/og-pricing.svg"
-  jsonLd={[pricingJsonLd, breadcrumbJsonLd, faqJsonLd]}
 >
   <Header />
 
   <main>
     <Hero
-      title="Tarification simple, 
+      title="Tarification simple,
 transparente, évolutive"
-      subtitle="Trois offres qui couvrent tous les besoins. Changez quand vous voulez. 30 jours gratuits, sans carte bancaire."
-      badge="Facturation mensuelle ou annuelle (-20%)"
+      subtitle="Quatre offres qui couvrent tous les besoins. Changez quand vous voulez. 30 jours gratuits."
     />
 
-    <TrustBar />
-
     <Pricing />
-
-    <section class="section bg-blanc" aria-labelledby="comparison-title">
-      <div class="container">
-        <header class="text-center max-w-3xl mx-auto mb-12">
-          <h2 id="comparison-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
-            Comparatif détaillé
-          </h2>
-          <p class="text-lg text-encre/60">
-            Tout est inclus dans chaque offre. Seules les limites changent.
-          </p>
-        </header>
-
-        <div class="overflow-x-auto">
-          <table class="w-full text-left" role="table">
-            <thead>
-              <tr class="border-b border-encre/10">
-                <th class="pb-3 font-semibold text-encre text-left">Fonctionnalité</th>
-                <th class="pb-3 font-semibold text-encre text-center">Solo</th>
-                <th class="pb-3 font-semibold text-encre text-center">Studio</th>
-                <th class="pb-3 font-semibold text-encre text-center">Cabinet</th>
-              </tr>
-            </thead>
-            <tbody class="divide-y divide-encre/10">
-              {[
-                { category: 'Général', rows: [
-                  { feature: 'Coachés max', solo: '30', studio: '150', cabinet: 'Illimité' },
-                  { feature: 'Accès staff (coach/admin)', solo: '1', studio: '5', cabinet: 'Illimité' },
-                  { feature: 'Marque blanche', solo: 'Basique', studio: 'Avancée', cabinet: 'Totale' },
-                  { feature: 'Domaine personnalisé', solo: 'Non', studio: 'Oui', cabinet: 'Oui' },
-                  { feature: 'Support', solo: 'Email', studio: 'Prioritaire', cabinet: 'Dédié + SLA' },
-                ]},
-                { category: 'Modules cœur', rows: [
-                  { feature: 'Bilans & progression', solo: '✓', studio: '✓', cabinet: '✓' },
-                  { feature: 'Nutrition (plans, courses, compléments)', solo: '✓', studio: '✓', cabinet: '✓' },
-                  { feature: 'Sport (programmes, séances, bibliothèque)', solo: '✓', studio: '✓', cabinet: '✓' },
-                  { feature: 'Préparation mentale', solo: '✓', studio: '✓', cabinet: '✓' },
-                  { feature: 'Santé connectée & biomarqueurs', solo: '✓', studio: '✓', cabinet: '✓' },
-                  { feature: 'Gamification (XP, badges, habitudes)', solo: '✓', studio: '✓', cabinet: '✓' },
-                  { feature: 'Journal coaching & CRM', solo: '✓', studio: '✓', cabinet: '✓' },
-                  { feature: 'Appels planifiés & agenda ICS', solo: '✓', studio: '✓', cabinet: '✓' },
-                ]},
-                { category: 'IA & Automatisation', rows: [
-                  { feature: 'Assistant IA (messages/mois)', solo: '1 000', studio: '5 000', cabinet: '20 000' },
-                  { feature: 'Prompting personnalisé par cabinet', solo: '✓', studio: '✓', cabinet: '✓' },
-                  { feature: 'Lecture prises de sang / biomarqueurs', solo: '✓', studio: '✓', cabinet: '✓' },
-                ]},
-                { category: 'Technique & Intégrations', rows: [
-                  { feature: 'API REST (OpenAPI)', solo: 'Non', studio: '120 req/min', cabinet: 'Sans limite pratique' },
-                  { feature: 'Webhooks signés HMAC', solo: 'Non', studio: '✓', cabinet: '✓' },
-                  { feature: 'Sync santé (Apple Health, Oura...)', solo: '✓', studio: '✓', cabinet: '✓' },
-                  { feature: 'Calendrier ICS partagé', solo: '✓', studio: '✓', cabinet: '✓' },
-                  { feature: 'Export RGPD complet', solo: '✓', studio: '✓', cabinet: '✓' },
-                  { feature: 'Purge auto paramétrable', solo: '✓', studio: '✓', cabinet: '✓' },
-                  { feature: 'Audit trail (org + plateforme)', solo: '✓', studio: '✓', cabinet: '✓' },
-                  { feature: 'SSO / SAML', solo: 'Non', studio: 'Non', cabinet: 'Bientôt' },
-                ]},
-              ].map(category => (
-                <>
-                  <tr class="bg-papier/50">
-                    <td class="py-3 px-4 font-semibold text-encre" colSpan={4}>{category.category}</td>
-                  </tr>
-                  {category.rows.map(row => (
-                    <tr>
-                      <td class="py-3 px-4 text-encre/70">{row.feature}</td>
-                      <td class="py-3 px-4 text-center text-encre/60">{row.solo}</td>
-                      <td class="py-3 px-4 text-center text-encre/60 font-medium">{row.studio}</td>
-                      <td class="py-3 px-4 text-center text-encre/60 font-medium">{row.cabinet}</td>
-                    </tr>
-                  ))}
-                </>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </section>
-
-    <section class="section bg-papier" aria-labelledby="faq-title">
-      <div class="container">
-        <header class="text-center max-w-3xl mx-auto mb-12">
-          <h2 id="faq-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
-            Questions fréquentes
-          </h2>
-        </header>
-
-        <dl class="max-w-3xl mx-auto space-y-4" style="max-width: 48rem;">
-          {[
-            { q: 'Puis-je changer d\'offre en cours de mois ?', a: 'Oui. Le changement prend effet immédiatement. Le prorata est calculé automatiquement sur votre prochaine facture Stripe.' },
-            { q: 'Y a-t-il un engagement ?', a: 'Non. Résiliation en 1 clic depuis l\'admin. L\'accès reste actif jusqu\'à la fin de la période payée.' },
-            { q: 'Que se passe-t-il à la fin de l\'essai de 30 jours ?', a: 'Votre espace passe en lecture seule (consultation possible, création bloquée). Vous avez 7 jours de grâce pour choisir une offre sans perdre l\'accès staff.' },
-            { q: 'La marque blanche est-elle vraiment totale ?', a: 'Sur l\'offre Cabinet : logo, couleurs, nom assistant IA, vocabulaire (coaché/patient/membre...), domaine, mentions légales, CGV, email d\'expédition - tout est à vous. Sur Studio : avancée (logo, couleurs, assistant, vocabulaire). Sur Solo : basique (logo, couleurs).' },
-            { q: 'Mes données sont-elles hébergées en France ?', a: 'La base PostgreSQL est hébergée sur Supabase (région EU West, Irlande), le VPS sur Hostinger en France, les backups chiffrés stockés en EU (S3-compatible EU). Aucune donnée ne sort de l\'UE. Certifications fournisseurs : SOC 2 Type II, ISO 27001, HIPAA, RGPD.' },
-            { q: 'Comment fonctionne l\'export RGPD et la purge des données ?', a: 'Admin → Export : JSON complet de TOUTES les données du cabinet (37 modèles Prisma) en 1 clic. Purge auto paramétrable : durée de conservation (défaut 3 ans) + flag de suppression. Droit à l\'oubli : suppression client en cascade par admin. Vérifié en CI (check-tenant.mjs) : aucun modèle cloisonné oublié.' },
-            { q: 'Comment fonctionne la facturation ?', a: 'Via Stripe (carte bancaire, virement SEPA, prélèvement SEPA) ou par virement manuel / Systeme.io (sur demande). Les factures sont émises automatiquement à chaque échéance et disponibles dans l\'admin. TVA en sus pour les assujettis (20% France).' },
-            { q: 'Puis-je tester avant de m\'engager ?', a: 'Oui. 30 jours gratuits, toutes fonctionnalités de l\'offre choisie, sans carte bancaire. Créez votre cabinet, invitez des coachs, testez l\'espace coaché.' },
-            { q: 'Y a-t-il des frais cachés ?', a: 'Non. Le prix affiché = prix payé. Seule la TVA s\'ajoute pour les assujettis. Stripe prend sa commission (1,4% + 0,25€ EU) sur les paiements clients si vous activez le paiement intégré.' },
-            { q: 'Qu\'est-ce qui est inclus dans le support "dédié + SLA" (Cabinet) ?', a: 'Support email + Slack partagé + téléphone/visio dédié. Temps de réponse <4h ouvrées. Maintenance corrective et évolutive incluse. Nouvelles versions déployées sans interruption (blue/green). Changelog public.' },
-            { q: 'L\'API REST est-elle documentée ?', a: 'Oui. OpenAPI 3.1 complète (Swagger/Redoc), exemples cURL/Node/Python, sandbox de test. Clés API scopées (clients:read, checkins:write, cron, health:sync...). Rate limit : 120 req/min (Studio), sans limite pratique (Cabinet). Webhooks HMAC signés, retry exponentiel, idempotence via externalId.' },
-          ].map((faq, i) => (
-            <div class="border border-encre/10 rounded-xl overflow-hidden">
-              <dt class="px-6 py-4 bg-blanc font-medium text-encre cursor-pointer flex items-center justify-between" aria-expanded="false" aria-controls={`faq-answer-${i}`}>
-                {faq.q}
-                <svg class="w-5 h-5 text-encre/40 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-              </dt>
-              <dd id={`faq-answer-${i}`} class="px-6 pb-4 text-encre/60 hidden">{faq.a}</dd>
-            </div>
-          ))}
-        </dl>
-      </div>
-    </section>
 
     <CTA
       variant="primary"
@@ -239,18 +45,3 @@ transparente, évolutive"
 
   <Footer />
 </Layout>
-
-<script is:inline>
-  document.querySelectorAll('dl dt').forEach(dt => {
-    dt.addEventListener('click', () => {
-      const dd = dt.nextElementSibling;
-      const svg = dt.querySelector('svg');
-      const expanded = dt.getAttribute('aria-expanded') === 'true';
-      dt.setAttribute('aria-expanded', String(!expanded));
-      dd?.classList.toggle('hidden');
-      if (svg) {
-        svg.style.transform = expanded ? 'rotate(0deg)' : 'rotate(180deg)';
-      }
-    });
-  });
-</script>
