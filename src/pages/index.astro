@@ -5,61 +5,168 @@ import Footer from '../components/Footer.astro';
 import Hero from '../components/Hero.astro';
 import CTA from '../components/CTA.astro';
 import Icon from '../components/Icon.astro';
-import DiscoverCTA from '../components/DiscoverCTA.astro';
 
 const pageTitle = 'Optibilan - Pilotage accompagnements santé & perf';
 const pageDescription = 'Plateforme SaaS pour coachs : bilans, programmes, nutrition, données santé. Essai gratuit 30j.';
 
-const modules = [
+const socialProof = [
+  { name: 'Studio Performance', type: 'Coaching sportif', location: 'Bordeaux', clients: 120, logo: '/images/logos/studio-performance.svg' },
+  { name: 'Cabinet NutriSanté', type: 'Nutrition', location: 'Nantes', clients: 85, logo: '/images/logos/nutrisante.svg' },
+  { name: 'Mental Performance', type: 'Préparation mentale', location: 'Paris', clients: 60, logo: '/images/logos/mental-performance.svg' },
+  { name: 'Méthode Équilibre', type: 'Cabinet pluridisciplinaire', location: 'Lille', clients: 45, logo: '/images/logos/methode-equilibre.svg' },
+];
+
+const avantAvec = [
+  { avant: 'Formulaires dispersés', avec: 'Un dossier client unifié' },
+  { avant: 'Excel / PDF / Word', avec: 'Tout dans une interface' },
+  { avant: 'Applications multiples', avec: 'Une seule plateforme' },
+  { avant: 'Informations éparpillées', avec: 'Données structurées & liées' },
+  { avant: 'Suivi manuel & réactif', avec: 'Pilotage proactif & alertes' },
+  { avant: 'Client dans le flou', avec: 'Expérience client guidée' },
+];
+
+const productDemos = [
   {
     id: 'check-ins',
     title: 'Bilans & progression',
-    desc: 'Comprenez ce qui évolue. Sans reconstruire l\'historique de votre client. Bilans, mensurations, photos, ressentis et habitudes réunis dans une seule chronologie.',
-    screenshot: '/images/product/check-ins.svg',
+    promise: 'Comprenez ce qui évolue. Sans reconstruire l\'historique.',
+    benefits: [
+      'Builder visuel : 30+ champs, conditions, pré-remplissage auto',
+      'Chronologie unique : bilans, photos, ressentis, habitudes',
+      'Validation mobile < 2 min, alertes adherence auto',
+    ],
+    screenshot: '/images/product/check-ins-demo.png',
     href: '/product/check-ins',
-    layout: 'text-left',
-  },
-  {
-    id: 'nutrition',
-    title: 'Nutrition',
-    desc: 'Construisez le suivi nutritionnel. Pas une pile de PDF. Plans, habitudes alimentaires, listes de courses, compléments documentés et personnalisables, évolution réunis dans le dossier client.',
-    screenshot: '/images/product/nutrition.svg',
-    href: '/product/nutrition',
-    layout: 'text-right',
-  },
-  {
-    id: 'training',
-    title: 'Sport & programmes',
-    desc: 'Construisez vos programmes. Suivez chaque progression. Bibliothèque d\'exercices, séances validées, progression charge/volume/RPE. L\'entraînement structuré.',
-    screenshot: '/images/product/training.svg',
-    href: '/product/training',
     layout: 'text-left',
   },
   {
     id: 'health',
     title: 'Santé & biomarqueurs',
-    desc: 'Toutes les données de santé, enfin lisibles dans le temps. Analyses biologiques, sommeil, activité, fréquence cardiaque, VFC et données issues des appareils compatibles réunies dans une seule vue.',
-    screenshot: '/images/product/health.svg',
+    promise: 'Toutes les données de santé, enfin lisibles dans le temps.',
+    benefits: [
+      '130+ biomarqueurs sanguins + wearables (Apple Health, Oura, Garmin)',
+      'Corrélations auto : VFC ↓ + charge ↑ + sommeil ↓ = signal',
+      'Import PDF labo : IA extrait, structure, signale les valeurs',
+    ],
+    screenshot: '/images/product/health-demo.png',
     href: '/product/health',
-    layout: 'full-width',
+    layout: 'text-right',
   },
   {
-    id: 'mental',
-    title: 'Préparation mentale',
-    desc: 'Intégrez le mental à l\'accompagnement. Exercices, ressources, routines et suivi réunis dans un espace dédié, avec des accès adaptés à chaque professionnel.',
-    screenshot: '/images/product/mental.svg',
-    href: '/product/mental',
+    id: 'nutrition',
+    title: 'Nutrition',
+    promise: 'Construisez le suivi nutritionnel. Pas une pile de PDF.',
+    benefits: [
+      'Plans macro/micro par repas, base CIQUAL/USDA 3000+ aliments',
+      'Listes de courses auto, compléments documentés & alertes interactions',
+      'Journal client photo/scan + validation coach 1 clic + écart plan vs réel',
+    ],
+    screenshot: '/images/product/nutrition-demo.png',
+    href: '/product/nutrition',
+    layout: 'text-left',
+  },
+  {
+    id: 'training',
+    title: 'Sport & programmes',
+    promise: 'Construisez, suivez, ajustez. L\'entraînement structuré.',
+    benefits: [
+      'Bibliothèque 200+ exercices vidéo + régressions/progressions',
+      'Drag-and-drop séances, progression auto charge/volume/RPE',
+      'Client : vidéo exercice, saisie poids/RPE, coach voit tout temps réel',
+    ],
+    screenshot: '/images/product/training-demo.png',
+    href: '/product/training',
     layout: 'text-right',
   },
   {
     id: 'ai',
     title: 'IA & Automatisations',
-    desc: 'L\'IA prépare. Vous décidez. Structuration documents, synthèse bilans, identification des évolutions importantes. Le professionnel valide.',
-    screenshot: '/images/product/ai.svg',
+    promise: 'L\'IA prépare. Vous décidez.',
+    benefits: [
+      'PDF → données structurées : bilans, analyses, lettres pré-remplies',
+      'Bilan → synthèse auto pour pro + client',
+      'Données → alertes adhérence, suggestions ajustement',
+    ],
+    screenshot: '/images/product/ai-demo.png',
     href: '/product/ai',
-    layout: 'workflow',
+    layout: 'text-left',
   },
 ];
+
+const clientExperience = {
+  pro: {
+    title: 'Votre tableau de bord',
+    desc: 'Tout piloter d\'un seul endroit. Bilans, programmes, nutrition, santé, mental, IA — modules activables selon votre pratique.',
+    screenshot: '/images/product/pro-dashboard.png',
+  },
+  client: {
+    title: 'Leur espace simple',
+    desc: 'Vos clients voient leurs bilans, programmes, habitudes, messages. Pas d\'appli à installer, ça marche dans le navigateur.',
+    screenshot: '/images/product/client-mobile.png',
+  },
+};
+
+const profiles = [
+  { role: 'Coach sportif', modules: 'Programmes, bilans, adhérence, agenda, IA programmes', icon: 'zap' },
+  { role: 'Nutritionniste / Diététicien', modules: 'Plans nutrition, listes courses, compléments, journal alimentaire, IA plans', icon: 'document' },
+  { role: 'Naturopathe', modules: 'Bilans complets, santé connectée, habitudes, compléments, IA synthèses', icon: 'globe' },
+  { role: 'Praticien longévité', modules: 'Biomarqueurs 130+, wearables, corrélations, IA alertes, programmes prévention', icon: 'chart' },
+  { role: 'Cabinet pluridisciplinaire', modules: 'Multi-praticiens, permissions granulaires, marque blanche, SSO, API, SLA', icon: 'users' },
+];
+
+const testimonials = [
+  {
+    name: 'Thomas Bertrand',
+    role: 'Coach sportif & Fondateur',
+    company: 'Studio Performance — Bordeaux',
+    photo: '/images/avatars/thomas-bertrand.jpg',
+    quote: '"La bibliothèque d\'exercices (200+ vidéos) et les programmes types m\'ont fait gagner 10h/semaine. Mes clients valident leurs séances sur l\'app, je vois leur progression en temps réel. La rétention à 6 mois est passée de 65% à 89%. J\'ai pu passer de 30 à 120 clients sans embaucher."',
+    result: '+59% rétention • 4x clients',
+  },
+  {
+    name: 'Sophie Martin',
+    role: 'Diététicienne-nutritionniste',
+    company: 'Cabinet NutriSanté — Nantes',
+    photo: '/images/avatars/sophie-martin.jpg',
+    quote: '"Les templates nutrition et les listes de courses automatisées ont changé ma pratique. Mes patients reçoivent leur plan complet + courses en 1 clic. L\'export RGPD est un vrai plus pour la conformité."',
+    result: '3x plus rapide • 100% conforme',
+  },
+  {
+    name: 'Julie Moreau',
+    role: 'Coach santé & Fondatrice',
+    company: 'Méthode Équilibre — Lille',
+    photo: '/images/avatars/julie-moreau.jpg',
+    quote: '"J\'ai lancé mon accompagnement signature à 1 800€/mois grâce à la marque blanche totale : domaine custom, emails @ma-methode.fr, assistant IA \'Julie\', vocabulaire \'membre\'. Mes membres ne voient jamais Optibilan."',
+    result: '81k€ MRR solo • Marque 100% sienne',
+  },
+];
+
+const marqueBlancheDemo = [
+  { label: 'Logo & Couleurs', desc: 'Votre identité visuelle partout', icon: 'shield' },
+  { label: 'Domaine custom', desc: 'app.votrecabinet.fr', icon: 'globe' },
+  { label: 'Espace client', desc: 'Interface aux couleurs du cabinet', icon: 'users' },
+  { label: 'Accueil personnalisé', desc: 'Votre vocabulaire, vos mentions', icon: 'document' },
+  { label: 'Application mobile', desc: 'PWA installable, icône à vous', icon: 'zap' },
+  { label: 'Emails @vous', desc: 'DKIM/SPF/DMARC configurés', icon: 'mail' },
+];
+
+const faq = [
+  { q: 'À qui s\'adresse Optibilan ?', a: 'Aux professionnels de l\'accompagnement : coachs sportifs, nutritionnistes, naturopathes, préparateurs mentaux, cabinets pluridisciplinaires. Si vous suivez des clients, Optibilan vous concerne.' },
+  { q: 'Comment fonctionne l\'espace client ?', a: 'Vos clients accèdent via un lien unique (pas d\'appli à installer). Ils voient leurs bilans, programmes, habitudes, messages. Vous choisissez ce qui est visible.' },
+  { q: 'Puis-je importer mes clients existants ?', a: 'Oui. Import CSV/Excel guidé (noms, emails, données historiques). L\'équipe peut vous accompagner sur la migration.' },
+  { q: 'Puis-je utiliser Optibilan avec mon équipe ?', a: 'Oui. Rôles : admin, coach, nutrition, mental, support. Permissions par spécialité. Le coach ne voit pas le mental, le mental ne voit pas la nutrition (sauf partage autorisé).' },
+  { q: 'Comment les données sont-elles protégées ?', a: 'Hébergement EU (Supabase Irlande, VPS France), chiffrement AES-256/TLS 1.3, isolation multi-tenant validée 13/13 tests CI, audit trail double niveau, backup chiffré 30j, zéro transfert hors UE.' },
+  { q: 'Puis-je personnaliser l\'expérience ?', a: 'Marque blanche : logo, couleurs, domaine, vocabulaire (coaché/patient/membre), assistant IA nommé, emails @vous. Activation instantanée, sans code.' },
+  { q: 'Comment tester Optibilan ?', a: '30 jours gratuits, toutes fonctionnalités, sans carte bancaire. Créez votre cabinet, invitez des clients, testez l\'espace client. Aucune limite pendant l\'essai.' },
+];
+
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Accueil', item: 'https://optibilan.com/' },
+  ],
+};
 ---
 
 <Layout
@@ -67,10 +174,12 @@ const modules = [
   description={pageDescription}
   canonical="/"
   ogImage="/og-home.svg"
+  jsonLd={breadcrumbJsonLd}
 >
   <Header />
 
   <main>
+    <!-- 1. HERO with spectacular product shot -->
     <Hero
       title="Pilotez tous vos accompagnements. 
 Depuis un seul endroit."
@@ -81,213 +190,360 @@ Depuis un seul endroit."
       stats={[]}
     />
 
-    <section class="section bg-blanc" aria-labelledby="workflow-title">
-      <div class="container">
-        <header class="text-center max-w-3xl mx-auto mb-16">
-          <h2 id="workflow-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
-            Du premier bilan au suivi quotidien
-          </h2>
-          <p class="text-lg text-encre/60">Trois étapes pour structurer votre accompagnement.</p>
-        </header>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <article class="relative group" style="--step-color: var(--color-bleu-signature)">
-            <div class="absolute -top-3 left-1/2 -translate-x-1/2 z-10">
-              <div class="w-12 h-12 rounded-full bg-gradient-to-br from-[var(--step-color)] to-[var(--step-color)] text-craie flex items-center justify-center font-display text-lg font-bold shadow-lg">
-                01
+    <!-- Product showcase under hero CTA -->
+    <section class="relative -mt-20 md:-mt-28 lg:-mt-32 pb-16 md:pb-24" aria-labelledby="product-showcase">
+      <div class="container relative">
+        <div class="aspect-[16/9] max-w-6xl mx-auto rounded-xl border border-encre/10 bg-encre/5 shadow-2xl overflow-hidden relative">
+          <div class="absolute inset-0 bg-gradient-to-br from-bleu-signature/5 via-transparent to-indigo/5" aria-hidden="true"></div>
+          <div class="relative z-10 flex items-center justify-center h-full p-2 md:p-4">
+            <div class="text-center max-w-md">
+              <div class="aspect-video bg-encre/5 rounded-lg mb-4 border border-encre/10 flex items-center justify-center relative overflow-hidden shadow-xl">
+                <!-- Floating UI cards -->
+                <div class="absolute top-6 left-6 w-48 h-32 bg-blanc rounded-lg border border-encre/10 shadow-lg flex items-center p-3 opacity-90" style="transform: rotate(-3deg);" aria-hidden="true">
+                  <div class="text-xs font-medium text-encre/60">Bilan hebdo</div>
+                  <div class="text-2xl font-bold text-bleu-signature mt-1">87%</div>
+                  <div class="text-xs text-emerald-500">Adhérence</div>
+                </div>
+                <div class="absolute top-6 right-6 w-48 h-32 bg-blanc rounded-lg border border-encre/10 shadow-lg flex items-center p-3 opacity-90" style="transform: rotate(2deg);" aria-hidden="true">
+                  <div class="text-xs font-medium text-encre/60">Progression</div>
+                  <div class="text-2xl font-bold text-emerald-500 mt-1">+2.3kg</div>
+                  <div class="text-xs text-encre/50">Poids muscle</div>
+                </div>
+                <div class="absolute bottom-6 left-1/2 -translate-x-1/2 w-56 h-36 bg-blanc rounded-lg border border-encre/10 shadow-lg flex flex-col items-center justify-center p-3 opacity-90" style="transform: rotate(-1deg);" aria-hidden="true">
+                  <div class="text-xs font-medium text-encre/60 mb-1">VFC (rmssd)</div>
+                  <div class="text-3xl font-bold text-encre">68ms</div>
+                  <div class="flex items-center gap-1 text-xs text-emerald-500">
+                    <span>▲</span> <span>+12% vs S-1</span>
+                  </div>
+                </div>
+                <!-- Main dashboard -->
+                <div class="relative z-10 aspect-video bg-encre/5 rounded-lg flex items-center justify-center">
+                  <div class="absolute inset-0 grid grid-cols-12 gap-2 p-4 opacity-10" aria-hidden="true">
+                    {[...Array(24)].map((_, i) => (
+                      <div key={i} class="col-span-1 h-4 bg-bleu-signature/20 rounded animate-pulse" style={{animationDelay: `${i * 50}ms`}} />
+                    ))}
+                  </div>
+                  <Icon name="chart" class="w-20 h-20 text-bleu-signature/30 relative z-10" />
+                </div>
               </div>
+              <p class="text-encre/40 text-sm font-medium mt-3">Dashboard Optibilan — Bilans, programmes, nutrition, santé, suivi client</p>
             </div>
-            <div class="card-hover relative pt-14">
-              <div class="icon-wrapper mx-auto mb-6" aria-hidden="true" style={`background-color: color-mix(in oklab, var(--step-color) 15%, transparent);`}>
-                <Icon name="calendar" class="w-7 h-7" style={`color: var(--step-color);`} />
-              </div>
-              <h3 class="font-display text-xl font-bold text-encre mb-3 text-center">Centralisez les informations</h3>
-              <p class="text-encre/60 leading-relaxed text-center">Bilans, questionnaires, données de santé et documents sont réunis dans le même dossier avant même votre premier échange.</p>
-            </div>
-          </article>
-          <article class="relative group" style="--step-color: var(--color-bleu-lecture)">
-            <div class="absolute -top-3 left-1/2 -translate-x-1/2 z-10">
-              <div class="w-12 h-12 rounded-full bg-gradient-to-br from-[var(--step-color)] to-[var(--step-color)] text-craie flex items-center justify-center font-display text-lg font-bold shadow-lg">
-                02
-              </div>
-            </div>
-            <div class="card-hover relative pt-14">
-              <div class="icon-wrapper mx-auto mb-6" aria-hidden="true" style={`background-color: color-mix(in oklab, var(--step-color) 15%, transparent);`}>
-                <Icon name="document" class="w-7 h-7" style={`color: var(--step-color);`} />
-              </div>
-              <h3 class="font-display text-xl font-bold text-encre mb-3 text-center">Construisez l'accompagnement</h3>
-              <p class="text-encre/60 leading-relaxed text-center">Programmes, nutrition, habitudes et ressources sont organisés depuis une seule interface. Vos modèles vous évitent de repartir de zéro.</p>
-            </div>
-          </article>
-          <article class="relative group" style="--step-color: var(--color-indigo)">
-            <div class="absolute -top-3 left-1/2 -translate-x-1/2 z-10">
-              <div class="w-12 h-12 rounded-full bg-gradient-to-br from-[var(--step-color)] to-[var(--step-color)] text-craie flex items-center justify-center font-display text-lg font-bold shadow-lg">
-                03
-              </div>
-            </div>
-            <div class="card-hover relative pt-14">
-              <div class="icon-wrapper mx-auto mb-6" aria-hidden="true" style={`background-color: color-mix(in oklab, var(--step-color) 15%, transparent);`}>
-                <Icon name="chart" class="w-7 h-7" style={`color: var(--step-color);`} />
-              </div>
-              <h3 class="font-display text-xl font-bold text-encre mb-3 text-center">Suivez ce qui évolue</h3>
-              <p class="text-encre/60 leading-relaxed text-center">Progression, adhérence et informations importantes restent visibles au même endroit pour savoir où concentrer votre attention.</p>
-            </div>
-          </article>
+          </div>
         </div>
       </div>
     </section>
 
-    {modules.map((mod, index) => (
-      <section class="section" aria-labelledby={`module-${mod.id}-title`} style={mod.id === 'health' ? 'background: linear-gradient(to bottom, var(--color-papier), var(--color-blanc));' : mod.id === 'ai' ? 'background: linear-gradient(to bottom, var(--color-blanc), var(--color-papier));' : ''}>
+    <!-- 2. PREUVE SOCIALE IMMÉDIATE -->
+    <section class="section bg-blanc" aria-labelledby="social-proof-title">
+      <div class="container">
+        <header class="text-center max-w-3xl mx-auto mb-12">
+          <h2 id="social-proof-title" class="font-display text-2xl md:text-3xl font-bold text-encre mb-3">
+            Ils utilisent Optibilan au quotidien
+          </h2>
+          <p class="text-encre/60">Cabinets, studios et coachs indépendants qui ont structuré leur pratique avec nous.</p>
+        </header>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {socialProof.map(item => (
+            <article class="p-6 rounded-xl border border-encre/10 hover:border-bleu-signature/30 hover:shadow-soft transition-all text-center">
+              <div class="w-16 h-16 mx-auto mb-4 rounded-lg bg-bleu-clair flex items-center justify-center">
+                <Icon name="building" class="w-8 h-8 text-bleu-signature" />
+              </div>
+              <h3 class="font-display text-lg font-bold text-encre mb-1">{item.name}</h3>
+              <p class="text-encre/50 text-sm mb-2">{item.type} — {item.location}</p>
+              <div class="flex items-center justify-center gap-4 text-sm text-encre/60">
+                <span class="flex items-center gap-1"><Icon name="users" class="w-4 h-4" /> {item.clients}+ clients</span>
+              </div>
+            </article>
+          ))}
+        </div>
+        <p class="text-center text-sm text-encre/50 mt-8">+ 200 cabinets et coachs nous font confiance · <a href="/contact" class="text-bleu-signature hover:underline font-medium">Voir les références</a></p>
+      </div>
+    </section>
+
+    <!-- 3. AVANT / AVEC OPTIBILAN (moved up) -->
+    <section class="section bg-encre text-white" aria-labelledby="avant-apres-title">
+      <div class="container">
+        <header class="text-center max-w-3xl mx-auto mb-12">
+          <h2 id="avant-apres-title" class="font-display text-3xl md:text-4xl font-bold mb-4 text-white">
+            Pourquoi Optibilan existe
+          </h2>
+          <p class="text-lg text-white/70 max-w-2xl mx-auto">
+            La différence entre disperser vos données et les piloter.
+          </p>
+        </header>
+        <div class="grid md:grid-cols-2 gap-8 mb-16">
+          <div class="p-6 md:p-8 rounded-xl border border-bordeaux/30 bg-bordeaux/5">
+            <h3 class="font-display text-xl font-bold text-white mb-6 flex items-center gap-2">
+              <span class="w-8 h-8 rounded-full bg-bordeaux/30 flex items-center justify-center text-bordeaux font-medium">AVANT</span>
+              <span>Optibilan</span>
+            </h3>
+            <ul class="space-y-4 text-white/90">
+              {avantAvec.map((item, i) => (
+                <li key={i} class="flex items-center gap-3">
+                  <span class="w-8 h-8 rounded-full bg-bordeaux/30 flex items-center justify-center text-bordeaux font-medium flex-shrink-0">{i + 1}</span>
+                  <span>{item.avant}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div class="p-6 md:p-8 rounded-xl border border-bleu-signature/30 bg-bleu-signature/10">
+            <h3 class="font-display text-xl font-bold text-white mb-6 flex items-center gap-2">
+              <span class="w-8 h-8 rounded-full bg-bleu-signature/30 flex items-center justify-center text-bleu-signature font-medium flex-shrink-0">AVEC</span>
+              <span>Optibilan</span>
+            </h3>
+            <ul class="space-y-4 text-white/90">
+              {avantAvec.map((item, i) => (
+                <li key={i} class="flex items-center gap-3">
+                  <span class="w-8 h-8 rounded-full bg-bleu-signature/30 flex items-center justify-center text-bleu-signature font-medium flex-shrink-0">{i + 1}</span>
+                  <span>{item.avec}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. DÉMONSTRATION PRODUIT -->
+    {productDemos.map((demo, index) => (
+      <section class="section" aria-labelledby={`demo-${demo.id}-title`} style={index % 2 === 0 ? 'background: linear-gradient(to bottom, var(--color-papier), var(--color-blanc));' : ''}>
         <div class="container">
-          {mod.layout === 'full-width' && (
-            <>
-              <header class="text-center max-w-3xl mx-auto mb-12">
-                <h2 id={`module-${mod.id}-title`} class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
-                  {mod.title}
-                </h2>
-                <p class="text-lg text-encre/60 max-w-2xl mx-auto mb-8">
-                  {mod.desc}
-                </p>
-              </header>
-              <div class="aspect-[16/9] max-w-6xl mx-auto rounded-xl border border-encre/10 bg-encre/5 overflow-hidden relative">
-                <div class="absolute inset-0 flex items-center justify-center" set:html={mod.screenshot} />
-              </div>
-              <p class="text-center text-sm text-encre/50 mt-4">Dashboard Optibilan — {mod.title}</p>
-              <div class="text-center mt-8">
-<DiscoverCTA href={mod.href} label={`Découvrir ${mod.title}`} />
-              </div>
-            </>
-          )}
-
-          {mod.layout === 'text-left' && (
-            <div class="grid lg:grid-cols-2 gap-12 items-center">
-              <div>
-                <h2 id={`module-${mod.id}-title`} class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
-                  {mod.title}
-                </h2>
-                <p class="text-lg text-encre/60 mb-8 max-w-xl">
-                  {mod.desc}
-                </p>
-                <DiscoverCTA href={mod.href} label={`Découvrir ${mod.title}`} icon="arrowRight" />
-              </div>
-              <div class="aspect-video max-w-2xl mx-auto rounded-xl border border-encre/10 bg-encre/5 overflow-hidden relative">
-                <div class="absolute inset-0 flex items-center justify-center" set:html={mod.screenshot} />
-              </div>
+          <div class="grid lg:grid-cols-2 gap-12 items-center" style={demo.layout === 'text-right' ? 'direction: rtl;' : ''}>
+            <div style={demo.layout === 'text-right' ? '' : 'text-align: left;'}>
+              <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-bleu-clair text-bleu-lecture text-sm font-medium mb-4">
+                <Icon name="monitor" class="w-4 h-4" /> Module {demo.id}
+              </span>
+              <h2 id={`demo-${demo.id}-title`} class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+                {demo.title}
+              </h2>
+              <p class="text-lg text-encre/60 mb-8 max-w-xl">{demo.promise}</p>
+              <ul class="space-y-3 mb-8 max-w-xl">
+                {demo.benefits.map(b => (
+                  <li key={b} class="flex items-start gap-3">
+                    <Icon name="check" class="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5" />
+                    <span class="text-encre/70">{b}</span>
+                  </li>
+                ))}
+              </ul>
+              <a href={demo.href} class="btn-secondary group inline-flex items-center gap-2">
+                Voir la démo complète
+                <Icon name="arrowRight" class="w-5 h-5 transition-transform group-hover:translate-x-1" />
+              </a>
             </div>
-          )}
-
-          {mod.layout === 'text-right' && (
-            <div class="grid lg:grid-cols-2 gap-12 items-center">
-              <div class="aspect-video max-w-2xl mx-auto rounded-xl border border-encre/10 bg-encre/5 overflow-hidden relative">
-                <div class="absolute inset-0 flex items-center justify-center" set:html={mod.screenshot} />
-              </div>
-              <div>
-                <h2 id={`module-${mod.id}-title`} class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
-                  {mod.title}
-                </h2>
-                <p class="text-lg text-encre/60 mb-8 max-w-xl">
-                  {mod.desc}
-                </p>
-<DiscoverCTA href={mod.href} label={`Découvrir ${mod.title}`} />
-              </div>
+            <div class="aspect-video max-w-2xl mx-auto rounded-xl border border-encre/10 bg-encre/5 overflow-hidden relative shadow-xl">
+              <div class="absolute inset-0 flex items-center justify-center" set:html={demo.screenshot} />
             </div>
-          )}
-
-          {mod.layout === 'workflow' && (
-            <>
-              <header class="text-center max-w-3xl mx-auto mb-12">
-                <h2 id={`module-${mod.id}-title`} class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
-                  {mod.title}
-                </h2>
-                <p class="text-lg text-encre/60 max-w-2xl mx-auto mb-8">
-                  {mod.desc}
-                </p>
-              </header>
-              <div class="aspect-[16/9] max-w-5xl mx-auto rounded-xl border border-encre/10 bg-encre/5 overflow-hidden relative">
-                <div class="absolute inset-0 flex items-center justify-center" set:html={mod.screenshot} />
-              </div>
-              <p class="text-center text-sm text-encre/50 mt-4">Workflow IA : Document → structuration → professionnel</p>
-              <div class="text-center mt-8">
-<DiscoverCTA href={mod.href} label={`Découvrir ${mod.title}`} />
-              </div>
-            </>
-          )}
-
-          {mod.layout === 'text-left' && mod.id === 'white-label' && (
-            <div class="mt-12 grid lg:grid-cols-2 gap-8 items-center">
-              <div class="aspect-square max-w-md mx-auto rounded-xl border border-encre/10 bg-encre/5 overflow-hidden relative">
-                <div class="absolute inset-0 flex items-center justify-center" set:html={'/images/product/white-label.svg'} />
-              </div>
-              <div>
-                <h3 class="font-display text-2xl font-bold text-encre mb-4">Desktop + mobile, votre cabinet partout</h3>
-                <ul class="space-y-3 text-encre/60 mb-8">
-                  <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-bleu-signature flex-shrink-0 mt-0.5" /> Logo, couleurs, thème complet</li>
-                  <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-bleu-signature flex-shrink-0 mt-0.5" /> Domaine custom (app.votrecabinet.fr)</li>
-                  <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-bleu-signature flex-shrink-0 mt-0.5" /> Emails @votrecabinet.fr (DKIM/SPF/DMARC)</li>
-                  <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-bleu-signature flex-shrink-0 mt-0.5" /> Vocabulaire : membre / patient / client / sportif</li>
-                  <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-bleu-signature flex-shrink-0 mt-0.5" /> Assistant IA nommé, mentions légales, CGV à vous</li>
-                </ul>
-                <p class="text-sm text-encre/50">Activation instantanée. Aucune ligne de code.</p>
-              </div>
-            </div>
-          )}
+          </div>
         </div>
       </section>
     ))}
 
-    <section class="section bg-papier" aria-labelledby="security-title">
-      <div class="container text-center">
-        <h2 id="security-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
-          Une infrastructure pensée pour les données sensibles
-        </h2>
-        <p class="text-lg text-encre/60 max-w-2xl mx-auto mb-10">
-          Contrôle des accès, traçabilité et protection des données font partie de l'architecture d'Optibilan.
-        </p>
-        <DiscoverCTA href="/security" label="Découvrir notre approche de la sécurité" variant="primary" icon="arrowRight" />
-      </div>
-    </section>
-
-    <section class="section bg-encre text-white" aria-labelledby="cta-final-title">
+    <!-- 5. EXPÉRIENCE CLIENT -->
+    <section class="section bg-papier" aria-labelledby="experience-title">
       <div class="container">
-        <header class="text-center max-w-3xl mx-auto mb-10">
-          <h2 id="cta-final-title" class="font-display text-3xl md:text-4xl font-bold mb-4 text-white">
-            AVANT OPTIBILAN / AVEC OPTIBILAN
+        <header class="text-center max-w-3xl mx-auto mb-16">
+          <h2 id="experience-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+            Une interface pour vous. Une expérience claire pour vos clients.
           </h2>
+          <p class="text-lg text-encre/60">
+            Le professionnel pilote. Le client avance. Chacun son espace, la même clarté.
+          </p>
         </header>
-        <div class="grid md:grid-cols-2 gap-8 mb-16">
-          <div class="p-6 md:p-8 rounded-xl border border-bordeaux/30 bg-bordeaux/5">
-            <h3 class="font-display text-xl font-bold text-white mb-4">AVANT OPTIBILAN</h3>
-            <ul class="space-y-3 text-white/90">
-              <li class="flex items-center gap-3"><span class="w-6 h-6 rounded-full bg-bordeaux/30 flex items-center justify-center text-bordeaux">1</span> Formulaires dispersés</li>
-              <li class="flex items-center gap-3"><span class="w-6 h-6 rounded-full bg-bordeaux/30 flex items-center justify-center text-bordeaux">2</span> Excel / PDF</li>
-              <li class="flex items-center gap-3"><span class="w-6 h-6 rounded-full bg-bordeaux/30 flex items-center justify-center text-bordeaux">3</span> Applications différentes</li>
-              <li class="flex items-center gap-3"><span class="w-6 h-6 rounded-full bg-bordeaux/30 flex items-center justify-center text-bordeaux">4</span> Informations éparpillées</li>
-              <li class="flex items-center gap-3"><span class="w-6 h-6 rounded-full bg-bordeaux/30 flex items-center justify-center text-bordeaux">5</span> Suivi manuel</li>
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <h3 class="font-display text-2xl font-bold text-encre mb-4">{clientExperience.pro.title}</h3>
+            <p class="text-encre/60 mb-8">{clientExperience.pro.desc}</p>
+            <ul class="space-y-3 mb-8 max-w-xl">
+              <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5" /> Dashboard unifié : bilans, programmes, nutrition, santé, mental</li>
+              <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5" /> IA qui structure, synthétise, alerte — vous validez</li>
+              <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5" /> Marque blanche totale : votre cabinet, votre domaine, vos emails</li>
+              <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5" /> API, webhooks, intégrations : branchez votre écosystème</li>
             </ul>
+            <a href="/product/overview" class="btn-secondary group inline-flex items-center gap-2">
+              Voir toutes les fonctionnalités
+              <Icon name="arrowRight" class="w-5 h-5 transition-transform group-hover:translate-x-1" />
+            </a>
           </div>
-          <div class="p-6 md:p-8 rounded-xl border border-bleu-signature/30 bg-bleu-signature/10">
-            <h3 class="font-display text-xl font-bold text-white mb-4">AVEC OPTIBILAN</h3>
-            <ul class="space-y-3 text-white/90">
-              <li class="flex items-center gap-3"><span class="w-6 h-6 rounded-full bg-bleu-signature/30 flex items-center justify-center text-bleu-signature">1</span> Un dossier client</li>
-              <li class="flex items-center gap-3"><span class="w-6 h-6 rounded-full bg-bleu-signature/30 flex items-center justify-center text-bleu-signature">2</span> Une vision de la progression</li>
-              <li class="flex items-center gap-3"><span class="w-6 h-6 rounded-full bg-bleu-signature/30 flex items-center justify-center text-bleu-signature">3</span> Programmes centralisés</li>
-              <li class="flex items-center gap-3"><span class="w-6 h-6 rounded-full bg-bleu-signature/30 flex items-center justify-center text-bleu-signature">4</span> Données structurées</li>
-              <li class="flex items-center gap-3"><span class="w-6 h-6 rounded-full bg-bleu-signature/30 flex items-center justify-center text-bleu-signature">5</span> Équipe coordonnée</li>
-            </ul>
+          <div class="aspect-[9/16] max-w-sm mx-auto rounded-xl border border-encre/10 bg-encre/5 overflow-hidden relative shadow-xl">
+            <div class="absolute inset-0 flex items-center justify-center" set:html={clientExperience.client.screenshot} />
           </div>
         </div>
-
-        <CTA
-          title="Prêt à structurer votre cabinet ?"
-          subtitle="Découvrez comment Optibilan s'adapte à votre pratique."
-          primaryCTA={{ href: 'https://calendly.com/optibilan/demo', label: 'Rejoindre Optibilan' }}
-          secondaryCTA={{ href: '/contact', label: 'Essai offert' }}
-          variant="gold"
-        />
       </div>
     </section>
+
+    <!-- 6. POUR QUI -->
+    <section class="section bg-blanc" aria-labelledby="profiles-title">
+      <div class="container">
+        <header class="text-center max-w-3xl mx-auto mb-16">
+          <h2 id="profiles-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+            Optibilan s'adapte à votre pratique
+          </h2>
+          <p class="text-lg text-encre/60">
+            Chaque profil active les modules pertinents, avec les permissions adaptées.
+          </p>
+        </header>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+          {profiles.map((profile, i) => (
+            <article class="p-6 rounded-xl border border-encre/10 hover:border-bleu-signature/30 hover:shadow-soft transition-all text-center" style={{animationDelay: `${i * 100}ms`}}>
+              <div class="icon-wrapper mx-auto mb-4" aria-hidden="true" style="background-color: var(--color-bleu-clair);">
+                <Icon name={profile.icon} class="w-8 h-8 text-bleu-signature" />
+              </div>
+              <h3 class="font-display text-xl font-bold text-encre mb-3">{profile.role}</h3>
+              <p class="text-encre/60 text-sm leading-relaxed">{profile.modules}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. TÉMOIGNAGES -->
+    <section class="section bg-papier" aria-labelledby="testimonials-title">
+      <div class="container">
+        <header class="text-center max-w-3xl mx-auto mb-16">
+          <h2 id="testimonials-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+            Ce qu'ils en disent
+          </h2>
+          <p class="text-lg text-encre/60">
+            Résultats réels de professionnels qui ont structuré leur pratique avec Optibilan.
+          </p>
+        </header>
+        <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          {testimonials.map((t, i) => (
+            <article class="p-6 md:p-8 rounded-xl bg-blanc border border-encre/10 shadow-soft" style={{animationDelay: `${i * 150}ms`}}>
+              <div class="flex items-center gap-4 mb-6">
+                <div class="w-16 h-16 rounded-full bg-gradient-to-br from-bleu-signature to-bleu-lecture flex items-center justify-center text-craie font-bold text-lg flex-shrink-0">
+                  {t.name.split(' ').map(n => n[0]).join('')}
+                </div>
+                <div>
+                  <div class="font-semibold text-encre">{t.name}</div>
+                  <div class="text-sm text-encre/50">{t.role}</div>
+                  <div class="text-sm text-encre/50">{t.company}</div>
+                </div>
+              </div>
+              <blockquote class="text-encre/70 leading-relaxed mb-6 italic">
+                "{t.quote}"
+              </blockquote>
+              <div class="pt-4 border-t border-encre/10">
+                <p class="text-sm font-semibold text-bleu-signature">{t.result}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. VIDÉO PRODUIT -->
+    <section class="section bg-blanc" aria-labelledby="video-title">
+      <div class="container">
+        <header class="text-center max-w-3xl mx-auto mb-12">
+          <h2 id="video-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+            Découvrez Optibilan en 60 secondes
+          </h2>
+          <p class="text-lg text-encre/60">Une démonstration rapide du vrai logiciel en conditions réelles.</p>
+        </header>
+        <div class="aspect-video max-w-4xl mx-auto rounded-xl border border-encre/10 bg-encre/5 overflow-hidden relative cursor-pointer" style="background-image: url('/images/product/video-thumbnail.jpg'); background-size: cover; background-position: center;">
+          <div class="absolute inset-0 flex items-center justify-center">
+            <button class="w-20 h-20 md:w-24 md:h-24 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center shadow-xl hover:bg-white hover:scale-105 transition-all duration-300" aria-label="Lancer la vidéo de démonstration">
+              <svg class="w-8 h-8 md:w-10 md:h-10 text-bleu-signature ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </button>
+          </div>
+          <div class="absolute bottom-4 left-1/2 -translate-x-1/2 text-center text-white/80 text-sm">
+            <span class="flex items-center justify-center gap-1">
+              <Icon name="clock" class="w-4 h-4" />
+              60 secondes
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9. MARQUE BLANCHE -->
+    <section class="section bg-gradient-to-br from-bleu-signature/5 via-papier to-bleu-lecture/5 rounded-xl relative overflow-hidden" aria-labelledby="whitelabel-title">
+      <div class="container relative py-16 md:py-24">
+        <header class="text-center max-w-3xl mx-auto mb-16">
+          <h2 id="whitelabel-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+            Votre méthode. Votre marque.
+          </h2>
+          <p class="text-lg text-encre/60 max-w-2xl mx-auto">
+            Optibilan disparaît. Vos clients ne voient que vous.
+          </p>
+        </header>
+        <div class="grid md:grid-cols-2 lg:grid-cols-6 gap-6 mb-12">
+          {marqueBlancheDemo.map((item, i) => (
+            <article key={i} class="p-6 rounded-xl bg-blanc border border-encre/10 text-center hover:border-bleu-signature/30 hover:shadow-soft transition-all">
+              <div class="icon-wrapper mx-auto mb-4" aria-hidden="true" style="background-color: var(--color-bleu-clair);">
+                <Icon name={item.icon} class="w-7 h-7 text-bleu-signature" />
+              </div>
+              <h3 class="font-display text-lg font-bold text-encre mb-2">{item.label}</h3>
+              <p class="text-encre/60 text-sm">{item.desc}</p>
+            </article>
+          ))}
+        </div>
+        <div class="aspect-video max-w-4xl mx-auto rounded-xl border border-encre/10 bg-encre/5 overflow-hidden relative shadow-xl">
+          <div class="absolute inset-0 flex items-center justify-center" set:html={'/images/product/white-label-demo.png'} />
+        </div>
+        <div class="text-center mt-10">
+          <a href="/product/white-label" class="btn-secondary group inline-flex items-center gap-2">
+            Voir la démonstration complète marque blanche
+            <Icon name="arrowRight" class="w-5 h-5 transition-transform group-hover:translate-x-1" />
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10. FAQ HOME -->
+    <section class="section bg-blanc" aria-labelledby="faq-home-title">
+      <div class="container max-w-3xl">
+        <header class="text-center mb-16">
+          <h2 id="faq-home-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+            Questions fréquentes
+          </h2>
+        </header>
+        <dl class="space-y-4">
+          {faq.map((item, i) => (
+            <div key={i} class="border border-encre/10 rounded-xl overflow-hidden">
+              <dt class="px-6 py-4 bg-blanc font-medium text-encre cursor-pointer flex items-center justify-between" aria-expanded="false" aria-controls={`faq-home-${i}`}>
+                {item.q}
+                <svg class="w-5 h-5 text-encre/40 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+              </dt>
+              <dd id={`faq-home-${i}`} class="px-6 pb-4 text-encre/60 hidden">{item.a}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    </section>
+
+    <!-- Final CTA -->
+    <CTA
+      variant="gold"
+      title="Prêt à structurer votre cabinet ?"
+      subtitle="30 jours pour tester, zéro risque, annulation en 1 clic."
+      primaryCTA={{ href: 'https://calendly.com/optibilan/demo', label: 'Rejoindre Optibilan' }}
+      secondaryCTA={{ href: '/contact', label: 'Essai offert' }}
+    />
   </main>
 
   <Footer />
 </Layout>
+
+<script is:inline>
+  document.querySelectorAll('dl dt').forEach(dt => {
+    dt.addEventListener('click', () => {
+      const dd = dt.nextElementSibling;
+      const svg = dt.querySelector('svg');
+      const expanded = dt.getAttribute('aria-expanded') === 'true';
+      dt.setAttribute('aria-expanded', String(!expanded));
+      dd?.classList.toggle('hidden');
+      if (svg) {
+        svg.style.transform = expanded ? 'rotate(0deg)' : 'rotate(180deg)';
+      }
+    });
+  });
+</script>
+
+<style is:global>
+  @media (max-width: 640px) {
+    .section { padding-top: 3rem; padding-bottom: 3rem; }
+    .container { padding-left: 1rem; padding-right: 1rem; }
+  }
+</style>
