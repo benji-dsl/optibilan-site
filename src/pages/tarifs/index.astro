@@ -22,8 +22,8 @@ const plans = [
     name: 'Studio',
     monthly: 99,
     yearly: 990,
-    quotas: '100 clients · 6 accès · 5000 messages IA',
-    promise: 'Pour l\'équipe : praticien, diététicien, préparateur mental.',
+    quotas: '100 clients · 6 accès · 5000 messages IA · Marque blanche avancée',
+    promise: "Pour l'équipe : praticien, diététicien, préparateur mental.",
     featured: true,
     cta: 'Rejoindre Optibilan',
   },
@@ -31,7 +31,7 @@ const plans = [
     name: 'Cabinet',
     monthly: 199,
     yearly: 1990,
-    quotas: 'Clients illimités · Accès illimités · 15000 messages IA',
+    quotas: 'Clients illimités · Accès illimités · 15000 messages IA · Marque blanche totale',
     promise: 'Pour les cabinets et structures qui branchent leur écosystème.',
     featured: false,
     cta: 'Rejoindre Optibilan',
@@ -81,15 +81,6 @@ transparente, évolutive"
 
     <section class="section bg-blanc" aria-labelledby="plans-title">
       <div class="container">
-        <header class="text-center max-w-3xl mx-auto mb-16">
-          <h2 id="plans-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
-            Choisissez l'offre qui vous correspond
-          </h2>
-          <p class="text-lg text-encre/60">
-            Tout est inclus dans chaque offre. Seules les limites changent.
-          </p>
-        </header>
-
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {plans.map((plan, i) => (
             <article class={`relative p-6 md:p-8 rounded-xl border transition-all duration-300 ${plan.featured ? 'ring-2 ring-bleu-signature bg-gradient-to-br from-bleu-signature/5 via-blanc to-bleu-lecture/5' : 'bg-blanc border-encre/10 hover:border-bleu-signature/30 hover:shadow-soft'}`}>
@@ -181,7 +172,7 @@ transparente, évolutive"
             { q: 'Puis-je changer d\'offre en cours de mois ?', a: 'Oui. Le changement prend effet immédiatement. Le prorata est calculé automatiquement sur votre prochaine facture.' },
             { q: 'Y a-t-il un engagement ?', a: 'Non. Résiliation en 1 clic depuis l\'admin. L\'accès reste actif jusqu\'à la fin de la période payée.' },
             { q: 'Que se passe-t-il à la fin de l\'essai de 30 jours ?', a: 'Votre espace passe en lecture seule (consultation possible, création bloquée). Vous avez 7 jours de grâce pour choisir une offre sans perdre l\'accès staff.' },
-            { q: 'La marque blanche est-elle incluse ?', a: 'Solo : basique (logo, couleurs). Studio : avancée (logo, couleurs, assistant, vocabulaire, domaine). Cabinet : totale (domaine, emails @votrecabinet.fr, mentions, CGV, assistant IA nommé).' },
+            { q: 'La marque blanche est-elle incluse ?', a: 'Solo : non incluse. Studio : avancée (logo, couleurs, assistant, vocabulaire, domaine). Cabinet : totale (domaine, emails @votrecabinet.fr, mentions, CGV, assistant IA nommé).' },
             { q: 'Mes données sont-elles hébergées en France ?', a: 'La base PostgreSQL est sur Supabase (EU West, Irlande), le VPS sur Hostinger (France), backups chiffrés en EU. Aucune donnée ne sort de l\'UE. Certifications : SOC 2 Type II, ISO 27001, HIPAA, RGPD.' },
             { q: 'Comment fonctionne l\'export RGPD ?', a: 'Admin → Export : JSON complet de TOUTES les données du cabinet (37 modèles Prisma) en 1 clic. Purge auto paramétrable (défaut 3 ans). Droit à l\'oubli : suppression client en cascade par admin.' },
             { q: 'Y a-t-il des frais cachés ?', a: 'Non. Le prix affiché = prix payé. Seule la TVA s\'ajoute pour les assujettis (20% France). Stripe prend sa commission (1,4% + 0,25€ EU) sur les paiements clients si vous activez le paiement intégré.' },
