@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <rect width="200" height="200" fill="#E8F8F0"/>
+  <circle cx="100" cy="100" r="80" fill="none" stroke="#14A85C" stroke-width="3"/>
+  <text x="100" y="110" font-family="system-ui, sans-serif" font-size="24" font-weight="600" fill="#14A85C" text-anchor="middle">Cabinet NutriSanté</text>
+</svg>

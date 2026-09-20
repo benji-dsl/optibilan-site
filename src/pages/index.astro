@@ -10,10 +10,10 @@ const pageTitle = 'Optibilan - Pilotage accompagnements santé & perf';
 const pageDescription = 'Plateforme SaaS pour coachs : bilans, programmes, nutrition, données santé. Essai gratuit 30j.';
 
 const socialProof = [
-  { name: 'Studio Performance', type: 'Coaching sportif', location: 'Bordeaux', clients: 120, logo: '/images/logos/studio-performance.svg' },
-  { name: 'Cabinet NutriSanté', type: 'Nutrition', location: 'Nantes', clients: 85, logo: '/images/logos/nutrisante.svg' },
-  { name: 'Mental Performance', type: 'Préparation mentale', location: 'Paris', clients: 60, logo: '/images/logos/mental-performance.svg' },
-  { name: 'Méthode Équilibre', type: 'Cabinet pluridisciplinaire', location: 'Lille', clients: 45, logo: '/images/logos/methode-equilibre.svg' },
+  { name: 'Studio Performance', type: 'Coaching sportif', location: 'Bordeaux', clients: 120, logo: '/images/logos/logo-placeholder-1.svg' },
+  { name: 'Cabinet NutriSanté', type: 'Nutrition', location: 'Nantes', clients: 85, logo: '/images/logos/logo-placeholder-2.svg' },
+  { name: 'Mental Performance', type: 'Préparation mentale', location: 'Paris', clients: 60, logo: '/images/logos/logo-placeholder-3.svg' },
+  { name: 'Méthode Équilibre', type: 'Cabinet pluridisciplinaire', location: 'Lille', clients: 45, logo: '/images/logos/logo-placeholder-4.svg' },
 ];
 
 const avantAvec = [
@@ -35,7 +35,7 @@ const productDemos = [
       'Chronologie unique : bilans, photos, ressentis, habitudes',
       'Validation mobile < 2 min, alertes adherence auto',
     ],
-    screenshot: '/images/product/check-ins-demo.png',
+    screenshot: '/images/product/bilans.svg',
     href: '/product/check-ins',
     layout: 'text-left',
   },
@@ -48,7 +48,7 @@ const productDemos = [
       'Corrélations auto : VFC ↓ + charge ↑ + sommeil ↓ = signal',
       'Import PDF labo : IA extrait, structure, signale les valeurs',
     ],
-    screenshot: '/images/product/health-demo.png',
+    screenshot: '/images/product/health.svg',
     href: '/product/health',
     layout: 'text-right',
   },
@@ -61,7 +61,7 @@ const productDemos = [
       'Listes de courses auto, compléments documentés & alertes interactions',
       'Journal client photo/scan + validation coach 1 clic + écart plan vs réel',
     ],
-    screenshot: '/images/product/nutrition-demo.png',
+    screenshot: '/images/product/nutrition.svg',
     href: '/product/nutrition',
     layout: 'text-left',
   },
@@ -74,7 +74,7 @@ const productDemos = [
       'Drag-and-drop séances, progression auto charge/volume/RPE',
       'Client : vidéo exercice, saisie poids/RPE, coach voit tout temps réel',
     ],
-    screenshot: '/images/product/training-demo.png',
+    screenshot: '/images/product/training.svg',
     href: '/product/training',
     layout: 'text-right',
   },
@@ -87,7 +87,7 @@ const productDemos = [
       'Bilan → synthèse auto pour pro + client',
       'Données → alertes adhérence, suggestions ajustement',
     ],
-    screenshot: '/images/product/ai-demo.png',
+    screenshot: '/images/product/integrations.svg',
     href: '/product/ai',
     layout: 'text-left',
   },
@@ -97,12 +97,12 @@ const clientExperience = {
   pro: {
     title: 'Votre tableau de bord',
     desc: 'Tout piloter d\'un seul endroit. Bilans, programmes, nutrition, santé, mental, IA — modules activables selon votre pratique.',
-    screenshot: '/images/product/pro-dashboard.png',
+    screenshot: '/images/product/bilans.svg',
   },
   client: {
     title: 'Leur espace simple',
     desc: 'Vos clients voient leurs bilans, programmes, habitudes, messages. Pas d\'appli à installer, ça marche dans le navigateur.',
-    screenshot: '/images/product/client-mobile.png',
+    screenshot: '/images/product/training.svg',
   },
 };
 
@@ -119,7 +119,7 @@ const testimonials = [
     name: 'Thomas Bertrand',
     role: 'Coach sportif & Fondateur',
     company: 'Studio Performance — Bordeaux',
-    photo: '/images/avatars/thomas-bertrand.jpg',
+    photo: '/images/avatars/avatar-placeholder-1.svg',
     quote: '"La bibliothèque d\'exercices (200+ vidéos) et les programmes types m\'ont fait gagner 10h/semaine. Mes clients valident leurs séances sur l\'app, je vois leur progression en temps réel. La rétention à 6 mois est passée de 65% à 89%. J\'ai pu passer de 30 à 120 clients sans embaucher."',
     result: '+59% rétention • 4x clients',
   },
@@ -127,7 +127,7 @@ const testimonials = [
     name: 'Sophie Martin',
     role: 'Diététicienne-nutritionniste',
     company: 'Cabinet NutriSanté — Nantes',
-    photo: '/images/avatars/sophie-martin.jpg',
+    photo: '/images/avatars/avatar-placeholder-2.svg',
     quote: '"Les templates nutrition et les listes de courses automatisées ont changé ma pratique. Mes patients reçoivent leur plan complet + courses en 1 clic. L\'export RGPD est un vrai plus pour la conformité."',
     result: '3x plus rapide • 100% conforme',
   },
@@ -135,7 +135,7 @@ const testimonials = [
     name: 'Julie Moreau',
     role: 'Coach santé & Fondatrice',
     company: 'Méthode Équilibre — Lille',
-    photo: '/images/avatars/julie-moreau.jpg',
+    photo: '/images/avatars/avatar-placeholder-3.svg',
     quote: '"J\'ai lancé mon accompagnement signature à 1 800€/mois grâce à la marque blanche totale : domaine custom, emails @ma-methode.fr, assistant IA \'Julie\', vocabulaire \'membre\'. Mes membres ne voient jamais Optibilan."',
     result: '81k€ MRR solo • Marque 100% sienne',
   },
@@ -441,7 +441,7 @@ Depuis un seul endroit."
           </h2>
           <p class="text-lg text-encre/60">Une démonstration rapide du vrai logiciel en conditions réelles.</p>
         </header>
-        <div class="aspect-video max-w-4xl mx-auto rounded-xl border border-encre/10 bg-encre/5 overflow-hidden relative cursor-pointer" style="background-image: url('/images/product/video-thumbnail.jpg'); background-size: cover; background-position: center;">
+        <div class="aspect-video max-w-4xl mx-auto rounded-xl border border-encre/10 bg-encre/5 overflow-hidden relative cursor-pointer" style="background-image: url('/images/product/integrations.svg'); background-size: cover; background-position: center;">
           <div class="absolute inset-0 flex items-center justify-center">
             <button class="w-20 h-20 md:w-24 md:h-24 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center shadow-xl hover:bg-white hover:scale-105 transition-all duration-300" aria-label="Lancer la vidéo de démonstration">
               <svg class="w-8 h-8 md:w-10 md:h-10 text-bleu-signature ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
@@ -480,7 +480,7 @@ Depuis un seul endroit."
           ))}
         </div>
         <div class="aspect-video max-w-4xl mx-auto rounded-xl border border-encre/10 bg-encre/5 overflow-hidden relative shadow-xl">
-          <div class="absolute inset-0 flex items-center justify-center" set:html={'/images/product/white-label-demo.png'} />
+          <div class="absolute inset-0 flex items-center justify-center" set:html={'/images/product/white-label.svg'} />
         </div>
         <div class="text-center mt-10">
           <a href="/product/white-label" class="btn-secondary group inline-flex items-center gap-2">

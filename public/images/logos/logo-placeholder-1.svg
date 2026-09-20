@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <rect width="200" height="200" fill="#E8F5FF"/>
+  <circle cx="100" cy="100" r="80" fill="none" stroke="#2A8BFF" stroke-width="3"/>
+  <text x="100" y="110" font-family="system-ui, sans-serif" font-size="24" font-weight="600" fill="#2A8BFF" text-anchor="middle">Studio Performance</text>
+</svg>
