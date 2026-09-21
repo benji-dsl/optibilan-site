@@ -1,32 +1,33 @@
+import type { APIRoute } from 'astro';
 import Stripe from 'stripe';
-
-interface Env {
-  STRIPE_SECRET_KEY: string;
-  STRIPE_PUBLISHABLE_KEY: string;
-}
 
 const PLAN_PRICES = {
   SOLO: { monthly: 49, yearly: 490 },
-  STUDIO: { monthly: 149, yearly: 1190 },
+  STUDIO: { monthly: 149, yearly: 1490 },
   CABINET: { monthly: 349, yearly: 3490 },
 };
 
-export const onRequestPost: PagesFunction<Env> = async (context) => {
-  const { request, env } = context;
-  
+export const POST: APIRoute = async ({ request, locals }) => {
   try {
     const body = await request.json();
-    const { plan, billing = 'monthly' } = body;
+    const { plan, billing = 'monthly', email } = body;
     
-    if (!plan || !PLAN_PRICES[plan as keyof typeof PLAN_PRICES]) {
+    if (!plan || !['SOLO', 'STUDIO', 'CABINET'].includes(plan)) {
       return new Response(JSON.stringify({ error: 'Plan invalide' }), {
         status: 400,
         headers: { 'Content-Type': 'application/json' },
       });
     }
     
-    const stripe = new Stripe(env.STRIPE_SECRET_KEY);
-    const price = PLAN_PRICES[plan as keyof typeof PLAN_PRICES][billing as keyof typeof PLAN_PRICES[typeof plan]];
+    if (!email || !email.includes('@')) {
+      return new Response(JSON.stringify({ error: 'Email invalide' }), {
+        status: 400,
+        headers: { 'Content-Type': 'application/json' },
+      });
+    }
+    
+    const price = PLAN_PRICES[plan as keyof typeof PLAN_PRICES][billing as 'monthly' | 'yearly'];
+    const stripe = new Stripe(import.meta.env.STRIPE_SECRET_KEY);
     
     const session = await stripe.checkout.sessions.create({
       mode: 'subscription',
@@ -58,7 +59,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
       cancel_url: `${new URL(request.url).origin}/tarifs`,
       allow_promotion_codes: true,
       billing_address_collection: 'required',
-      customer_email: body.email,
+      customer_email: email,
     });
     
     return new Response(JSON.stringify({ 
