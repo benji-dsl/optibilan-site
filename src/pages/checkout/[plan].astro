@@ -4,11 +4,17 @@ import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import { getPlanDetails } from '../../lib/plans';
 
-const { plan } = Astro.url.searchParams;
+export async function getStaticPaths() {
+  return ['SOLO', 'STUDIO', 'CABINET'].map(plan => ({
+    params: { plan: plan.toLowerCase() },
+  }));
+}
+
+const { plan } = Astro.params;
 const validPlans = ['SOLO', 'STUDIO', 'CABINET'] as const;
 type Plan = typeof validPlans[number];
 
-const selectedPlan = validPlans.includes(plan as Plan) ? plan as Plan : null;
+const selectedPlan = validPlans.includes(plan?.toUpperCase() as Plan) ? plan?.toUpperCase() as Plan : null;
 const planDetails = selectedPlan ? getPlanDetails(selectedPlan) : null;
 
 const pageTitle = selectedPlan ? `Paiement - ${selectedPlan} - Optibilan` : 'Paiement - Optibilan';
@@ -20,7 +26,7 @@ const breadcrumbJsonLd = {
   itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'Accueil', item: 'https://optibilan.com/' },
     { '@type': 'ListItem', position: 2, name: 'Tarifs', item: 'https://optibilan.com/tarifs' },
-    { '@type': 'ListItem', position: 3, name: 'Paiement', item: 'https://optibilan.com/checkout' },
+    { '@type': 'ListItem', position: 3, name: 'Paiement', item: `https://optibilan.com/checkout/${plan}` },
   ],
 };
 ---
