@@ -150,30 +150,10 @@ const displayPlans = plans && plans.length > 0 ? plans : defaultPlans;
             ))}
           </ul>
 
-          <a href={plan.cta.href} class={plan.popular ? 'btn-primary w-full' : 'btn-secondary w-full'}>
+          <a href={plan.cta.href} class="btn-primary w-full group py-4 px-6 text-lg font-semibold transition-all duration-200">
             {plan.cta.label}
+            <Icon name="arrowRight" class="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1 inline-block" />
           </a>
-
-          {plan.limits && (
-            <details class="mt-6 pt-6 border-t border-encre/10 group">
-              <summary class="flex items-center justify-between cursor-pointer text-sm font-medium text-encre/70 hover:text-encre">
-                <span>Détails des limites</span>
-                <Icon name="chevronDown" class="w-5 h-5 text-encre/40 transition-transform group-open:rotate-180" />
-              </summary>
-              <div class="mt-4 grid grid-cols-2 gap-3 text-sm">
-                <div class="text-encre/50">Coachés</div>
-                <div class="font-medium text-encre">{plan.limits.clients}</div>
-                <div class="text-encre/50">Accès staff</div>
-                <div class="font-medium text-encre">{plan.limits.staff}</div>
-                <div class="text-encre/50">Messages IA/mois</div>
-                <div class="font-medium text-encre">{plan.limits.aiMessages === 'illimité' ? 'Illimité' : plan.limits.aiMessages.toLocaleString()}</div>
-                <div class="text-encre/50">API REST</div>
-                <div class="font-medium text-encre">{plan.limits.api ? 'Incluse' : 'Non'}</div>
-                <div class="text-encre/50">Marque blanche</div>
-                <div class="font-medium text-encre">{plan.limits.whiteLabel ? 'Avancée' : 'Basique'}</div>
-              </div>
-            </details>
-          )}
         </article>
       ))}
     </div>
