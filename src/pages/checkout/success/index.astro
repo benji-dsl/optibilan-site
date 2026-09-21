@@ -1,0 +1,74 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import Icon from '../../../components/Icon.astro';
+
+const pageTitle = 'Paiement réussi - Optibilan';
+const pageDescription = 'Votre inscription est confirmée. Bienvenue sur Optibilan !';
+
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Accueil', item: 'https://optibilan.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Tarifs', item: 'https://optibilan.com/tarifs' },
+    { '@type': 'ListItem', position: 3, name: 'Paiement', item: 'https://optibilan.com/checkout' },
+    { '@type': 'ListItem', position: 4, name: 'Confirmation', item: 'https://optibilan.com/checkout/success' },
+  ],
+};
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  canonical="/checkout/success"
+  ogImage="/og-checkout-success.svg"
+  jsonLd={breadcrumbJsonLd}
+>
+  <Header />
+
+  <main>
+    <section class="section bg-blanc" aria-labelledby="success-title">
+      <div class="container max-w-md mx-auto text-center">
+        <div class="w-20 h-20 mx-auto mb-6 rounded-full bg-emerald-100 flex items-center justify-center">
+          <Icon name="check" class="w-10 h-10 text-emerald-500" />
+        </div>
+        
+        <h1 id="success-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+          C'est confirmé !
+        </h1>
+        
+        <p class="text-lg text-encre/60 mb-8">
+          Votre inscription est confirmée. Vous avez maintenant accès à Optibilan pendant 30 jours gratuits.
+        </p>
+
+        <div class="bg-emerald-50 border border-emerald-200 rounded-xl p-6 mb-8">
+          <h3 class="font-semibold text-emerald-800 mb-3 flex items-center gap-2">
+            <Icon name="check" class="w-5 h-5" /> Prochaines étapes
+          </h3>
+          <ul class="space-y-2 text-emerald-700 text-sm">
+            <li class="flex items-start gap-2"><Icon name="check" class="w-5 h-5 flex-shrink-0" /> Votre espace est prêt : <a href="https://app.optibilan.com" target="_blank" rel="noopener noreferrer" class="underline hover:text-emerald-600">accéder à Optibilan</a></li>
+            <li class="flex items-start gap-2"><Icon name="check" class="w-5 h-5 flex-shrink-0" /> Un email de confirmation vous a été envoyé</li>
+            <li class="flex items-start gap-2"><Icon name="check" class="w-5 h-5 flex-shrink-0" /> 30 jours gratuits activés — facturation automatique dans 30 jours</li>
+            <li class="flex items-start gap-2"><Icon name="check" class="w-5 h-5 flex-shrink-0" /> Annulation simple en un clic depuis votre espace</li>
+          </ul>
+        </div>
+
+        <div class="space-y-4">
+          <a href="https://app.optibilan.com" target="_blank" rel="noopener noreferrer" class="btn-primary w-full sm:w-auto group inline-flex items-center justify-center gap-2">
+            Accéder à mon espace
+            <svg class="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </a>
+          <a href="/tarifs" class="btn-secondary w-full sm:w-auto">Retour aux tarifs</a>
+        </div>
+
+        <p class="mt-8 text-sm text-encre/50">
+          Besoin d'aide ? <a href="/contact" class="underline hover:text-bleu-signature">Contactez-nous</a>
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

@@ -1,0 +1,199 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { getPlanDetails } from '../../lib/plans';
+
+const { plan } = Astro.url.searchParams;
+const validPlans = ['SOLO', 'STUDIO', 'CABINET'] as const;
+type Plan = typeof validPlans[number];
+
+const selectedPlan = validPlans.includes(plan as Plan) ? plan as Plan : null;
+const planDetails = selectedPlan ? getPlanDetails(selectedPlan) : null;
+
+const pageTitle = selectedPlan ? `Paiement - ${selectedPlan} - Optibilan` : 'Paiement - Optibilan';
+const pageDescription = `Finalisez votre inscription à l'offre ${selectedPlan || 'Optibilan'} - 30 jours gratuits, puis facturation automatique.`;
+
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Accueil', item: 'https://optibilan.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Tarifs', item: 'https://optibilan.com/tarifs' },
+    { '@type': 'ListItem', position: 3, name: 'Paiement', item: 'https://optibilan.com/checkout' },
+  ],
+};
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  canonical="/checkout"
+  ogImage="/og-checkout.svg"
+  jsonLd={breadcrumbJsonLd}
+>
+  <Header />
+
+  <main>
+    {selectedPlan && planDetails ? (
+      <div>
+        <section class="section bg-blanc" aria-labelledby="checkout-title">
+          <div class="container max-w-2xl mx-auto">
+            <header class="text-center mb-12">
+              <h1 id="checkout-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+                Finalisez votre inscription
+              </h1>
+              <p class="text-lg text-encre/60">
+                Offre <strong class="text-encre">{planDetails.name}</strong> — 30 jours gratuits, puis facturation automatique.
+              </p>
+            </header>
+
+            <div class="bg-blanc border border-encre/10 rounded-xl p-8 mb-8">
+              <div class="flex items-center justify-between mb-6">
+                <div>
+                  <h2 class="font-display text-2xl font-bold text-encre mb-1">{planDetails.name}</h2>
+                  <p class="text-encre/60">{planDetails.tagline}</p>
+                </div>
+                <div class="text-right">
+                  <div class="text-4xl font-bold text-encre">{planDetails.priceMonthly} €</div>
+                  <div class="text-encre/50">/mois</div>
+                  <div class="text-sm text-bleu-signature font-medium mt-1">Soit {planDetails.priceYearly} €/an <span class="font-bold">(2 mois offerts)</span></div>
+                </div>
+              </div>
+
+              <div class="bg-papier/50 rounded-lg p-6 mb-6">
+                <h3 class="font-semibold text-encre mb-4">Ce qui est inclus</h3>
+                <ul class="space-y-2 text-sm text-encre/60">
+                  {planDetails.features.map(f => (
+                    <li class="flex items-center gap-2" key={f}>
+                      <svg class="w-5 h-5 text-emerald-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                      <span>{f}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <p class="text-sm text-encre/60 mb-6">
+                <strong>30 jours gratuits</strong> — Votre carte ne sera pas débitée aujourd'hui. Facturation automatique à la fin du mois.
+                <br class="hidden md:inline" /> Annulation simple en un clic depuis votre espace.
+              </p>
+
+              <form id="checkout-form" class="space-y-4">
+                <div>
+                  <label for="email" class="block text-sm font-medium text-encre mb-1">Email professionnel *</label>
+                  <input 
+                    type="email" 
+                    id="email" 
+                    name="email" 
+                    required 
+                    placeholder="vous@votrecabinet.fr"
+                    class="w-full px-4 py-3 rounded-lg bg-blanc border border-encre/20 focus:outline-none focus:border-bleu-signature focus:ring-2 focus:ring-bleu-signature/20 transition-all"
+                    autoComplete="email"
+                  />
+                </div>
+                
+                <div class="flex gap-4">
+                  <label class="flex items-center gap-2 cursor-pointer flex-1">
+                    <input type="radio" name="billing" value="monthly" checked class="w-4 h-4 text-bleu-signature border-encre/30 focus:ring-bleu-signature" />
+                    <span class="text-sm text-encre/70">Mensuel — {planDetails.priceMonthly} €/mois</span>
+                  </label>
+                  <label class="flex items-center gap-2 cursor-pointer flex-1">
+                    <input type="radio" name="billing" value="yearly" class="w-4 h-4 text-bleu-signature border-encre/30 focus:ring-bleu-signature" />
+                    <span class="text-sm text-encre/70">Annuel — {planDetails.priceYearly} €/an <span class="font-bold text-bleu-signature">(2 mois offerts)</span></span>
+                  </label>
+                </div>
+
+                <button 
+                  type="submit" 
+                  class="btn-primary w-full group py-4 px-6 text-lg font-semibold rounded-xl transition-all duration-200"
+                  id="submit-btn"
+                >
+                  <span>Lancer le paiement sécurisé</span>
+                  <svg class="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1 inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                </button>
+
+                <p class="text-center text-xs text-encre/50">
+                  Paiement sécurisé par Stripe · 30 jours gratuits · Annulation simple en un clic
+                </p>
+              </form>
+            </div>
+
+            <p class="text-center text-sm text-encre/50">
+              En validant, vous acceptez nos <a href="/legal/cgv" class="underline hover:text-bleu-signature">CGV</a> et notre <a href="/legal/confidentialite" class="underline hover:text-bleu-signature">Politique de confidentialité</a>.
+            </p>
+          </div>
+        </section>
+      </div>
+      ) : (
+        <section class="section bg-blanc" aria-labelledby="error-title">
+          <div class="container max-w-md mx-auto text-center">
+            <h1 id="error-title" class="font-display text-3xl font-bold text-encre mb-4">Offre invalide</h1>
+            <p class="text-encre/60 mb-8">L'offre sélectionnée n'existe pas. Retournez sur la page des tarifs pour choisir une offre.</p>
+            <a href="/tarifs" class="btn-primary inline-flex">Retour aux tarifs</a>
+          </div>
+        </section>
+      )}
+  </main>
+
+  <Footer />
+</Layout>
+
+<script is:inline>
+  const form = document.getElementById('checkout-form');
+  const submitBtn = document.getElementById('submit-btn');
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    const formData = new FormData(form);
+    const email = formData.get('email');
+    const billing = formData.get('billing');
+    const plan = new URLSearchParams(window.location.search).get('plan');
+
+    if (!email || !email.includes('@')) {
+      alert('Veuillez entrer un email valide');
+      return;
+    }
+
+    const submitBtn = document.getElementById('submit-btn');
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = `
+      <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" fill="none" viewBox="0 0 24 24">
+        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+      </svg>
+      Redirection...
+    `;
+
+    try {
+      const response = await fetch('/api/checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ plan, billing, email }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Erreur lors de la création de la session');
+      }
+
+      window.location.href = data.url;
+    } catch (error) {
+      console.error('Checkout error:', error);
+      alert('Erreur : ' + error.message);
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = `
+        <span>Lancer le paiement sécurisé</span>
+        <svg class="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1 inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+      `;
+    }
+  });
+</script>
+
+<style is:global>
+  @media (max-width: 640px) {
+    .section { padding-top: 3rem; padding-bottom: 3rem; }
+    .container { padding-left: 1rem; padding-right: 1rem; }
+  }
+</style>
