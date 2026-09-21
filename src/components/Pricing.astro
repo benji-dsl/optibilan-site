@@ -34,11 +34,10 @@ const defaultPlans = [
       'Bilans, photos, journal',
       'Nutrition & sport',
       'Assistant IA (1 000 msg/mois)',
-      'Marque blanche basique',
       'Export RGPD',
       'Support email',
     ],
-    cta: { href: 'https://app.optibilan.com/inscription?plan=SOLO', label: 'Rejoindre Optibilan' },
+    cta: { href: '/checkout?plan=SOLO', label: 'Démarrer gratuitement' },
     limits: { clients: 30, staff: 1, aiMessages: 1000, api: false, whiteLabel: false },
   },
   {
@@ -49,7 +48,6 @@ const defaultPlans = [
     features: [
       'Jusqu\'à 150 coachés',
       'Jusqu\'à 5 accès staff',
-      'Tout Solo +',
       'Prépa mentale & santé',
       'Templates nutrition/sport',
       'Assistant IA (5 000 msg/mois)',
@@ -58,7 +56,7 @@ const defaultPlans = [
       'Marque blanche avancée',
       'Support prioritaire',
     ],
-    cta: { href: 'https://app.optibilan.com/inscription?plan=STUDIO', label: 'Rejoindre Optibilan' },
+    cta: { href: '/checkout?plan=STUDIO', label: 'Démarrer gratuitement' },
     popular: true,
     limits: { clients: 150, staff: 5, aiMessages: 5000, api: true, whiteLabel: true },
   },
@@ -70,7 +68,6 @@ const defaultPlans = [
     features: [
       'Coachés illimités',
       'Accès staff illimités',
-      'Tout Studio +',
       'Multi-spécialités (coach/mental/diet)',
       'Assistant IA (20 000 msg/mois)',
       'API sans limite pratique',
@@ -79,7 +76,7 @@ const defaultPlans = [
       'SLA & support dédié',
       'Onboarding équipe offert',
     ],
-    cta: { href: 'https://calendly.com/optibilan/demo', label: 'Rejoindre Optibilan' },
+    cta: { href: '/checkout?plan=CABINET', label: 'Démarrer gratuitement' },
     limits: { clients: 'illimité', staff: 'illimité', aiMessages: 20000, api: true, whiteLabel: true },
   },
 ];
@@ -159,7 +156,7 @@ const displayPlans = plans && plans.length > 0 ? plans : defaultPlans;
     </div>
 
     <p class="text-center text-sm text-encre/50 mt-10">
-      TVA en sus pour les assujettis. Paiement sécurisé par Stripe. Annulation quand vous voulez.
+      Annulation simple en un clic.
     </p>
   </div>
 </section>
