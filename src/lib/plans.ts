@@ -29,7 +29,7 @@ export function getPlanDetails(plan: 'SOLO' | 'STUDIO' | 'CABINET'): PlanDetails
         name: 'Studio',
         tagline: 'Petite équipe (2-5)',
         priceMonthly: 149,
-        priceYearly: 1190,
+        priceYearly: 1490,
         features: [
           'Jusqu\'à 150 coachés',
           'Jusqu\'à 5 accès staff',
@@ -67,6 +67,6 @@ export function getPlanDetails(plan: 'SOLO' | 'STUDIO' | 'CABINET'): PlanDetails
 
 export const PLAN_PRICES = {
   SOLO: { monthly: 49, yearly: 490 },
-  STUDIO: { monthly: 149, yearly: 1190 },
+  STUDIO: { monthly: 149, yearly: 1490 },
   CABINET: { monthly: 349, yearly: 3490 },
 } as const;
