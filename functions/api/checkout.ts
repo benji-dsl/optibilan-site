@@ -1,4 +1,3 @@
-import type { APIRoute } from 'astro';
 import Stripe from 'stripe';
 
 const PLAN_PRICES = {
@@ -20,7 +19,7 @@ const VAT_RATES = {
   'NON_EU': 0,
 };
 
-export const POST: APIRoute = async ({ request }) => {
+export async function onRequestPost({ request, env }: { request: Request; env: { STRIPE_SECRET_KEY: string } }) {
   try {
     const body = await request.json();
     const { plan, billing = 'monthly', email, country, vatNumber, firstName, lastName } = body;
@@ -58,7 +57,7 @@ export const POST: APIRoute = async ({ request }) => {
     const vatAmount = Math.round(basePrice * vatRate * 100) / 100;
     const totalAmount = basePrice + vatAmount;
     
-    const stripe = new Stripe(import.meta.env.STRIPE_SECRET_KEY);
+    const stripe = new Stripe(env.STRIPE_SECRET_KEY);
     
     // Create or retrieve customer
     let customer;
