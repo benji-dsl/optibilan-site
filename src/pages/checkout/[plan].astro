@@ -105,8 +105,54 @@ const breadcrumbJsonLd = {
                   </label>
                   <label class="flex items-center gap-2 cursor-pointer flex-1">
                     <input type="radio" name="billing" value="yearly" class="w-4 h-4 text-bleu-signature border-encre/30 focus:ring-bleu-signature" />
-                    <span class="text-sm text-encre/70">Annuel — {planDetails.priceYearly} €/an <span class="font-bold text-bleu-signature">(2 mois offerts)</span></span>
+                    <span class="text-sm text-encre/70">Ou Annuel — {planDetails.priceYearly} €/an <span class="font-bold text-bleu-signature">(2 mois offerts)</span></span>
                   </label>
+                </div>
+
+                <!-- Pays et TVA -->
+                <div class="grid sm:grid-cols-2 gap-4">
+                  <div>
+                    <label for="country" class="block text-sm font-medium text-encre mb-1">Pays de facturation *</label>
+                    <select 
+                      id="country" 
+                      name="country" 
+                      required 
+                      class="w-full px-4 py-3 rounded-lg bg-blanc border border-encre/20 focus:outline-none focus:border-bleu-signature focus:ring-2 focus:ring-bleu-signature/20 transition-all"
+                    >
+                      <option value="">Sélectionnez un pays</option>
+                      <option value="FR">France</option>
+                      <option value="BE">Belgique</option>
+                      <option value="CH">Suisse</option>
+                      <option value="LU">Luxembourg</option>
+                      <option value="DE">Allemagne</option>
+                      <option value="ES">Espagne</option>
+                      <option value="IT">Italie</option>
+                      <option value="NL">Pays-Bas</option>
+                      <option value="OTHER">Autre pays UE</option>
+                      <option value="NON_EU">Hors UE</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label for="vatNumber" class="block text-sm font-medium text-encre mb-1">Numéro de TVA intracommunautaire (optionnel)</label>
+                    <input 
+                      type="text" 
+                      id="vatNumber" 
+                      name="vatNumber" 
+                      placeholder="Ex: FR12345678901"
+                      class="w-full px-4 py-3 rounded-lg bg-blanc border border-encre/20 focus:outline-none focus:border-bleu-signature focus:ring-2 focus:ring-bleu-signature/20 transition-all"
+                      placeholder="FR12345678901"
+                    />
+                    <p class="text-xs text-encre/50 mt-1">Si vous avez un numéro de TVA valide, la TVA ne sera pas appliquée (autoliquidation).</p>
+                  </div>
+                </div>
+
+                <!-- Affichage TVA -->
+                <div id="vat-display" class="hidden bg-bleu-clair/50 border border-bleu-signature/20 rounded-lg p-4 mb-4">
+                  <div class="flex items-center justify-between">
+                    <span class="text-sm font-medium text-encre">TVA estimée :</span>
+                    <span id="vat-amount" class="font-semibold text-bleu-signature">0 €</span>
+                  </div>
+                  <p class="text-xs text-encre/50 mt-1">Basé sur le pays sélectionné. Taux final confirmé par Stripe.</p>
                 </div>
 
                 <button 
@@ -122,7 +168,7 @@ const breadcrumbJsonLd = {
                   Paiement sécurisé par Stripe · 30 jours gratuits · Annulation simple en un clic
                 </p>
               </form>
-            </div>
+             </div>
 
             <p class="text-center text-sm text-encre/50">
               En validant, vous acceptez nos <a href="/legal/cgv" class="underline hover:text-bleu-signature">CGV</a> et notre <a href="/legal/confidentialite" class="underline hover:text-bleu-signature">Politique de confidentialité</a>.
@@ -145,6 +191,81 @@ const breadcrumbJsonLd = {
 </Layout>
 
 <script is:inline>
+  // VAT rates by country
+  const VAT_RATES = {
+    'FR': 0.20,
+    'BE': 0.21,
+    'CH': 0.081,
+    'LU': 0.17,
+    'DE': 0.19,
+    'ES': 0.21,
+    'IT': 0.22,
+    'NL': 0.21,
+    'OTHER': 0.20, // Default EU rate
+    'NON_EU': 0, // No VAT for non-EU
+  };
+
+  const planPrices = {
+    'solo': { monthly: 49, yearly: 490 },
+    'studio': { monthly: 149, yearly: 1490 },
+    'cabinet': { monthly: 349, yearly: 3490 },
+  };
+
+  function calculateVAT() {
+    const country = document.getElementById('country').value;
+    const billing = document.querySelector('input[name="billing"]:checked').value;
+    const pathParts = window.location.pathname.split('/').filter(Boolean);
+    const plan = pathParts[pathParts.length - 1];
+    
+    const basePrice = billing === 'monthly' 
+      ? planPrices[plan]?.monthly 
+      : planPrices[plan]?.yearly;
+    
+    const vatRate = VAT_RATES[country] || 0;
+    const vatAmount = basePrice * vatRate;
+    const totalWithVAT = basePrice + vatAmount;
+    
+    const vatDisplay = document.getElementById('vat-display');
+    const vatAmountEl = document.getElementById('vat-amount');
+    const submitBtn = document.getElementById('submit-btn');
+    
+    if (country && vatRate > 0) {
+      vatDisplay.classList.remove('hidden');
+      vatAmountEl.textContent = `${vatAmount.toFixed(2)} €`;
+      submitBtn.innerHTML = `
+        <span>Lancer le paiement sécurisé (${(totalWithVAT).toFixed(2)} € TTC)</span>
+        <svg class="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1 inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+      `;
+    } else if (country && vatRate === 0) {
+      vatDisplay.classList.remove('hidden');
+      vatAmountEl.textContent = '0 € (exonéré)';
+      submitBtn.innerHTML = `
+        <span>Lancer le paiement sécurisé (${basePrice.toFixed(2)} € HT)</span>
+        <svg class="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1 inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+      `;
+    } else {
+      vatDisplay.classList.add('hidden');
+      submitBtn.innerHTML = `
+        <span>Lancer le paiement sécurisé</span>
+        <svg class="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1 inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+      `;
+    }
+  }
+
+  // Initialize VAT calculation on page load
+  document.addEventListener('DOMContentLoaded', () => {
+    const countrySelect = document.getElementById('country');
+    const billingRadios = document.querySelectorAll('input[name="billing"]');
+    
+    countrySelect?.addEventListener('change', calculateVAT);
+    billingRadios.forEach(radio => {
+      radio.addEventListener('change', calculateVAT);
+    });
+    
+    // Initial calculation
+    calculateVAT();
+  });
+
   const form = document.getElementById('checkout-form');
   const submitBtn = document.getElementById('submit-btn');
 
@@ -154,12 +275,18 @@ const breadcrumbJsonLd = {
     const formData = new FormData(form);
     const email = formData.get('email');
     const billing = formData.get('billing');
-    // Extract plan from URL path: /checkout/solo/, /checkout/studio/, /checkout/cabinet/
+    const country = formData.get('country');
+    const vatNumber = formData.get('vatNumber');
     const pathParts = window.location.pathname.split('/').filter(Boolean);
-    const plan = pathParts[pathParts.length - 1]; // solo, studio, or cabinet
+    const plan = pathParts[pathParts.length - 1];
     
     if (!email || !email.includes('@')) {
       alert('Veuillez entrer un email valide');
+      return;
+    }
+    
+    if (!country) {
+      alert('Veuillez sélectionner un pays');
       return;
     }
 
@@ -177,7 +304,7 @@ const breadcrumbJsonLd = {
       const response = await fetch('/api/checkout', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ plan, billing, email }),
+        body: JSON.stringify({ plan, billing, email, country, vatNumber }),
       });
 
       const data = await response.json();

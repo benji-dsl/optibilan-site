@@ -7,10 +7,23 @@ const PLAN_PRICES = {
   CABINET: { monthly: 349, yearly: 3490 },
 };
 
-export const POST: APIRoute = async ({ request, locals }) => {
+const VAT_RATES = {
+  'FR': 0.20,
+  'BE': 0.21,
+  'CH': 0.081,
+  'LU': 0.17,
+  'DE': 0.19,
+  'ES': 0.21,
+  'IT': 0.22,
+  'NL': 0.21,
+  'OTHER': 0.20,
+  'NON_EU': 0,
+};
+
+export const POST: APIRoute = async ({ request }) => {
   try {
     const body = await request.json();
-    const { plan, billing = 'monthly', email } = body;
+    const { plan, billing = 'monthly', email, country, vatNumber } = body;
     
     if (!plan || !['SOLO', 'STUDIO', 'CABINET'].includes(plan)) {
       return new Response(JSON.stringify({ error: 'Plan invalide' }), {
@@ -26,26 +39,75 @@ export const POST: APIRoute = async ({ request, locals }) => {
       });
     }
     
-    const price = PLAN_PRICES[plan as keyof typeof PLAN_PRICES][billing as 'monthly' | 'yearly'];
+    if (!country) {
+      return new Response(JSON.stringify({ error: 'Pays requis' }), {
+        status: 400,
+        headers: { 'Content-Type': 'application/json' },
+      });
+    }
+    
+    const basePrice = PLAN_PRICES[plan as keyof typeof PLAN_PRICES][billing as 'monthly' | 'yearly'];
+    const vatRate = VAT_RATES[country] || 0;
+    const vatAmount = Math.round(basePrice * vatRate * 100) / 100;
+    const totalAmount = basePrice + vatAmount;
+    
     const stripe = new Stripe(import.meta.env.STRIPE_SECRET_KEY);
+    
+    // Create or retrieve customer
+    let customer;
+    const customers = await stripe.customers.list({ email, limit: 1 });
+    if (customers.data.length > 0) {
+      customer = customers.data[0];
+    } else {
+      customer = await stripe.customers.create({
+        email,
+        address: { country: country === 'NON_EU' ? 'US' : country },
+        tax_exempt: vatNumber ? 'reverse' : 'none',
+      });
+    }
+    
+    // Update customer with VAT number if provided
+    if (vatNumber) {
+      await stripe.customers.update(customer.id, {
+        tax_id_data: [{ type: 'eu_vat', value: vatNumber }],
+      });
+    }
+    
+    // Create price with tax behavior
+    const price = await stripe.prices.create({
+      currency: 'eur',
+      unit_amount: Math.round(basePrice * 100),
+      recurring: {
+        interval: billing === 'monthly' ? 'month' : 'year',
+      },
+      product_data: {
+        name: `Optibilan ${plan}`,
+        description: `${plan} - ${billing === 'monthly' ? 'Mensuel' : 'Annuel'} - 30 jours gratuits puis facturation automatique`,
+        metadata: { plan, billing },
+      },
+      tax_behavior: 'exclusive',
+    });
+    
+    const taxRates = [];
+    if (vatRate > 0) {
+      const taxRate = await stripe.taxRates.create({
+        display_name: `TVA ${country}`,
+        percentage: vatRate * 100,
+        inclusive: false,
+        jurisdiction: country,
+      });
+      taxRates.push(taxRate.id);
+    }
     
     const session = await stripe.checkout.sessions.create({
       mode: 'subscription',
       payment_method_types: ['card'],
+      customer: customer.id,
       line_items: [
         {
-          price_data: {
-            currency: 'eur',
-            product_data: {
-              name: `Optibilan ${plan}`,
-              description: `${plan} - ${billing === 'monthly' ? 'Mensuel' : 'Annuel'} - 30 jours gratuits puis facturation automatique`,
-            },
-            unit_amount: price * 100,
-            recurring: {
-              interval: billing === 'monthly' ? 'month' : 'year',
-            },
-          },
+          price: price.id,
           quantity: 1,
+          tax_rates: taxRates,
         },
       ],
       subscription_data: {
@@ -53,6 +115,8 @@ export const POST: APIRoute = async ({ request, locals }) => {
         metadata: {
           plan,
           billing,
+          country,
+          vatNumber: vatNumber || '',
         },
       },
       success_url: `${new URL(request.url).origin}/checkout/success?session_id={CHECKOUT_SESSION_ID}`,
@@ -60,6 +124,8 @@ export const POST: APIRoute = async ({ request, locals }) => {
       allow_promotion_codes: true,
       billing_address_collection: 'required',
       customer_email: email,
+      tax_id_collection: { enabled: true },
+      automatic_tax: { enabled: true },
     });
     
     return new Response(JSON.stringify({ 
