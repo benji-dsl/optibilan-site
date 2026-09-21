@@ -154,8 +154,10 @@ const breadcrumbJsonLd = {
     const formData = new FormData(form);
     const email = formData.get('email');
     const billing = formData.get('billing');
-    const plan = new URLSearchParams(window.location.search).get('plan');
-
+    // Extract plan from URL path: /checkout/solo/, /checkout/studio/, /checkout/cabinet/
+    const pathParts = window.location.pathname.split('/').filter(Boolean);
+    const plan = pathParts[pathParts.length - 1]; // solo, studio, or cabinet
+    
     if (!email || !email.includes('@')) {
       alert('Veuillez entrer un email valide');
       return;
