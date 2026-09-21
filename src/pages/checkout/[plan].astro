@@ -50,7 +50,7 @@ const breadcrumbJsonLd = {
                 Finalisez votre inscription
               </h1>
               <p class="text-lg text-encre/60">
-                Offre <strong class="text-encre">{planDetails.name}</strong> — 30 jours gratuits, puis facturation automatique.
+                Offre <strong class="text-encre">{planDetails.name}</strong> — 30 JOURS OFFERTS, puis facturation automatique.
               </p>
             </header>
 
@@ -61,9 +61,9 @@ const breadcrumbJsonLd = {
                   <p class="text-encre/60">{planDetails.tagline}</p>
                 </div>
                 <div class="text-right">
-                  <div class="text-4xl font-bold text-encre">{planDetails.priceMonthly} €</div>
+                  <div class="text-4xl font-bold text-encre">{planDetails.priceMonthly} € <span class="text-sm font-normal text-encre/50">HT</span></div>
                   <div class="text-encre/50">/mois</div>
-                  <div class="text-sm text-bleu-signature font-medium mt-1">Soit {planDetails.priceYearly} €/an <span class="font-bold">(2 mois offerts)</span></div>
+                  <div class="text-sm text-bleu-signature font-medium mt-1">Soit {planDetails.priceYearly} €/an <span class="font-bold">(2 mois offerts)</span> <span class="text-encre/50">HT</span></div>
                 </div>
               </div>
 
@@ -85,6 +85,32 @@ const breadcrumbJsonLd = {
               </p>
 
               <form id="checkout-form" class="space-y-4">
+                <div class="grid sm:grid-cols-2 gap-4">
+                  <div>
+                    <label for="firstName" class="block text-sm font-medium text-encre mb-1">Prénom *</label>
+                    <input 
+                      type="text" 
+                      id="firstName" 
+                      name="firstName" 
+                      required 
+                      placeholder="Jean"
+                      class="w-full px-4 py-3 rounded-lg bg-blanc border border-encre/20 focus:outline-none focus:border-bleu-signature focus:ring-2 focus:ring-bleu-signature/20 transition-all"
+                      autoComplete="given-name"
+                    />
+                  </div>
+                  <div>
+                    <label for="lastName" class="block text-sm font-medium text-encre mb-1">Nom *</label>
+                    <input 
+                      type="text" 
+                      id="lastName" 
+                      name="lastName" 
+                      required 
+                      placeholder="Dupont"
+                      class="w-full px-4 py-3 rounded-lg bg-blanc border border-encre/20 focus:outline-none focus:border-bleu-signature focus:ring-2 focus:ring-bleu-signature/20 transition-all"
+                      autoComplete="family-name"
+                    />
+                  </div>
+                </div>
                 <div>
                   <label for="email" class="block text-sm font-medium text-encre mb-1">Email professionnel *</label>
                   <input 
@@ -101,11 +127,11 @@ const breadcrumbJsonLd = {
                 <div class="flex gap-4">
                   <label class="flex items-center gap-2 cursor-pointer flex-1">
                     <input type="radio" name="billing" value="monthly" checked class="w-4 h-4 text-bleu-signature border-encre/30 focus:ring-bleu-signature" />
-                    <span class="text-sm text-encre/70">Mensuel — {planDetails.priceMonthly} €/mois</span>
+                    <span class="text-sm text-encre/70">Mensuel — {planDetails.priceMonthly} € HT/mois</span>
                   </label>
                   <label class="flex items-center gap-2 cursor-pointer flex-1">
                     <input type="radio" name="billing" value="yearly" class="w-4 h-4 text-bleu-signature border-encre/30 focus:ring-bleu-signature" />
-                    <span class="text-sm text-encre/70">Ou Annuel — {planDetails.priceYearly} €/an <span class="font-bold text-bleu-signature">(2 mois offerts)</span></span>
+                    <span class="text-sm text-encre/70">Ou Annuel — {planDetails.priceYearly} €/an <span class="font-bold text-bleu-signature">(2 mois offerts)</span> <span class="text-encre/50">HT</span></span>
                   </label>
                 </div>
 
@@ -274,6 +300,8 @@ const breadcrumbJsonLd = {
     
     const formData = new FormData(form);
     const email = formData.get('email');
+    const firstName = formData.get('firstName');
+    const lastName = formData.get('lastName');
     const billing = formData.get('billing');
     const country = formData.get('country');
     const vatNumber = formData.get('vatNumber');
@@ -287,6 +315,11 @@ const breadcrumbJsonLd = {
     
     if (!country) {
       alert('Veuillez sélectionner un pays');
+      return;
+    }
+    
+    if (!firstName || !lastName) {
+      alert('Veuillez remplir votre prénom et nom');
       return;
     }
 
@@ -304,7 +337,7 @@ const breadcrumbJsonLd = {
       const response = await fetch('/api/checkout', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ plan, billing, email, country, vatNumber }),
+        body: JSON.stringify({ plan, billing, email, country, vatNumber, firstName, lastName }),
       });
 
       const data = await response.json();

@@ -23,7 +23,7 @@ const VAT_RATES = {
 export const POST: APIRoute = async ({ request }) => {
   try {
     const body = await request.json();
-    const { plan, billing = 'monthly', email, country, vatNumber } = body;
+    const { plan, billing = 'monthly', email, country, vatNumber, firstName, lastName } = body;
     
     if (!plan || !['SOLO', 'STUDIO', 'CABINET'].includes(plan)) {
       return new Response(JSON.stringify({ error: 'Plan invalide' }), {
@@ -46,6 +46,13 @@ export const POST: APIRoute = async ({ request }) => {
       });
     }
     
+    if (!firstName || !lastName) {
+      return new Response(JSON.stringify({ error: 'Prénom et nom requis' }), {
+        status: 400,
+        headers: { 'Content-Type': 'application/json' },
+      });
+    }
+    
     const basePrice = PLAN_PRICES[plan as keyof typeof PLAN_PRICES][billing as 'monthly' | 'yearly'];
     const vatRate = VAT_RATES[country] || 0;
     const vatAmount = Math.round(basePrice * vatRate * 100) / 100;
@@ -58,9 +65,14 @@ export const POST: APIRoute = async ({ request }) => {
     const customers = await stripe.customers.list({ email, limit: 1 });
     if (customers.data.length > 0) {
       customer = customers.data[0];
+      // Update customer name if needed
+      await stripe.customers.update(customer.id, {
+        name: `${firstName} ${lastName}`,
+      });
     } else {
       customer = await stripe.customers.create({
         email,
+        name: `${firstName} ${lastName}`,
         address: { country: country === 'NON_EU' ? 'US' : country },
         tax_exempt: vatNumber ? 'reverse' : 'none',
       });
