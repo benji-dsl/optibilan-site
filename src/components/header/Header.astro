@@ -7,11 +7,7 @@ import MobileNavigation from './MobileNavigation.astro';
   <nav class="container" aria-label="Navigation principale">
     <div class="flex h-16 items-center justify-between gap-4">
       <a href="/" class="flex items-center gap-2 shrink-0" aria-label="Optibilan - Accueil">
-        <svg class="w-8 h-8 text-bleu-signature" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="16" cy="16" r="14" stroke="#2A8AFF" stroke-width="2"/>
-          <path d="M16 8v8M12 16h8" stroke="#2A8AFF" stroke-width="2" stroke-linecap="round"/>
-        </svg>
-        <span class="font-display font-bold text-xl text-encre">Optibilan</span>
+        <img src="/logo-horizontal.png" alt="Optibilan" width="220" height="88" class="h-9 w-auto" fetchpriority="high" />
       </a>
 
       <DesktopNavigation />
