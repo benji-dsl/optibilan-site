@@ -1,5 +1,5 @@
 ---
-type IconName = 'shield' | 'chart' | 'users' | 'calendar' | 'document' | 'lock' | 'zap' | 'globe' | 'brain' | 'arrowRight' | 'check' | 'chevronDown' | 'menu' | 'close' | 'logo' | 'twitter' | 'linkedin' | 'github' | 'youtube' | 'database' | 'credit-card' | 'cloud' | 'code';
+type IconName = 'shield' | 'chart' | 'users' | 'calendar' | 'document' | 'lock' | 'zap' | 'globe' | 'brain' | 'arrowRight' | 'check' | 'chevronDown' | 'menu' | 'close' | 'logo' | 'twitter' | 'linkedin' | 'github' | 'youtube' | 'database' | 'credit-card' | 'cloud' | 'code' | 'activity' | 'apple' | 'dumbbell';
 
 interface Props {
   name: IconName;
@@ -31,6 +31,9 @@ const icons = {
   'credit-card': '<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>',
   'cloud': '<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"/></svg>',
   'code': '<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>',
+  activity: '<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>',
+  apple: '<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M17.05 12.54c-.04-2.55 2.09-3.77 2.18-3.83-1.19-1.74-3.04-1.98-3.7-2.01-1.58-.16-3.08.93-3.88.93-.8 0-2.03-.9-3.34-.88-1.72.03-3.3 1-4.19 2.54-1.79 3.1-.46 7.7 1.28 10.21.85 1.24 1.87 2.62 3.2 2.57 1.28-.05 1.77-.83 3.32-.83s1.99.83 3.35.8c1.39-.02 2.27-1.26 3.11-2.51.98-1.43 1.39-2.81 1.41-2.88-.03-.01-2.7-1.04-2.74-4.11zM14.3 4.3c.71-.86 1.19-2.05 1.06-3.24-1.02.04-2.26.68-3 1.54-.66.76-1.23 1.98-1.08 3.15 1.14.09 2.31-.58 3.02-1.45z"/></svg>',
+  dumbbell: '<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6.5 6.5v11m4-8.5v6m3-11v12m4-8.5v6M3 8.5v7M21 8.5v7"/></svg>',
 } as const;
 
 const { name, class: className = '', 'aria-hidden': ariaHidden = true } = Astro.props;
