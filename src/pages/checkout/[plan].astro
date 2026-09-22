@@ -45,12 +45,12 @@ const breadcrumbJsonLd = {
   jsonLd={breadcrumbJsonLd}
 >
   <header class="sticky top-0 z-50 border-b border-encre/10 bg-blanc">
-    <div class="container flex h-16 items-center justify-between gap-4">
+    <div class="container relative flex h-16 items-center justify-between gap-4">
       <a href="/" class="flex items-center gap-2" aria-label="Optibilan - Accueil">
         <img src="/logo-horizontal.png" alt="Optibilan" width="220" height="88" class="h-9 w-auto" />
       </a>
       {selectedPlan && planDetails ? (
-        <div class="min-w-0 text-right">
+        <div class="absolute left-1/2 -translate-x-1/2 min-w-0 text-center">
           <p class="truncate font-display text-base font-bold text-encre md:text-lg">Finalisez votre inscription</p>
           <p class="truncate text-xs text-body-light md:text-sm">30 jours offerts avec Optibilan {planDetails.name}.</p>
         </div>
