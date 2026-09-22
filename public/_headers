@@ -9,7 +9,7 @@
   Cross-Origin-Opener-Policy: same-origin
   Cross-Origin-Resource-Policy: same-origin
 
-/logo-horizontal.png
+/optibilan-logo-horizontal.png
   Cache-Control: public, max-age=3600
 
 /logo.png
