@@ -1,7 +1,5 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import Header from '../../components/Header.astro';
-import Footer from '../../components/Footer.astro';
 import { getPlanDetails } from '../../lib/plans';
 
 export async function getStaticPaths() {
@@ -12,13 +10,20 @@ export async function getStaticPaths() {
 
 const { plan } = Astro.params;
 const validPlans = ['SOLO', 'STUDIO', 'CABINET'] as const;
-type Plan = typeof validPlans[number];
+type Plan = (typeof validPlans)[number];
 
-const selectedPlan = validPlans.includes(plan?.toUpperCase() as Plan) ? plan?.toUpperCase() as Plan : null;
+const selectedPlan = validPlans.includes(plan?.toUpperCase() as Plan)
+  ? (plan?.toUpperCase() as Plan)
+  : null;
 const planDetails = selectedPlan ? getPlanDetails(selectedPlan) : null;
+const savingsYearly = planDetails ? planDetails.priceMonthly * 12 - planDetails.priceYearly : 0;
 
-const pageTitle = selectedPlan ? `Paiement - ${selectedPlan} - Optibilan` : 'Paiement - Optibilan';
-const pageDescription = `Finalisez votre inscription à l'offre ${selectedPlan || 'Optibilan'} - 30 jours gratuits, puis facturation automatique.`;
+const pageTitle = selectedPlan
+  ? `Commencez avec Optibilan - Offre ${planDetails!.name}`
+  : 'Commencez avec Optibilan';
+const pageDescription = selectedPlan
+  ? `Offre ${planDetails!.name} : 30 jours d'essai offerts. Votre carte est enregistrée aujourd'hui, première facturation à J+30.`
+  : 'Optibilan - 30 jours d\'essai offerts, première facturation à J+30.';
 
 const breadcrumbJsonLd = {
   '@context': 'https://schema.org',
@@ -34,117 +39,167 @@ const breadcrumbJsonLd = {
 <Layout
   title={pageTitle}
   description={pageDescription}
-  canonical="/checkout"
+  canonical={`/checkout/${plan}`}
   ogImage="/og-checkout.svg"
   jsonLd={breadcrumbJsonLd}
 >
-  <Header />
+  <header class="border-b border-encre/10 bg-blanc">
+    <div class="container flex h-16 items-center justify-between">
+      <a href="/" class="flex items-center gap-2" aria-label="Optibilan - Accueil">
+        <svg class="w-8 h-8 text-bleu-signature" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="16" cy="16" r="14" stroke="#2A8AFF" stroke-width="2"/>
+          <path d="M16 8v8M12 16h8" stroke="#2A8AFF" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <span class="font-display font-bold text-xl text-encre">Optibilan</span>
+      </a>
+      <div class="flex items-center gap-2 text-sm font-medium text-muted-light">
+        <svg class="w-5 h-5 text-vert-fonce" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+          <path fill-rule="evenodd" d="M10 1a4.5 4.5 0 00-4.5 4.5V9H5a2 2 0 00-2 2v6a2 2 0 002 2h10a2 2 0 002-2v-6a2 2 0 00-2-2h-.5V5.5A4.5 4.5 0 0010 1zm3 4.5V9H7V5.5a3 3 0 016 0z" clip-rule="evenodd"/>
+        </svg>
+        Paiement sécurisé
+      </div>
+    </div>
+  </header>
 
-  <main>
+  <main class="bg-blanc">
     {selectedPlan && planDetails ? (
-      <div>
-        <section class="section bg-blanc" aria-labelledby="checkout-title">
-          <div class="container max-w-2xl mx-auto">
-            <header class="text-center mb-12">
-              <h1 id="checkout-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
-                Finalisez votre inscription
-              </h1>
-              <p class="text-lg text-encre/60">
-                Offre <strong class="text-encre">{planDetails.name}</strong> — 30 JOURS OFFERTS, puis facturation automatique.
-              </p>
-            </header>
+      <section class="container py-10 md:py-14" aria-labelledby="checkout-title">
+        <header class="mx-auto mb-10 max-w-2xl text-center md:mb-12">
+          <h1 id="checkout-title" class="font-display text-3xl font-bold text-encre md:text-4xl">
+            Commencez avec Optibilan
+          </h1>
+          <p class="mt-3 text-lg text-body-light">
+            30 jours d'essai offerts avec l'offre <strong class="text-encre">{planDetails.name}</strong>.
+          </p>
+          <p class="mt-2 text-sm text-muted-light">
+            Votre carte est enregistrée aujourd'hui. Vous ne serez débité qu'à la fin de votre période d'essai de 30 jours.
+          </p>
+        </header>
 
-            <div class="bg-blanc border border-encre/10 rounded-xl p-8 mb-8">
-              <div class="flex items-center justify-between mb-6">
+        <div class="grid items-start gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-12">
+          <!-- COLONNE GAUCHE : RÉCAPITULATIF -->
+          <aside class="lg:sticky lg:top-8">
+            <div class="rounded-2xl border border-encre/10 bg-papier p-6 md:p-8">
+              <div class="flex items-start justify-between gap-3">
                 <div>
-                  <h2 class="font-display text-2xl font-bold text-encre mb-1">{planDetails.name}</h2>
-                  <p class="text-encre/60">{planDetails.tagline}</p>
-                </div>
-                <div class="text-right">
-                  <div class="text-4xl font-bold text-encre">{planDetails.priceMonthly} € <span class="text-sm font-normal text-encre/50">HT</span></div>
-                  <div class="text-encre/50">/mois</div>
-                  <div class="text-sm text-bleu-signature font-medium mt-1">Soit {planDetails.priceYearly} €/an <span class="font-bold">(2 mois offerts)</span> <span class="text-encre/50">HT</span></div>
+                  <h2 class="font-display text-2xl font-bold text-encre">Optibilan {planDetails.name}</h2>
+                  <p class="mt-1 text-body-light">{planDetails.tagline}</p>
                 </div>
               </div>
 
-              <div class="bg-papier/50 rounded-lg p-6 mb-6">
-                <h3 class="font-semibold text-encre mb-4">Ce qui est inclus</h3>
-                <ul class="space-y-2 text-sm text-encre/60">
+              <div class="mt-6">
+                <h3 class="text-xs font-semibold uppercase tracking-wider text-muted-light">Inclus</h3>
+                <ul class="mt-3 space-y-2.5 text-sm text-body-light">
                   {planDetails.features.map(f => (
-                    <li class="flex items-center gap-2" key={f}>
-                      <svg class="w-5 h-5 text-emerald-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                    <li class="flex items-start gap-2.5" key={f}>
+                      <svg class="mt-0.5 w-5 h-5 flex-shrink-0 text-vert-fonce" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                      </svg>
                       <span>{f}</span>
                     </li>
                   ))}
                 </ul>
               </div>
 
-              <p class="text-sm text-encre/60 mb-6">
-                <strong>30 jours gratuits</strong> — Votre carte ne sera pas débitée aujourd'hui. Facturation automatique à la fin du mois.
-                <br class="hidden md:inline" /> Annulation simple en un clic depuis votre espace.
-              </p>
+              <div class="mt-6 rounded-xl border border-encre/10 bg-blanc p-5">
+                <div class="flex items-center justify-between text-sm">
+                  <span class="text-muted-light">Plan sélectionné</span>
+                  <span id="recap-cadence" class="font-semibold text-encre">{planDetails.priceMonthly} € HT / mois</span>
+                </div>
 
-              <form id="checkout-form" class="space-y-4">
-                <div class="grid sm:grid-cols-2 gap-4">
+                <div class="mt-5 border-t border-encre/10 pt-5">
+                  <div class="flex items-end justify-between">
+                    <span class="text-sm text-muted-light">Aujourd'hui</span>
+                    <span class="text-2xl font-bold text-encre">0 €</span>
+                  </div>
+                  <p class="mt-1 text-right text-sm font-semibold text-vert-fonce">30 jours d'essai offerts</p>
+                </div>
+
+                <div class="mt-5 border-t border-encre/10 pt-5">
+                  <div class="flex items-end justify-between gap-3">
+                    <span class="text-sm text-muted-light">Première facturation</span>
+                    <div class="text-right">
+                      <span id="recap-first-amount" class="text-lg font-bold text-encre">{planDetails.priceMonthly} € <span class="text-xs font-normal text-muted-light">HT</span></span>
+                      <span id="recap-vat-note" class="block text-xs text-muted-light">+ TVA applicable</span>
+                    </div>
+                  </div>
+                  <p id="recap-first-date" class="mt-1 text-right text-sm font-medium text-encre"></p>
+                  <p id="recap-renewal" class="mt-3 text-xs text-muted-light"></p>
+                </div>
+              </div>
+            </div>
+          </aside>
+
+          <!-- COLONNE DROITE : FORMULAIRE -->
+          <div class="space-y-8">
+            <form id="checkout-form" class="space-y-8" novalidate>
+              <!-- Vos informations -->
+              <section aria-labelledby="info-title">
+                <h2 id="info-title" class="font-display text-xl font-bold text-encre">Vos informations</h2>
+                <div class="mt-4 grid gap-4 sm:grid-cols-2">
                   <div>
-                    <label for="firstName" class="block text-sm font-medium text-encre mb-1">Prénom *</label>
-                    <input 
-                      type="text" 
-                      id="firstName" 
-                      name="firstName" 
-                      required 
-                      placeholder="Jean"
-                      class="w-full px-4 py-3 rounded-lg bg-blanc border border-encre/20 focus:outline-none focus:border-bleu-signature focus:ring-2 focus:ring-bleu-signature/20 transition-all"
-                      autoComplete="given-name"
+                    <label for="firstName" class="mb-1.5 block text-sm font-medium text-encre">Prénom</label>
+                    <input
+                      type="text" id="firstName" name="firstName" required autocomplete="given-name"
+                      class="checkout-input"
                     />
                   </div>
                   <div>
-                    <label for="lastName" class="block text-sm font-medium text-encre mb-1">Nom *</label>
-                    <input 
-                      type="text" 
-                      id="lastName" 
-                      name="lastName" 
-                      required 
-                      placeholder="Dupont"
-                      class="w-full px-4 py-3 rounded-lg bg-blanc border border-encre/20 focus:outline-none focus:border-bleu-signature focus:ring-2 focus:ring-bleu-signature/20 transition-all"
-                      autoComplete="family-name"
+                    <label for="lastName" class="mb-1.5 block text-sm font-medium text-encre">Nom</label>
+                    <input
+                      type="text" id="lastName" name="lastName" required autocomplete="family-name"
+                      class="checkout-input"
                     />
                   </div>
                 </div>
-                <div>
-                  <label for="email" class="block text-sm font-medium text-encre mb-1">Email professionnel *</label>
-                  <input 
-                    type="email" 
-                    id="email" 
-                    name="email" 
-                    required 
-                    placeholder="vous@votrecabinet.fr"
-                    class="w-full px-4 py-3 rounded-lg bg-blanc border border-encre/20 focus:outline-none focus:border-bleu-signature focus:ring-2 focus:ring-bleu-signature/20 transition-all"
-                    autoComplete="email"
+                <div class="mt-4">
+                  <label for="email" class="mb-1.5 block text-sm font-medium text-encre">Email professionnel</label>
+                  <input
+                    type="email" id="email" name="email" required autocomplete="email" placeholder="vous@votrecabinet.fr"
+                    class="checkout-input"
                   />
                 </div>
-                
-                <div class="flex gap-4">
-                  <label class="flex items-center gap-2 cursor-pointer flex-1">
-                    <input type="radio" name="billing" value="monthly" checked class="w-4 h-4 text-bleu-signature border-encre/30 focus:ring-bleu-signature" />
-                    <span class="text-sm text-encre/70">Mensuel — {planDetails.priceMonthly} € HT/mois</span>
+              </section>
+
+              <!-- Choix de l'abonnement -->
+              <section aria-labelledby="choice-title">
+                <h2 id="choice-title" class="font-display text-xl font-bold text-encre">Choix de l'abonnement</h2>
+                <div class="mt-4 grid gap-3 sm:grid-cols-2">
+                  <label class="plan-option is-selected" data-billing="monthly">
+                    <input type="radio" name="billing" value="monthly" class="sr-only" checked />
+                    <div class="flex items-start justify-between gap-2">
+                      <div>
+                        <div class="font-semibold text-encre">Mensuel</div>
+                        <div class="mt-1 text-sm font-medium text-encre">{planDetails.priceMonthly} € HT / mois</div>
+                        <div class="mt-2 text-xs text-muted-light">Flexibilité maximale.</div>
+                      </div>
+                      <span class="plan-dot" aria-hidden="true"></span>
+                    </div>
                   </label>
-                  <label class="flex items-center gap-2 cursor-pointer flex-1">
-                    <input type="radio" name="billing" value="yearly" class="w-4 h-4 text-bleu-signature border-encre/30 focus:ring-bleu-signature" />
-                    <span class="text-sm text-encre/70">Ou Annuel — {planDetails.priceYearly} €/an <span class="font-bold text-bleu-signature">(2 mois offerts)</span> <span class="text-encre/50">HT</span></span>
+                  <label class="plan-option" data-billing="yearly">
+                    <input type="radio" name="billing" value="yearly" class="sr-only" />
+                    <div class="flex items-start justify-between gap-2">
+                      <div>
+                        <div class="flex items-center gap-2">
+                          <span class="font-semibold text-encre">Annuel</span>
+                          <span class="rounded-full bg-rose-bordeaux px-2 py-0.5 text-xs font-bold text-bordeaux">2 mois offerts</span>
+                        </div>
+                        <div class="mt-1 text-sm font-medium text-encre">{planDetails.priceYearly} € HT / an</div>
+                        <div class="mt-2 text-xs text-muted-light">Économisez {savingsYearly} € par an.</div>
+                      </div>
+                      <span class="plan-dot" aria-hidden="true"></span>
+                    </div>
                   </label>
                 </div>
+              </section>
 
-                <!-- Pays et TVA -->
-                <div class="grid sm:grid-cols-2 gap-4">
+              <!-- Facturation -->
+              <section aria-labelledby="billing-title">
+                <h2 id="billing-title" class="font-display text-xl font-bold text-encre">Facturation</h2>
+                <div class="mt-4 grid gap-4 sm:grid-cols-2">
                   <div>
-                    <label for="country" class="block text-sm font-medium text-encre mb-1">Pays de facturation *</label>
-                    <select 
-                      id="country" 
-                      name="country" 
-                      required 
-                      class="w-full px-4 py-3 rounded-lg bg-blanc border border-encre/20 focus:outline-none focus:border-bleu-signature focus:ring-2 focus:ring-bleu-signature/20 transition-all"
-                    >
+                    <label for="country" class="mb-1.5 block text-sm font-medium text-encre">Pays de facturation</label>
+                    <select id="country" name="country" required class="checkout-input">
                       <option value="">Sélectionnez un pays</option>
                       <option value="FR">France</option>
                       <option value="BE">Belgique</option>
@@ -159,209 +214,417 @@ const breadcrumbJsonLd = {
                     </select>
                   </div>
                   <div>
-                    <label for="vatNumber" class="block text-sm font-medium text-encre mb-1">Numéro de TVA intracommunautaire (optionnel)</label>
-                    <input 
-                      type="text" 
-                      id="vatNumber" 
-                      name="vatNumber" 
-                      placeholder="Ex: FR12345678901"
-                      class="w-full px-4 py-3 rounded-lg bg-blanc border border-encre/20 focus:outline-none focus:border-bleu-signature focus:ring-2 focus:ring-bleu-signature/20 transition-all"
-                      placeholder="FR12345678901"
+                    <label for="vatNumber" class="mb-1.5 block text-sm font-medium text-encre">
+                      N° de TVA intracommunautaire <span class="font-normal text-muted-light">(optionnel)</span>
+                    </label>
+                    <input
+                      type="text" id="vatNumber" name="vatNumber" placeholder="FR12345678901"
+                      autocomplete="off" class="checkout-input"
                     />
-                    <p class="text-xs text-encre/50 mt-1">Si vous avez un numéro de TVA valide, la TVA ne sera pas appliquée (autoliquidation).</p>
                   </div>
                 </div>
 
-                <!-- Affichage TVA -->
-                <div id="vat-display" class="hidden bg-bleu-clair/50 border border-bleu-signature/20 rounded-lg p-4 mb-4">
+                <div id="totals-box" class="mt-4 rounded-xl border border-encre/10 bg-papier p-4 text-sm">
                   <div class="flex items-center justify-between">
-                    <span class="text-sm font-medium text-encre">TVA estimée :</span>
-                    <span id="vat-amount" class="font-semibold text-bleu-signature">0 €</span>
+                    <span class="text-muted-light">Sous-total HT</span>
+                    <span id="subtotal-el" class="font-medium text-encre"></span>
                   </div>
-                  <p class="text-xs text-encre/50 mt-1">Basé sur le pays sélectionné. Taux final confirmé par Stripe.</p>
+                  <div id="vat-row" class="mt-2 flex items-center justify-between">
+                    <span class="text-muted-light">TVA applicable</span>
+                    <span id="vat-amount" class="font-medium text-encre"></span>
+                  </div>
+                  <p class="mt-2 text-xs text-muted-light">TVA calculée selon le pays de facturation.</p>
+                </div>
+              </section>
+
+              <!-- Carte bancaire -->
+              <section aria-labelledby="card-title">
+                <h2 id="card-title" class="font-display text-xl font-bold text-encre">Informations de paiement</h2>
+                <div id="card-element" class="checkout-card mt-4" aria-label="Carte bancaire"></div>
+                <p id="card-error" class="mt-2 min-h-5 text-sm text-danger-600" role="alert"></p>
+                <p class="mt-3 flex items-center gap-2 text-sm text-muted-light">
+                  <svg class="w-5 h-5 text-vert-fonce" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M10 1a4.5 4.5 0 00-4.5 4.5V9H5a2 2 0 00-2 2v6a2 2 0 002 2h10a2 2 0 002-2v-6a2 2 0 00-2-2h-.5V5.5A4.5 4.5 0 0010 1zm3 4.5V9H7V5.5a3 3 0 016 0z" clip-rule="evenodd"/>
+                  </svg>
+                  Paiement sécurisé par Stripe
+                </p>
+              </section>
+
+              <!-- Récapitulatif final + CTA -->
+              <section aria-labelledby="final-title">
+                <h2 id="final-title" class="sr-only">Récapitulatif final</h2>
+                <div class="rounded-xl border border-encre/10 bg-papier p-5">
+                  <div class="flex items-center justify-between text-sm">
+                    <span class="font-medium text-encre">Optibilan {planDetails.name}</span>
+                    <span id="final-cadence" class="font-medium text-encre"></span>
+                  </div>
+                  <div class="mt-3 flex items-center justify-between text-sm">
+                    <span class="text-muted-light">Aujourd'hui</span>
+                    <span class="font-semibold text-encre">0 €</span>
+                  </div>
+                  <div class="mt-2 flex items-center justify-between text-sm">
+                    <span class="text-muted-light">Total après l'essai</span>
+                    <span id="cta-total" class="font-semibold text-encre"></span>
+                  </div>
+                  <p id="cta-date" class="mt-3 text-xs text-muted-light"></p>
                 </div>
 
-                <button 
-                  type="submit" 
-                  class="btn-primary w-full group py-4 px-6 text-lg font-semibold rounded-xl transition-all duration-200"
-                  id="submit-btn"
+                <button
+                  type="submit" id="submit-btn"
+                  class="btn-primary mt-5 w-full py-4 px-6 text-lg font-semibold rounded-xl transition-all duration-200"
                 >
-                  <span>Lancer le paiement sécurisé</span>
-                  <svg class="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1 inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                  Démarrer mes 30 jours offerts
                 </button>
-
-                <p class="text-center text-xs text-encre/50">
-                  Paiement sécurisé par Stripe · 30 jours gratuits · Annulation simple en un clic
+                <p id="cta-zero" class="mt-3 text-center text-sm font-semibold text-vert-fonce">Aujourd'hui : 0 €</p>
+                <p class="mt-2 text-center text-xs text-muted-light">
+                  Vous pourrez résilier depuis votre espace avant votre première facturation.
                 </p>
-              </form>
-             </div>
+              </section>
+            </form>
 
-            <p class="text-center text-sm text-encre/50">
-              En validant, vous acceptez nos <a href="/legal/cgv" class="underline hover:text-bleu-signature">CGV</a> et notre <a href="/legal/confidentialite" class="underline hover:text-bleu-signature">Politique de confidentialité</a>.
+            <!-- Réassurance -->
+            <div class="grid gap-4 sm:grid-cols-3">
+              <div class="rounded-xl border border-encre/10 p-4">
+                <svg class="w-6 h-6 text-bleu-signature" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                  <rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>
+                </svg>
+                <h3 class="mt-2 text-sm font-semibold text-encre">30 jours offerts</h3>
+                <p class="mt-1 text-xs text-muted-light">Découvrez Optibilan avant votre première facturation.</p>
+              </div>
+              <div class="rounded-xl border border-encre/10 p-4">
+                <svg class="w-6 h-6 text-bleu-signature" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                  <path d="M9 14L4 9l5-5"/><path d="M4 9h10a6 6 0 016 6v1"/>
+                </svg>
+                <h3 class="mt-2 text-sm font-semibold text-encre">Annulation simple</h3>
+                <p class="mt-1 text-xs text-muted-light">Gérez votre abonnement directement depuis votre espace.</p>
+              </div>
+              <div class="rounded-xl border border-encre/10 p-4">
+                <svg class="w-6 h-6 text-bleu-signature" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 11.5l2 2 4-4"/>
+                </svg>
+                <h3 class="mt-2 text-sm font-semibold text-encre">Paiement sécurisé</h3>
+                <p class="mt-1 text-xs text-muted-light">Paiement traité par Stripe.</p>
+              </div>
+            </div>
+
+            <p class="text-center text-sm text-muted-light">
+              En continuant, vous acceptez nos
+              <a href="/legal/cgv" class="underline hover:text-bleu-signature">CGV</a>
+              et notre
+              <a href="/legal/confidentialite" class="underline hover:text-bleu-signature">Politique de confidentialité</a>.
             </p>
           </div>
-        </section>
-      </div>
-      ) : (
-        <section class="section bg-blanc" aria-labelledby="error-title">
-          <div class="container max-w-md mx-auto text-center">
-            <h1 id="error-title" class="font-display text-3xl font-bold text-encre mb-4">Offre invalide</h1>
-            <p class="text-encre/60 mb-8">L'offre sélectionnée n'existe pas. Retournez sur la page des tarifs pour choisir une offre.</p>
-            <a href="/tarifs" class="btn-primary inline-flex">Retour aux tarifs</a>
-          </div>
-        </section>
-      )}
+        </div>
+      </section>
+    ) : (
+      <section class="section bg-blanc" aria-labelledby="error-title">
+        <div class="container mx-auto max-w-md text-center">
+          <h1 id="error-title" class="font-display text-3xl font-bold text-encre mb-4">Offre invalide</h1>
+          <p class="text-body-light mb-8">L'offre sélectionnée n'existe pas. Retournez sur la page des tarifs pour choisir une offre.</p>
+          <a href="/tarifs" class="btn-primary inline-flex">Retour aux tarifs</a>
+        </div>
+      </section>
+    )}
   </main>
 
-  <Footer />
+  <footer class="border-t border-encre/10 bg-blanc">
+    <div class="container flex flex-col items-center justify-between gap-3 py-6 text-xs text-muted-light sm:flex-row">
+      <span>© {new Date().getFullYear()} Optibilan</span>
+      <span class="flex items-center gap-4">
+        <a href="/legal/cgv" class="hover:text-bleu-signature">CGV</a>
+        <a href="/legal/confidentialite" class="hover:text-bleu-signature">Confidentialité</a>
+        <a href="/contact" class="hover:text-bleu-signature">Contact</a>
+      </span>
+    </div>
+  </footer>
 </Layout>
 
-<script is:inline>
-  // VAT rates by country
-  const VAT_RATES = {
-    'FR': 0.20,
-    'BE': 0.21,
-    'CH': 0.081,
-    'LU': 0.17,
-    'DE': 0.19,
-    'ES': 0.21,
-    'IT': 0.22,
-    'NL': 0.21,
-    'OTHER': 0.20, // Default EU rate
-    'NON_EU': 0, // No VAT for non-EU
+<script is:inline define:vars={{
+  plan: (selectedPlan || '').toLowerCase(),
+  priceMonthly: planDetails?.priceMonthly ?? 0,
+  priceYearly: planDetails?.priceYearly ?? 0,
+}}>
+  const TRIAL_DAYS = 30;
+  const $ = (id) => document.getElementById(id);
+
+  const state = {
+    billing: 'monthly',
+    country: '',
+    vatNumber: '',
+    vatRates: {},
   };
 
-  const planPrices = {
-    'solo': { monthly: 49, yearly: 490 },
-    'studio': { monthly: 149, yearly: 1490 },
-    'cabinet': { monthly: 349, yearly: 3490 },
-  };
+  let stripe = null;
+  let cardElement = null;
+  let stripeReady = false;
 
-  function calculateVAT() {
-    const country = document.getElementById('country').value;
-    const billing = document.querySelector('input[name="billing"]:checked').value;
-    const pathParts = window.location.pathname.split('/').filter(Boolean);
-    const plan = pathParts[pathParts.length - 1];
-    
-    const basePrice = billing === 'monthly' 
-      ? planPrices[plan]?.monthly 
-      : planPrices[plan]?.yearly;
-    
-    const vatRate = VAT_RATES[country] || 0;
-    const vatAmount = basePrice * vatRate;
-    const totalWithVAT = basePrice + vatAmount;
-    
-    const vatDisplay = document.getElementById('vat-display');
-    const vatAmountEl = document.getElementById('vat-amount');
-    const submitBtn = document.getElementById('submit-btn');
-    
-    if (country && vatRate > 0) {
-      vatDisplay.classList.remove('hidden');
-      vatAmountEl.textContent = `${vatAmount.toFixed(2)} €`;
-      submitBtn.innerHTML = `
-        <span>Lancer le paiement sécurisé (${(totalWithVAT).toFixed(2)} € TTC)</span>
-        <svg class="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1 inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-      `;
-    } else if (country && vatRate === 0) {
-      vatDisplay.classList.remove('hidden');
-      vatAmountEl.textContent = '0 € (exonéré)';
-      submitBtn.innerHTML = `
-        <span>Lancer le paiement sécurisé (${basePrice.toFixed(2)} € HT)</span>
-        <svg class="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1 inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-      `;
+  const twoDigits = (n) => Math.round(n * 100) / 100;
+  const fmt = (n) =>
+    new Intl.NumberFormat('fr-FR', { minimumFractionDigits: 0, maximumFractionDigits: 2 }).format(twoDigits(n));
+  const eur = (n) => `${fmt(n)} €`;
+  const basePrice = () => (state.billing === 'monthly' ? priceMonthly : priceYearly);
+  const isVatExempt = () => /^[A-Za-z]{2}[0-9A-Za-z]{6,12}$/.test(state.vatNumber.trim());
+  const vatRate = () => (isVatExempt() ? 0 : state.vatRates[state.country] || 0);
+  const vatAmount = () => twoDigits(basePrice() * vatRate());
+  const totalPrice = () => twoDigits(basePrice() + vatAmount());
+
+  function trialEndDate() {
+    const d = new Date();
+    d.setDate(d.getDate() + TRIAL_DAYS);
+    return new Intl.DateTimeFormat('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' }).format(d);
+  }
+
+  function renderRecap() {
+    const yearly = state.billing === 'yearly';
+    $('recap-cadence').textContent = yearly
+      ? `${fmt(priceYearly)} € HT / an`
+      : `${fmt(priceMonthly)} € HT / mois`;
+    $('final-cadence').textContent = yearly ? 'Annuel · 2 mois offerts' : 'Mensuel';
+    $('recap-first-amount').innerHTML = `${eur(basePrice())} <span class="text-xs font-normal text-muted-light">HT</span>`;
+    $('recap-vat-note').textContent = vatRate() > 0
+      ? '+ TVA applicable'
+      : state.country === 'NON_EU'
+        ? 'sans TVA (hors UE)'
+        : isVatExempt()
+          ? 'sans TVA (autoliquidation)'
+          : '+ TVA applicable';
+    $('recap-first-date').textContent = trialEndDate();
+    $('recap-renewal').textContent = yearly
+      ? `Renouvellement annuel : ${fmt(priceYearly)} € HT / an.`
+      : `${fmt(priceMonthly)} € HT / mois jusqu'à résiliation.`;
+    $('cta-total').textContent = `${eur(totalPrice())} TTC`;
+    $('cta-date').textContent = `Première facturation le ${trialEndDate()}`;
+  }
+
+  function renderTotals() {
+    $('subtotal-el').textContent = `${eur(basePrice())} HT`;
+    if (state.country) {
+      $('vat-row').classList.remove('hidden');
+      if (vatRate() > 0) {
+        $('vat-amount').textContent = eur(vatAmount());
+      } else if (state.country === 'NON_EU') {
+        $('vat-amount').textContent = `${eur(0)} (hors UE)`;
+      } else {
+        $('vat-amount').textContent = `${eur(0)} (autoliquidation)`;
+      }
     } else {
-      vatDisplay.classList.add('hidden');
-      submitBtn.innerHTML = `
-        <span>Lancer le paiement sécurisé</span>
-        <svg class="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1 inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-      `;
+      $('vat-row').classList.add('hidden');
     }
   }
 
-  // Initialize VAT calculation on page load
-  document.addEventListener('DOMContentLoaded', () => {
-    const countrySelect = document.getElementById('country');
-    const billingRadios = document.querySelectorAll('input[name="billing"]');
-    
-    countrySelect?.addEventListener('change', calculateVAT);
-    billingRadios.forEach(radio => {
-      radio.addEventListener('change', calculateVAT);
+  function showError(message) {
+    const el = $('card-error');
+    el.textContent = message;
+    el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  function loadStripe(version) {
+    return new Promise((resolve, reject) => {
+      if (window.Stripe) return resolve(window.Stripe);
+      const tag = document.querySelector('script[data-stripe]');
+      if (tag) {
+        tag.addEventListener('load', () => resolve(window.Stripe));
+        tag.addEventListener('error', () => reject(new Error('Chargement du paiement impossible.')));
+        return;
+      }
+      const script = document.createElement('script');
+      script.src = 'https://js.stripe.com/v3/';
+      script.dataset.stripe = '1';
+      script.onload = () => resolve(window.Stripe);
+      script.onerror = () => reject(new Error('Chargement du paiement impossible.'));
+      document.head.appendChild(script);
     });
-    
-    // Initial calculation
-    calculateVAT();
+  }
+
+  async function initPayment() {
+    try {
+      const res = await fetch('/api/stripe-config', { cache: 'no-store' });
+      if (!res.ok) throw new Error('Paiement indisponible.');
+      const cfg = await res.json();
+      state.vatRates = cfg.vatRates || {};
+      if (!cfg.publishableKey) throw new Error('Paiement temporairement indisponible. Réessayez dans quelques instants.');
+      const StripeApi = await loadStripe();
+      stripe = StripeApi(cfg.publishableKey);
+      cardElement = stripe.elements().create('card', {
+        hidePostalCode: true,
+        style: {
+          base: {
+            fontSize: '16px',
+            color: '#23211C',
+            fontFamily: "'Inter', system-ui, -apple-system, sans-serif",
+            '::placeholder': { color: '#66706B' },
+          },
+          invalid: { color: '#DC2626' },
+        },
+      });
+      cardElement.mount('#card-element');
+      cardElement.on('change', (e) => {
+        if (e.error) {
+          $('card-error').textContent = e.error.message;
+        } else {
+          $('card-error').textContent = '';
+        }
+      });
+      stripeReady = true;
+    } catch (err) {
+      showError(err.message || 'Paiement temporairement indisponible.');
+      $('submit-btn').disabled = true;
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    initPayment();
+    renderRecap();
+
+    document.querySelectorAll('.plan-option').forEach((opt) => {
+      opt.addEventListener('click', () => {
+        const input = opt.querySelector('input');
+        input.checked = true;
+        state.billing = input.value;
+        document.querySelectorAll('.plan-option').forEach((o) =>
+          o.classList.toggle('is-selected', o === opt)
+        );
+        renderRecap();
+        renderTotals();
+      });
+    });
+
+    const country = $('country');
+    country.addEventListener('change', () => {
+      state.country = country.value;
+      renderTotals();
+      renderRecap();
+    });
+
+    const vatNumber = $('vatNumber');
+    vatNumber.addEventListener('input', () => {
+      state.vatNumber = vatNumber.value;
+      renderTotals();
+      renderRecap();
+    });
   });
 
-  const form = document.getElementById('checkout-form');
-  const submitBtn = document.getElementById('submit-btn');
-
-  form?.addEventListener('submit', async (e) => {
+  $('checkout-form')?.addEventListener('submit', async (e) => {
     e.preventDefault();
-    
-    const formData = new FormData(form);
-    const email = formData.get('email');
-    const firstName = formData.get('firstName');
-    const lastName = formData.get('lastName');
-    const billing = formData.get('billing');
-    const country = formData.get('country');
-    const vatNumber = formData.get('vatNumber');
-    const pathParts = window.location.pathname.split('/').filter(Boolean);
-    const plan = pathParts[pathParts.length - 1];
-    
-    if (!email || !email.includes('@')) {
-      alert('Veuillez entrer un email valide');
-      return;
-    }
-    
-    if (!country) {
-      alert('Veuillez sélectionner un pays');
-      return;
-    }
-    
-    if (!firstName || !lastName) {
-      alert('Veuillez remplir votre prénom et nom');
-      return;
-    }
+    const btn = $('submit-btn');
 
-    const submitBtn = document.getElementById('submit-btn');
-    submitBtn.disabled = true;
-    submitBtn.innerHTML = `
-      <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" fill="none" viewBox="0 0 24 24">
-        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-      </svg>
-      Redirection...
-    `;
+    const firstName = $('firstName').value.trim();
+    const lastName = $('lastName').value.trim();
+    const email = $('email').value.trim();
+    const country = $('country').value;
+    const vatNumber = $('vatNumber').value.trim();
+
+    if (!firstName || !lastName) return showError('Veuillez remplir votre prénom et votre nom.');
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return showError('Veuillez entrer un email professionnel valide.');
+    if (!country) return showError('Veuillez sélectionner votre pays de facturation.');
+    if (!stripeReady || !stripe || !cardElement) return showError('Le paiement est encore en cours de chargement.');
+
+    const originalLabel = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = 'Sécurisation…';
+    showError('');
+
+    const { paymentMethod, error } = await stripe.createPaymentMethod({
+      type: 'card',
+      card: cardElement,
+      billing_details: { name: `${firstName} ${lastName}`, email },
+    });
+
+    if (error) {
+      btn.disabled = false;
+      btn.textContent = originalLabel;
+      return showError(error.message);
+    }
 
     try {
-      const response = await fetch('/api/checkout', {
+      const res = await fetch('/api/checkout', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ plan, billing, email, country, vatNumber, firstName, lastName }),
+        body: JSON.stringify({
+          plan,
+          billing: state.billing,
+          email,
+          firstName,
+          lastName,
+          country,
+          vatNumber,
+          paymentMethodId: paymentMethod.id,
+        }),
       });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.error || 'Erreur lors de la création de la session');
-      }
-
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Le paiement a échoué. Votre carte n\'a pas été débitée.');
       window.location.href = data.url;
-    } catch (error) {
-      console.error('Checkout error:', error);
-      alert('Erreur : ' + error.message);
-      submitBtn.disabled = false;
-      submitBtn.innerHTML = `
-        <span>Lancer le paiement sécurisé</span>
-        <svg class="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1 inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-      `;
+    } catch (err) {
+      btn.disabled = false;
+      btn.textContent = originalLabel;
+      showError(err.message || 'Le paiement a échoué. Votre carte n\'a pas été débitée.');
     }
   });
 </script>
 
 <style is:global>
-  @media (max-width: 640px) {
-    .section { padding-top: 3rem; padding-bottom: 3rem; }
-    .container { padding-left: 1rem; padding-right: 1rem; }
+  .checkout-input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-radius: 0.75rem;
+    background-color: var(--color-surface);
+    border: 1px solid color-mix(in oklab, var(--color-encre-texte) 20%, transparent);
+    color: var(--color-encre-texte);
+    font-size: 1rem;
+    transition: border-color 150ms ease, box-shadow 150ms ease;
+  }
+  .checkout-input:focus {
+    outline: none;
+    border-color: var(--color-bleu-signature);
+    box-shadow: 0 0 0 3px color-mix(in oklab, var(--color-bleu-signature) 20%, transparent);
+  }
+  .checkout-card {
+    padding: 0.75rem 1rem;
+    border-radius: 0.75rem;
+    background-color: var(--color-surface);
+    border: 1px solid color-mix(in oklab, var(--color-encre-texte) 20%, transparent);
+    min-height: 56px;
+    transition: border-color 150ms ease, box-shadow 150ms ease;
+  }
+  .checkout-card.StripeElement--focus {
+    border-color: var(--color-bleu-signature);
+    box-shadow: 0 0 0 3px color-mix(in oklab, var(--color-bleu-signature) 20%, transparent);
+  }
+  .checkout-card.StripeElement--invalid {
+    border-color: var(--color-danger-500);
+  }
+  .plan-option {
+    cursor: pointer;
+    border-radius: 0.75rem;
+    border: 1px solid color-mix(in oklab, var(--color-encre-texte) 15%, transparent);
+    background-color: var(--color-surface);
+    padding: 1rem 1.25rem;
+    transition: border-color 150ms ease, box-shadow 150ms ease, background-color 150ms ease;
+  }
+  .plan-option:hover {
+    border-color: color-mix(in oklab, var(--color-bleu-signature) 45%, transparent);
+  }
+  .plan-option.is-selected {
+    border-color: var(--color-bleu-signature);
+    background-color: color-mix(in oklab, var(--color-ciel) 55%, white);
+    box-shadow: 0 0 0 1px var(--color-bleu-signature);
+  }
+  .plan-dot {
+    width: 1.25rem;
+    height: 1.25rem;
+    border-radius: 999px;
+    border: 2px solid color-mix(in oklab, var(--color-encre-texte) 25%, transparent);
+    flex-shrink: 0;
+    position: relative;
+  }
+  .plan-option.is-selected .plan-dot {
+    border-color: var(--color-bleu-signature);
+  }
+  .plan-option.is-selected .plan-dot::after {
+    content: '';
+    position: absolute;
+    inset: 3px;
+    border-radius: 999px;
+    background-color: var(--color-bleu-signature);
   }
 </style>

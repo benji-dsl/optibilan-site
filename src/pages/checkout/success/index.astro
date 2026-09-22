@@ -4,8 +4,8 @@ import Header from '../../../components/Header.astro';
 import Footer from '../../../components/Footer.astro';
 import Icon from '../../../components/Icon.astro';
 
-const pageTitle = 'Paiement réussi - Optibilan';
-const pageDescription = 'Votre inscription est confirmée. Bienvenue sur Optibilan !';
+const pageTitle = 'Inscription confirmée - Optibilan';
+const pageDescription = 'Votre inscription est confirmée. Votre essai de 30 jours offerts commence aujourd\'hui.';
 
 const breadcrumbJsonLd = {
   '@context': 'https://schema.org',
@@ -35,12 +35,12 @@ const breadcrumbJsonLd = {
           <Icon name="check" class="w-10 h-10 text-emerald-500" />
         </div>
         
-        <h1 id="success-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+<h1 id="success-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
           C'est confirmé !
         </h1>
-        
-        <p class="text-lg text-encre/60 mb-8">
-          Votre inscription est confirmée. Vous avez maintenant accès à Optibilan pendant 30 jours gratuits.
+
+        <p class="text-lg text-body-light mb-8">
+          Votre inscription est confirmée. Vos <strong class="text-encre">30 jours offerts</strong> commencent aujourd'hui avec l'offre <span id="plan-label" class="font-semibold text-encre">sélectionnée</span>.
         </p>
 
         <div class="bg-emerald-50 border border-emerald-200 rounded-xl p-6 mb-8">
@@ -50,8 +50,8 @@ const breadcrumbJsonLd = {
           <ul class="space-y-2 text-emerald-700 text-sm">
             <li class="flex items-start gap-2"><Icon name="check" class="w-5 h-5 flex-shrink-0" /> Votre espace est prêt : <a href="https://app.optibilan.com" target="_blank" rel="noopener noreferrer" class="underline hover:text-emerald-600">accéder à Optibilan</a></li>
             <li class="flex items-start gap-2"><Icon name="check" class="w-5 h-5 flex-shrink-0" /> Un email de confirmation vous a été envoyé</li>
-            <li class="flex items-start gap-2"><Icon name="check" class="w-5 h-5 flex-shrink-0" /> 30 jours gratuits activés — facturation automatique dans 30 jours</li>
-            <li class="flex items-start gap-2"><Icon name="check" class="w-5 h-5 flex-shrink-0" /> Annulation simple en un clic depuis votre espace</li>
+            <li class="flex items-start gap-2"><Icon name="check" class="w-5 h-5 flex-shrink-0" /> Votre carte est enregistrée, vous ne serez débité qu'à la fin de vos 30 jours offerts</li>
+            <li class="flex items-start gap-2"><Icon name="check" class="w-5 h-5 flex-shrink-0" /> Annulation simple depuis votre espace avant la première facturation</li>
           </ul>
         </div>
 
