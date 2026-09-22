@@ -12,6 +12,15 @@
 /optibilan-logo-horizontal.png
   Cache-Control: public, max-age=3600
 
+/optibilan-favicon.svg
+  Cache-Control: public, max-age=3600
+
+/optibilan-favicon.ico
+  Cache-Control: public, max-age=3600
+
+/apple-touch-icon.png
+  Cache-Control: public, max-age=3600
+
 /logo.png
   Cache-Control: public, max-age=3600
 
