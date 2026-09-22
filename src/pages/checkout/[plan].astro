@@ -143,16 +143,6 @@ const breadcrumbJsonLd = {
                     <p class="mt-1 text-xs text-muted-light">TVA calculée selon le pays de facturation.</p>
                   </div>
 
-                  <label for="acceptCgv" class="mt-4 flex items-start gap-2.5 border-t border-encre/10 pt-4 text-sm">
-                    <input type="checkbox" id="acceptCgv" name="acceptCgv" class="mt-0.5 h-4 w-4 shrink-0 accent-bleu-signature" />
-                    <span class="text-muted-light">
-                      J'accepte les{" "}
-                      <a href="/legal/cgv" class="font-medium text-bleu-signature underline hover:text-bleu-fonce">
-                        CGV
-                      </a>{" "}
-                      d'Optibilan.
-                    </span>
-                  </label>
                 </div>
               </div>
             </div>
@@ -245,6 +235,18 @@ const breadcrumbJsonLd = {
                   </div>
                 </div>
 
+                <div class="mt-4 flex items-start gap-2.5 border-t border-encre/10 pt-4">
+                  <input type="checkbox" id="acceptCgv" name="acceptCgv" class="mt-0.5 h-4 w-4 shrink-0 accent-bleu-signature" />
+                  <label for="acceptCgv" class="text-sm">
+                    <span class="text-muted-light">
+                      J'accepte les{" "}
+                      <a href="/legal/cgv" class="font-medium text-bleu-signature underline hover:text-bleu-fonce">
+                        CGV
+                      </a>{" "}
+                      d'Optibilan.
+                    </span>
+                  </label>
+                </div>
 
               </section>
 
