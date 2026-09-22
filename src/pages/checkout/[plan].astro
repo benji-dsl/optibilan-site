@@ -93,49 +93,36 @@ const breadcrumbJsonLd = {
                 </ul>
               </div>
 
-              <div class="mt-6 rounded-xl border border-encre/10 bg-blanc p-5">
-                <div class="flex items-center justify-between text-sm">
-                  <span class="text-muted-light">Plan sélectionné</span>
-                  <span id="recap-cadence" class="font-semibold text-encre">{planDetails.priceMonthly} € HT / mois</span>
+              <section class="mt-6" aria-labelledby="choice-title">
+                <h3 id="choice-title" class="text-xs font-semibold uppercase tracking-wider text-muted-light">Choix de l'abonnement</h3>
+                <div class="mt-3 grid gap-3">
+                  <label class="plan-option is-selected" data-billing="monthly">
+                    <input type="radio" name="billing" value="monthly" class="sr-only" checked />
+                    <div class="flex items-start justify-between gap-2">
+                      <div>
+                        <div class="font-semibold text-encre">Mensuel</div>
+                        <div class="mt-1 text-sm font-medium text-encre">{planDetails.priceMonthly} € HT / mois</div>
+                        <div class="mt-2 text-xs text-muted-light">Flexibilité maximale.</div>
+                      </div>
+                      <span class="plan-dot" aria-hidden="true"></span>
+                    </div>
+                  </label>
+                  <label class="plan-option" data-billing="yearly">
+                    <input type="radio" name="billing" value="yearly" class="sr-only" />
+                    <div class="flex items-start justify-between gap-2">
+                      <div>
+                        <div class="flex items-center gap-2">
+                          <span class="font-semibold text-encre">Annuel</span>
+                          <span class="rounded-full bg-rose-bordeaux px-2 py-0.5 text-xs font-bold text-bordeaux">2 mois offerts</span>
+                        </div>
+                        <div class="mt-1 text-sm font-medium text-encre">{planDetails.priceYearly} € HT / an</div>
+                        <div class="mt-2 text-xs text-muted-light">Économisez {savingsYearly} € par an.</div>
+                      </div>
+                      <span class="plan-dot" aria-hidden="true"></span>
+                    </div>
+                  </label>
                 </div>
-
-                <div class="mt-5 border-t border-encre/10 pt-5">
-                  <div class="flex items-end justify-between">
-                    <span class="text-sm text-muted-light">Aujourd'hui</span>
-                    <span class="text-2xl font-bold text-encre">0 €</span>
-                  </div>
-                  <p class="mt-1 text-right text-sm font-semibold text-vert-fonce">30 jours d'essai offerts</p>
-                </div>
-
-                <div class="mt-5 border-t border-encre/10 pt-5">
-                  <div class="flex items-end justify-between gap-3">
-                    <span class="text-sm text-muted-light">Première facturation</span>
-                    <div class="text-right">
-                      <span id="recap-first-amount" class="text-lg font-bold text-encre">{planDetails.priceMonthly} € <span class="text-xs font-normal text-muted-light">HT</span></span>
-                      <span id="recap-vat-note" class="block text-xs text-muted-light">+ TVA applicable</span>
-                    </div>
-                  </div>
-                  <p id="recap-first-date" class="mt-1 text-right text-sm font-medium text-encre"></p>
-                  <p id="recap-renewal" class="mt-3 text-xs text-muted-light"></p>
-
-                  <div class="mt-4 grid gap-2 border-t border-encre/10 pt-4 text-sm">
-                    <div class="flex items-center justify-between">
-                      <span class="text-muted-light">Sous-total HT</span>
-                      <span id="subtotal-el" class="font-medium text-encre"></span>
-                    </div>
-                    <div id="vat-row" class="hidden items-center justify-between">
-                      <span class="text-muted-light">TVA applicable</span>
-                      <span id="vat-amount" class="font-medium text-encre"></span>
-                    </div>
-                    <div class="flex items-center justify-between font-semibold">
-                      <span class="text-muted-light">Total après l'essai TTC</span>
-                      <span id="recap-total-ttc" class="font-medium text-encre"></span>
-                    </div>
-                    <p class="mt-1 text-xs text-muted-light">TVA calculée selon le pays de facturation.</p>
-                  </div>
-
-                </div>
-              </div>
+              </section>
             </div>
           </aside>
 
@@ -170,38 +157,6 @@ const breadcrumbJsonLd = {
                 </div>
               </section>
 
-              <!-- Choix de l'abonnement -->
-              <section aria-labelledby="choice-title">
-                <h2 id="choice-title" class="font-display text-xl font-bold text-encre">Choix de l'abonnement</h2>
-                <div class="mt-4 grid gap-3 sm:grid-cols-2">
-                  <label class="plan-option is-selected" data-billing="monthly">
-                    <input type="radio" name="billing" value="monthly" class="sr-only" checked />
-                    <div class="flex items-start justify-between gap-2">
-                      <div>
-                        <div class="font-semibold text-encre">Mensuel</div>
-                        <div class="mt-1 text-sm font-medium text-encre">{planDetails.priceMonthly} € HT / mois</div>
-                        <div class="mt-2 text-xs text-muted-light">Flexibilité maximale.</div>
-                      </div>
-                      <span class="plan-dot" aria-hidden="true"></span>
-                    </div>
-                  </label>
-                  <label class="plan-option" data-billing="yearly">
-                    <input type="radio" name="billing" value="yearly" class="sr-only" />
-                    <div class="flex items-start justify-between gap-2">
-                      <div>
-                        <div class="flex items-center gap-2">
-                          <span class="font-semibold text-encre">Annuel</span>
-                          <span class="rounded-full bg-rose-bordeaux px-2 py-0.5 text-xs font-bold text-bordeaux">2 mois offerts</span>
-                        </div>
-                        <div class="mt-1 text-sm font-medium text-encre">{planDetails.priceYearly} € HT / an</div>
-                        <div class="mt-2 text-xs text-muted-light">Économisez {savingsYearly} € par an.</div>
-                      </div>
-                      <span class="plan-dot" aria-hidden="true"></span>
-                    </div>
-                  </label>
-                </div>
-              </section>
-
               <!-- Facturation -->
               <section aria-labelledby="billing-title">
                 <h2 id="billing-title" class="font-display text-xl font-bold text-encre">Facturation</h2>
@@ -224,6 +179,16 @@ const breadcrumbJsonLd = {
                       autocomplete="off" class="checkout-input"
                     />
                   </div>
+                </div>
+
+                <div class="mt-4">
+                  <label for="address" class="mb-1.5 block text-sm font-medium text-encre">
+                    Adresse <span class="font-normal text-muted-light">(optionnel)</span>
+                  </label>
+                  <input
+                    type="text" id="address" name="address" autocomplete="street-address"
+                    placeholder="12 rue de la Liberté" class="checkout-input"
+                  />
                 </div>
 
                 <div class="mt-4 flex items-start gap-2.5 border-t border-encre/10 pt-4">
@@ -380,42 +345,9 @@ const breadcrumbJsonLd = {
 
   function renderRecap() {
     const yearly = state.billing === 'yearly';
-    $('recap-cadence').textContent = yearly
-      ? `${fmt(priceYearly)} € HT / an`
-      : `${fmt(priceMonthly)} € HT / mois`;
     $('final-cadence').textContent = yearly ? 'Annuel · 2 mois offerts' : 'Mensuel';
-    $('recap-first-amount').innerHTML = `${eur(basePrice())} <span class="text-xs font-normal text-muted-light">HT</span>`;
-    $('recap-vat-note').textContent = vatRate() > 0
-      ? '+ TVA applicable'
-      : state.country === 'NON_EU'
-        ? 'sans TVA (hors UE)'
-        : isVatExempt()
-          ? 'sans TVA (autoliquidation)'
-          : '+ TVA applicable';
-    $('recap-first-date').textContent = trialEndDate();
-    $('recap-renewal').textContent = yearly
-      ? `Renouvellement annuel : ${fmt(priceYearly)} € HT / an.`
-      : `${fmt(priceMonthly)} € HT / mois jusqu'à résiliation.`;
     $('cta-total').textContent = `${eur(totalPrice())} TTC`;
     $('cta-date').textContent = `Première facturation le ${trialEndDate()}`;
-    const ttc = $('recap-total-ttc');
-    if (ttc) ttc.textContent = `${eur(totalPrice())} TTC`;
-  }
-
-  function renderTotals() {
-    $('subtotal-el').textContent = `${eur(basePrice())} HT`;
-    if (state.country) {
-      $('vat-row').classList.remove('hidden');
-      if (vatRate() > 0) {
-        $('vat-amount').textContent = eur(vatAmount());
-      } else if (state.country === 'NON_EU') {
-        $('vat-amount').textContent = `${eur(0)} (hors UE)`;
-      } else {
-        $('vat-amount').textContent = `${eur(0)} (autoliquidation)`;
-      }
-    } else {
-      $('vat-row').classList.add('hidden');
-    }
   }
 
   function showError(message) {
@@ -491,21 +423,18 @@ const breadcrumbJsonLd = {
           o.classList.toggle('is-selected', o === opt)
         );
         renderRecap();
-        renderTotals();
       });
     });
 
     const country = $('country');
     country.addEventListener('change', () => {
       state.country = country.value;
-      renderTotals();
       renderRecap();
     });
 
     const vatNumber = $('vatNumber');
     vatNumber.addEventListener('input', () => {
       state.vatNumber = vatNumber.value;
-      renderTotals();
       renderRecap();
     });
   });
