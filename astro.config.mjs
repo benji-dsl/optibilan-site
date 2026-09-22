@@ -23,7 +23,9 @@ export default defineConfig({
       }
     }
   },
-  integrations: [sitemap()],
+  integrations: [sitemap({
+    filter: (page) => !page.includes('/404') && !page.includes('/checkout/') && !page.includes('/blog/page/') && !/\/blog\/category\/[^/]+\/\d+\/$/.test(page),
+  })],
   compressHTML: true,
   prefetch: true,
 });

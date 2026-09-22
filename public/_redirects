@@ -15,6 +15,7 @@
 /solutions /solutions 200
 /securite /security 301
 /tarifs /pricing 301
+/tarifs/* /pricing/:splat 301
 /blog /blog 200
 /contact /contact 200
 /features /product/overview 301

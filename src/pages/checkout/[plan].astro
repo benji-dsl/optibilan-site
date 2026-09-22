@@ -31,7 +31,7 @@ const breadcrumbJsonLd = {
   '@type': 'BreadcrumbList',
   itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'Accueil', item: 'https://optibilan.com/' },
-    { '@type': 'ListItem', position: 2, name: 'Tarifs', item: 'https://optibilan.com/tarifs' },
+    { '@type': 'ListItem', position: 2, name: 'Tarifs', item: 'https://optibilan.com/pricing' },
     { '@type': 'ListItem', position: 3, name: 'Paiement', item: `https://optibilan.com/checkout/${plan}` },
   ],
 };
@@ -41,7 +41,8 @@ const breadcrumbJsonLd = {
   title={pageTitle}
   description={pageDescription}
   canonical={`/checkout/${plan}`}
-  ogImage="/og-checkout.svg"
+  noIndex
+  ogImage="/og-checkout.png"
   jsonLd={breadcrumbJsonLd}
 >
   <header class="sticky top-0 z-50 border-b border-encre/10 bg-blanc">
@@ -281,7 +282,7 @@ const breadcrumbJsonLd = {
         <div class="container mx-auto max-w-md text-center">
           <h1 id="error-title" class="font-display text-3xl font-bold text-encre mb-4">Offre invalide</h1>
           <p class="text-body-light mb-8">L'offre sélectionnée n'existe pas. Retournez sur la page des tarifs pour choisir une offre.</p>
-          <a href="/tarifs" class="btn-primary inline-flex">Retour aux tarifs</a>
+          <a href="/pricing" class="btn-primary inline-flex">Retour aux tarifs</a>
         </div>
       </section>
     )}

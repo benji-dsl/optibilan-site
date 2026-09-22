@@ -2,16 +2,10 @@
 User-agent: *
 Allow: /
 
-# Sitemap
-Sitemap: https://optibilan.com/sitemap-index.xml
-
-# Disallow admin/private areas (none on static site)
+# Zones privées / techniques à ne pas indexer
 Disallow: /api/
 Disallow: /admin/
 Disallow: /private/
 
-# Crawl-delay respectueux
-Crawl-delay: 10
-
-# Host
-Host: https://optibilan.com
+# Sitemap
+Sitemap: https://optibilan.com/sitemap-index.xml

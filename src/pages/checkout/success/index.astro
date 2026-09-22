@@ -12,7 +12,7 @@ const breadcrumbJsonLd = {
   '@type': 'BreadcrumbList',
   itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'Accueil', item: 'https://optibilan.com/' },
-    { '@type': 'ListItem', position: 2, name: 'Tarifs', item: 'https://optibilan.com/tarifs' },
+    { '@type': 'ListItem', position: 2, name: 'Tarifs', item: 'https://optibilan.com/pricing' },
     { '@type': 'ListItem', position: 3, name: 'Paiement', item: 'https://optibilan.com/checkout' },
     { '@type': 'ListItem', position: 4, name: 'Confirmation', item: 'https://optibilan.com/checkout/success' },
   ],
@@ -23,7 +23,8 @@ const breadcrumbJsonLd = {
   title={pageTitle}
   description={pageDescription}
   canonical="/checkout/success"
-  ogImage="/og-checkout-success.svg"
+  noIndex
+  ogImage="/og-checkout-success.png"
   jsonLd={breadcrumbJsonLd}
 >
   <Header />
@@ -60,7 +61,7 @@ const breadcrumbJsonLd = {
             Accéder à mon espace
             <svg class="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
           </a>
-          <a href="/tarifs" class="btn-secondary w-full sm:w-auto">Retour aux tarifs</a>
+          <a href="/pricing" class="btn-secondary w-full sm:w-auto">Retour aux tarifs</a>
         </div>
 
         <p class="mt-8 text-sm text-encre/50">

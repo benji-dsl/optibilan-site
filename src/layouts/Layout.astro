@@ -18,7 +18,7 @@ const {
   title,
   description,
   canonical,
-  ogImage = '/og-default.jpg',
+  ogImage = '/og-default.png',
   ogType = 'website',
   noIndex = false,
   jsonLd,
@@ -135,11 +135,6 @@ import '../styles/global.css';
       '@type': 'WebSite',
       name: SITE_NAME,
       url: SITE_URL,
-      potentialAction: {
-        '@type': 'SearchAction',
-        target: { '@type': 'EntryPoint', urlTemplate: `${SITE_URL}/recherche?q={search_term_string}` },
-        'query-input': 'required name=search_term_string'
-      },
       publisher: {
         '@type': 'Organization',
         name: SITE_NAME,
@@ -162,7 +157,7 @@ import '../styles/global.css';
           billingDuration: 'P1M',
         },
         availability: 'https://schema.org/InStock',
-        url: `${SITE_URL}/tarifs`,
+        url: `${SITE_URL}/pricing`,
       },
       description: 'SaaS multi-tenant de pilotage des accompagnements pour cabinets, studios et coachs indépendants. Bilans, nutrition, sport, prépa mentale, santé connectée, marque blanche, API, Protection des données, contrôle des accès et traçabilité.',
       featureList: [
@@ -174,13 +169,6 @@ import '../styles/global.css';
         'Marque blanche totale + API REST + Webhooks',
         'Protection des données, contrôle des accès et traçabilité, hébergement EU',
       ],
-      aggregateRating: {
-        '@type': 'AggregateRating',
-        ratingValue: '4.9',
-        reviewCount: '150',
-        bestRating: '5',
-        worstRating: '1',
-      },
     })}></script>
 
     {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)}></script>}
