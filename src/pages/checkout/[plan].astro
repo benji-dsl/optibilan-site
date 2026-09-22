@@ -44,8 +44,8 @@ const breadcrumbJsonLd = {
   ogImage="/og-checkout.svg"
   jsonLd={breadcrumbJsonLd}
 >
-  <header class="border-b border-encre/10 bg-blanc">
-    <div class="container flex h-16 items-center justify-between">
+  <header class="sticky top-0 z-50 border-b border-encre/10 bg-blanc">
+    <div class="container flex h-16 items-center justify-between gap-4">
       <a href="/" class="flex items-center gap-2" aria-label="Optibilan - Accueil">
         <svg class="w-8 h-8 text-bleu-signature" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
           <circle cx="16" cy="16" r="14" stroke="#2A8AFF" stroke-width="2"/>
@@ -53,21 +53,18 @@ const breadcrumbJsonLd = {
         </svg>
         <span class="font-display font-bold text-xl text-encre">Optibilan</span>
       </a>
+      {selectedPlan && planDetails ? (
+        <div class="min-w-0 text-right">
+          <p class="truncate font-display text-base font-bold text-encre md:text-lg">Finalisez votre inscription</p>
+          <p class="truncate text-xs text-body-light md:text-sm">30 jours offerts avec Optibilan {planDetails.name}.</p>
+        </div>
+      ) : null}
     </div>
   </header>
 
   <main class="bg-blanc">
     {selectedPlan && planDetails ? (
       <section class="container py-10 md:py-14" aria-labelledby="checkout-title">
-        <header class="mx-auto mb-10 max-w-2xl text-center md:mb-12">
-          <h1 id="checkout-title" class="font-display text-3xl font-bold text-encre md:text-4xl">
-            Finalisez votre inscription
-          </h1>
-          <p class="mt-3 text-lg text-body-light">
-            30 jours offerts avec Optibilan <strong class="text-encre">{planDetails.name}</strong>.
-          </p>
-        </header>
-
         <div class="grid items-start gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-12">
           <!-- COLONNE GAUCHE : RÉCAPITULATIF -->
           <aside class="lg:sticky lg:top-8">
@@ -101,7 +98,7 @@ const breadcrumbJsonLd = {
                     <div class="flex items-start justify-between gap-2">
                       <div>
                         <div class="font-semibold text-encre">Mensuel</div>
-                        <div class="mt-1 text-sm font-medium text-encre">{planDetails.priceMonthly} € HT / mois</div>
+                        <div class="mt-1 text-sm font-medium text-encre"><span id="price-monthly" data-base-price={planDetails.priceMonthly} data-billing-display="HT">{planDetails.priceMonthly} € HT / mois</span></div>
                         <div class="mt-2 text-xs text-muted-light">Flexibilité maximale.</div>
                       </div>
                       <span class="plan-dot" aria-hidden="true"></span>
@@ -115,7 +112,7 @@ const breadcrumbJsonLd = {
                           <span class="font-semibold text-encre">Annuel</span>
                           <span class="rounded-full bg-rose-bordeaux px-2 py-0.5 text-xs font-bold text-bordeaux">2 mois offerts</span>
                         </div>
-                        <div class="mt-1 text-sm font-medium text-encre">{planDetails.priceYearly} € HT / an</div>
+                        <div class="mt-1 text-sm font-medium text-encre"><span id="price-yearly" data-base-price={planDetails.priceYearly} data-billing-display="HT">{planDetails.priceYearly} € HT / an</span></div>
                         <div class="mt-2 text-xs text-muted-light">Économisez {savingsYearly} € par an.</div>
                       </div>
                       <span class="plan-dot" aria-hidden="true"></span>
@@ -182,11 +179,9 @@ const breadcrumbJsonLd = {
                 </div>
 
                 <div class="mt-4">
-                  <label for="address" class="mb-1.5 block text-sm font-medium text-encre">
-                    Adresse <span class="font-normal text-muted-light">(optionnel)</span>
-                  </label>
+                  <label for="address" class="mb-1.5 block text-sm font-medium text-encre">Adresse</label>
                   <input
-                    type="text" id="address" name="address" autocomplete="street-address"
+                    type="text" id="address" name="address" required autocomplete="street-address"
                     placeholder="12 rue de la Liberté" class="checkout-input"
                   />
                 </div>
@@ -348,6 +343,16 @@ const breadcrumbJsonLd = {
     $('final-cadence').textContent = yearly ? 'Annuel · 2 mois offerts' : 'Mensuel';
     $('cta-total').textContent = `${eur(totalPrice())} TTC`;
     $('cta-date').textContent = `Première facturation le ${trialEndDate()}`;
+
+    const unit = vatRate() > 0 ? 'TTC' : 'HT';
+    const priceMonthly = $('price-monthly');
+    const priceYearly = $('price-yearly');
+    if (priceMonthly) {
+      priceMonthly.textContent = `${eur(priceMonthly.dataset.basePrice * (1 + vatRate()))} ${unit} / mois`;
+    }
+    if (priceYearly) {
+      priceYearly.textContent = `${eur(priceYearly.dataset.basePrice * (1 + vatRate()))} ${unit} / an`;
+    }
   }
 
   function showError(message) {
@@ -448,10 +453,12 @@ const breadcrumbJsonLd = {
     const email = $('email').value.trim();
     const country = $('country').value;
     const vatNumber = $('vatNumber').value.trim();
+    const address = $('address').value.trim();
 
     if (!firstName || !lastName) return showError('Veuillez remplir votre prénom et votre nom.');
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return showError('Veuillez entrer un email professionnel valide.');
     if (!country) return showError('Veuillez sélectionner votre pays de facturation.');
+    if (!address) return showError('Veuillez renseigner votre adresse de facturation.');
     const cgv = $('acceptCgv');
     if (cgv && !cgv.checked) return showError('Veuillez accepter les CGV pour finaliser votre commande.');
     if (!stripeReady || !stripe || !cardElement) return showError('Le paiement est encore en cours de chargement.');
@@ -485,6 +492,7 @@ const breadcrumbJsonLd = {
           lastName,
           country,
           vatNumber,
+          address,
           paymentMethodId: paymentMethod.id,
         }),
       });

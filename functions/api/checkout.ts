@@ -40,23 +40,25 @@ async function getOrCreateCustomer(stripe: Stripe, args: {
   lastName: string;
   country: string;
   vatNumber: string;
+  address?: string;
 }) {
   const customers = await stripe.customers.list({ email: args.email, limit: 1 });
   const name = `${args.firstName} ${args.lastName}`;
   const country = args.country === 'NON_EU' ? 'US' : args.country;
+  const address = args.address ? { line1: args.address } : undefined;
 
   let customer: Stripe.Customer;
   if (customers.data.length > 0) {
     customer = customers.data[0];
     customer = await stripe.customers.update(customer.id, {
       name,
-      address: customer.address ? { ...customer.address, country } : { country },
+      address: customer.address ? { ...customer.address, ...address, country } : { ...address, country },
     });
   } else {
     customer = await stripe.customers.create({
       email: args.email,
       name,
-      address: { country },
+      address: { ...address, country },
     });
   }
 
@@ -136,6 +138,7 @@ export async function onRequestPost({
       lastName?: string;
       country?: string;
       vatNumber?: string;
+      address?: string;
       paymentMethodId?: string;
     };
 
@@ -151,6 +154,7 @@ export async function onRequestPost({
     const country = (body.country || '').trim();
     if (!country) return json({ error: 'Pays de facturation requis' }, 400);
     const vatNumber = (body.vatNumber || '').trim();
+    const address = (body.address || '').trim();
     const paymentMethodId = (body.paymentMethodId || '').trim();
     if (!paymentMethodId || !paymentMethodId.startsWith('pm_')) {
       return json({ error: 'Carte bancaire invalide' }, 400);
@@ -164,6 +168,7 @@ export async function onRequestPost({
       lastName,
       country,
       vatNumber,
+      address,
     });
 
     await stripe.paymentMethods.attach(paymentMethodId, { customer: customer.id });
