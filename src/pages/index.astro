@@ -191,69 +191,6 @@ Depuis un seul endroit."
       stats={[]}
     />
 
-    <!-- Product showcase under hero CTA -->
-    <section class="relative -mt-20 md:-mt-28 lg:-mt-32 pb-16 md:pb-24" aria-labelledby="product-showcase">
-      <div class="container relative">
-        <div class="max-w-6xl mx-auto rounded-xl border border-encre/10 bg-encre/5 shadow-2xl overflow-hidden relative">
-          <div class="absolute inset-0 bg-gradient-to-br from-bleu-signature/5 via-transparent to-indigo/5" aria-hidden="true"></div>
-          <div class="relative z-10 flex items-center justify-center p-4 md:p-8">
-            <div class="w-full text-center">
-              <div class="aspect-video bg-encre/5 rounded-lg border border-encre/10 flex items-center justify-center relative overflow-hidden shadow-xl">
-                <!-- Floating UI cards with real data -->
-                <div class="absolute top-6 left-6 w-40 sm:w-52 h-32 sm:h-36 bg-blanc rounded-lg border border-encre/10 shadow-lg p-3 opacity-95" style="transform: rotate(-2deg);" aria-hidden="true">
-                  <div class="text-[10px] sm:text-xs font-medium text-encre/60 mb-1">Bilan hebdo — Marie D.</div>
-                  <div class="flex items-baseline gap-1 mb-1">
-                    <span class="text-2xl sm:text-3xl font-bold text-bleu-signature">87%</span>
-                    <span class="text-[10px] sm:text-xs text-emerald-500">Adhérence</span>
-                  </div>
-                  <div class="flex items-center gap-1 text-[10px] sm:text-xs text-encre/50">
-                    <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
-                    <span>Validé il y a 2h</span>
-                  </div>
-                </div>
-                <div class="absolute top-6 right-6 w-40 sm:w-52 h-32 sm:h-36 bg-blanc rounded-lg border border-encre/10 shadow-lg p-3 opacity-95" style="transform: rotate(1deg);" aria-hidden="true">
-                  <div class="text-[10px] sm:text-xs font-medium text-encre/60 mb-1">Progression — Programme Force</div>
-                  <div class="flex items-baseline gap-1 mb-1">
-                    <span class="text-2xl sm:text-3xl font-bold text-emerald-500">+2.3kg</span>
-                    <span class="text-[10px] sm:text-xs text-encre/50">Poids muscle</span>
-                  </div>
-                  <div class="flex items-center gap-1 text-[10px] sm:text-xs text-bleu-signature">
-                    <Icon name="chart" class="w-3 h-3" /> Semaine 4/12
-                  </div>
-                </div>
-                <div class="absolute bottom-6 left-1/2 -translate-x-1/2 w-48 sm:w-60 h-32 sm:h-40 bg-blanc rounded-lg border border-encre/10 shadow-lg p-3 opacity-95" aria-hidden="true">
-                  <div class="text-[10px] sm:text-xs font-medium text-encre/60 mb-1">VFC (rmssd) — Tendances 7j</div>
-                  <div class="text-3xl sm:text-4xl font-bold text-encre">68ms</div>
-                  <div class="flex items-center justify-center gap-1 text-[10px] sm:text-xs text-emerald-500 mt-1">
-                    <span>▲</span> <span>+12% vs S-1</span>
-                  </div>
-                  <div class="flex items-center justify-center gap-2 sm:gap-4 mt-1.5 sm:mt-2 text-[9px] sm:text-[10px] text-encre/40">
-                    <span>● Lundi</span>
-                    <span>● Mardi</span>
-                    <span>● Mercredi</span>
-                    <span>● Jeudi</span>
-                    <span>● Vendredi</span>
-                    <span>● Samedi</span>
-                    <span>● Dimanche</span>
-                  </div>
-                </div>
-                <!-- Main dashboard background -->
-                <div class="relative z-10 w-full h-full bg-encre/5 flex items-center justify-center">
-                  <div class="absolute inset-0 grid grid-cols-12 gap-2 p-4 opacity-10" aria-hidden="true">
-                    {[...Array(24)].map((_, i) => (
-                      <div key={i} class="col-span-1 h-4 bg-bleu-signature/20 rounded animate-pulse" style={{animationDelay: `${i * 50}ms`}} />
-                    ))}
-                  </div>
-                  <Icon name="chart" class="w-20 h-20 text-bleu-signature/30 relative z-10" />
-                </div>
-              </div>
-              <p class="text-encre/40 text-sm font-medium mt-3">Dashboard Optibilan — Bilans, programmes, nutrition, santé, suivi client</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <TrustBar />
 
     <!-- 2. PREUVE SOCIALE IMMÉDIATE -->
