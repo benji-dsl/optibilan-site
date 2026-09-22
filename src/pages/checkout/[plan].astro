@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { getPlanDetails } from '../../lib/plans';
+import { COUNTRIES, EU_CODES, EU_VAT_RATES } from '../../lib/countries';
 
 export async function getStaticPaths() {
   return ['SOLO', 'STUDIO', 'CABINET'].map(plan => ({
@@ -125,6 +126,33 @@ const breadcrumbJsonLd = {
                   </div>
                   <p id="recap-first-date" class="mt-1 text-right text-sm font-medium text-encre"></p>
                   <p id="recap-renewal" class="mt-3 text-xs text-muted-light"></p>
+
+                  <div class="mt-4 grid gap-2 border-t border-encre/10 pt-4 text-sm">
+                    <div class="flex items-center justify-between">
+                      <span class="text-muted-light">Sous-total HT</span>
+                      <span id="subtotal-el" class="font-medium text-encre"></span>
+                    </div>
+                    <div id="vat-row" class="hidden items-center justify-between">
+                      <span class="text-muted-light">TVA applicable</span>
+                      <span id="vat-amount" class="font-medium text-encre"></span>
+                    </div>
+                    <div class="flex items-center justify-between font-semibold">
+                      <span class="text-muted-light">Total après l'essai TTC</span>
+                      <span id="recap-total-ttc" class="font-medium text-encre"></span>
+                    </div>
+                    <p class="mt-1 text-xs text-muted-light">TVA calculée selon le pays de facturation.</p>
+                  </div>
+
+                  <label for="acceptCgv" class="mt-4 flex items-start gap-2.5 border-t border-encre/10 pt-4 text-sm">
+                    <input type="checkbox" id="acceptCgv" name="acceptCgv" class="mt-0.5 h-4 w-4 shrink-0 accent-bleu-signature" />
+                    <span class="text-muted-light">
+                      J'accepte les{" "}
+                      <a href="/legal/cgv" class="font-medium text-bleu-signature underline hover:text-bleu-fonce">
+                        CGV
+                      </a>{" "}
+                      d'Optibilan.
+                    </span>
+                  </label>
                 </div>
               </div>
             </div>
@@ -201,16 +229,9 @@ const breadcrumbJsonLd = {
                     <label for="country" class="mb-1.5 block text-sm font-medium text-encre">Pays de facturation</label>
                     <select id="country" name="country" required class="checkout-input">
                       <option value="">Sélectionnez un pays</option>
-                      <option value="FR">France</option>
-                      <option value="BE">Belgique</option>
-                      <option value="CH">Suisse</option>
-                      <option value="LU">Luxembourg</option>
-                      <option value="DE">Allemagne</option>
-                      <option value="ES">Espagne</option>
-                      <option value="IT">Italie</option>
-                      <option value="NL">Pays-Bas</option>
-                      <option value="OTHER">Autre pays UE</option>
-                      <option value="NON_EU">Hors UE</option>
+                      {COUNTRIES.map((c) => (
+                        <option value={c.code}>{c.name}</option>
+                      ))}
                     </select>
                   </div>
                   <div>
@@ -224,17 +245,7 @@ const breadcrumbJsonLd = {
                   </div>
                 </div>
 
-                <div id="totals-box" class="mt-4 rounded-xl border border-encre/10 bg-papier p-4 text-sm">
-                  <div class="flex items-center justify-between">
-                    <span class="text-muted-light">Sous-total HT</span>
-                    <span id="subtotal-el" class="font-medium text-encre"></span>
-                  </div>
-                  <div id="vat-row" class="mt-2 flex items-center justify-between">
-                    <span class="text-muted-light">TVA applicable</span>
-                    <span id="vat-amount" class="font-medium text-encre"></span>
-                  </div>
-                  <p class="mt-2 text-xs text-muted-light">TVA calculée selon le pays de facturation.</p>
-                </div>
+
               </section>
 
               <!-- Carte bancaire -->
@@ -394,6 +405,8 @@ const breadcrumbJsonLd = {
       : `${fmt(priceMonthly)} € HT / mois jusqu'à résiliation.`;
     $('cta-total').textContent = `${eur(totalPrice())} TTC`;
     $('cta-date').textContent = `Première facturation le ${trialEndDate()}`;
+    const ttc = $('recap-total-ttc');
+    if (ttc) ttc.textContent = `${eur(totalPrice())} TTC`;
   }
 
   function renderTotals() {
@@ -517,6 +530,8 @@ const breadcrumbJsonLd = {
     if (!firstName || !lastName) return showError('Veuillez remplir votre prénom et votre nom.');
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return showError('Veuillez entrer un email professionnel valide.');
     if (!country) return showError('Veuillez sélectionner votre pays de facturation.');
+    const cgv = $('acceptCgv');
+    if (cgv && !cgv.checked) return showError('Veuillez accepter les CGV pour finaliser votre commande.');
     if (!stripeReady || !stripe || !cardElement) return showError('Le paiement est encore en cours de chargement.');
 
     const originalLabel = btn.textContent;
