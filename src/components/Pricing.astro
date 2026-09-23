@@ -103,7 +103,7 @@ const displayPlans = plans && plans.length > 0 ? plans : defaultPlans;
 
     <div class="mb-10 flex justify-center">
       <div class="inline-flex items-center gap-2 p-1 bg-blanc rounded-pill border border-encre/10 shadow-sm">
-        <button id="monthly-btn" class="px-4 py-2 rounded-pill text-sm font-medium text-craie bg-bleu-signature text-craie shadow-sm" aria-pressed="true" data-period="monthly">Mensuel</button>
+        <button id="monthly-btn" class="px-4 py-2 rounded-pill text-sm font-medium bg-bleu-signature text-craie shadow-sm" aria-pressed="true" data-period="monthly">Mensuel</button>
         <button id="yearly-btn" class="px-4 py-2 rounded-pill text-sm font-medium text-encre/60 hover:text-encre" aria-pressed="false" data-period="yearly">
           Annuel
           <span class="ml-2 px-2 py-0.5 text-xs font-bold text-bordeaux bg-rose-bordeaux rounded-full">-20%</span>
@@ -113,7 +113,7 @@ const displayPlans = plans && plans.length > 0 ? plans : defaultPlans;
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
       {displayPlans.map((plan, index) => (
-        <article class={`relative bg-blanc flex flex-col p-6 md:p-8 ${plan.popular ? 'ring-2 ring-bleu-signature shadow-card' : 'border border-encre/10 shadow-card'} rounded-card-lg`} data-plan={plan.name}>
+        <article class={`relative bg-blanc flex flex-col p-6 md:p-8 rounded-card-lg transition-all duration-200 ${plan.popular ? 'ring-2 ring-bleu-signature shadow-card md:-translate-y-2' : 'border border-encre/10 shadow-card hover:shadow-elevated hover:-translate-y-1'}`} data-plan={plan.name}>
           {plan.popular && (
             <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-bleu-signature text-craie text-xs font-semibold rounded-full whitespace-nowrap">
               Le plus choisi
@@ -129,12 +129,13 @@ const displayPlans = plans && plans.length > 0 ? plans : defaultPlans;
               <span class="text-4xl font-bold text-encre">{plan.priceMonthly}</span>
               <span class="text-encre/50">€/mois</span>
             </div>
-            <div class="flex items-baseline gap-1 hidden" data-yearly>
+            <div class="flex items-baseline gap-2 hidden" data-yearly>
               <span class="text-4xl font-bold text-encre">{plan.priceYearly}</span>
               <span class="text-encre/50">€/mois</span>
             </div>
-            <p class="text-sm text-encre/50 mt-1" data-yearly-note hidden>
-              Facturé {plan.priceYearly * 12}€ / an
+            <p class="text-sm mt-1 hidden" data-yearly-note>
+              <span class="text-encre/50">Facturé {plan.priceYearly * 12}€ / an</span>
+              <span class="text-bordeaux font-medium ml-1">(-{(plan.priceMonthly - plan.priceYearly) * 12}€)</span>
             </p>
           </div>
 
