@@ -14,7 +14,7 @@ const pageDescription = 'Tout le suivi nutritionnel dans un seul dossier : plans
 <Layout
   title={pageTitle}
   description={pageDescription}
-  canonical="/solutions/nutrition"
+  canonical="/solutions/nutrition/"
   ogImage="/og-solution-nutrition.png"
 >
   <Header />
@@ -24,8 +24,8 @@ const pageDescription = 'Tout le suivi nutritionnel dans un seul dossier : plans
       title="Tout le suivi nutritionnel 
 dans un seul dossier."
       subtitle="Plans, habitudes alimentaires, listes de courses, compléments documentés et personnalisables, évolution réunis dans le dossier client."
-      primaryCTA={{ href: '/pricing', label: 'Rejoindre Optibilan' }}
-      secondaryCTA={{ href: '/checkout/solo', label: 'Essai offert' }}
+      primaryCTA={{ href: '/pricing/', label: 'Rejoindre Optibilan' }}
+      secondaryCTA={{ href: '/checkout/solo/', label: 'Essai offert' }}
     />
 
     <TrustBar />
@@ -78,12 +78,12 @@ dans un seul dossier."
 
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {[
-            { href: '/product/nutrition', icon: 'document', title: 'Nutrition Complète', desc: 'Plans, courses, compléments, méthodes, templates, validation coach', color: 'bleu-lecture' },
-            { href: '/product/check-ins', icon: 'chart', title: 'Bilans & Progression', desc: 'Poids, mensurations, photos, adhérence, graphiques, export PDF', color: 'bleu-signature' },
-            { href: '/product/health', icon: 'globe', title: 'Santé & Biomarqueurs', desc: 'Bilan sanguin (130+ marqueurs), IA lit PDF labo, corrélations', color: 'bleu-clair' },
-            { href: '/product/engagement', icon: 'users', title: 'Habitudes & Observance', desc: 'Eau, suppléments, rappels, scan code-barres, taux adhérence', color: 'bordeaux' },
-            { href: '/product/crm', icon: 'lock', title: 'Journal & Documents', desc: 'Notes, pièces jointes, partage patient, sync Notion', color: 'bleu-ardoise' },
-            { href: '/product/white-label', icon: 'shield', title: 'Marque Blanche', desc: 'Votre logo, vos couleurs, votre domaine, vos emails', color: 'bordeaux' },
+            { href: '/product/nutrition/', icon: 'document', title: 'Nutrition Complète', desc: 'Plans, courses, compléments, méthodes, templates, validation coach', color: 'bleu-lecture' },
+            { href: '/product/check-ins/', icon: 'chart', title: 'Bilans & Progression', desc: 'Poids, mensurations, photos, adhérence, graphiques, export PDF', color: 'bleu-signature' },
+            { href: '/product/health/', icon: 'globe', title: 'Santé & Biomarqueurs', desc: 'Bilan sanguin (130+ marqueurs), IA lit PDF labo, corrélations', color: 'bleu-clair' },
+            { href: '/product/engagement/', icon: 'users', title: 'Habitudes & Observance', desc: 'Eau, suppléments, rappels, scan code-barres, taux adhérence', color: 'bordeaux' },
+            { href: '/product/crm/', icon: 'lock', title: 'Journal & Documents', desc: 'Notes, pièces jointes, partage patient, sync Notion', color: 'bleu-ardoise' },
+            { href: '/product/white-label/', icon: 'shield', title: 'Marque Blanche', desc: 'Votre logo, vos couleurs, votre domaine, vos emails', color: 'bordeaux' },
           ].map(mod => (
             <a href={mod.href} class="card-hover p-6 text-center group" style={`--mod-color: var(--color-${mod.color})`}>
               <div class="icon-wrapper mx-auto mb-4" aria-hidden="true" style={`background-color: color-mix(in oklab, var(--color-${mod.color}) 15%, transparent);`}>
@@ -100,8 +100,8 @@ dans un seul dossier."
     <CTA
       title="Vous voulez voir comment structurer VOS plans nutritionnels ?"
       subtitle="30 minutes pour configurer Optibilan selon votre méthode diététique."
-      primaryCTA={{ href: '/pricing', label: 'Rejoindre Optibilan' }}
-      secondaryCTA={{ href: '/checkout/solo', label: 'Essai offert' }}
+      primaryCTA={{ href: '/pricing/', label: 'Rejoindre Optibilan' }}
+      secondaryCTA={{ href: '/checkout/solo/', label: 'Essai offert' }}
       variant="primary"
     />
   </main>

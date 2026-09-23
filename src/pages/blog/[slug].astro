@@ -22,7 +22,7 @@ for (const [slug, info] of Object.entries(CATEGORY_MAP)) {
   categoryLabels[slug] = info.label;
 }
 
-if (!post) return Astro.redirect('/blog');
+if (!post) return Astro.redirect('/blog/');
 
 const pageTitle = `${post.title} - Blog Optibilan`;
 const pageDescription = post.excerpt.length > 150 ? post.excerpt.substring(0, 147) + '...' : post.excerpt;
@@ -61,7 +61,7 @@ function formatDate(dateStr: string) {
 <Layout
   title={pageTitle}
   description={pageDescription}
-  canonical={`/blog/${post.slug}`}
+  canonical={`/blog/${post.slug}/`}
   ogImage={post.featuredImage || '/og-blog.png'}
   jsonLd={[articleJsonLd, breadcrumbJsonLd]}
 >
@@ -133,7 +133,7 @@ function formatDate(dateStr: string) {
               <p class="text-xs text-encre/50">Expert Optibilan</p>
             </div>
           </div>
-          <a href="/newsletter" class="btn-secondary whitespace-nowrap">
+          <a href="/newsletter/" class="btn-secondary whitespace-nowrap">
             <Icon name="mail" class="w-4 h-4" /> Newsletter
           </a>
         </div>
@@ -159,7 +159,7 @@ function formatDate(dateStr: string) {
                     {categoryLabels[related.category] || related.category}
                   </span>
                   <h3 class="font-display text-lg font-bold text-encre mb-2 line-clamp-2 group-hover:text-bleu-signature transition-colors">
-                    <a href={`/blog/${related.slug}`}>{related.title}</a>
+                    <a href={`/blog/${related.slug}/`}>{related.title}</a>
                   </h3>
                   <p class="text-encre/60 text-sm line-clamp-2">{related.excerpt}</p>
                   <div class="flex items-center justify-between mt-4 pt-3 border-t border-encre/10">

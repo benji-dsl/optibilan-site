@@ -1,9 +1,13 @@
 // Service Worker for Optibilan
-const CACHE_NAME = 'optibilan-v1';
+const CACHE_NAME = 'optibilan-v2';
 const STATIC_ASSETS = [
   '/',
   '/favicon.svg',
   '/manifest.webmanifest',
+  '/icon-192.png',
+  '/icon-512.png',
+  '/fonts/inter-latin-wght-normal.woff2',
+  '/fonts/playfair-display-latin-wght-normal.woff2',
 ];
 
 self.addEventListener('install', (event) => {

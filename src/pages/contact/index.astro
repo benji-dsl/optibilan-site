@@ -62,7 +62,7 @@ const contactJsonLd = {
 <Layout
   title={pageTitle}
   description={pageDescription}
-  canonical="/contact"
+  canonical="/contact/"
   ogImage="/og-contact.png"
   jsonLd={contactJsonLd}
 >
@@ -88,7 +88,7 @@ Parlons-en."
         </header>
 
         <div class="bg-gradient-to-br from-bleu-signature/5 via-papier to-bleu-lecture/5 rounded-card-lg p-8 md:p-12">
-          <form id="contact-form" action="/api/contact" method="POST" class="space-y-4 max-w-2xl mx-auto" data-track="contact_form">
+          <form id="contact-form" action="/api/contact/" method="POST" class="space-y-4 max-w-2xl mx-auto" data-track="contact_form">
             <div class="grid sm:grid-cols-2 gap-4">
               <div>
                 <label for="firstName" class="block text-sm font-medium text-encre mb-1">Prénom *</label>
@@ -126,7 +126,7 @@ Parlons-en."
             <label class="flex items-start gap-3 text-sm text-encre/60">
               <input type="checkbox" id="consent" name="consent" required class="mt-1" />
               <span>
-                J'accepte que mes informations soient utilisées pour traiter ma demande, conformément à la <a href="/legal/confidentialite" class="underline hover:text-bleu-signature">Politique de confidentialité</a>.
+                J'accepte que mes informations soient utilisées pour traiter ma demande, conformément à la <a href="/legal/confidentialite/" class="underline hover:text-bleu-signature">Politique de confidentialité</a>.
               </span>
             </label>
             <div class="hidden" aria-hidden="true">

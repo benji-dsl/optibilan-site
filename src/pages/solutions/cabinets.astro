@@ -14,7 +14,7 @@ const pageDescription = 'Toute votre équipe. Une seule vision du client. Multi-
 <Layout
   title={pageTitle}
   description={pageDescription}
-  canonical="/solutions/cabinets"
+  canonical="/solutions/cabinets/"
   ogImage="/og-solution-cabinet.png"
 >
   <Header />
@@ -24,8 +24,8 @@ const pageDescription = 'Toute votre équipe. Une seule vision du client. Multi-
       title="Toute votre équipe. 
 Une seule vision du client."
       subtitle="Multi-praticiens, permissions granulaires, coordination, administration, sécurité, audit, marque blanche totale. L'OS de votre cabinet."
-      primaryCTA={{ href: '/pricing', label: 'Rejoindre Optibilan' }}
-      secondaryCTA={{ href: '/checkout/solo', label: 'Essai offert' }}
+      primaryCTA={{ href: '/pricing/', label: 'Rejoindre Optibilan' }}
+      secondaryCTA={{ href: '/checkout/solo/', label: 'Essai offert' }}
     />
 
     <TrustBar />
@@ -77,12 +77,12 @@ Une seule vision du client."
 
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {[
-            { href: '/product/admin', icon: 'shield', title: 'Administration', desc: 'Utilisateurs, rôles, 2FA, offres, mentions, modules, RGPD, audit, API', color: 'bordeaux' },
-            { href: '/product/white-label', icon: 'shield', title: 'Marque Blanche Totale', desc: 'Logo, thème, domaine, vocabulaire, IA, emails, mentions, CGV', color: 'bordeaux' },
-            { href: '/product/crm', icon: 'lock', title: 'Journal Coaching & CRM', desc: 'Entrées typées, pipeline, relances, partage, sync Notion', color: 'bleu-ardoise' },
-            { href: '/product/check-ins', icon: 'chart', title: 'Bilans & Progression', desc: 'Questionnaires, graphiques, détection alertes d\'adhérence, export PDF', color: 'bleu-signature' },
-            { href: '/product/integrations', icon: 'code', title: 'Intégrations & SSO', desc: 'REST v1, OpenAPI, clés scopées, SSO/SAML, connecteurs', color: 'bleu-ardoise' },
-            { href: '/product/health', icon: 'globe', title: 'Santé & Biomarqueurs', desc: 'Biologie 130+, wearables, IA lit PDF, corrélations, HDS', color: 'bleu-clair' },
+            { href: '/product/admin/', icon: 'shield', title: 'Administration', desc: 'Utilisateurs, rôles, 2FA, offres, mentions, modules, RGPD, audit, API', color: 'bordeaux' },
+            { href: '/product/white-label/', icon: 'shield', title: 'Marque Blanche Totale', desc: 'Logo, thème, domaine, vocabulaire, IA, emails, mentions, CGV', color: 'bordeaux' },
+            { href: '/product/crm/', icon: 'lock', title: 'Journal Coaching & CRM', desc: 'Entrées typées, pipeline, relances, partage, sync Notion', color: 'bleu-ardoise' },
+            { href: '/product/check-ins/', icon: 'chart', title: 'Bilans & Progression', desc: 'Questionnaires, graphiques, détection alertes d\'adhérence, export PDF', color: 'bleu-signature' },
+            { href: '/product/integrations/', icon: 'code', title: 'Intégrations & SSO', desc: 'REST v1, OpenAPI, clés scopées, SSO/SAML, connecteurs', color: 'bleu-ardoise' },
+            { href: '/product/health/', icon: 'globe', title: 'Santé & Biomarqueurs', desc: 'Biologie 130+, wearables, IA lit PDF, corrélations, HDS', color: 'bleu-clair' },
           ].map(mod => (
             <a href={mod.href} class="card-hover p-6 text-center group" style={`--mod-color: var(--color-${mod.color})`}>
               <div class="icon-wrapper mx-auto mb-4" aria-hidden="true" style={`background-color: color-mix(in oklab, var(--color-${mod.color}) 15%, transparent);`}>
@@ -99,8 +99,8 @@ Une seule vision du client."
     <CTA
       title="Vous voulez voir comment Optibilan s'adapte à VOTRE cabinet ?"
       subtitle="30 minutes pour configurer Optibilan selon votre organisation multi-praticiens."
-      primaryCTA={{ href: '/pricing', label: 'Rejoindre Optibilan' }}
-      secondaryCTA={{ href: '/checkout/solo', label: 'Essai offert' }}
+      primaryCTA={{ href: '/pricing/', label: 'Rejoindre Optibilan' }}
+      secondaryCTA={{ href: '/checkout/solo/', label: 'Essai offert' }}
       variant="primary"
     />
   </main>

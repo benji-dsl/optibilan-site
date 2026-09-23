@@ -40,7 +40,7 @@ const breadcrumbJsonLd = {
 <Layout
   title={pageTitle}
   description={pageDescription}
-  canonical={`/checkout/${plan}`}
+  canonical={`/checkout/${plan}/`}
   noIndex
   ogImage="/og-checkout.png"
   jsonLd={breadcrumbJsonLd}
@@ -48,7 +48,7 @@ const breadcrumbJsonLd = {
   <header class="sticky top-0 z-50 border-b border-encre/10 bg-blanc">
     <div class="container relative flex h-16 items-center justify-between gap-4">
       <a href="/" class="flex items-center gap-2" aria-label="Optibilan - Accueil">
-        <img src="/optibilan-logo-horizontal.png" alt="Optibilan" width="220" height="88" class="h-9 w-auto" />
+        <img src="/optibilan-logo-horizontal.png" alt="Optibilan" width="220" height="88" class="h-9 w-auto" fetchpriority="high" />
       </a>
       {selectedPlan && planDetails ? (
         <div class="absolute left-1/2 -translate-x-1/2 min-w-0 text-center">
@@ -188,7 +188,7 @@ const breadcrumbJsonLd = {
                   <label for="acceptCgv" class="text-sm">
                     <span class="text-muted-light">
                       J'accepte les{" "}
-                      <a href="/legal/cgv" target="_blank" rel="noopener noreferrer" class="font-medium text-bleu-signature underline hover:text-bleu-fonce">
+                      <a href="/legal/cgv/" target="_blank" rel="noopener noreferrer" class="font-medium text-bleu-signature underline hover:text-bleu-fonce">
                         CGV
                       </a>{" "}
                       d'Optibilan.
@@ -270,9 +270,9 @@ const breadcrumbJsonLd = {
 
             <p class="text-center text-sm text-muted-light">
               En continuant, vous acceptez nos
-              <a href="/legal/cgv" target="_blank" rel="noopener noreferrer" class="underline hover:text-bleu-signature">CGV</a>
+              <a href="/legal/cgv/" target="_blank" rel="noopener noreferrer" class="underline hover:text-bleu-signature">CGV</a>
               et notre
-              <a href="/legal/confidentialite" target="_blank" rel="noopener noreferrer" class="underline hover:text-bleu-signature">Politique de confidentialité</a>.
+              <a href="/legal/confidentialite/" target="_blank" rel="noopener noreferrer" class="underline hover:text-bleu-signature">Politique de confidentialité</a>.
             </p>
           </div>
         </div>
@@ -282,7 +282,7 @@ const breadcrumbJsonLd = {
         <div class="container mx-auto max-w-md text-center">
           <h1 id="error-title" class="font-display text-3xl font-bold text-encre mb-4">Offre invalide</h1>
           <p class="text-body-light mb-8">L'offre sélectionnée n'existe pas. Retournez sur la page des tarifs pour choisir une offre.</p>
-          <a href="/pricing" class="btn-primary inline-flex">Retour aux tarifs</a>
+          <a href="/pricing/" class="btn-primary inline-flex">Retour aux tarifs</a>
         </div>
       </section>
     )}
@@ -292,9 +292,9 @@ const breadcrumbJsonLd = {
     <div class="container flex flex-col items-center justify-between gap-3 py-6 text-xs text-muted-light sm:flex-row">
       <span>© {new Date().getFullYear()} Elite Longevity LLC</span>
       <span class="flex items-center gap-4">
-        <a href="/legal/cgv" target="_blank" rel="noopener noreferrer" class="hover:text-bleu-signature">CGV</a>
-        <a href="/legal/confidentialite" target="_blank" rel="noopener noreferrer" class="hover:text-bleu-signature">Confidentialité</a>
-        <a href="/contact" class="hover:text-bleu-signature">Contact</a>
+        <a href="/legal/cgv/" target="_blank" rel="noopener noreferrer" class="hover:text-bleu-signature">CGV</a>
+        <a href="/legal/confidentialite/" target="_blank" rel="noopener noreferrer" class="hover:text-bleu-signature">Confidentialité</a>
+        <a href="/contact/" class="hover:text-bleu-signature">Contact</a>
       </span>
     </div>
   </footer>

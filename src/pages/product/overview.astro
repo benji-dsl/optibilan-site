@@ -35,18 +35,18 @@ offers: {
 };
 
 const modules = [
-  { href: '/product/check-ins', icon: 'chart', title: 'Bilans & progression', desc: 'Suivi centralisé des accompagnements', color: 'bleu-signature' },
-  { href: '/product/nutrition', icon: 'document', title: 'Nutrition', desc: 'Plans, habitudes, compléments, courses', color: 'bleu-lecture' },
-  { href: '/product/training', icon: 'zap', title: 'Sport & programmes', desc: 'Bibliothèque, séances, progression', color: 'indigo' },
-  { href: '/product/health', icon: 'globe', title: 'Santé & biomarqueurs', desc: 'Biologie, wearables, tendances', color: 'bleu-clair' },
-  { href: '/product/mental', icon: 'brain', title: 'Préparation mentale', desc: 'Exercices, ressources, journal, adhérence', color: 'bleu-ardoise' },
-  { href: '/product/engagement', icon: 'users', title: 'Engagement & habitudes', desc: 'Gamification, objectifs, jalons', color: 'bordeaux' },
-  { href: '/product/crm', icon: 'lock', title: 'Journal & CRM', desc: 'Entrées typées, pipeline, relances', color: 'bleu-ardoise' },
-  { href: '/product/agenda', icon: 'calendar', title: 'Agenda & appels', desc: 'Cadence, rappels, calendrier ICS', color: 'bleu-signature' },
-  { href: '/product/ai', icon: 'brain', title: 'IA & Automatisations', desc: 'Structuration, synthèses, alertes', color: 'indigo' },
-  { href: '/product/white-label', icon: 'shield', title: 'Marque blanche', desc: 'Logo, couleurs, domaine, emails', color: 'bordeaux' },
-  { href: '/product/integrations', icon: 'code', title: 'Intégrations & API', desc: 'Santé, agenda, connecteurs, OpenAPI', color: 'bleu-ardoise' },
-  { href: '/product/admin', icon: 'shield', title: 'Administration', desc: 'Utilisateurs, modules, conformité', color: 'bordeaux' },
+  { href: '/product/check-ins/', icon: 'chart', title: 'Bilans & progression', desc: 'Suivi centralisé des accompagnements', color: 'bleu-signature' },
+  { href: '/product/nutrition/', icon: 'document', title: 'Nutrition', desc: 'Plans, habitudes, compléments, courses', color: 'bleu-lecture' },
+  { href: '/product/training/', icon: 'zap', title: 'Sport & programmes', desc: 'Bibliothèque, séances, progression', color: 'indigo' },
+  { href: '/product/health/', icon: 'globe', title: 'Santé & biomarqueurs', desc: 'Biologie, wearables, tendances', color: 'bleu-clair' },
+  { href: '/product/mental/', icon: 'brain', title: 'Préparation mentale', desc: 'Exercices, ressources, journal, adhérence', color: 'bleu-ardoise' },
+  { href: '/product/engagement/', icon: 'users', title: 'Engagement & habitudes', desc: 'Gamification, objectifs, jalons', color: 'bordeaux' },
+  { href: '/product/crm/', icon: 'lock', title: 'Journal & CRM', desc: 'Entrées typées, pipeline, relances', color: 'bleu-ardoise' },
+  { href: '/product/agenda/', icon: 'calendar', title: 'Agenda & appels', desc: 'Cadence, rappels, calendrier ICS', color: 'bleu-signature' },
+  { href: '/product/ai/', icon: 'brain', title: 'IA & Automatisations', desc: 'Structuration, synthèses, alertes', color: 'indigo' },
+  { href: '/product/white-label/', icon: 'shield', title: 'Marque blanche', desc: 'Logo, couleurs, domaine, emails', color: 'bordeaux' },
+  { href: '/product/integrations/', icon: 'code', title: 'Intégrations & API', desc: 'Santé, agenda, connecteurs, OpenAPI', color: 'bleu-ardoise' },
+  { href: '/product/admin/', icon: 'shield', title: 'Administration', desc: 'Utilisateurs, modules, conformité', color: 'bordeaux' },
 ];
 
 const breadcrumbJsonLd = {
@@ -62,7 +62,7 @@ const breadcrumbJsonLd = {
 <Layout
   title={pageTitle}
   description={pageDescription}
-  canonical="/product/overview"
+  canonical="/product/overview/"
   ogImage="/og-product-overview.png"
   jsonLd={[productJsonLd, breadcrumbJsonLd]}
 >
@@ -74,8 +74,8 @@ const breadcrumbJsonLd = {
 des accompagnements santé 
 & performance"
       subtitle="Bilans, nutrition, sport, santé, mental, habitudes et suivi réunis dans un environnement unique. Conçue pour mieux accompagner - sans multiplier les outils."
-      primaryCTA={{ href: '/pricing', label: 'Rejoindre Optibilan' }}
-      secondaryCTA={{ href: '/checkout/solo', label: 'Essai offert' }}
+      primaryCTA={{ href: '/pricing/', label: 'Rejoindre Optibilan' }}
+      secondaryCTA={{ href: '/checkout/solo/', label: 'Essai offert' }}
     />
 
     <section class="section bg-blanc" aria-labelledby="problem-title">
@@ -244,8 +244,8 @@ des accompagnements santé
     <CTA
       title="Découvrez Optibilan en conditions réelles"
       subtitle="30 minutes pour voir la plateforme à partir de votre fonctionnement actuel."
-      primaryCTA={{ href: '/pricing', label: 'Rejoindre Optibilan' }}
-      secondaryCTA={{ href: '/checkout/solo', label: 'Essai offert' }}
+      primaryCTA={{ href: '/pricing/', label: 'Rejoindre Optibilan' }}
+      secondaryCTA={{ href: '/checkout/solo/', label: 'Essai offert' }}
       variant="secondary"
     />
   </main>

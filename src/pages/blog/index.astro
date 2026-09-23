@@ -60,7 +60,7 @@ function formatDate(dateStr: string) {
 <Layout
   title={pageTitle}
   description={pageDescription}
-  canonical="/blog"
+  canonical="/blog/"
   ogImage="/og-blog.png"
   jsonLd={[blogJsonLd, breadcrumbJsonLd]}
 >
@@ -80,7 +80,7 @@ function formatDate(dateStr: string) {
             <h2 id="articles-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-2">Derniers articles</h2>
             <p class="text-encre/60">{allPosts.length} articles publiés</p>
           </div>
-          <a href="/newsletter" class="btn-secondary self-start whitespace-nowrap">
+          <a href="/newsletter/" class="btn-secondary self-start whitespace-nowrap">
             <Icon name="mail" class="w-4 h-4" /> Newsletter
           </a>
         </header>
@@ -105,7 +105,7 @@ function formatDate(dateStr: string) {
                       <time class="text-xs text-encre/40" datetime={article.date}>{formatDate(article.date)}</time>
                     </div>
                     <h3 class="font-display text-xl font-bold text-encre mb-3 line-clamp-2 group-hover:text-bleu-signature transition-colors">
-                      <a href={`/blog/${article.slug}`}>{article.title}</a>
+                      <a href={`/blog/${article.slug}/`}>{article.title}</a>
                     </h3>
                     <p class="text-encre/60 leading-relaxed mb-4 line-clamp-3">{article.excerpt}</p>
                     <div class="flex items-center justify-between pt-4 border-t border-encre/10">
@@ -138,7 +138,7 @@ function formatDate(dateStr: string) {
               <Pagination
                 currentPage={1}
                 totalPages={totalPages}
-                baseUrl="/blog"
+                baseUrl="/blog/"
               />
             )}
 
@@ -147,7 +147,7 @@ function formatDate(dateStr: string) {
                 variant="gold"
                 title="Vous voulez plus de contenu ?"
                 subtitle="Recevez chaque mardi un article, une astuce ou un cas client."
-                primaryCTA={{ href: '/newsletter', label: "S'abonner" }}
+                primaryCTA={{ href: '/newsletter/', label: "S'abonner" }}
               />
             </div>
           </>

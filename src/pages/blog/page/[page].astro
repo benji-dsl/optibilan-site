@@ -64,7 +64,7 @@ const breadcrumbJsonLd = {
   itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'Accueil', item: 'https://optibilan.com/' },
     { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://optibilan.com/blog' },
-    ...(currentPage > 1 ? [{ '@type': 'ListItem', position: 3, name: `Page ${currentPage}`, item: `https://optibilan.com/blog/page/${currentPage}` }] : []),
+    ...(currentPage > 1 ? [{ '@type': 'ListItem', position: 3, name: `Page ${currentPage}`, item: `https://optibilan.com/blog/page/${currentPage}/` }] : []),
   ],
 };
 
@@ -80,7 +80,7 @@ function formatDate(dateStr: string) {
 <Layout
   title={pageTitle}
   description={pageDescription}
-  canonical={currentPage === 1 ? '/blog' : `/blog/page/${currentPage}`}
+  canonical={currentPage === 1 ? '/blog/' : `/blog/page/${currentPage}/`}
   ogImage="/og-blog.png"
   jsonLd={[blogJsonLd, breadcrumbJsonLd]}
 >
@@ -105,7 +105,7 @@ qui veulent grandir"
         </header>
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
           {categories.map(cat => (
-            <a href={`/blog/category/${cat.slug}/1`} class="card-hover group p-5 md:p-6 text-center" style="--pillar-color: var(--color-{cat.color})">
+            <a href={`/blog/category/${cat.slug}/1/`} class="card-hover group p-5 md:p-6 text-center" style="--pillar-color: var(--color-{cat.color})">
               <div class="icon-wrapper mx-auto mb-4" aria-hidden="true" style="background-color: color-mix(in oklab, var(--color-{cat.color}) 15%, transparent);">
                 <Icon name={cat.icon} class="w-6 h-6" style="color: var(--color-{cat.color});" />
               </div>
@@ -136,7 +136,7 @@ qui veulent grandir"
                 Télécharger le guide gratuit
                 <Icon name="arrowRight" class="w-5 h-5" />
               </a>
-              <a href="/newsletter" class="btn-secondary w-full sm:w-auto">
+              <a href="/newsletter/" class="btn-secondary w-full sm:w-auto">
                 Ou s'abonner à la newsletter
               </a>
             </div>
@@ -163,7 +163,7 @@ qui veulent grandir"
             <h2 id="articles-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-2">Derniers articles</h2>
             <p class="text-encre/60">{allPosts.length} articles publiés - mis à jour chaque semaine</p>
           </div>
-          <a href="/newsletter" class="btn-secondary self-start whitespace-nowrap">
+          <a href="/newsletter/" class="btn-secondary self-start whitespace-nowrap">
             <Icon name="mail" class="w-4 h-4" /> S'abonner à la newsletter
           </a>
         </header>
@@ -188,7 +188,7 @@ qui veulent grandir"
                       <time class="text-xs text-encre/40" datetime={article.date}>{formatDate(article.date)}</time>
                     </div>
                     <h3 class="font-display text-xl font-bold text-encre mb-3 line-clamp-2 group-hover:text-bleu-signature transition-colors">
-                      <a href={`/blog/${article.slug}`}>{article.title}</a>
+                      <a href={`/blog/${article.slug}/`}>{article.title}</a>
                     </h3>
                     <p class="text-encre/60 leading-relaxed mb-4 line-clamp-3">{article.excerpt}</p>
                     <div class="flex items-center justify-between pt-4 border-t border-encre/10">
@@ -221,7 +221,7 @@ qui veulent grandir"
               <Pagination
                 currentPage={currentPage}
                 totalPages={totalPages}
-                baseUrl="/blog"
+                baseUrl="/blog/"
               />
             )}
 
@@ -230,7 +230,7 @@ qui veulent grandir"
                 variant="secondary"
                 title="Vous voulez plus de contenu ?"
                 subtitle="Recevez chaque mardi un article, une astuce ou un cas client directement dans votre boîte mail."
-                primaryCTA={{ href: '/newsletter', label: 'S\'abonner gratuitement' }}
+                primaryCTA={{ href: '/newsletter/', label: 'S\'abonner gratuitement' }}
               />
             </div>
           </>
@@ -241,7 +241,7 @@ qui veulent grandir"
     <CTA
       title="Vous avez un sujet à proposer ?"
       subtitle="On cherche toujours des experts pour écrire : nutrition, sport, mental, santé, business. Contactez l'équipe éditoriale."
-      primaryCTA={{ href: '/contact', label: 'Proposer un article' }}
+      primaryCTA={{ href: '/contact/', label: 'Proposer un article' }}
       variant="gold"
     />
   </main>

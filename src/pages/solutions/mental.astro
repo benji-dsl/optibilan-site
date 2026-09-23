@@ -14,7 +14,7 @@ const pageDescription = 'Structurez le suivi mental sans perdre la confidentiali
 <Layout
   title={pageTitle}
   description={pageDescription}
-  canonical="/solutions/mental"
+  canonical="/solutions/mental/"
   ogImage="/og-solution-mental.png"
 >
   <Header />
@@ -24,8 +24,8 @@ const pageDescription = 'Structurez le suivi mental sans perdre la confidentiali
       title="Structurez le suivi mental 
 sans perdre la confidentialité."
       subtitle="Exercices transversaux, ressources, journal d'appels, adhérence, permissions. Cloisonnement strict des données. Le mental structuré."
-      primaryCTA={{ href: '/pricing', label: 'Rejoindre Optibilan' }}
-      secondaryCTA={{ href: '/checkout/solo', label: 'Essai offert' }}
+      primaryCTA={{ href: '/pricing/', label: 'Rejoindre Optibilan' }}
+      secondaryCTA={{ href: '/checkout/solo/', label: 'Essai offert' }}
     />
 
     <TrustBar />
@@ -92,12 +92,12 @@ sans perdre la confidentialité."
 
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {[
-            { href: '/product/mental', icon: 'brain', title: 'Préparation Mentale', desc: 'Exercices, ressources, journal, adhérence, cloisonnement', color: 'indigo' },
-            { href: '/product/engagement', icon: 'users', title: 'Gamification & Habitudes', desc: 'XP, badges, dreamboard, habitudes, alertes IA', color: 'bordeaux' },
-            { href: '/product/crm', icon: 'lock', title: 'Journal Coaching & CRM', desc: 'Entrées typées, pipeline, relances, partage sélectif', color: 'bleu-ardoise' },
-            { href: '/product/engagement', icon: 'chart', title: 'Suivi Adhérence', desc: 'Fréquence, durée, ressentis, corrélation performance', color: 'indigo' },
-            { href: '/product/white-label', icon: 'shield', title: 'Marque Blanche', desc: 'Votre logo, vos couleurs, votre domaine, vos emails', color: 'bordeaux' },
-            { href: '/product/integrations', icon: 'code', title: 'API & Intégrations', desc: 'Webhooks, n8n, sync Notion, calendrier ICS', color: 'bleu-ardoise' },
+            { href: '/product/mental/', icon: 'brain', title: 'Préparation Mentale', desc: 'Exercices, ressources, journal, adhérence, cloisonnement', color: 'indigo' },
+            { href: '/product/engagement/', icon: 'users', title: 'Gamification & Habitudes', desc: 'XP, badges, dreamboard, habitudes, alertes IA', color: 'bordeaux' },
+            { href: '/product/crm/', icon: 'lock', title: 'Journal Coaching & CRM', desc: 'Entrées typées, pipeline, relances, partage sélectif', color: 'bleu-ardoise' },
+            { href: '/product/engagement/', icon: 'chart', title: 'Suivi Adhérence', desc: 'Fréquence, durée, ressentis, corrélation performance', color: 'indigo' },
+            { href: '/product/white-label/', icon: 'shield', title: 'Marque Blanche', desc: 'Votre logo, vos couleurs, votre domaine, vos emails', color: 'bordeaux' },
+            { href: '/product/integrations/', icon: 'code', title: 'API & Intégrations', desc: 'Webhooks, n8n, sync Notion, calendrier ICS', color: 'bleu-ardoise' },
           ].map(mod => (
             <a href={mod.href} class="card-hover p-6 text-center group" style={`--mod-color: var(--color-${mod.color})`}>
               <div class="icon-wrapper mx-auto mb-4" aria-hidden="true" style={`background-color: color-mix(in oklab, var(--color-${mod.color}) 15%, transparent);`}>
@@ -114,8 +114,8 @@ sans perdre la confidentialité."
     <CTA
       title="Vous voulez voir comment structurer VOTRE suivi mental ?"
       subtitle="30 minutes pour configurer Optibilan selon votre méthode de préparation mentale."
-      primaryCTA={{ href: '/pricing', label: 'Rejoindre Optibilan' }}
-      secondaryCTA={{ href: '/checkout/solo', label: 'Essai offert' }}
+      primaryCTA={{ href: '/pricing/', label: 'Rejoindre Optibilan' }}
+      secondaryCTA={{ href: '/checkout/solo/', label: 'Essai offert' }}
       variant="primary"
     />
   </main>
