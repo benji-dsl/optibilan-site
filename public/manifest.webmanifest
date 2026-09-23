@@ -45,7 +45,7 @@
       "name": "Rejoindre Optibilan",
       "short_name": "Rejoindre",
       "description": "Voir la plateforme en 30 min",
-      "url": "https://calendly.com/optibilan/demo",
+      "url": "/pricing",
       "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
     }
   ],

@@ -27,6 +27,6 @@ Optibilan est une plateforme SaaS multi-tenant (B2B2C) de coaching santé/perfor
 ## Contact
 - Site : https://optibilan.com
 - Email : contact@optibilan.com
-- Démo : https://calendly.com/optibilan/demo
+- Démo : /pricing
 - GitHub : https://github.com/optibilan
 - LinkedIn : https://linkedin.com/company/optibilan

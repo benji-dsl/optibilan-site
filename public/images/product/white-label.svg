@@ -147,7 +147,7 @@
   <CTA
     title="Vous voulez voir VOTRE marque sur Optibilan ?"
     subtitle="30 minutes pour configurer votre marque blanche en live."
-    primaryCTA={{ href: 'https://calendly.com/optibilan/demo', label: 'Rejoindre Optibilan Marque blanche' }}
+    primaryCTA={{ href: '/pricing', label: 'Rejoindre Optibilan Marque blanche' }}
     variant="primary"
   />
   </main>
