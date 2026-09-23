@@ -102,7 +102,16 @@ function formatDate(dateStr: string) {
 
         {post.featuredImage && (
           <div class="mb-12 relative aspect-video rounded-xl overflow-hidden">
-            <img src={post.featuredImage} alt={post.title} loading="eager" fetchpriority="high" class="w-full h-full object-cover" />
+            <img
+              src={post.featuredImage}
+              alt={post.title}
+              loading="eager"
+              fetchpriority="high"
+              {...(post.featuredImageSizes?.['full']
+                ? { width: post.featuredImageSizes['full'].width, height: post.featuredImageSizes['full'].height }
+                : {})}
+              class="w-full h-full object-cover"
+            />
           </div>
         )}
 

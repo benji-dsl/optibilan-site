@@ -1,5 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
-  <rect width="200" height="200" fill="#F4E8E9"/>
-  <circle cx="100" cy="100" r="80" fill="none" stroke="#7D3037" stroke-width="3"/>
-  <text x="100" y="110" font-family="system-ui, sans-serif" font-size="22" font-weight="600" fill="#7D3037" text-anchor="middle">Mental Performance</text>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><path fill="#f4e8e9" d="M0 0h200v200H0z"/><circle cx="100" cy="100" r="80" fill="none" stroke="#7d3037" stroke-width="3"/><text x="100" y="110" fill="#7d3037" font-family="system-ui, sans-serif" font-size="22" font-weight="600" text-anchor="middle">Mental Performance</text></svg>
