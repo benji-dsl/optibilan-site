@@ -9,5 +9,5 @@ export async function getStaticPaths() {
 const { slug } = Astro.params;
 if (!slug || typeof slug !== "string") throw new Error("Slug requis");
 
-return Astro.redirect(`/blog/${slug}/1`);
+return Astro.redirect(`/blog/category/${slug}/1`);
 ---

@@ -291,7 +291,9 @@ Depuis un seul endroit."
               </a>
             </div>
             <div class="aspect-video max-w-2xl mx-auto rounded-xl border border-encre/10 bg-encre/5 overflow-hidden relative shadow-xl">
-              <div class="absolute inset-0 flex items-center justify-center" set:html={demo.screenshot} />
+              <div class="absolute inset-0 flex items-center justify-center">
+                <img src={demo.screenshot} alt={`Aperçu de ${demo.title}`} class="w-full h-full object-cover" loading="lazy" />
+              </div>
             </div>
           </div>
         </div>
@@ -325,7 +327,9 @@ Depuis un seul endroit."
             </a>
           </div>
           <div class="aspect-[9/16] max-w-sm mx-auto rounded-xl border border-encre/10 bg-encre/5 overflow-hidden relative shadow-xl">
-            <div class="absolute inset-0 flex items-center justify-center" set:html={clientExperience.client.screenshot} />
+            <div class="absolute inset-0 flex items-center justify-center">
+              <img src={clientExperience.client.screenshot} alt={`Aperçu de l'espace client ${clientExperience.client.title}`} class="w-full h-full object-cover" loading="lazy" />
+            </div>
           </div>
         </div>
       </div>
@@ -392,17 +396,17 @@ Depuis un seul endroit."
       </div>
     </section>
 
-    <!-- 8. VIDÉO PRODUIT -->
-    <section class="section bg-blanc" aria-labelledby="video-title">
+    <!-- 8. DÉMO PRODUIT -->
+    <section class="section bg-blanc" aria-labelledby="demo-title">
       <div class="container">
         <header class="text-center max-w-3xl mx-auto mb-12">
-          <h2 id="video-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
-            Découvrez Optibilan en 60 secondes
+          <h2 id="demo-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+            Découvrez Optibilan en conditions réelles
           </h2>
-          <p class="text-lg text-encre/60">Une démonstration rapide du vrai logiciel en conditions réelles.</p>
+          <p class="text-lg text-encre/60">Un tour du vrai logiciel, mené par l'équipe Optibilan.</p>
         </header>
         <div class="aspect-video max-w-4xl mx-auto rounded-xl border border-encre/10 bg-encre/5 overflow-hidden relative" style="background-image: url('/images/product/integrations.svg'); background-size: cover; background-position: center;">
-          <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" rel="noopener noreferrer" class="absolute inset-0 flex items-center justify-center" aria-label="Voir la démo vidéo sur YouTube">
+          <a href="/contact" class="absolute inset-0 flex items-center justify-center" aria-label="Demander une démo à l'équipe Optibilan">
             <div class="w-20 h-20 md:w-24 md:h-24 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center shadow-xl hover:bg-white hover:scale-105 transition-all duration-300">
               <svg class="w-8 h-8 md:w-10 md:h-10 text-bleu-signature ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
             </div>
@@ -411,7 +415,7 @@ Depuis un seul endroit."
           <div class="absolute bottom-4 left-1/2 -translate-x-1/2 text-center text-white/90 text-sm">
             <span class="flex items-center justify-center gap-1 bg-black/30 px-3 py-1 rounded-full">
               <Icon name="clock" class="w-4 h-4" />
-              60 secondes
+              Démo en conditions réelles
             </span>
           </div>
           <div class="absolute top-4 right-4">
@@ -445,7 +449,9 @@ Depuis un seul endroit."
         </div>
         <div class="relative mb-10">
           <div class="aspect-video max-w-4xl mx-auto rounded-xl border border-encre/10 bg-encre/5 overflow-hidden relative shadow-xl">
-            <div class="absolute inset-0 flex items-center justify-center" set:html={'/images/product/white-label.svg'} />
+            <div class="absolute inset-0 flex items-center justify-center">
+              <img src="/images/product/white-label.svg" alt="Aperçu de la marque blanche : l'espace client au nom de votre cabinet" class="w-full h-full object-contain p-6" loading="lazy" />
+            </div>
           </div>
           <div class="absolute -bottom-6 left-1/2 -translate-x-1/2 flex gap-4">
             <div class="w-40 h-28 bg-blanc rounded-lg border border-encre/10 shadow-lg p-2 flex items-center justify-center">

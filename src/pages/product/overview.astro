@@ -16,24 +16,15 @@ const productJsonLd = {
   description: 'SaaS multi-tenant de pilotage des accompagnements pour cabinets, studios et coachs indépendants. 12 modules : bilans, nutrition, sport, prépa mentale, santé connectée, engagement, CRM, agenda, IA, marque blanche, intégrations, admin.',
   brand: { '@type': 'Brand', name: 'Optibilan' },
   category: 'BusinessApplication',
-  offers: {
+offers: {
     '@type': 'AggregateOffer',
     priceCurrency: 'EUR',
-    lowPrice: '39',
-    highPrice: '279',
+    lowPrice: '49',
+    highPrice: '349',
     availability: 'https://schema.org/InStock',
     url: 'https://optibilan.com/pricing',
     seller: { '@type': 'Organization', name: 'Optibilan' }
   },
-  aggregateRating: {
-    '@type': 'AggregateRating',
-    ratingValue: '4.9',
-    reviewCount: '150',
-    bestRating: '5',
-    worstRating: '1',
-  },
-  hasAdultConsideration: false,
-  isFamilyFriendly: true,
   additionalProperty: [
     { '@type': 'PropertyValue', name: 'Modules', value: '12 modules inclus' },
     { '@type': 'PropertyValue', name: 'Hébergement', value: 'EU (France/Irlande)' },
@@ -91,7 +82,7 @@ des accompagnements santé
       <div class="container">
         <header class="text-center max-w-3xl mx-auto mb-16">
           <h2 id="problem-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
-            Votre expertise mérite mieux qu\'un empilement d\'outils
+            Votre expertise mérite mieux qu'un empilement d'outils
           </h2>
           <p class="text-lg text-encre/60 max-w-2xl mx-auto">
             Formulaires papier, Excel, PDF, WhatsApp, applications spécialisées, données wearables dispersées…<br class="hidden md:inline">
@@ -239,7 +230,7 @@ des accompagnements santé
               <div class="icon-wrapper mb-3" aria-hidden="true" style="background-color: color-mix(in oklab, var(--color-bleu-signature) 15%, transparent);">
                 <Icon name={item.icon} class="w-6 h-6 text-bleu-signature" />
               </div>
-              <h4 class="font-semibold text-craie mb-1">{item.title}</h4>
+              <h3 class="font-semibold text-craie mb-1">{item.title}</h3>
               <p class="text-craie/70 text-sm">{item.desc}</p>
             </div>
           ))}
@@ -254,7 +245,7 @@ des accompagnements santé
       title="Découvrez Optibilan en conditions réelles"
       subtitle="30 minutes pour voir la plateforme à partir de votre fonctionnement actuel."
       primaryCTA={{ href: '/pricing', label: 'Rejoindre Optibilan' }}
-      secondaryCTA={{ href: '/inscription', label: 'Essai offert' }}
+      secondaryCTA={{ href: '/checkout/solo', label: 'Essai offert' }}
       variant="secondary"
     />
   </main>

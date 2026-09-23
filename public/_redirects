@@ -22,4 +22,6 @@
 
 # Redirections legacy
 /fonctionnalites /product/overview 301
-/docs /docs 200
+/docs /product/integrations 301
+/docs/sandbox /product/integrations 301
+/lead-magnet-onboarding /contact 301

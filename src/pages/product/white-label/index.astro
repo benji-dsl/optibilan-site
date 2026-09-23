@@ -5,7 +5,6 @@ import Footer from '../../../components/Footer.astro';
 import Hero from '../../../components/Hero.astro';
 import CTA from '../../../components/CTA.astro';
 import Icon from '../../../components/Icon.astro';
-import WhiteLabelScreenshot from '../../../images/product/white-label.svg?raw';
 
 const pageTitle = 'Marque blanche - Optibilan';
 const pageDescription = 'Optibilan disparaît. Votre marque reste. Logo, couleurs, domaine, vocabulaire, assistant IA, emails, mentions légales, CGV - tout est à vous.';
@@ -96,7 +95,9 @@ Votre marque."
 
         <div class="grid lg:grid-cols-2 gap-12 items-center">
           <div class="aspect-square max-w-md mx-auto rounded-xl border border-encre/10 bg-encre/5 overflow-hidden relative">
-            <div class="absolute inset-0 flex items-center justify-center" set:html={'/images/product/white-label.svg'} />
+            <div class="absolute inset-0 flex items-center justify-center">
+              <img src="/images/product/white-label.svg" alt="Aperçu de la marque blanche : l'espace client au nom de votre cabinet" class="w-full h-full object-contain p-6" loading="lazy" />
+            </div>
           </div>
           <div>
             <h3 class="font-display text-2xl font-bold text-encre mb-4">Desktop + mobile, votre cabinet partout</h3>
@@ -132,8 +133,8 @@ Votre marque."
             { icon: 'mail', title: 'Emails transactionnels', desc: 'Expéditeur @votrecabinet.fr. Templates HTML brandés. DKIM/SPF/DMARC sur votre domaine.' },
             { icon: 'shield', title: 'Mentions & CGV', desc: 'Vos mentions légales, CGV, politique confidentialité. Injectées dans l\'espace client et emails.' },
             { icon: 'code', title: 'CSS/JS custom (Cabinet)', desc: 'Injection code dans <head> / <body>. Tracking, chat, design avancé. Sans casser les mises à jour.' },
-          ].map(item => (
-            <article class="card-hover p-6 text-center group" style="animation-delay: {item.icon * 100}ms">
+          ].map((item, i) => (
+            <article class="card-hover p-6 text-center group" style="animation-delay: {i * 100}ms">
               <div class="icon-wrapper mx-auto mb-4" aria-hidden="true" style="background-color: var(--color-bleu-clair);">
                 <Icon name={item.icon} class="w-7 h-7 text-bleu-signature" />
               </div>
@@ -190,7 +191,7 @@ Votre marque."
       title="Vous voulez voir VOTRE marque sur Optibilan ?"
       subtitle="30 minutes pour configurer votre marque blanche en live."
       primaryCTA={{ href: '/pricing', label: 'Rejoindre Optibilan' }}
-      secondaryCTA={{ href: '/inscription', label: 'Essayer Optibilan' }}
+      secondaryCTA={{ href: '/checkout/solo', label: 'Essayer Optibilan' }}
       variant="primary"
     />
   </main>

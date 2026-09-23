@@ -77,7 +77,7 @@ Quatre façons de l'utiliser."
       subtitle="Optibilan s'adapte à votre pratique : Coach, Nutritionniste, Préparateur mental, Cabinet. Chaque solution active les modules pertinents, avec les permissions adaptées."
       badge="4 solutions, 1 plateforme"
       primaryCTA={{ href: '/pricing', label: 'Rejoindre Optibilan' }}
-      secondaryCTA={{ href: '/product/overview', label: 'Essai offert' }}
+      secondaryCTA={{ href: '/checkout/solo', label: 'Essai offert' }}
     />
 
     <TrustBar />
@@ -97,7 +97,7 @@ Quatre façons de l'utiliser."
           {solutions.map((sol, i) => (
             <article class={`card-hover relative overflow-hidden ${sol.featured ? 'ring-2 ring-bleu-signature' : ''}`} style={`animation-delay: ${i * 100}ms`}>
               {sol.featured && (
-                <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-bleu-signature text-craie text-xs font-semibold rounded-full">
+                <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-bleu-lecture text-craie text-xs font-semibold rounded-full">
                   Recommandé
                 </div>
               )}
@@ -159,7 +159,7 @@ Quatre façons de l'utiliser."
       title="Vous ne trouvez pas votre profil ?"
       subtitle="Optibilan est modulaire. Activez seulement les modules dont vous avez besoin."
       primaryCTA={{ href: '/product/overview', label: 'Rejoindre Optibilan' }}
-      secondaryCTA={{ href: '/pricing', label: 'Essai offert' }}
+      secondaryCTA={{ href: '/checkout/solo', label: 'Essai offert' }}
       variant="gold"
     />
   </main>

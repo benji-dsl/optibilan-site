@@ -76,7 +76,7 @@ const breadcrumbJsonLd = {
               <div class="mt-6">
                 <h3 class="text-xs font-semibold uppercase tracking-wider text-muted-light">Inclus</h3>
                 <ul class="mt-3 space-y-2.5 text-sm text-body-light">
-                  {['Un suivi complet pour vos accompagnements', 'Tous les outils essentiels Optibilan', '1 000 messages IA / mois'].map(f => (
+                  {planDetails.features.slice(0, 4).map(f => (
                     <li class="flex items-start gap-2.5" key={f}>
                       <svg class="mt-0.5 w-5 h-5 flex-shrink-0 text-vert-fonce" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                         <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
@@ -290,7 +290,7 @@ const breadcrumbJsonLd = {
 
   <footer class="border-t border-encre/10 bg-blanc">
     <div class="container flex flex-col items-center justify-between gap-3 py-6 text-xs text-muted-light sm:flex-row">
-      <span>© {new Date().getFullYear()} Optibilan</span>
+      <span>© {new Date().getFullYear()} Elite Longevity LLC</span>
       <span class="flex items-center gap-4">
         <a href="/legal/cgv" target="_blank" rel="noopener noreferrer" class="hover:text-bleu-signature">CGV</a>
         <a href="/legal/confidentialite" target="_blank" rel="noopener noreferrer" class="hover:text-bleu-signature">Confidentialité</a>

@@ -16,7 +16,7 @@ Optibilan est une plateforme SaaS multi-tenant (B2B2C) de coaching santé/perfor
 - Marque blanche : logo, couleurs, domaine, vocabulaire, emails
 - Intégrations & API : REST v1, OpenAPI, webhooks signés, sync santé
 
-**Offres :** Trial 30j gratuit, Solo 39€/mois, Studio 119€/mois, Cabinet 279€/mois
+**Offres :** Trial 30j gratuit, Solo 49€/mois, Studio 149€/mois, Cabinet 349€/mois (2 mois offerts en annuel)
 **Hébergement :** Supabase (Irlande) + VPS Hostinger (France) + Cloudflare CDN
 **Conformité :** RGPD, 2FA, CSP stricte, audit trail, export RGPD, purge paramétrable
 

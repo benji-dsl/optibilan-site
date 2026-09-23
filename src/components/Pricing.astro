@@ -27,7 +27,7 @@ const defaultPlans = [
     name: 'Solo',
     tagline: 'Coach indépendant',
     priceMonthly: 49,
-    priceYearly: 39,
+    priceYearly: 490,
     features: [
       'Jusqu\'à 30 coachés',
       '1 accès coach (vous)',
@@ -44,7 +44,7 @@ const defaultPlans = [
     name: 'Studio',
     tagline: 'Petite équipe (2-5)',
     priceMonthly: 149,
-    priceYearly: 119,
+    priceYearly: 1490,
     features: [
       'Jusqu\'à 150 coachés',
       'Jusqu\'à 5 accès staff',
@@ -64,7 +64,7 @@ const defaultPlans = [
     name: 'Cabinet',
     tagline: 'Structure 5+ coachs',
     priceMonthly: 349,
-    priceYearly: 279,
+    priceYearly: 3490,
     features: [
       'Coachés illimités',
       'Accès staff illimités',
@@ -88,6 +88,7 @@ const {
 } = Astro.props;
 
 const displayPlans = plans && plans.length > 0 ? plans : defaultPlans;
+const formatEuro = (n: number) => n.toLocaleString('fr-FR');
 ---
 
 <section class="section bg-papier" aria-labelledby="pricing-title">
@@ -103,10 +104,10 @@ const displayPlans = plans && plans.length > 0 ? plans : defaultPlans;
 
     <div class="mb-10 flex justify-center">
       <div class="inline-flex items-center gap-2 p-1 bg-blanc rounded-pill border border-encre/10 shadow-sm">
-        <button id="monthly-btn" class="px-4 py-2 rounded-pill text-sm font-medium bg-bleu-signature text-craie shadow-sm" aria-pressed="true" data-period="monthly">Mensuel</button>
+        <button id="monthly-btn" class="px-4 py-2 rounded-pill text-sm font-medium bg-bleu-lecture text-craie shadow-sm" aria-pressed="true" data-period="monthly">Mensuel</button>
         <button id="yearly-btn" class="px-4 py-2 rounded-pill text-sm font-medium text-encre/60 hover:text-encre" aria-pressed="false" data-period="yearly">
           Annuel
-          <span class="ml-2 px-2 py-0.5 text-xs font-bold text-bordeaux bg-rose-bordeaux rounded-full">-20%</span>
+          <span class="ml-2 px-2 py-0.5 text-xs font-bold text-bordeaux bg-rose-bordeaux rounded-full">2 mois offerts</span>
         </button>
       </div>
     </div>
@@ -115,7 +116,7 @@ const displayPlans = plans && plans.length > 0 ? plans : defaultPlans;
       {displayPlans.map((plan, index) => (
         <article class={`relative bg-blanc flex flex-col p-6 md:p-8 rounded-card-lg transition-all duration-200 ${plan.popular ? 'ring-2 ring-bleu-signature shadow-card md:-translate-y-2' : 'border border-encre/10 shadow-card hover:shadow-elevated hover:-translate-y-1'}`} data-plan={plan.name}>
           {plan.popular && (
-            <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-bleu-signature text-craie text-xs font-semibold rounded-full whitespace-nowrap">
+            <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-bleu-lecture text-craie text-xs font-semibold rounded-full whitespace-nowrap">
               Le plus choisi
             </div>
           )}
@@ -130,12 +131,12 @@ const displayPlans = plans && plans.length > 0 ? plans : defaultPlans;
               <span class="text-encre/50">€/mois</span>
             </div>
             <div class="flex items-baseline gap-2 hidden" data-yearly>
-              <span class="text-4xl font-bold text-encre">{plan.priceYearly}</span>
+              <span class="text-4xl font-bold text-encre">{Math.round(plan.priceYearly / 12)}</span>
               <span class="text-encre/50">€/mois</span>
             </div>
             <p class="text-sm mt-1 hidden" data-yearly-note>
-              <span class="text-encre/50">Facturé {plan.priceYearly * 12}€ / an</span>
-              <span class="text-bordeaux font-medium ml-1">(-{(plan.priceMonthly - plan.priceYearly) * 12}€)</span>
+              <span class="text-encre/50">Facturé {formatEuro(plan.priceYearly)}€ / an</span>
+              <span class="text-bordeaux font-medium ml-1">(2 mois offerts)</span>
             </p>
           </div>
 
@@ -164,7 +165,7 @@ const displayPlans = plans && plans.length > 0 ? plans : defaultPlans;
   </div>
 </section>
 
-<script is:inline>
+<script>
   const monthlyBtn = document.getElementById('monthly-btn');
   const yearlyBtn = document.getElementById('yearly-btn');
   const monthlyPrices = document.querySelectorAll('[data-monthly]');
@@ -173,14 +174,14 @@ const displayPlans = plans && plans.length > 0 ? plans : defaultPlans;
 
   function setPeriod(period) {
     const isYearly = period === 'yearly';
-    monthlyBtn?.classList.toggle('bg-bleu-signature', !isYearly);
+    monthlyBtn?.classList.toggle('bg-bleu-lecture', !isYearly);
     monthlyBtn?.classList.toggle('text-craie', !isYearly);
     monthlyBtn?.classList.toggle('shadow-sm', !isYearly);
     monthlyBtn?.classList.toggle('bg-blanc', isYearly);
     monthlyBtn?.classList.toggle('text-encre/60', isYearly);
     monthlyBtn?.setAttribute('aria-pressed', String(!isYearly));
 
-    yearlyBtn?.classList.toggle('bg-bleu-signature', isYearly);
+    yearlyBtn?.classList.toggle('bg-bleu-lecture', isYearly);
     yearlyBtn?.classList.toggle('text-craie', isYearly);
     yearlyBtn?.classList.toggle('shadow-sm', isYearly);
     yearlyBtn?.classList.toggle('text-encre/60', !isYearly);

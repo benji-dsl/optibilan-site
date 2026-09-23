@@ -115,7 +115,6 @@ import '../styles/global.css';
       ],
       contactPoint: {
         '@type': 'ContactPoint',
-        telephone: '+33-1-XX-XX-XX-XX',
         contactType: 'customer service',
         availableLanguage: ['French', 'English'],
       },
@@ -217,7 +216,7 @@ import '../styles/global.css';
     </>
     )}
 
-    <script is:inline>
+    <script>
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
           navigator.serviceWorker.register('/sw.js').catch(() => {});
