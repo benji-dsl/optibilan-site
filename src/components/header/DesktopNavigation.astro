@@ -198,19 +198,3 @@ import Icon from '../Icon.astro';
     link.addEventListener('click', () => closeAllDropdowns());
   });
 </script>
-
-<style is:global>
-  [data-header].shadow-soft {
-    box-shadow: 0 2px 15px -3px rgba(0, 0, 0, 0.07), 0 10px 20px -2px rgba(0, 0, 0, 0.04);
-  }
-  
-  /* Ensure dropdowns are above everything */
-  [data-dropdown] {
-    z-index: 110;
-  }
-  
-  /* Dropdown menu animation - smooth and performant */
-  [data-dropdown-menu] {
-    transition: opacity 150ms ease, transform 150ms ease, visibility 150ms ease;
-  }
-</style>
