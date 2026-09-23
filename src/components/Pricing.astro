@@ -90,7 +90,7 @@ const {
 const displayPlans = plans && plans.length > 0 ? plans : defaultPlans;
 ---
 
-<section class="section bg-sable" aria-labelledby="pricing-title">
+<section class="section bg-papier" aria-labelledby="pricing-title">
   <div class="container">
     <header class="text-center max-w-3xl mx-auto mb-12">
       <h2 id="pricing-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
@@ -113,9 +113,9 @@ const displayPlans = plans && plans.length > 0 ? plans : defaultPlans;
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
       {displayPlans.map((plan, index) => (
-        <article class={`relative flex flex-col ${plan.popular ? 'ring-2 ring-bleu-signature shadow-card' : 'border border-encre/10 shadow-card'} rounded-card-lg`} style="background-color: var(--color-sable);" data-plan={plan.name}>
+        <article class={`relative bg-blanc flex flex-col p-6 md:p-8 ${plan.popular ? 'ring-2 ring-bleu-signature shadow-card' : 'border border-encre/10 shadow-card'} rounded-card-lg`} data-plan={plan.name}>
           {plan.popular && (
-            <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-bleu-signature text-craie text-xs font-semibold rounded-full">
+            <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-bleu-signature text-craie text-xs font-semibold rounded-full whitespace-nowrap">
               Le plus choisi
             </div>
           )}
@@ -124,30 +124,32 @@ const displayPlans = plans && plans.length > 0 ? plans : defaultPlans;
             <p class="text-sm text-encre/50">{plan.tagline}</p>
           </div>
 
-<div class="mb-6" data-price-container>
-              <div class="flex items-baseline gap-1" data-monthly>
-                <span class="text-4xl font-bold text-encre">{plan.priceMonthly}</span>
-                <span class="text-encre/50">€/mois</span>
-              </div>
-              <div class="flex items-baseline gap-1 hidden" data-yearly>
-                <span class="text-4xl font-bold text-encre">{plan.priceYearly}</span>
-                <span class="text-encre/50">€/mois</span>
-              </div>
-              <p class="text-sm text-encre/50 mt-1" data-yearly-note hidden>
-                Facturé {plan.priceYearly * 12}€ / an
-              </p>
+          <div class="mb-6" data-price-container>
+            <div class="flex items-baseline gap-1" data-monthly>
+              <span class="text-4xl font-bold text-encre">{plan.priceMonthly}</span>
+              <span class="text-encre/50">€/mois</span>
             </div>
+            <div class="flex items-baseline gap-1 hidden" data-yearly>
+              <span class="text-4xl font-bold text-encre">{plan.priceYearly}</span>
+              <span class="text-encre/50">€/mois</span>
+            </div>
+            <p class="text-sm text-encre/50 mt-1" data-yearly-note hidden>
+              Facturé {plan.priceYearly * 12}€ / an
+            </p>
+          </div>
 
-          <ul class="flex-1 space-y-3 mb-8" role="list">
-            {plan.features.map(feature => (
-              <li class="flex items-start gap-3 text-sm text-encre/60">
-                <Icon name="check" class="w-5 h-5 text-bleu-signature flex-shrink-0 mt-0.5" />
-                {feature}
-              </li>
-            ))}
-          </ul>
+          <div class="border-t border-encre/10 pt-6 mb-8">
+            <ul class="flex-1 space-y-3" role="list">
+              {plan.features.map(feature => (
+                <li class="flex items-start gap-3 text-sm text-encre/60">
+                  <Icon name="check" class="w-5 h-5 text-bleu-signature flex-shrink-0 mt-0.5" />
+                  {feature}
+                </li>
+              ))}
+            </ul>
+          </div>
 
-          <a href={plan.cta.href} class="btn-primary w-full group py-3 px-5 text-base font-semibold rounded-xl transition-all duration-200">
+          <a href={plan.cta.href} class="btn-primary w-full group py-3 px-5 mt-auto text-base font-semibold rounded-xl transition-all duration-200">
             {plan.cta.label}
             <Icon name="arrowRight" class="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1 inline-block" />
           </a>
