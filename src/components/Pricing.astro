@@ -4,6 +4,7 @@ import Icon from './Icon.astro';
 interface Props {
   title?: string;
   subtitle?: string;
+  headingLevel?: 'h1' | 'h2' | 'h3';
   plans?: Array<{
     name: string;
     tagline: string;
@@ -88,15 +89,17 @@ const {
 } = Astro.props;
 
 const displayPlans = plans && plans.length > 0 ? plans : defaultPlans;
+const headingLevel = Astro.props.headingLevel ?? 'h2';
+const HeadingTag = (headingLevel) as 'h1' | 'h2' | 'h3';
 const formatEuro = (n: number) => n.toLocaleString('fr-FR');
 ---
 
 <section class="section bg-papier" aria-labelledby="pricing-title">
   <div class="container">
     <header class="text-center max-w-3xl mx-auto mb-12">
-      <h2 id="pricing-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+      <HeadingTag id="pricing-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
         {title}
-      </h2>
+      </HeadingTag>
       <p class="text-lg text-encre/60">
         {subtitle}
       </p>
