@@ -36,7 +36,7 @@ const productDemos = [
       'Chronologie unique : bilans, photos, ressentis, habitudes',
       'Validation mobile < 2 min, alertes adherence auto',
     ],
-    screenshot: '/images/product/bilans.svg',
+    screenshot: '/images/product/bilans-progression.jpg',
     href: '/product/check-ins/',
     layout: 'text-left',
   },
@@ -49,7 +49,7 @@ const productDemos = [
       'Corrélations auto : VFC ↓ + charge ↑ + sommeil ↓ = signal',
       'Import PDF labo : IA extrait, structure, signale les valeurs',
     ],
-    screenshot: '/images/product/health.svg',
+    screenshot: '/images/product/sante-biomarqueurs.jpg',
     href: '/product/health/',
     layout: 'text-right',
   },
@@ -62,7 +62,7 @@ const productDemos = [
       'Listes de courses auto, compléments documentés & alertes interactions',
       'Journal client photo/scan + validation coach 1 clic + écart plan vs réel',
     ],
-    screenshot: '/images/product/nutrition.svg',
+    screenshot: '/images/product/nutrition-consultation.jpg',
     href: '/product/nutrition/',
     layout: 'text-left',
   },
@@ -75,7 +75,7 @@ const productDemos = [
       'Drag-and-drop séances, progression auto charge/volume/RPE',
       'Client : vidéo exercice, saisie poids/RPE, coach voit tout temps réel',
     ],
-    screenshot: '/images/product/training.svg',
+    screenshot: '/images/product/sport-programmes.jpg',
     href: '/product/training/',
     layout: 'text-right',
   },
@@ -88,7 +88,7 @@ const productDemos = [
       'Bilan → synthèse auto pour pro + client',
       'Données → alertes adhérence, suggestions ajustement',
     ],
-    screenshot: '/images/product/integrations.svg',
+    screenshot: '/images/product/ia-automatisations.jpg',
     href: '/product/ai/',
     layout: 'text-left',
   },
@@ -98,12 +98,12 @@ const clientExperience = {
   pro: {
     title: 'Votre tableau de bord',
     desc: 'Tout piloter d\'un seul endroit. Bilans, programmes, nutrition, santé, mental, IA — modules activables selon votre pratique.',
-    screenshot: '/images/product/bilans.svg',
+    screenshot: '/images/product/dashboard-coach.jpg',
   },
   client: {
     title: 'Leur espace simple',
     desc: 'Vos clients voient leurs bilans, programmes, habitudes, messages. Pas d\'appli à installer, ça marche dans le navigateur.',
-    screenshot: '/images/product/training.svg',
+    screenshot: '/images/product/interface-client-mobile.jpg',
   },
 };
 
@@ -292,7 +292,7 @@ Depuis un seul endroit."
             </div>
             <div class="aspect-video max-w-2xl mx-auto rounded-xl border border-encre/10 bg-encre/5 overflow-hidden relative shadow-xl">
               <div class="absolute inset-0 flex items-center justify-center">
-                <img src={demo.screenshot} alt={`Aperçu de ${demo.title}`} class="w-full h-full object-cover" loading="lazy" />
+                <img src={demo.screenshot} alt={`Capture d'écran du module Optibilan : ${demo.title}`} class="w-full h-full object-cover" loading="lazy" />
               </div>
             </div>
           </div>
@@ -312,6 +312,11 @@ Depuis un seul endroit."
           </p>
         </header>
         <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div class="aspect-video max-w-2xl mx-auto rounded-xl border border-encre/10 bg-encre/5 overflow-hidden relative shadow-xl mb-8">
+            <div class="absolute inset-0 flex items-center justify-center">
+              <img src={clientExperience.pro.screenshot} alt="Capture du tableau de bord professionnel Optibilan : pilotage de tous les suivis clients" class="w-full h-full object-contain" loading="lazy" />
+            </div>
+          </div>
           <div>
             <h3 class="font-display text-2xl font-bold text-encre mb-4">{clientExperience.pro.title}</h3>
             <p class="text-encre/60 mb-8">{clientExperience.pro.desc}</p>
@@ -326,9 +331,9 @@ Depuis un seul endroit."
               <Icon name="arrowRight" class="w-5 h-5 transition-transform group-hover:translate-x-1" />
             </a>
           </div>
-          <div class="aspect-[9/16] max-w-sm mx-auto rounded-xl border border-encre/10 bg-encre/5 overflow-hidden relative shadow-xl">
+          <div class="aspect-video max-w-2xl mx-auto rounded-xl border border-encre/10 bg-encre/5 overflow-hidden relative shadow-xl">
             <div class="absolute inset-0 flex items-center justify-center">
-              <img src={clientExperience.client.screenshot} alt={`Aperçu de l'espace client ${clientExperience.client.title}`} class="w-full h-full object-cover" loading="lazy" />
+              <img src={clientExperience.client.screenshot} alt="Capture de l'espace client Optibilan : bilans, programmes et habitudes à portée de main" class="w-full h-full object-contain" loading="lazy" />
             </div>
           </div>
         </div>
@@ -405,7 +410,7 @@ Depuis un seul endroit."
           </h2>
           <p class="text-lg text-encre/60">Un tour du vrai logiciel, mené par l'équipe Optibilan.</p>
         </header>
-        <div class="aspect-video max-w-4xl mx-auto rounded-xl border border-encre/10 bg-encre/5 overflow-hidden relative" style="background-image: url('/images/product/integrations.svg'); background-size: cover; background-position: center;">
+        <div class="aspect-video max-w-4xl mx-auto rounded-xl border border-encre/10 bg-encre/5 overflow-hidden relative" style="background-image: url('/images/product/dashboard-coach.jpg'); background-size: cover; background-position: center;">
           <a href="/contact/" class="absolute inset-0 flex items-center justify-center" aria-label="Demander une démo à l'équipe Optibilan">
             <div class="w-20 h-20 md:w-24 md:h-24 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center shadow-xl hover:bg-white hover:scale-105 transition-all duration-300">
               <svg class="w-8 h-8 md:w-10 md:h-10 text-bleu-signature ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
@@ -450,7 +455,7 @@ Depuis un seul endroit."
         <div class="relative mb-10">
           <div class="aspect-video max-w-4xl mx-auto rounded-xl border border-encre/10 bg-encre/5 overflow-hidden relative shadow-xl">
             <div class="absolute inset-0 flex items-center justify-center">
-              <img src="/images/product/white-label.svg" alt="Aperçu de la marque blanche : l'espace client au nom de votre cabinet" class="w-full h-full object-contain p-6" loading="lazy" />
+              <img src="/images/product/marque-blanche.jpg" alt="Aperçu de la marque blanche : l'espace client au nom de votre cabinet" class="w-full h-full object-cover" loading="lazy" />
             </div>
           </div>
           <div class="absolute -bottom-6 left-1/2 -translate-x-1/2 flex gap-4">
