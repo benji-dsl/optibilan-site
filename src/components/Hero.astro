@@ -67,22 +67,17 @@ const homeBadge = badge || "";
     )}
 
       {variant === 'home' && (
-        <div class="mt-16 relative animate-scale-in delay-500 hidden lg:block" aria-hidden="true">
-          <div class="aspect-[16/10] max-w-5xl mx-auto rounded-card-lg bg-encre/5 border border-encre/10 shadow-elevated overflow-hidden relative">
-            <div class="absolute inset-0 bg-gradient-to-br from-bleu-signature/5 via-transparent to-indigo/5" aria-hidden="true"></div>
-            <div class="relative z-10 flex items-center justify-center h-full p-4">
-              <div class="text-center max-w-md">
-                <div class="aspect-video bg-encre/10 rounded-lg mb-4 border border-encre/10 flex items-center justify-center relative overflow-hidden">
-                  <div class="absolute inset-0 grid grid-cols-12 gap-2 p-4 opacity-10" aria-hidden="true">
-                    {[...Array(24)].map((_, i) => (
-                      <div key={i} class="col-span-1 h-4 bg-bleu-signature/20 rounded animate-pulse" style={{animationDelay: `${i * 50}ms`}} />
-                    ))}
-                  </div>
-                  <Icon name="chart" class="w-16 h-16 text-bleu-signature/30 relative z-10" />
-                </div>
-                <p class="text-encre/40 text-sm font-medium">Dashboard Optibilan - Bilans, programmes, nutrition, santé, suivi client</p>
-              </div>
-            </div>
+        <div class="mt-16 relative animate-scale-in delay-500" aria-hidden="true">
+          <div class="aspect-[16/10] max-w-5xl mx-auto rounded-card-lg bg-blanc border border-encre/10 shadow-elevated overflow-hidden relative">
+            <img
+              src="/images/product/dashboard-coach.webp"
+              alt="Tableau de bord Optibilan : pilotage de tous les suivis clients, bilans, programmes, nutrition, santé"
+              width="1600"
+              height="1000"
+              class="w-full h-full object-cover"
+              loading="eager"
+              fetchpriority="high"
+            />
           </div>
         </div>
       )}

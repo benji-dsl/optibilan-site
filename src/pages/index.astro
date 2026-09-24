@@ -36,7 +36,7 @@ const productDemos = [
       'Chronologie unique : bilans, photos, ressentis, habitudes',
       'Validation mobile < 2 min, alertes adherence auto',
     ],
-    screenshot: '/images/product/bilans-progression.webp',
+    screenshot: '/images/product/04-mobile-progression.webp',
     href: '/product/check-ins/',
     layout: 'text-left',
   },
@@ -49,7 +49,7 @@ const productDemos = [
       'Corrélations auto : VFC ↓ + charge ↑ + sommeil ↓ = signal',
       'Import PDF labo : IA extrait, structure, signale les valeurs',
     ],
-    screenshot: '/images/product/sante-biomarqueurs.webp',
+    screenshot: '/images/product/07-utilisatrice-50ans-lifestyle.webp',
     href: '/product/health/',
     layout: 'text-right',
   },
@@ -62,7 +62,7 @@ const productDemos = [
       'Listes de courses auto, compléments documentés & alertes interactions',
       'Journal client photo/scan + validation coach 1 clic + écart plan vs réel',
     ],
-    screenshot: '/images/product/nutrition-consultation.webp',
+    screenshot: '/images/product/02-mobile-nutrition.webp',
     href: '/product/nutrition/',
     layout: 'text-left',
   },
@@ -75,7 +75,7 @@ const productDemos = [
       'Drag-and-drop séances, progression auto charge/volume/RPE',
       'Client : vidéo exercice, saisie poids/RPE, coach voit tout temps réel',
     ],
-    screenshot: '/images/product/sport-programmes.webp',
+    screenshot: '/images/product/03-mobile-seance-sport.webp',
     href: '/product/training/',
     layout: 'text-right',
   },
@@ -88,7 +88,7 @@ const productDemos = [
       'Bilan → synthèse auto pour pro + client',
       'Données → alertes adhérence, suggestions ajustement',
     ],
-    screenshot: '/images/product/ia-automatisations.webp',
+    screenshot: '/images/product/01-mobile-accueil-programme.webp',
     href: '/product/ai/',
     layout: 'text-left',
   },
@@ -340,36 +340,6 @@ Depuis un seul endroit."
       </div>
     </section>
 
-    <!-- 5b. L'EXPÉRIENCE MOBILE CLIENT -->
-    <section class="section bg-blanc" aria-labelledby="mobile-title">
-      <div class="container">
-        <header class="text-center max-w-3xl mx-auto mb-16">
-          <h2 id="mobile-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
-            Votre client avance où il veut, quand il veut
-          </h2>
-          <p class="text-lg text-encre/60">
-            L'appli mobile optibilan : vos clients retrouvent leur programme, leur nutrition, leur progression et leur suivi mental en 3 gestes.
-          </p>
-        </header>
-        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6 max-w-6xl mx-auto">
-          {[
-            { src: '/images/product/01-mobile-accueil-programme.webp', alt: "Capture mobile Optibilan : accueil du client avec son programme du jour", title: "Programme du jour" },
-            { src: '/images/product/02-mobile-nutrition.webp', alt: "Capture mobile Optibilan : suivi nutritionnel du client, repas et apports", title: "Nutrition" },
-            { src: '/images/product/03-mobile-seance-sport.webp', alt: "Capture mobile Optibilan : séance de sport avec exercices et charges", title: "Séance sport" },
-            { src: '/images/product/04-mobile-progression.webp', alt: "Capture mobile Optibilan : progression et courbes du client", title: "Progression" },
-            { src: '/images/product/05-mobile-preparation-mentale.webp', alt: "Capture mobile Optibilan : exercices de préparation mentale", title: "Prépa mentale" },
-          ].map((m, i) => (
-            <figure class="group text-center" style={{animationDelay: `${i * 80}ms`}}>
-              <div class="rounded-xl border border-encre/10 bg-encre/5 overflow-hidden shadow-soft group-hover:shadow-xl transition-all group-hover:-translate-y-1">
-                <img src={m.src} alt={m.alt} loading="lazy" width="1000" height="639" class="w-full h-auto" />
-              </div>
-              <figcaption class="mt-3 text-sm font-medium text-encre/70">{m.title}</figcaption>
-            </figure>
-          ))}
-        </div>
-      </div>
-    </section>
-
     <!-- 6. POUR QUI -->
     <section class="section bg-blanc" aria-labelledby="profiles-title">
       <div class="container">
@@ -383,10 +353,10 @@ Depuis un seul endroit."
         </header>
         <div class="max-w-4xl mx-auto mb-12 rounded-xl border border-encre/10 bg-encre/5 overflow-hidden shadow-soft">
           <img
-            src="/images/product/07-utilisatrice-50ans-lifestyle.webp"
-            alt="Utilisatrice de 50 ans en pleine forme dans son quotidien, accompagnée de son suivi longévité Optibilan"
+            src="/images/product/06-praticien-sante-consultation.webp"
+            alt="Praticien de santé en consultation avec un client, accompagnement personnalisé via Optibilan"
             width="1000"
-            height="713"
+            height="607"
             class="w-full h-auto"
             loading="lazy"
           />
