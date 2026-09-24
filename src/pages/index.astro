@@ -36,7 +36,7 @@ const productDemos = [
       'Chronologie unique : bilans, photos, ressentis, habitudes',
       'Validation mobile < 2 min, alertes adherence auto',
     ],
-    screenshot: '/images/product/bilans-progression.jpg',
+    screenshot: '/images/product/bilans-progression.webp',
     href: '/product/check-ins/',
     layout: 'text-left',
   },
@@ -49,7 +49,7 @@ const productDemos = [
       'Corrélations auto : VFC ↓ + charge ↑ + sommeil ↓ = signal',
       'Import PDF labo : IA extrait, structure, signale les valeurs',
     ],
-    screenshot: '/images/product/sante-biomarqueurs.jpg',
+    screenshot: '/images/product/sante-biomarqueurs.webp',
     href: '/product/health/',
     layout: 'text-right',
   },
@@ -62,7 +62,7 @@ const productDemos = [
       'Listes de courses auto, compléments documentés & alertes interactions',
       'Journal client photo/scan + validation coach 1 clic + écart plan vs réel',
     ],
-    screenshot: '/images/product/nutrition-consultation.jpg',
+    screenshot: '/images/product/nutrition-consultation.webp',
     href: '/product/nutrition/',
     layout: 'text-left',
   },
@@ -75,7 +75,7 @@ const productDemos = [
       'Drag-and-drop séances, progression auto charge/volume/RPE',
       'Client : vidéo exercice, saisie poids/RPE, coach voit tout temps réel',
     ],
-    screenshot: '/images/product/sport-programmes.jpg',
+    screenshot: '/images/product/sport-programmes.webp',
     href: '/product/training/',
     layout: 'text-right',
   },
@@ -88,7 +88,7 @@ const productDemos = [
       'Bilan → synthèse auto pour pro + client',
       'Données → alertes adhérence, suggestions ajustement',
     ],
-    screenshot: '/images/product/ia-automatisations.jpg',
+    screenshot: '/images/product/ia-automatisations.webp',
     href: '/product/ai/',
     layout: 'text-left',
   },
@@ -98,12 +98,12 @@ const clientExperience = {
   pro: {
     title: 'Votre tableau de bord',
     desc: 'Tout piloter d\'un seul endroit. Bilans, programmes, nutrition, santé, mental, IA — modules activables selon votre pratique.',
-    screenshot: '/images/product/dashboard-coach.jpg',
+    screenshot: '/images/product/dashboard-coach.webp',
   },
   client: {
     title: 'Leur espace simple',
     desc: 'Vos clients voient leurs bilans, programmes, habitudes, messages. Pas d\'appli à installer, ça marche dans le navigateur.',
-    screenshot: '/images/product/interface-client-mobile.jpg',
+    screenshot: '/images/product/interface-client-mobile.webp',
   },
 };
 
@@ -340,6 +340,36 @@ Depuis un seul endroit."
       </div>
     </section>
 
+    <!-- 5b. L'EXPÉRIENCE MOBILE CLIENT -->
+    <section class="section bg-blanc" aria-labelledby="mobile-title">
+      <div class="container">
+        <header class="text-center max-w-3xl mx-auto mb-16">
+          <h2 id="mobile-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+            Votre client avance où il veut, quand il veut
+          </h2>
+          <p class="text-lg text-encre/60">
+            L'appli mobile optibilan : vos clients retrouvent leur programme, leur nutrition, leur progression et leur suivi mental en 3 gestes.
+          </p>
+        </header>
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6 max-w-6xl mx-auto">
+          {[
+            { src: '/images/product/01-mobile-accueil-programme.webp', alt: "Capture mobile Optibilan : accueil du client avec son programme du jour", title: "Programme du jour" },
+            { src: '/images/product/02-mobile-nutrition.webp', alt: "Capture mobile Optibilan : suivi nutritionnel du client, repas et apports", title: "Nutrition" },
+            { src: '/images/product/03-mobile-seance-sport.webp', alt: "Capture mobile Optibilan : séance de sport avec exercices et charges", title: "Séance sport" },
+            { src: '/images/product/04-mobile-progression.webp', alt: "Capture mobile Optibilan : progression et courbes du client", title: "Progression" },
+            { src: '/images/product/05-mobile-preparation-mentale.webp', alt: "Capture mobile Optibilan : exercices de préparation mentale", title: "Prépa mentale" },
+          ].map((m, i) => (
+            <figure class="group text-center" style={{animationDelay: `${i * 80}ms`}}>
+              <div class="rounded-xl border border-encre/10 bg-encre/5 overflow-hidden shadow-soft group-hover:shadow-xl transition-all group-hover:-translate-y-1">
+                <img src={m.src} alt={m.alt} loading="lazy" width="1000" height="639" class="w-full h-auto" />
+              </div>
+              <figcaption class="mt-3 text-sm font-medium text-encre/70">{m.title}</figcaption>
+            </figure>
+          ))}
+        </div>
+      </div>
+    </section>
+
     <!-- 6. POUR QUI -->
     <section class="section bg-blanc" aria-labelledby="profiles-title">
       <div class="container">
@@ -351,6 +381,16 @@ Depuis un seul endroit."
             Chaque profil active les modules pertinents, avec les permissions adaptées.
           </p>
         </header>
+        <div class="max-w-4xl mx-auto mb-12 rounded-xl border border-encre/10 bg-encre/5 overflow-hidden shadow-soft">
+          <img
+            src="/images/product/07-utilisatrice-50ans-lifestyle.webp"
+            alt="Utilisatrice de 50 ans en pleine forme dans son quotidien, accompagnée de son suivi longévité Optibilan"
+            width="1000"
+            height="713"
+            class="w-full h-auto"
+            loading="lazy"
+          />
+        </div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
           {profiles.map((profile, i) => (
             <article class="p-6 rounded-xl border border-encre/10 hover:border-bleu-signature/30 hover:shadow-soft transition-all text-center" style={{animationDelay: `${i * 100}ms`}}>
@@ -410,7 +450,7 @@ Depuis un seul endroit."
           </h2>
           <p class="text-lg text-encre/60">Un tour du vrai logiciel, mené par l'équipe Optibilan.</p>
         </header>
-        <div class="aspect-video max-w-4xl mx-auto rounded-xl border border-encre/10 bg-encre/5 overflow-hidden relative" style="background-image: url('/images/product/dashboard-coach.jpg'); background-size: cover; background-position: center;">
+        <div class="aspect-video max-w-4xl mx-auto rounded-xl border border-encre/10 bg-encre/5 overflow-hidden relative" style="background-image: url('/images/product/dashboard-coach.webp'); background-size: cover; background-position: center;">
           <a href="/contact/" class="absolute inset-0 flex items-center justify-center" aria-label="Demander une démo à l'équipe Optibilan">
             <div class="w-20 h-20 md:w-24 md:h-24 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center shadow-xl hover:bg-white hover:scale-105 transition-all duration-300">
               <svg class="w-8 h-8 md:w-10 md:h-10 text-bleu-signature ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
@@ -455,7 +495,7 @@ Depuis un seul endroit."
         <div class="relative mb-10">
           <div class="aspect-video max-w-4xl mx-auto rounded-xl border border-encre/10 bg-encre/5 overflow-hidden relative shadow-xl">
             <div class="absolute inset-0 flex items-center justify-center">
-              <img src="/images/product/marque-blanche.jpg" alt="Aperçu de la marque blanche : l'espace client au nom de votre cabinet" class="w-full h-full object-cover" loading="lazy" />
+              <img src="/images/product/marque-blanche.webp" alt="Aperçu de la marque blanche : l'espace client au nom de votre cabinet" class="w-full h-full object-cover" loading="lazy" />
             </div>
           </div>
           <div class="absolute -bottom-6 left-1/2 -translate-x-1/2 flex gap-4">
