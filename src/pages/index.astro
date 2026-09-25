@@ -101,11 +101,6 @@ const clientExperience = {
     desc: 'Tout piloter d\'un seul endroit. Bilans, programmes, nutrition, santé, mental, IA — modules activables selon votre pratique.',
     screenshot: '/images/product/dashboard-coach.webp',
   },
-  client: {
-    title: 'Leur espace simple',
-    desc: 'Vos clients voient leurs bilans, programmes, habitudes, messages. Pas d\'appli à installer, ça marche dans le navigateur.',
-    screenshot: '/images/product/interface-client-mobile.webp',
-  },
 };
 
 const profiles = [
@@ -141,25 +136,6 @@ const testimonials = [
     quote: '"J\'ai lancé mon accompagnement signature à 1 800€/mois grâce à la marque blanche totale : domaine custom, emails @ma-methode.fr, assistant IA \'Julie\', vocabulaire \'membre\'. Mes membres ne voient jamais Optibilan."',
     result: '81k€ MRR solo • Marque 100% sienne',
   },
-];
-
-const marqueBlancheDemo = [
-  { label: 'Logo & Couleurs', desc: 'Votre identité visuelle partout', icon: 'shield' },
-  { label: 'Domaine custom', desc: 'app.votrecabinet.fr', icon: 'globe' },
-  { label: 'Espace client', desc: 'Interface aux couleurs du cabinet', icon: 'users' },
-  { label: 'Accueil personnalisé', desc: 'Votre vocabulaire, vos mentions', icon: 'document' },
-  { label: 'Application mobile', desc: 'PWA installable, icône à vous', icon: 'zap' },
-  { label: 'Emails @vous', desc: 'DKIM/SPF/DMARC configurés', icon: 'mail' },
-];
-
-const faq = [
-  { q: 'À qui s\'adresse Optibilan ?', a: 'Aux professionnels de l\'accompagnement : coachs sportifs, nutritionnistes, naturopathes, préparateurs mentaux, cabinets pluridisciplinaires. Si vous suivez des clients, Optibilan vous concerne.' },
-  { q: 'Comment fonctionne l\'espace client ?', a: 'Vos clients accèdent via un lien unique (pas d\'appli à installer). Ils voient leurs bilans, programmes, habitudes, messages. Vous choisissez ce qui est visible.' },
-  { q: 'Puis-je importer mes clients existants ?', a: 'Oui. Import CSV/Excel guidé (noms, emails, données historiques). L\'équipe peut vous accompagner sur la migration.' },
-  { q: 'Puis-je utiliser Optibilan avec mon équipe ?', a: 'Oui. Rôles : admin, coach, nutrition, mental, support. Permissions par spécialité. Le coach ne voit pas le mental, le mental ne voit pas la nutrition (sauf partage autorisé).' },
-  { q: 'Comment les données sont-elles protégées ?', a: 'Hébergement EU (Supabase Irlande, VPS France), chiffrement AES-256/TLS 1.3, isolation multi-tenant validée 13/13 tests CI, audit trail double niveau, backup chiffré 30j, zéro transfert hors UE.' },
-  { q: 'Puis-je personnaliser l\'expérience ?', a: 'Marque blanche : logo, couleurs, domaine, vocabulaire (coaché/patient/membre), assistant IA nommé, emails @vous. Activation instantanée, sans code.' },
-  { q: 'Comment tester Optibilan ?', a: '30 jours gratuits, toutes fonctionnalités incluses. Créez votre cabinet, invitez des clients, testez l\'espace client. Aucune limite pendant l\'essai.' },
 ];
 
 const breadcrumbJsonLd = {
@@ -333,7 +309,6 @@ Scalez votre activité."
             aspect="5/2"
             width="998"
             height="381"
-            className="mb-8"
           />
           <div>
             <h3 class="font-display text-2xl font-bold text-encre mb-4">{clientExperience.pro.title}</h3>
@@ -349,14 +324,6 @@ Scalez votre activité."
               <Icon name="arrowRight" class="w-5 h-5 transition-transform group-hover:translate-x-1" />
             </a>
           </div>
-          <BrowserFrame
-            src={clientExperience.client.screenshot}
-            alt="Espace client Optibilan au nom du cabinet : bilans, programmes, habitudes et messages à portée de main des clients"
-            url="espace-client.optibilan.com"
-            aspect="3/2"
-            width="414"
-            height="272"
-          />
         </div>
       </div>
     </section>
@@ -401,7 +368,7 @@ Scalez votre activité."
       <div class="container">
         <header class="text-center max-w-3xl mx-auto mb-16">
           <h2 id="testimonials-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
-            Ce qu'ils en disent
+            Les avis des utilisateurs :
           </h2>
           <p class="text-lg text-encre/60">
             Résultats réels de professionnels qui ont structuré leur pratique avec Optibilan.
@@ -432,111 +399,6 @@ Scalez votre activité."
       </div>
     </section>
 
-    <!-- 8. DÉMO PRODUIT -->
-    <section class="section bg-blanc" aria-labelledby="demo-title">
-      <div class="container">
-        <header class="text-center max-w-3xl mx-auto mb-12">
-          <h2 id="demo-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
-            Découvrez Optibilan en conditions réelles
-          </h2>
-          <p class="text-lg text-encre/60">Un tour du vrai logiciel, mené par l'équipe Optibilan.</p>
-        </header>
-        <div class="max-w-4xl mx-auto rounded-2xl border border-encre/10 bg-blanc shadow-elevated overflow-hidden">
-          <div class="aspect-video bg-encre/5 overflow-hidden relative" style="background-image: url('/images/product/dashboard-coach.webp'); background-size: cover; background-position: center;">
-            <a href="/contact/" class="absolute inset-0 flex items-center justify-center" aria-label="Demander une démo à l'équipe Optibilan">
-              <div class="w-20 h-20 md:w-24 md:h-24 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center shadow-xl hover:bg-white hover:scale-105 transition-all duration-300">
-                <svg class="w-8 h-8 md:w-10 md:h-10 text-bleu-signature ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-              </div>
-            </a>
-            <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" aria-hidden="true"></div>
-            <div class="absolute bottom-4 left-1/2 -translate-x-1/2 text-center text-white/90 text-sm">
-              <span class="flex items-center justify-center gap-1 bg-black/30 px-3 py-1 rounded-full">
-                <Icon name="clock" class="w-4 h-4" />
-                Démo en conditions réelles
-              </span>
-            </div>
-            <div class="absolute top-4 right-4">
-              <svg class="w-10 h-10 text-white/80" fill="currentColor" viewBox="0 0 24 24"><path d="M21.6 4.8a10 10 0 0 0-14.4 0c-1.2.8-2 2.2-2 3.6v9.6c0 1.4.8 2.8 2 3.6a10 10 0 0 0 14.4 0c1.2-.8 2-2.2 2-3.6V8.4c0-1.4-.8-2.8-2-3.6zm-1.2 9.6a7 7 0 0 1-10.4 0c-.7-.5-1.2-1.4-1.2-2.4V8.4c0-1 .5-1.9 1.2-2.4a7 7 0 0 1 10.4 0c.7.5 1.2 1.4 1.2 2.4v9.6c0 1-.5 1.9-1.2 2.4zm-7.2-4.8v9.6l6.4-4.8z"/></svg>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 9. MARQUE BLANCHE -->
-    <section class="section bg-gradient-to-br from-bleu-signature/5 via-papier to-bleu-lecture/5 rounded-xl relative overflow-hidden" aria-labelledby="whitelabel-title">
-      <div class="container relative py-16 md:py-24">
-        <header class="text-center max-w-3xl mx-auto mb-16">
-          <h2 id="whitelabel-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
-            Votre méthode. Votre marque.
-          </h2>
-          <p class="text-lg text-encre/60 max-w-2xl mx-auto">
-            Optibilan disparaît. Vos clients ne voient que vous.
-          </p>
-        </header>
-        <div class="grid md:grid-cols-2 lg:grid-cols-6 gap-6 mb-12">
-          {marqueBlancheDemo.map((item, i) => (
-            <article key={i} class="p-6 rounded-xl bg-blanc border border-encre/10 text-center hover:border-bleu-signature/30 hover:shadow-soft transition-all group">
-              <div class="icon-wrapper mx-auto mb-4" aria-hidden="true" style="background-color: var(--color-bleu-clair);">
-                <Icon name={item.icon} class="w-7 h-7 text-bleu-signature group-hover:scale-110 transition-transform" />
-              </div>
-              <h3 class="font-display text-lg font-bold text-encre mb-2">{item.label}</h3>
-              <p class="text-encre/60 text-sm">{item.desc}</p>
-            </article>
-          ))}
-        </div>
-        <div class="relative mb-10">
-          <BrowserFrame
-            src="/images/product/marque-blanche.webp"
-            alt="Optibilan en marque blanche : l'espace client aux couleurs et au nom de votre cabinet médical ou de coaching"
-            url="app.votrecabinet.fr"
-            aspect="16/9"
-            width="481"
-            height="272"
-          />
-          <div class="absolute -bottom-6 left-1/2 -translate-x-1/2 flex gap-4">
-            <div class="w-40 h-28 bg-blanc rounded-lg border border-encre/10 shadow-lg p-2 flex items-center justify-center">
-              <div class="text-xs font-medium text-encre/60 text-center">app.votrecabinet.fr</div>
-            </div>
-            <div class="w-40 h-28 bg-blanc rounded-lg border border-encre/10 shadow-lg p-2 flex items-center justify-center">
-              <div class="text-xs font-medium text-encre/60 text-center">emails @vous</div>
-            </div>
-            <div class="w-40 h-28 bg-blanc rounded-lg border border-encre/10 shadow-lg p-2 flex items-center justify-center">
-              <div class="text-xs font-medium text-encre/60 text-center">PWA installable</div>
-            </div>
-          </div>
-        </div>
-        <div class="text-center mt-16">
-          <a href="/product/white-label/" class="btn btn-solid group inline-flex items-center gap-2">
-            Voir la démonstration complète marque blanche
-            <Icon name="arrowRight" class="w-5 h-5 transition-transform group-hover:translate-x-1" />
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- 10. FAQ HOME -->
-    <section class="section bg-blanc" aria-labelledby="faq-home-title">
-      <div class="container max-w-3xl">
-        <header class="text-center mb-16">
-          <h2 id="faq-home-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
-            Questions fréquentes
-          </h2>
-        </header>
-        <dl class="space-y-4">
-          {faq.map((item, i) => (
-            <div key={i} class="border border-encre/10 rounded-xl overflow-hidden">
-              <dt class="px-6 py-4 bg-blanc font-medium text-encre cursor-pointer flex items-center justify-between" aria-expanded="false" aria-controls={`faq-home-${i}`}>
-                {item.q}
-                <svg class="w-5 h-5 text-encre/40 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-              </dt>
-              <dd id={`faq-home-${i}`} class="px-6 pb-4 text-encre/60 hidden">{item.a}</dd>
-            </div>
-          ))}
-        </dl>
-      </div>
-    </section>
-
     <!-- Final CTA -->
     <CTA
       variant="gold"
@@ -549,18 +411,3 @@ Scalez votre activité."
 
   <Footer />
 </Layout>
-
-<script is:inline>
-  document.querySelectorAll('dl dt').forEach(dt => {
-    dt.addEventListener('click', () => {
-      const dd = dt.nextElementSibling;
-      const svg = dt.querySelector('svg');
-      const expanded = dt.getAttribute('aria-expanded') === 'true';
-      dt.setAttribute('aria-expanded', String(!expanded));
-      dd?.classList.toggle('hidden');
-      if (svg) {
-        svg.style.transform = expanded ? 'rotate(0deg)' : 'rotate(180deg)';
-      }
-    });
-  });
-</script>
