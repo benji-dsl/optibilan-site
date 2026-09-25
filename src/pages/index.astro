@@ -206,13 +206,13 @@ Scalez votre activité."
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {socialProof.map(item => (
             <article class="rounded-xl border border-encre/10 hover:border-bleu-signature/30 hover:shadow-soft transition-all text-center overflow-hidden">
-              <div class="aspect-[4/3] overflow-hidden bg-encre/5">
+              <div class="bg-encre/5">
                 <img
                   src={item.image}
                   alt={`{item.name} utilisant Optibilan au quotidien`}
                   width="1000"
                   height="750"
-                  class="w-full h-full object-cover"
+                  class="w-full h-auto"
                   loading="lazy"
                   decoding="async"
                 />
@@ -243,8 +243,8 @@ Scalez votre activité."
         </header>
         <div class="grid md:grid-cols-2 gap-10 items-stretch">
           <div class="p-6 md:p-8 rounded-2xl border border-bordeaux/30 bg-bordeaux/10">
-            <h3 class="font-display text-xl font-bold text-white mb-6 flex items-center gap-2">
-              <span class="w-8 h-8 rounded-full bg-bordeaux/30 flex items-center justify-center text-bordeaux font-medium">AVANT</span>
+            <h3 class="font-display text-xl font-bold text-white mb-6 flex items-center gap-3">
+              <span class="px-3 py-1 rounded-full bg-bordeaux/30 text-bordeaux font-bold text-sm leading-none flex-shrink-0">AVANT</span>
               <span>Optibilan</span>
             </h3>
             <ul class="space-y-4 text-white/80">
@@ -258,8 +258,8 @@ Scalez votre activité."
           </div>
           <div class="p-6 md:p-8 rounded-2xl bg-gradient-to-br from-bleu-signature/25 to-bleu-lecture/15 border border-bleu-signature/50 shadow-2xl shadow-bleu-signature/20 ring-1 ring-bleu-signature/40 relative">
             <div class="absolute -top-3 right-6 px-3 py-0.5 bg-bleu-signature text-craie text-xs font-semibold rounded-full">RECOMMANDÉ</div>
-            <h3 class="font-display text-2xl font-bold text-white mb-6 flex items-center gap-2">
-              <span class="w-9 h-9 rounded-full bg-bleu-signature flex items-center justify-center text-craie font-bold flex-shrink-0">AVEC</span>
+            <h3 class="font-display text-2xl font-bold text-white mb-6 flex items-center gap-3">
+              <span class="px-3 py-1 rounded-full bg-bleu-signature text-craie font-bold text-sm leading-none flex-shrink-0">AVEC</span>
               <span>Optibilan</span>
             </h3>
             <ul class="space-y-4 text-white">
