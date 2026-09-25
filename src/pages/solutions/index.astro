@@ -27,6 +27,8 @@ const solutions = [
     desc: 'Programmes, bilans, progression, adhérence, communication. Passez moins de temps à gérer, plus de temps à coacher.',
     color: 'indigo',
     featured: true,
+    photo: '/images/product/medecins/12-coach-sportif-accompagnement.webp',
+    photoAlt: "Coach sportif accompagnant son client lors d'une séance",
   },
   {
     href: '/solutions/nutrition/',
@@ -35,6 +37,8 @@ const solutions = [
     desc: 'Plans, habitudes, listes de courses, compléments, évolution. La nutrition à l\'échelle. Templates, validation 1 clic, conformité.',
     color: 'bleu-lecture',
     featured: false,
+    photo: '/images/product/medecins/10-nutritionniste-consultation.webp',
+    photoAlt: 'Nutritionniste en consultation, échange avec son patient',
   },
   {
     href: '/solutions/mental/',
@@ -43,6 +47,8 @@ const solutions = [
     desc: 'Exercices, ressources, journal d\'appels, adhérence. Cloisonnement strict des données. Le mental structuré.',
     color: 'indigo',
     featured: false,
+    photo: '/images/product/medecins/11-preparateur-mental-entretien.webp',
+    photoAlt: 'Préparateur mental en entretien avec un sportif',
   },
   {
     href: '/solutions/cabinets/',
@@ -51,6 +57,8 @@ const solutions = [
     desc: 'Multi-praticiens, permissions, coordination, administration, sécurité, audit, marque blanche.',
     color: 'bordeaux',
     featured: true,
+    photo: '/images/product/medecins/08-equipe-medicale-pluridisciplinaire.webp',
+    photoAlt: 'Équipe médicale pluridisciplinaire réunie autour d\'un même patient',
   },
 ];
 
@@ -102,6 +110,9 @@ Quatre façons de l'utiliser."
                 </div>
               )}
 <div class="p-6 md:p-8">
+                <div class="aspect-video rounded-lg overflow-hidden mb-4">
+                  <img src={sol.photo} alt={sol.photoAlt} class="w-full h-full object-cover" loading="lazy" />
+                </div>
                 <div class="icon-wrapper mb-4" aria-hidden="true" style={`--mod-color: var(--color-${sol.color})`}>
                   <Icon name={sol.icon} class="w-8 h-8" style={`color: var(--color-${sol.color});`} />
                 </div>
