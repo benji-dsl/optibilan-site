@@ -1,5 +1,5 @@
 ---
-type IconName = 'shield' | 'chart' | 'users' | 'calendar' | 'document' | 'lock' | 'zap' | 'globe' | 'brain' | 'arrowRight' | 'check' | 'chevronDown' | 'menu' | 'close' | 'logo' | 'twitter' | 'linkedin' | 'github' | 'youtube' | 'database' | 'credit-card' | 'cloud' | 'code' | 'activity' | 'apple' | 'dumbbell';
+type IconName = 'shield' | 'chart' | 'users' | 'calendar' | 'document' | 'lock' | 'zap' | 'globe' | 'brain' | 'arrowRight' | 'check' | 'chevronDown' | 'menu' | 'close' | 'logo' | 'twitter' | 'linkedin' | 'github' | 'youtube' | 'database' | 'credit-card' | 'cloud' | 'code' | 'activity' | 'apple' | 'dumbbell' | 'user' | 'sparkles' | 'home' | 'grid' | 'mail' | 'terminal' | 'monitor' | 'clock';
 
 interface Props {
   name: IconName;
@@ -34,6 +34,14 @@ const icons = {
   activity: '<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>',
   apple: '<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M17.05 12.54c-.04-2.55 2.09-3.77 2.18-3.83-1.19-1.74-3.04-1.98-3.7-2.01-1.58-.16-3.08.93-3.88.93-.8 0-2.03-.9-3.34-.88-1.72.03-3.3 1-4.19 2.54-1.79 3.1-.46 7.7 1.28 10.21.85 1.24 1.87 2.62 3.2 2.57 1.28-.05 1.77-.83 3.32-.83s1.99.83 3.35.8c1.39-.02 2.27-1.26 3.11-2.51.98-1.43 1.39-2.81 1.41-2.88-.03-.01-2.7-1.04-2.74-4.11zM14.3 4.3c.71-.86 1.19-2.05 1.06-3.24-1.02.04-2.26.68-3 1.54-.66.76-1.23 1.98-1.08 3.15 1.14.09 2.31-.58 3.02-1.45z"/></svg>',
   dumbbell: '<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6.5 6.5v11m4-8.5v6m3-11v12m4-8.5v6M3 8.5v7M21 8.5v7"/></svg>',
+  user: '<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>',
+  sparkles: '<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v2m-6.364 4.636l-1.414 1.414m13.728-1.414l1.414-1.414M20 12h2M4 12H2m14.364 5.364l1.414 1.414m-13.728-1.414l-1.414 1.414M12 19v2m-3-1a4 4 0 0 1 6 0m-3-6a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/></svg>',
+  home: '<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l9-9 9 9M5 10v10a1 1 0 0 0 1 1h3v-6h6v6h3a1 1 0 0 0 1-1V10"/></svg>',
+  grid: '<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V5zm10 0a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1V5zM4 15a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-4zm10 0a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1v-4z"/></svg>',
+  mail: '<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 0 0 2.22 0L21 8M5 19h14a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2z"/></svg>',
+  terminal: '<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 19h14a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2z"/></svg>',
+  monitor: '<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2z"/></svg>',
+  clock: '<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6l4 2m6-2a10 10 0 1 1-20 0 10 10 0 0 1 20 0z"/></svg>',
 } as const;
 
 const { name, class: className = '', 'aria-hidden': ariaHidden = true } = Astro.props;
