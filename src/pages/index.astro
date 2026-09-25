@@ -12,10 +12,10 @@ const pageTitle = 'Optibilan - Centralisez vos suivis. Scalez votre activité.';
 const pageDescription = 'Le système d\'exploitation des coachs et des professionnels de la santé : bilans, programmes, nutrition et données biométriques réunis sur une seule plateforme.';
 
 const socialProof = [
-  { name: 'Studio Performance', type: 'Coaching sportif', location: 'Bordeaux', clients: 120, logo: '/images/logos/logo-placeholder-1.svg' },
-  { name: 'Cabinet NutriSanté', type: 'Nutrition', location: 'Nantes', clients: 85, logo: '/images/logos/logo-placeholder-2.svg' },
-  { name: 'Mental Performance', type: 'Préparation mentale', location: 'Paris', clients: 60, logo: '/images/logos/logo-placeholder-3.svg' },
-  { name: 'Méthode Équilibre', type: 'Cabinet pluridisciplinaire', location: 'Lille', clients: 45, logo: '/images/logos/logo-placeholder-4.svg' },
+  { name: 'Studio Performance', type: 'Coaching sportif', location: 'Bordeaux', clients: 120, image: '/images/cabinets/01-studio-performance-realiste.webp' },
+  { name: 'Cabinet NutriSanté', type: 'Nutrition', location: 'Nantes', clients: 85, image: '/images/cabinets/02-cabinet-nutrisante-realiste.webp' },
+  { name: 'Mental Performance', type: 'Préparation mentale', location: 'Paris', clients: 60, image: '/images/cabinets/03-mental-performance-realiste.webp' },
+  { name: 'Méthode Équilibre', type: 'Cabinet pluridisciplinaire', location: 'Lille', clients: 45, image: '/images/cabinets/04-methode-equilibre-realiste.webp' },
 ];
 
 const avantAvec = [
@@ -205,14 +205,24 @@ Scalez votre activité."
         </header>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {socialProof.map(item => (
-            <article class="p-6 rounded-xl border border-encre/10 hover:border-bleu-signature/30 hover:shadow-soft transition-all text-center">
-              <div class="w-16 h-16 mx-auto mb-4 rounded-lg bg-bleu-clair flex items-center justify-center">
-                <Icon name="building" class="w-8 h-8 text-bleu-signature" />
+            <article class="rounded-xl border border-encre/10 hover:border-bleu-signature/30 hover:shadow-soft transition-all text-center overflow-hidden">
+              <div class="aspect-[4/3] overflow-hidden bg-encre/5">
+                <img
+                  src={item.image}
+                  alt={`{item.name} utilisant Optibilan au quotidien`}
+                  width="1000"
+                  height="750"
+                  class="w-full h-full object-cover"
+                  loading="lazy"
+                  decoding="async"
+                />
               </div>
-              <h3 class="font-display text-lg font-bold text-encre mb-1">{item.name}</h3>
-              <p class="text-encre/50 text-sm mb-2">{item.type} — {item.location}</p>
-              <div class="flex items-center justify-center gap-4 text-sm text-encre/60">
-                <span class="flex items-center gap-1"><Icon name="users" class="w-4 h-4" /> {item.clients}+ clients</span>
+              <div class="p-6">
+                <h3 class="font-display text-lg font-bold text-encre mb-1">{item.name}</h3>
+                <p class="text-encre/50 text-sm mb-3">{item.type} — {item.location}</p>
+                <div class="flex items-center justify-center gap-4 text-sm text-encre/60">
+                  <span class="flex items-center gap-1"><Icon name="users" class="w-4 h-4" /> {item.clients}+ clients</span>
+                </div>
               </div>
             </article>
           ))}
