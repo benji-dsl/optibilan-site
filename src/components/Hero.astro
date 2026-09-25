@@ -23,8 +23,8 @@ const {
   illustration,
 } = Astro.props;
 
-const homeTitle = title || 'Pilotez tous vos accompagnements. \nDepuis un seul endroit.';
-const homeSubtitle = subtitle || "Bilans, programmes, nutrition, données de santé et suivi client réunis dans une plateforme pensée pour les professionnels de la santé et de la performance.";
+const homeTitle = title || 'Centralisez vos suivis. \nScalez votre activité.';
+const homeSubtitle = subtitle || "Le système d'exploitation des coachs et des professionnels de la santé. Bilans, programmes, nutrition et données biométriques réunis sur une seule plateforme.";
 const homeBadge = badge || "";
 ---
 
@@ -67,17 +67,28 @@ const homeBadge = badge || "";
     )}
 
       {variant === 'home' && (
-        <div class="mt-16 relative animate-scale-in delay-500" aria-hidden="true">
-          <div class="aspect-[16/10] max-w-5xl mx-auto rounded-card-lg bg-blanc border border-encre/10 shadow-elevated overflow-hidden relative">
-            <img
-              src="/images/product/dashboard-coach.webp"
-              alt="Tableau de bord Optibilan : pilotage de tous les suivis clients, bilans, programmes, nutrition, santé"
-              width="1600"
-              height="1000"
-              class="w-full h-full object-cover"
-              loading="eager"
-              fetchpriority="high"
-            />
+        <div class="mt-16 relative animate-scale-in delay-500">
+          <div class="max-w-5xl mx-auto rounded-2xl bg-blanc border border-encre/10 shadow-elevated overflow-hidden relative">
+            <div class="flex items-center gap-1.5 px-4 py-3 border-b border-encre/10 bg-papier">
+              <span class="w-3 h-3 rounded-full bg-bordeaux/60" aria-hidden="true"></span>
+              <span class="w-3 h-3 rounded-full bg-amber-400/70" aria-hidden="true"></span>
+              <span class="w-3 h-3 rounded-full bg-emerald-500/70" aria-hidden="true"></span>
+              <span class="ml-3 flex-1 h-7 rounded-md bg-blanc border border-encre/10 flex items-center px-3 text-xs text-encre/50 truncate">
+                <span class="w-3.5 h-3.5 rounded-full bg-bleu-signature mr-2 flex-shrink-0" aria-hidden="true"></span>
+                app.optibilan.com
+              </span>
+            </div>
+            <div class="bg-encre/5" style="aspect-ratio: 16 / 10;">
+              <img
+                src="/images/product/dashboard-coach.webp"
+                alt="Tableau de bord Optibilan pour le pilotage des suivis clients, bilans, programmes, nutrition et données biométriques des coachs"
+                width="1600"
+                height="1000"
+                class="w-full h-full object-cover"
+                loading="eager"
+                fetchpriority="high"
+              />
+            </div>
           </div>
         </div>
       )}

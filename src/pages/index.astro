@@ -4,11 +4,12 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Hero from '../components/Hero.astro';
 import TrustBar from '../components/TrustBar.astro';
+import BrowserFrame from '../components/BrowserFrame.astro';
 import CTA from '../components/CTA.astro';
 import Icon from '../components/Icon.astro';
 
-const pageTitle = 'Optibilan - Pilotage accompagnements santé & perf';
-const pageDescription = 'Plateforme SaaS pour coachs : bilans, programmes, nutrition, données santé. Essai gratuit 30j.';
+const pageTitle = 'Optibilan - Centralisez vos suivis. Scalez votre activité.';
+const pageDescription = 'Le système d\'exploitation des coachs et des professionnels de la santé : bilans, programmes, nutrition et données biométriques réunis sur une seule plateforme.';
 
 const socialProof = [
   { name: 'Studio Performance', type: 'Coaching sportif', location: 'Bordeaux', clients: 120, logo: '/images/logos/logo-placeholder-1.svg' },
@@ -182,9 +183,9 @@ const breadcrumbJsonLd = {
   <main>
     <!-- 1. HERO with spectacular product shot -->
     <Hero
-      title="Pilotez tous vos accompagnements. 
-Depuis un seul endroit."
-      subtitle="Bilans, programmes, nutrition, données de santé et suivi client réunis dans une plateforme pensée pour les professionnels de la santé et de la performance."
+      title="Centralisez vos suivis.
+Scalez votre activité."
+      subtitle="Le système d'exploitation des coachs et des professionnels de la santé. Bilans, programmes, nutrition et données biométriques réunis sur une seule plateforme."
       badge=""
       primaryCTA={{ href: '/pricing/', label: 'Rejoindre Optibilan' }}
       secondaryCTA={{ href: '/checkout/solo/', label: 'Essai offert' }}
@@ -216,7 +217,6 @@ Depuis un seul endroit."
             </article>
           ))}
         </div>
-        <p class="text-center text-sm text-encre/50 mt-8">+ 200 cabinets et coachs nous font confiance · <a href="/contact/" class="text-bleu-signature hover:underline font-medium">Voir les références</a></p>
       </div>
     </section>
 
@@ -231,30 +231,31 @@ Depuis un seul endroit."
             La différence entre disperser vos données et les piloter.
           </p>
         </header>
-        <div class="grid md:grid-cols-2 gap-8 mb-16">
-          <div class="p-6 md:p-8 rounded-xl border border-bordeaux/30 bg-bordeaux/5">
-            <h3 class="font-display text-xl font-bold text-white mb-6 flex items-center gap-2">
-              <span class="w-8 h-8 rounded-full bg-bordeaux/30 flex items-center justify-center text-bordeaux font-medium">AVANT</span>
+        <div class="grid md:grid-cols-2 gap-8 mb-16 items-stretch">
+          <div class="p-6 md:p-8 rounded-xl border border-bordeaux/20 bg-encre/50 opacity-80">
+            <h3 class="font-display text-xl font-bold text-white/80 mb-6 flex items-center gap-2">
+              <span class="w-8 h-8 rounded-full bg-bordeaux/25 flex items-center justify-center text-bordeaux font-medium">AVANT</span>
               <span>Optibilan</span>
             </h3>
-            <ul class="space-y-4 text-white/90">
+            <ul class="space-y-4 text-white/60">
               {avantAvec.map((item, i) => (
                 <li key={i} class="flex items-center gap-3">
-                  <span class="w-8 h-8 rounded-full bg-bordeaux/30 flex items-center justify-center text-bordeaux font-medium flex-shrink-0">{i + 1}</span>
+                  <span class="w-8 h-8 rounded-full bg-bordeaux/20 flex items-center justify-center text-bordeaux/70 font-medium flex-shrink-0">{i + 1}</span>
                   <span>{item.avant}</span>
                 </li>
               ))}
             </ul>
           </div>
-          <div class="p-6 md:p-8 rounded-xl border border-bleu-signature/30 bg-bleu-signature/10">
-            <h3 class="font-display text-xl font-bold text-white mb-6 flex items-center gap-2">
-              <span class="w-8 h-8 rounded-full bg-bleu-signature/30 flex items-center justify-center text-bleu-signature font-medium flex-shrink-0">AVEC</span>
+          <div class="p-6 md:p-8 rounded-2xl bg-gradient-to-br from-bleu-signature/25 to-bleu-lecture/15 border border-bleu-signature/50 shadow-2xl shadow-bleu-signature/20 ring-1 ring-bleu-signature/40 relative">
+            <div class="absolute -top-3 right-6 px-3 py-0.5 bg-bleu-signature text-craie text-xs font-semibold rounded-full">RECOMMANDÉ</div>
+            <h3 class="font-display text-2xl font-bold text-white mb-6 flex items-center gap-2">
+              <span class="w-9 h-9 rounded-full bg-bleu-signature flex items-center justify-center text-craie font-bold flex-shrink-0">AVEC</span>
               <span>Optibilan</span>
             </h3>
-            <ul class="space-y-4 text-white/90">
+            <ul class="space-y-4 text-white">
               {avantAvec.map((item, i) => (
-                <li key={i} class="flex items-center gap-3">
-                  <span class="w-8 h-8 rounded-full bg-bleu-signature/30 flex items-center justify-center text-bleu-signature font-medium flex-shrink-0">{i + 1}</span>
+                <li key={i} class="flex items-center gap-3 font-semibold">
+                  <span class="w-8 h-8 rounded-full bg-bleu-signature/40 ring-1 ring-bleu-signature/60 flex items-center justify-center text-bleu-signature font-bold flex-shrink-0">{i + 1}</span>
                   <span>{item.avec}</span>
                 </li>
               ))}
@@ -290,9 +291,14 @@ Depuis un seul endroit."
                 <Icon name="arrowRight" class="w-5 h-5 transition-transform group-hover:translate-x-1" />
               </a>
             </div>
-            <div class="aspect-video w-full rounded-xl border border-encre/10 bg-encre/5 overflow-hidden relative shadow-xl">
-              <img src={demo.screenshot} alt={`Capture d'écran du module Optibilan : ${demo.title}`} class="w-full h-full object-cover" loading="lazy" />
-            </div>
+            <BrowserFrame
+              src={demo.screenshot}
+              alt={`Tableau de bord Optibilan — module ${demo.title} : suivi des clients et des données pour les coachs et professionnels de la santé`}
+              url={`app.optibilan.com/${demo.id}`}
+              aspect="16/10"
+              width="1000"
+              height="625"
+            />
           </div>
         </div>
       </section>
@@ -310,9 +316,15 @@ Depuis un seul endroit."
           </p>
         </header>
         <div class="grid lg:grid-cols-2 gap-12 items-center">
-          <div class="aspect-video w-full rounded-xl border border-encre/10 bg-encre/5 overflow-hidden relative shadow-xl mb-8">
-            <img src={clientExperience.pro.screenshot} alt="Capture du tableau de bord professionnel Optibilan : pilotage de tous les suivis clients" class="w-full h-full object-contain" loading="lazy" />
-          </div>
+          <BrowserFrame
+            src={clientExperience.pro.screenshot}
+            alt="Tableau de bord Optibilan du professionnel : pilotage des suivis, bilans, programmes et appels de tous les clients en un seul endroit"
+            url="app.optibilan.com/dashboard"
+            aspect="5/2"
+            width="998"
+            height="381"
+            className="mb-8"
+          />
           <div>
             <h3 class="font-display text-2xl font-bold text-encre mb-4">{clientExperience.pro.title}</h3>
             <p class="text-encre/60 mb-8">{clientExperience.pro.desc}</p>
@@ -327,9 +339,14 @@ Depuis un seul endroit."
               <Icon name="arrowRight" class="w-5 h-5 transition-transform group-hover:translate-x-1" />
             </a>
           </div>
-          <div class="aspect-video w-full rounded-xl border border-encre/10 bg-encre/5 overflow-hidden relative shadow-xl">
-            <img src={clientExperience.client.screenshot} alt="Capture de l'espace client Optibilan : bilans, programmes et habitudes à portée de main" class="w-full h-full object-contain" loading="lazy" />
-          </div>
+          <BrowserFrame
+            src={clientExperience.client.screenshot}
+            alt="Espace client Optibilan au nom du cabinet : bilans, programmes, habitudes et messages à portée de main des clients"
+            url="espace-client.optibilan.com"
+            aspect="3/2"
+            width="414"
+            height="272"
+          />
         </div>
       </div>
     </section>
@@ -348,7 +365,7 @@ Depuis un seul endroit."
         <div class="max-w-4xl mx-auto mb-12 rounded-xl border border-encre/10 bg-encre/5 overflow-hidden shadow-soft">
           <img
             src="/images/product/medecins/07-medecin-homme-consultation-longevite.webp"
-            alt="Médecin spécialiste de la longévité en consultation, suivi prévention et biomarqueurs"
+            alt="Médecin spécialiste de la longévité en consultation : suivi prévention, biomarqueurs et longévité avec Optibilan"
             width="1000"
             height="607"
             class="w-full h-auto"
@@ -414,21 +431,32 @@ Depuis un seul endroit."
           </h2>
           <p class="text-lg text-encre/60">Un tour du vrai logiciel, mené par l'équipe Optibilan.</p>
         </header>
-        <div class="aspect-video max-w-4xl mx-auto rounded-xl border border-encre/10 bg-encre/5 overflow-hidden relative" style="background-image: url('/images/product/dashboard-coach.webp'); background-size: cover; background-position: center;">
-          <a href="/contact/" class="absolute inset-0 flex items-center justify-center" aria-label="Demander une démo à l'équipe Optibilan">
-            <div class="w-20 h-20 md:w-24 md:h-24 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center shadow-xl hover:bg-white hover:scale-105 transition-all duration-300">
-              <svg class="w-8 h-8 md:w-10 md:h-10 text-bleu-signature ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-            </div>
-          </a>
-          <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" aria-hidden="true"></div>
-          <div class="absolute bottom-4 left-1/2 -translate-x-1/2 text-center text-white/90 text-sm">
-            <span class="flex items-center justify-center gap-1 bg-black/30 px-3 py-1 rounded-full">
-              <Icon name="clock" class="w-4 h-4" />
-              Démo en conditions réelles
+        <div class="max-w-4xl mx-auto rounded-2xl border border-encre/10 bg-blanc shadow-elevated overflow-hidden">
+          <div class="flex items-center gap-1.5 px-4 py-3 border-b border-encre/10 bg-papier">
+            <span class="w-3 h-3 rounded-full bg-bordeaux/60" aria-hidden="true"></span>
+            <span class="w-3 h-3 rounded-full bg-amber-400/70" aria-hidden="true"></span>
+            <span class="w-3 h-3 rounded-full bg-emerald-500/70" aria-hidden="true"></span>
+            <span class="ml-3 flex-1 h-7 rounded-md bg-blanc border border-encre/10 flex items-center px-3 text-xs text-encre/50 truncate">
+              <span class="w-3.5 h-3.5 rounded-full bg-bleu-signature mr-2 flex-shrink-0" aria-hidden="true"></span>
+              app.optibilan.com
             </span>
           </div>
-          <div class="absolute top-4 right-4">
-            <svg class="w-10 h-10 text-white/80" fill="currentColor" viewBox="0 0 24 24"><path d="M21.6 4.8a10 10 0 0 0-14.4 0c-1.2.8-2 2.2-2 3.6v9.6c0 1.4.8 2.8 2 3.6a10 10 0 0 0 14.4 0c1.2-.8 2-2.2 2-3.6V8.4c0-1.4-.8-2.8-2-3.6zm-1.2 9.6a7 7 0 0 1-10.4 0c-.7-.5-1.2-1.4-1.2-2.4V8.4c0-1 .5-1.9 1.2-2.4a7 7 0 0 1 10.4 0c.7.5 1.2 1.4 1.2 2.4v9.6c0 1-.5 1.9-1.2 2.4zm-7.2-4.8v9.6l6.4-4.8z"/></svg>
+          <div class="aspect-video bg-encre/5 overflow-hidden relative" style="background-image: url('/images/product/dashboard-coach.webp'); background-size: cover; background-position: center;">
+            <a href="/contact/" class="absolute inset-0 flex items-center justify-center" aria-label="Demander une démo à l'équipe Optibilan">
+              <div class="w-20 h-20 md:w-24 md:h-24 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center shadow-xl hover:bg-white hover:scale-105 transition-all duration-300">
+                <svg class="w-8 h-8 md:w-10 md:h-10 text-bleu-signature ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              </div>
+            </a>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" aria-hidden="true"></div>
+            <div class="absolute bottom-4 left-1/2 -translate-x-1/2 text-center text-white/90 text-sm">
+              <span class="flex items-center justify-center gap-1 bg-black/30 px-3 py-1 rounded-full">
+                <Icon name="clock" class="w-4 h-4" />
+                Démo en conditions réelles
+              </span>
+            </div>
+            <div class="absolute top-4 right-4">
+              <svg class="w-10 h-10 text-white/80" fill="currentColor" viewBox="0 0 24 24"><path d="M21.6 4.8a10 10 0 0 0-14.4 0c-1.2.8-2 2.2-2 3.6v9.6c0 1.4.8 2.8 2 3.6a10 10 0 0 0 14.4 0c1.2-.8 2-2.2 2-3.6V8.4c0-1.4-.8-2.8-2-3.6zm-1.2 9.6a7 7 0 0 1-10.4 0c-.7-.5-1.2-1.4-1.2-2.4V8.4c0-1 .5-1.9 1.2-2.4a7 7 0 0 1 10.4 0c.7.5 1.2 1.4 1.2 2.4v9.6c0 1-.5 1.9-1.2 2.4zm-7.2-4.8v9.6l6.4-4.8z"/></svg>
+            </div>
           </div>
         </div>
       </div>
@@ -457,9 +485,14 @@ Depuis un seul endroit."
           ))}
         </div>
         <div class="relative mb-10">
-          <div class="aspect-video max-w-4xl mx-auto rounded-xl border border-encre/10 bg-encre/5 overflow-hidden relative shadow-xl">
-            <img src="/images/product/marque-blanche.webp" alt="Aperçu de la marque blanche : l'espace client au nom de votre cabinet" class="w-full h-full object-cover" loading="lazy" />
-          </div>
+          <BrowserFrame
+            src="/images/product/marque-blanche.webp"
+            alt="Optibilan en marque blanche : l'espace client aux couleurs et au nom de votre cabinet médical ou de coaching"
+            url="app.votrecabinet.fr"
+            aspect="16/9"
+            width="481"
+            height="272"
+          />
           <div class="absolute -bottom-6 left-1/2 -translate-x-1/2 flex gap-4">
             <div class="w-40 h-28 bg-blanc rounded-lg border border-encre/10 shadow-lg p-2 flex items-center justify-center">
               <div class="text-xs font-medium text-encre/60 text-center">app.votrecabinet.fr</div>
