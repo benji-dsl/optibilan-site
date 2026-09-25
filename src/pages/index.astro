@@ -231,16 +231,16 @@ Scalez votre activité."
             La différence entre disperser vos données et les piloter.
           </p>
         </header>
-        <div class="grid md:grid-cols-2 gap-8 mb-16 items-stretch">
-          <div class="p-6 md:p-8 rounded-xl border border-bordeaux/20 bg-encre/50 opacity-80">
-            <h3 class="font-display text-xl font-bold text-white/80 mb-6 flex items-center gap-2">
-              <span class="w-8 h-8 rounded-full bg-bordeaux/25 flex items-center justify-center text-bordeaux font-medium">AVANT</span>
+        <div class="grid md:grid-cols-2 gap-10 items-stretch">
+          <div class="p-6 md:p-8 rounded-2xl border border-bordeaux/30 bg-bordeaux/10">
+            <h3 class="font-display text-xl font-bold text-white mb-6 flex items-center gap-2">
+              <span class="w-8 h-8 rounded-full bg-bordeaux/30 flex items-center justify-center text-bordeaux font-medium">AVANT</span>
               <span>Optibilan</span>
             </h3>
-            <ul class="space-y-4 text-white/60">
+            <ul class="space-y-4 text-white/80">
               {avantAvec.map((item, i) => (
                 <li key={i} class="flex items-center gap-3">
-                  <span class="w-8 h-8 rounded-full bg-bordeaux/20 flex items-center justify-center text-bordeaux/70 font-medium flex-shrink-0">{i + 1}</span>
+                  <span class="w-8 h-8 rounded-full bg-bordeaux/25 flex items-center justify-center text-bordeaux/80 font-medium flex-shrink-0">{i + 1}</span>
                   <span>{item.avant}</span>
                 </li>
               ))}
@@ -432,15 +432,6 @@ Scalez votre activité."
           <p class="text-lg text-encre/60">Un tour du vrai logiciel, mené par l'équipe Optibilan.</p>
         </header>
         <div class="max-w-4xl mx-auto rounded-2xl border border-encre/10 bg-blanc shadow-elevated overflow-hidden">
-          <div class="flex items-center gap-1.5 px-4 py-3 border-b border-encre/10 bg-papier">
-            <span class="w-3 h-3 rounded-full bg-bordeaux/60" aria-hidden="true"></span>
-            <span class="w-3 h-3 rounded-full bg-amber-400/70" aria-hidden="true"></span>
-            <span class="w-3 h-3 rounded-full bg-emerald-500/70" aria-hidden="true"></span>
-            <span class="ml-3 flex-1 h-7 rounded-md bg-blanc border border-encre/10 flex items-center px-3 text-xs text-encre/50 truncate">
-              <span class="w-3.5 h-3.5 rounded-full bg-bleu-signature mr-2 flex-shrink-0" aria-hidden="true"></span>
-              app.optibilan.com
-            </span>
-          </div>
           <div class="aspect-video bg-encre/5 overflow-hidden relative" style="background-image: url('/images/product/dashboard-coach.webp'); background-size: cover; background-position: center;">
             <a href="/contact/" class="absolute inset-0 flex items-center justify-center" aria-label="Demander une démo à l'équipe Optibilan">
               <div class="w-20 h-20 md:w-24 md:h-24 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center shadow-xl hover:bg-white hover:scale-105 transition-all duration-300">

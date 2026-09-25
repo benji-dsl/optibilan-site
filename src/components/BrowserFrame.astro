@@ -2,7 +2,6 @@
 interface Props {
   src: string;
   alt: string;
-  url?: string;
   width?: number;
   height?: number;
   aspect?: string;
@@ -12,7 +11,6 @@ interface Props {
 const {
   src,
   alt,
-  url = 'app.optibilan.com',
   width,
   height,
   aspect = '16/10',
@@ -21,15 +19,6 @@ const {
 ---
 
 <div class={`rounded-2xl border border-encre/10 bg-blanc shadow-elevated overflow-hidden ${className}`}>
-  <div class="flex items-center gap-1.5 px-4 py-3 border-b border-encre/10 bg-papier">
-    <span class="w-3 h-3 rounded-full bg-bordeaux/60" aria-hidden="true"></span>
-    <span class="w-3 h-3 rounded-full bg-amber-400/70" aria-hidden="true"></span>
-    <span class="w-3 h-3 rounded-full bg-emerald-500/70" aria-hidden="true"></span>
-    <span class="ml-3 flex-1 h-7 rounded-md bg-blanc border border-encre/10 flex items-center px-3 text-xs text-encre/50 truncate">
-      <span class="w-3.5 h-3.5 rounded-full bg-bleu-signature mr-2 flex-shrink-0" aria-hidden="true"></span>
-      {url}
-    </span>
-  </div>
   <div class="bg-encre/5" style={`aspect-ratio: ${aspect};`}>
     <img
       src={src}
