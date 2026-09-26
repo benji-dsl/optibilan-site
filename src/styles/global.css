@@ -375,6 +375,66 @@
     box-shadow: 0 0 0 3px color-mix(in oklab, var(--color-encre-texte) 30%, transparent);
   }
 
+  /* Bordeaux - CTA « Essai offert » (bouton d'essai en bordeaux, devient plein au hover) */
+  .btn-bordeaux {
+    background-color: var(--color-bordeaux);
+    border: 1px solid var(--color-bordeaux);
+    color: #FFFFFF;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.15);
+  }
+
+  .btn-bordeaux:hover {
+    background-color: color-mix(in oklab, var(--color-bordeaux) 85%, black);
+    border-color: color-mix(in oklab, var(--color-bordeaux) 85%, black);
+    color: #FFFFFF;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px color-mix(in oklab, var(--color-bordeaux) 35%, transparent);
+  }
+
+  .btn-bordeaux:active {
+    transform: scale(0.98);
+    transition: all 50ms ease;
+  }
+
+  .btn-bordeaux:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px color-mix(in oklab, var(--color-bordeaux) 40%, transparent);
+  }
+
+  .btn-header-bordeaux {
+    height: 40px;
+    padding: 0 16px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background-color: var(--color-bordeaux);
+    color: #FFFFFF;
+    border: 1px solid var(--color-bordeaux);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.15);
+    white-space: nowrap;
+  }
+
+  .btn-header-bordeaux:hover {
+    background-color: color-mix(in oklab, var(--color-bordeaux) 85%, black);
+    border-color: color-mix(in oklab, var(--color-bordeaux) 85%, black);
+    transform: translateY(-1px);
+  }
+
+  .btn-header-bordeaux:active {
+    transform: scale(0.98);
+    transition: all 50ms ease;
+  }
+
+  .btn-header-bordeaux:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px color-mix(in oklab, var(--color-bordeaux) 40%, transparent);
+  }
+
   /* Ghost - Transparent avec bordure au hover */
   .btn-ghost {
     background-color: transparent;

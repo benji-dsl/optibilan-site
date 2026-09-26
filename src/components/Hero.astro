@@ -36,9 +36,13 @@ const heroBackground = variant === 'home'
   aria-labelledby="hero-title"
   style={heroBackground}
 >
-  <div class="absolute inset-0 bg-gradient-to-b from-papier via-papier to-blanc" aria-hidden="true"></div>
-  {variant === 'home' && (
-    <div class="absolute inset-0 bg-blanc/90 backdrop-blur-[2px]" aria-hidden="true"></div>
+  {variant === 'home' ? (
+    <>
+      <div class="absolute inset-0 bg-gradient-to-b from-papier/70 via-blanc/30 to-blanc/40" aria-hidden="true"></div>
+      <div class="absolute inset-0 bg-blanc/30" aria-hidden="true"></div>
+    </>
+  ) : (
+    <div class="absolute inset-0 bg-gradient-to-b from-papier via-papier to-blanc" aria-hidden="true"></div>
   )}
   <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[500px] bg-gradient-radial from-bleu-clair/50 via-transparent to-transparent" aria-hidden="true"></div>
 
@@ -70,7 +74,7 @@ const heroBackground = variant === 'home'
           <Icon name="arrowRight" class="w-6 h-6 transition-transform group-hover:translate-x-1" />
         </a>
         {secondaryCTA.label && (
-          <a href={secondaryCTA.href} class="btn btn-secondary text-lg px-8 py-4" data-track="hero_cta_trial">
+          <a href={secondaryCTA.href} class="btn btn-bordeaux text-lg px-8 py-4" data-track="hero_cta_trial">
             {secondaryCTA.label}
             <Icon name="sparkles" class="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />
           </a>
