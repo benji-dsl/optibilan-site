@@ -4,7 +4,8 @@ import Icon from './Icon.astro';
 interface Props {
   badges?: Array<{
     label: string;
-    icon: string;
+    icon?: string;
+    image?: string;
     description?: string;
   }>;
   title?: string;
@@ -12,11 +13,11 @@ interface Props {
 
 const {
   badges = [
-    { label: 'Biomarqueurs sanguins', icon: 'chart', description: 'Suivi taux, ferritine, vit D, CRP, homocystéine' },
-    { label: 'Métriques quotidiennes', icon: 'activity', description: 'VFC, sommeil, HRV, charge, récupération' },
-    { label: 'Nutrition de précision', icon: 'apple', description: 'Macros, micronutriments, timing, suppléments' },
-    { label: 'Entraînement adapté', icon: 'dumbbell', description: 'RPE, volume, intensité, progression auto' },
-    { label: 'Santé cognitive', icon: 'brain', description: 'Tests cognitifs, stress, sommeil, humeur' },
+    { label: 'Biomarqueurs sanguins', image: '/images/product/sante-biomarqueurs.webp', description: 'Suivi taux, ferritine, vit D, CRP, homocystéine' },
+    { label: 'Métriques quotidiennes', image: '/images/product/interface-client-mobile.webp', description: 'VFC, sommeil, HRV, charge, récupération' },
+    { label: 'Nutrition de précision', image: '/images/product/nutrition-consultation.webp', description: 'Macros, micronutriments, timing, suppléments' },
+    { label: 'Entraînement adapté', image: '/images/product/sport-programmes.webp', description: 'RPE, volume, intensité, progression auto' },
+    { label: 'Santé cognitive', image: '/images/product/preparation-mentale.webp', description: 'Tests cognitifs, stress, sommeil, humeur' },
   ],
   title = 'Pilotez les leviers d\'une meilleure longévité en bonne santé',
 } = Astro.props;
@@ -47,8 +48,20 @@ const allBadges = [...badges, ...badges, ...badges];
               >
                 <div class="bg-blanc/5 backdrop-blur-sm rounded-2xl border border-craie/10 p-5 md:p-6 h-full flex flex-col items-center text-center transition-all duration-300 hover:border-bleu-signature/30 hover:shadow-lg hover:shadow-bleu-signature/10 hover:bg-blanc/10">
                   <div class="icon-wrapper mb-3 group-hover:scale-110 transition-transform duration-300" aria-hidden="true">
-                    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-bleu-signature/20 to-bleu-lecture/20 flex items-center justify-center group-hover:from-bleu-signature/30 group-hover:to-bleu-lecture/30 transition-all duration-300">
-                      <Icon name={badge.icon} class="w-6 h-6 text-bleu-signature" />
+                    <div class="w-12 h-12 rounded-xl overflow-hidden">
+                      {badge.image ? (
+                        <img
+                          src={badge.image}
+                          alt=""
+                          class="w-12 h-12 object-cover"
+                          loading="lazy"
+                          decoding="async"
+                        />
+                      ) : (
+                        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-bleu-signature/20 to-bleu-lecture/20 flex items-center justify-center">
+                          <Icon name={badge.icon ?? 'check'} class="w-6 h-6 text-bleu-signature" />
+                        </div>
+                      )}
                     </div>
                   </div>
                   <h3 class="font-display text-base font-semibold text-craie mb-1.5 text-center">{badge.label}</h3>

@@ -329,8 +329,13 @@ Scalez votre activité."
     </section>
 
     <!-- 6. POUR QUI -->
-    <section class="section bg-blanc" aria-labelledby="profiles-title">
-      <div class="container">
+    <section
+      class="section relative bg-blanc overflow-hidden"
+      aria-labelledby="profiles-title"
+      style="background-image: url('/images/product/medecins/07-medecin-homme-consultation-longevite.webp'); background-size: cover; background-position: center;"
+    >
+      <div class="absolute inset-0 bg-blanc/90 backdrop-blur-[2px]" aria-hidden="true"></div>
+      <div class="container relative">
         <header class="text-center max-w-3xl mx-auto mb-16">
           <h2 id="profiles-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
             Optibilan s'adapte à votre pratique
@@ -339,16 +344,6 @@ Scalez votre activité."
             Chaque profil active les modules pertinents, avec les permissions adaptées.
           </p>
         </header>
-        <div class="max-w-4xl mx-auto mb-12 rounded-xl border border-encre/10 bg-encre/5 overflow-hidden shadow-soft">
-          <img
-            src="/images/product/medecins/07-medecin-homme-consultation-longevite.webp"
-            alt="Médecin spécialiste de la longévité en consultation : suivi prévention, biomarqueurs et longévité avec Optibilan"
-            width="1000"
-            height="607"
-            class="w-full h-auto"
-            loading="lazy"
-          />
-        </div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
           {profiles.map((profile, i) => (
             <article class="p-6 rounded-xl border border-encre/10 hover:border-bleu-signature/30 hover:shadow-soft transition-all text-center" style={{animationDelay: `${i * 100}ms`}}>
