@@ -177,7 +177,6 @@ Scalez votre activité."
           <h2 id="social-proof-title" class="font-display text-2xl md:text-3xl font-bold text-encre mb-3">
             Ils utilisent Optibilan au quotidien
           </h2>
-          <p class="text-encre/60">Cabinets, studios et coachs indépendants qui ont structuré leur pratique avec nous.</p>
         </header>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {socialProof.map(item => (
@@ -213,14 +212,11 @@ Scalez votre activité."
           <h2 id="avant-apres-title" class="font-display text-3xl md:text-4xl font-bold mb-4 text-white">
             Pourquoi Optibilan existe
           </h2>
-          <p class="text-lg text-white/70 max-w-2xl mx-auto">
-            La différence entre disperser vos données et les piloter.
-          </p>
         </header>
         <div class="grid md:grid-cols-2 gap-10 items-stretch">
           <div class="p-6 md:p-8 rounded-2xl border border-bordeaux/30 bg-bordeaux/10">
             <h3 class="font-display text-xl font-bold text-white mb-6 flex items-center gap-3">
-              <span class="px-3 py-1 rounded-full bg-bordeaux/30 text-bordeaux font-bold text-sm leading-none flex-shrink-0">AVANT</span>
+              <span class="px-3 py-1 rounded-full bg-bordeaux/30 text-craie font-bold text-sm leading-none flex-shrink-0">AVANT</span>
               <span>Optibilan</span>
             </h3>
             <ul class="space-y-4 text-white/80">
@@ -260,10 +256,9 @@ Scalez votre activité."
               <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-bleu-clair text-bleu-lecture text-sm font-medium mb-4">
                 <Icon name="monitor" class="w-4 h-4" /> Module {demo.id}
               </span>
-              <h2 id={`demo-${demo.id}-title`} class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+              <h2 id={`demo-${demo.id}-title`} class="font-display text-3xl md:text-4xl font-bold text-encre mb-8">
                 {demo.title}
               </h2>
-              <p class="text-lg text-encre/60 mb-8 max-w-xl">{demo.promise}</p>
               <ul class="space-y-3 mb-8 max-w-xl">
                 {demo.benefits.map(b => (
                   <li key={b} class="flex items-start gap-3">
@@ -297,9 +292,6 @@ Scalez votre activité."
           <h2 id="experience-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
             Une interface pour vous. Une expérience claire pour vos clients.
           </h2>
-          <p class="text-lg text-encre/60">
-            Le professionnel pilote. Le client avance. Chacun son espace, la même clarté.
-          </p>
         </header>
         <div class="grid lg:grid-cols-2 gap-12 items-center">
           <BrowserFrame
@@ -311,8 +303,6 @@ Scalez votre activité."
             height="381"
           />
           <div>
-            <h3 class="font-display text-2xl font-bold text-encre mb-4">{clientExperience.pro.title}</h3>
-            <p class="text-encre/60 mb-8">{clientExperience.pro.desc}</p>
             <ul class="space-y-3 mb-8 max-w-xl">
               <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5" /> Dashboard unifié : bilans, programmes, nutrition, santé, mental</li>
               <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5" /> IA qui structure, synthétise, alerte — vous validez</li>

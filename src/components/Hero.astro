@@ -35,15 +35,18 @@ const heroBackground = variant === 'home'
     ? `background-image: url('${backgroundImage}'); background-size: cover; background-position: center;`
     : "";
 const titleClass = variant === 'home'
-  ? 'font-display text-4xl md:text-5xl lg:text-6xl font-bold text-craie tracking-tight leading-[1.1] mb-6 animate-slide-up hero-title-contour'
+  ? 'font-display text-3xl md:text-5xl lg:text-6xl font-bold text-craie tracking-tight leading-[1.1] mb-5 animate-slide-up'
   : isImageBg
     ? 'font-display text-4xl md:text-5xl lg:text-6xl font-bold text-craie tracking-tight leading-[1.1] mb-6 animate-slide-up hero-title-contour'
     : 'font-display text-4xl md:text-5xl lg:text-6xl font-bold text-encre tracking-tight leading-[1.1] mb-6 animate-slide-up';
 const subtitleClass = variant === 'home'
-  ? 'text-lg md:text-xl text-craie leading-relaxed mb-10 max-w-2xl mx-auto animate-slide-up delay-200 hero-subtitle-contour'
+  ? 'text-lg md:text-xl text-craie leading-relaxed mb-8 max-w-2xl mx-auto animate-slide-up delay-200'
   : isImageBg
     ? 'text-lg md:text-xl text-craie leading-relaxed mb-10 max-w-2xl mx-auto animate-slide-up delay-200 hero-subtitle-contour'
     : 'text-lg md:text-xl text-encre/70 leading-relaxed mb-10 max-w-2xl mx-auto animate-slide-up delay-200';
+const contentClass = variant === 'home'
+  ? 'max-w-3xl mx-auto text-center rounded-3xl bg-encre/50 backdrop-blur-md border border-craie/10 p-8 md:p-12 shadow-2xl shadow-encre/30'
+  : 'max-w-3xl mx-auto text-center';
 ---
 
 <section
@@ -67,7 +70,7 @@ const subtitleClass = variant === 'home'
   <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[500px] bg-gradient-radial from-bleu-clair/50 via-transparent to-transparent" aria-hidden="true"></div>
 
   <div class="container relative">
-    <div class="max-w-3xl mx-auto text-center">
+    <div class={contentClass}>
       {badge && (
         <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-bleu-clair text-bleu-lecture text-sm font-medium mb-8 animate-fade-in" role="status">
           <span class="w-2 h-2 rounded-full bg-bleu-signature animate-pulse" aria-hidden="true"></span>
