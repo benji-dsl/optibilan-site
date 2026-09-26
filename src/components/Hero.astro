@@ -26,10 +26,20 @@ const {
 const homeTitle = title || 'Centralisez vos suivis. \nScalez votre activité.';
 const homeSubtitle = subtitle ?? "Le système d'exploitation des coachs et des professionnels de la santé. Bilans, programmes, nutrition et données biométriques réunis sur une seule plateforme.";
 const homeBadge = badge || "";
+const heroBackground = variant === 'home'
+  ? "background-image: url('/images/product/dashboard-coach.webp'); background-size: cover; background-position: center;"
+  : "";
 ---
 
-<section class="relative section-lg pt-20 md:pt-24 lg:pt-32 overflow-hidden" aria-labelledby="hero-title">
+<section
+  class="relative section-lg pt-20 md:pt-24 lg:pt-32 overflow-hidden"
+  aria-labelledby="hero-title"
+  style={heroBackground}
+>
   <div class="absolute inset-0 bg-gradient-to-b from-papier via-papier to-blanc" aria-hidden="true"></div>
+  {variant === 'home' && (
+    <div class="absolute inset-0 bg-blanc/90 backdrop-blur-[2px]" aria-hidden="true"></div>
+  )}
   <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[500px] bg-gradient-radial from-bleu-clair/50 via-transparent to-transparent" aria-hidden="true"></div>
 
   <div class="container relative">
@@ -67,24 +77,6 @@ const homeBadge = badge || "";
         )}
       </div>
     )}
-
-      {variant === 'home' && (
-        <div class="mt-16 relative animate-scale-in delay-500">
-          <div class="max-w-5xl mx-auto rounded-2xl bg-blanc border border-encre/10 shadow-elevated overflow-hidden relative">
-            <div class="bg-encre/5" style="aspect-ratio: 16 / 10;">
-              <img
-                src="/images/product/dashboard-coach.webp"
-                alt="Tableau de bord Optibilan pour le pilotage des suivis clients, bilans, programmes, nutrition et données biométriques des coachs"
-                width="1600"
-                height="1000"
-                class="w-full h-full object-cover"
-                loading="eager"
-                fetchpriority="high"
-              />
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   </div>
 </section>
