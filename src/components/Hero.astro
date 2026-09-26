@@ -34,12 +34,16 @@ const heroBackground = variant === 'home'
   : backgroundImage
     ? `background-image: url('${backgroundImage}'); background-size: cover; background-position: center;`
     : "";
-const titleClass = isImageBg
-  ? 'font-display text-4xl md:text-5xl lg:text-6xl font-bold text-craie tracking-tight leading-[1.1] mb-6 animate-slide-up drop-shadow-[0_2px_10px_rgba(0,0,0,0.55)]'
-  : 'font-display text-4xl md:text-5xl lg:text-6xl font-bold text-encre tracking-tight leading-[1.1] mb-6 animate-slide-up';
-const subtitleClass = isImageBg
-  ? 'text-lg md:text-xl text-craie/95 leading-relaxed mb-10 max-w-2xl mx-auto animate-slide-up delay-200 drop-shadow-[0_1px_6px_rgba(0,0,0,0.5)]'
-  : 'text-lg md:text-xl text-encre/70 leading-relaxed mb-10 max-w-2xl mx-auto animate-slide-up delay-200';
+const titleClass = variant === 'home'
+  ? 'font-display text-4xl md:text-5xl lg:text-6xl font-bold text-craie tracking-tight leading-[1.1] mb-6 animate-slide-up hero-title-contour'
+  : isImageBg
+    ? 'font-display text-4xl md:text-5xl lg:text-6xl font-bold text-craie tracking-tight leading-[1.1] mb-6 animate-slide-up hero-title-contour'
+    : 'font-display text-4xl md:text-5xl lg:text-6xl font-bold text-encre tracking-tight leading-[1.1] mb-6 animate-slide-up';
+const subtitleClass = variant === 'home'
+  ? 'text-lg md:text-xl text-craie leading-relaxed mb-10 max-w-2xl mx-auto animate-slide-up delay-200 hero-subtitle-contour'
+  : isImageBg
+    ? 'text-lg md:text-xl text-craie leading-relaxed mb-10 max-w-2xl mx-auto animate-slide-up delay-200 hero-subtitle-contour'
+    : 'text-lg md:text-xl text-encre/70 leading-relaxed mb-10 max-w-2xl mx-auto animate-slide-up delay-200';
 ---
 
 <section
@@ -49,8 +53,9 @@ const subtitleClass = isImageBg
 >
   {variant === 'home' ? (
     <>
-      <div class="absolute inset-0 bg-gradient-to-t from-blanc/40 via-transparent to-encre/60" aria-hidden="true"></div>
-      <div class="absolute inset-0 bg-encre/25" aria-hidden="true"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-blanc/40 via-transparent to-encre/55" aria-hidden="true"></div>
+      <div class="absolute inset-0 bg-encre/20" aria-hidden="true"></div>
+      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,0,0,0.55)_0%,transparent_65%)]" aria-hidden="true"></div>
     </>
   ) : isImageBg ? (
     <>
@@ -99,3 +104,24 @@ const subtitleClass = isImageBg
     </div>
   </div>
 </section>
+
+<style>
+  .hero-title-contour {
+    -webkit-text-stroke: 1.5px rgba(35, 33, 28, 0.9);
+    text-shadow:
+      0 2px 4px rgba(0, 0, 0, 0.85),
+      0 8px 24px rgba(0, 0, 0, 0.8);
+  }
+
+  .hero-subtitle-contour {
+    text-shadow:
+      0 1px 3px rgba(0, 0, 0, 0.9),
+      0 4px 14px rgba(0, 0, 0, 0.85);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-title-contour {
+      -webkit-text-stroke-width: 0;
+    }
+  }
+</style>
