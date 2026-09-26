@@ -34,7 +34,6 @@ const heroBackground = variant === 'home'
   : backgroundImage
     ? `background-image: url('${backgroundImage}'); background-size: cover; background-position: center;`
     : "";
-const isImageBg = variant === 'home' || Boolean(backgroundImage);
 const isImageBgText = isImageBg;
 const titleClass = isImageBgText
   ? 'font-display text-3xl md:text-5xl lg:text-6xl font-bold text-craie tracking-tight leading-[1.1] mb-5 animate-slide-up'
