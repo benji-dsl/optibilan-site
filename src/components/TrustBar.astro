@@ -22,84 +22,119 @@ const {
   title = 'Pilotez les leviers d\'une meilleure longévité en bonne santé',
 } = Astro.props;
 
-// Duplicate badges for seamless infinite scroll (clones hidden from AT)
-const allBadges = [...badges, ...badges, ...badges];
 ---
 
-<section class="relative py-10 bg-gradient-to-b from-encre/95 via-encre/90 to-encre/95" aria-labelledby="trust-title">
+<section class="relative py-12 bg-gradient-to-b from-encre/95 via-encre/90 to-encre/95 overflow-hidden" aria-labelledby="trust-title">
   <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--color-bleu-signature)_0%,_transparent_70%)] opacity-10" aria-hidden="true"></div>
   <div class="absolute inset-0 bg-[linear-gradient(90deg,_transparent_0%,_var(--color-bleu-signature)_50%,_transparent_100%)] opacity-5" aria-hidden="true"></div>
-  
+
   <div class="container relative">
     <p id="trust-title" class="text-center text-xs font-semibold text-craie/50 uppercase tracking-wider mb-8">
       {title}
     </p>
+  </div>
 
-    <div class="relative max-w-7xl mx-auto">
-      <div class="overflow-hidden" style="mask-image: linear-gradient(90deg, transparent, black 20%, black 80%, transparent); -webkit-mask-image: linear-gradient(90deg, transparent, black 20%, black 80%, transparent);">
-        <div class="flex gap-4 md:gap-6" id="trust-carousel" role="region" aria-label="Piliers longévité">
-          {allBadges.map((badge, index) => {
-            const isClone = index >= badges.length;
-            return (
-              <article
-                class="flex-shrink-0 w-[78%] sm:w-[calc(50%-0.5rem)] lg:w-[calc(20%-0.8rem)] group"
-                aria-label={badge.label}
-                aria-hidden={isClone}
-              >
-                <div class="bg-blanc/5 backdrop-blur-sm rounded-2xl border border-craie/10 p-5 md:p-6 h-full flex flex-col items-center text-center transition-all duration-300 hover:border-bleu-signature/30 hover:shadow-lg hover:shadow-bleu-signature/10 hover:bg-blanc/10">
-                  <div class="icon-wrapper mb-3 group-hover:scale-110 transition-transform duration-300" aria-hidden="true">
-                    <div class="w-12 h-12 rounded-xl overflow-hidden">
-                      {badge.image ? (
-                        <img
-                          src={badge.image}
-                          alt=""
-                          class="w-12 h-12 object-cover"
-                          loading="lazy"
-                          decoding="async"
-                        />
-                      ) : (
-                        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-bleu-signature/20 to-bleu-lecture/20 flex items-center justify-center">
-                          <Icon name={badge.icon ?? 'check'} class="w-6 h-6 text-bleu-signature" />
-                        </div>
-                      )}
+  <div class="relative w-full">
+    <div class="overflow-hidden" style="mask-image: linear-gradient(90deg, transparent, black 10%, black 90%, transparent); -webkit-mask-image: linear-gradient(90deg, transparent, black 10%, black 90%, transparent);">
+      <div id="trust-carousel" class="trust-carousel flex gap-4 md:gap-6 px-4 sm:px-8 items-stretch" role="region" aria-label="Piliers longévité">
+        {badges.map((badge) => (
+          <article
+            class="flex-shrink-0 w-[85%] sm:w-[47%] md:w-[31%] lg:w-[21%] xl:w-[17%] group"
+            aria-label={badge.label}
+          >
+            <div class="bg-blanc/5 backdrop-blur-sm rounded-2xl border border-craie/10 p-5 md:p-6 h-full flex flex-col items-center text-center transition-all duration-300 hover:border-bleu-signature/30 hover:shadow-lg hover:shadow-bleu-signature/10 hover:bg-blanc/10">
+              <div class="icon-wrapper mb-3 group-hover:scale-110 transition-transform duration-300" aria-hidden="true">
+                <div class="w-12 h-12 rounded-xl overflow-hidden">
+                  {badge.image ? (
+                    <img
+                      src={badge.image}
+                      alt=""
+                      class="w-12 h-12 object-cover"
+                      loading="lazy"
+                      decoding="async"
+                      draggable="false"
+                    />
+                  ) : (
+                    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-bleu-signature/20 to-bleu-lecture/20 flex items-center justify-center">
+                      <Icon name={badge.icon ?? 'check'} class="w-6 h-6 text-bleu-signature" />
                     </div>
-                  </div>
-                  <h3 class="font-display text-base font-semibold text-craie mb-1.5 text-center">{badge.label}</h3>
-                  <p class="text-xs text-craie/50 text-center leading-relaxed">{badge.description || ''}</p>
+                  )}
                 </div>
-              </article>
-            );
-          })}
-        </div>
+              </div>
+              <h3 class="font-display text-base font-semibold text-craie mb-1.5 text-center">{badge.label}</h3>
+              <p class="text-xs text-craie/50 text-center leading-relaxed">{badge.description || ''}</p>
+            </div>
+          </article>
+        ))}
       </div>
     </div>
   </div>
 </section>
 
+<script>
+  const track = document.getElementById('trust-carousel');
+  if (track) {
+    let isDown = false;
+    let moved = false;
+    let startX = 0;
+    let startScrollLeft = 0;
+
+    track.addEventListener('pointerdown', (e) => {
+      if (e.pointerType !== 'mouse' || e.button !== 0) return;
+      isDown = true;
+      moved = false;
+      startX = e.clientX;
+      startScrollLeft = track.scrollLeft;
+      track.setPointerCapture(e.pointerId);
+      track.classList.add('dragging');
+    });
+
+    track.addEventListener('pointermove', (e) => {
+      if (!isDown) return;
+      const dx = e.clientX - startX;
+      if (Math.abs(dx) > 5) moved = true;
+      track.scrollLeft = startScrollLeft - dx;
+    });
+
+    const endDrag = () => {
+      if (!isDown) return;
+      isDown = false;
+      track.classList.remove('dragging');
+    };
+
+    track.addEventListener('pointerup', endDrag);
+    track.addEventListener('pointercancel', endDrag);
+
+    track.addEventListener('click', (e) => {
+      if (moved) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+    }, true);
+  }
+</script>
+
 <style>
-  @keyframes scroll {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-66.66%); }
+  .trust-carousel {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    cursor: grab;
+    user-select: none;
   }
-  
-  #trust-carousel {
-    animation: scroll 30s linear infinite;
-    will-change: transform;
+
+  .trust-carousel::-webkit-scrollbar {
+    display: none;
   }
-  
-  #trust-carousel:hover {
-    animation-play-state: paused;
+
+  .trust-carousel > article {
+    scroll-snap-align: start;
   }
-  
-  @media (prefers-reduced-motion: reduce) {
-    #trust-carousel {
-      animation: none;
-    }
-  }
-  
-  @media (max-width: 768px) {
-    #trust-carousel {
-      animation-duration: 40s;
-    }
+
+  .trust-carousel.dragging {
+    cursor: grabbing;
+    scroll-snap-type: none;
+    scroll-behavior: auto;
   }
 </style>
