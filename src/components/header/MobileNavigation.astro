@@ -2,9 +2,9 @@
 import Icon from '../Icon.astro';
 ---
 
-<div class="md:hidden" data-mobile-nav>
+<div class="lg:hidden" data-mobile-nav>
   <button
-    class="md:hidden p-2 rounded-lg text-encre/60 hover:bg-encre/5"
+    class="lg:hidden p-2 rounded-lg text-encre/60 hover:bg-encre/5"
     aria-label="Ouvrir le menu"
     aria-expanded="false"
     aria-controls="mobile-menu"
@@ -23,44 +23,99 @@ import Icon from '../Icon.astro';
 
   <div
     id="mobile-menu"
-    class="md:hidden hidden py-4 border-t border-encre/10"
+    class="lg:hidden hidden py-4 border-t border-encre/10"
     role="navigation"
     aria-label="Menu mobile"
     data-mobile-menu>
     <div class="flex flex-col gap-2 pb-8">
-      <!-- Produit accordion -->
+      <!-- Accompagner accordion -->
       <div class="relative" data-mobile-accordion>
         <button
           class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors flex items-center justify-between w-full"
           aria-haspopup="true"
           aria-expanded="false"
-          aria-controls="mobile-produit"
+          aria-controls="mobile-accompagner"
           data-mobile-accordion-trigger>
-          Produit
+          Accompagner
           <Icon name="chevronDown" class="w-5 h-5 transition-transform duration-200" data-accordion-icon />
         </button>
         <div
-          id="mobile-produit"
+          id="mobile-accompagner"
           class="hidden overflow-hidden transition-all duration-300"
           role="menu"
           data-mobile-accordion-content>
           <div class="px-2 py-2 space-y-1">
-            <div class="px-2 py-1 font-semibold text-encre/50 uppercase tracking-wider text-xs">Découvrir Optibilan</div>
-            <a href="/product/overview/" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors block" data-mobile-link>Vue d'ensemble</a>
-            <div class="px-2 py-1 font-semibold text-encre/50 uppercase tracking-wider text-xs border-t border-encre/10 mt-2">Accompagner</div>
-            <a href="/product/check-ins/" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>Bilans & progression</a>
+            <a href="/product/check-ins/" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>Bilans</a>
             <a href="/product/nutrition/" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>Nutrition</a>
-            <a href="/product/training/" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>Sport & programmes</a>
+            <a href="/product/training/" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>Sport</a>
             <a href="/product/mental/" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>Préparation mentale</a>
-            <div class="px-2 py-1 font-semibold text-encre/50 uppercase tracking-wider text-xs border-t border-encre/10 mt-2">Suivre</div>
-            <a href="/product/health/" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>Santé & biomarqueurs</a>
-            <a href="/product/engagement/" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>Habitudes & engagement</a>
-            <div class="px-2 py-1 font-semibold text-encre/50 uppercase tracking-wider text-xs border-t border-encre/10 mt-2">Dossier client</div>
-            <a href="/product/crm/" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>Journal & CRM</a>
-            <div class="px-2 py-1 font-semibold text-encre/50 uppercase tracking-wider text-xs border-t border-encre/10 mt-2">Automatiser</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Suivre accordion -->
+      <div class="relative" data-mobile-accordion>
+        <button
+          class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors flex items-center justify-between w-full"
+          aria-haspopup="true"
+          aria-expanded="false"
+          aria-controls="mobile-suivre"
+          data-mobile-accordion-trigger>
+          Suivre
+          <Icon name="chevronDown" class="w-5 h-5 transition-transform duration-200" data-accordion-icon />
+        </button>
+        <div
+          id="mobile-suivre"
+          class="hidden overflow-hidden transition-all duration-300"
+          role="menu"
+          data-mobile-accordion-content>
+          <div class="px-2 py-2 space-y-1">
+            <a href="/product/health/" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>Santé</a>
+            <a href="/product/engagement/" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>Habitudes</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Automatiser accordion -->
+      <div class="relative" data-mobile-accordion>
+        <button
+          class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors flex items-center justify-between w-full"
+          aria-haspopup="true"
+          aria-expanded="false"
+          aria-controls="mobile-automatiser"
+          data-mobile-accordion-trigger>
+          Automatiser
+          <Icon name="chevronDown" class="w-5 h-5 transition-transform duration-200" data-accordion-icon />
+        </button>
+        <div
+          id="mobile-automatiser"
+          class="hidden overflow-hidden transition-all duration-300"
+          role="menu"
+          data-mobile-accordion-content>
+          <div class="px-2 py-2 space-y-1">
             <a href="/product/ai/" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>IA & Automatisations</a>
             <a href="/product/integrations/" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>Intégrations & API</a>
-            <div class="px-2 py-1 font-semibold text-encre/50 uppercase tracking-wider text-xs border-t border-encre/10 mt-2">Personnaliser</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Personnaliser accordion -->
+      <div class="relative" data-mobile-accordion>
+        <button
+          class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors flex items-center justify-between w-full"
+          aria-haspopup="true"
+          aria-expanded="false"
+          aria-controls="mobile-personnaliser"
+          data-mobile-accordion-trigger>
+          Personnaliser
+          <Icon name="chevronDown" class="w-5 h-5 transition-transform duration-200" data-accordion-icon />
+        </button>
+        <div
+          id="mobile-personnaliser"
+          class="hidden overflow-hidden transition-all duration-300"
+          role="menu"
+          data-mobile-accordion-content>
+          <div class="px-2 py-2 space-y-1">
             <a href="/product/white-label/" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>Marque blanche</a>
           </div>
         </div>
@@ -85,7 +140,7 @@ import Icon from '../Icon.astro';
           <div class="px-2 py-2 space-y-1">
             <a href="/solutions/coaches/" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors block" data-mobile-link>Coach sportif</a>
             <a href="/solutions/nutrition/" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>Nutritionniste / Diététicien</a>
-            <a href="/solutions/mental/" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>Préparateur mental</a>
+            <a href="/solutions/medecin/" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>Médecin, pro de santé</a>
             <a href="/solutions/cabinets/" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>Cabinet / Équipe</a>
           </div>
         </div>

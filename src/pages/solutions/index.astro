@@ -8,7 +8,7 @@ import TrustBar from '../../components/TrustBar.astro';
 import Icon from '../../components/Icon.astro';
 
 const pageTitle = 'Solutions - Optibilan';
-const pageDescription = 'Optibilan s\'adapte à votre pratique : Coach sportif, Nutritionniste, Préparateur mental, Cabinet. Une plateforme, quatre façons de l\'utiliser.';
+const pageDescription = 'Optibilan s\'adapte à votre pratique : Coach sportif, Nutritionniste, Médecin, pro de santé, Cabinet. Une plateforme, quatre façons de l\'utiliser.';
 
 const breadcrumbJsonLd = {
   '@context': 'https://schema.org',
@@ -41,14 +41,14 @@ const solutions = [
     photoAlt: 'Nutritionniste en consultation, échange avec son patient',
   },
   {
-    href: '/solutions/mental/',
-    icon: 'brain',
-    title: 'Préparateur mental',
-    desc: 'Exercices, ressources, journal d\'appels, adhérence. Cloisonnement strict des données. Le mental structuré.',
-    color: 'indigo',
+    href: '/solutions/medecin/',
+    icon: 'activity',
+    title: 'Médecin, pro de santé',
+    desc: 'Prévention, bilans de santé, habitudes, coordination inter-professionnelle. Cloisonnement strict des données médicales.',
+    color: 'bordeaux',
     featured: false,
-    photo: '/images/product/medecins/11-preparateur-mental-entretien.webp',
-    photoAlt: 'Préparateur mental en entretien avec un sportif',
+    photo: '/images/product/medecins/01-medecin-generaliste-consultation.webp',
+    photoAlt: 'Médecin généraliste en consultation préventive avec son patient',
   },
   {
     href: '/solutions/cabinets/',
@@ -82,7 +82,7 @@ const solutionsCross = [
     <Hero
       title="Une plateforme. 
 Quatre façons de l'utiliser."
-      subtitle="Optibilan s'adapte à votre pratique : Coach, Nutritionniste, Préparateur mental, Cabinet. Chaque solution active les modules pertinents, avec les permissions adaptées."
+      subtitle="Optibilan s'adapte à votre pratique : Coach, Nutritionniste, Médecin, Cabinet. Chaque solution active les modules pertinents, avec les permissions adaptées."
       badge="4 solutions, 1 plateforme"
       primaryCTA={{ href: '/pricing/', label: 'Rejoindre Optibilan' }}
       secondaryCTA={{ href: '/checkout/solo/', label: 'Essai offert' }}

@@ -2,10 +2,9 @@
 import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
-import Hero from '../../components/Hero.astro';
 
 const pageTitle = 'Contact - Optibilan';
-const pageDescription = 'Une question sur Optibilan ? Écrivez-nous. L\'équipe répond sous 4h ouvrées.';
+const pageDescription = 'Envoyez-nous un message. L\'équipe Optibilan vous répond sous 4h ouvrées.';
 
 const contactJsonLd = {
   '@context': 'https://schema.org',
@@ -69,19 +68,12 @@ const contactJsonLd = {
   <Header />
 
   <main>
-    <Hero
-      variant="page"
-      title="Une question ? 
-Parlons-en."
-      subtitle="Écrivez-nous : l'équipe Optibilan vous répond sous 4h ouvrées."
-    />
-
-    <section class="section bg-blanc" aria-labelledby="contact-title">
+    <section class="section bg-blanc pt-20 md:pt-24 lg:pt-28 bg-gradient-to-b from-papier via-papier to-blanc" aria-labelledby="contact-title">
       <div class="container max-w-4xl">
         <header class="text-center mb-12">
-          <h2 id="contact-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+          <h1 id="contact-title" class="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-encre mb-4">
             Envoyez-nous un message
-          </h2>
+          </h1>
           <p class="text-lg text-encre/60 max-w-2xl mx-auto">
             Démo, question technique, tarifs, partenariat ou presse : dites-nous tout.
           </p>

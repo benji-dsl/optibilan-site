@@ -24,7 +24,7 @@ const {
 } = Astro.props;
 
 const homeTitle = title || 'Centralisez vos suivis. \nScalez votre activité.';
-const homeSubtitle = subtitle || "Le système d'exploitation des coachs et des professionnels de la santé. Bilans, programmes, nutrition et données biométriques réunis sur une seule plateforme.";
+const homeSubtitle = subtitle ?? "Le système d'exploitation des coachs et des professionnels de la santé. Bilans, programmes, nutrition et données biométriques réunis sur une seule plateforme.";
 const homeBadge = badge || "";
 ---
 
@@ -47,9 +47,11 @@ const homeBadge = badge || "";
         ))}
       </h1>
 
-      <p class="text-lg md:text-xl text-encre/70 leading-relaxed mb-10 max-w-2xl mx-auto animate-slide-up delay-200">
-        {homeSubtitle}
-      </p>
+      {homeSubtitle && (
+        <p class="text-lg md:text-xl text-encre/70 leading-relaxed mb-10 max-w-2xl mx-auto animate-slide-up delay-200">
+          {homeSubtitle}
+        </p>
+      )}
 
       {primaryCTA.label && (
       <div class="flex flex-col sm:flex-row items-center justify-center gap-5 animate-slide-up delay-300">

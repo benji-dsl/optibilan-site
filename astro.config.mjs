@@ -12,6 +12,9 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 export default defineConfig({
   site: SITE_URL,
   output: 'static',
+  redirects: {
+    '/solutions/mental/': '/solutions/medecin/',
+  },
   vite: {
     plugins: [tailwindcss()],
     resolve: {

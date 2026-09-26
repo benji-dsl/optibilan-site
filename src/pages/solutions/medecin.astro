@@ -1,0 +1,147 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import Hero from '../../components/Hero.astro';
+import CTA from '../../components/CTA.astro';
+import TrustBar from '../../components/TrustBar.astro';
+import Icon from '../../components/Icon.astro';
+
+const pageTitle = 'Solution Médecin, pro de santé - Optibilan';
+const pageDescription = 'Structurez la prévention et le suivi de santé de vos patients. Bilans, biomarqueurs, habitudes, coordination inter-professionnelle, permissions. Le suivi, structuré.';
+
+---
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  canonical="/solutions/medecin/"
+  ogImage="/og-solutions.png"
+>
+  <Header />
+
+  <main>
+    <Hero
+      title="Structurez la prévention 
+au cœur de votre pratique."
+      subtitle="Bilans, biomarqueurs, habitudes, nutrition, coordination inter-professionnelle. Cloisonnement strict des données de santé. La prévention, structurée."
+      primaryCTA={{ href: '/pricing/', label: 'Rejoindre Optibilan' }}
+      secondaryCTA={{ href: '/checkout/solo/', label: 'Essai offert' }}
+    />
+
+    <TrustBar />
+
+    <section class="section bg-papier" aria-labelledby="medecin-visual-title">
+      <div class="container">
+        <header class="text-center max-w-3xl mx-auto mb-12">
+          <h2 id="medecin-visual-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+            La prévention se joue aussi entre deux consultations
+          </h2>
+          <p class="text-lg text-encre/60">
+            Bilans, biomarqueurs, habitudes, nutrition : ce qui se passe entre deux rendez-vous, structuré.
+          </p>
+        </header>
+        <div class="aspect-video max-w-4xl mx-auto rounded-xl border border-encre/10 bg-blanc overflow-hidden shadow-xl">
+          <img
+            src="/images/product/medecins/01-medecin-generaliste-consultation.webp"
+            alt="Médecin généraliste en consultation préventive avec son patient"
+            width="1000"
+            height="667"
+            class="w-full h-full object-cover"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-gradient-to-br from-encre/5 via-papier to-bordeaux/5 rounded-card-lg relative overflow-hidden" aria-labelledby="disclaimer-title">
+      <div class="container relative py-6 px-6 md:py-8 md:px-8">
+        <div class="flex items-start gap-4 p-4 bg-encre/5 rounded-lg border border-encre/10">
+          <Icon name="shield" class="w-6 h-6 text-encre/50 flex-shrink-0 mt-0.5" />
+          <div>
+            <h3 id="disclaimer-title" class="font-semibold text-encre mb-1">Cadre déontologique</h3>
+            <p class="text-encre/70 text-sm">
+              <strong>Optibilan est un outil d'organisation, pas un dispositif médical.</strong> Il fournit un cadre de suivi pour les professionnels de santé qualifiés.<br>
+              <strong>Cloisonnement strict :</strong> chaque professionnel ne voit que ce qui est partagé. Le patient reste décisionnaire de son parcours. Optibilan n'établit pas de diagnostic.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-blanc" aria-labelledby="promise-title">
+      <div class="container max-w-3xl">
+        <header class="text-center mb-16">
+          <h2 id="promise-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+            La prévention fait partie du soin.
+            Ses données méritent leur propre espace.
+          </h2>
+          <p class="text-lg text-encre/60 max-w-2xl mx-auto">
+            Bilans, biomarqueurs, habitudes, coordination. Tout structuré, cloisonné, pilotable.
+          </p>
+        </header>
+
+        <div class="grid md:grid-cols-2 gap-6 mb-16">
+          {[
+            { icon: 'chart', title: 'Bilans & biomarqueurs structurés', desc: 'Bilans longs, marqueurs clés, historique, tendances. Templates standardisés, suivi dans le temps, alertes sur seuils.' },
+            { icon: 'activity', title: 'Habitudes & adhérence pilotées', desc: 'Sommeil, activité, stress, nutrition. Suivi quotidien, alertes proactives, corrélation avec les mesures de santé.' },
+            { icon: 'users', title: 'Coordination inter-professionnelle', desc: 'Partage sélectif avec les autres praticiens du patient. Permissions granulaires, traçabilité, audit complet.' },
+            { icon: 'document', title: 'Nutrition & plans de prévention', desc: 'Templates nutrition, listes de courses, compléments, éducation. La prévention concrète, au quotidien.' },
+          ].map(item => (
+            <article class="p-6 rounded-xl border border-encre/10 hover:border-bordeaux/30 hover:shadow-soft transition-all">
+              <div class="icon-wrapper mb-4" aria-hidden="true" style="background-color: var(--color-bleu-clair);">
+                <Icon name={item.icon} class="w-7 h-7 text-bordeaux" />
+              </div>
+              <h3 class="font-display text-xl font-bold text-encre mb-2">{item.title}</h3>
+              <p class="text-encre/60">{item.desc}</p>
+            </article>
+          ))}
+        </div>
+
+        <div class="p-6 md:p-8 rounded-xl bg-gradient-to-br from-bleu-lecture/5 via-papier to-bordeaux/5 border border-encre/10 mb-16">
+          <h3 class="font-display text-xl md:text-2xl font-bold text-encre mb-4">Retour d'expérience médecin de ville</h3>
+          <blockquote class="text-encre/70 leading-relaxed mb-4 italic max-w-2xl">
+            "Le suivi entre deux consultations était le point faible de ma pratique préventive : des bilans papiers rangés dans un classeur. Optibilan structure tout - biomarqueurs, habitudes, nutrition - et je peux partager le parcours avec les autres praticiens dans un cadre cloisonné. Mes patients sont acteurs de leur prévention, pas spectateurs."
+          </blockquote>
+          <footer class="flex items-center gap-3">
+            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-bleu-signature to-bleu-lecture flex items-center justify-center text-craie font-bold text-sm">CF</div>
+            <div>
+              <div class="font-semibold text-encre">Dr Claire Fontaine</div>
+              <div class="text-sm text-encre/50">Médecin généraliste & Prévention · Cabinet Longévité - Lyon</div>
+            </div>
+          </footer>
+        </div>
+
+        <h3 class="font-display text-2xl font-bold text-encre mb-8">Modules clés pour le médecin, pro de santé</h3>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {[
+            { href: '/product/health/', icon: 'activity', title: 'Santé & Biomarqueurs', desc: 'Bilans, marqueurs, historique, tendances, alertes', color: 'bleu-lecture' },
+            { href: '/product/check-ins/', icon: 'chart', title: 'Bilans & Progression', desc: 'Bilans longs, templates, suivi dans le temps', color: 'bordeaux' },
+            { href: '/product/engagement/', icon: 'users', title: 'Gamification & Habitudes', desc: 'Habitudes, journal, alertes IA, adhérence', color: 'indigo' },
+            { href: '/product/nutrition/', icon: 'document', title: 'Nutrition & Plans', desc: 'Templates, listes de courses, compléments', color: 'bleu-ardoise' },
+            { href: '/product/white-label/', icon: 'shield', title: 'Marque Blanche', desc: 'Votre logo, vos couleurs, votre domaine', color: 'bordeaux' },
+            { href: '/product/integrations/', icon: 'code', title: 'API & Intégrations', desc: 'Webhooks, n8n, sync Notion, calendrier ICS', color: 'bleu-ardoise' },
+          ].map(mod => (
+            <a href={mod.href} class="card-hover p-6 text-center group" style={`--mod-color: var(--color-${mod.color})`}>
+              <div class="icon-wrapper mx-auto mb-4" aria-hidden="true" style={`background-color: color-mix(in oklab, var(--color-${mod.color}) 15%, transparent);`}>
+                <Icon name={mod.icon} class="w-7 h-7" style={`color: var(--color-${mod.color});`} />
+              </div>
+              <h4 class="font-display text-lg font-bold text-encre mb-2">{mod.title}</h4>
+              <p class="text-sm text-encre/50">{mod.desc}</p>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <CTA
+      title="Vous voulez structurer la prévention de VOS patients ?"
+      subtitle="30 minutes pour configurer Optibilan selon votre pratique médicale."
+      primaryCTA={{ href: '/pricing/', label: 'Rejoindre Optibilan' }}
+      secondaryCTA={{ href: '/checkout/solo/', label: 'Essai offert' }}
+      variant="primary"
+    />
+  </main>
+
+  <Footer />
+</Layout>
