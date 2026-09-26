@@ -334,7 +334,7 @@ Scalez votre activité."
       aria-labelledby="profiles-title"
       style="background-image: url('/images/product/medecins/07-medecin-homme-consultation-longevite.webp'); background-size: cover; background-position: center;"
     >
-      <div class="absolute inset-0 bg-blanc/90 backdrop-blur-[2px]" aria-hidden="true"></div>
+      <div class="absolute inset-0 bg-blanc/80 backdrop-blur-[2px]" aria-hidden="true"></div>
       <div class="container relative">
         <header class="text-center max-w-3xl mx-auto mb-16">
           <h2 id="profiles-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
@@ -346,7 +346,7 @@ Scalez votre activité."
         </header>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
           {profiles.map((profile, i) => (
-            <article class="p-6 rounded-xl border border-encre/10 hover:border-bleu-signature/30 hover:shadow-soft transition-all text-center" style={{animationDelay: `${i * 100}ms`}}>
+            <article class="p-6 rounded-xl bg-blanc shadow-soft border border-encre/10 hover:border-bleu-signature/30 hover:shadow-xl transition-all text-center" style={{animationDelay: `${i * 100}ms`}}>
               <div class="icon-wrapper mx-auto mb-4" aria-hidden="true" style="background-color: var(--color-bleu-clair);">
                 <Icon name={profile.icon} class="w-8 h-8 text-bleu-signature" />
               </div>
