@@ -2,126 +2,70 @@
 import Icon from '../Icon.astro';
 ---
 
-<div class="hidden lg:flex items-center gap-2.5">
-  <!-- ACCCOMPAGNER dropdown -->
+<div class="hidden md:flex items-center gap-4">
+  <!-- PRODUIT dropdown -->
   <div class="relative" data-dropdown>
     <button
-      class="flex items-center gap-1 px-2.5 py-2 text-sm font-medium text-encre/60 hover:text-encre rounded-lg transition-colors"
+      class="flex items-center gap-1.5 px-3 py-2 text-sm font-medium text-encre/60 hover:text-encre rounded-lg transition-colors"
       aria-haspopup="true"
       aria-expanded="false"
-      aria-label="Menu Accompagner"
+      aria-label="Menu Produit"
       data-dropdown-trigger
       type="button"
     >
-      Accompagner
+      Produit
       <Icon name="chevronDown" class="w-4 h-4 transition-transform duration-200" data-dropdown-icon />
     </button>
     <div
-      class="absolute left-0 top-full mt-2 w-60 opacity-0 invisible transition-all duration-200 bg-blanc rounded-xl border border-encre/10 shadow-elevated p-2 z-[110]"
+      class="absolute left-0 top-full mt-2 w-[600px] opacity-0 invisible transition-all duration-200 bg-blanc rounded-xl border border-encre/10 shadow-elevated p-5 z-[110]"
       role="menu"
       data-dropdown-menu
       style="transform: translateY(4px);"
     >
-      <div class="space-y-1">
-        <a href="/product/check-ins/" class="block px-3 py-2 rounded-lg hover:bg-papier transition-colors" role="menuitem">
-          <span class="block text-sm font-medium text-encre">Bilans</span>
-        </a>
-        <a href="/product/nutrition/" class="block px-3 py-2 rounded-lg hover:bg-papier transition-colors" role="menuitem">
-          <span class="block text-sm font-medium text-encre">Nutrition</span>
-        </a>
-        <a href="/product/training/" class="block px-3 py-2 rounded-lg hover:bg-papier transition-colors" role="menuitem">
-          <span class="block text-sm font-medium text-encre">Sport</span>
-        </a>
-        <a href="/product/mental/" class="block px-3 py-2 rounded-lg hover:bg-papier transition-colors" role="menuitem">
-          <span class="block text-sm font-medium text-encre">Préparation mentale</span>
-        </a>
-      </div>
-    </div>
-  </div>
-
-  <!-- SUIVRE dropdown -->
-  <div class="relative" data-dropdown>
-    <button
-      class="flex items-center gap-1 px-2.5 py-2 text-sm font-medium text-encre/60 hover:text-encre rounded-lg transition-colors"
-      aria-haspopup="true"
-      aria-expanded="false"
-      aria-label="Menu Suivre"
-      data-dropdown-trigger
-      type="button"
-    >
-      Suivre
-      <Icon name="chevronDown" class="w-4 h-4 transition-transform duration-200" data-dropdown-icon />
-    </button>
-    <div
-      class="absolute left-0 top-full mt-2 w-60 opacity-0 invisible transition-all duration-200 bg-blanc rounded-xl border border-encre/10 shadow-elevated p-2 z-[110]"
-      role="menu"
-      data-dropdown-menu
-      style="transform: translateY(4px);"
-    >
-      <div class="space-y-1">
-        <a href="/product/health/" class="block px-3 py-2 rounded-lg hover:bg-papier transition-colors" role="menuitem">
-          <span class="block text-sm font-medium text-encre">Santé</span>
-        </a>
-        <a href="/product/engagement/" class="block px-3 py-2 rounded-lg hover:bg-papier transition-colors" role="menuitem">
-          <span class="block text-sm font-medium text-encre">Habitudes</span>
-        </a>
-      </div>
-    </div>
-  </div>
-
-  <!-- AUTOMATISER dropdown -->
-  <div class="relative" data-dropdown>
-    <button
-      class="flex items-center gap-1 px-2.5 py-2 text-sm font-medium text-encre/60 hover:text-encre rounded-lg transition-colors"
-      aria-haspopup="true"
-      aria-expanded="false"
-      aria-label="Menu Automatiser"
-      data-dropdown-trigger
-      type="button"
-    >
-      Automatiser
-      <Icon name="chevronDown" class="w-4 h-4 transition-transform duration-200" data-dropdown-icon />
-    </button>
-    <div
-      class="absolute left-0 top-full mt-2 w-64 opacity-0 invisible transition-all duration-200 bg-blanc rounded-xl border border-encre/10 shadow-elevated p-2 z-[110]"
-      role="menu"
-      data-dropdown-menu
-      style="transform: translateY(4px);"
-    >
-      <div class="space-y-1">
-        <a href="/product/ai/" class="block px-3 py-2 rounded-lg hover:bg-papier transition-colors" role="menuitem">
-          <span class="block text-sm font-medium text-encre">IA & Automatisations</span>
-        </a>
-        <a href="/product/integrations/" class="block px-3 py-2 rounded-lg hover:bg-papier transition-colors" role="menuitem">
-          <span class="block text-sm font-medium text-encre">Intégrations & API</span>
-        </a>
-      </div>
-    </div>
-  </div>
-
-  <!-- PERSONNALISER dropdown -->
-  <div class="relative" data-dropdown>
-    <button
-      class="flex items-center gap-1 px-2.5 py-2 text-sm font-medium text-encre/60 hover:text-encre rounded-lg transition-colors"
-      aria-haspopup="true"
-      aria-expanded="false"
-      aria-label="Menu Personnaliser"
-      data-dropdown-trigger
-      type="button"
-    >
-      Personnaliser
-      <Icon name="chevronDown" class="w-4 h-4 transition-transform duration-200" data-dropdown-icon />
-    </button>
-    <div
-      class="absolute left-0 top-full mt-2 w-60 opacity-0 invisible transition-all duration-200 bg-blanc rounded-xl border border-encre/10 shadow-elevated p-2 z-[110]"
-      role="menu"
-      data-dropdown-menu
-      style="transform: translateY(4px);"
-    >
-      <div class="space-y-1">
-        <a href="/product/white-label/" class="block px-3 py-2 rounded-lg hover:bg-papier transition-colors" role="menuitem">
-          <span class="block text-sm font-medium text-encre">Marque blanche</span>
-        </a>
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Accompagner -->
+        <div>
+          <div class="px-2 py-2 font-semibold text-encre/50 uppercase tracking-wider text-xs border-b border-encre/10 mb-2">Accompagner</div>
+          <a href="/product/check-ins/" class="block p-3 rounded-lg hover:bg-papier transition-colors" role="menuitem">
+            <span class="block font-medium text-encre">Bilans & progression</span>
+          </a>
+          <a href="/product/nutrition/" class="block p-3 rounded-lg hover:bg-papier transition-colors" role="menuitem">
+            <span class="block font-medium text-encre">Nutrition</span>
+          </a>
+          <a href="/product/training/" class="block p-3 rounded-lg hover:bg-papier transition-colors" role="menuitem">
+            <span class="block font-medium text-encre">Sport & programmes</span>
+          </a>
+          <a href="/product/mental/" class="block p-3 rounded-lg hover:bg-papier transition-colors" role="menuitem">
+            <span class="block font-medium text-encre">Préparation mentale</span>
+          </a>
+        </div>
+        <!-- Suivre -->
+        <div>
+          <div class="px-2 py-2 font-semibold text-encre/50 uppercase tracking-wider text-xs border-b border-encre/10 mb-2">Suivre</div>
+          <a href="/product/health/" class="block p-3 rounded-lg hover:bg-papier transition-colors" role="menuitem">
+            <span class="block font-medium text-encre">Santé & biomarqueurs</span>
+          </a>
+          <a href="/product/engagement/" class="block p-3 rounded-lg hover:bg-papier transition-colors" role="menuitem">
+            <span class="block font-medium text-encre">Habitudes & engagement</span>
+          </a>
+        </div>
+        <!-- Automatiser -->
+        <div class="lg:col-span-2">
+          <div class="px-2 py-2 font-semibold text-encre/50 uppercase tracking-wider text-xs border-b border-encre/10 mb-2">Automatiser</div>
+          <a href="/product/ai/" class="block p-3 rounded-lg hover:bg-papier transition-colors" role="menuitem">
+            <span class="block font-medium text-encre">IA & Automatisations</span>
+          </a>
+          <a href="/product/integrations/" class="block p-3 rounded-lg hover:bg-papier transition-colors" role="menuitem">
+            <span class="block font-medium text-encre">Intégrations & API</span>
+          </a>
+        </div>
+        <!-- Personnaliser -->
+        <div class="lg:col-span-4">
+          <div class="px-2 py-2 font-semibold text-encre/50 uppercase tracking-wider text-xs border-b border-encre/10 mb-2">Personnaliser</div>
+          <a href="/product/white-label/" class="block p-3 rounded-lg hover:bg-papier transition-colors" role="menuitem">
+            <span class="block font-medium text-encre">Marque blanche</span>
+          </a>
+        </div>
       </div>
     </div>
   </div>
@@ -178,17 +122,17 @@ import Icon from '../Icon.astro';
   </a>
 </div>
 
-<div class="hidden lg:flex items-center gap-2">
+<div class="hidden md:flex items-center gap-2">
   <a href="https://app.optibilan.com/login" class="btn-header-secondary" aria-label="Connexion">
     <Icon name="user" class="w-5 h-5" />
   </a>
   <a href="/pricing/" class="btn-header-primary" aria-label="Rejoindre Optibilan">
     <Icon name="arrowRight" class="w-5 h-5" />
-    <span class="hidden lg:inline">Rejoindre Optibilan</span>
+    <span class="hidden sm:inline">Rejoindre Optibilan</span>
   </a>
   <a href="/contact/" class="btn-header-secondary" aria-label="Essayer Optibilan">
     <Icon name="sparkles" class="w-5 h-5" />
-    <span class="hidden xl:inline">Essayer Optibilan</span>
+    <span class="hidden md:inline">Essayer Optibilan</span>
   </a>
 </div>
 
