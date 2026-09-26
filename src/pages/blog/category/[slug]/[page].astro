@@ -75,9 +75,6 @@ function formatDate(dateStr: string) {
         <p class="text-lg text-encre/60 max-w-2xl mx-auto mb-8">
           {catCount} articles pour maîtriser {catInfo.label.toLowerCase()} dans votre pratique.
         </p>
-        <a href="/newsletter/" class="btn-secondary">
-          <Icon name="mail" class="w-4 h-4" /> Recevoir les nouveaux articles
-        </a>
       </div>
     </section>
 
@@ -145,13 +142,6 @@ function formatDate(dateStr: string) {
         )}
       </div>
     </section>
-
-    <CTA
-      title="Vous voulez ne rien rater ?"
-      subtitle="Recevez chaque mardi le meilleur de {catInfo.label.toLowerCase()} directement dans votre boîte mail."
-      primaryCTA={{ href: '/newsletter/', label: 'S\'abonner à la newsletter' }}
-      variant="secondary"
-    />
   </main>
 
   <Footer />

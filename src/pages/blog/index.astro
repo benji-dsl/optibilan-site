@@ -72,18 +72,44 @@ function formatDate(dateStr: string) {
       title="Notre blog"
       subtitle=""
       primaryCTA={{ label: '' }}
+      backgroundImage="/images/product/dashboard-coach.webp"
     />
 
     <section class="section bg-blanc" aria-labelledby="articles-title">
       <div class="container">
+        <nav aria-label="Catégories d'articles" class="mb-12">
+          <ul class="flex flex-wrap items-center justify-center gap-2 md:gap-3">
+            <li>
+              <a
+                href="/blog/"
+                class="inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold transition-colors bg-encre text-craie"
+                aria-current="true"
+              >
+                Tous
+              </a>
+            </li>
+            {categories.map(cat => (
+              <li key={cat.slug}>
+                <a
+                  href={`/blog/category/${cat.slug}/`}
+                  class="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-semibold transition-colors border border-encre/15 text-encre/70 hover:text-encre hover:border-encre/40 hover:bg-papier"
+                >
+                  <Icon name={cat.icon} class="w-4 h-4" style={`color: var(--color-${cat.color});`} />
+                  {cat.label}
+                  {cat.count > 0 && (
+                    <span class="text-xs font-bold text-encre/40">{cat.count}</span>
+                  )}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+
         <header class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12">
           <div>
             <h2 id="articles-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-2">Derniers articles</h2>
             <p class="text-encre/60">{allPosts.length} articles publiés</p>
           </div>
-          <a href="/newsletter/" class="btn-secondary self-start whitespace-nowrap">
-            <Icon name="mail" class="w-4 h-4" /> Newsletter
-          </a>
         </header>
 
         {articles.length === 0 ? (
@@ -142,15 +168,6 @@ function formatDate(dateStr: string) {
                 baseUrl="/blog/"
               />
             )}
-
-            <div class="text-center mt-12">
-              <CTA
-                variant="gold"
-                title="Vous voulez plus de contenu ?"
-                subtitle="Recevez chaque mardi un article, une astuce ou un cas client."
-                primaryCTA={{ href: '/newsletter/', label: "S'abonner" }}
-              />
-            </div>
           </>
         )}
       </div>

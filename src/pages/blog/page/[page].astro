@@ -93,7 +93,7 @@ function formatDate(dateStr: string) {
 qui veulent grandir"
       subtitle=""
       primaryCTA={{ label: '' }}
-      badge={allPosts.length > 0 ? `Propulsé par WordPress · ${allPosts.length} articles` : 'Nouveau : newsletter hebdo - 2 000+ abonnés'}
+      badge={allPosts.length > 0 ? `Propulsé par WordPress · ${allPosts.length} articles` : 'Nouveau : blog hebdo - 2 000+ lecteurs'}
     />
 
     <TrustBar />
@@ -137,9 +137,6 @@ qui veulent grandir"
                 Télécharger le guide gratuit
                 <Icon name="arrowRight" class="w-5 h-5" />
               </a>
-              <a href="/newsletter/" class="btn-secondary w-full sm:w-auto">
-                Ou s'abonner à la newsletter
-              </a>
             </div>
           </div>
           <div class="hidden md:block relative">
@@ -164,9 +161,6 @@ qui veulent grandir"
             <h2 id="articles-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-2">Derniers articles</h2>
             <p class="text-encre/60">{allPosts.length} articles publiés - mis à jour chaque semaine</p>
           </div>
-          <a href="/newsletter/" class="btn-secondary self-start whitespace-nowrap">
-            <Icon name="mail" class="w-4 h-4" /> S'abonner à la newsletter
-          </a>
         </header>
 
         {articles.length === 0 ? (
@@ -225,15 +219,6 @@ qui veulent grandir"
                 baseUrl="/blog/"
               />
             )}
-
-            <div class="text-center mt-12">
-              <CTA
-                variant="secondary"
-                title="Vous voulez plus de contenu ?"
-                subtitle="Recevez chaque mardi un article, une astuce ou un cas client directement dans votre boîte mail."
-                primaryCTA={{ href: '/newsletter/', label: 'S\'abonner gratuitement' }}
-              />
-            </div>
           </>
         )}
       </div>

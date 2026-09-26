@@ -10,6 +10,7 @@ interface Props {
   primaryCTA?: { href: string; label: string };
   secondaryCTA?: { href: string; label: string };
   illustration?: string; // imported SVG string
+  backgroundImage?: string;
 }
 
 const {
@@ -21,14 +22,24 @@ const {
   primaryCTA = { href: '/pricing/', label: 'Rejoindre Optibilan' },
   secondaryCTA = { href: '/contact/', label: 'Essai offert' },
   illustration,
+  backgroundImage,
 } = Astro.props;
 
 const homeTitle = title || 'Centralisez vos suivis. \nScalez votre activité.';
 const homeSubtitle = subtitle ?? "Le système d'exploitation des coachs et des professionnels de la santé. Bilans, programmes, nutrition et données biométriques réunis sur une seule plateforme.";
 const homeBadge = badge || "";
+const isImageBg = variant === 'home' || Boolean(backgroundImage);
 const heroBackground = variant === 'home'
   ? "background-image: url('/images/product/dashboard-coach.webp'); background-size: cover; background-position: center;"
-  : "";
+  : backgroundImage
+    ? `background-image: url('${backgroundImage}'); background-size: cover; background-position: center;`
+    : "";
+const titleClass = isImageBg
+  ? 'font-display text-4xl md:text-5xl lg:text-6xl font-bold text-craie tracking-tight leading-[1.1] mb-6 animate-slide-up drop-shadow-[0_2px_10px_rgba(0,0,0,0.55)]'
+  : 'font-display text-4xl md:text-5xl lg:text-6xl font-bold text-encre tracking-tight leading-[1.1] mb-6 animate-slide-up';
+const subtitleClass = isImageBg
+  ? 'text-lg md:text-xl text-craie/95 leading-relaxed mb-10 max-w-2xl mx-auto animate-slide-up delay-200 drop-shadow-[0_1px_6px_rgba(0,0,0,0.5)]'
+  : 'text-lg md:text-xl text-encre/70 leading-relaxed mb-10 max-w-2xl mx-auto animate-slide-up delay-200';
 ---
 
 <section
@@ -38,8 +49,13 @@ const heroBackground = variant === 'home'
 >
   {variant === 'home' ? (
     <>
-      <div class="absolute inset-0 bg-gradient-to-b from-papier/70 via-blanc/30 to-blanc/40" aria-hidden="true"></div>
-      <div class="absolute inset-0 bg-blanc/30" aria-hidden="true"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-blanc/40 via-transparent to-encre/60" aria-hidden="true"></div>
+      <div class="absolute inset-0 bg-encre/25" aria-hidden="true"></div>
+    </>
+  ) : isImageBg ? (
+    <>
+      <div class="absolute inset-0 bg-gradient-to-b from-encre/70 via-encre/35 to-encre/55" aria-hidden="true"></div>
+      <div class="absolute inset-0 bg-blanc/5" aria-hidden="true"></div>
     </>
   ) : (
     <div class="absolute inset-0 bg-gradient-to-b from-papier via-papier to-blanc" aria-hidden="true"></div>
@@ -55,14 +71,14 @@ const heroBackground = variant === 'home'
         </span>
       )}
 
-      <h1 id="hero-title" class="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-encre tracking-tight leading-[1.1] mb-6 animate-slide-up">
+      <h1 id="hero-title" class={titleClass}>
         {homeTitle.split(/\n|\\n/).map((line, i) => (
           <span key={i} class="block">{line}</span>
         ))}
       </h1>
 
       {homeSubtitle && (
-        <p class="text-lg md:text-xl text-encre/70 leading-relaxed mb-10 max-w-2xl mx-auto animate-slide-up delay-200">
+        <p class={subtitleClass}>
           {homeSubtitle}
         </p>
       )}
@@ -76,7 +92,6 @@ const heroBackground = variant === 'home'
         {secondaryCTA.label && (
           <a href={secondaryCTA.href} class="btn btn-bordeaux text-lg px-8 py-4" data-track="hero_cta_trial">
             {secondaryCTA.label}
-            <Icon name="sparkles" class="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />
           </a>
         )}
       </div>
