@@ -30,7 +30,7 @@ const homeSubtitle = subtitle ?? "Le système d'exploitation des coachs et des p
 const homeBadge = badge || "";
 const isImageBg = variant === 'home' || Boolean(backgroundImage);
 const heroBackground = variant === 'home'
-  ? "background-image: url('/images/product/dashboard-coach.webp'); background-size: cover; background-position: center;"
+  ? "background-image: url('/images/product/09-coach-entretien-client.webp'); background-size: cover; background-position: center;"
   : backgroundImage
     ? `background-image: url('${backgroundImage}'); background-size: cover; background-position: center;`
     : "";
@@ -53,8 +53,8 @@ const contentClass = isImageBg
 >
   {variant === 'home' ? (
     <>
-      <div class="absolute inset-0 bg-encre/40" aria-hidden="true"></div>
-      <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-encre/75" aria-hidden="true"></div>
+      <div class="absolute inset-0 bg-encre/30" aria-hidden="true"></div>
+      <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-encre/70" aria-hidden="true"></div>
     </>
   ) : isImageBg ? (
     <>
