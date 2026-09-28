@@ -7,8 +7,18 @@ import CTA from '../../components/CTA.astro';
 import TrustBar from '../../components/TrustBar.astro';
 import Icon from '../../components/Icon.astro';
 
-const pageTitle = 'Solution Coach sportif - Optibilan';
-const pageDescription = 'Passez moins de temps à gérer. Plus de temps à coacher. Programmes, bilans, progression, adhérence, communication dans une seule plateforme.';
+const pageTitle = 'Logiciel pour coachs sportifs : suivi client, programmes et bilans | Optibilan';
+const pageDescription = 'Le logiciel de suivi client des coachs sportifs : programmes, bilans, progression, adhérence et communication dans une seule plateforme. Essai offert 30 jours.';
+
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Accueil', item: 'https://optibilan.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Solutions', item: 'https://optibilan.com/solutions/' },
+    { '@type': 'ListItem', position: 3, name: 'Coach sportif', item: 'https://optibilan.com/solutions/coaches/' },
+  ],
+};
 ---
 
 <Layout
@@ -16,6 +26,7 @@ const pageDescription = 'Passez moins de temps à gérer. Plus de temps à coach
   description={pageDescription}
   canonical="/solutions/coaches/"
   ogImage="/og-solution-coach.png"
+  jsonLd={breadcrumbJsonLd}
 >
   <Header />
 

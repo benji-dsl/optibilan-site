@@ -4,6 +4,9 @@
 # API routes vers l'app (proxy)
 /api/* https://app.optibilan.com/api/* 200
 
+# Sitemap: Astro génère sitemap-index.xml (et sitemap-0.xml)
+/sitemap.xml /sitemap-index.xml 301
+
 # Pages légales (statiques) - français vers anglais
 /mentions-legales /legal/mentions 200
 /cgv /legal/cgv 200

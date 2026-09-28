@@ -23,6 +23,19 @@ import Icon from '../Icon.astro';
       style="transform: translateY(4px);"
     >
       <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Découvrir -->
+        <div>
+          <div class="px-2 py-2 font-semibold text-encre/50 uppercase tracking-wider text-xs border-b border-encre/10 mb-2">Découvrir</div>
+          <a href="/product/overview/" class="block p-3 rounded-lg hover:bg-papier transition-colors" role="menuitem">
+            <span class="block font-medium text-encre">Vue d'ensemble</span>
+          </a>
+          <a href="/product/crm/" class="block p-3 rounded-lg hover:bg-papier transition-colors" role="menuitem">
+            <span class="block font-medium text-encre">Journal & CRM</span>
+          </a>
+          <a href="/product/integrations/" class="block p-3 rounded-lg hover:bg-papier transition-colors" role="menuitem">
+            <span class="block font-medium text-encre">Intégrations & API</span>
+          </a>
+        </div>
         <!-- Accompagner -->
         <div>
           <div class="px-2 py-2 font-semibold text-encre/50 uppercase tracking-wider text-xs border-b border-encre/10 mb-2">Accompagner</div>
@@ -50,18 +63,11 @@ import Icon from '../Icon.astro';
           </a>
         </div>
         <!-- Automatiser -->
-        <div class="lg:col-span-2">
+        <div>
           <div class="px-2 py-2 font-semibold text-encre/50 uppercase tracking-wider text-xs border-b border-encre/10 mb-2">Automatiser</div>
           <a href="/product/ai/" class="block p-3 rounded-lg hover:bg-papier transition-colors" role="menuitem">
             <span class="block font-medium text-encre">IA & Automatisations</span>
           </a>
-          <a href="/product/integrations/" class="block p-3 rounded-lg hover:bg-papier transition-colors" role="menuitem">
-            <span class="block font-medium text-encre">Intégrations & API</span>
-          </a>
-        </div>
-        <!-- Personnaliser -->
-        <div class="lg:col-span-4">
-          <div class="px-2 py-2 font-semibold text-encre/50 uppercase tracking-wider text-xs border-b border-encre/10 mb-2">Personnaliser</div>
           <a href="/product/white-label/" class="block p-3 rounded-lg hover:bg-papier transition-colors" role="menuitem">
             <span class="block font-medium text-encre">Marque blanche</span>
           </a>

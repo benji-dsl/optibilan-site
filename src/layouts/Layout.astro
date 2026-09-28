@@ -102,9 +102,12 @@ import '../styles/global.css';
     <script type="application/ld+json" set:html={JSON.stringify({
       '@context': 'https://schema.org',
       '@type': 'Organization',
+      '@id': `${SITE_URL}/#organization`,
       name: SITE_NAME,
       url: SITE_URL,
       logo: `${SITE_URL}/icon-512.png`,
+      inLanguage: 'fr-FR',
+      areaServed: 'FR',
       sameAs: [
         'https://twitter.com/optibilan',
         'https://linkedin.com/company/optibilan',
@@ -131,9 +134,9 @@ import '../styles/global.css';
       '@type': 'WebSite',
       name: SITE_NAME,
       url: SITE_URL,
+      inLanguage: 'fr-FR',
       publisher: {
-        '@type': 'Organization',
-        name: SITE_NAME,
+        '@id': `${SITE_URL}/#organization`,
       },
     })}></script>
 
@@ -144,6 +147,8 @@ import '../styles/global.css';
       name: 'Optibilan',
       applicationCategory: 'BusinessApplication',
       operatingSystem: 'Cloud / SaaS',
+      inLanguage: 'fr-FR',
+      isAccessibleForFree: false,
       offers: {
         '@type': 'Offer',
         price: '49',

@@ -189,7 +189,7 @@ qui veulent grandir"
                     <div class="flex items-center justify-between pt-4 border-t border-encre/10">
                       <div class="flex items-center gap-2">
                         {article.authorAvatar ? (
-                          <img src={article.authorAvatar} alt="" class="w-8 h-8 rounded-full" loading="lazy" />
+                          <img src={article.authorAvatar} alt={article.author} class="w-8 h-8 rounded-full" loading="lazy" />
                         ) : (
                           <div class="w-8 h-8 rounded-full bg-gradient-to-br from-bleu-signature to-bleu-lecture flex items-center justify-center text-craie font-bold text-xs">
                             {article.author.split(' ').map(n => n[0]).join('')}

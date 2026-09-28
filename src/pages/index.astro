@@ -8,8 +8,8 @@ import BrowserFrame from '../components/BrowserFrame.astro';
 import CTA from '../components/CTA.astro';
 import Icon from '../components/Icon.astro';
 
-const pageTitle = 'Optibilan - Centralisez vos suivis. Scalez votre activité.';
-const pageDescription = 'Le système d\'exploitation des coachs et des professionnels de la santé : bilans, programmes, nutrition et données biométriques réunis sur une seule plateforme.';
+const pageTitle = 'Optibilan - Logiciel de suivi pour coachs et professionnels de la santé';
+const pageDescription = 'Le logiciel de coaching et de suivi client des pros de la santé : bilans, nutrition, sport et données biométriques réunis sur une seule plateforme. Essai offert 30 jours.';
 
 const socialProof = [
   { name: 'Studio Performance', type: 'Coaching sportif', location: 'Bordeaux', clients: 120, image: '/images/cabinets/01-studio-performance-realiste.webp' },
@@ -159,9 +159,9 @@ const breadcrumbJsonLd = {
   <main>
     <!-- 1. HERO with spectacular product shot -->
     <Hero
-      title="Centralisez vos suivis.
-Scalez votre activité."
-      subtitle="Le système d'exploitation des coachs et des professionnels de la santé. Bilans, programmes, nutrition et données biométriques réunis sur une seule plateforme."
+      title="Le logiciel de coaching et de suivi client
+pour coachs, nutritionnistes et pros de la santé"
+      subtitle="Le logiciel de coaching et de suivi client des professionnels de la santé : bilans, programmes, nutrition, sport et données biométriques réunis sur une seule plateforme. Une solution complète pour coachs sportifs, nutritionnistes, diététiciens, naturopathes, médecins et cabinets pluridisciplinaires."
       badge=""
       primaryCTA={{ href: '/pricing/', label: 'Rejoindre Optibilan' }}
       secondaryCTA={{ href: '/checkout/solo/', label: 'Essai offert' }}
@@ -184,7 +184,7 @@ Scalez votre activité."
               <div class="bg-encre/5">
                 <img
                   src={item.image}
-                  alt={`{item.name} utilisant Optibilan au quotidien`}
+                  alt={`${item.name} utilisant Optibilan au quotidien`}
                   width="1000"
                   height="750"
                   class="w-full h-auto"
@@ -341,6 +341,28 @@ Scalez votre activité."
               <p class="text-encre/60 text-sm leading-relaxed">{profile.modules}</p>
             </article>
           ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- 6b. CONTENU PILIER SEO (mots-clés + maillage interne) -->
+    <section class="section bg-papier" aria-labelledby="pillar-title">
+      <div class="container">
+        <div class="max-w-4xl mx-auto">
+          <h2 id="pillar-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-6">
+            Le logiciel de coaching et de suivi client des professionnels de la santé
+          </h2>
+          <div class="prose prose-encre max-w-none text-encre/70 leading-relaxed space-y-4">
+            <p>
+              Optibilan est un <strong>logiciel de coaching et de suivi client</strong> conçu pour les professionnels de la santé et de la performance : <strong>coachs sportifs</strong>, <strong>nutritionnistes</strong>, diététiciens, naturopathes, médecins et cabinets pluridisciplinaires. Fini les tableurs, les PDF éparpillés et les applications multiples : servez-vous d'une plateforme unique pour créer des bilans, construire des programmes, suivre la nutrition et analyser les biomarqueurs de vos clients.
+            </p>
+            <p>
+              Le logiciel centralise vos suivis et structure votre accompagnement : bilans personnalisables, plans nutrition avec listes de courses, programmes sportifs, préparation mentale, données de santé connectée (Apple Health, Oura, Garmin), IA qui pré-remplit vos comptes rendus et alertes d'adhérence. Vos clients suivent leur progression dans une application mobile claire, votre marque (marque blanche totale comprise), et vous pilotez tout depuis votre tableau de bord.
+            </p>
+            <p>
+              Que vous soyez un <a href="/solutions/coaches/" class="text-bleu-signature font-semibold hover:underline">coach sportif</a>, un <a href="/solutions/nutrition/" class="text-bleu-signature font-semibold hover:underline">nutritionniste</a>, un <a href="/solutions/medecin/" class="text-bleu-signature font-semibold hover:underline">médecin</a> ou un <a href="/solutions/cabinets/" class="text-bleu-signature font-semibold hover:underline">cabinet pluridisciplinaire</a>, les modules s'activent selon votre pratique. Découvrez aussi la <a href="/product/white-label/" class="text-bleu-signature font-semibold hover:underline">marque blanche totale</a>, les bilans et la progression clients, ou planifiez votre démarrage sur la page <a href="/pricing/" class="text-bleu-signature font-semibold hover:underline">tarifs</a>.
+            </p>
+          </div>
         </div>
       </div>
     </section>

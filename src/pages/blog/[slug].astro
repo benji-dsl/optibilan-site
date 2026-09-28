@@ -24,8 +24,8 @@ for (const [slug, info] of Object.entries(CATEGORY_MAP)) {
 
 if (!post) return Astro.redirect('/blog/');
 
-const pageTitle = `${post.title} - Blog Optibilan`;
-const pageDescription = post.excerpt.length > 150 ? post.excerpt.substring(0, 147) + '...' : post.excerpt;
+const pageTitle = post.seoTitle || `${post.title} - Blog Optibilan`;
+const pageDescription = post.seoDescription || (post.excerpt.length > 150 ? post.excerpt.substring(0, 147) + '...' : post.excerpt);
 
 const breadcrumbJsonLd = {
   '@context': 'https://schema.org',
@@ -35,21 +35,6 @@ const breadcrumbJsonLd = {
     { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://optibilan.com/blog' },
     { '@type': 'ListItem', position: 3, name: post.title, item: `https://optibilan.com/blog/${post.slug}` },
   ],
-};
-
-const articleJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'BlogPosting',
-  headline: post.title,
-  description: post.excerpt,
-  image: post.featuredImage || 'https://optibilan.com/og-blog.png',
-  datePublished: post.date,
-  dateModified: post.date,
-  author: { '@type': 'Person', name: post.author },
-  publisher: { '@type': 'Organization', name: 'Optibilan', logo: { '@type': 'ImageObject', url: 'https://optibilan.com/icon-512.png' } },
-  mainEntityOfPage: { '@type': 'WebPage', '@id': `https://optibilan.com/blog/${post.slug}` },
-  articleSection: post.categoryLabel,
-  wordCount: Math.round(post.content.replace(/<[^>]+>/g, '').split(/\s+/).length),
 };
 
 function formatDate(dateStr: string) {
@@ -62,8 +47,13 @@ function formatDate(dateStr: string) {
   title={pageTitle}
   description={pageDescription}
   canonical={`/blog/${post.slug}/`}
+  ogType="article"
   ogImage={post.featuredImage || '/og-blog.png'}
-  jsonLd={[articleJsonLd, breadcrumbJsonLd]}
+  publishedTime={post.date}
+  modifiedTime={post.date}
+  author={post.author}
+  section={post.categoryLabel}
+  jsonLd={breadcrumbJsonLd}
 >
   <Header />
 
@@ -81,7 +71,7 @@ function formatDate(dateStr: string) {
           <div class="flex items-center justify-center gap-4 text-sm text-encre/60 mb-8 flex-wrap">
             <div class="flex items-center gap-1.5">
               {post.authorAvatar ? (
-                <img src={post.authorAvatar} alt="" class="w-8 h-8 rounded-full" loading="lazy" />
+                <img src={post.authorAvatar} alt={post.author} class="w-8 h-8 rounded-full" loading="lazy" />
               ) : (
                 <div class="w-8 h-8 rounded-full bg-gradient-to-br from-bleu-signature to-bleu-lecture flex items-center justify-center text-craie font-bold text-xs">
                   {post.author.split(' ').map(n => n[0]).join('')}

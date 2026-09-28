@@ -7,8 +7,8 @@ import CTA from '@/components/CTA.astro';
 import Icon from '@/components/Icon.astro';
 import { getAllPosts, getCategories, CATEGORY_MAP, type OptibilanArticle } from '@/utils/wordpress';
 
-const pageTitle = 'Blog - Optibilan';
-const pageDescription = 'Articles, guides et études de cas pour cabinets, studios et coachs : coaching, santé, business.';
+const pageTitle = 'Blog Optibilan : conseils coaching, nutrition et santé pour pros';
+const pageDescription = 'Guides, études de cas et conseils pour coachs sportifs, nutritionnistes et professionnels de la santé : bilans, suivi client, nutrition, préparation mentale et business.';
 
 const allPosts = await getAllPosts();
 const wpCategories = await getCategories();
@@ -138,7 +138,7 @@ function formatDate(dateStr: string) {
                     <div class="flex items-center justify-between pt-4 border-t border-encre/10">
                       <div class="flex items-center gap-2">
                         {article.authorAvatar ? (
-                          <img src={article.authorAvatar} alt="" class="w-8 h-8 rounded-full" loading="lazy" />
+                          <img src={article.authorAvatar} alt={article.author} class="w-8 h-8 rounded-full" loading="lazy" />
                         ) : (
                           <div class="w-8 h-8 rounded-full bg-gradient-to-br from-bleu-signature to-bleu-lecture flex items-center justify-center text-craie font-bold text-xs">
                             {article.author.split(' ').map(n => n[0]).join('')}
