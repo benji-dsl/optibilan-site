@@ -525,6 +525,284 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
     readTime: '9 min',
     featured: true,
   },
+  {
+    slug: 'marque-blanche-coaching-studio',
+    title: 'Marque blanche coaching : lancer votre studio sans tout créer',
+    excerpt: 'Lancer son studio de coaching en marque blanche : identité cohérente, accès coachs, portail client. Ce qu\'il faut couvrir et les pièges à éviter.',
+    content: `<p>Lancer un studio est un marathon de tâches invisibles : créer un nom, décliner une identité, construire le suivi, embaucher. Peut-on garder la force d'une marque propre sans repartir de zéro ? C'est exactement l'objet de la marque blanche : vos couleurs, votre nom, votre identité, posés sur un socle déjà éprouvé. Voici ce qu'il faut savoir avant de vous lancer.</p>
+<h2>Ce qu'est la marque blanche, ce qu'elle n'est pas</h2>
+<p>La marque blanche consiste à faire fonctionner une offre sous votre nom et votre identité visuelle, alors que la réalisation s'appuie sur un outil partagé. Ce n'est pas une imitation, c'est une synthèse : vous conservez l'essentiel, votre relation et votre discours, et vous déléguez la mécanique, le développement logiciel, la maintenance.</p>
+<p>Prenons un exemple concret. Un studio de coaching santé qui affiche son propre nom et délivre à ses clients des bilans aux couleurs de sa marque utilise la marque blanche, sans que son client s'en aperçoive. Et c'est précisément le but : l'outil disparaît derrière la promesse de la marque.</p>
+<h2>Pourquoi c'est pertinent pour un studio de coaching</h2>
+<p>Trois raisons poussent les studios vers cette voie.</p>
+<p><strong>La cohérence d'abord.</strong> Chaque document envoyé, bilan, contrat, plan, porte la même identité, et la promesse de la marque ne se fragmente pas entre des outils disparates.</p>
+<p><strong>L'indépendance ensuite.</strong> Votre marque vit séparément du fournisseur qui la porte. Cette séparation vous permet de changer de socle technique sans perdre dix ans de communication et de relation client.</p>
+<p><strong>La rapidité enfin.</strong> Pas de développement sur mesure à piloter, la mise en route se compte en jours, pas en mois. Le temps gagné est investi là où il compte, dans l'accompagnement des clients.</p>
+<h2>Ce que doit couvrir votre marque blanche</h2>
+<p>Tout ce qui touche le client doit porter votre identité, et tout ce qui concerne l'équipe doit rester simple à piloter. Concrètement :</p>
+<ul>
+<li>Les bilans et les comptes-rendus, rendus au format de votre marque.</li>
+<li>Le dossier client, consultable par le client lui-même à vos couleurs.</li>
+<li>Les questionnaires et les documents de lancement.</li>
+<li>Les accès coachs, avec des rôles et des droits par intervenant.</li>
+<li>Les rappels et les communications automatiques, envoyés à votre nom.</li>
+</ul>
+<p>Un bon test : demandez-vous si un client, en consultant son espace, peut deviner le nom du fournisseur. Si c'est le cas, la marque blanche n'est pas assez complète.</p>
+<h2>Marque blanche et recrutement de coachs</h2>
+<p>La marque blanche est aussi un argument d'équipe. Un nouveau coach intègre un environnement clair, aux couleurs du studio, avec les mêmes trames que ses collègues. Il n'importe pas ses propres méthodes au détriment de la cohérence : l'identité du studio traverse chaque intervention.</p>
+<p>C'est le point qui transforme le recrutement : on n'embauche plus des solistes qui reconstruisent chacun leur format, on intègre des membres d'une équipe qui partagent le même standard de suivi.</p>
+<h2>Les pièges à éviter</h2>
+<p>Trois erreurs font perdre le bénéfice de la marque blanche.</p>
+<ul>
+<li><strong>Une marque blanche purement cosmétique.</strong> Un logo collé sur un outil sans prise en main réelle donne une illusion qui s'effondre à la première anomalie.</li>
+<li><strong>Confondre marque blanche et dépendance.</strong> Avant de signer, vérifiez que vous pouvez exporter vos données et repartir avec votre historique si le fournisseur disparaît.</li>
+<li><strong>Négliger le support.</strong> Vos coachs ne doivent jamais rester bloqués devant un problème technique sans aucun interlocuteur.</li>
+</ul>
+<h2>Un levier commercial trop souvent ignoré</h2>
+<p>La marque blanche ne sert pas seulement à l'interne. C'est aussi un argument commercial concret face à des partenaires et des prescripteurs.</p>
+<p><strong>Les cabinets et les prescripteurs.</strong> Un cabinet médical ou paramédical qui vous adresse ses patients préfère recevoir des comptes-rendus au nom de votre studio, lisibles et alignés sur vos trames, plutôt qu'un écran d'outil tiers. La marque blanche matérialise votre professionnalisme aux yeux de ceux qui vous recommandent.</p>
+<p><strong>Les organismes et les entreprises.</strong> Quand vous intervenez auprès d'une entreprise, d'une mutuelle ou d'un organisme sportif, présenter une offre à votre nom, avec vos bilans et votre portail, fait passer l'image d'un prestataire occasionnel à celle d'un partenaire structuré. L'argument de la cohérence porte d'autant plus que le client connaît déjà les codes de votre marque.</p>
+<p><strong>La recommandation interne.</strong> Un client content qui parle de « mon espace » et montre ses bilans à un ami raconte l'expérience de votre marque, pas celle d'un outil qu'il aurait pu ouvrir seul. La marque blanche fait de votre suivi le réceptacle fidèle de la confiance, et c'est cette confiance qui se propage.</p>
+<p>En clair : plus votre signature est visible à chaque point de contact, plus votre nom raconte l'histoire des résultats. C'est de la valeur permanente qui s'accumule sans rien vous coûter à la production.</p>
+<h2>Se lancer sans tout réinventer</h2>
+<p>Vous n'avez pas besoin d'une équipe de développement pour commencer. Faites le bilan de vos besoins : accès coachs, bilans aux couleurs du studio, identité sur chaque document, portail client. Évaluez ensuite ce que chaque outil vous prête en personnalisation et ce qu'il vous laisse libre de faire.</p>
+<p>Le socle Optibilan porte par exemple <a href="/product/white-label/">une offre marque blanche</a> pensée pour les studios : vos couleurs, vos coachs, vos trames, votre portail. Démarrez avec ce dont vous avez besoin, puis ajoutez le reste au fil des mois, lorsque l'équipe et les clients le réclament.</p>
+<h2>Un accélérateur, pas une fin en soi</h2>
+<p>La marque blanche n'est pas une destination, c'est un accélérateur. Elle vous rend la cohérence visible dès le premier jour et vous libère pour la vraie construction, celle de votre relation avec les clients. Le parcours type d'un studio qui a franchi ce cap est documenté dans <a href="/blog/cas-client-studio-performance/">le cas Studio Performance</a>, passé de 20 à 150 coachés en huit mois. Et pour faire grandir l'équipe sans perdre la main, prolongez avec <a href="/blog/delegation-equipe-grandir/">notre méthode de délégation</a>.</p>`,
+    category: 'business',
+    categoryLabel: 'Business',
+    author: 'Thomas Bertrand',
+    authorRole: 'Fondateur Studio Performance',
+    date: '2026-09-21',
+    readTime: '6 min',
+    featured: false,
+    seoTitle: 'Marque blanche coaching : lancer votre studio sans tout créer',
+    seoDescription: 'Lancez votre studio de coaching en marque blanche : identité cohérente, accès coachs, portail client. Ce que doit couvrir l\'offre et les pièges à éviter.',
+    seoKeywords: ['marque blanche coaching', 'studio de coaching', 'portail client coach'],
+    tags: ['marque-blanche', 'studio', 'equipe', 'portail-client'],
+  },
+  {
+    slug: 'fideliser-clients-coaching-retention',
+    title: 'Fidéliser ses clients coach : la rétention se joue avant la résiliation',
+    excerpt: 'La rétention se joue avant la résiliation : signaux d\'alerte, bilan hebdo, autonomie. Les leviers pour garder vos clients.',
+    content: `<p>La plupart des coachs dépensent une énergie considérable à chercher de nouveaux clients, et bien peu à retenir ceux qu'ils ont déjà. C'est l'erreur de coût la plus chère du métier : un client qui reste six mois de plus vaut plusieurs acquisitions, sans aucune dépense de prospection. La rétention n'est pas une qualité innée, c'est un système. Voici comment le construire avant que les premiers décrochages se déclarent.</p>
+<h2>Comprendre pourquoi un client part vraiment</h2>
+<p>Les raisons affichées ne sont pas les raisons réelles. On entend souvent « manque de temps » ou « questions financières ». Le plus souvent, le client part parce que la progression n'est plus visible, parce qu'il ne perçoit plus la valeur du suivi, ou parce que la routine a transformé les séances en rendez-vous sans cap.</p>
+<p>Identifier ces trois motifs change votre vigilance : vous ne cherchez plus des excuses, vous cherchez des signaux. Un client qui sait pourquoi il est là et où il va ne s'en va pas par ennui.</p>
+<h2>Détecter les signaux avant la résiliation</h2>
+<p>Le décrochage ne survient pas d'un coup. Il s'annonce par des micro-signaux : des bilans complétés avec retard, des rendez-vous décalés, des mensurations absentes, des messages sans réponse. Leur point commun est simple, moins de données à l'arrivée veut dire moins d'engagement.</p>
+<p>Si vous regardez la tendance plutôt que chaque incident isolé, vous repérez le décrochage deux à quatre semaines à l'avance. Un tableau de bord qui suit l'adhérence par client change votre angle d'action : au lieu de réagir à une résiliation, vous rappelez un client en difficulté plus tôt, avec des arguments fondés sur les données, pas sur une intuition.</p>
+<h2>Le bilan hebdomadaire, outil de fidélisation</h2>
+<p>Le rendez-vous le plus fidélisant de votre accompagnement est le bilan hebdomadaire, à condition qu'il ne soit pas une compilation de chiffres. Un bilan efficace raconte la semaine : ce qui a fonctionné, ce qui freine, la prochaine étape. Il rend la progression visible au moment où elle est encore fragile.</p>
+<p>Un client qui reçoit un bilan clair chaque semaine sait exactement où il en est, et il voit que vous le suivez de près. C'est précisément ce que l'on ne trouve ni dans une application ni dans un programme téléchargé : une personne qui lit vos données et ajuste votre plan.</p>
+<h2>Célébrer les victoires, pas seulement les résultats</h2>
+<p>L'erreur de nombreux suivis est de ne valoriser que l'objectif final. Entre le début et l'arrivée, des semaines sont réussies sans que la balance bouge : régularité maintenue, comportement analysé, habitudes intégrées.</p>
+<p>Célébrer ces victoires intermédiaires entretient la motivation et transforme la relation en partenariat. Un client encouragé sur ce qu'il fait bien tient mieux qu'un client jugé sur ce qui lui manque. Notez chaque semaine une victoire, même minime, et dites-la.</p>
+<h2>Développer l'autonomie du client</h2>
+<p>Plus le client dépend de vous pour la moindre décision, plus la relation devient fragile : il finit par vous quitter soit parce que la contrainte devient trop lourde, soit parce qu'il se sent incapable. À l'inverse, chaque portion d'autonomie accordée, choix d'un ajustement, lecture d'une tendance, gestion d'un imprévu, augmente sa fierté et son attachement au suivi.</p>
+<p>Votre rôle évolue alors de la décision permanente au pilotage des décisions qu'il prend. Un client autonome n'a plus besoin qu'on le motive : il revient parce que le suivi lui apporte encore quelque chose.</p>
+<h2>Les 90 premiers jours décident de la suite</h2>
+<p>La fidélité ne se joue pas au moment de la résiliation, elle se construit dans les premiers mois. Un client qui vit bien ses trois premiers mois de suivi a peu de raisons de partir : il a vu des rituels, une structure et de premiers résultats. Un client dont l'entrée est brouillonne garde un doute permanent, prêt à ressortir au premier incident.</p>
+<p>Concrètement, soignez l'entrée : un premier bilan structuré qui pose un cap, des mesures de départ explicites, un calendrier prévisible de séances et de points hebdomadaires. Annoncez dès le début comment le suivi fonctionne, ce que vous attendez du client et ce qu'il peut attendre de vous. L'incertitude est le premier ennemi de la rétention.</p>
+<p>Pendant ce premier trimestre, le feedback régulier compte plus que les résultats eux-mêmes. Dites ce qui se passe, pourquoi, et ce qui vient ensuite. Un client informé vit le suivi comme un processus contrôlé ; un client laissé dans l'ombre le vit comme une loterie.</p>
+<p>Enfin, posez la question de la valeur dès le premier mois, pas au sixième : demandez à votre client ce qui lui apporte le plus dans le suivi, et systématisez ce point. Vous n'attendrez plus qu'il parte pour savoir ce qu'il fallait préserver.</p>
+<h2>La grille de lecture mensuelle</h2>
+<p>Installez un rendez-vous mensuel de rétrospective, court et structuré : résultats du mois, levier prioritaire du mois suivant, ressenti du client. Cette réévaluation évite l'effet tunnel et redonne un cap quand la routine s'installe.</p>
+<p>C'est aussi l'occasion d'ajuster la formule si la réalité du client a changé, plutôt que de le laisser résilier pour devoir le reconquérir ensuite. Une réduction de rythme assumée vaut mieux qu'une résiliation définitive.</p>
+<h2>Des abonnés qui durent, un studio qui respire</h2>
+<p>La fidélisation agit sur tous les chiffres à la fois : un client qui reste stabilise votre revenu, vous libère du temps de prospection et devient votre meilleur ambassadeur.</p>
+<p>Faites de la rétention un indicateur aussi suivi que les résultats de vos clients. Un outil qui structure les bilans, rend l'adhérence visible et conserve l'historique au même endroit change la donne : <a href="/product/overview/">voyez comment fonctionne un dossier de suivi client</a>, puis <a href="/blog/cas-client-studio-performance/">lisez le cas Studio Performance</a>, passé de 20 à 150 coachés en huit mois sans perdre la qualité. Et quand l'équipe grandit, la fidélisation se partage : <a href="/blog/delegation-equipe-grandir/">déléguer sans perdre la main</a> est la suite logique.</p>`,
+    category: 'business',
+    categoryLabel: 'Business',
+    author: 'Thomas Bertrand',
+    authorRole: 'Fondateur Studio Performance',
+    date: '2026-09-14',
+    readTime: '6 min',
+    featured: true,
+    seoTitle: 'Fidéliser ses clients coach : la rétention avant la résiliation',
+    seoDescription: 'Fidélisation coaching : détecter les signaux avant la résiliation, rendre la progression visible, développer l\'autonomie. Le système de rétention.',
+    seoKeywords: ['fidélisation client coach', 'rétention coaching', 'adhérence suivi'],
+    tags: ['fidelisation', 'retention', 'abonnement', 'suivi'],
+  },
+  {
+    slug: 'questionnaire-lancement-client-coaching',
+    title: 'Questionnaire de lancement : 20 questions pour réussir l\'anamnèse',
+    excerpt: 'L\'anamnèse qui prépare votre accompagnement : 20 questions sur l\'historique, les objectifs, les habitudes et l\'engagement.',
+    content: `<p>La première séance avec un nouveau client est un moment décisif, et souvent mal préparé. On improvise, on pose des questions dans le désordre, et on repart avec dix feuilles que l'on n'exploite jamais. Le questionnaire de lancement change tout : il structure l'histoire du client avant même de commencer, et il vous offre un dossier exploitable dès la première séance. Voici les vingt questions qui font la différence.</p>
+<h2>Pourquoi le questionnaire de lancement change tout</h2>
+<p>Un accompagnement commence par une promesse : comprendre la situation réelle du client pour construire un plan pertinent. Sans questionnaire, cette promesse repose sur ce que le client vous dit en quinze minutes, souvent adouci par la gêne.</p>
+<p>Le questionnaire écrit libère la parole. On confie plus facilement ses antécédents, ses échecs passés et ses doutes à l'écrit qu'en face à face. Il joue aussi un rôle de contrat psychologique : un client qui a investi du temps à répondre arrive en séance déjà engagé dans la démarche, et il valorise votre organisation.</p>
+<h2>Les cinq questions d'identité et d'historique</h2>
+<p>Ces questions installent le cadre. Sans elles, toutes les recommandations suivantes sont tirées d'une histoire incomplète.</p>
+<ol>
+<li>Âge, profession et rythme de vie : quelle est votre disponibilité réelle pour le suivi ?</li>
+<li>Votre historique de pratique : avez-vous déjà été suivi ou entraîné, dans quel cadre et combien de temps ?</li>
+<li>Vos antécédents médicaux et vos blessures : quels sont les points de vigilance à respecter ?</li>
+<li>Vos traitements ou suivis en cours avec un autre professionnel de santé.</li>
+<li>Ce qui s'est passé lors de vos dernières tentatives : qu'avez-vous testé, et pourquoi cela n'a pas duré ?</li>
+</ol>
+<h2>Les cinq questions d'objectif et de motivation</h2>
+<p>L'objectif est le moteur du suivi. S'il n'est pas écrit, le client le réécrit selon son humeur, et l'effort devient flou.</p>
+<ol>
+<li>Votre objectif concret à trois mois, formulé comme un critère vérifiable.</li>
+<li>Votre objectif à un an, pour vérifier que la direction à trois mois y conduit.</li>
+<li>Pourquoi cet objectif compte pour vous : qu'est-ce qui change dans votre vie s'il est atteint ?</li>
+<li>Ce qui vous a manqué jusqu'ici : le temps, la méthode, la constance ou le soutien ?</li>
+<li>Sur une échelle de 1 à 10, votre confiance à atteindre cet objectif aujourd'hui, et ce qui vous ferait gagner un point.</li>
+</ol>
+<h2>Les cinq questions d'habitudes et d'environnement</h2>
+<p>Les résultats viennent des habitudes répétées, pas des intentions. Votre travail consiste à appuyer celles-ci sur le quotidien réel du client.</p>
+<ol>
+<li>Votre semaine type : travail, repas, sommeil, et les moments où vous êtes disponible pour le sport.</li>
+<li>Votre niveau d'activité actuel hors programme : marche quotidienne, escaliers, travail physique.</li>
+<li>Vos habitudes alimentaires : repas à la maison, restaurant, grignotage, boissons.</li>
+<li>Votre sommeil : nombre d'heures, régularité, qualité ressentie au réveil.</li>
+<li>Votre environnement : qui vit avec vous et peut soutenir ou freiner vos efforts.</li>
+</ol>
+<h2>Les cinq questions d'engagement et de cadre</h2>
+<p>Le cadre protège le suivi et fixe les règles du jeu pour les semaines difficiles.</p>
+<ol>
+<li>Votre disponibilité horaire pour les séances, et les créneaux irrémédiables.</li>
+<li>Votre préférence entre un encadrement ferme et un accompagnement souple.</li>
+<li>Ce qui vous a fait choisir un accompagnement plutôt qu'une solution seul ou une application.</li>
+<li>Votre engagement sur les points hebdomadaires : êtes-vous prêt à fournir les mesures et les retours demandés ?</li>
+<li>Ce que vous attendez de moi au quotidien : relances, ajustements, disponibilité.</li>
+</ol>
+<h2>Les erreurs qui ruinent un questionnaire</h2>
+<p>Un bon questionnaire se repère aussi à ce qu'il évite.</p>
+<ul>
+<li><strong>Le questionnaire exhaustif.</strong> Trente questions fouillées sur tout, y compris sur ce qui ne servira jamais, font fuir ou découragent de répondre sérieusement. Vingt questions ciblées valent mieux que quarante questions vagues.</li>
+<li><strong>Le questionnaire posé en séance.</strong> Poser les questions à l'oral en première séance reproduit la gêne que le format écrit contourne, et il ne reste aucune trace exploitable. L'écrit se lit, se compare et se met à jour ; l'oral s'oublie.</li>
+<li><strong>Le questionnaire jamais relu.</strong> Demander des réponses sans les utiliser ensuite est la pire des pertes de confiance. Un client qui répète trois fois la même information croit que vous ne l'écoutez pas.</li>
+</ul>
+<p>Gardez le document simple, soignez l'ordre des questions, du plus neutre au plus intime, et annoncez le temps de réponse estimé. Un client prévenu que cela prendra quinze minutes le vit comme un investissement, pas comme une formalité.</p>
+<p>Ajustez enfin la liste à votre spécialité. Un préparateur mental ajoute les questions sur le stress et les automatismes, un nutritionniste approfondit l'environnement alimentaire, un médecin du sport documente plus finement les antécédents. Le squelette reste identique, seules les branches changent. C'est cette adaptation qui transforme un questionnaire générique en outil de professionnel.</p>
+<h2>Que faire des réponses</h2>
+<p>Un questionnaire ne vaut que par l'usage que vous en faites. Relisez-le la veille de la première séance et transformez-le en plan : deux priorités à trois mois, deux mesures de départ, un premier ajustement d'habitude.</p>
+<p>Résumez au client ce que vous avez compris de sa situation en ouverture de séance. Cette reformulation signale que vous l'avez écouté et crée la confiance qui portera tout le suivi. Archivez les réponses dans son dossier et mettez-les à jour tous les trimestres : une anamnèse datée de six mois n'est plus une anamnèse, c'est un souvenir.</p>
+<h2>Le questionnaire, première brique du dossier client</h2>
+<p>Le questionnaire de lancement ne fait pas que préparer la première séance, il pose la première pierre du dossier client. Les mesures, les bilans et les ajustements qui suivent viennent s'organiser autour de l'objectif déclaré, dans un seul et même endroit.</p>
+<p>Pour encadrer tout le parcours d'entrée, du questionnaire au bilan initial et à la contractualisation, <a href="/lead-magnet-onboarding/">téléchargez notre protocole d'onboarding en 28 pages</a>. Et une fois le client lancé, appuyez la progression avec une trame déjà prête : <a href="/blog/comment-structurer-ses-bilans/">structurez vos bilans hebdomadaires</a> pour ne plus jamais perdre de temps à les préparer.</p>`,
+    category: 'coaching',
+    categoryLabel: 'Coaching',
+    author: 'Marie Dubois',
+    authorRole: 'Coach santé & nutrition',
+    date: '2026-09-07',
+    readTime: '6 min',
+    featured: false,
+    seoTitle: 'Questionnaire de lancement : 20 questions pour l\'anamnèse',
+    seoDescription: '20 questions de questionnaire de lancement pour réussir l\'anamnèse : antécédents, objectifs, habitudes, engagement. Bien préparer le premier bilan.',
+    seoKeywords: ['questionnaire de lancement', 'anamnèse coaching', 'bilan initial client'],
+    tags: ['anamnese', 'questionnaire', 'onboarding', 'bilan'],
+  },
+  {
+    slug: 'fixer-tarifs-coaching-sportif',
+    title: 'Tarifs coaching sportif : la méthode pour fixer le juste prix',
+    excerpt: 'Fixer vos tarifs sans brader votre valeur : coût de revient, modèles de prix, valeur perçue. La méthode complète.',
+    content: `<p>Fixer ses tarifs est la décision la plus intimidante quand on crée ou développe une activité de coaching. Trop haut, on craint de faire fuir. Trop bas, on s'épuise et on attire des clients qui ne tiennent pas. Pourtant, le prix n'est pas un pari : c'est un résultat. Il découle de votre coût de revient, de la valeur réelle de votre suivi et de la façon dont vous présentez votre offre. Voici la méthode, étape par étape.</p>
+<h2>Vos tarifs sont déjà un message</h2>
+<p>Avant même que vous prononciez un mot, votre tarif positionne votre offre. Un coaching à 35 euros la séance raconte une histoire différente d'un suivi à 120 euros par mois. Les clients ne comparent pas d'abord les prix entre coachs : ils comparent le prix à l'idée qu'ils se font de vos résultats. Un tarif volontairement bas envoie un signal de doute : si vous ne croyez pas en votre valeur, pourquoi votre client y croirait-il ?</p>
+<p>Le niveau de prix idéal n'existe pas. Ce qui existe, c'est la cohérence entre votre tarif, votre cible et votre promesse. Un coach qui recherche ses dix premiers clients n'a pas à charger les prix d'un studio établi. En revanche, il doit structurer une offre dès le début, pour que chaque augmentation progressive soit un argument clair et non une barrière.</p>
+<h2>Étape 1 : calculer votre coût de revient réel</h2>
+<p>On tarife souvent à l'intuition, en regardant ce que pratique le voisin. Le point de départ correct, c'est le temps et l'argent que chaque client vous coûte réellement. Faites le calcul sur un mois type :</p>
+<ul>
+<li>Le temps de séance, de préparation et de bilan hebdomadaire, souvent deux à quatre heures par client et par mois.</li>
+<li>Les réponses aux messages, les réajustements de programme et la coordination.</li>
+<li>Vos outils : logiciel de suivi, plateforme de facturation, équipement de mesure.</li>
+<li>Vos charges fixes quand vous tenez un studio : local, énergie, assurance.</li>
+<li>Les charges sociales et fiscales, qui pèsent souvent un tiers du chiffre d'affaires.</li>
+</ul>
+<p>Une fois ce coût connu, fixez votre objectif de revenu net mensuel et divisez-le par votre capacité d'accompagnement. Vous obtenez un tarif plancher sous lequel il est mathématiquement impossible de travailler. Tout ce qui dépasse ce plancher nourrit votre marge et votre investissement.</p>
+<h2>Étape 2 : choisir votre modèle de prix</h2>
+<p>Trois familles de modèles coexistent, et le meilleur choix dépend de votre mode de suivi.</p>
+<p>La séance à l'unité est simple à vendre, mais elle valorise l'heure et non le résultat : vous êtes payé pour votre présence, pas pour la transformation. Le forfait mensuel de suivi, qui réunit séances, bilan structuré et disponibilité, crée un revenu prévisible et engage le client dans la durée. L'accompagnement premium, défini sur trois à six mois avec des étapes et des évaluations régulières, se justifie quand votre méthode produit un résultat chiffrable.</p>
+<p>Le marché du coaching de santé a largement basculé vers l'abonnement pour une raison simple : il aligne votre intérêt, rester dans le suivi, sur celui du client, obtenir des résultats durables. C'est aussi le modèle qui résiste le mieux à l'absentéisme et aux ruptures prématurées.</p>
+<h2>Étape 3 : construire la valeur perçue</h2>
+<p>Avant d'annoncer un tarif, votre offre doit montrer ce qu'elle contient. Un prix ne se justifie pas, il s'assemble. Rassemblez les composants de votre suivi dans une liste claire :</p>
+<ul>
+<li>Un bilan hebdomadaire structuré qui rend la progression visible.</li>
+<li>La collecte et l'interprétation des mesures : adhérence, sommeil, performances.</li>
+<li>Un ajustement de programme fondé sur les données, pas sur l'impression.</li>
+<li>Une disponibilité définie à l'avance : délai de réponse, canaux de contact.</li>
+<li>Un accompagnement nutrition, mental ou récupération selon votre spécialité.</li>
+</ul>
+<p>Présenté ainsi, votre suivi se compare encore à des séances isolées, mais le rapport n'est plus le même. Le client n'achète plus trente minutes, il achète le système complet qui le mène à son objectif.</p>
+<h2>Les trois erreurs qui bradent le prix</h2>
+<p>Trois réflexes reviennent et coûtent cher en valeur perçue.</p>
+<ul>
+<li>Vendre séance par séance et glisser le suivi en option. Quand le bilan devient une annexe, le client ne paie plus pour ce qui fait pourtant la différence.</li>
+<li>Aligner son prix sur celui du concurrent. Vous ne vendez pas le même accompagnement que le studio d'à côté, rien ne vous oblige à partager ses tarifs.</li>
+<li>Négocier au cas par cas. Chaque exception raconte que votre prix d'affichage n'est pas sérieux, et le bouche-à-oreille finit par le répéter.</li>
+</ul>
+<h2>Annoncer votre tarif sans hésiter</h2>
+<p>L'annonce du prix se structure. Formulez d'abord le cadre : « Pour cet accompagnement, le suivi mensuel démarre à X euros. Il comprend vos séances, un bilan hebdomadaire préparé et un ajustement continu de votre programme. » Puis taisez-vous et laissez la place à la question. Le silence qui suit est un espace de décision, pas un vide à remplir.</p>
+<p>Si le client hésite sur le montant, ne rétrogradez pas le prix : déplacez la discussion vers le périmètre. La valeur se défend en ajoutant des éléments concrets, rarement en rabattant le tarif.</p>
+<h2>Augmenter vos tarifs sans perdre vos clients</h2>
+<p>La hausse de prix est une étape normale, pas une trahison. Annoncez-la à l'avance, avec un délai clair pour que personne ne découvre un changement à la facturation. Justifiez la nouvelle valeur en montrant ce qui a changé depuis la dernière version : un suivi mieux structuré, plus d'outils, de meilleurs résultats.</p>
+<p>Prolongez le tarif ancien pour les clients fidèles, ou offrez une transition progressive. Un client fidèle coûte moins cher à servir qu'un nouveau, il peut donc rester à l'ancien tarif pendant un cycle, le temps que la valeur nouvelle devienne évidente. La hausse s'installe alors naturellement, sans friction ni résiliation surprise.</p>
+<h2>Un tarif vivant, réévalué avec les résultats</h2>
+<p>Un bon tarif ne se choisit pas une fois pour toutes. Il évolue avec votre coût de revient, votre réputation et la qualité de vos résultats. Réévaluez vos prix tous les six mois, chiffres de vos bilans en main. Si vos clients restent plusieurs mois et progressent, c'est que votre suivi vaut plus que votre tarif actuel.</p>
+<p>Le temps passé à assembler des bilans et à recopier des mesures est du temps que votre tarif doit rémunérer. Un suivi structuré libère ce temps et renforce ce que vous affichez : <a href="/product/overview/">découvrez le fonctionnement d'un dossier de suivi client</a> et <a href="/pricing/">comparez les formules Optibilan</a>. Et comme un tarif attire mais ne retient pas, prolongez la lecture avec <a href="/blog/fideliser-clients-coaching-retention/">nos leviers pour fidéliser vos clients</a>.</p>`,
+    category: 'business',
+    categoryLabel: 'Business',
+    author: 'Marie Dubois',
+    authorRole: 'Coach santé & nutrition',
+    date: '2026-08-24',
+    readTime: '6 min',
+    featured: true,
+    seoTitle: 'Tarifs coaching sportif : fixer le juste prix de votre suivi',
+    seoDescription: 'Comment fixer vos tarifs de coaching sportif et santé : coût de revient, modèles de prix, valeur perçue. La méthode pour vendre votre suivi au juste prix.',
+    seoKeywords: ['tarifs coaching sportif', 'prix coaching santé', 'forfait mensuel coaching'],
+    tags: ['tarifs', 'abonnement', 'valeur', 'business'],
+  },
+  {
+    slug: 'perte-de-poids-durable-eviter-yoyo',
+    title: 'Perte de poids durable : 7 règles pour éviter l\'effet yoyo',
+    excerpt: 'Perte de poids durable : 7 règles contre l\'effet yoyo, préserver le muscle et tenir après l\'objectif.',
+    content: `<p>Presque tout le monde sait perdre du poids. Ce qui sépare les résultats durables des échecs répétés, c'est la phase invisible : celle qui suit l'objectif. On maigrit souvent vite, on reprend presque toujours une partie de ce que l'on a perdu, et chaque cycle érode la confiance. La bonne approche renverse la question : au lieu de chercher la perte maximale, elle construit les conditions qui tiennent. Voici les sept règles qui font la différence.</p>
+<h2>Pourquoi le yoyo n'est pas un manque de volonté</h2>
+<p>Le poids oscille d'abord pour des raisons physiologiques. Une restriction marquée réduit la dépense énergétique, active la faim et fait perdre du muscle en plus de la graisse. Ajoutez un retour aux anciennes habitudes, et la reprise devient le résultat le plus prévisible qui soit.</p>
+<p>Comprendre ce mécanisme change le travail du coach : il ne s'agit plus de courir contre la montre, mais de construire un régime que l'on peut tenir, mesurer et ajuster semaine après semaine.</p>
+<h2>Règle 1 : perdre lentement pour durer</h2>
+<p>Un déficit modéré, de l'ordre de 15 à 25 pour cent des besoins, sans jamais de privation draconienne, produit moins de faim, préserve le muscle et maintient le niveau de vie. La vitesse compte moins que la stabilité : un demi-kilo à un kilo par semaine, en moyenne sur un mois, est un rythme sain et tenable.</p>
+<h2>Règle 2 : préserver le muscle</h2>
+<p>Le muscle est le moteur de la dépense énergétique au repos. En perte de poids, le stimulus doit rester suffisant pour que le corps ne retire que la graisse excédentaire, pas la masse qui le fait dépenser. Le bon dosage se construit dans le suivi, en ajustant la charge et la fréquence selon les résultats, pas sur une fiche d'exercices générique.</p>
+<h2>Règle 3 : suivre plus que la balance</h2>
+<p>Le poids se trompe régulièrement : rétention d'eau, variations hormonales, digestion. Il ne devient parlant que sur la tendance de plusieurs semaines. Croisez-le avec le tour de taille, les mesures, le ressenti et la performance sportive : ces indicateurs racontent la vraie trajectoire, celle du corps qui change.</p>
+<h2>Règle 4 : construire des habitudes réversibles</h2>
+<p>Toute discipline qui ne survit pas à une semaine de vacances, à un déplacement ou à un imprévu est une discipline fragile. Avant de conseiller une habitude, posez la question : le client pourra-t-il la maintenir dans sa réalité ? Si la réponse est non, aménagez-la avant de l'imposer. Une habitude modeste mais stable bat toujours un plan parfait et abandonné.</p>
+<h2>Règle 5 : planifier les écarts</h2>
+<p>L'interdiction totale prépare la rupture. Planifier un écart par semaine, encadré et assumé, réduit la tension psychologique et protège l'adhérence sur le long terme. Le client apprend à gérer ses repas de fête au lieu de les subir, puis de les compenser en se privant, ce qui alimente le yoyo.</p>
+<h2>Règle 6 : réévaluer les besoins à chaque palier</h2>
+<p>En perdant du poids, les besoins énergétiques baissent. Un plan qui n'est pas recalibré à chaque palier finit par créer un déficit trop faible, et la perte ralentit sans raison apparente. Le suivi régulier permet d'ajuster le déficit et l'activité en fonction des résultats réels, plutôt que de laisser le client s'épuiser sur un plan devenu obsolète.</p>
+<h2>Règle 7 : garder le suivi après l'objectif</h2>
+<p>La phase la plus fragile est celle des trois à six mois qui suivent l'objectif. On relâche les efforts, on arrête les bilans, et la dérive s'installe en silence. La reprise se joue ici : prévoyez un suivi allégé mais régulier après l'atteinte de l'objectif, avec des points mensuels et des mesures encore comparées. La surveillance coûte peu, elle évite d'en refaire la totalité.</p>
+<h2>Construire la transition vers le maintien</h2>
+<p>L'objectif atteint, on ne coupe pas le processus d'un coup. La sortie de régime est une phase à part entière : on remonte progressivement les portions, on réintroduit les aliments écartés dans un ordre contrôlé, et on surveille la réponse du poids sur plusieurs semaines avant d'ajuster.</p>
+<p>La règle de la transition est simple : un seul levier à la fois. Augmentez les portions pendant trois semaines et observez. Si le poids reste stable, ajoutez un second levier, la réintroduction d'un repas convivial par exemple. Cette progressivité permet de retrouver une alimentation durable sans basculer dans la surcompensation.</p>
+<p>Pendant la phase de maintien, gardez des points mensuels plus légers : une mesure, une discussion sur les écarts, une charge d'entraînement réajustée. Le maintien n'est pas l'arrêt du suivi, c'est un suivi à basse intensité qui coûte peu et protège des années de travail.</p>
+<h2>Les erreurs de coaching qui alimentent le yoyo</h2>
+<p>Trois erreurs courantes sabordent un accompagnement prometteur.</p>
+<ul>
+<li><strong>Promettre une perte spectaculaire.</strong> La vitesse séduit à la vente et dessert à long terme : le déficit agressif qui la rend possible prépare la reprise.</li>
+<li><strong>Juger la semaine sur la balance.</strong> Un client mesuré chaque lundi, démoralisé par un pic de rétention d'eau, décroche progressivement. La tendance, elle, ne se laisse pas piéger.</li>
+<li><strong>Arrêter le suivi à l'objectif.</strong> Le moment où l'on interrompt tout est celui où l'on prive le client de la seule chose qui garantissait sa constance, le regard régulier. La reprise n'est alors pas un échec du client, c'est un échec du dispositif.</li>
+</ul>
+<h2>Le rôle du coach dans la constance</h2>
+<p>Aucune règle ne remplace un regard régulier sur les données. C'est le suivi qui transforme ces principes en décisions : ajuster le déficit, planifier l'écart, réagir à la stagnation. Sans mesure, sans bilan, sans comparaison, les règles restent des souhaits.</p>
+<p>Un logiciel de suivi alimenté par les mesures du client rend ce travail simple et visible : <a href="/solutions/nutrition/">voyez comment les nutritionnistes structurent leurs suivis</a>, et comment <a href="/blog/sync-sante-biomarqueurs/">synchroniser les données de santé connectée</a> dans le dossier client pour des bilans fondés sur des faits. Le cadre du bilan hebdo, lui, s'apprend vite : <a href="/blog/comment-structurer-ses-bilans/">notre méthode en 3 questions</a>.</p>`,
+    category: 'sante',
+    categoryLabel: 'Santé',
+    author: 'Dr. Pierre Lambert',
+    authorRole: 'Médecin du sport',
+    date: '2026-08-10',
+    readTime: '6 min',
+    featured: true,
+    seoTitle: 'Perte de poids durable : 7 règles pour éviter l\'effet yoyo',
+    seoDescription: 'Perte de poids durable : 7 règles contre l\'effet yoyo, préserver le muscle, planifier les écarts et tenir après l\'objectif. Guide praticiens.',
+    seoKeywords: ['perte de poids durable', 'effet yoyo', 'maintien du poids'],
+    tags: ['perte-de-poids', 'nutrition', 'maintien', 'biomarqueurs'],
+  },
 ];
 
 /**
@@ -539,7 +817,7 @@ export function getAllPosts(): Promise<OptibilanArticle[]> {
 async function fetchAllPosts(): Promise<OptibilanArticle[]> {
   if (!import.meta.env.WP_BASE_URL) {
     console.log('[WP] WP_BASE_URL non configuré, utilisation des données statiques');
-    return STATIC_FALLBACK_ARTICLES;
+    return [...STATIC_FALLBACK_ARTICLES].sort((a, b) => b.date.localeCompare(a.date));
   }
 
   const allPosts: OptibilanArticle[] = [];
@@ -565,13 +843,13 @@ async function fetchAllPosts(): Promise<OptibilanArticle[]> {
 
     if (!allPosts.length) {
       console.warn('[WP] Aucun article publié trouvé, repli sur les articles statiques');
-      return STATIC_FALLBACK_ARTICLES;
+      return [...STATIC_FALLBACK_ARTICLES].sort((a, b) => b.date.localeCompare(a.date));
     }
 
-    return allPosts;
+    return allPosts.sort((a, b) => b.date.localeCompare(a.date));
   } catch (error) {
     console.warn('[WP] Erreur récupération des posts, repli sur les articles statiques:', error);
-    return STATIC_FALLBACK_ARTICLES;
+    return [...STATIC_FALLBACK_ARTICLES].sort((a, b) => b.date.localeCompare(a.date));
   }
 }
 
