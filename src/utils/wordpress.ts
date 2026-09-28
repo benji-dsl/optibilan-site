@@ -148,6 +148,22 @@ const DEV_CACHE_TTL = 5 * 60 * 1000; // 5 min
 // Cache en mémoire pour le dev (évite de hammer WP à chaque save)
 const devCache = new Map<string, { data: unknown; expires: number }>();
 
+// Cache en mémoire pour le build (une seule requête WP par clé, mutualisée
+// entre getStaticPaths et le rendu de chaque page)
+const buildCache = new Map<string, Promise<unknown>>();
+
+function memoized<T>(key: string, fn: () => Promise<T>): Promise<T> {
+  const hit = buildCache.get(key);
+  if (hit) return hit as Promise<T>;
+
+  const promise = fn().catch(error => {
+    buildCache.delete(key);
+    throw error;
+  });
+  buildCache.set(key, promise);
+  return promise;
+}
+
 function getConfig(): Required<WPConfig> {
   return {
     baseUrl: import.meta.env.WP_BASE_URL || 'https://blog.optibilan.com',
@@ -238,7 +254,7 @@ function extractCategory(post: WPPost): string {
     const cat = terms.find((t: WPTerm) => t.taxonomy === 'category');
     if (cat) return cat.slug;
   }
-  return 'digitalisation';
+  return 'coaching';
 }
 
 function extractTags(post: WPPost): string[] {
@@ -300,17 +316,9 @@ function calculateReadTime(content: string): string {
   return `${minutes} min`;
 }
 
-function formatDateFR(dateStr: string): string {
-  try {
-    return new Date(dateStr).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
-  } catch {
-    return dateStr;
-  }
-}
-
 function mapPostToArticle(post: WPPost): OptibilanArticle {
   const category = extractCategory(post);
-  const catInfo = CATEGORY_MAP[category] || CATEGORY_MAP.digitalisation;
+  const catInfo = CATEGORY_MAP[category] ?? CATEGORY_MAP.coaching;
   const author = extractAuthor(post);
   const media = extractFeaturedMedia(post);
   const seo = extractSEO(post);
@@ -322,15 +330,15 @@ function mapPostToArticle(post: WPPost): OptibilanArticle {
     excerpt: post.excerpt.rendered.replace(/<[^>]+>/g, '').trim().slice(0, 300),
     content: post.content.rendered,
     category,
-    categoryLabel: CATEGORY_MAP[category]?.label || catInfo.label,
+    categoryLabel: catInfo.label,
     author: author.name,
     authorRole: author.role,
     authorCompany: author.company,
     authorAvatar: author.avatar,
     authorTwitter: author.twitter,
     authorLinkedin: author.linkedin,
-    date: formatDateFR(post.date),
-    modifiedDate: post.modified !== post.date ? formatDateFR(post.modified) : undefined,
+    date: post.date,
+    modifiedDate: post.modified !== post.date ? post.modified : undefined,
     readTime: calculateReadTime(post.content.rendered),
     featured: post.acf?.featured === true || post.acf?.a_la_une === true,
     featuredImage: media?.url,
@@ -522,8 +530,13 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 /**
  * Récupère TOUS les articles publiés (build-time SSG)
  * Pagination automatique via headers X-WP-TotalPages
+ * Mémoïsé par build + repli sur les articles statiques si WP échoue
  */
-export async function getAllPosts(): Promise<OptibilanArticle[]> {
+export function getAllPosts(): Promise<OptibilanArticle[]> {
+  return memoized('blog:posts', fetchAllPosts);
+}
+
+async function fetchAllPosts(): Promise<OptibilanArticle[]> {
   if (!import.meta.env.WP_BASE_URL) {
     console.log('[WP] WP_BASE_URL non configuré, utilisation des données statiques');
     return STATIC_FALLBACK_ARTICLES;
@@ -550,10 +563,15 @@ export async function getAllPosts(): Promise<OptibilanArticle[]> {
       page++;
     }
 
+    if (!allPosts.length) {
+      console.warn('[WP] Aucun article publié trouvé, repli sur les articles statiques');
+      return STATIC_FALLBACK_ARTICLES;
+    }
+
     return allPosts;
   } catch (error) {
-    console.error('[WP] Erreur récupération posts:', error);
-    return import.meta.env.WP_BASE_URL ? [] : STATIC_FALLBACK_ARTICLES;
+    console.warn('[WP] Erreur récupération des posts, repli sur les articles statiques:', error);
+    return STATIC_FALLBACK_ARTICLES;
   }
 }
 
@@ -561,21 +579,8 @@ export async function getAllPosts(): Promise<OptibilanArticle[]> {
  * Récupère un article par slug (avec SEO, ACF, media)
  */
 export async function getPostBySlug(slug: string): Promise<OptibilanArticle | null> {
-  if (!import.meta.env.WP_BASE_URL) return null;
-
-  try {
-    const posts = await fetchWP<WPPost[]>('/posts', {
-      slug,
-      _embed: 'true',
-      status: 'publish',
-    });
-
-    if (!posts.length) return null;
-    return mapPostToArticle(posts[0]);
-  } catch (error) {
-    console.error(`[WP] Erreur récupération post ${slug}:`, error);
-    return null;
-  }
+  const posts = await getAllPosts();
+  return posts.find(p => p.slug === slug) ?? null;
 }
 
 /**
@@ -619,8 +624,13 @@ export async function getPostsByCategory(categorySlug: string, page = 1, perPage
 
 /**
  * Récupère toutes les catégories mappées avec leurs compteurs
+ * Mémoïsé par build + repli sur le mapping statique si WP échoue
  */
-export async function getCategories(): Promise<Array<{ slug: string; label: string; icon: string; color: string; count: number }>> {
+export function getCategories(): Promise<Array<{ slug: string; label: string; icon: string; color: string; count: number }>> {
+  return memoized('blog:categories', fetchCategories);
+}
+
+async function fetchCategories(): Promise<Array<{ slug: string; label: string; icon: string; color: string; count: number }>> {
   if (!import.meta.env.WP_BASE_URL) {
     return Object.entries(CATEGORY_MAP).map(([slug, info]) => ({ slug, ...info, count: 0 }));
   }
@@ -632,7 +642,7 @@ export async function getCategories(): Promise<Array<{ slug: string; label: stri
       .map(c => ({ ...CATEGORY_MAP[c.slug], slug: c.slug, count: c.count }))
       .sort((a, b) => b.count - a.count);
   } catch (error) {
-    console.error('[WP] Erreur catégories:', error);
+    console.warn('[WP] Erreur catégories, repli sur le mapping statique:', error);
     return Object.entries(CATEGORY_MAP).map(([slug, info]) => ({ slug, ...info, count: 0 }));
   }
 }

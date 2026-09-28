@@ -5,6 +5,7 @@ interface Props {
   baseUrl: string;
   showFirstLast?: boolean;
   maxVisible?: number;
+  pageUrlFn?: (page: number) => string;
 }
 
 const {
@@ -13,6 +14,7 @@ const {
   baseUrl,
   showFirstLast = true,
   maxVisible = 5,
+  pageUrlFn,
 } = Astro.props;
 
 if (totalPages <= 1) {
@@ -46,14 +48,16 @@ if (totalPages <= maxVisible) {
   }
 }
 
-const pageUrl = (page: number) => page === 1 ? baseUrl : `${baseUrl.replace(/\/+$/, '')}/page/${page}`;
+const pageUrl =
+  pageUrlFn ??
+  ((page: number) => (page === 1 ? baseUrl : `${baseUrl.replace(/\/+$/, '')}/page/${page}`));
 ---
 
 <nav class="pagination" aria-label="Pagination" role="navigation">
   <ul class="flex items-center justify-center gap-1.5 flex-wrap">
     {showFirstLast && currentPage > 1 && (
       <li>
-        <a href={baseUrl} class="pagination-btn" aria-label="Première page" rel="first">
+        <a href={pageUrl(1)} class="pagination-btn" aria-label="Première page" rel="first">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 19l-7-7 7-7m8 14l-7-7 7-7" />
           </svg>

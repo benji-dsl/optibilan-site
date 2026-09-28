@@ -3,9 +3,11 @@ import Layout from '@/layouts/Layout.astro';
 import Header from '@/components/Header.astro';
 import Footer from '@/components/Footer.astro';
 import Hero from '@/components/Hero.astro';
+import TrustBar from '@/components/TrustBar.astro';
 import CTA from '@/components/CTA.astro';
 import Icon from '@/components/Icon.astro';
-import { getAllPosts, getCategories, CATEGORY_MAP, type OptibilanArticle } from '@/utils/wordpress';
+import Pagination from '@/components/Pagination.astro';
+import { getAllPosts, getCategories, CATEGORY_MAP } from '@/utils/wordpress';
 
 const pageTitle = 'Blog Optibilan : conseils coaching, nutrition et santé pour pros';
 const pageDescription = 'Guides, études de cas et conseils pour coachs sportifs, nutritionnistes et professionnels de la santé : bilans, suivi client, nutrition, préparation mentale et business.';
@@ -13,12 +15,7 @@ const pageDescription = 'Guides, études de cas et conseils pour coachs sportifs
 const allPosts = await getAllPosts();
 const wpCategories = await getCategories();
 
-const categoryLabels: Record<string, string> = {};
 const categories = wpCategories.length > 0 ? wpCategories : Object.entries(CATEGORY_MAP).map(([slug, info]) => ({ slug, ...info, count: 0 }));
-
-for (const cat of categories) {
-  categoryLabels[cat.slug] = cat.label;
-}
 
 const postsPerPage = 12;
 const totalPages = Math.ceil(allPosts.length / postsPerPage);
@@ -69,46 +66,77 @@ function formatDate(dateStr: string) {
   <main>
     <Hero
       variant="page"
-      title="Notre blog"
+      title="Ressources pour cabinets 
+qui veulent grandir"
       subtitle=""
       primaryCTA={{ label: '' }}
-      backgroundImage="/images/product/dashboard-coach.webp"
+      badge={allPosts.length > 0 ? `Propulsé par WordPress · ${allPosts.length} articles` : 'Nouveau : blog hebdo - 2 000+ lecteurs'}
     />
+
+    <TrustBar />
+
+    <section class="section bg-papier" aria-labelledby="categories-title">
+      <div class="container">
+        <header class="text-center max-w-3xl mx-auto mb-12">
+          <h2 id="categories-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">Explorer par catégorie</h2>
+          <p class="text-lg text-encre/60">Chaque catégorie regroupe des articles spécialisés pour votre pratique.</p>
+        </header>
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+          {categories.map(cat => (
+            <a href={`/blog/category/${cat.slug}/1/`} class="card-hover group p-5 md:p-6 text-center" style="--pillar-color: var(--color-{cat.color})">
+              <div class="icon-wrapper mx-auto mb-4" aria-hidden="true" style="background-color: color-mix(in oklab, var(--color-{cat.color}) 15%, transparent);">
+                <Icon name={cat.icon} class="w-6 h-6" style="color: var(--color-{cat.color});" />
+              </div>
+              <h3 class="font-display text-lg font-bold text-encre mb-1">{cat.label}</h3>
+              <p class="text-sm text-encre/50">{cat.count > 0 ? `${cat.count} articles` : 'Articles'}</p>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-gradient-to-br from-bleu-signature/5 via-papier to-bleu-lecture/5 rounded-card-lg relative overflow-hidden" aria-labelledby="lead-magnet-title">
+      <div class="absolute inset-0 bg-gradient-to-r from-bleu-signature/5 via-transparent to-bleu-lecture/5" aria-hidden="true"></div>
+      <div class="container relative">
+        <div class="grid md:grid-cols-2 gap-8 items-center py-12 md:py-16">
+          <div class="text-center md:text-left">
+            <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-bleu-clair text-bleu-lecture text-sm font-medium mb-4">
+              <Icon name="document" class="w-4 h-4" /> Lead Magnet
+            </span>
+            <h2 id="lead-magnet-title" class="font-display text-2xl md:text-3xl font-bold text-encre mb-4">
+              Le protocole d'onboarding parfait pour un accompagnement à +2000€
+            </h2>
+            <p class="text-encre/60 leading-relaxed mb-6 max-w-xl mx-auto md:mx-0">
+              Le guide PDF (28 pages) utilisé par 150+ cabinets pour structurer leur premier mois d'accompagnement : questionnaire lancement, bilan initial, fixation objectifs, contractualisation, mise en place outils. Téléchargement immédiat, sans engagement.
+            </p>
+            <div class="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">
+              <a href="/lead-magnet-onboarding" class="btn-demo w-full sm:w-auto" data-track="blog_lead_magnet">
+                Télécharger le guide gratuit
+                <Icon name="arrowRight" class="w-5 h-5" />
+              </a>
+            </div>
+          </div>
+          <div class="hidden md:block relative">
+            <div class="aspect-[3/4] max-w-md mx-auto bg-encre/5 rounded-lg border border-encre/10 p-4 flex flex-col items-center justify-center relative">
+              <div class="absolute inset-0 grid grid-cols-4 gap-2 p-4 opacity-10" aria-hidden="true">
+                {[...Array(16)].map((_, i) => (
+                  <div key={i} class="col-span-1 h-6 bg-bleu-signature/20 rounded animate-pulse" style={{animationDelay: `${i * 80}ms`}} />
+                ))}
+              </div>
+              <Icon name="document" class="w-16 h-16 text-bleu-signature/30 relative z-10 mb-4" />
+              <p class="text-encre/40 text-sm text-center relative z-10">Guide PDF 28 pages - Aperçu</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <section class="section bg-blanc" aria-labelledby="articles-title">
       <div class="container">
-        <nav aria-label="Catégories d'articles" class="mb-12">
-          <ul class="flex flex-wrap items-center justify-center gap-2 md:gap-3">
-            <li>
-              <a
-                href="/blog/"
-                class="inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold transition-colors bg-encre text-craie"
-                aria-current="true"
-              >
-                Tous
-              </a>
-            </li>
-            {categories.map(cat => (
-              <li key={cat.slug}>
-                <a
-                  href={`/blog/category/${cat.slug}/`}
-                  class="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-semibold transition-colors border border-encre/15 text-encre/70 hover:text-encre hover:border-encre/40 hover:bg-papier"
-                >
-                  <Icon name={cat.icon} class="w-4 h-4" style={`color: var(--color-${cat.color});`} />
-                  {cat.label}
-                  {cat.count > 0 && (
-                    <span class="text-xs font-bold text-encre/40">{cat.count}</span>
-                  )}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </nav>
-
         <header class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12">
           <div>
             <h2 id="articles-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-2">Derniers articles</h2>
-            <p class="text-encre/60">{allPosts.length} articles publiés</p>
+            <p class="text-encre/60">{allPosts.length} articles publiés - mis à jour chaque semaine</p>
           </div>
         </header>
 
@@ -127,7 +155,7 @@ function formatDate(dateStr: string) {
                   <div class="p-6 md:p-7">
                     <div class="flex items-center gap-2 mb-3">
                       <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-puce text-xs font-medium" style="color: var(--color-{article.category}); background-color: color-mix(in oklab, var(--color-{article.category}) 10%, transparent);">
-                        {categoryLabels[article.category]}
+                        {categories.find(c => c.slug === article.category)?.label || article.categoryLabel}
                       </span>
                       <time class="text-xs text-encre/40" datetime={article.date}>{formatDate(article.date)}</time>
                     </div>
@@ -172,6 +200,13 @@ function formatDate(dateStr: string) {
         )}
       </div>
     </section>
+
+    <CTA
+      title="Vous avez un sujet à proposer ?"
+      subtitle="On cherche toujours des experts pour écrire : nutrition, sport, mental, santé, business. Contactez l'équipe éditoriale."
+      primaryCTA={{ href: '/contact/', label: 'Proposer un article' }}
+      variant="gold"
+    />
   </main>
 
   <Footer />

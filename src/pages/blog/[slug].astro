@@ -41,6 +41,11 @@ function formatDate(dateStr: string) {
   try { return new Date(dateStr).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' }); }
   catch { return dateStr; }
 }
+
+const relatedPosts = allPosts
+  .filter(p => p.slug !== post.slug && p.category === post.category)
+  .concat(allPosts.filter(p => p.slug !== post.slug && p.category !== post.category))
+  .slice(0, 3);
 ---
 
 <Layout
@@ -131,9 +136,7 @@ function formatDate(dateStr: string) {
       <div class="container">
         <h2 id="related-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-8 text-center">Continuer la lecture</h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {allPosts
-            .filter(p => p.slug !== post.slug && p.category === post.category)
-            .slice(0, 3)
+          {relatedPosts
             .map(related => (
               <article class="card-hover group overflow-hidden">
                 {related.featuredImage && (

@@ -9,7 +9,18 @@ import { getAllPosts, getCategories, CATEGORY_MAP, type OptibilanArticle } from 
 
 export async function getStaticPaths() {
   const categories = await getCategories();
-  return categories.map(cat => ({ params: { slug: cat.slug, page: '1' } }));
+  const allPosts = await getAllPosts();
+  const postsPerPage = 12;
+
+  const paths: { params: { slug: string; page: string } }[] = [];
+  for (const cat of categories) {
+    const count = allPosts.filter(p => p.category === cat.slug).length;
+    const totalPages = Math.max(1, Math.ceil(count / postsPerPage));
+    for (let p = 1; p <= totalPages; p++) {
+      paths.push({ params: { slug: cat.slug, page: String(p) } });
+    }
+  }
+  return paths;
 }
 
 const { slug, page } = Astro.params;
@@ -135,7 +146,8 @@ function formatDate(dateStr: string) {
               <Pagination
                 currentPage={currentPage}
                 totalPages={totalPages}
-                baseUrl={`/blog/category/${slug}/${currentPage}`}
+                baseUrl={`/blog/category/${slug}/`}
+                pageUrlFn={(p) => `/blog/category/${slug}/${p}/`}
               />
             )}
           </>
