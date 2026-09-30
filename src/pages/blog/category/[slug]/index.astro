@@ -1,5 +1,10 @@
 ---
-import { getCategories, CATEGORY_MAP } from "@/utils/wordpress";
+import Layout from '@/layouts/Layout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import ArticleCard from '@/components/blog/ArticleCard.astro';
+import Icon from '@/components/Icon.astro';
+import { getAllPosts, getCategories, CATEGORY_MAP } from '@/utils/wordpress';
 
 export async function getStaticPaths() {
   const categories = await getCategories();
@@ -7,7 +12,99 @@ export async function getStaticPaths() {
 }
 
 const { slug } = Astro.params;
-if (!slug || typeof slug !== "string") throw new Error("Slug requis");
+if (!slug || typeof slug !== 'string') throw new Error('Slug requis');
 
-return Astro.redirect(`/blog/category/${slug}/1/`);
+const allPosts = await getAllPosts();
+const categories = await getCategories();
+
+const catInfo = categories.find(c => c.slug === slug) ?? CATEGORY_MAP[slug];
+if (!catInfo) return Astro.redirect('/blog/');
+
+const posts = allPosts.filter(p => p.category === slug);
+
+const pageTitle = `${catInfo.label} : articles et guides | Blog Optibilan`;
+const pageDescription = `Tous nos articles ${catInfo.label.toLowerCase()} pour coachs, nutritionnistes et professionnels de la santé : méthodes, outils et retours d'expérience.`;
+
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Accueil', item: 'https://optibilan.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://optibilan.com/blog/' },
+    { '@type': 'ListItem', position: 3, name: catInfo.label, item: `https://optibilan.com/blog/category/${slug}/` },
+  ],
+};
 ---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  canonical={`/blog/category/${slug}/`}
+  ogImage="/og-blog.png"
+  jsonLd={breadcrumbJsonLd}
+>
+  <Header />
+
+  <main>
+    <section class="section pt-16 md:pt-20 bg-papier">
+      <div class="container">
+        <div class="max-w-3xl mx-auto text-center">
+          <a href="/blog/" class="inline-flex items-center gap-1 text-sm text-encre/50 hover:text-encre transition-colors mb-6">
+            <Icon name="arrowRight" class="w-4 h-4 rotate-180" /> Tous les articles
+          </a>
+          <div
+            class="inline-flex items-center gap-2 px-3 py-1.5 rounded-puce text-sm font-medium mb-5"
+            style={`color: var(--color-${catInfo.color}); background-color: color-mix(in oklab, var(--color-${catInfo.color}) 10%, transparent);`}
+          >
+            <Icon name={catInfo.icon} class="w-4 h-4" />
+            {catInfo.label}
+          </div>
+          <h1 class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+            Articles {catInfo.label.toLowerCase()}
+          </h1>
+          <p class="text-encre/50 text-sm">
+            {posts.length} {posts.length > 1 ? 'articles' : 'article'} dans cette catégorie
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-blanc">
+      <div class="container">
+        {posts.length === 0 ? (
+          <div class="text-center py-16">
+            <h2 class="font-display text-xl font-bold text-encre mb-2">Aucun article pour l'instant</h2>
+            <p class="text-encre/50">La catégorie {catInfo.label.toLowerCase()} sera bientôt enrichie.</p>
+          </div>
+        ) : (
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {posts.map(article => (
+              <ArticleCard article={article} />
+            ))}
+          </div>
+        )}
+      </div>
+    </section>
+
+    <section class="section bg-papier">
+      <div class="container">
+        <h2 class="font-display text-xl font-bold text-encre mb-6 text-center">Autres catégories</h2>
+        <div class="flex flex-wrap justify-center gap-3">
+          {categories
+            .filter(c => c.slug !== slug)
+            .map(c => (
+              <a
+                href={`/blog/category/${c.slug}/`}
+                class="inline-flex items-center gap-2 px-4 py-2.5 rounded-card border border-encre/10 bg-blanc hover:border-bleu-signature/40 hover:shadow-soft transition-all font-medium text-encre/80"
+              >
+                <Icon name={c.icon} class="w-4 h-4" style={`color: var(--color-${c.color});`} />
+                {c.label}
+              </a>
+            ))}
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

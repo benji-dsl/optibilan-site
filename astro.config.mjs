@@ -27,7 +27,7 @@ export default defineConfig({
     }
   },
   integrations: [sitemap({
-    filter: (page) => !page.includes('/404') && !page.includes('/checkout/') && !page.includes('/blog/page/') && !/\/blog\/category\/[^/]+\/$/.test(page),
+    filter: (page) => !page.includes('/404') && !page.includes('/checkout/'),
   })],
   compressHTML: true,
   prefetch: true,

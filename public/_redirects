@@ -20,6 +20,10 @@
 /tarifs /pricing 301
 /tarifs/* /pricing/:splat 301
 /blog /blog 200
+/blog/page/1/ /blog/ 301
+/blog/category/coaching/1/ /blog/category/coaching/ 301
+/blog/category/sante/1/ /blog/category/sante/ 301
+/blog/category/business/1/ /blog/category/business/ 301
 /contact /contact 200
 /features /product/overview 301
 
