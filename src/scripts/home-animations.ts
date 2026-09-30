@@ -52,7 +52,7 @@ function reveal(el: Element, vars: gsap.TweenVars = {}, trigger?: Element): void
       scrollTrigger: {
         trigger: trigger ?? el,
         start: vars.start ?? 'top 88%',
-        toggleActions: 'play none none none',
+        toggleActions: 'play none none reverse',
       },
     },
   );
@@ -186,7 +186,7 @@ function initDemoSections(): void {
           scrollTrigger: {
             trigger: section,
             start: 'top 80%',
-            toggleActions: 'play none none none',
+            toggleActions: 'play none none reverse',
           },
         },
       );
@@ -207,7 +207,7 @@ function initDemoSections(): void {
             scrollTrigger: {
               trigger: section,
               start: 'top 78%',
-              toggleActions: 'play none none none',
+              toggleActions: 'play none none reverse',
             },
           },
         );
@@ -254,7 +254,7 @@ function initExperienceSection(): void {
         scrollTrigger: {
           trigger: section,
           start: 'top 80%',
-          toggleActions: 'play none none none',
+          toggleActions: 'play none none reverse',
         },
       },
     );
