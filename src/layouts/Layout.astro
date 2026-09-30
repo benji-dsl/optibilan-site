@@ -7,6 +7,7 @@ interface Props {
   ogType?: 'website' | 'article';
   noIndex?: boolean;
   jsonLd?: object | object[];
+  heroImage?: string;
   publishedTime?: string;
   modifiedTime?: string;
   author?: string;
@@ -22,6 +23,7 @@ const {
   ogType = 'website',
   noIndex = false,
   jsonLd,
+  heroImage,
   publishedTime,
   modifiedTime,
   author,
@@ -54,6 +56,8 @@ import '../styles/global.css';
     <meta name="generator" content={Astro.generator} />
     <meta name="theme-color" content="#F7F5F1" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#23211C" media="(prefers-color-scheme: dark)" />
+
+    {heroImage && <link rel="preload" as="image" href={heroImage} fetchpriority="high" />}
 
     <title>{title}</title>
     <meta name="description" content={description} />
