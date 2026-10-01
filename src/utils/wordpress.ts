@@ -745485,7 +745485,7 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 <figure>
 
-<img src="/images/product/05-mobile-preparation-mentale.webp" alt="Sportif consultant un protocole de préparation mentale depuis son téléphone" loading="lazy" decoding="async" width="1000" height="632" />
+<img src="/images/product/05-mobile-preparation-mentale.webp" alt="Sportif consultant un protocole de préparation mentale depuis son téléphone" loading="lazy" decoding="async" width="1000" height="683" />
 
 <figcaption>Un protocole mental tient dans trois gestes courts, répétés à heure et conditions constantes.</figcaption>
 
@@ -745511,7 +745511,7 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 <figure>
 
-<img src="/images/product/03-mobile-seance-sport.webp" alt="Sportiste réalisant une séquence de stabilisation respiratoire avant sa séance" loading="lazy" decoding="async" width="1000" height="632" />
+<img src="/images/product/03-mobile-seance-sport.webp" alt="Sportiste réalisant une séquence de stabilisation respiratoire avant sa séance" loading="lazy" decoding="async" width="1000" height="633" />
 
 <figcaption>La séquence de stabilisation se joue juste avant la séance, dans un temps très court et très régulier.</figcaption>
 
@@ -745659,14 +745659,14 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 </table>
 <h2>La synchronisation des données de santé sans créer de doublons</h2>
 <figure>
-<img src="/images/product/04-mobile-progression.webp" alt="Dossier de suivi regroupant sommeil, charge d’entraînement et activité" loading="lazy" decoding="async" width="1000" height="632" />
+<img src="/images/product/04-mobile-progression.webp" alt="Dossier de suivi regroupant sommeil, charge d’entraînement et activité" loading="lazy" decoding="async" width="1000" height="712" />
 <figcaption>Un dossier unique permet de comparer les tendances sans se battre contre des doublons.</figcaption>
 </figure>
 <p>La centralisation consiste à importer chaque source dans un document unique, en conservant pour chaque ligne sa date, son unité et sa source d’origine. Cette colonne de provenance est ce qui évite les malentendus ultérieurs : chacun sait d’où vient la valeur et dans quel cadre elle a été mesurée. L’import manuel reste possible, mais il doit être réservé aux données déclaratives, celles que le patient transmet et qu’aucun appareil ne peut mesurer. Les <a href="https://www.legifrance.gouv.fr/">recommandations officielles</a> rappellent que les données de santé doivent être conservées de façon limitée et documentée, ce qui suppose de savoir précisément ce que l’on garde.</p>
 <p>La fréquence d’import suit le cycle du suivi. Un import hebdomadaire suffit pour suivre une préparation, et un import mensuel convient à un suivi de maintien de longue durée. Au-delà, la granularité n’apporte rien et alourdit le dossier inutilement. Le professionnel qui importe chaque jour finit par ne plus lire ses propres données, ce qui annule tout l’intérêt de l’automatisation. Une règle fixe et announced au patient évite ce travers, et garantit que le dossier reste lisible même six mois plus tard.</p>
 <p>Le traitement des écarts mérite une procédure explicite. Lorsque deux sources divergent, aucune des deux n’est automatiquement fausse : elles mesurent des choses légèrement différentes avec des méthodes différentes. La conduite à tenir consiste à conserver la source de référence choisie, à noter l’écart, et à ne le commenter que s’il devient une tendance. Cette discipline protège le dossier d’un flot d’interprétations contradictoires et garde le discours clinique cohérent. Elle permet surtout d’éviter de corriger le patient sur une mesure qui ne le concernait pas.</p>
 <figure>
-<img src="/images/product/07-progression-courbes.webp" alt="Courbes de tendance du sommeil, de la charge d’entraînement et de la récupération" loading="lazy" decoding="async" width="1000" height="392" />
+<img src="/images/product/04-mobile-progression.webp" alt="Courbes de tendance du sommeil, de la charge d’entraînement et de la récupération" loading="lazy" decoding="async" width="1000" height="712" />
 <figcaption>Chaque source alimente une courbe différente : le dossier n’a de valeur que si les courbes sont comparables dans le temps.</figcaption>
 </figure>
 <h2>Structurer le dossier autour des trois sources</h2>
@@ -866666,7 +866666,7 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
-<img src="/images/cabinets/04-methode-equilibre-realiste.webp" alt="Coach presenting progress results to a client during a bilan de suivi" loading="lazy" decoding="async" width="1000" height="750" />
+<img src="/images/cabinets/04-methode-equilibre-realiste.webp" alt="Coach présentant les résultats de progrès à un client lors d'un bilan de suivi" loading="lazy" decoding="async" width="1000" height="750" />
 
 
 
@@ -949586,7 +949586,7 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
-<img src="/images/product/07-progression-courbes.webp" alt="Courbes de progression représentant a client's progress over several months" loading="lazy" decoding="async" width="1000" height="392" />
+<img src="/images/product/04-mobile-progression.webp" alt="Courbes de progression représentant l’évolution d’un client sur plusieurs mois" loading="lazy" decoding="async" width="1000" height="712" />
 
 
 
@@ -949706,7 +949706,7 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
-<img src="/images/product/04-mobile-progression.webp" alt="Suivi de progression affiché sur mobile pendant un suivi de coaching" loading="lazy" decoding="async" width="1000" height="632" />
+<img src="/images/product/04-mobile-progression.webp" alt="Suivi de progression affiché sur mobile pendant un suivi de coaching" loading="lazy" decoding="async" width="1000" height="712" />
 
 
 
@@ -949738,7 +949738,7 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
-<img src="/images/product/03-mobile-seance-sport.webp" alt="Séance de coaching sportif suivie depuis un téléphone portable" loading="lazy" decoding="async" width="1000" height="632" />
+<img src="/images/product/03-mobile-seance-sport.webp" alt="Séance de coaching sportif suivie depuis un téléphone portable" loading="lazy" decoding="async" width="1000" height="633" />
 
 
 
@@ -949790,7 +949790,7 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
-    featuredImage: '/images/product/07-progression-courbes.webp',
+    featuredImage: '/images/product/04-mobile-progression.webp',
 
 
 

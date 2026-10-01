@@ -1,6 +1,7 @@
 ---
 import Icon from '../Icon.astro';
 import { CATEGORY_MAP, type OptibilanArticle } from '@/utils/wordpress';
+import { imageDims } from '@/utils/images';
 
 interface Props {
   article: OptibilanArticle;
@@ -9,6 +10,8 @@ interface Props {
 const { article } = Astro.props;
 const catInfo = CATEGORY_MAP[article.category] ?? CATEGORY_MAP.coaching;
 const color = catInfo.color;
+const featuredDims = imageDims(article.featuredImage);
+const avatarDims = imageDims(article.authorAvatar);
 
 function formatDate(dateStr: string) {
   try {
@@ -25,6 +28,8 @@ function formatDate(dateStr: string) {
       <img
         src={article.featuredImage}
         alt=""
+        width={featuredDims?.width}
+        height={featuredDims?.height}
         loading="lazy"
         decoding="async"
         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
@@ -53,7 +58,15 @@ function formatDate(dateStr: string) {
     <div class="flex items-center justify-between pt-4 border-t border-encre/10 mt-auto">
       <div class="flex items-center gap-2 min-w-0">
         {article.authorAvatar ? (
-          <img src={article.authorAvatar} alt={article.author} class="w-8 h-8 rounded-full" loading="lazy" decoding="async" />
+          <img
+            src={article.authorAvatar}
+            alt={article.author}
+            width={avatarDims?.width}
+            height={avatarDims?.height}
+            class="w-8 h-8 rounded-full"
+            loading="lazy"
+            decoding="async"
+          />
         ) : (
           <div class="w-8 h-8 rounded-full bg-gradient-to-br from-bleu-signature to-bleu-lecture flex items-center justify-center text-craie font-bold text-xs flex-shrink-0">
             {article.author.split(' ').map(n => n[0]).join('')}

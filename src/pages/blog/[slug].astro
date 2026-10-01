@@ -5,6 +5,7 @@ import Footer from '@/components/Footer.astro';
 import Icon from '@/components/Icon.astro';
 import ArticleCard from '@/components/blog/ArticleCard.astro';
 import { getAllPosts, CATEGORY_MAP, type OptibilanArticle } from '@/utils/wordpress';
+import { imageDims } from '@/utils/images';
 
 export async function getStaticPaths() {
   const allPosts = await getAllPosts();
@@ -18,6 +19,9 @@ const allPosts = await getAllPosts();
 const post = allPosts.find(p => p.slug === slug);
 
 if (!post) return Astro.redirect('/blog/');
+
+const featuredDims = imageDims(post.featuredImage);
+const avatarDims = imageDims(post.authorAvatar);
 
 const pageTitle = post.seoTitle || `${post.title} - Blog Optibilan`;
 const pageDescription = post.seoDescription || post.excerpt;
@@ -113,7 +117,14 @@ const relatedPosts = allPosts
           <div class="flex items-center justify-center gap-4 text-sm text-encre/60 mb-8 flex-wrap">
             <div class="flex items-center gap-1.5">
               {post.authorAvatar ? (
-                <img src={post.authorAvatar} alt={post.author} class="w-8 h-8 rounded-full" loading="lazy" />
+                <img
+                  src={post.authorAvatar}
+                  alt={post.author}
+                  width={avatarDims?.width}
+                  height={avatarDims?.height}
+                  class="w-8 h-8 rounded-full"
+                  loading="lazy"
+                />
               ) : (
                 <div class="w-8 h-8 rounded-full bg-gradient-to-br from-bleu-signature to-bleu-lecture flex items-center justify-center text-craie font-bold text-xs">
                   {post.author.split(' ').map(n => n[0]).join('')}
@@ -141,7 +152,7 @@ const relatedPosts = allPosts
               fetchpriority="high"
               {...(post.featuredImageSizes?.['full']
                 ? { width: post.featuredImageSizes['full'].width, height: post.featuredImageSizes['full'].height }
-                : {})}
+                : (featuredDims ?? {}))}
               class="w-full h-full object-cover"
             />
           </div>
@@ -181,7 +192,14 @@ const relatedPosts = allPosts
         <div class="flex flex-col sm:flex-row items-center justify-between gap-4 p-6 rounded-xl bg-papier/50 border border-encre/10">
           <div class="flex items-center gap-3">
             {post.authorAvatar ? (
-              <img src={post.authorAvatar} alt={post.author} class="w-10 h-10 rounded-full" loading="lazy" />
+              <img
+                src={post.authorAvatar}
+                alt={post.author}
+                width={avatarDims?.width}
+                height={avatarDims?.height}
+                class="w-10 h-10 rounded-full"
+                loading="lazy"
+              />
             ) : (
               <div class="w-10 h-10 rounded-full bg-gradient-to-br from-bleu-signature to-bleu-lecture flex items-center justify-center text-craie font-bold text-sm">
                 {post.author.split(' ').map(n => n[0]).join('')}

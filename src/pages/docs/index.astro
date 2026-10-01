@@ -1,0 +1,267 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import Icon from '../../components/Icon.astro';
+import DiscoverCTA from '../../components/DiscoverCTA.astro';
+
+const pageTitle = 'Documentation API Optibilan : REST v1, webhooks, sandbox';
+const pageDescription =
+  'Documentation de l’API REST Optibilan : authentification par clés scopées, ressources clients, bilans, nutrition, sport et santé, webhooks signés et environnement sandbox.';
+
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Accueil', item: 'https://optibilan.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Documentation API', item: 'https://optibilan.com/docs/' },
+  ],
+};
+
+const docJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'TechArticle',
+  headline: 'Documentation API Optibilan',
+  description: pageDescription,
+  url: 'https://optibilan.com/docs/',
+  inLanguage: 'fr-FR',
+  proficiencyLevel: 'Expert',
+};
+
+const resources = [
+  { name: 'Clients', desc: 'Création, lecture, mise à jour et recherche de clients, avec les permissions de l’utilisateur authentifié.', scope: 'clients:read, clients:write' },
+  { name: 'Bilans', desc: 'Bilan de suivi, mesures et évolution des indicateurs et historique des points d’étape.', scope: 'bilans:read, bilans:write' },
+  { name: 'Nutrition', desc: 'Plans, listes de courses, habitudes et compléments documentés.', scope: 'nutrition:read, nutrition:write' },
+  { name: 'Sport', desc: 'Programmes, séances, progression et données d’entraînement.', scope: 'sport:read, sport:write' },
+  { name: 'Santé', desc: 'Biomarqueurs, habitudes de vie et remontée de données depuis un appareil tiers.', scope: 'sante:read, sante:write' },
+  { name: 'Webhooks', desc: 'Abonnement aux événements, configuration des URLs de réception et rejeu d’événements.', scope: 'webhooks:read, webhooks:write' },
+  { name: 'Administration', desc: 'Utilisateurs, rôles, permissions granulaires et audit, sur les offres Studio et Cabinet.', scope: 'admin:read, admin:write' },
+];
+
+const webhookEvents = [
+  'Client créé',
+  'Bilan soumis',
+  'Badge obtenu',
+  'Nutrition mise à jour',
+  'Appel en retard',
+];
+
+const steps = [
+  {
+    icon: 'lock',
+    title: 'Créer une clé API scopée',
+    desc: 'Les clés sont générées dans votre espace et limitées aux permissions nécessaires à votre usage. Une clé de lecture seule ne peut pas écrire, même si l’endpoint le permet.',
+  },
+  {
+    icon: 'terminal',
+    title: 'Appeler l’API REST v1',
+    desc: 'Une seule base, des ressources REST classiques, des réponses en JSON. Le schéma complet est décrit en OpenAPI 3.1 et communiqué avec l’accès API.',
+  },
+  {
+    icon: 'zap',
+    title: 'Recevoir les webhooks',
+    desc: 'Huit événements signés couvrent la vie d’un dossier : création, bilan, nutrition, badges et appels. Chaque requête reçue est signée et horodatée.',
+  },
+];
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  canonical="/docs/"
+  ogImage="/og-integrations.png"
+  jsonLd={[docJsonLd, breadcrumbJsonLd]}
+>
+  <Header />
+
+  <main>
+    <section class="section pt-20 md:pt-28 bg-papier">
+      <div class="container">
+        <div class="max-w-3xl">
+          <span
+            class="inline-flex items-center gap-2 px-3 py-1.5 rounded-puce text-sm font-medium mb-6"
+            style="color: var(--color-bleu-signature); background-color: color-mix(in oklab, var(--color-bleu-signature) 10%, transparent);"
+          >
+            <Icon name="terminal" class="w-4 h-4" />
+            API REST v1 · OpenAPI 3.1
+          </span>
+          <h1 class="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-encre mb-5 leading-tight">
+            Documentation API Optibilan
+          </h1>
+          <p class="text-lg text-encre/70 leading-relaxed">
+            L’API REST v1 donne accès aux clients, bilans, nutrition, sport et santé, avec des webhooks signés pour
+            réagir en temps réel. Ce document présente ce qui est public et vérifiable. Le schéma OpenAPI complet,
+            les signatures d’authentification détaillées et les quotas exacts sont communiqués avec l’accès API.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-blanc" aria-labelledby="auth-title">
+      <div class="container">
+        <header class="max-w-3xl mb-12">
+          <h2 id="auth-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+            Authentification et permissions
+          </h2>
+          <p class="text-lg text-encre/70">
+            L’authentification repose sur des clés API scopées : chaque clé porte une liste explicite de
+            permissions, et les requêtes sont refusées si l’action demandée n’y figure pas. Ce modèle évite qu’une
+            intégration de lecture obtienne un accès en écriture par simple erreur de configuration.
+          </p>
+        </header>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {steps.map(step => (
+            <div class="p-6 rounded-card-lg border border-encre/10 bg-blanc">
+              <div class="icon-wrapper mb-4" aria-hidden="true">
+                <Icon name={step.icon} class="w-6 h-6" />
+              </div>
+              <h3 class="font-display text-lg font-bold text-encre mb-2">{step.title}</h3>
+              <p class="text-encre/70 leading-relaxed">{step.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-papier" aria-labelledby="resources-title">
+      <div class="container">
+        <header class="max-w-3xl mb-12">
+          <h2 id="resources-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+            Ressources disponibles
+          </h2>
+          <p class="text-lg text-encre/70">
+            L’API v1 couvre les sept familles de ressources suivantes. Les permissions indiquées sont celles
+            utilisées le plus souvent par les intégrations ; la liste exacte est attachée à chaque clé.
+          </p>
+        </header>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse">
+            <thead>
+              <tr class="border-b-2 border-encre/15">
+                <th scope="col" class="py-3 pr-4 font-semibold text-encre">Ressource</th>
+                <th scope="col" class="py-3 pr-4 font-semibold text-encre">Contenu</th>
+                <th scope="col" class="py-3 font-semibold text-encre">Permissions typiques</th>
+              </tr>
+            </thead>
+            <tbody>
+              {resources.map(r => (
+                <tr class="border-b border-encre/10">
+                  <td class="py-4 pr-4 font-semibold text-encre whitespace-nowrap">{r.name}</td>
+                  <td class="py-4 pr-4 text-encre/70">{r.desc}</td>
+                  <td class="py-4 text-encre/60 font-mono text-xs">{r.scope}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <div class="mt-10 p-6 rounded-card-lg border border-encre/10 bg-blanc">
+          <h3 class="font-display text-lg font-bold text-encre mb-2">Remontée de données de santé</h3>
+          <p class="text-encre/70 leading-relaxed">
+            Les applications tierces qui disposent déjà de données mesurées (Apple Health, Oura, Garmin) les
+            transmettent au point d’entrée de synchronisation
+            <code class="px-1.5 py-0.5 rounded bg-encre/5 font-mono text-sm">POST /api/health-sync</code>. Ce point
+            d’entrée est le point d’ancrage des automatisations n8n, Make et Zapier : récupération côté
+            partenaire, puis envoi vers Optibilan.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-blanc" aria-labelledby="webhooks-title">
+      <div class="container">
+        <header class="max-w-3xl mb-12">
+          <h2 id="webhooks-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+            Webhooks signés
+          </h2>
+          <p class="text-lg text-encre/70">
+            Huit événements couvrent la vie d’un dossier. Chaque notification est signée et horodatée, ce qui permet
+            de rejeter toute requête qui ne proviendrait pas d’Optibilan. Parmi les plus utilisés :
+          </p>
+        </header>
+
+        <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 max-w-4xl">
+          {webhookEvents.map(event => (
+            <li class="flex items-center gap-3 p-4 rounded-card border border-encre/10 bg-blanc">
+              <Icon name="check" class="w-4 h-4 flex-shrink-0" />
+              <span class="text-encre/80">{event}</span>
+            </li>
+          ))}
+          <li class="flex items-center gap-3 p-4 rounded-card border border-encre/10 bg-papier text-encre/50">
+            <span class="w-4 h-4 flex-shrink-0 flex items-center justify-center text-xs font-bold">+</span>
+            <span>+ 3 autres événements</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="sandbox" class="section bg-papier scroll-mt-24" aria-labelledby="sandbox-title">
+      <div class="container">
+        <header class="max-w-3xl mb-12">
+          <h2 id="sandbox-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+            Environnement sandbox
+          </h2>
+          <p class="text-lg text-encre/70">
+            L’environnement de test fournit des clés API de test, des données factices et un playground de
+            navigation pour explorer la spec sans toucher aux dossiers réels. C’est l’espace recommandé pour
+            valider une intégration avant sa mise en production, et pour tester la reprise sur erreur d’un webhook.
+          </p>
+        </header>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="p-6 rounded-card-lg border border-encre/10 bg-blanc">
+            <h3 class="font-display text-lg font-bold text-encre mb-2">Clés de test</h3>
+            <p class="text-encre/70 leading-relaxed">
+              Des clés distinctes de celles de production, avec les mêmes scopes. Un test de permission se fait donc
+              dans les mêmes conditions qu’en production.
+            </p>
+          </div>
+          <div class="p-6 rounded-card-lg border border-encre/10 bg-blanc">
+            <h3 class="font-display text-lg font-bold text-encre mb-2">Données factices</h3>
+            <p class="text-encre/70 leading-relaxed">
+              Des dossiers fictifs préchargés, sans donnée de santé réelle. Les parcours de bilan, de nutrition et
+              de suivi sont identiques à ceux du produit.
+            </p>
+          </div>
+          <div class="p-6 rounded-card-lg border border-encre/10 bg-blanc">
+            <h3 class="font-display text-lg font-bold text-encre mb-2">Playground Swagger / Redoc</h3>
+            <p class="text-encre/70 leading-relaxed">
+              La spec OpenAPI 3.1 est explorable directement dans le navigateur : listes d’endpoints, schémas et
+              exemples de charge utile.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-blanc" aria-labelledby="access-title">
+      <div class="container">
+        <div class="max-w-3xl">
+          <h2 id="access-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+            Obtenir l’accès API
+          </h2>
+          <p class="text-lg text-encre/70 mb-8">
+            L’accès API s’active depuis votre espace, sur les offres Studio et Cabinet. L’activation ouvre
+            l’espace développeur : clés scopées, spec OpenAPI 3.1, sandbox et journal des appels.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a href="/pricing/" class="btn btn-demo" data-track="docs_pricing">
+              <Icon name="zap" class="w-5 h-5 mr-2" /> Rejoindre Optibilan
+            </a>
+            <a href="/contact/" class="btn btn-secondary" data-track="docs_contact">Poser une question technique</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-papier">
+      <div class="container">
+        <DiscoverCTA />
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

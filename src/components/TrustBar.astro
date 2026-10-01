@@ -1,5 +1,6 @@
 ---
 import Icon from './Icon.astro';
+import { imageDimsAny } from '@/utils/images';
 
 interface Props {
   badges?: Array<{
@@ -53,6 +54,8 @@ const allBadges = [...badges, ...badges, ...badges];
                         <img
                           src={badge.image}
                           alt={`Aperçu Optibilan - ${badge.label}`}
+                          width={imageDimsAny(badge.image)?.width}
+                          height={imageDimsAny(badge.image)?.height}
                           class="w-12 h-12 object-cover"
                           loading="lazy"
                           decoding="async"
@@ -64,7 +67,7 @@ const allBadges = [...badges, ...badges, ...badges];
                       )}
                     </div>
                   </div>
-                  <h3 class="font-display text-base font-semibold text-craie mb-1.5 text-center">{badge.label}</h3>
+                  <h2 class="font-display text-base font-semibold text-craie mb-1.5 text-center">{badge.label}</h2>
                   <p class="text-xs text-craie/50 text-center leading-relaxed">{badge.description || ''}</p>
                 </div>
               </article>

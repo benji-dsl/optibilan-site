@@ -14,6 +14,8 @@ export default defineConfig({
   output: 'static',
   redirects: {
     '/solutions/mental/': '/solutions/medecin/',
+    '/docs/sandbox': '/docs/#sandbox',
+    '/docs/sandbox/': '/docs/#sandbox',
   },
   vite: {
     plugins: [tailwindcss()],

@@ -6,6 +6,7 @@ import Hero from '../../components/Hero.astro';
 import CTA from '../../components/CTA.astro';
 import TrustBar from '../../components/TrustBar.astro';
 import Icon from '../../components/Icon.astro';
+import { imageDims } from '@/utils/images';
 
 const pageTitle = 'Solutions - Optibilan';
 const pageDescription = 'Optibilan s\'adapte à votre pratique : Coach sportif, Nutritionniste, Médecin, pro de santé, Cabinet. Une plateforme, quatre façons de l\'utiliser.';
@@ -114,7 +115,14 @@ Quatre façons de l'utiliser."
               )}
 <div class="p-6 md:p-8">
                 <div class="aspect-video rounded-lg overflow-hidden mb-4">
-                  <img src={sol.photo} alt={sol.photoAlt} class="w-full h-full object-cover" loading="lazy" />
+                  <img
+                    src={sol.photo}
+                    alt={sol.photoAlt}
+                    width={imageDims(sol.photo)?.width}
+                    height={imageDims(sol.photo)?.height}
+                    class="w-full h-full object-cover"
+                    loading="lazy"
+                  />
                 </div>
                 <div class="icon-wrapper mb-4" aria-hidden="true" style={`--mod-color: var(--color-${sol.color})`}>
                   <Icon name={sol.icon} class="w-8 h-8" style={`color: var(--color-${sol.color});`} />

@@ -84,7 +84,8 @@ const breadcrumbJsonLd = {
     ) : (
       <section class="section bg-blanc">
         <div class="container">
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <h2 class="sr-only">Articles</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {pagePosts.map(article => (
               <ArticleCard article={article} />
             ))}

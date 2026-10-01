@@ -80,6 +80,7 @@ const breadcrumbJsonLd = {
             <p class="text-encre/50">La catégorie {catInfo.label.toLowerCase()} sera bientôt enrichie.</p>
           </div>
         ) : (
+          <h2 class="sr-only">Articles de la catégorie</h2>
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {posts.map(article => (
               <ArticleCard article={article} />

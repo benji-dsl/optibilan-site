@@ -115,6 +115,7 @@ const formatEuro = (n: number) => n.toLocaleString('fr-FR');
       </div>
     </div>
 
+    <h2 class="sr-only">Nos offres</h2>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
       {displayPlans.map((plan, index) => (
         <article class={`relative bg-blanc flex flex-col p-6 md:p-8 rounded-card-lg transition-all duration-200 ${plan.popular ? 'ring-2 ring-bleu-signature shadow-card md:-translate-y-2' : 'border border-encre/10 shadow-card hover:shadow-elevated hover:-translate-y-1'}`} data-plan={plan.name}>
