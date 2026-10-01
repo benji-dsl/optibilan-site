@@ -28,7 +28,7 @@ if (!Number.isFinite(currentPage) || currentPage < 2 || currentPage > totalPages
 const pagePosts = allPosts.slice((currentPage - 1) * PER_PAGE, currentPage * PER_PAGE);
 
 const pageTitle = `Blog Optibilan : articles (page ${currentPage} sur ${totalPages})`;
-const pageDescription = `Articles et guides pour coachs sportifs, nutritionnistes et professionnels de la santé : bilans, suivi client, nutrition, préparation mentale et business (page ${currentPage} sur ${totalPages}).`;
+const pageDescription = `Articles et guides pour coachs sportifs, nutritionnistes et pros de la santé : bilans, suivi client, nutrition, préparation mentale et business (page ${currentPage}/${totalPages}).`;
 
 const blogJsonLd = {
   '@context': 'https://schema.org',
