@@ -14,7 +14,39 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
  * WordPress REST API Client pour Optibilan
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -46,6 +78,22 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
  * Build-time (SSG) + fallback statique si WP non configuré
 
 
@@ -62,7 +110,39 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
  * Supporte ACF, Yoast/RankMath, images responsives, cache dev
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -110,7 +190,55 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 interface WPConfig {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -142,7 +270,39 @@ interface WPConfig {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   apiPath?: string;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -174,6 +334,22 @@ interface WPConfig {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   perPage?: number;
 
 
@@ -190,7 +366,55 @@ interface WPConfig {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -238,7 +462,39 @@ interface WPPost {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   id: number;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -270,7 +526,39 @@ interface WPPost {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   title: { rendered: string };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -302,7 +590,39 @@ interface WPPost {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   content: { rendered: string };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -334,7 +654,39 @@ interface WPPost {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   modified: string;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -366,7 +718,39 @@ interface WPPost {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   categories: number[];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -398,7 +782,39 @@ interface WPPost {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   featured_media: number;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -430,7 +846,39 @@ interface WPPost {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   _embedded?: {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -462,7 +910,39 @@ interface WPPost {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     'wp:featuredmedia'?: Array<WPMedia>;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -494,7 +974,39 @@ interface WPPost {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     replies?: Array<{ id: number }>;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -526,7 +1038,39 @@ interface WPPost {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   acf?: Record<string, unknown>;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -558,7 +1102,39 @@ interface WPPost {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   rank_math_title?: string;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -590,6 +1166,22 @@ interface WPPost {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   rank_math_focus_keyword?: string;
 
 
@@ -606,7 +1198,55 @@ interface WPPost {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -654,7 +1294,39 @@ interface WPMedia {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   id: number;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -686,7 +1358,39 @@ interface WPMedia {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   source_url: string;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -718,7 +1422,39 @@ interface WPMedia {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   caption: { rendered: string };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -750,7 +1486,39 @@ interface WPMedia {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     width: number;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -782,7 +1550,39 @@ interface WPMedia {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     file: string;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -814,7 +1614,39 @@ interface WPMedia {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -846,7 +1678,55 @@ interface WPMedia {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -894,7 +1774,39 @@ interface WPCategory {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   id: number;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -926,7 +1838,39 @@ interface WPCategory {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   slug: string;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -958,7 +1902,39 @@ interface WPCategory {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   description: string;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -990,6 +1966,22 @@ interface WPCategory {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   _links?: { self: Array<{ href: string }> };
 
 
@@ -1006,7 +1998,55 @@ interface WPCategory {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1054,7 +2094,39 @@ interface WPTerm {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   id: number;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1086,7 +2158,39 @@ interface WPTerm {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   slug: string;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1118,7 +2222,39 @@ interface WPTerm {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   count: number;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1150,7 +2286,55 @@ interface WPTerm {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1198,7 +2382,39 @@ interface WPAuthor {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   id: number;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1230,7 +2446,39 @@ interface WPAuthor {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   slug: string;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1262,7 +2510,39 @@ interface WPAuthor {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   description: string;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1294,7 +2574,39 @@ interface WPAuthor {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   acf?: {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1326,7 +2638,39 @@ interface WPAuthor {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     company?: string;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1358,7 +2702,39 @@ interface WPAuthor {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     linkedin?: string;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1390,7 +2766,55 @@ interface WPAuthor {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1438,7 +2862,39 @@ interface WPConfigResponse {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   name: string;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1470,7 +2926,39 @@ interface WPConfigResponse {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   url: string;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1502,7 +2990,39 @@ interface WPConfigResponse {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   gmt_offset: number;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1534,7 +3054,39 @@ interface WPConfigResponse {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   namespaces: string[];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1566,6 +3118,22 @@ interface WPConfigResponse {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   routes: Record<string, unknown>;
 
 
@@ -1582,7 +3150,55 @@ interface WPConfigResponse {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1630,7 +3246,39 @@ interface OptibilanArticle {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   slug: string;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1662,7 +3310,39 @@ interface OptibilanArticle {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   excerpt: string;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1694,7 +3374,39 @@ interface OptibilanArticle {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   category: string;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1726,7 +3438,39 @@ interface OptibilanArticle {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   author: string;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1758,7 +3502,39 @@ interface OptibilanArticle {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   authorCompany?: string;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1790,7 +3566,39 @@ interface OptibilanArticle {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   authorTwitter?: string;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1822,7 +3630,39 @@ interface OptibilanArticle {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   date: string;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1854,7 +3694,39 @@ interface OptibilanArticle {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   readTime: string;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1886,7 +3758,39 @@ interface OptibilanArticle {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   featuredImage?: string;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1918,7 +3822,39 @@ interface OptibilanArticle {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   featuredImageSizes?: Record<string, { source_url: string; width: number; height: number }>;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1950,7 +3886,39 @@ interface OptibilanArticle {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   seoDescription?: string;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1982,7 +3950,39 @@ interface OptibilanArticle {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   tags?: string[];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2014,7 +4014,39 @@ interface OptibilanArticle {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   sources?: Array<{ label: string; url: string }>;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2046,6 +4078,22 @@ interface OptibilanArticle {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   acf?: Record<string, unknown>;
 
 
@@ -2062,7 +4110,55 @@ interface OptibilanArticle {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2110,7 +4206,39 @@ interface PaginatedResponse<T> {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   data: T[];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2142,6 +4270,22 @@ interface PaginatedResponse<T> {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   totalItems: number;
 
 
@@ -2158,7 +4302,39 @@ interface PaginatedResponse<T> {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   currentPage: number;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2206,7 +4382,55 @@ interface PaginatedResponse<T> {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 const CATEGORY_MAP: Record<string, { label: string; icon: string; color: string }> = {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2238,7 +4462,39 @@ const CATEGORY_MAP: Record<string, { label: string; icon: string; color: string 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   sante: { label: 'Santé', icon: 'globe', color: 'bleu-ardoise' },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2270,7 +4526,55 @@ const CATEGORY_MAP: Record<string, { label: string; icon: string; color: string 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2334,6 +4638,38 @@ const ALLOWED_CATEGORIES = new Set(Object.keys(CATEGORY_MAP));
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 const DEFAULT_PER_PAGE = 100;
 
 
@@ -2350,7 +4686,39 @@ const DEFAULT_PER_PAGE = 100;
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 const MAX_PAGES = 50;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2398,7 +4766,55 @@ const DEV_CACHE_TTL = 5 * 60 * 1000; // 5 min
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // Cache en mémoire pour le dev (évite de hammer WP à chaque save)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2446,6 +4862,38 @@ const devCache = new Map<string, { data: unknown; expires: number }>();
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // Cache en mémoire pour le build (une seule requête WP par clé, mutualisée
 
 
@@ -2462,7 +4910,39 @@ const devCache = new Map<string, { data: unknown; expires: number }>();
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // entre getStaticPaths et le rendu de chaque page)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2510,6 +4990,38 @@ const buildCache = new Map<string, Promise<unknown>>();
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function memoized<T>(key: string, fn: () => Promise<T>): Promise<T> {
 
 
@@ -2526,7 +5038,39 @@ function memoized<T>(key: string, fn: () => Promise<T>): Promise<T> {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   const hit = buildCache.get(key);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2574,7 +5118,55 @@ function memoized<T>(key: string, fn: () => Promise<T>): Promise<T> {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   const promise = fn().catch(error => {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2606,7 +5198,39 @@ function memoized<T>(key: string, fn: () => Promise<T>): Promise<T> {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     throw error;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2638,7 +5262,39 @@ function memoized<T>(key: string, fn: () => Promise<T>): Promise<T> {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   buildCache.set(key, promise);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2670,7 +5326,55 @@ function memoized<T>(key: string, fn: () => Promise<T>): Promise<T> {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2718,7 +5422,39 @@ function getConfig(): Required<WPConfig> {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   return {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2750,7 +5486,39 @@ function getConfig(): Required<WPConfig> {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     apiPath: import.meta.env.WP_API_PATH || '/wp-json/wp/v2',
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2782,7 +5550,39 @@ function getConfig(): Required<WPConfig> {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     perPage: Number(import.meta.env.WP_PER_PAGE) || DEFAULT_PER_PAGE,
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2814,7 +5614,55 @@ function getConfig(): Required<WPConfig> {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2862,7 +5710,39 @@ async function fetchWithTimeout(url: string, options: RequestInit = {}, timeout 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   const controller = new AbortController();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2894,7 +5774,39 @@ async function fetchWithTimeout(url: string, options: RequestInit = {}, timeout 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   try {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2926,7 +5838,39 @@ async function fetchWithTimeout(url: string, options: RequestInit = {}, timeout 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   } finally {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2958,6 +5902,22 @@ async function fetchWithTimeout(url: string, options: RequestInit = {}, timeout 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   }
 
 
@@ -2974,7 +5934,55 @@ async function fetchWithTimeout(url: string, options: RequestInit = {}, timeout 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -3022,6 +6030,22 @@ function getCacheKey(endpoint: string, params: Record<string, string>): string {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   const search = new URLSearchParams(params).toString();
 
 
@@ -3038,7 +6062,39 @@ function getCacheKey(endpoint: string, params: Record<string, string>): string {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   return `${endpoint}?${search}`;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -3086,6 +6142,38 @@ function getCacheKey(endpoint: string, params: Record<string, string>): string {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 async function fetchWP<T>(endpoint: string, params: Record<string, string> = {}): Promise<T> {
 
 
@@ -3102,7 +6190,39 @@ async function fetchWP<T>(endpoint: string, params: Record<string, string> = {})
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   const config = getConfig();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -3150,7 +6270,55 @@ async function fetchWP<T>(endpoint: string, params: Record<string, string> = {})
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   // Cache dev uniquement
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -3182,7 +6350,39 @@ async function fetchWP<T>(endpoint: string, params: Record<string, string> = {})
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     const cached = devCache.get(cacheKey);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -3214,6 +6414,22 @@ async function fetchWP<T>(endpoint: string, params: Record<string, string> = {})
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       return cached.data as T;
 
 
@@ -3230,7 +6446,39 @@ async function fetchWP<T>(endpoint: string, params: Record<string, string> = {})
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -3278,6 +6526,38 @@ async function fetchWP<T>(endpoint: string, params: Record<string, string> = {})
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   const url = new URL(`${config.baseUrl}${config.apiPath}${endpoint}`);
 
 
@@ -3294,7 +6574,55 @@ async function fetchWP<T>(endpoint: string, params: Record<string, string> = {})
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   Object.entries(params).forEach(([k, v]) => url.searchParams.set(k, v));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -3358,7 +6686,55 @@ async function fetchWP<T>(endpoint: string, params: Record<string, string> = {})
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   if (!res.ok) {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -3390,6 +6766,22 @@ async function fetchWP<T>(endpoint: string, params: Record<string, string> = {})
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     throw new Error(`WP API ${res.status} ${res.statusText}: ${text.slice(0, 200)}`);
 
 
@@ -3406,7 +6798,55 @@ async function fetchWP<T>(endpoint: string, params: Record<string, string> = {})
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -3470,7 +6910,55 @@ async function fetchWP<T>(endpoint: string, params: Record<string, string> = {})
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   // Cache dev
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -3502,7 +6990,39 @@ async function fetchWP<T>(endpoint: string, params: Record<string, string> = {})
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     devCache.set(cacheKey, { data, expires: Date.now() + DEV_CACHE_TTL });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -3550,7 +7070,55 @@ async function fetchWP<T>(endpoint: string, params: Record<string, string> = {})
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   return data;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -3598,7 +7166,55 @@ async function fetchWP<T>(endpoint: string, params: Record<string, string> = {})
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /**
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -3630,7 +7246,39 @@ async function fetchWP<T>(endpoint: string, params: Record<string, string> = {})
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
  */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -3662,7 +7310,39 @@ async function fetchWPWithPagination<T>(endpoint: string, params: Record<string,
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   const config = getConfig();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -3694,7 +7374,55 @@ async function fetchWPWithPagination<T>(endpoint: string, params: Record<string,
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   Object.entries(params).forEach(([k, v]) => url.searchParams.set(k, v));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -3758,7 +7486,71 @@ async function fetchWPWithPagination<T>(endpoint: string, params: Record<string,
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   if (!res.ok) throw new Error(`WP API ${res.status} ${res.statusText}`);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -3806,7 +7598,39 @@ async function fetchWPWithPagination<T>(endpoint: string, params: Record<string,
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   const totalItems = Number(res.headers.get('X-WP-Total') || '0');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -3854,7 +7678,55 @@ async function fetchWPWithPagination<T>(endpoint: string, params: Record<string,
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   return {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -3886,7 +7758,39 @@ async function fetchWPWithPagination<T>(endpoint: string, params: Record<string,
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     totalPages,
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -3918,7 +7822,39 @@ async function fetchWPWithPagination<T>(endpoint: string, params: Record<string,
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     currentPage: Number(params.page || '1'),
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -3950,7 +7886,55 @@ async function fetchWPWithPagination<T>(endpoint: string, params: Record<string,
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -3998,7 +7982,39 @@ function extractCategory(post: WPPost): string {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   if (post._embedded?.['wp:term']) {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -4030,7 +8046,39 @@ function extractCategory(post: WPPost): string {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     // Priorité aux catégories mappées
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -4062,7 +8110,39 @@ function extractCategory(post: WPPost): string {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     if (mapped) return mapped.slug;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -4094,7 +8174,39 @@ function extractCategory(post: WPPost): string {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     const cat = terms.find((t: WPTerm) => t.taxonomy === 'category');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -4126,7 +8238,39 @@ function extractCategory(post: WPPost): string {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -4158,7 +8302,55 @@ function extractCategory(post: WPPost): string {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -4206,7 +8398,39 @@ function extractTags(post: WPPost): string[] {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   if (!post._embedded?.['wp:term']) return [];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -4238,7 +8462,39 @@ function extractTags(post: WPPost): string[] {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     .flat()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -4270,6 +8526,22 @@ function extractTags(post: WPPost): string[] {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     .map((t: WPTerm) => t.slug);
 
 
@@ -4286,7 +8558,55 @@ function extractTags(post: WPPost): string[] {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -4334,7 +8654,39 @@ function extractAuthor(post: WPPost): { name: string; role?: string; company?: s
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   const author = post._embedded?.author?.[0];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -4382,7 +8734,55 @@ function extractAuthor(post: WPPost): { name: string; role?: string; company?: s
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   return {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -4414,7 +8814,39 @@ function extractAuthor(post: WPPost): { name: string; role?: string; company?: s
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     role: author.acf?.role,
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -4446,7 +8878,39 @@ function extractAuthor(post: WPPost): { name: string; role?: string; company?: s
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     avatar: author.avatar_urls?.['96'] || author.avatar_urls?.['48'] || author.avatar_urls?.['24'],
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -4478,7 +8942,39 @@ function extractAuthor(post: WPPost): { name: string; role?: string; company?: s
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     linkedin: author.acf?.linkedin,
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -4510,7 +9006,55 @@ function extractAuthor(post: WPPost): { name: string; role?: string; company?: s
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -4558,7 +9102,39 @@ function extractFeaturedMedia(post: WPPost): { url?: string; alt?: string; sizes
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   const media = post._embedded?.['wp:featuredmedia']?.[0];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -4590,7 +9166,39 @@ function extractFeaturedMedia(post: WPPost): { url?: string; alt?: string; sizes
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   return {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -4622,7 +9230,39 @@ function extractFeaturedMedia(post: WPPost): { url?: string; alt?: string; sizes
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     alt: media.alt_text || media.caption?.rendered?.replace(/<[^>]+>/g, '').trim() || undefined,
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -4654,6 +9294,22 @@ function extractFeaturedMedia(post: WPPost): { url?: string; alt?: string; sizes
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   };
 
 
@@ -4670,7 +9326,55 @@ function extractFeaturedMedia(post: WPPost): { url?: string; alt?: string; sizes
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -4718,7 +9422,39 @@ function extractSEO(post: WPPost): { title?: string; description?: string; keywo
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   // Yoast
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -4750,7 +9486,39 @@ function extractSEO(post: WPPost): { title?: string; description?: string; keywo
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     const yoast = post.yoast_head_json;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -4782,7 +9550,39 @@ function extractSEO(post: WPPost): { title?: string; description?: string; keywo
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     if (yoast.og_title) return { title: yoast.og_title, description: yoast.og_description };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -4814,7 +9614,39 @@ function extractSEO(post: WPPost): { title?: string; description?: string; keywo
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -4846,7 +9678,39 @@ function extractSEO(post: WPPost): { title?: string; description?: string; keywo
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   if (post.rank_math_title || post.rank_math_description) {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -4878,7 +9742,39 @@ function extractSEO(post: WPPost): { title?: string; description?: string; keywo
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       title: post.rank_math_title,
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -4910,7 +9806,39 @@ function extractSEO(post: WPPost): { title?: string; description?: string; keywo
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       keywords: post.rank_math_focus_keyword ? [post.rank_math_focus_keyword] : undefined,
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -4942,7 +9870,39 @@ function extractSEO(post: WPPost): { title?: string; description?: string; keywo
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -4974,7 +9934,55 @@ function extractSEO(post: WPPost): { title?: string; description?: string; keywo
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -5022,7 +10030,39 @@ function calculateReadTime(content: string): string {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   const wordsPerMinute = 200;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -5054,7 +10094,39 @@ function calculateReadTime(content: string): string {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   const words = text.split(/\s+/).length;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -5086,6 +10158,22 @@ function calculateReadTime(content: string): string {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   return `${minutes} min`;
 
 
@@ -5102,7 +10190,55 @@ function calculateReadTime(content: string): string {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -5150,7 +10286,39 @@ function mapPostToArticle(post: WPPost): OptibilanArticle {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   const category = extractCategory(post);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -5182,7 +10350,39 @@ function mapPostToArticle(post: WPPost): OptibilanArticle {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   const author = extractAuthor(post);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -5214,7 +10414,39 @@ function mapPostToArticle(post: WPPost): OptibilanArticle {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   const seo = extractSEO(post);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -5262,7 +10494,55 @@ function mapPostToArticle(post: WPPost): OptibilanArticle {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   return {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -5294,7 +10574,39 @@ function mapPostToArticle(post: WPPost): OptibilanArticle {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     title: post.title.rendered,
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -5326,7 +10638,39 @@ function mapPostToArticle(post: WPPost): OptibilanArticle {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     content: post.content.rendered,
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -5358,7 +10702,39 @@ function mapPostToArticle(post: WPPost): OptibilanArticle {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     categoryLabel: catInfo.label,
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -5390,7 +10766,39 @@ function mapPostToArticle(post: WPPost): OptibilanArticle {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     authorRole: author.role,
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -5422,7 +10830,39 @@ function mapPostToArticle(post: WPPost): OptibilanArticle {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     authorAvatar: author.avatar,
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -5454,7 +10894,39 @@ function mapPostToArticle(post: WPPost): OptibilanArticle {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     authorLinkedin: author.linkedin,
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -5486,7 +10958,39 @@ function mapPostToArticle(post: WPPost): OptibilanArticle {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     modifiedDate: post.modified !== post.date ? post.modified : undefined,
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -5518,7 +11022,39 @@ function mapPostToArticle(post: WPPost): OptibilanArticle {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     featured: post.acf?.featured === true || post.acf?.a_la_une === true,
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -5550,7 +11086,39 @@ function mapPostToArticle(post: WPPost): OptibilanArticle {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     featuredImageAlt: media?.alt,
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -5582,7 +11150,39 @@ function mapPostToArticle(post: WPPost): OptibilanArticle {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     seoTitle: seo.title,
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -5614,7 +11214,39 @@ function mapPostToArticle(post: WPPost): OptibilanArticle {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     seoKeywords: seo.keywords,
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -5646,7 +11278,39 @@ function mapPostToArticle(post: WPPost): OptibilanArticle {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     acf: post.acf,
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -5678,7 +11342,55 @@ function mapPostToArticle(post: WPPost): OptibilanArticle {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -5726,87 +11438,184 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   {
+
     slug: 'comment-structurer-ses-bilans',
+
     title: 'Structurer ses bilans pour gagner dix heures par semaine',
+
     excerpt: 'La méthode de structure du bilan hebdomadaire : un format fixe, des données automatisées, une interprétation humaine. Le gain de temps mesuré et la méthode complète.',
+
     content: `<p>Le bilan hebdomadaire est le rendez-vous le plus régulier de votre coaching, et c’est aussi le premier poste de temps que l’on sacrifie sans s’en rendre compte. Beaucoup de professionnels y consacrent deux à trois heures de préparation pour une séance de quarante minutes. Une partie de ce temps est utile : celle où vous interprétez des données. Le reste est de la recopie, du tri et de la mise en page, autant de tâches qu’un outil sait faire à votre place. Structurer ses bilans, c’est déplacer le temps dépensé vers la relation et non dans l’administratif. Cette méthode est applicable dès cette semaine, sur un poste de travail déjà équipé.</p>
+
 <h2>Structurer ses bilans : les trois causes du temps perdu</h2><p>Le volume est la première cause du temps perdu, mais elle n’explique pas tout à elle seule. À trente clients suivis, un bilan hebdomadaire représente environ cent cinquante documents par mois. Si chaque document demande quarante minutes de préparation, cela fait une centaine d’heures sur une année, dont une part considérable disparaît dans des manipulations sans valeur ajoutée. Le temps ne se perd pas au hasard : il se dissipe dans des gestes précis et répétitifs, que personne ne compte parce qu’ils sont répartis sur plusieurs jours. Cette dispersion est la vraie origine de l’estimation à deux ou trois heures par semaine qui circule dans la profession.</p>
+
 <p>La deuxième cause est l’absence de format unique. Sans trame imposée, chaque bilan ressemble au précédent, mais jamais exactement. Les indicateurs suivis changent d’un client à l’autre, les intitulés varient, l’ordre des sections varie. Cette liberté apparente oblige à reconstruire la structure à chaque fois. Le résultat est une incohérence discrète mais coûteuse : le client met plus de temps à lire, et le coach perd du temps à vérifier ce qu’il aurait dû trouver en un coup d’œil.</p>
+
 <p>La troisième cause, la plus coûteuse, est l’absence d’historisation. Sans données stockées dans la durée, chaque nouveau bilan est un point isolé. Il faut alors comparer avec la semaine précédente en fouillant des notes, des tableurs, parfois des messages. Cette recherche n’apporte rien au client : elle vous coûte du temps et vous fait doublonner le travail. Identifier la source dominante de la perte de temps est donc la première étape, et la mesure la plus fiable. Ces trois causes se traitent ensemble, par un cadre de suivi unique qui n’ajoute aucune charge mais remplace trois charges dispersées.</p>
+
 <h2>Le contenu d’un bilan qui fait réellement avancer le client</h2>
+
 <p>Un bilan utile n’est pas un rapport complet, c’est un support de décision. Il répond à trois questions, dans cet ordre : où en est le client par rapport à son objectif, qu’est-ce qui a changé depuis la dernière fois, et quelle est la priorité de la semaine qui vient. Tout ce qui ne sert pas à y répondre est du bruit. Cette discipline de contenu est ce qui permet de réduire le document sans réduire la valeur de la séance.</p>
+
 <p>Concrètement, un bilan tient sur quatre zones. Les indicateurs suivis, présentés avec leur évolution sur trois points au minimum. Le constat de la semaine, qui relie ces chiffres à ce que le client a réellement vécu. Les écarts identifiés, notamment les hypothèses qui n’ont pas tenu. Et enfin la priorité unique de la semaine suivante, formulée comme une action concrète et vérifiable. Ce format en quatre zones reste identique d’un client à l’autre, et d’un bilan à l’autre.</p>
+
 <figure>
+
 <img src="/images/cabinets/04-methode-equilibre-realiste.webp" alt="Coach échangeant les chiffres d’évolution avec son client" loading="lazy" decoding="async" width="1000" height="750" />
+
 <figcaption>Les indicateurs suivis, présentés avec leur évolution sur trois points minimum.</figcaption>
+
 </figure>
 
+
+
 <p>La priorité unique est l’élément qui change le plus la perception du suivi. Trois recommandations parallèles produisent souvent zéro action. Une seule action, clairement formulée et vérifiée à la séance suivante, produit un mouvement visible. C’est ce mouvement, et non l’exhaustivité du document, que le client retient comme preuve que son accompagnement fonctionne.</p>
+
 <h2>Structurer ses bilans : le format fixe en quatre temps</h2>
+
 <p>La structure elle-même se met en place en une heure, à condition de suivre un ordre précis. Commencez par choisir vos indicateurs, au nombre de cinq ou six maximum, et ne les changez plus : leur stabilité crée la comparaison dans le temps. Ensuite, écrivez une trame de trois paragraphes qui s’applique à tous vos clients, avec des emplacements fixes. La trame doit contenir des cases vides, pas des champs à remplir au cas par cas, afin que la mise en page ne soit jamais repensée.</p>
+
 <p>Le troisième temps est celui des données. Les indicateurs doivent alimenter le document sans intervention de votre part, à partir des mesures que le client saisit et des constats que vous notez. Le quatrième temps est le plus court : la relecture et l’envoi. À ce stade, vous ne faites plus que commenter des données déjà présentées. Sur un dossier suivi, la préparation complète prend entre quinze et vingt minutes au lieu de quarante.</p>
+
 <p>Ce format fixe a un effet secondaire souvent sous-estimé : il rend votre travail lisible par un tiers. Un nouveau client reçoit exactement le même type de document qu’un autre, ce qui rend le service prévisible pour lui aussi. La régularité du support devient un argument de qualité, et non plus une simple commodité de gestion. Un assistant, un collègue ou un partenaire qui consulte vos bilans comprend immédiatement la logique de votre suivi. Cette lisibilité transforme votre méthode en actifs, utilisable le jour où vous souhaitez structurer une offre de suivi pour un cabinet, une entreprise ou un parcours collectif.</p>
+
 <h2>Automatiser les bilans sans déshumaniser la relation</h2>
+
 <p>L’automatisation du suivi ne crée le plus de valeur que lorsqu’elle rassemble, et non lorsqu’elle rédige à votre place. Les courbes d’évolution, les écarts calculés, les rappels d’objectif et la mise en page se génèrent seuls à partir des données déjà présentes. Le temps récupéré se réinvestit dans la partie qui vous est propre : l’interprétation, la mise en relation avec le passé du client, et la formulation de la priorité de la semaine. La technologie ne fait que déplacer le temps vers ce que vous seul pouvez faire.</p>
+
 <p>La frontière à respecter est simple. Tout ce qui est calculable et répétitif relève de l’outil : calculs d’évolution, mise en forme, comparaison aux seuils, envoi. Tout ce qui est contextuel relève de vous : la lecture de la semaine, l’explication d’un écart, l’arbitrage entre deux priorités. Ces deux registres ne se mélangent pas, et le client perçoit immédiatement lequel des deux lui est proposé. Confondre les deux produit le pire scénario, un document techniquement irréprochable et humainement vide. Un tel bilan se lit en diagonale, puis se referme sans discussion, ce qui annule tout le temps gagné.</p>
+
 <p>Les référentiels publics de l’<a href="https://entreprendre.service-public.fr/">entreprise</a> soulignent que la conservation des données d’accompagnement doit être documentée, ce que la traçabilité automatique garantit naturellement. Le <a href="https://www.legifrance.gouv.fr/">Code général des collectivités territoriales</a> rappelle de son côté que les produits de santé imposent des conditions de conservation précises. La <a href="https://www.cnil.fr/fr/les-durees-de-conservation-des-donnees">CNIL</a> publie les durées applicables selon la nature des données traitées. En automatisant l’archivage, vous satisfait ces obligations sans charge manuelle supplémentaire.</p>
+
 <table>
+
 <thead>
+
 <tr><th>Étape du bilan</th><th>Avant</th><th>Après structuration</th></tr>
+
 </thead>
+
 <tbody>
+
 <tr><td>Collecte des données</td><td>15 minutes</td><td>0 minute</td></tr>
+
 <tr><td>Mise en forme et comparaison</td><td>18 minutes</td><td>2 minutes</td></tr>
+
 <tr><td>Rédaction de l’interprétation</td><td>20 minutes</td><td>12 minutes</td></tr>
+
 <tr><td>Relecture et envoi</td><td>7 minutes</td><td>3 minutes</td></tr>
+
 <tr><td>Total par client et par semaine</td><td>60 minutes</td><td>17 minutes</td></tr>
+
 <tr><td>Total pour 30 clients</td><td>30 heures</td><td>8,5 heures</td></tr>
+
 </tbody>
+
 </table>
+
 <h2>Le kit minimal du bilan de coaching pour démarrer</h2>
+
 <p>Le kit minimal du bilan de coaching tient en trois éléments, et rien d’autre. La trame de trois paragraphes que vous réutilisez telle quelle d’une semaine à l’autre. La liste de cinq ou six indicateurs stable pour tous vos clients. Et l’emplacement de la priorité de la semaine, toujours formulée en une seule action. Rien d’autre n’est nécessaire pour démarrer, et rien d’autre ne doit être ajouté avant d’avoir tenu un mois complet avec ce format minimal. La sobriété du kit est une condition de sa réussite.</p>
+
 <figure>
+
 <img src="/images/product/07-utilisatrice-50ans-lifestyle.webp" alt="Cliente consultant son espace de suivi depuis son domicile" loading="lazy" decoding="async" width="1000" height="713" />
+
 <figcaption>Un espace de suivi unique : les données remontent sans saisie manuelle du coach.</figcaption>
+
 </figure>
+
 <p>Ce kit tient dans un seul document, que vous ouvrez au début de chaque préparation. Vous copiez la trame, les indicateurs se remplissent depuis les données du dossier, et vous rédigez les deux parties qui vous appartiennent. Comptez quinze à vingt minutes par client sur un dossier suivi, contre quarante à soixante minutes lorsque le format est reconstruit à chaque fois. La différence entre ces deux durées est exactement ce que la structure vous fait gagner. Elle est immédiate, et ne demande aucun apprentissage.</p>
+
 <p>Le format minimal a une seconde vertu : il est transmissible. Un assistant qui prépare vos bilans, ou un coach qui vous remplace une semaine, applique le même document sans formation préalable. Votre méthode cesse d’être un savoir-faire personnel pour devenir un standard partagé. C’est ce standard qui permet d’envisager de travailler à plusieurs au fil du temps, et donc d’accueillir plus de clients sans que la qualité du suivi ne se dégrade sur le chemin.</p>
+
 <h2>Mesurer le temps gagné après un mois</h2>
+
 <p>Le seul moyen fiable de valider une méthode est de la mesurer. Avant de changer quoi que ce soit, notez le temps que vous consacrez réellement à la préparation d’un bilan, sur trois ou quatre dossiers représentatifs. Cette mesure initiale vous sert de référence et évite de vous fier à votre impression. La plupart des professionnels découvrent que le temps réel dépasse de trente à cinquante pour cent leur estimation.</p>
+
 <p>Après un mois de mise en pratique, refaites exactement la même mesure. Comparer un chiffre réel à un autre chiffre réel, sur les mêmes dossiers, est le seul indicateur qui ne trompe pas. Vous pouvez alors estimer le temps annuel récupéré en multipliant par le nombre de clients suivis. Dans notre expérience, le gain se situe entre huit et douze heures par semaine pour un professionnel suivant trente clients, ce qui représente presque une demi-journée de travail entièrement rendue à l’accompagnement.</p>
+
 <p>Ce chiffre a une conséquence directe sur la manière de travailler. Dix heures récupérées ne servent pas à ajouter dix clients, elles servent à mieux suivre ceux que vous avez déjà. La qualité du suivi s’améliore, la fatigue diminue, et le risque d’épuisement professionnel recule. C’est le meilleur argument pour structurer ses bilans : le temps économisé ne sert pas à faire plus, mais à faire mieux ce qui est déjà là. La croissance du cabinet ou du cabinet de coaching devient alors soutenable sans vous faire dépasser par la charge.</p>
+
 <figure>
+
 <img src="/images/product/07-utilisatrice-50ans-lifestyle.webp" alt="Cliente consultée depuis chez elle, consulte son espace de suivi" loading="lazy" decoding="async" width="1000" height="713" />
+
 <figcaption>L’espace client : les données remontent sans saisie manuelle du coach.</figcaption>
+
 </figure>
+
 `,
+
     category: 'coaching',
+
     categoryLabel: 'Coaching',
+
     author: 'Marie Dubois',
+
     authorRole: 'Coach santé & nutrition',
+
     date: '2026-08-04',
+
     readTime: '11 min',
+
     featured: true,
+
     featuredImage: '/images/product/09-coach-entretien-client.webp',
+
     featuredImageAlt: 'Coach préparant un bilan de suivi client',
+
     seoTitle: 'Structurer ses bilans pour gagner 10 h par semaine',
+
     seoDescription: 'La méthode pour structurer ses bilans de coaching : format fixe, données automatisées, interprétation humaine. Le gain de temps mesuré.',
+
     seoKeywords: ['structurer ses bilans', 'bilan de coaching', 'automatisation du suivi'],
+
     tags: ['bilans', 'methodologie', 'temps', 'automatisation'],
+
     sources: [
+
       { label: 'CNIL — Durées de conservation des données', url: 'https://www.cnil.fr/fr/les-durees-de-conservation-des-donnees' },
+
       { label: 'Service-public.fr — Créer son entreprise', url: 'https://entreprendre.service-public.fr/' },
+
       { label: 'Legifrance — Textes de droit applicables', url: 'https://www.legifrance.gouv.fr/' },
+
     ],
+
     faq: [
+
       { q: 'Combien de temps faut-il pour structurer ses bilans ?', a: 'Environ une heure de conception de la trame, puis quelques réglages. Le temps de préparation de chaque bilan tombe ensuite entre quinze et vingt minutes sur un dossier suivi.' },
+
       { q: 'Faut-il automatiser entièrement la rédaction ?', a: 'Non. Automatisez les calculs, la mise en forme et l’archivage, mais gardez l’interprétation et la priorité de la semaine. Un bilan sans lecture humaine n’apporte rien au client.' },
+
       { q: 'Combien d’indicateurs suivre par client ?', a: 'Cinq ou six au maximum, et les mêmes pour tous. La stabilité des indicateurs est ce qui permet la comparaison dans le temps et la standardisation du suivi.' },
+
       { q: 'Comment mesurer le temps réellement perdu ?', a: 'Notez le temps de préparation sur trois ou quatre dossiers pendant une semaine, avant tout changement. Cette référence chiffrée permet de comparer ensuite objectivement, sans vous fier à votre impression.' },
+
       { q: 'Une seule priorité par semaine, c’est suffisant ?', a: 'C’est même le plus efficace. Trois recommandations parallèles produisent souvent zéro action, alors qu’une seule action vérifiable produit un mouvement visible dès la semaine suivante.' },
+
       { q: 'Le bilan doit-il être conservé plusieurs années ?', a: 'Oui, selon la nature des données et la durée de la relation. Les règles de conservation sont encadrées par le droit français, il est donc utile de documenter ce que vous archivez et pendant combien de temps.' },
+
     ],
+
   },
 
 
@@ -5822,164 +11631,337 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   {
+
+
 
     slug: 'cas-client-studio-performance',
 
+
+
     title: 'Cas client : un studio passe de 20 à 150 coachés',
+
+
 
     excerpt: 'Comment un studio de coaching a industrialisé son onboarding et ses bilans pour passer de 20 à 150 coachés en huit mois, sans perdre la qualité du suivi.',
 
+
+
     content: `<p>Passer de vingt à cent cinquante clients coachés sans dégrader la qualité du suivi est le problème classique du studio de coaching en croissance. Les bons indicateurs montent, la file d’attente s’allonge, et soudain chaque nouveau dossier devient une exception à gérer. Cet article raconte le cas concret d’un studio qui a résolu ce passage à l’échelle en huit mois. Trois décisions structurantes, prises dans cet ordre, ont suffi à rendre la croissance prévisible. Aucune n’a nécessité de développement sur mesure ni de recrutement précipité. La méthode vaut pour tout professionnel dont l’activité dépasse rapidement le cadre du suivi individuel.</p>
+
+
 
 <h2>Le studio de coaching qui avait un plafond à vingt clients</h2>
 
+
+
 <p>Au départ, ce studio de coaching fonctionnait très bien, mais avec un plafond structurel. L’onboarding reposait sur des échanges informels, chaque dossier client était constitué à la main et les bilans hebdomadaires étaient reconstitués de mémoire entre deux séances. Aucun standard ne formalisait ces étapes, ce qui rendait le travail entièrement dépendant du fondateur. Chaque étape inhabituelle demandait une vérification manuelle de sa part, ce qui devenait ingérable au-delà de vingt clients. À quarante, il produisait déjà des retards, des oublis et une fatigue grandissante.</p>
+
+
 
 <p>Le symptôme le plus coûteux n’était pas le temps perdu, mais l’impossibilité de recruter. Les premiers coachs pressentis vinrent, mais partirent en quelques mois : ils recevaient des dossiers incomplets, sans cadre commun pour rédiger un bilan. Sans standard de livraison, la qualité dépendait de la expérience individuelle de chaque intervenant. Le fondateur passait alors une part croissante de son temps à contrôler ce qui aurait dû être systématique, au lieu de développer l’activité et la méthode.</p>
 
+
+
 <p>Le diagnostic fut assez simple à poser : le problème ne venait pas du volume, mais de l’absence de reproductibilité. Chaque étape réalisée « au cas par cas » coûtait quelques minutes de plus à chaque nouveau client, et ces minutes s’accumulaient en un blocage global. La croissance ne pouvait pas être débloquée par un recrutement de plus, mais par une transformation des pratiques existantes. C’est cette conviction qui a orienté les trois décisions décrites dans les sections suivantes.</p>
+
+
 
 <h2>Décision 1 : un onboarding standardisé pour tous les nouveaux clients</h2>
 
+
+
 <figure>
+
+
 
 <img src="/images/cabinets/01-studio-performance-realiste.webp" alt="Coach accueillant un nouveau client dans son espace de suivi" loading="lazy" decoding="async" width="1000" height="750" />
 
+
+
 <figcaption>Le parcours d’arrivée standardisé : un dossier complet dès le premier rendez-vous.</figcaption>
 
+
+
 </figure>
+
+
 
 <p>La première décision a porté sur l’onboarding client, c’est-à-dire tout ce qui se joue avant la première séance. Jusqu’alors, chaque nouveau client arrivait avec ses informations éparpillées et un formulaire de contact incomplet. Le studio a mis en place un parcours d’onboarding unique : un questionnaire d’anamnèse structuré, un consentement explicite, une liste précise des documents attendus et un créneau de première séance réservé dès la signature. Chaque étape avait un responsable, un délai et un livrable, ce qui rendait le processus lisible aussi bien pour le client que pour l’équipe.</p>
 
+
+
 <p>Les gains ont été immédiats et mesurables. Le temps consacré au premier rendez-vous a été divisé par deux, parce que le dossier complet était prêt avant l’échange, sans collecte improvisée. Le taux de rendez-vous honorés s’est amélioré, le client recevait une confirmation claire et ne se demandait plus ce qu’il devait apporter. Surtout, la nouvelle arrivante trouvait un parcours identique quel que soit le coach qui l’accueillait, ce qui supprimait l’impression que certaines personnes étaient mieux suivies que d’autres.</p>
+
+
 
 <p>Cet standard a aussi stabilisé la qualité perçue. Un dossier complet dès le départ permet d’adapter la première séance au vrai profil de la personne, plutôt que de passer la première séance à la collecte des informations. Le coach arrive avec une hypothèse de travail, ce qui rend l’échange immédiatement utile pour le client. La personne repart avec des premières recommandations concrètes, et cette promesse tenue dès le début fixe un standard de qualité élevé pour toute la durée de l’accompagnement.</p>
 
+
+
 <h2>Décision 2 : l’automatisation des bilans répétitifs côté coach</h2>
 
+
+
 <figure>
+
+
 
 <img src="/images/product/09-coach-entretien-client.webp" alt="Coach préparant un bilan hebdomadaire devant son ordinateur" loading="lazy" decoding="async" width="1000" height="651" />
 
+
+
 <figcaption>Le bilan hebdomadaire : des données déjà préparées, une interprétation laissée au coach.</figcaption>
 
+
+
 </figure>
+
+
 
 <p>La deuxième décision concernait le cœur du travail récurrent de l’activité : le bilan hebdomadaire de chaque client. Les données nécessaires étaient déjà présentes dans les dossiers, mais leur compilation, leur mise en forme et leur comparaison avec la semaine précédente se faisaient à la main. L’automatisation des bilans a consisté à préremplir automatiquement les indicateurs suivis, les évolutions chiffrées et les objectifs en cours, afin que le coach n’ait plus qu’à interpréter et à commenter des données déjà présentées sous une forme lisible. Chaque bilan sortait du dossier dans le même format, quelle que soit la façon dont les données avaient été saisies. Cette uniformité a rendu la comparaison d’une semaine à l’autre immédiate, y compris pour les indicateurs enregistrés par le client lui-même.</p>
 
+
+
 <p>Cette automatisation n’a rien retiré à la dimension humaine du suivi. Elle a au contraire dégagé du temps que le coach consacrait auparavant à la mise en forme, temps désormais investi dans l’analyse et la recommandation. Le bilan est arrivé plus vite, mais surtout plus constant : la structure est devenue identique d’un client à l’autre et d’un coach à l’autre. C’est cette constance qui a permis de vérifier la qualité du suivi à l’échelle, et non au cas par cas.</p>
+
+
 
 <p>Ce changement a produit un effet secondaire précieux sur le recrutement. Les référentiels publics de l’<a href="https://entreprendre.service-public.fr/">entreprise</a> rappellent d’ailleurs que la traçabilité des échanges fait partie des obligations de gestion, et un suivi standardisé la garantit par construction. Un nouveau coach n’a plus à inventer sa propre méthode de rédaction : il reçoit une trame prête à l’emploi, alimentée par les données du dossier, et il n’a plus qu’à exercer sa propre lecture. L’intégration d’un intervenant est passée de plusieurs semaines à quelques jours, sans que la qualité des bilans produits par l’équipe varie. Un coach qui rejoignait le studio ne repartait plus avec ses propres outils, mais avec les trames communes de l’équipe. Le suivi est devenu un standard partagé, ce qui a ouvert la voie à la croissance.</p>
 
+
+
 <h2>Décision 3 : une identité de studio visible sur tous les dossiers clients</h2>
+
+
 
 <figure>
 
+
+
 <img src="/images/cabinets/04-methode-equilibre-realiste.webp" alt="Équipe de coachs échangeant autour d’un bilan partagé" loading="lazy" decoding="async" width="1000" height="750" />
+
+
 
 <figcaption>Une identité de studio unique, appliquée par chaque coach de l’équipe.</figcaption>
 
+
+
 </figure>
+
+
 
 <p>La troisième décision a été de rendre l’identité du studio visible sur chaque document et chaque espace partagé avec le client. Les obligations de mentions légales restent rappelées sur ces documents, comme l’exige le <a href="https://www.legifrance.gouv.fr/">Code général des collectivités territoriales</a> pour les structures concernées. L’espace client, les bilans, les relances automatiques et les accès de l’équipe ont été alignés sur la même charte graphique et la même structure de contenu. Un client qui ouvrait son dossier reconnaissait immédiatement la promesse faite au moment de la signature. Les mentions obligatoires restent présentes sur chaque document, conformément aux exigences de la <a href="https://www.cnil.fr/fr/la-protection-des-donnees-personnelles">CNIL</a> sur la traçabilité des données personnelles. Cette cohérence a transformé chaque point de contact en vecteur de crédibilité, au lieu d’être un simple support administratif.</p>
 
+
+
 <p>Cette homogénéité a directement facilité l’intégration des nouveaux coachs. Un intervenant découvrait un environnement logique, où les données se trouvaient toujours au même endroit et où les trames de bilan étaient déjà posées. Il n’avait pas à reconstruire ses propres outils de travail, qui auraient fragmenté l’expérience du client. Le studio pouvait ainsi recruter au-delà de son cercle immédiat, en conservant une qualité de service homogène.</p>
+
+
 
 <p>Cette identité unifiée a enfin renforcé la relation avec les partenaires. Les cabinets et les structures de soins qui recommandent le studio reçoivent des comptes-rendus lisibles, aux couleurs du studio, dans lesquels leur patient se retrouve immédiatement. Ils constatent que le suivi ne s’arrête pas au cabinet et se poursuit dans un cadre identifiable. Cette continuité externe, rare pour un jeune studio, a généré des recommandations spontanées qui ont alimenté la croissance bien au-delà du bouche-à-oreille habituel.</p>
 
+
+
 <h2>Ce qui a vraiment déclenché le passage à l’échelle</h2>
+
+
 
 <p>Le basculement n’est pas venu d’un outil supplémentaire, mais de la suppression des exceptions qui saturaient le planning du fondateur. Chaque interruption reconduisait exactement le même problème, et la croissance se retrouvait bridée par la seule charge opérationnelle. Tant que ces interruptions se répetaient, aucun recrutement n’aurait résolu la situation. Avant les trois décisions, chaque nouveau client ajoutait du travail non prévu : une relance, un formulaire incomplet, un bilan corrigé à la main. À chaque exception, le fondateur reprenait la main et le système retombait dans le désordre. La croissance du studio était donc railroads par ces interruptions permanentes, qui absorbaient le temps disponible et rendaient tout recrutement difficile.</p>
 
+
+
 <p>En standardisant l’onboarding, les bilans et l’identité, le studio a supprimé la quasi-totalité de ces exceptions. Le travail est devenu prévisible : le coach sait ce qu’il va trouver dans le dossier, le client sait ce qu’il doit fournir, le bilan arrive dans un format constant. Cette prévisibilité a libéré le fondateur du contrôle permanent, lui permettant de se concentrer sur la méthode et la relation. Le temps gagné a été réinvesti dans l’accompagnement, ce qui a paradoxalement renforcé les résultats auprès des clients.</p>
+
+
 
 <p>Le résultat est concret : le studio est passé de vingt à cent cinquante clients coachés en huit mois, sans que la satisfaction n’ait diminué ni que le temps administratif par client augmente. Les mêmes indicateurs de qualité ont été conservés du premier au dernier client du parcours. Le facteur déclenchant n’a pas été la croissance elle-même, mais la suppression des exceptions qui la bloquaient. La leçon est simple : la croissance durable ne vient pas d’un effort supplémentaire, mais d’un fonctionnement standardisé qui rend le travail additionnel moins coûteux que le travail réalisé.</p>
 
+
+
 <table>
+
+
 
 <thead>
 
+
+
 <tr><th>Indicateur</th><th>Avant la structuration</th><th>Après la structuration</th></tr>
+
+
 
 </thead>
 
+
+
 <tbody>
+
+
 
 <tr><td>Clients coachés</td><td>20</td><td>150</td></tr>
 
+
+
 <tr><td>Temps administratif par client</td><td>45 minutes</td><td>12 minutes</td></tr>
+
+
 
 <tr><td>Délai de préparation d’un bilan</td><td>90 minutes</td><td>25 minutes</td></tr>
 
+
+
 <tr><td>Intégration d’un nouveau coach</td><td>3 à 4 semaines</td><td>4 jours</td></tr>
+
+
 
 <tr><td>Durée de la mise en route d’un client</td><td>3 rendez-vous</td><td>1 rendez-vous</td></tr>
 
+
+
 </tbody>
+
+
 
 </table>
 
+
+
 <h2>Les trois leçons à retenir</h2>
+
+
 
 <p>Première leçon : standardisez l’arrivée des clients avant tout. Un onboarding unique est le levier le moins cher et le plus rentable pour accueillir des volumes. Deuxième leçon : automatisez uniquement la partie répétitive du suivi, en laissant l’analyse et la relation entièrement humaines. Troisième leçon : rendez votre identité visible sur chaque point de contact, car c’est elle qui transforme un suivi privé en promesse reconnaissable.</p>
 
+
+
 <p>Ces trois leçons n’ont rien de technique et ne supposent aucun budget particulier. Elles tiennent dans une phrase : mettre en ordre ce qui se faisait sans filet avant de chercher à faire mieux. Elles demandent seulement d’identifier les exceptions récurrentes et de décider une fois pour toutes comment les traiter. Le studio n’a pas acheté davantage de temps, il a cessé d’en perdre. Cette différence est celle qui sépare un professionnel qui s’épuise d’un professionnel qui construit, et elle se mesure autant dans les heures récupérées que dans les résultats obtenus. En appliquant cette méthode, votre croissance conserve sa qualité et devient réellement pilotable, ce qui rend vos décisions d’investissement moins risquées. Le temps libéré se réinvestit dans la relation.</p>
+
+
 
 <p>Pour mettre en pratique ce travail d’équipe, notre méthode de délégation sans perdre la main détaille le recrutement et la boucle de contrôle. Pour rendre cette cohérence visible dès le premier jour, notre guide de la marque blanche coaching montre comment aligner chaque document sur votre identité. Ces deux approches se complètent pour transformer un bon professionnel en studio durable, capable d’accueillir ses premiers cents clients sans perdre sa qualité. C’est exactement le chemin qu’a suivi ce studio, et la méthode est reproductible telle quelle.</p>`,
 
+
+
     category: 'business',
+
+
 
     categoryLabel: 'Business',
 
+
+
     author: 'Thomas Bertrand',
 
+
+
     authorRole: 'Fondateur Studio Performance',
+
+
 
     date: '2026-09-21',
 
+
+
     readTime: '11 min',
 
+
+
     featured: true,
+
+
 
     featuredImage: '/images/cabinets/01-studio-performance-realiste.webp',
 
+
+
     featuredImageAlt: 'Studio de coaching en activité',
+
+
 
     seoTitle: 'Cas client : un studio de coaching passe à 150',
 
+
+
     seoDescription: 'Un studio de coaching est passé de 20 à 150 clients en huit mois. Les trois décisions qui ont rendu cette croissance possible.',
+
+
 
     seoKeywords: ['studio de coaching', 'onboarding client', 'automatisation des bilans'],
 
+
+
     tags: ['cas-client', 'studio', 'croissance', 'equipe'],
+
+
 
     sources: [
 
+
+
       { label: 'CNIL — La protection des données personnelles', url: 'https://www.cnil.fr/fr/la-protection-des-donnees-personnelles' },
+
+
 
       { label: 'Service-public.fr — Créer son entreprise', url: 'https://www.service-public.fr/particuliers/vosdroits/F32185' },
 
+
+
       { label: 'Legifrance — Textes de droit applicables', url: 'https://www.legifrance.gouv.fr/' },
 
+
+
     ],
+
+
 
     faq: [
 
+
+
       { q: 'Combien de temps pour passer de 20 à 150 clients ?', a: 'Dans cet exemple, huit mois. Le facteur clé est la reproductibilité des processus, non la vitesse à tout prix. La prévisibilité compte plus que la croissance brutale.' },
+
+
 
       { q: 'Faut-il embaucher avant de structurer ?', a: 'Non. Il vaut mieux structurer les processus et standardiser l’expérience client avant d’ajouter des intervenants. Cela évite de multiplier les incohérences à l’échelle.' },
 
+
+
       { q: 'Peut-on automatiser les bilans sans perdre l’humain ?', a: 'Oui, à condition d’automatiser uniquement les données et la mise en forme, et de laisser au coach l’analyse, les recommandations et le ton. L’humain reste sur la partie à valeur ajoutée.' },
+
+
 
       { q: 'Pourquoi commencer par l’onboarding ?', a: 'Parce qu’il fixe la qualité du dossier dès le départ. Un dossier complet et structuré évite les aller-retours, gagne du temps à toute l’équipe et améliore la première impression.' },
 
+
+
       { q: 'La marque blanche est-elle indispensable ?', a: 'Elle n’est pas indispensable, mais elle facilite grandement l’intégration d’une équipe et la cohérence avec les prescripteurs. Elle rend la méthode visible à chaque point de contact.' },
+
+
 
       { q: 'Quel est le premier pas à faire ?', a: 'Identifier l’étape qui crée le plus d’exceptions aujourd’hui (généralement l’onboarding ou les bilans). Standardisez-la, testez-la sur quelques clients, puis passez à l’étape suivante.' },
 
+
+
     ],
 
+
+
   },
 
 
@@ -5994,7 +11976,6 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
-  {
 
 
 
@@ -6009,536 +11990,97 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
-
+{
     slug: 'delegation-equipe-grandir',
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    title: 'Déléguer sans perdre la main : faire grandir son équipe',
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    excerpt: 'Comment passer de solo à équipe structurée. Process, recrutement, culture. Le retour d\'expérience.',
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    content: `<p>Passer de coach solo à studio structuré, c'est accepter un deuil : celui de tout faire soi-même. C'est aussi la décision qui conditionne la suite de la croissance. Voici la méthode qui nous revient le plus souvent dans les retours d'ateliers.</p>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h2>Le vrai problème de la délégation</h2>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<p>Le frein n'est pas de trouver des bras. C'est la peur diffuse que la qualité dérape et que la relation client en pâtisse. Tant que cette peur n'est pas traitée par des outils, la délégation échoue, non pas faute de compétences, mais faute de cadre.</p>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<p>Concrètement, déléguer sans process revient à confier son carnet d'adresses à quelqu'un avec des Post-it. Le nouveau coach improvise, les clients sentent la différence, et on revient en arrière.</p>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h2>Cadrer l'onboarding et le suivi avant de recruter</h2>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<p>Avant d'embaucher, chaque activité récurrente doit avoir une procédure écrite : comment un client entre dans le studio, comment se prépare un bilan, comment sont gérées les mesures, où vit l'historique. Si ces procédures n'existent pas, le recrutement aggrave le chaos au lieu de le réduire.</p>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<p>C'est ici que le logiciel de coaching rend service : un dossier client unique, une structure de bilan identique pour toute l'équipe, des données centralisées. Le nouvel arrivant ne réinvente rien, il applique un standard.</p>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h2>Recruter sur la méthode, pas seulement sur le charisme</h2>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<p>Un bon coach de studio, c'est d'abord quelqu'un qui respecte votre cadre de suivi. Le charisme motive en séance, mais c'est la constance du suivi qui fait revenir les clients. Posez des questions concrètes en entretien : « Montrez-moi comment vous préparez un bilan » renseigne mieux que « Parlez-moi de votre philosophie ».</p>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<p>Intégrez aussi la culture d'équipe : le client ne doit jamais subir les différences de méthodes entre coachs, sinon il croit que le studio est incohérent.</p>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h2>La boucle de contrôle sans micro-management</h2>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<p>Une fois l'équipe en place, contrôlez par l'outil, pas par la présence. Les bilans remontent dans le même format, les indicateurs d'adhérence sont visibles, les décrochages deviennent détectables avant la résiliation. Le fondateur ne lit pas chaque dossier, il a des alertes.</p>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<p>C'est la différence entre superviser et surveiller : on regarde les exceptions, pas chaque geste.</p>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h2>Les pièges qui font rentrer les studios en solo</h2>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<ul>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<li><strong>Déléguer sans standard</strong> : chaque coach fait son propre format, l'identité du studio s'efface.</li>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<li><strong>Recruter quand on est en surcharge</strong> : on intègre en catastrophe et on transmet une pile, pas une méthode.</li>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<li><strong>Arrêter le suivi de la qualité</strong> : sans indicateurs partagés, la dégradation se voit trop tard.</li>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</ul>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<p>Grandir ne demande pas d'abandonner le contrôle, mais de déplacer ce contrôle vers des standards et des données que toute l'équipe partage.</p>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h2>Ce que ça change au quotidien</h2>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<p>Structuré, le studio peut accueillir plus de clients sans que le fondateur devienne le goulot d'étranglement. Les séances, les bilans et le suivi tournent sur le même système, et la marque du studio devient la garantie d'un accompagnement constant.</p>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<p>La délégation réussie ne se mesure pas au nombre de coachs embauchés, mais au fait que vous ne soyez plus indispensable à chaque dossier.</p>`,
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    title: 'Délégation d’équipe : faire grandir son équipe coaching',
+    excerpt: 'La méthode pour déléguer sans perdre la main : formaliser sa méthode, recruter sur des critères écrits, installer une boucle de contrôle.',
+    content: `<p>Faire grandir son activité ne se résume pas à recruter une deuxième personne. Une délégation d’équipe se construit, se formalise et se contrôle, faute de quoi elle se transforme en dispersion et en perte de qualité. Le professionnel qui réussit le passage du seul au collectif ne délègue pas ses tâches, il délègue une méthode. Ce guide décrit la séquence complète, depuis la rédaction de la trame jusqu’à la boucle de contrôle qui protège le professionnel principal. L’ordre des étapes compte autant que leur contenu, car appliquer la méthode dans le désordre produit l’effet inverse de celui recherché.</p>
+<h2>Délégation d’équipe : le vrai obstacle n’est pas organisationnel</h2>
+<figure>
+<img src="/images/cabinets/01-studio-performance-realiste.webp" alt="Coach préparant une séance en équipe dans son studio" loading="lazy" decoding="async" width="1000" height="750" />
+<figcaption>Passer du suivi individuel au travail collectif commence par rendre sa méthode lisible.</figcaption>
+</figure>
+<p>La délégation d’équipe bute rarement sur un problème d’organisation. Les outils de gestion, les plannings et les tableaux de suivi sont accessibles à tous, en quelques heures. Le vrai obstacle est un frein psychologique : la conviction que le travail délégué sera fait autrement, et moins bien. Cette croyance repose sur des années d’expérience pendant lesquelles la qualité reposait sur votre seule vigilance. Déléguer, c’est alors accepter de renoncer à ce contrôle permanent, et donc à risquer une intégration qui ne vous ressemble pas. Ce risque ne se supprime pas, il se cadre.</p>
+<p>Le second frein, plus discret, est l’absence de documentation. Si votre méthode n’est écrite nulle part, vous êtes le seul à pouvoir l’appliquer. Dans ces conditions, aucun recrutement ne fonctionne durablement. Un nouvel intervenant découvre la pratique par imitation, comprend les règles implicites par l’expérience, et son niveau de prestation varie selon son ancienneté. Déléguer devient alors impossible, non par unwillingness mais par manque de matière. C’est le premier travail à faire, avant même de chercher un profil à recruter.</p>
+<p>Ces deux freins expliquent pourquoi tant de professionnels restent seuls alors que leur activité l’exige. Le remède n’est pas de faire confiance aveuglément, mais de rendre cette confiance vérifiable. Une boucle de contrôle légère, fondée sur des critères écrits, transforme une délégation risquée en un processus maîtrisé. C’est ce que décrit la méthode ci-dessous, étape par étape, de la trame de méthode à la réunion d’équipe mensuelle.</p>
+<h2>Écrire sa méthode avant de choisir son premier intervenant</h2>
+<p>La délégation d’équipe commence par un document que beaucoup ne rédigent jamais : la trame de ce qui est livré. Pour chaque type de séance, indiquez les étapes, les outils utilisés, les données recueillies et le format du compte-rendu. Ce document n’a pas vocation à être parfait, il doit exister et être utilisable par un tiers. Vingt minutes d’écriture par type de séance suffisent à rendre la méthode transmissible. Ce que vous ne formalisez pas, vous ne pourrez pas le déléguer.</p>
+<p>Une fois la trame rédigée, distinguez ce qui relève de la méthode et ce qui relève de votre personnalité. La méthode s’écrit et se transmet : protocoles, critères d’évaluation, formats de restitution. La personnalité ne se transmet pas et ne doit pas l’être. Un professionnel qui recrute uniquement des gens qui lui ressemblent produit un groupe monochrome, où le même angle de vue se répète sans jamais être confronté. La délégation fonctionne quand on délègue un cadre, et non une identité.</p>
+<p>Une troisième étape complète la préparation : nommer ce qui ne sera pas délégué. Les décisions stratégiques, la relation commerciale de haut niveau, les arbitrages éthiques sur un dossier complexe. En écrivant cette liste, vous évitez le renoncement ambigu, celui où l’on ne sait plus qui décide en cas de désaccord. Le professionnel qui a écrit sa méthode et ses zones de non-délégation est immédiatement plus crédible auprès d’un candidat sérieux. Il ne promet pas la liberté, il promet un cadre de travail.</p>
+<h2>Recruter un coach sur des critères, pas sur une impression</h2>
+<p>Recruter un coach ne se décide pas sur une impression. Un candidat brillant en entretien peut être un mauvais collaborateur s’il ne tient pas un cadre, et le contraire est fréquent. La bonne question n’est donc pas de savoir si la personne vous plaît, mais si elle produit ce que votre trame décrit. Le processus de sélection doit reproduire cette logique, à travers une mise en situation sur un cas réel évaluée avec des critères écrits à l’avance. Ces critères doivent être ceux de la trame, et non ceux de votre goût personnel.</p>
+<p>Un entretien structuré comporte trois temps. D’abord, faire décrire au candidat sa propre méthode sans l’interrompre, puis la confronter à votre trame. Ensuite, lui confier un dossier réel et lui demander de produire le compte-rendu selon vos critères, en une heure environ. Enfin, analyser la production ensemble en pointant ce qui fonctionne et ce qui manque. Cette séquence prend deux fois plus de temps qu’un entretien classique, mais elle évite les erreurs de recrutement qui coûtent une année de travail.</p>
+<p>Le recrutement n’est donc pas seulement une sélection, c’est aussi un audit de votre méthode et un moteur de son amélioration continue. Cette perspective change la façon dont vous l’abordez : vous ne cherchez plus à atteindre un profil défini, mais à vérifier si votre cadre suffit à produire un travail conforme. Un candidat qui échoue sur un point précis ne révèle pas forcément sa faiblesse, il révèle souvent une zone laissée dans l’ombre. Les référentiels de l’<a href="https://entreprendre.service-public.fr/">entreprise</a> confirment que la formalisation des pratiques conditionne la qualité du service rendu. Noter les écarts à chaque recrutement alimente une bibliothèque de cas, devenue la meilleure documentation pour le suivant.</p>
+<figure>
+<img src="/images/product/04-mobile-progression.webp" alt="Vue du suivi de progression partagé dans l’espace de l’équipe" loading="lazy" decoding="async" width="1000" height="712" />
+<figcaption>Une grille partagée remplace le contrôle permanent : chacun sait sur quoi il est évalué.</figcaption>
+</figure>
+<h2>Le premier mois, la période la plus fragile</h2>
+<p>Le premier mois d’un nouvel intervenant détermine s’il reste. Cette période compte davantage que les suivantes, car c’est là que se jouent les habitudes et la confiance. Un encadrant absent laisse rapidement le candidat construire ses propres repères, souvent éloignés des vôtres. Un encadrant excessif produit l’inverse : un professionnel qui ne décide plus rien seul et attend systématiquement la validation. L’enjeu du premier mois est donc de transmettre un cadre sans devenir un frein.</p>
+<p>La méthode qui fonctionne repose sur une boucle courte et formalisée. En début de séance, l’intervenant pose ses hypothèses et ses observations. En fin de séance, il envoie un compte-rendu suivant la trame, avec les points d’incertitude qu’il souhaite faire valider. Vous y répondez sous vingt-quatre heures, en deux temps : un retour sur ce qui est acquis, puis un arbitrage sur les points ouverts. Ce délai court est essentiel, car un retour tardif empêche l’intervenant de corriger sa pratique avant qu’elle ne s’installe durablement.</p>
+<p>Ne cherchez pas à relire chaque détail de chaque dossier dès les premières semaines. Votre rôle consiste à vérifier la conformité au cadre et l’alignement sur la méthode, pas à réécrire le travail. Un encadrant qui réécrit tout transmet un signal terrible, à savoir que le sien n’est pas jugable. En vous limitant à ces deux points, vous restez disponible pour ce qui compte vraiment, l’engagement tenu envers les clients.</p>
+<table>
+<thead>
+<tr><th>Étape</th><th>Sans méthode écrite</th><th>Avec trame et grille</th></tr>
+</thead>
+<tbody>
+<tr><td>Intégration d’un intervenant</td><td>2 à 3 mois</td><td>2 à 3 semaines</td></tr>
+<tr><td>Écart de qualité constaté</td><td>Fréquent</td><td>Rare</td></tr>
+<tr><td>Temps de relecture par dossier</td><td>40 minutes</td><td>12 minutes</td></tr>
+<tr><td>Départ d’un intervenant</td><td>Prévisible uniquement par le lien personnel</td><td>Documenté et transmissible</td></tr>
+<tr><td>Capacité à accueillir dix clients de plus</td><td>Non</td><td>Oui</td></tr>
+</tbody>
+</table>
+<h2>Structurer une équipe avec une boucle de contrôle légère</h2>
+<figure>
+<img src="/images/product/09-coach-entretien-client.webp" alt="Coach échangeant un compte-rendu avec un intervenant de son équipe" loading="lazy" decoding="async" width="1000" height="651" />
+<figcaption>La boucle de contrôle vérifie un processus partagé, jamais la valeur d’une personne.</figcaption>
+</figure>
+<p>Le micro-management n’est pas de la qualité, c’est de l’insécurité. Il signale à l’intervenant que sa place n’est pas stable, et produit l’effet inverse de celui recherché. L’alternative n’est pas l’abandon, mais un contrôle systématisé qui ne porte pas sur la personne. Vous vérifiez des livrables selon une grille, à une fréquence annoncée, et jamais en aparté. La différence est de nature : le premier surveille un individu, le second contrôle un processus. Seul le second permet de tenir dans la durée sans épuiser l’encadrant.</p>
+<p>Une grille de contrôle tient sur une page. Elle liste les critères de conformité de la trame, les seuils à respecter, les éléments obligatoires du compte-rendu et les points de vigilance propres à votre structure. Elle est connue de l’intervenant, ce qui transforme l’évaluation en auto-contrôle. Dans la pratique, la majorité des écarts se corrigent avant votre relecture, puisque chacun sait exactement sur quoi il sera évalué. Le temps de contrôle diminue, alors que la qualité du travail augmente.</p>
+<p>Prévoyez enfin un point d’équipe régulier, une fois par mois, qui sert moins à contrôler qu’à corriger. On y passe en revue les cas difficiles, les résultats obtenus et les points de la grille qui créent des difficultés. Ce temps collectif évite que chaque intervention se fonde sur ses propres intuitions, et fait émerger les améliorations que personne n’aurait trouvées seul. Les obligations légales encadrent par ailleurs ces échanges : le <a href="https://www.legifrance.gouv.fr/">Code du travail</a> fixe les règles de représentation du personnel, tandis que la <a href="https://www.cnil.fr/fr/les-durees-de-conservation-des-donnees">CNIL</a> impose de documenter la conservation des échanges contenant des données de clients. Le formalisme protège donc autant l’équipe que les personnes accompagnées. C’est ce temps, plus que tout autre, qui transforme une équipe d’individus en équipe.</p>`,
     category: 'business',
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     categoryLabel: 'Business',
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     author: 'Thomas Bertrand',
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     authorRole: 'Fondateur Studio Performance',
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    date: '2023-12-18',
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    readTime: '9 min',
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    date: '2026-07-16',
+    readTime: '11 min',
     featured: true,
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    featuredImage: '/images/cabinets/01-studio-performance-realiste.webp',
+    featuredImageAlt: 'Coach préparant une séance en équipe dans son studio',
+    seoTitle: 'Délégation d’équipe : faire grandir son équipe',
+    seoDescription: 'La méthode pour faire grandir son équipe de coaching : formaliser sa méthode, recruter sur des critères, installer une boucle de contrôle.',
+    seoKeywords: ['délégation d’équipe', 'recruter un coach', 'structurer une équipe'],
+    tags: ['delegation', 'equipe', 'recrutement', 'management'],
+    sources: [
+      { label: 'CNIL — Les durées de conservation des données', url: 'https://www.cnil.fr/fr/les-durees-de-conservation-des-donnees' },
+      { label: 'Service-public.fr — Embauche et contrat de travail', url: 'https://entreprendre.service-public.fr/vosdroits/F' },
+      { label: 'Code du travail sur Legifrance', url: 'https://www.legifrance.gouv.fr/' },
+    ],
+    faq: [
+      { q: 'Quand faut-il recruter son premier coach ?', a: 'Quand votre agenda refuse des demandes répétées, ou quand la qualité du suivi baisse malgré l’intensité. Le signal le plus fiable est un agenda plein avec des prospects repoussés, pas une impression de fatigue passagère.' },
+      { q: 'Comment formaliser sa méthode en peu de temps ?', a: 'Écrivez les étapes de chaque type de séance, les outils, les données et le format du compte-rendu. Vingt minutes par type de séance suffisent généralement. Ce qui n’est pas écrit ne peut pas être délégué.' },
+      { q: 'Comment contrôler une équipe sans micro-management ?', a: 'Contrôlez des livrables sur une grille connue à l’avance, à une fréquence annoncée. Vous vérifiez un processus, pas une personne. Le contrôle ponctuel remplace la surveillance continue.' },
+      { q: 'Faut-il choisir un coach qui me ressemble ?', a: 'Non. Vous recrutez sur des critères de méthode, pas sur une affinité de personnalité. Un candidat différent apporte un regard neuf. Chercher un clone produit un groupe monochrome, fragile sur le long terme.' },
+      { q: 'Que faire si un intervenant ne respecte pas la trame ?', a: 'Traitez l’écart comme un défaut de cadre avant tout. Refondre la zone ambiguë de la trame, puis reformulez les attentes par écrit. Si l’écart se répète sans improvement, la question relève alors du recrutement.' },
+      { q: 'Quel délai retenir pour la relecture d’un compte-rendu ?', a: 'Vingt-quatre heures après la séance. C’est assez court pour que l’intervenant corrige avant que la pratique ne s’installe, et assez long pour rester tenable sur plusieurs dossiers.' },
+    ],
   },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -6570,7 +12112,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     slug: 'marque-blanche-coaching-studio',
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -6602,7 +12176,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     excerpt: 'La méthode pour déployer une offre en marque blanche coaching : identité cohérente, portail client coach, cadre des données. Les points de contact à personnaliser et les pièges qui coûtent cher.',
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -6634,7 +12240,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <h2>La marque blanche coaching : ce que vous gardez, ce que vous délègues</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -6666,7 +12304,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <p>Votre identité n’est pas seulement un logo. C’est l’ensemble des points de contact par lesquels votre promesse arrive au client : les bilans, les contrats, les plans, les relances, les e-mails automatiques. Chacun de ces documents porte un ton, une charte, une mise en page qui vous ressemblent. C’est cette répétition cohérente qui construit la confiance dans la durée. Un client qui reçoit vos trois premiers échanges comprend immédiatement à qui il parle.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -6698,7 +12368,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <h2>Les cinq points de contact qu’un studio de coaching doit personnaliser</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -6730,7 +12432,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -6762,7 +12496,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <li><strong>Le dossier client.</strong> Consultation en ligne, historique, programmes, messages, par le client comme par vous.</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -6794,7 +12560,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <li><strong>Les accès de l’équipe.</strong> Rôles par intervenant : coach, nutritionniste, assistant, administrateur.</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -6826,7 +12624,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -6858,7 +12688,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <p>Une identité cohérente ne sert pas seulement à l’acquisition. Elle intervient à chaque moment de la fidélisation, quand le client se souvient de vous plutôt que de l’application. Un espace personnel cohérent sur toute la durée de l’accompagnement crée une routine, et la routine crée la confiance. Cette confiance se traduit en recommandation, en maintien de l’abonnement, en bouche-à-oreille. Un cabinet médical qui vous recommande retrouve, dans l’espace qu’il montre à son patient, exactement la promesse qu’il a formulée. Cette cohérence externe vaut souvent mieux qu’une campagne de communication. Le design n’est donc pas une décoration : c’est un levier de rétention directement mesurable.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -6890,7 +12752,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -6922,6 +12816,22 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <figcaption>Un studio de coaching qui accueille un nouveau client dans un espace à son image.</figcaption>
 
 
@@ -6938,7 +12848,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -6970,7 +12912,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <p>Ce qui distingue un portail réellement utile d’un simple dépôt de fichiers, c’est la continuité. Le client doit y retrouver son historique sans le reconstruire à chaque consultation. Les mesures doivent y évoluer dans le temps, graphées, comparées à l’objectif initial. Les programmes doivent y être lisibles sur mobile, avec des consignes claires et des visuels pertinents. Les rappels doivent y arriver au bon moment, sans être submergeants, pour que le client ouvre l’espace par habitude plutôt que par devoir. Une notification utile vaut mieux qu’un flux continu finit par ignorer. Chaque consultation doit produire une petite victoire visible, qui nourrit la motivation et le sentiment d’avancer.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -7002,7 +12976,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <h2>Trois approches comparées pour bâtir votre offre</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -7034,7 +13040,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -7066,7 +13104,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <tr><th>Critère</th><th>Sur-mesure</th><th>Logiciel générique</th><th>Marque blanche</th></tr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -7098,7 +13168,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -7130,7 +13232,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <tr><td>Identité visible par le client</td><td>Totale</td><td>Partielle</td><td>Totale</td></tr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -7162,7 +13296,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <tr><td>Évolution possible</td><td>Selon le budget</td><td>Selon l’éditeur</td><td>Selon le socle choisi</td></tr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -7194,7 +13360,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -7226,7 +13424,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <p>Pour un studio de coaching en croissance, la marque blanche offre le meilleur rapport entre vitesse, coût et maîtrise. Le sur-mesure se justifie quand le suivi est devenu suffisamment original et volumineux pour dépasser le standard. Le logiciel générique reste pertinent pour un professionnel solo qui ne cherche pas à construire une marque de studio. Dans la majorité des cas, la marque blanche est le point d’équilibre qui permet de passer à l’étape suivante sans dette technique.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -7258,7 +13488,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -7290,6 +13552,22 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <figcaption>Le bilan périodique reste le moment où la marque blanche se vérifie concrètement.</figcaption>
 
 
@@ -7306,7 +13584,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -7338,7 +13648,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -7370,7 +13712,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <figcaption>L’espace client : un poste de travail unique pour le coach et la personne accompagnée.</figcaption>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -7402,7 +13776,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <p>Le troisième piège est de négliger la conformité des données. Un espace qui centralise des mesures de santé touche à des informations sensibles, dont le traitement est encadré en France. La <a href="https://www.cnil.fr/fr/la-protection-des-donnees-personnelles">CNIL</a> rappelle que ces données doivent être hébergées dans l’Union européenne, protégées par des mesures techniques adaptées, et que le client doit pouvoir exercer ses droits. Vérifiez ces points avant de vous engager, pas après le premier signalement. Le quatrième piège est l’absence d’un support identifié pour votre équipe. Consignez enfin qui accède à quelles données, et pendant combien de temps : en cas de contrôle, c’est ce registre qui fait la différence.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -7434,7 +13840,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     category: 'business',
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -7466,6 +13904,22 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     author: 'Thomas Bertrand',
 
 
@@ -7482,7 +13936,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     authorRole: 'Fondateur Studio Performance',
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -7514,6 +14000,22 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     readTime: '11 min',
 
 
@@ -7530,7 +14032,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     featured: true,
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -7562,7 +14096,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     featuredImageAlt: 'Coach accueillant un nouveau client dans son studio de coaching',
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -7594,7 +14160,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     seoDescription: 'Un studio de coaching en marque blanche coaching : identité, portail client, accès coachs. La méthode et les pièges à éviter.',
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -7626,7 +14224,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     tags: ['marque-blanche', 'studio', 'equipe', 'portail-client'],
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -7658,7 +14288,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       { label: 'CNIL — La protection des données personnelles', url: 'https://www.cnil.fr/fr/la-protection-des-donnees-personnelles' },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -7690,6 +14352,22 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       { label: 'Legifrance — Textes de droit applicables', url: 'https://www.legifrance.gouv.fr/' },
 
 
@@ -7706,7 +14384,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     ],
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -7738,7 +14448,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       { q: 'Qu’est-ce que la marque blanche coaching ?', a: 'C’est une offre logicielle exploitée sous votre propre nom, votre logo et vos couleurs, sur un socle technique mutualisé. Vous gardez la relation client et la méthode, vous délèguez le développement et la maintenance. Le client ne doit jamais voir le nom de l’éditeur.' },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -7770,7 +14512,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       { q: 'Puis-je changer de fournisseur plus tard ?', a: 'Oui, à condition de l’avoir prévu. Vérifiez avant de signer que vous pouvez exporter l’intégralité de vos données et récupérer votre historique au format ouvert. Sans cette clause, vous n’avez pas acheté un outil mais loué une relation.' },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -7802,7 +14576,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       { q: 'Combien de temps faut-il pour déployer une marque blanche ?', a: 'Comptez quelques jours pour une offre existante, contre plusieurs mois pour un développement sur mesure. L’essentiel du temps se concentre sur la personnalisation des documents et des accès de l’équipe, pas sur la technique.' },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -7834,7 +14640,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     ],
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -7866,7 +14704,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -7898,7 +14768,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     title: 'Fidéliser ses clients coach : la rétention se joue avant la résiliation',
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -7930,7 +14832,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     content: `<p>La plupart des coachs dépensent une énergie considérable à chercher de nouveaux clients, et bien peu à retenir ceux qu'ils ont déjà. C'est l'erreur de coût la plus chère du métier : un client qui reste six mois de plus vaut plusieurs acquisitions, sans aucune dépense de prospection. La rétention n'est pas une qualité innée, c'est un système. Voici comment le construire avant que les premiers décrochages se déclarent.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -7962,7 +14896,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <p>Les raisons affichées ne sont pas les raisons réelles. On entend souvent « manque de temps » ou « questions financières ». Le plus souvent, le client part parce que la progression n'est plus visible, parce qu'il ne perçoit plus la valeur du suivi, ou parce que la routine a transformé les séances en rendez-vous sans cap.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -7994,7 +14960,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <h2>Détecter les signaux avant la résiliation</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -8026,7 +15024,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <p>Si vous regardez la tendance plutôt que chaque incident isolé, vous repérez le décrochage deux à quatre semaines à l'avance. Un tableau de bord qui suit l'adhérence par client change votre angle d'action : au lieu de réagir à une résiliation, vous rappelez un client en difficulté plus tôt, avec des arguments fondés sur les données, pas sur une intuition.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -8058,7 +15088,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <p>Le rendez-vous le plus fidélisant de votre accompagnement est le bilan hebdomadaire, à condition qu'il ne soit pas une compilation de chiffres. Un bilan efficace raconte la semaine : ce qui a fonctionné, ce qui freine, la prochaine étape. Il rend la progression visible au moment où elle est encore fragile.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -8090,7 +15152,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <h2>Célébrer les victoires, pas seulement les résultats</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -8122,7 +15216,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <p>Célébrer ces victoires intermédiaires entretient la motivation et transforme la relation en partenariat. Un client encouragé sur ce qu'il fait bien tient mieux qu'un client jugé sur ce qui lui manque. Notez chaque semaine une victoire, même minime, et dites-la.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -8154,7 +15280,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <p>Plus le client dépend de vous pour la moindre décision, plus la relation devient fragile : il finit par vous quitter soit parce que la contrainte devient trop lourde, soit parce qu'il se sent incapable. À l'inverse, chaque portion d'autonomie accordée, choix d'un ajustement, lecture d'une tendance, gestion d'un imprévu, augmente sa fierté et son attachement au suivi.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -8186,7 +15344,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <h2>Les 90 premiers jours décident de la suite</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -8218,7 +15408,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <p>Concrètement, soignez l'entrée : un premier bilan structuré qui pose un cap, des mesures de départ explicites, un calendrier prévisible de séances et de points hebdomadaires. Annoncez dès le début comment le suivi fonctionne, ce que vous attendez du client et ce qu'il peut attendre de vous. L'incertitude est le premier ennemi de la rétention.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -8250,7 +15472,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <p>Enfin, posez la question de la valeur dès le premier mois, pas au sixième : demandez à votre client ce qui lui apporte le plus dans le suivi, et systématisez ce point. Vous n'attendrez plus qu'il parte pour savoir ce qu'il fallait préserver.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -8282,7 +15536,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <p>Installez un rendez-vous mensuel de rétrospective, court et structuré : résultats du mois, levier prioritaire du mois suivant, ressenti du client. Cette réévaluation évite l'effet tunnel et redonne un cap quand la routine s'installe.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -8314,7 +15600,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <h2>Des abonnés qui durent, un studio qui respire</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -8346,7 +15664,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <p>Faites de la rétention un indicateur aussi suivi que les résultats de vos clients. Un outil qui structure les bilans, rend l'adhérence visible et conserve l'historique au même endroit change la donne : <a href="/product/overview/">voyez comment fonctionne un dossier de suivi client</a>, puis <a href="/blog/cas-client-studio-performance/">lisez le cas Studio Performance</a>, passé de 20 à 150 coachés en huit mois sans perdre la qualité. Et quand l'équipe grandit, la fidélisation se partage : <a href="/blog/delegation-equipe-grandir/">déléguer sans perdre la main</a> est la suite logique.</p>`,
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -8378,7 +15728,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     categoryLabel: 'Business',
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -8410,7 +15792,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     authorRole: 'Fondateur Studio Performance',
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -8442,6 +15856,22 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     readTime: '6 min',
 
 
@@ -8458,7 +15888,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     featured: true,
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -8490,7 +15952,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     seoDescription: 'Fidélisation coaching : détecter les signaux avant la résiliation, rendre la progression visible, développer l\'autonomie. Le système de rétention.',
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -8522,7 +16016,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     tags: ['fidelisation', 'retention', 'abonnement', 'suivi'],
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -8554,7 +16080,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -8586,7 +16144,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     title: 'Questionnaire de lancement : 20 questions pour réussir l\'anamnèse',
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -8618,7 +16208,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     content: `<p>La première séance avec un nouveau client est un moment décisif, et souvent mal préparé. On improvise, on pose des questions dans le désordre, et on repart avec dix feuilles que l'on n'exploite jamais. Le questionnaire de lancement change tout : il structure l'histoire du client avant même de commencer, et il vous offre un dossier exploitable dès la première séance. Voici les vingt questions qui font la différence.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -8650,7 +16272,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <p>Un accompagnement commence par une promesse : comprendre la situation réelle du client pour construire un plan pertinent. Sans questionnaire, cette promesse repose sur ce que le client vous dit en quinze minutes, souvent adouci par la gêne.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -8682,7 +16336,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <h2>Les cinq questions d'identité et d'historique</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -8714,7 +16400,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <ol>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -8746,7 +16464,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <li>Votre historique de pratique : avez-vous déjà été suivi ou entraîné, dans quel cadre et combien de temps ?</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -8778,7 +16528,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <li>Vos traitements ou suivis en cours avec un autre professionnel de santé.</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -8810,7 +16592,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </ol>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -8842,6 +16656,22 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <p>L'objectif est le moteur du suivi. S'il n'est pas écrit, le client le réécrit selon son humeur, et l'effort devient flou.</p>
 
 
@@ -8858,7 +16688,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <ol>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -8890,7 +16752,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <li>Votre objectif à un an, pour vérifier que la direction à trois mois y conduit.</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -8922,7 +16816,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <li>Ce qui vous a manqué jusqu'ici : le temps, la méthode, la constance ou le soutien ?</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -8954,7 +16880,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </ol>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -8986,6 +16944,22 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <p>Les résultats viennent des habitudes répétées, pas des intentions. Votre travail consiste à appuyer celles-ci sur le quotidien réel du client.</p>
 
 
@@ -9002,7 +16976,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <ol>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -9034,7 +17040,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <li>Votre niveau d'activité actuel hors programme : marche quotidienne, escaliers, travail physique.</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -9066,7 +17104,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <li>Votre sommeil : nombre d'heures, régularité, qualité ressentie au réveil.</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -9098,7 +17168,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </ol>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -9130,7 +17232,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <p>Le cadre protège le suivi et fixe les règles du jeu pour les semaines difficiles.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -9162,7 +17296,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <li>Votre disponibilité horaire pour les séances, et les créneaux irrémédiables.</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -9194,7 +17360,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <li>Ce qui vous a fait choisir un accompagnement plutôt qu'une solution seul ou une application.</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -9226,7 +17424,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <li>Ce que vous attendez de moi au quotidien : relances, ajustements, disponibilité.</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -9258,7 +17488,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <h2>Les erreurs qui ruinent un questionnaire</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -9290,7 +17552,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -9322,7 +17616,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <li><strong>Le questionnaire posé en séance.</strong> Poser les questions à l'oral en première séance reproduit la gêne que le format écrit contourne, et il ne reste aucune trace exploitable. L'écrit se lit, se compare et se met à jour ; l'oral s'oublie.</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -9354,7 +17680,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -9386,7 +17744,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <p>Ajustez enfin la liste à votre spécialité. Un préparateur mental ajoute les questions sur le stress et les automatismes, un nutritionniste approfondit l'environnement alimentaire, un médecin du sport documente plus finement les antécédents. Le squelette reste identique, seules les branches changent. C'est cette adaptation qui transforme un questionnaire générique en outil de professionnel.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -9418,7 +17808,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <p>Un questionnaire ne vaut que par l'usage que vous en faites. Relisez-le la veille de la première séance et transformez-le en plan : deux priorités à trois mois, deux mesures de départ, un premier ajustement d'habitude.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -9450,7 +17872,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <h2>Le questionnaire, première brique du dossier client</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -9482,7 +17936,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <p>Pour encadrer tout le parcours d'entrée, du questionnaire au bilan initial et à la contractualisation, <a href="/lead-magnet-onboarding/">téléchargez notre protocole d'onboarding en 28 pages</a>. Et une fois le client lancé, appuyez la progression avec une trame déjà prête : <a href="/blog/comment-structurer-ses-bilans/">structurez vos bilans hebdomadaires</a> pour ne plus jamais perdre de temps à les préparer.</p>`,
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -9514,7 +18000,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     categoryLabel: 'Coaching',
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -9546,7 +18064,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     authorRole: 'Coach santé & nutrition',
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -9578,7 +18128,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     readTime: '6 min',
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -9610,7 +18192,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     seoTitle: 'Questionnaire de lancement : 20 questions pour l\'anamnèse',
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -9642,7 +18256,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     seoKeywords: ['questionnaire de lancement', 'anamnèse coaching', 'bilan initial client'],
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -9674,6 +18320,22 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   },
 
 
@@ -9690,7 +18352,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -9722,7 +18416,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     title: 'Tarifs coaching sportif : la méthode pour fixer le juste prix',
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -9754,7 +18480,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     content: `<p>Fixer ses tarifs est la décision la plus intimidante quand on crée ou développe une activité de coaching. Trop haut, on craint de faire fuir. Trop bas, on s'épuise et on attire des clients qui ne tiennent pas. Pourtant, le prix n'est pas un pari : c'est un résultat. Il découle de votre coût de revient, de la valeur réelle de votre suivi et de la façon dont vous présentez votre offre. Voici la méthode, étape par étape.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -9786,7 +18544,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <p>Avant même que vous prononciez un mot, votre tarif positionne votre offre. Un coaching à 35 euros la séance raconte une histoire différente d'un suivi à 120 euros par mois. Les clients ne comparent pas d'abord les prix entre coachs : ils comparent le prix à l'idée qu'ils se font de vos résultats. Un tarif volontairement bas envoie un signal de doute : si vous ne croyez pas en votre valeur, pourquoi votre client y croirait-il ?</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -9818,7 +18608,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <h2>Étape 1 : calculer votre coût de revient réel</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -9850,7 +18672,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -9882,7 +18736,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <li>Les réponses aux messages, les réajustements de programme et la coordination.</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -9914,7 +18800,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <li>Vos charges fixes quand vous tenez un studio : local, énergie, assurance.</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -9946,7 +18864,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -9978,7 +18928,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <h2>Étape 2 : choisir votre modèle de prix</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -10010,7 +18992,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <p>La séance à l'unité est simple à vendre, mais elle valorise l'heure et non le résultat : vous êtes payé pour votre présence, pas pour la transformation. Le forfait mensuel de suivi, qui réunit séances, bilan structuré et disponibilité, crée un revenu prévisible et engage le client dans la durée. L'accompagnement premium, défini sur trois à six mois avec des étapes et des évaluations régulières, se justifie quand votre méthode produit un résultat chiffrable.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -10042,7 +19056,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <h2>Étape 3 : construire la valeur perçue</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -10074,7 +19120,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -10106,7 +19184,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <li>La collecte et l'interprétation des mesures : adhérence, sommeil, performances.</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -10138,7 +19248,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <li>Une disponibilité définie à l'avance : délai de réponse, canaux de contact.</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -10170,7 +19312,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -10202,7 +19376,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <h2>Les trois erreurs qui bradent le prix</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -10234,7 +19440,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -10266,7 +19504,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <li>Aligner son prix sur celui du concurrent. Vous ne vendez pas le même accompagnement que le studio d'à côté, rien ne vous oblige à partager ses tarifs.</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -10298,7 +19568,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -10330,7 +19632,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <p>L'annonce du prix se structure. Formulez d'abord le cadre : « Pour cet accompagnement, le suivi mensuel démarre à X euros. Il comprend vos séances, un bilan hebdomadaire préparé et un ajustement continu de votre programme. » Puis taisez-vous et laissez la place à la question. Le silence qui suit est un espace de décision, pas un vide à remplir.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -10362,7 +19696,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <h2>Augmenter vos tarifs sans perdre vos clients</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -10394,7 +19760,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <p>Prolongez le tarif ancien pour les clients fidèles, ou offrez une transition progressive. Un client fidèle coûte moins cher à servir qu'un nouveau, il peut donc rester à l'ancien tarif pendant un cycle, le temps que la valeur nouvelle devienne évidente. La hausse s'installe alors naturellement, sans friction ni résiliation surprise.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -10426,7 +19824,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <p>Un bon tarif ne se choisit pas une fois pour toutes. Il évolue avec votre coût de revient, votre réputation et la qualité de vos résultats. Réévaluez vos prix tous les six mois, chiffres de vos bilans en main. Si vos clients restent plusieurs mois et progressent, c'est que votre suivi vaut plus que votre tarif actuel.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -10458,7 +19888,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     category: 'business',
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -10490,7 +19952,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     author: 'Marie Dubois',
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -10522,7 +20016,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     date: '2026-08-24',
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -10554,7 +20080,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     featured: true,
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -10586,7 +20144,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     seoDescription: 'Comment fixer vos tarifs de coaching sportif et santé : coût de revient, modèles de prix, valeur perçue. La méthode pour vendre votre suivi au juste prix.',
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -10618,6 +20208,22 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     tags: ['tarifs', 'abonnement', 'valeur', 'business'],
 
 
@@ -10634,7 +20240,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -10666,7 +20304,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     slug: 'perte-de-poids-durable-eviter-yoyo',
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -10698,7 +20368,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     excerpt: 'Perte de poids durable : 7 règles contre l\'effet yoyo, préserver le muscle et tenir après l\'objectif.',
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -10730,7 +20432,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <h2>Pourquoi le yoyo n'est pas un manque de volonté</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -10762,7 +20496,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <p>Comprendre ce mécanisme change le travail du coach : il ne s'agit plus de courir contre la montre, mais de construire un régime que l'on peut tenir, mesurer et ajuster semaine après semaine.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -10794,7 +20560,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <p>Un déficit modéré, de l'ordre de 15 à 25 pour cent des besoins, sans jamais de privation draconienne, produit moins de faim, préserve le muscle et maintient le niveau de vie. La vitesse compte moins que la stabilité : un demi-kilo à un kilo par semaine, en moyenne sur un mois, est un rythme sain et tenable.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -10826,7 +20624,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <p>Le muscle est le moteur de la dépense énergétique au repos. En perte de poids, le stimulus doit rester suffisant pour que le corps ne retire que la graisse excédentaire, pas la masse qui le fait dépenser. Le bon dosage se construit dans le suivi, en ajustant la charge et la fréquence selon les résultats, pas sur une fiche d'exercices générique.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -10858,7 +20688,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <p>Le poids se trompe régulièrement : rétention d'eau, variations hormonales, digestion. Il ne devient parlant que sur la tendance de plusieurs semaines. Croisez-le avec le tour de taille, les mesures, le ressenti et la performance sportive : ces indicateurs racontent la vraie trajectoire, celle du corps qui change.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -10890,7 +20752,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <p>Toute discipline qui ne survit pas à une semaine de vacances, à un déplacement ou à un imprévu est une discipline fragile. Avant de conseiller une habitude, posez la question : le client pourra-t-il la maintenir dans sa réalité ? Si la réponse est non, aménagez-la avant de l'imposer. Une habitude modeste mais stable bat toujours un plan parfait et abandonné.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -10922,7 +20816,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <p>L'interdiction totale prépare la rupture. Planifier un écart par semaine, encadré et assumé, réduit la tension psychologique et protège l'adhérence sur le long terme. Le client apprend à gérer ses repas de fête au lieu de les subir, puis de les compenser en se privant, ce qui alimente le yoyo.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -10954,7 +20880,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <p>En perdant du poids, les besoins énergétiques baissent. Un plan qui n'est pas recalibré à chaque palier finit par créer un déficit trop faible, et la perte ralentit sans raison apparente. Le suivi régulier permet d'ajuster le déficit et l'activité en fonction des résultats réels, plutôt que de laisser le client s'épuiser sur un plan devenu obsolète.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -10986,7 +20944,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <p>La phase la plus fragile est celle des trois à six mois qui suivent l'objectif. On relâche les efforts, on arrête les bilans, et la dérive s'installe en silence. La reprise se joue ici : prévoyez un suivi allégé mais régulier après l'atteinte de l'objectif, avec des points mensuels et des mesures encore comparées. La surveillance coûte peu, elle évite d'en refaire la totalité.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -11018,7 +21008,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <p>L'objectif atteint, on ne coupe pas le processus d'un coup. La sortie de régime est une phase à part entière : on remonte progressivement les portions, on réintroduit les aliments écartés dans un ordre contrôlé, et on surveille la réponse du poids sur plusieurs semaines avant d'ajuster.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -11050,7 +21072,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <p>Pendant la phase de maintien, gardez des points mensuels plus légers : une mesure, une discussion sur les écarts, une charge d'entraînement réajustée. Le maintien n'est pas l'arrêt du suivi, c'est un suivi à basse intensité qui coûte peu et protège des années de travail.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -11082,7 +21136,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <p>Trois erreurs courantes sabordent un accompagnement prometteur.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -11114,7 +21200,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <li><strong>Promettre une perte spectaculaire.</strong> La vitesse séduit à la vente et dessert à long terme : le déficit agressif qui la rend possible prépare la reprise.</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -11146,7 +21264,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <li><strong>Arrêter le suivi à l'objectif.</strong> Le moment où l'on interrompt tout est celui où l'on prive le client de la seule chose qui garantissait sa constance, le regard régulier. La reprise n'est alors pas un échec du client, c'est un échec du dispositif.</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -11178,7 +21328,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <h2>Le rôle du coach dans la constance</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -11210,7 +21392,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <p>Un logiciel de suivi alimenté par les mesures du client rend ce travail simple et visible : <a href="/solutions/nutrition/">voyez comment les nutritionnistes structurent leurs suivis</a>, et comment <a href="/blog/sync-sante-biomarqueurs/">synchroniser les données de santé connectée</a> dans le dossier client pour des bilans fondés sur des faits. Le cadre du bilan hebdo, lui, s'apprend vite : <a href="/blog/comment-structurer-ses-bilans/">notre méthode en 3 questions</a>.</p>`,
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -11242,7 +21456,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     categoryLabel: 'Santé',
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -11274,7 +21520,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     authorRole: 'Médecin du sport',
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -11306,7 +21584,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     readTime: '6 min',
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -11338,7 +21648,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     seoTitle: 'Perte de poids durable : 7 règles pour éviter l\'effet yoyo',
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -11370,7 +21712,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     seoKeywords: ['perte de poids durable', 'effet yoyo', 'maintien du poids'],
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -11402,7 +21776,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -11450,7 +21856,55 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /**
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -11482,7 +21936,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
  * Pagination automatique via headers X-WP-TotalPages
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -11514,7 +22000,39 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
  */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -11546,6 +22064,22 @@ export function getAllPosts(): Promise<OptibilanArticle[]> {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   return memoized('blog:posts', fetchAllPosts);
 
 
@@ -11562,7 +22096,55 @@ export function getAllPosts(): Promise<OptibilanArticle[]> {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -11610,7 +22192,39 @@ async function fetchAllPosts(): Promise<OptibilanArticle[]> {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   if (!import.meta.env.WP_BASE_URL) {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -11642,6 +22256,22 @@ async function fetchAllPosts(): Promise<OptibilanArticle[]> {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     return [...STATIC_FALLBACK_ARTICLES].sort((a, b) => b.date.localeCompare(a.date));
 
 
@@ -11658,7 +22288,55 @@ async function fetchAllPosts(): Promise<OptibilanArticle[]> {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -11706,7 +22384,55 @@ async function fetchAllPosts(): Promise<OptibilanArticle[]> {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   let page = 1;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -11754,7 +22480,39 @@ async function fetchAllPosts(): Promise<OptibilanArticle[]> {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     while (page <= MAX_PAGES) {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -11786,7 +22544,39 @@ async function fetchAllPosts(): Promise<OptibilanArticle[]> {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         per_page: String(getConfig().perPage),
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -11818,7 +22608,39 @@ async function fetchAllPosts(): Promise<OptibilanArticle[]> {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         status: 'publish',
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -11850,6 +22672,22 @@ async function fetchAllPosts(): Promise<OptibilanArticle[]> {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         orderby: 'date',
 
 
@@ -11866,7 +22704,39 @@ async function fetchAllPosts(): Promise<OptibilanArticle[]> {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         order: 'desc',
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -11914,7 +22784,55 @@ async function fetchAllPosts(): Promise<OptibilanArticle[]> {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       if (!response.data.length) break;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -11962,7 +22880,55 @@ async function fetchAllPosts(): Promise<OptibilanArticle[]> {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       if (page >= response.totalPages) break;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -11994,7 +22960,55 @@ async function fetchAllPosts(): Promise<OptibilanArticle[]> {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -12042,6 +23056,22 @@ async function fetchAllPosts(): Promise<OptibilanArticle[]> {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       console.warn('[WP] Aucun article publié trouvé, repli sur les articles statiques');
 
 
@@ -12058,7 +23088,39 @@ async function fetchAllPosts(): Promise<OptibilanArticle[]> {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       return [...STATIC_FALLBACK_ARTICLES].sort((a, b) => b.date.localeCompare(a.date));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -12106,7 +23168,55 @@ async function fetchAllPosts(): Promise<OptibilanArticle[]> {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     return allPosts.sort((a, b) => b.date.localeCompare(a.date));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -12138,7 +23248,39 @@ async function fetchAllPosts(): Promise<OptibilanArticle[]> {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     console.warn('[WP] Erreur récupération des posts, repli sur les articles statiques:', error);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -12170,7 +23312,39 @@ async function fetchAllPosts(): Promise<OptibilanArticle[]> {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -12218,7 +23392,55 @@ async function fetchAllPosts(): Promise<OptibilanArticle[]> {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /**
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -12250,7 +23472,39 @@ async function fetchAllPosts(): Promise<OptibilanArticle[]> {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
  */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -12282,6 +23536,22 @@ export async function getPostBySlug(slug: string): Promise<OptibilanArticle | nu
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   const posts = await getAllPosts();
 
 
@@ -12298,7 +23568,39 @@ export async function getPostBySlug(slug: string): Promise<OptibilanArticle | nu
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   return posts.find(p => p.slug === slug) ?? null;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -12346,7 +23648,55 @@ export async function getPostBySlug(slug: string): Promise<OptibilanArticle | nu
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /**
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -12378,7 +23728,39 @@ export async function getPostBySlug(slug: string): Promise<OptibilanArticle | nu
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
  */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -12410,7 +23792,39 @@ export async function getPostsByCategory(categorySlug: string, page = 1, perPage
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   if (!import.meta.env.WP_BASE_URL) {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -12442,6 +23856,22 @@ export async function getPostsByCategory(categorySlug: string, page = 1, perPage
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     return { data: filtered, totalPages: 1, totalItems: filtered.length, currentPage: 1 };
 
 
@@ -12458,7 +23888,55 @@ export async function getPostsByCategory(categorySlug: string, page = 1, perPage
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -12506,7 +23984,39 @@ export async function getPostsByCategory(categorySlug: string, page = 1, perPage
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     return { data: [], totalPages: 0, totalItems: 0, currentPage: page };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -12554,6 +24064,38 @@ export async function getPostsByCategory(categorySlug: string, page = 1, perPage
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   try {
 
 
@@ -12570,7 +24112,39 @@ export async function getPostsByCategory(categorySlug: string, page = 1, perPage
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     const catRes = await fetchWP<WPCategory[]>('/categories', { slug: categorySlug });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -12618,7 +24192,55 @@ export async function getPostsByCategory(categorySlug: string, page = 1, perPage
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     const response = await fetchWPWithPagination<WPPost[]>('/posts', {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -12650,7 +24272,39 @@ export async function getPostsByCategory(categorySlug: string, page = 1, perPage
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       per_page: String(perPage),
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -12682,7 +24336,39 @@ export async function getPostsByCategory(categorySlug: string, page = 1, perPage
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       _embed: 'true',
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -12714,6 +24400,22 @@ export async function getPostsByCategory(categorySlug: string, page = 1, perPage
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       orderby: 'date',
 
 
@@ -12730,7 +24432,39 @@ export async function getPostsByCategory(categorySlug: string, page = 1, perPage
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       order: 'desc',
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -12778,7 +24512,55 @@ export async function getPostsByCategory(categorySlug: string, page = 1, perPage
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     return {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -12810,7 +24592,39 @@ export async function getPostsByCategory(categorySlug: string, page = 1, perPage
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       totalPages: response.totalPages,
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -12842,7 +24656,39 @@ export async function getPostsByCategory(categorySlug: string, page = 1, perPage
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       currentPage: page,
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -12874,7 +24720,39 @@ export async function getPostsByCategory(categorySlug: string, page = 1, perPage
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   } catch (error) {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -12906,7 +24784,39 @@ export async function getPostsByCategory(categorySlug: string, page = 1, perPage
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     return { data: [], totalPages: 0, totalItems: 0, currentPage: page };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -12938,7 +24848,55 @@ export async function getPostsByCategory(categorySlug: string, page = 1, perPage
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -12986,7 +24944,39 @@ export async function getPostsByCategory(categorySlug: string, page = 1, perPage
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
  * Récupère toutes les catégories mappées avec leurs compteurs
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -13018,7 +25008,39 @@ export async function getPostsByCategory(categorySlug: string, page = 1, perPage
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
  */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -13050,6 +25072,22 @@ export function getCategories(): Promise<Array<{ slug: string; label: string; ic
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   return memoized('blog:categories', fetchCategories);
 
 
@@ -13066,7 +25104,55 @@ export function getCategories(): Promise<Array<{ slug: string; label: string; ic
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -13114,7 +25200,39 @@ async function fetchCategories(): Promise<Array<{ slug: string; label: string; i
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   if (!import.meta.env.WP_BASE_URL) {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -13146,7 +25264,55 @@ async function fetchCategories(): Promise<Array<{ slug: string; label: string; i
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -13194,7 +25360,39 @@ async function fetchCategories(): Promise<Array<{ slug: string; label: string; i
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     const wpCats = await fetchWP<WPCategory[]>('/categories', { per_page: '100', hide_empty: 'true' });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -13226,7 +25424,39 @@ async function fetchCategories(): Promise<Array<{ slug: string; label: string; i
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       .filter(c => ALLOWED_CATEGORIES.has(c.slug))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -13258,7 +25488,39 @@ async function fetchCategories(): Promise<Array<{ slug: string; label: string; i
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       .sort((a, b) => b.count - a.count);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -13290,7 +25552,39 @@ async function fetchCategories(): Promise<Array<{ slug: string; label: string; i
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     console.warn('[WP] Erreur catégories, repli sur le mapping statique:', error);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -13322,7 +25616,39 @@ async function fetchCategories(): Promise<Array<{ slug: string; label: string; i
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -13370,7 +25696,55 @@ async function fetchCategories(): Promise<Array<{ slug: string; label: string; i
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /**
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -13402,6 +25776,22 @@ async function fetchCategories(): Promise<Array<{ slug: string; label: string; i
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
  */
 
 
@@ -13418,7 +25808,39 @@ async function fetchCategories(): Promise<Array<{ slug: string; label: string; i
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export async function getAuthors(): Promise<Array<{ id: number; name: string; slug: string; description: string; avatar?: string; role?: string; company?: string; twitter?: string; linkedin?: string; count: number }>> {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -13466,7 +25888,55 @@ export async function getAuthors(): Promise<Array<{ id: number; name: string; sl
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   try {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -13498,7 +25968,39 @@ export async function getAuthors(): Promise<Array<{ id: number; name: string; sl
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     return authors
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -13530,7 +26032,39 @@ export async function getAuthors(): Promise<Array<{ id: number; name: string; sl
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       .map(a => ({
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -13562,7 +26096,39 @@ export async function getAuthors(): Promise<Array<{ id: number; name: string; sl
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         name: a.name,
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -13594,7 +26160,39 @@ export async function getAuthors(): Promise<Array<{ id: number; name: string; sl
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         description: a.description.replace(/<[^>]+>/g, '').trim(),
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -13626,7 +26224,39 @@ export async function getAuthors(): Promise<Array<{ id: number; name: string; sl
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         role: a.acf?.role,
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -13658,7 +26288,39 @@ export async function getAuthors(): Promise<Array<{ id: number; name: string; sl
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         twitter: a.acf?.twitter,
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -13690,7 +26352,39 @@ export async function getAuthors(): Promise<Array<{ id: number; name: string; sl
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         count: 0, // faudrait un count posts séparé
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -13722,7 +26416,39 @@ export async function getAuthors(): Promise<Array<{ id: number; name: string; sl
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   } catch (error) {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -13754,6 +26480,22 @@ export async function getAuthors(): Promise<Array<{ id: number; name: string; sl
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     return [];
 
 
@@ -13770,7 +26512,39 @@ export async function getAuthors(): Promise<Array<{ id: number; name: string; sl
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -13818,7 +26592,55 @@ export async function getAuthors(): Promise<Array<{ id: number; name: string; sl
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /**
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -13850,6 +26672,22 @@ export async function getAuthors(): Promise<Array<{ id: number; name: string; sl
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
  */
 
 
@@ -13866,7 +26704,39 @@ export async function getAuthors(): Promise<Array<{ id: number; name: string; sl
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export async function getRecentPosts(limit = 5): Promise<OptibilanArticle[]> {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -13914,7 +26784,55 @@ export async function getRecentPosts(limit = 5): Promise<OptibilanArticle[]> {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   try {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -13946,7 +26864,39 @@ export async function getRecentPosts(limit = 5): Promise<OptibilanArticle[]> {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       per_page: String(limit),
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -13978,7 +26928,39 @@ export async function getRecentPosts(limit = 5): Promise<OptibilanArticle[]> {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       status: 'publish',
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -14010,7 +26992,39 @@ export async function getRecentPosts(limit = 5): Promise<OptibilanArticle[]> {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       order: 'desc',
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -14042,7 +27056,39 @@ export async function getRecentPosts(limit = 5): Promise<OptibilanArticle[]> {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     return posts.map(mapPostToArticle);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -14074,7 +27120,39 @@ export async function getRecentPosts(limit = 5): Promise<OptibilanArticle[]> {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     console.error('[WP] Erreur posts récents:', error);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -14106,7 +27184,39 @@ export async function getRecentPosts(limit = 5): Promise<OptibilanArticle[]> {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -14154,7 +27264,55 @@ export async function getRecentPosts(limit = 5): Promise<OptibilanArticle[]> {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /**
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -14186,6 +27344,22 @@ export async function getRecentPosts(limit = 5): Promise<OptibilanArticle[]> {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
  */
 
 
@@ -14202,7 +27376,39 @@ export async function getRecentPosts(limit = 5): Promise<OptibilanArticle[]> {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export async function searchPosts(query: string, page = 1, perPage = 12): Promise<PaginatedResponse<OptibilanArticle>> {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -14250,7 +27456,55 @@ export async function searchPosts(query: string, page = 1, perPage = 12): Promis
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   try {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -14282,7 +27536,39 @@ export async function searchPosts(query: string, page = 1, perPage = 12): Promis
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       search: query,
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -14314,7 +27600,39 @@ export async function searchPosts(query: string, page = 1, perPage = 12): Promis
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       page: String(page),
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -14346,7 +27664,39 @@ export async function searchPosts(query: string, page = 1, perPage = 12): Promis
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       status: 'publish',
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -14378,7 +27728,39 @@ export async function searchPosts(query: string, page = 1, perPage = 12): Promis
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       order: 'desc',
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -14410,7 +27792,39 @@ export async function searchPosts(query: string, page = 1, perPage = 12): Promis
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     return {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -14442,7 +27856,39 @@ export async function searchPosts(query: string, page = 1, perPage = 12): Promis
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       totalPages: response.totalPages,
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -14474,7 +27920,39 @@ export async function searchPosts(query: string, page = 1, perPage = 12): Promis
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       currentPage: page,
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -14506,7 +27984,39 @@ export async function searchPosts(query: string, page = 1, perPage = 12): Promis
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   } catch (error) {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -14538,7 +28048,39 @@ export async function searchPosts(query: string, page = 1, perPage = 12): Promis
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     return { data: [], totalPages: 0, totalItems: 0, currentPage: page };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -14570,7 +28112,55 @@ export async function searchPosts(query: string, page = 1, perPage = 12): Promis
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -14618,7 +28208,39 @@ export async function searchPosts(query: string, page = 1, perPage = 12): Promis
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
  * Nettoie le cache dev (utile pour les tests)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -14650,7 +28272,39 @@ export async function searchPosts(query: string, page = 1, perPage = 12): Promis
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export function clearDevCache(): void {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -14682,7 +28336,55 @@ export function clearDevCache(): void {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
