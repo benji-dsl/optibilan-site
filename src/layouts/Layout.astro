@@ -35,6 +35,7 @@ const SITE_URL = 'https://optibilan.com';
 const SITE_NAME = 'Optibilan';
 const fullUrl = canonical ? `${SITE_URL}${canonical}` : (Astro.url ? Astro.url.href : SITE_URL);
 const fullOgImage = ogImage.startsWith('http') ? ogImage : `${SITE_URL}${ogImage}`;
+const toJsonLd = (obj) => JSON.stringify(obj).replace(/</g, '\\u003c');
 
 // GA4 Measurement ID - replace with actual ID when available
 const GA4_ID = import.meta.env.PUBLIC_GA4_ID || 'G-XXXXXXXXXX';
@@ -102,8 +103,9 @@ import '../styles/global.css';
     <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
     <link rel="dns-prefetch" href="https://eu.i.posthog.com" />
 
-    <!-- JSON-LD: Organization -->
-    <script type="application/ld+json" set:html={JSON.stringify({
+    {/* JSON-LD echappe : un '<' non echappe peut cloturer <script> prematurely et corrompre le HTML */}
+<!-- JSON-LD: Organization -->
+    <script type="application/ld+json" set:html={toJsonLd({
       '@context': 'https://schema.org',
       '@type': 'Organization',
       '@id': `${SITE_URL}/#organization`,
@@ -133,7 +135,7 @@ import '../styles/global.css';
     })}></script>
 
     <!-- JSON-LD: WebSite -->
-    <script type="application/ld+json" set:html={JSON.stringify({
+    <script type="application/ld+json" set:html={toJsonLd({
       '@context': 'https://schema.org',
       '@type': 'WebSite',
       name: SITE_NAME,
@@ -145,7 +147,7 @@ import '../styles/global.css';
     })}></script>
 
     <!-- JSON-LD: SoftwareApplication (SaaS) -->
-    <script type="application/ld+json" set:html={JSON.stringify({
+    <script type="application/ld+json" set:html={toJsonLd({
       '@context': 'https://schema.org',
       '@type': 'SoftwareApplication',
       name: 'Optibilan',
@@ -176,7 +178,7 @@ import '../styles/global.css';
       ],
     })}></script>
 
-    {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)}></script>}
+    {jsonLd && <script type="application/ld+json" set:html={toJsonLd(jsonLd)}></script>}
 
     {GA4_ID !== 'G-XXXXXXXXXX' && (
     <>
