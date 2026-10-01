@@ -528,61 +528,87 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
     readTime: '9 min',
     featured: true,
   },
-  {
+{
     slug: 'marque-blanche-coaching-studio',
     title: 'Marque blanche coaching : lancer votre studio sans tout créer',
-    excerpt: 'Lancer son studio de coaching en marque blanche : identité cohérente, accès coachs, portail client. Ce qu\'il faut couvrir et les pièges à éviter.',
-    content: `<p>Lancer un studio est un marathon de tâches invisibles : créer un nom, décliner une identité, construire le suivi, embaucher. Peut-on garder la force d'une marque propre sans repartir de zéro ? C'est exactement l'objet de la marque blanche : vos couleurs, votre nom, votre identité, posés sur un socle déjà éprouvé. Voici ce qu'il faut savoir avant de vous lancer.</p>
-<h2>Ce qu'est la marque blanche, ce qu'elle n'est pas</h2>
-<p>La marque blanche consiste à faire fonctionner une offre sous votre nom et votre identité visuelle, alors que la réalisation s'appuie sur un outil partagé. Ce n'est pas une imitation, c'est une synthèse : vous conservez l'essentiel, votre relation et votre discours, et vous déléguez la mécanique, le développement logiciel, la maintenance.</p>
-<p>Prenons un exemple concret. Un studio de coaching santé qui affiche son propre nom et délivre à ses clients des bilans aux couleurs de sa marque utilise la marque blanche, sans que son client s'en aperçoive. Et c'est précisément le but : l'outil disparaît derrière la promesse de la marque.</p>
-<h2>Pourquoi c'est pertinent pour un studio de coaching</h2>
-<p>Trois raisons poussent les studios vers cette voie.</p>
-<p><strong>La cohérence d'abord.</strong> Chaque document envoyé, bilan, contrat, plan, porte la même identité, et la promesse de la marque ne se fragmente pas entre des outils disparates.</p>
-<p><strong>L'indépendance ensuite.</strong> Votre marque vit séparément du fournisseur qui la porte. Cette séparation vous permet de changer de socle technique sans perdre dix ans de communication et de relation client.</p>
-<p><strong>La rapidité enfin.</strong> Pas de développement sur mesure à piloter, la mise en route se compte en jours, pas en mois. Le temps gagné est investi là où il compte, dans l'accompagnement des clients.</p>
-<h2>Ce que doit couvrir votre marque blanche</h2>
-<p>Tout ce qui touche le client doit porter votre identité, et tout ce qui concerne l'équipe doit rester simple à piloter. Concrètement :</p>
+    excerpt: 'La méthode pour déployer une offre en marque blanche coaching : identité cohérente, portail client coach, cadre des données. Les points de contact à personnaliser et les pièges qui coûtent cher.',
+    content: `<p>Lancer un studio de coaching repose sur une dizaine de décisions invisibles, de l’identité visuelle au parcours client. La question n’est pas de tout créer, mais de choisir ce qui mérite d’être développé sur mesure. La <strong>marque blanche coaching</strong> répond précisément à cette question : elle permet de garder une identité à votre nom tout en déléguant la mécanique technique. C’est une approche de plus en plus répandue chez les praticiens qui veulent grandir sans devenir des développeurs. Ce guide détaille ce qu’il faut couvrir, ce qu’il faut déléguer, et les pièges qui coûtent cher.</p>
+<h2>La marque blanche coaching : ce que vous gardez, ce que vous délègues</h2>
+<p>La marque blanche coaching consiste à exploiter un socle logiciel existant sous votre propre identité. Vous gardez le nom, le logo, les couleurs, la tonalité et la méthode, qui restent vos actifs. Ce que vous déléguez, c’est la couche technique : développement, hébergement, mises à jour, sécurité. Le client final ne doit jamais avoir l’impression d’utiliser un logiciel loué à un tiers. Il doit avoir l’impression d’utiliser le service de votre studio.</p>
+<p>Votre identité n’est pas seulement un logo. C’est l’ensemble des points de contact par lesquels votre promesse arrive au client : les bilans, les contrats, les plans, les relances, les e-mails automatiques. Chacun de ces documents porte un ton, une charte, une mise en page qui vous ressemblent. C’est cette répétition cohérente qui construit la confiance dans la durée. Un client qui reçoit vos trois premiers échanges comprend immédiatement à qui il parle.</p>
+<p>À l’inverse, tout ce qui relève de l’ingénierie vous coûte du temps sans créer de valeur pour le client. La synchronisation des appareils connectés, le stockage sécurisé des données de santé, la gestion des rôles, la sauvegarde automatique n’ont aucun intérêt à être réimplémentées. Vous devez vous concentrer sur ce qui vous distingue : votre diagnostic, votre accompagnement, votre exigence. C’est cette répartition des rôles qui évite l’épuisement du fondateur, un problème récurrent chez les professionnels libéraux en croissance.</p>
+<h2>Les cinq points de contact qu’un studio de coaching doit personnaliser</h2>
+<p>Tout se joue sur des points de contact précis, que votre client traverse à chaque étape. Le premier est le parcours d’arrivée : questionnaires, consentement, dépôt de documents, première série de mesures. Le deuxième est le dossier client, qui doit être consultable en ligne par la personne accompagnée, à vos couleurs. Le troisième est le bilan périodique, cœur de la relation et preuve de votre méthode. Les quatrième et cinquièmes sont les communications automatiques et les factures, qui doivent également porter votre identité.</p>
 <ul>
-<li>Les bilans et les comptes-rendus, rendus au format de votre marque.</li>
-<li>Le dossier client, consultable par le client lui-même à vos couleurs.</li>
-<li>Les questionnaires et les documents de lancement.</li>
-<li>Les accès coachs, avec des rôles et des droits par intervenant.</li>
-<li>Les rappels et les communications automatiques, envoyés à votre nom.</li>
+<li><strong>Le parcours d’arrivée.</strong> Questionnaires d’anamnèse, consentement, dépôt de documents, première série de mesures.</li>
+<li><strong>Le dossier client.</strong> Consultation en ligne, historique, programmes, messages, par le client comme par vous.</li>
+<li><strong>Les bilans et comptes-rendus.</strong> Modèles réutilisables, mis en page à votre charte, exportables en PDF.</li>
+<li><strong>Les accès de l’équipe.</strong> Rôles par intervenant : coach, nutritionniste, assistant, administrateur.</li>
+<li><strong>Les communications.</strong> Rappels, échéances, factures et messages automatiques envoyés depuis votre nom de domaine.</li>
 </ul>
-<p>Un bon test : demandez-vous si un client, en consultant son espace, peut deviner le nom du fournisseur. Si c'est le cas, la marque blanche n'est pas assez complète.</p>
-<h2>Marque blanche et recrutement de coachs</h2>
-<p>La marque blanche est aussi un argument d'équipe. Un nouveau coach intègre un environnement clair, aux couleurs du studio, avec les mêmes trames que ses collègues. Il n'importe pas ses propres méthodes au détriment de la cohérence : l'identité du studio traverse chaque intervention.</p>
-<p>C'est le point qui transforme le recrutement : on n'embauche plus des solistes qui reconstruisent chacun leur format, on intègre des membres d'une équipe qui partagent le même standard de suivi.</p>
-<h2>Les pièges à éviter</h2>
-<p>Trois erreurs font perdre le bénéfice de la marque blanche.</p>
-<ul>
-<li><strong>Une marque blanche purement cosmétique.</strong> Un logo collé sur un outil sans prise en main réelle donne une illusion qui s'effondre à la première anomalie.</li>
-<li><strong>Confondre marque blanche et dépendance.</strong> Avant de signer, vérifiez que vous pouvez exporter vos données et repartir avec votre historique si le fournisseur disparaît.</li>
-<li><strong>Négliger le support.</strong> Vos coachs ne doivent jamais rester bloqués devant un problème technique sans aucun interlocuteur.</li>
-</ul>
-<h2>Un levier commercial trop souvent ignoré</h2>
-<p>La marque blanche ne sert pas seulement à l'interne. C'est aussi un argument commercial concret face à des partenaires et des prescripteurs.</p>
-<p><strong>Les cabinets et les prescripteurs.</strong> Un cabinet médical ou paramédical qui vous adresse ses patients préfère recevoir des comptes-rendus au nom de votre studio, lisibles et alignés sur vos trames, plutôt qu'un écran d'outil tiers. La marque blanche matérialise votre professionnalisme aux yeux de ceux qui vous recommandent.</p>
-<p><strong>Les organismes et les entreprises.</strong> Quand vous intervenez auprès d'une entreprise, d'une mutuelle ou d'un organisme sportif, présenter une offre à votre nom, avec vos bilans et votre portail, fait passer l'image d'un prestataire occasionnel à celle d'un partenaire structuré. L'argument de la cohérence porte d'autant plus que le client connaît déjà les codes de votre marque.</p>
-<p><strong>La recommandation interne.</strong> Un client content qui parle de « mon espace » et montre ses bilans à un ami raconte l'expérience de votre marque, pas celle d'un outil qu'il aurait pu ouvrir seul. La marque blanche fait de votre suivi le réceptacle fidèle de la confiance, et c'est cette confiance qui se propage.</p>
-<p>En clair : plus votre signature est visible à chaque point de contact, plus votre nom raconte l'histoire des résultats. C'est de la valeur permanente qui s'accumule sans rien vous coûter à la production.</p>
-<h2>Se lancer sans tout réinventer</h2>
-<p>Vous n'avez pas besoin d'une équipe de développement pour commencer. Faites le bilan de vos besoins : accès coachs, bilans aux couleurs du studio, identité sur chaque document, portail client. Évaluez ensuite ce que chaque outil vous prête en personnalisation et ce qu'il vous laisse libre de faire.</p>
-<p>Le socle Optibilan porte par exemple <a href="/product/white-label/">une offre marque blanche</a> pensée pour les studios : vos couleurs, vos coachs, vos trames, votre portail. Démarrez avec ce dont vous avez besoin, puis ajoutez le reste au fil des mois, lorsque l'équipe et les clients le réclament.</p>
-<h2>Un accélérateur, pas une fin en soi</h2>
-<p>La marque blanche n'est pas une destination, c'est un accélérateur. Elle vous rend la cohérence visible dès le premier jour et vous libère pour la vraie construction, celle de votre relation avec les clients. Le parcours type d'un studio qui a franchi ce cap est documenté dans <a href="/blog/cas-client-studio-performance/">le cas Studio Performance</a>, passé de 20 à 150 coachés en huit mois. Et pour faire grandir l'équipe sans perdre la main, prolongez avec <a href="/blog/delegation-equipe-grandir/">notre méthode de délégation</a>.</p>`,
+<p>Un test simple permet de vérifier si votre marque blanche est complète. Demandez-vous si un client, en ouvrant son espace, peut deviner le nom de l’éditeur du logiciel. S’il le devine, c’est que l’identité s’est arrêtée à la surface. Un pied de page de fournisseur, un lien technique, une mention légale qui ne sont pas les vôtres trahissent la mécanique. Ces détails sont invisibles pour vous mais immédiatement perceptibles pour un client attentif ou un prescripteur.</p>
+<p>Une identité cohérente ne sert pas seulement à l’acquisition. Elle intervient à chaque moment de la fidélisation, quand le client se souvient de vous plutôt que de l’application. Un espace personnel cohérent sur toute la durée de l’accompagnement crée une routine, et la routine crée la confiance. Cette confiance se traduit en recommandation, en maintien de l’abonnement, en bouche-à-oreille. Un cabinet médical qui vous recommande retrouve, dans l’espace qu’il montre à son patient, exactement la promesse qu’il a formulée. Cette cohérence externe vaut souvent mieux qu’une campagne de communication. Le design n’est donc pas une décoration : c’est un levier de rétention directement mesurable.</p>
+<h2>Le portail client coach : la preuve de sérieux au quotidien</h2>
+<figure>
+<img src="/images/cabinets/01-studio-performance-realiste.webp" alt="Coach accueillant un nouveau client dans son studio de coaching" loading="lazy" decoding="async" width="1000" height="750" />
+<figcaption>Un studio de coaching qui accueille un nouveau client dans un espace à son image.</figcaption>
+</figure>
+<p>Le portail client coach est l’espace où la personne accompagnée consulte son dossier, ses mesures, ses programmes et ses bilans. C’est le point de contact le plus fréquenté de la relation, souvent tous les jours. Sa qualité perçue devient la qualité perçue de votre accompagnement. Un portail clair, rapide et cohérent avec votre charte renforce votre crédibilité professionnelle. Un portail confus, lent ou mal rangé fait l’effet inverse, sans que le client sache pourquoi.</p>
+<p>Ce qui distingue un portail réellement utile d’un simple dépôt de fichiers, c’est la continuité. Le client doit y retrouver son historique sans le reconstruire à chaque consultation. Les mesures doivent y évoluer dans le temps, graphées, comparées à l’objectif initial. Les programmes doivent y être lisibles sur mobile, avec des consignes claires et des visuels pertinents. Les rappels doivent y arriver au bon moment, sans être submergeants, pour que le client ouvre l’espace par habitude plutôt que par devoir. Une notification utile vaut mieux qu’un flux continu finit par ignorer. Chaque consultation doit produire une petite victoire visible, qui nourrit la motivation et le sentiment d’avancer.</p>
+<p>Pour un coach, le bon portail fait aussi gagner du temps en amont de la séance. Les données de la semaine sont déjà là, assemblées et comparées. Le professionnel arrive avec un dossier à jour, sans avoir compilé d’informations dans plusieurs outils. La séance se concentre alors sur la décision et l’interprétation, qui sont les seules parties à valeur ajoutée. C’est le cercle vertueux : le client avance, le coach se concentre, la qualité du suivi augmente.</p>
+<h2>Trois approches comparées pour bâtir votre offre</h2>
+<p>Avant de choisir, il est utile de comparer trois approches qui reviennent le plus souvent sur le terrain. Le sur-mesure complet offre une liberté totale mais demande un investissement lourd en développement et en maintenance. Le logiciel générique est rapide et peu coûteux, mais il affiche une identité partagée qui limite votre différenciation. La marque blanche se situe entre les deux : elle emprunte un socle éprouvé tout en vous laissant la maîtrise de l’identité et du contenu. Ces trois voies correspondent à des stades de maturité différents, du praticien seul au studio structuré. Choisir la mauvaise, c’est payer trop tôt pour un sur-mesure qui ne sera pas utilisé. Choisir la bonne, c’est se donner de la marge pour ajuster sans refonder.</p>
+<table>
+<thead>
+<tr><th>Critère</th><th>Sur-mesure</th><th>Logiciel générique</th><th>Marque blanche</th></tr>
+</thead>
+<tbody>
+<tr><td>Délai de mise en service</td><td>3 à 12 mois</td><td>Quelques jours</td><td>Quelques jours</td></tr>
+<tr><td>Identité visible par le client</td><td>Totale</td><td>Partielle</td><td>Totale</td></tr>
+<tr><td>Coût de maintenance</td><td>Élevé</td><td>Nul</td><td>Faible</td></tr>
+<tr><td>Évolution possible</td><td>Selon le budget</td><td>Selon l’éditeur</td><td>Selon le socle choisi</td></tr>
+</tbody>
+</table>
+<p>Le tableau ci-dessus résume les trois axes qui départagent réellement ces choix. Le premier est le délai de mise en service, critique quand vous devez tenir une promesse commerciale précise. Le deuxième est le coût total de possession, qui inclut le temps de maintenance et pas seulement l’abonnement. Le troisième est le degré de maîtrise de l’identité, qui détermine ce que le client voit de votre studio.</p>
+<p>Pour un studio de coaching en croissance, la marque blanche offre le meilleur rapport entre vitesse, coût et maîtrise. Le sur-mesure se justifie quand le suivi est devenu suffisamment original et volumineux pour dépasser le standard. Le logiciel générique reste pertinent pour un professionnel solo qui ne cherche pas à construire une marque de studio. Dans la majorité des cas, la marque blanche est le point d’équilibre qui permet de passer à l’étape suivante sans dette technique.</p>
+<h2>Les pièges qui font échouer un déploiement, et le cadre à vérifier</h2>
+<figure>
+<img src="/images/cabinets/04-methode-equilibre-realiste.webp" alt="Coach presenting progress results to a client during a bilan de suivi" loading="lazy" decoding="async" width="1000" height="750" />
+<figcaption>Le bilan périodique reste le moment où la marque blanche se vérifie concrètement.</figcaption>
+</figure>
+<p>Le premier piège est celui de la marque blanche cosmétique. Coller un logo sur un outil qui ne se paramètre pas vraiment crée une illusion qui s’effondre à la première anomalie technique. Le client, puis le prescripteur, finissent par découvrir l’éditeur, et l’effet de crédibilité se retourne contre vous. Le deuxième piège est la dépendance : s’il est impossible d’exporter ses données ou de récupérer son historique, vous n’avez pas acheté un outil, vous avez loué une relation. Ces deux erreurs se préviennent en amont, pas au moment de la signature.</p>
+<figure>
+<img src="/images/product/09-coach-entretien-client.webp" alt="Coach et son client autour d’un ordinateur portable pendant un entretien" loading="lazy" decoding="async" width="1000" height="651" />
+<figcaption>L’espace client : un poste de travail unique pour le coach et la personne accompagnée.</figcaption>
+</figure>
+<p>Le troisième piège est de négliger la conformité des données. Un espace qui centralise des mesures de santé touche à des informations sensibles, dont le traitement est encadré en France. La <a href="https://www.cnil.fr/fr/la-protection-des-donnees-personnelles">CNIL</a> rappelle que ces données doivent être hébergées dans l’Union européenne, protégées par des mesures techniques adaptées, et que le client doit pouvoir exercer ses droits. Vérifiez ces points avant de vous engager, pas après le premier signalement. Le quatrième piège est l’absence d’un support identifié pour votre équipe. Consignez enfin qui accède à quelles données, et pendant combien de temps : en cas de contrôle, c’est ce registre qui fait la différence.</p>
+<p>Le cinquième piège est de signer un contrat sans lire les conditions de sortie. Vérifiez la durée, les conditions de résiliation et la réversibilité, en vous appuyant sur <a href="https://www.legifrance.gouv.fr/">Legifrance</a>, qui publie les textes qui vous engagent. Renseignez-vous aussi sur vos obligations de création d’activité auprès de <a href="https://www.service-public.fr/particuliers/vosdroits/F32185">service-public.fr</a>, selon votre statut. Un contrat clair et un statut régularisé protègent bien plus sûrement qu’une promesse commerciale enthousiaste. En résumé, la marque blanche coaching fait gagner du temps à condition que vous la mettiez en œuvre avec méthode.</p>`,
     category: 'business',
     categoryLabel: 'Business',
     author: 'Thomas Bertrand',
     authorRole: 'Fondateur Studio Performance',
     date: '2026-09-21',
-    readTime: '6 min',
-    featured: false,
-    seoTitle: 'Marque blanche coaching : lancer votre studio sans tout créer',
-    seoDescription: 'Lancez votre studio de coaching en marque blanche : identité cohérente, accès coachs, portail client. Ce que doit couvrir l\'offre et les pièges à éviter.',
+    readTime: '11 min',
+    featured: true,
+    featuredImage: '/images/cabinets/01-studio-performance-realiste.webp',
+    featuredImageAlt: 'Coach accueillant un nouveau client dans son studio de coaching',
+    seoTitle: 'Marque blanche coaching : lancer son studio',
+    seoDescription: 'Un studio de coaching en marque blanche coaching : identité, portail client, accès coachs. La méthode et les pièges à éviter.',
     seoKeywords: ['marque blanche coaching', 'studio de coaching', 'portail client coach'],
     tags: ['marque-blanche', 'studio', 'equipe', 'portail-client'],
+    sources: [
+      { label: 'CNIL — La protection des données personnelles', url: 'https://www.cnil.fr/fr/la-protection-des-donnees-personnelles' },
+      { label: 'Service-public.fr — Créer son entreprise', url: 'https://www.service-public.fr/particuliers/vosdroits/F32185' },
+      { label: 'Legifrance — Textes de droit applicables', url: 'https://www.legifrance.gouv.fr/' },
+    ],
+    faq: [
+      { q: 'Qu’est-ce que la marque blanche coaching ?', a: 'C’est une offre logicielle exploitée sous votre propre nom, votre logo et vos couleurs, sur un socle technique mutualisé. Vous gardez la relation client et la méthode, vous délèguez le développement et la maintenance. Le client ne doit jamais voir le nom de l’éditeur.' },
+      { q: 'Un client peut-il deviner quel logiciel j’utilise ?', a: 'Il ne doit pas le pouvoir, et c’est un bon test de qualité de votre déploiement. Un pied de page, un lien technique ou une mention légale qui ne sont pas les vôtres trahissent la mécanique. Corrigez ces points avant le premier rendez-vous.' },
+      { q: 'Puis-je changer de fournisseur plus tard ?', a: 'Oui, à condition de l’avoir prévu. Vérifiez avant de signer que vous pouvez exporter l’intégralité de vos données et récupérer votre historique au format ouvert. Sans cette clause, vous n’avez pas acheté un outil mais loué une relation.' },
+      { q: 'Que faut-il vérifier avant de signer un contrat ?', a: 'La durée, les conditions de résiliation, la réversibilité des données, la localisation de l’hébergement et le niveau de support. Les données de santé imposent en plus un hébergement dans l’Union européenne et des mesures techniques adaptées.' },
+      { q: 'Combien de temps faut-il pour déployer une marque blanche ?', a: 'Comptez quelques jours pour une offre existante, contre plusieurs mois pour un développement sur mesure. L’essentiel du temps se concentre sur la personnalisation des documents et des accès de l’équipe, pas sur la technique.' },
+      { q: 'La marque blanche est-elle adaptée à un coach indépendant ?', a: 'Elle l’est si votre ambition est de construire une marque de studio plutôt qu’un simple outil de travail. Pour un professionnel qui reste seul et n’a pas besoin d’équipes, un logiciel générique peut suffire. Le bon critère est votre projet à deux ans.' },
+    ],
   },
   {
     slug: 'fideliser-clients-coaching-retention',
