@@ -123,6 +123,9 @@ interface OptibilanArticle {
   seoDescription?: string;
   seoKeywords?: string[];
   tags?: string[];
+  faq?: Array<{ q: string; a: string }>;
+  sources?: Array<{ label: string; url: string }>;
+  noTable?: boolean;
   acf?: Record<string, unknown>;
 }
 

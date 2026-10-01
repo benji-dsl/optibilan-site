@@ -178,25 +178,6 @@ import '../styles/global.css';
 
     {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)}></script>}
 
-    {ogType === 'article' && publishedTime && (
-      <script type="application/ld+json" set:html={JSON.stringify({
-        '@context': 'https://schema.org',
-        '@type': 'BlogPosting',
-        headline: title,
-        description: description,
-        image: fullOgImage,
-        datePublished: publishedTime,
-        dateModified: modifiedTime || publishedTime,
-        author: { '@type': 'Person', name: author || SITE_NAME },
-        publisher: {
-          '@type': 'Organization',
-          name: SITE_NAME,
-          logo: { '@type': 'ImageObject', url: `${SITE_URL}/icon-512.png` },
-        },
-        mainEntityOfPage: { '@type': 'WebPage', '@id': fullUrl },
-      })}></script>
-    )}
-
     {GA4_ID !== 'G-XXXXXXXXXX' && (
     <>
     <!-- Google Analytics 4 -->

@@ -9,7 +9,9 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "validate:articles": "node scripts/validate-articles.mjs dist",
+    "check": "npm run build && npm run validate:articles"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.4",
