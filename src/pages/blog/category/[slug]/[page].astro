@@ -8,12 +8,20 @@ import Icon from '@/components/Icon.astro';
 import { getAllPosts, getCategories, CATEGORY_MAP, PER_PAGE } from '@/utils/wordpress';
 
 export async function getStaticPaths() {
-  const categories = await getCategories();
-  return categories.map(cat => ({ params: { slug: cat.slug } }));
+  const [allPosts, categories] = await Promise.all([getAllPosts(), getCategories()]);
+
+  return categories.flatMap(cat => {
+    const catPosts = allPosts.filter(p => p.category === cat.slug);
+    const totalPages = Math.max(1, Math.ceil(catPosts.length / PER_PAGE));
+    return Array.from({ length: Math.max(0, totalPages - 1) }, (_, i) => ({
+      params: { slug: cat.slug, page: String(i + 2) },
+    }));
+  });
 }
 
-const { slug } = Astro.params;
+const { slug, page } = Astro.params;
 if (!slug || typeof slug !== 'string') throw new Error('Slug requis');
+const currentPage = Number(page);
 
 const allPosts = await getAllPosts();
 const categories = await getCategories();
@@ -23,9 +31,13 @@ if (!catInfo) return Astro.redirect('/blog/');
 
 const allCategoryPosts = allPosts.filter(p => p.category === slug);
 const totalPages = Math.max(1, Math.ceil(allCategoryPosts.length / PER_PAGE));
-const posts = allCategoryPosts.slice(0, PER_PAGE);
+if (!Number.isFinite(currentPage) || currentPage < 2 || currentPage > totalPages) {
+  return Astro.redirect(`/blog/category/${slug}/`);
+}
 
-const pageTitle = `${catInfo.label} : articles et guides | Blog Optibilan`;
+const posts = allCategoryPosts.slice((currentPage - 1) * PER_PAGE, currentPage * PER_PAGE);
+
+const pageTitle = `${catInfo.label} : articles (page ${currentPage} sur ${totalPages}) | Blog Optibilan`;
 const pageDescription = `Tous nos articles ${catInfo.label.toLowerCase()} pour coachs, nutritionnistes et professionnels de la santé : méthodes, outils et retours d'expérience.`;
 
 const breadcrumbJsonLd = {
@@ -35,6 +47,12 @@ const breadcrumbJsonLd = {
     { '@type': 'ListItem', position: 1, name: 'Accueil', item: 'https://optibilan.com/' },
     { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://optibilan.com/blog/' },
     { '@type': 'ListItem', position: 3, name: catInfo.label, item: `https://optibilan.com/blog/category/${slug}/` },
+    {
+      '@type': 'ListItem',
+      position: 4,
+      name: `Page ${currentPage}`,
+      item: `https://optibilan.com/blog/category/${slug}/page/${currentPage}/`,
+    },
   ],
 };
 ---
@@ -42,7 +60,7 @@ const breadcrumbJsonLd = {
 <Layout
   title={pageTitle}
   description={pageDescription}
-  canonical={`/blog/category/${slug}/`}
+  canonical={`/blog/category/${slug}/page/${currentPage}/`}
   ogImage="/og-blog.png"
   jsonLd={breadcrumbJsonLd}
 >
@@ -66,7 +84,8 @@ const breadcrumbJsonLd = {
             Articles {catInfo.label.toLowerCase()}
           </h1>
           <p class="text-encre/50 text-sm">
-            {allCategoryPosts.length} {allCategoryPosts.length > 1 ? 'articles' : 'article'} dans cette catégorie
+            {allCategoryPosts.length} {allCategoryPosts.length > 1 ? 'articles' : 'article'} dans cette catégorie,
+            page {currentPage} sur {totalPages}
           </p>
         </div>
       </div>
@@ -85,14 +104,14 @@ const breadcrumbJsonLd = {
               <ArticleCard article={article} />
             ))}
           </div>
-
-          <Pagination
-            currentPage={1}
-            totalPages={totalPages}
-            baseUrl={`/blog/category/${slug}/`}
-            label={`Pagination de la catégorie ${catInfo.label}`}
-          />
         )}
+
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          baseUrl={`/blog/category/${slug}/`}
+          label={`Pagination de la catégorie ${catInfo.label}`}
+        />
       </div>
     </section>
 

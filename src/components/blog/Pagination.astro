@@ -1,0 +1,61 @@
+---
+import Icon from '../Icon.astro';
+
+interface Props {
+  currentPage: number;
+  totalPages: number;
+  /** URL de la page 1 (ex: /blog/ ou /blog/category/coaching/) */
+  baseUrl: string;
+  label?: string;
+}
+
+const { currentPage, totalPages, baseUrl, label = 'Pagination' } = Astro.props;
+
+const pageUrl = (n: number) => (n === 1 ? baseUrl : `${baseUrl}page/${n}/`);
+
+const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
+---
+
+{
+  totalPages > 1 && (
+    <nav aria-label={label} class="mt-12 flex items-center justify-center gap-2">
+      {currentPage > 1 && (
+        <a
+          href={pageUrl(currentPage - 1)}
+          rel="prev"
+          class="btn btn-secondary text-sm px-4 py-2 inline-flex items-center gap-2"
+        >
+          <Icon name="arrowRight" class="w-4 h-4 rotate-180" /> Précédent
+        </a>
+      )}
+
+      <ul class="flex items-center gap-1">
+        {pages.map(n => (
+          <li>
+            <a
+              href={pageUrl(n)}
+              aria-current={n === currentPage ? 'page' : undefined}
+              class={`inline-flex items-center justify-center min-w-10 h-10 px-3 rounded-card border font-medium transition-colors ${
+                n === currentPage
+                  ? 'bg-encre text-craie border-encre'
+                  : 'border-encre/10 bg-blanc text-encre/70 hover:border-encre/30 hover:text-encre'
+              }`}
+            >
+              {n}
+            </a>
+          </li>
+        ))}
+      </ul>
+
+      {currentPage < totalPages && (
+        <a
+          href={pageUrl(currentPage + 1)}
+          rel="next"
+          class="btn btn-secondary text-sm px-4 py-2 inline-flex items-center gap-2"
+        >
+          Suivant <Icon name="arrowRight" class="w-4 h-4" />
+        </a>
+      )}
+    </nav>
+  )
+}

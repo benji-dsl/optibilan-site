@@ -299008,6 +299008,9 @@ const ALLOWED_CATEGORIES = new Set(Object.keys(CATEGORY_MAP));
 
 const DEFAULT_PER_PAGE = 100;
 
+/** Nombre d'articles affichés par page dans le blog (pagination statique) */
+export const PER_PAGE = 6;
+
 
 
 

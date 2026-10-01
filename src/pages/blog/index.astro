@@ -3,7 +3,9 @@ import Layout from '@/layouts/Layout.astro';
 import Header from '@/components/Header.astro';
 import Footer from '@/components/Footer.astro';
 import ArticleCard from '@/components/blog/ArticleCard.astro';
-import { getAllPosts, getCategories } from '@/utils/wordpress';
+import Pagination from '@/components/blog/Pagination.astro';
+import Icon from '@/components/Icon.astro';
+import { getAllPosts, getCategories, PER_PAGE } from '@/utils/wordpress';
 
 const pageTitle = 'Blog Optibilan : conseils coaching, nutrition et santé pour pros';
 const pageDescription = 'Articles et guides pour coachs sportifs, nutritionnistes et professionnels de la santé : bilans, suivi client, nutrition, préparation mentale et business.';
@@ -11,9 +13,8 @@ const pageDescription = 'Articles et guides pour coachs sportifs, nutritionniste
 const allPosts = await getAllPosts();
 const categories = await getCategories();
 
-const groups = categories
-  .map(cat => ({ ...cat, posts: allPosts.filter(p => p.category === cat.slug) }))
-  .filter(g => g.posts.length > 0);
+const totalPages = Math.max(1, Math.ceil(allPosts.length / PER_PAGE));
+const pagePosts = allPosts.slice(0, PER_PAGE);
 
 const blogJsonLd = {
   '@context': 'https://schema.org',
@@ -57,12 +58,26 @@ const breadcrumbJsonLd = {
           <p class="text-lg text-encre/60">
             Conseils, méthodes et études de cas pour coachs, nutritionnistes et professionnels de la santé.
           </p>
-          <p class="text-sm text-encre/40 mt-3">{allPosts.length} articles, classés par catégorie</p>
+          <p class="text-sm text-encre/40 mt-3">
+            {allPosts.length} articles, classés par catégorie
+          </p>
+        </div>
+
+        <div class="flex flex-wrap justify-center gap-3 mt-8">
+          {categories.map(c => (
+            <a
+              href={`/blog/category/${c.slug}/`}
+              class="inline-flex items-center gap-2 px-4 py-2.5 rounded-card border border-encre/10 bg-blanc hover:border-bleu-signature/40 hover:shadow-soft transition-all font-medium text-encre/80"
+            >
+              <Icon name={c.icon} class="w-4 h-4" style={`color: var(--color-${c.color});`} />
+              {c.label}
+            </a>
+          ))}
         </div>
       </div>
     </section>
 
-    {groups.length === 0 ? (
+    {pagePosts.length === 0 ? (
       <section class="section bg-blanc">
         <div class="container text-center py-16">
           <h2 class="font-display text-xl font-bold text-encre mb-2">Aucun article pour l'instant</h2>
@@ -70,32 +85,44 @@ const breadcrumbJsonLd = {
         </div>
       </section>
     ) : (
-      groups.map((group, gi) => (
-        <section class={`section ${gi % 2 === 0 ? 'bg-blanc' : 'bg-papier'}`} aria-labelledby={`cat-${group.slug}`}>
-          <div class="container">
-            <header class="flex flex-wrap items-end justify-between gap-4 mb-10">
-              <div>
-                <h2 id={`cat-${group.slug}`} class="font-display text-2xl md:text-3xl font-bold text-encre">
-                  {group.label}
-                </h2>
-                <p class="text-encre/50 text-sm mt-1">
-                  {group.posts.length} {group.posts.length > 1 ? 'articles' : 'article'}
-                </p>
-              </div>
-              <a href={`/blog/category/${group.slug}/`} class="btn btn-solid text-sm">
-                Voir tout
-              </a>
-            </header>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {group.posts.map(article => (
-                <ArticleCard article={article} />
-              ))}
-            </div>
+      <section class="section bg-blanc">
+        <div class="container">
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {pagePosts.map(article => (
+              <ArticleCard article={article} />
+            ))}
           </div>
-        </section>
-      ))
+
+          <Pagination currentPage={1} totalPages={totalPages} baseUrl="/blog/" />
+        </div>
+      </section>
     )}
+
+    <section class="section bg-papier">
+      <div class="container">
+        <h2 class="font-display text-xl font-bold text-encre mb-6 text-center">Nos catégories</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {categories.map(c => {
+            const count = allPosts.filter(p => p.category === c.slug).length;
+            return (
+              <a
+                href={`/blog/category/${c.slug}/`}
+                class="card-hover flex items-start gap-3 p-5 rounded-card-lg border border-encre/10 bg-blanc"
+                style={`--accent: var(--color-${c.color})`}
+              >
+                <Icon name={c.icon} class="w-5 h-5 flex-shrink-0" style={`color: var(--color-${c.color});`} />
+                <span>
+                  <span class="block font-semibold text-encre">{c.label}</span>
+                  <span class="block text-sm text-encre/50 mt-0.5">
+                    {count} {count > 1 ? 'articles' : 'article'}
+                  </span>
+                </span>
+              </a>
+            );
+          })}
+        </div>
+      </div>
+    </section>
   </main>
 
   <Footer />
