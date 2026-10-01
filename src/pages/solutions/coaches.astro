@@ -27,17 +27,20 @@ const breadcrumbJsonLd = {
   canonical="/solutions/coaches/"
   ogImage="/og-solution-coach.png"
   jsonLd={breadcrumbJsonLd}
+  heroImage="/images/product/08-utilisateur-course-exterieur.webp"
 >
   <Header />
 
   <main>
     <Hero
+      variant="page"
       title="Passez moins de temps 
 à gérer. 
 Plus de temps à coacher."
       subtitle="Programmes, bilans, progression, adhérence, communication dans une seule plateforme. Conçue pour les coaches qui veulent scaler sans perdre la qualité."
       primaryCTA={{ href: '/pricing/', label: 'Rejoindre Optibilan' }}
       secondaryCTA={{ href: '/checkout/solo/', label: 'Essai offert' }}
+      backgroundImage="/images/product/08-utilisateur-course-exterieur.webp"
     />
 
     <TrustBar />
@@ -54,12 +57,13 @@ Plus de temps à coacher."
         </header>
         <div class="aspect-video max-w-4xl mx-auto rounded-xl border border-encre/10 bg-blanc overflow-hidden shadow-xl">
           <img
-            src="/images/product/medecins/12-coach-sportif-accompagnement.webp"
-            alt="Coach sportif accompagnant son client pendant une séance"
+            src="/images/product/08-utilisateur-course-exterieur.webp"
+            alt="Co sportif accompagnant son client pendant une séance en extérieur"
             width="1000"
-            height="607"
+            height="667"
             class="w-full h-full object-cover"
-            loading="lazy"
+            loading="eager"
+            fetchpriority="high"
           />
         </div>
       </div>

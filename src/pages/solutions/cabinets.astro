@@ -27,16 +27,19 @@ const breadcrumbJsonLd = {
   canonical="/solutions/cabinets/"
   ogImage="/og-solution-cabinet.png"
   jsonLd={breadcrumbJsonLd}
+  heroImage="/images/cabinets/01-studio-performance-realiste.webp"
 >
   <Header />
 
   <main>
     <Hero
+      variant="page"
       title="Toute votre équipe. 
 Une seule vision du client."
       subtitle="Multi-praticiens, permissions granulaires, coordination, administration, sécurité, audit, marque blanche totale. L'OS de votre cabinet."
       primaryCTA={{ href: '/pricing/', label: 'Rejoindre Optibilan' }}
       secondaryCTA={{ href: '/checkout/solo/', label: 'Essai offert' }}
+      backgroundImage="/images/cabinets/01-studio-performance-realiste.webp"
     />
 
     <TrustBar />
@@ -53,12 +56,13 @@ Une seule vision du client."
         </header>
         <div class="aspect-video max-w-4xl mx-auto rounded-xl border border-encre/10 bg-blanc overflow-hidden shadow-xl">
           <img
-            src="/images/product/medecins/08-equipe-medicale-pluridisciplinaire.webp"
-            alt="Équipe médicale pluridisciplinaire coordonnée autour d'un même patient"
+            src="/images/cabinets/01-studio-performance-realiste.webp"
+            alt="Équipe de praticiens réunie dans un cabinet, coordonnée autour d'un même patient"
             width="1000"
-            height="651"
+            height="667"
             class="w-full h-full object-cover"
-            loading="lazy"
+            loading="eager"
+            fetchpriority="high"
           />
         </div>
       </div>

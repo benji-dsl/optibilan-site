@@ -27,16 +27,19 @@ const breadcrumbJsonLd = {
   canonical="/solutions/medecin/"
   ogImage="/og-solutions.png"
   jsonLd={breadcrumbJsonLd}
+  heroImage="/images/product/medecins/06-medecin-consultation-donnees-sante.webp"
 >
   <Header />
 
   <main>
     <Hero
+      variant="page"
       title="Structurez la prévention 
 au cœur de votre pratique."
       subtitle="Bilans, biomarqueurs, habitudes, nutrition, coordination inter-professionnelle. Cloisonnement strict des données de santé. La prévention, structurée."
       primaryCTA={{ href: '/pricing/', label: 'Rejoindre Optibilan' }}
       secondaryCTA={{ href: '/checkout/solo/', label: 'Essai offert' }}
+      backgroundImage="/images/product/medecins/06-medecin-consultation-donnees-sante.webp"
     />
 
     <TrustBar />
@@ -53,12 +56,13 @@ au cœur de votre pratique."
         </header>
         <div class="aspect-video max-w-4xl mx-auto rounded-xl border border-encre/10 bg-blanc overflow-hidden shadow-xl">
           <img
-            src="/images/product/medecins/01-medecin-generaliste-consultation.webp"
-            alt="Médecin généraliste en consultation préventive avec son patient"
+            src="/images/product/medecins/06-medecin-consultation-donnees-sante.webp"
+            alt="Médecin en consultation préventive avec les données de santé de son patient"
             width="1000"
-            height="667"
+            height="607"
             class="w-full h-full object-cover"
-            loading="lazy"
+            loading="eager"
+            fetchpriority="high"
           />
         </div>
       </div>
