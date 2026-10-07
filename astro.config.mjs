@@ -15,6 +15,9 @@ export default defineConfig({
   redirects: {
     '/solutions/mental/': '/solutions/medecin/',
     '/docs/sandbox': '/docs/#sandbox',
+    '/sitemap.xml': '/sitemap-index.xml',
+    '/tarifs': '/pricing/',
+    '/tarifs/': '/pricing/',
   },
   vite: {
     plugins: [tailwindcss()],
