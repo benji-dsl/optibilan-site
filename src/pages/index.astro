@@ -138,6 +138,45 @@ const testimonials = [
   },
 ];
 
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Optibilan est-il fait pour les coachs sportifs et les professionnels de santé ?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Oui. Optibilan est conçu pour les coachs sportifs, nutritionnistes, préparateurs mentaux, kinés, médecins et cabinets pluridisciplinaires.'
+      }
+    },
+    {
+      '@type': 'Question',
+      name: 'Proposez-vous un essai gratuit ?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Oui, un essai gratuit est proposé pour tester la plateforme avant de souscrire.'
+      }
+    },
+    {
+      '@type': 'Question',
+      name: 'Peut-on utiliser Optibilan en marque blanche ?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: "Oui, la marque blanche totale est disponible selon l'offre choisie (logo, domaine, assistant IA, vocabulaire, etc.)."
+      }
+    },
+    {
+      '@type': 'Question',
+      name: 'Les données sont-elles conformes au RGPD ?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Optibilan applique les principes RGPD et met à disposition les documents relatifs à la protection des données et aux sous-traitants.'
+      }
+    }
+  ]
+};
+
 const breadcrumbJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
@@ -189,8 +228,9 @@ const breadcrumbJsonLd = {
       },
       "url": "https://optibilan.com/",
       "inLanguage": "fr-FR"
-    }
-]}
+    },
+    faqJsonLd,
+  ]}
   heroImage="/images/product/dashboard-coach.webp"
 >
   <Header />
