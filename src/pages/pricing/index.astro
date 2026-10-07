@@ -31,6 +31,26 @@ const breadcrumbJsonLd = {
   ],
 };
 
+const saJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: 'Optibilan',
+  applicationCategory: 'BusinessApplication',
+  operatingSystem: 'Web',
+  offers: [
+    { '@type': 'Offer', name: 'Solo', price: '49', priceCurrency: 'EUR', priceSpecification: { '@type': 'UnitPriceSpecification', billingDuration: 'P1M' }, url: 'https://optibilan.com/pricing/', availability: 'https://schema.org/InStock' },
+    { '@type': 'Offer', name: 'Studio', price: '149', priceCurrency: 'EUR', priceSpecification: { '@type': 'UnitPriceSpecification', billingDuration: 'P1M' }, url: 'https://optibilan.com/pricing/', availability: 'https://schema.org/InStock' },
+    { '@type': 'Offer', name: 'Cabinet', price: '349', priceCurrency: 'EUR', priceSpecification: { '@type': 'UnitPriceSpecification', billingDuration: 'P1M' }, url: 'https://optibilan.com/pricing/', availability: 'https://schema.org/InStock' },
+  ],
+};
+const orgJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Optibilan',
+  url: 'https://optibilan.com/',
+  logo: 'https://optibilan.com/icon-512.png',
+};
+
 const faqJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
@@ -47,7 +67,7 @@ const faqJsonLd = {
   description={pageDescription}
   canonical="/pricing/"
   ogImage="/og-pricing.png"
-  jsonLd={[breadcrumbJsonLd, faqJsonLd]}
+  jsonLd={[breadcrumbJsonLd, faqJsonLd, saJsonLd, orgJsonLd]}
 >
   <Header />
 
