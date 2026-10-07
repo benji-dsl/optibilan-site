@@ -152,7 +152,45 @@ const breadcrumbJsonLd = {
   description={pageDescription}
   canonical="/"
   ogImage="/og-home.png"
-  jsonLd={breadcrumbJsonLd}
+  jsonLd={[
+  {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Accueil', item: 'https://optibilan.com/' },
+  ],
+},
+    {
+      "@context": "https://schema.org",
+      "@type": "EducationalOrganization",
+      "@id": "https://optibilan.com/#educational-organization",
+      "name": "Optibilan",
+      "url": "https://optibilan.com/",
+      "logo": "https://optibilan.com/icon-512.png",
+      "inLanguage": "fr-FR",
+      "areaServed": "FR",
+      "sameAs": [
+        "https://twitter.com/optibilan",
+        "https://linkedin.com/company/optibilan",
+        "https://github.com/optibilan",
+        "https://youtube.com/@optibilan"
+      ],
+      "description": "Plateforme SaaS de pilotage des accompagnements santé et performance pour professionnels (coachs, nutritionnistes, médecins, cabinets)."
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Course",
+      "@id": "https://optibilan.com/#course-accompagnement-coach",
+      "name": "Accompagnement des clients pour coachs santé et performance",
+      "description": "Formation pratique à l'organisation des bilans, au suivi nutrition-sport et à l'automatisation des processus avec Optibilan.",
+      "provider": {
+        "@type": "EducationalOrganization",
+        "@id": "https://optibilan.com/#educational-organization"
+      },
+      "url": "https://optibilan.com/",
+      "inLanguage": "fr-FR"
+    }
+]}
   heroImage="/images/product/dashboard-coach.webp"
 >
   <Header />

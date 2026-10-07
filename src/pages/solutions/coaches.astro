@@ -10,6 +10,32 @@ import Icon from '../../components/Icon.astro';
 const pageTitle = 'Logiciel pour coachs sportifs : suivi client, programmes et bilans | Optibilan';
 const pageDescription = 'Le logiciel de suivi client des coachs sportifs : programmes, bilans, progression, adhérence et communication dans une seule plateforme. Essai offert 30 jours.';
 
+const eduOrgJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'EducationalOrganization',
+  '@id': 'https://optibilan.com/#educational-organization',
+  name: 'Optibilan',
+  url: 'https://optibilan.com/',
+  logo: 'https://optibilan.com/icon-512.png',
+  inLanguage: 'fr-FR',
+  areaServed: 'FR',
+  sameAs: [
+    'https://twitter.com/optibilan',
+    'https://linkedin.com/company/optibilan',
+    'https://github.com/optibilan',
+    'https://youtube.com/@optibilan',
+  ],
+};
+const courseJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Course',
+  '@id': 'https://optibilan.com/solutions/#course',
+  name: 'Formation et accompagnement avec Optibilan',
+  description: 'Formation pratique pour structurer bilans, suivi nutrition-sport et automatiser les processus avec la plateforme Optibilan.',
+  provider: { '@type': 'EducationalOrganization', '@id': 'https://optibilan.com/#educational-organization' },
+  url: 'https://optibilan.com/solutions/',
+  inLanguage: 'fr-FR',
+};
 const breadcrumbJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
@@ -26,7 +52,7 @@ const breadcrumbJsonLd = {
   description={pageDescription}
   canonical="/solutions/coaches/"
   ogImage="/og-solution-coach.png"
-  jsonLd={breadcrumbJsonLd}
+  jsonLd={[breadcrumbJsonLd, eduOrgJsonLd, courseJsonLd]}
   heroImage="/images/product/08-utilisateur-course-exterieur.webp"
 >
   <Header />
