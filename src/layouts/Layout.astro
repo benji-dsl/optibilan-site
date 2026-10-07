@@ -155,17 +155,35 @@ import '../styles/global.css';
       operatingSystem: 'Cloud / SaaS',
       inLanguage: 'fr-FR',
       isAccessibleForFree: false,
-      offers: {
+      offers: [
+      {
         '@type': 'Offer',
+        name: 'Solo',
         price: '49',
         priceCurrency: 'EUR',
-        priceSpecification: {
-          '@type': 'UnitPriceSpecification',
-          billingDuration: 'P1M',
-        },
-        availability: 'https://schema.org/InStock',
+        priceSpecification: { '@type': 'UnitPriceSpecification', billingDuration: 'P1M' },
         url: `${SITE_URL}/pricing`,
+        availability: 'https://schema.org/InStock',
       },
+      {
+        '@type': 'Offer',
+        name: 'Studio',
+        price: '149',
+        priceCurrency: 'EUR',
+        priceSpecification: { '@type': 'UnitPriceSpecification', billingDuration: 'P1M' },
+        url: `${SITE_URL}/pricing`,
+        availability: 'https://schema.org/InStock',
+      },
+      {
+        '@type': 'Offer',
+        name: 'Cabinet',
+        price: '349',
+        priceCurrency: 'EUR',
+        priceSpecification: { '@type': 'UnitPriceSpecification', billingDuration: 'P1M' },
+        url: `${SITE_URL}/pricing`,
+        availability: 'https://schema.org/InStock',
+      },
+    ],
       description: 'SaaS multi-tenant de pilotage des accompagnements pour cabinets, studios et coachs indépendants. Bilans, nutrition, sport, prépa mentale, santé connectée, marque blanche, API, Protection des données, contrôle des accès et traçabilité.',
       featureList: [
         'Bilans & progression automatisés',
