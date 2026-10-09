@@ -45,6 +45,23 @@ function stripHtml(h: string) {
 }
 const wordCount = stripHtml(post.content).split(' ').filter(Boolean).length;
 
+const blogPostingJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  '@id': `${SITE_URL}${canonical}#blogposting`,
+  headline: post.title,
+  description: pageDescription,
+  image: post.featuredImage ? post.featuredImage : `${SITE_URL}/og-blog.png`,
+  url: `${SITE_URL}${canonical}`,
+  datePublished: post.date,
+  dateModified: post.modifiedDate || post.date,
+  inLanguage: 'fr-FR',
+  author: { '@type': 'Person', name: post.author, url: 'https://optibilan.com/', ...(post.authorAvatar ? { image: post.authorAvatar.startsWith('http') ? post.authorAvatar : `${SITE_URL}${post.authorAvatar}` } : {}) },
+  publisher: { '@id': 'https://optibilan.com/#organization' },
+  mainEntityOfPage: { '@type': 'WebPage', '@id': `${SITE_URL}${canonical}` },
+  articleSection: post.categoryLabel,
+  ...(post.seoKeywords?.length ? { keywords: post.seoKeywords.join(', ') } : {})
+};
 const articleJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Article',
@@ -78,7 +95,7 @@ const faqJsonLd = post.faq?.length
     }
   : null;
 
-const jsonLd = [breadcrumbJsonLd, articleJsonLd, ...(faqJsonLd ? [faqJsonLd] : [])];
+const jsonLd = [breadcrumbJsonLd, articleJsonLd, blogPostingJsonLd, ...(faqJsonLd ? [faqJsonLd] : [])];
 
 function formatDate(dateStr: string) {
   try { return new Date(dateStr).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' }); }

@@ -30,3 +30,13 @@ Optibilan est une plateforme SaaS multi-tenant (B2B2C) de coaching santé/perfor
 - Démo : /pricing
 - GitHub : https://github.com/optibilan
 - LinkedIn : https://linkedin.com/company/optibilan
+
+## Pages clés (SEO)
+- Accueil : /
+- Offres : /pricing/
+- Solutions : /solutions/ (médecin, cabinets, coaches, nutrition, mental)
+- Produit : /product/overview/, /product/health/, /product/nutrition/, /product/training/, /product/mental/, /product/ai/, /product/crm/, /product/agenda/, /product/check-ins/, /product/white-label/, /product/admin/, /product/integrations/
+- Blog : /blog/
+- Docs : /docs/
+- Sécurité : /security/
+- Légal : /legal/mentions/, /legal/cgv/, /legal/confidentialite/, /legal/cookies/, /legal/sous-traitance/
