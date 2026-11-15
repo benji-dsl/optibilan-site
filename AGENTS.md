@@ -25,7 +25,12 @@ Consult these guides before working on related tasks:
 
 - Le dépôt `benji-dsl/optibilan-site` est relié à Cloudflare Pages : chaque `git push origin main` reconstruit et met en ligne optibilan.com.
 - L'accès GitHub est déjà enregistré dans ce dépôt (`.git/credentials`). Tu peux lancer `git push` toi-même, sans demander d'identifiants.
-- **Avant chaque push : lance `npm run build` (doit passer 0 erreur), montre la liste des fichiers modifiés. NE DEMANDE PLUS d'accord explicite : Benjamin a demandé de committer et pousser systématiquement à chaque étape, sans attendre son feu vert.**
+- **Avant chaque push : lance `npm run verify` (doit passer 0 erreur), montre la liste des fichiers modifiés.**
+  `verify` enchaîne : build, contrôle i18n (jumelles FR/EN, hreflang, liens internes,
+  structure des pages, parité des articles, format éditorial anglais) et audit SEO
+  (titres, descriptions, h1, dimensions d'images, pages orphelines).
+- La vitrine est **bilingue** : toute page FR a sa jumelle dans `src/pages/en/`, et
+  l'inverse. Le mode d'emploi est dans `docs/i18n.md`. NE DEMANDE PLUS d'accord explicite : Benjamin a demandé de committer et pousser systématiquement à chaque étape, sans attendre son feu vert.**
 - Ne supprime jamais `.git/credentials` et ne l'affiche jamais.
 
 ## État actuel (19 sept 2026) — corrections launch optibilan.com
