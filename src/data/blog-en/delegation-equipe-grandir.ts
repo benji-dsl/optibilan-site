@@ -71,7 +71,7 @@ export const article: OptibilanArticle = {
   tags: [`delegation`, `team`, `recruitment`, `management`],
   sources: [
     { label: `CNIL: data retention periods`, url: `https://www.cnil.fr/fr/les-durees-de-conservation-des-donnees` },
-    { label: `Service-public.fr: hiring and employment contracts`, url: `https://entreprendre.service-public.fr/vosdroits/F` },
+    { label: `Service-public.fr: hiring and employment contracts`, url: `https://entreprendre.service-public.fr/vosdroits` },
     { label: `French Labour Code on Legifrance`, url: `https://www.legifrance.gouv.fr/` },
   ],
   faq: [

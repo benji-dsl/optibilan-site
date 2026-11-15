@@ -52,7 +52,7 @@ export const article: OptibilanArticle = {
 <h2>Rules 5 and 6: plan the deviations, reassess at every stage</h2>
 <p>A nutrition plan that provides for no deviation is a plan that collapses at the first restaurant. The mistake is not eating a dessert one evening, it is treating that deviation as a failure and abandoning the rest of the plan. Preparation consists of defining in advance what happens in foreseeable situations: a family meal, a weekend, a period of stress. The plan then describes the expected behaviour, which turns an unforeseen event into a managed scenario rather than a crisis.</p>
 <p>Concretely, a planned deviation consists of choosing two to three situations per week where the rule loosens, while keeping the fundamentals. The rest of the week does not change, and it is that contrast that makes the festive meal acceptable. Research on eating behaviour confirms that flexibility framed by firm norms produces better lasting results, which reverses the intuition the industry hands down. The decisive point remains the return: the next day, you go back to the plan, without a compensatory fast or additional restriction.</p>
-<p>A plan built for a given weight and activity level remains valid for only a few months. As weight falls and activity changes, needs evolve, and continuing the same quantities causes a plateau followed by a regain. Reassessment every six to eight weeks adjusts one of the available levers: training volume, nutrient distribution, or meal frequency. <a href="https://www.santepubliquefrance.fr/">Santé publique France</a> and the <a href="https://www.legifrance.gouv.fr/">official recommendations</a> stress the importance of individualised follow-up, which this regular reassessment translates concretely. The <a href="https://www.cnil.fr/fr/la-protection-des-donnees-personnelles">CNIL</a> also reminds us that health data collected during a follow-up must be kept in a limited and documented way.</p>
+<p>A plan built for a given weight and activity level remains valid for only a few months. As weight falls and activity changes, needs evolve, and continuing the same quantities causes a plateau followed by a regain. Reassessment every six to eight weeks adjusts one of the available levers: training volume, nutrient distribution, or meal frequency. <a href="https://www.santepubliquefrance.fr/">Santé publique France</a> and the <a href="https://www.legifrance.gouv.fr/">official recommendations</a> stress the importance of individualised follow-up, which this regular reassessment translates concretely. The <a href="https://www.cnil.fr/fr/comprendre-le-rgpd">CNIL</a> also reminds us that health data collected during a follow-up must be kept in a limited and documented way.</p>
 <h2>Rule 7: separate loss from long-term maintenance</h2>
 <figure>
 <img src="/images/product/nutrition-consultation.webp" alt="Nutrition consultation, check-in on a personalised meal plan" loading="lazy" decoding="async" width="667" height="381" />
@@ -76,7 +76,7 @@ export const article: OptibilanArticle = {
   tags: [`nutrition`, `weight-loss`, `habits`, `health`],
   sources: [
     { label: `Santé publique France: dietary benchmarks`, url: `https://www.santepubliquefrance.fr/` },
-    { label: `CNIL: protection of health data`, url: `https://www.cnil.fr/fr/la-protection-des-donnees-personnelles` },
+    { label: `CNIL: protection of health data`, url: `https://www.cnil.fr/fr/comprendre-le-rgpd` },
     { label: `Legifrance: health data and obligations`, url: `https://www.legifrance.gouv.fr/` },
   ],
   faq: [

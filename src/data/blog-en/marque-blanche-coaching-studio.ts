@@ -60,8 +60,8 @@ export const article: OptibilanArticle = {
 <img src="/images/product/09-coach-entretien-client.webp" alt="Coach and their client around a laptop during an interview" loading="lazy" decoding="async" width="1000" height="651" />
 <figcaption>The client space: a single workspace for the coach and the person being supported.</figcaption>
 </figure>
-<p>The third pitfall is neglecting data compliance. A space that centralizes health measurements handles sensitive information, the processing of which is regulated in France. The <a href="https://www.cnil.fr/fr/la-protection-des-donnees-personnelles">CNIL</a> states that such data must be hosted in the European Union, protected by appropriate technical measures, and that the client must be able to exercise their rights. Check those points before you commit, not after the first report. The fourth pitfall is the absence of identified support for your team. Finally, record who accesses which data, and for how long: in the event of an inspection, that register is what makes the difference.</p>
-<p>The fifth pitfall is signing a contract without reading the exit conditions. Check the term, the termination conditions and the reversibility, relying on <a href="https://www.legifrance.gouv.fr/">Legifrance</a>, which publishes the texts that bind you. Also look into your obligations for setting up a business on <a href="https://www.service-public.fr/particuliers/vosdroits/F32185">service-public.fr</a>, depending on your legal status. A clear contract and a regularized status protect you far more reliably than an enthusiastic commercial promise. In short, white label coaching saves time provided you implement it methodically.</p>`,
+<p>The third pitfall is neglecting data compliance. A space that centralizes health measurements handles sensitive information, the processing of which is regulated in France. The <a href="https://www.cnil.fr/fr/comprendre-le-rgpd">CNIL</a> states that such data must be hosted in the European Union, protected by appropriate technical measures, and that the client must be able to exercise their rights. Check those points before you commit, not after the first report. The fourth pitfall is the absence of identified support for your team. Finally, record who accesses which data, and for how long: in the event of an inspection, that register is what makes the difference.</p>
+<p>The fifth pitfall is signing a contract without reading the exit conditions. Check the term, the termination conditions and the reversibility, relying on <a href="https://www.legifrance.gouv.fr/">Legifrance</a>, which publishes the texts that bind you. Also look into your obligations for setting up a business on <a href="https://www.service-public.fr/particuliers/vosdroits">service-public.fr</a>, depending on your legal status. A clear contract and a regularized status protect you far more reliably than an enthusiastic commercial promise. In short, white label coaching saves time provided you implement it methodically.</p>`,
   category: `business`,
   categoryLabel: `Business`,
   author: `Thomas Bertrand`,
@@ -76,8 +76,8 @@ export const article: OptibilanArticle = {
   seoKeywords: [`white label coaching`, `coaching studio`, `coach client portal`],
   tags: [`white-label`, `studio`, `team`, `client-portal`],
   sources: [
-    { label: `CNIL: personal data protection`, url: `https://www.cnil.fr/fr/la-protection-des-donnees-personnelles` },
-    { label: `Service-public.fr: starting a business`, url: `https://www.service-public.fr/particuliers/vosdroits/F32185` },
+    { label: `CNIL: personal data protection`, url: `https://www.cnil.fr/fr/comprendre-le-rgpd` },
+    { label: `Service-public.fr: starting a business`, url: `https://www.service-public.fr/particuliers/vosdroits` },
     { label: `Legifrance: applicable legal texts`, url: `https://www.legifrance.gouv.fr/` },
   ],
   faq: [

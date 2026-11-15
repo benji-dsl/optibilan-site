@@ -51,33 +51,14 @@ const blogPostingJsonLd = {
   url: `${SITE_URL}${canonical}`,
   datePublished: post.date,
   dateModified: post.modifiedDate || post.date,
+  abstract: post.excerpt,
+  wordCount,
   inLanguage: 'en-US',
   author: { '@type': 'Person', name: post.author, url: 'https://optibilan.com/en/', ...(post.authorAvatar ? { image: post.authorAvatar.startsWith('http') ? post.authorAvatar : `${SITE_URL}${post.authorAvatar}` } : {}) },
   publisher: { '@id': 'https://optibilan.com/#organization' },
   mainEntityOfPage: { '@type': 'WebPage', '@id': `${SITE_URL}${canonical}` },
   articleSection: post.categoryLabel,
   ...(post.seoKeywords?.length ? { keywords: post.seoKeywords.join(', ') } : {})
-};
-const articleJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'Article',
-  headline: post.title,
-  description: pageDescription,
-  abstract: post.excerpt,
-  ...(post.featuredImage ? { image: post.featuredImage } : {}),
-  datePublished: post.date,
-  dateModified: post.modifiedDate || post.date,
-  wordCount,
-  inLanguage: 'en-US',
-  ...(post.seoKeywords?.length ? { keywords: post.seoKeywords.join(', ') } : {}),
-  articleSection: post.categoryLabel,
-  author: { '@type': 'Person', name: post.author },
-  publisher: {
-    '@type': 'Organization',
-    name: 'Optibilan',
-    logo: { '@type': 'ImageObject', url: `${SITE_URL}/optibilan-logo.svg` },
-  },
-  mainEntityOfPage: { '@type': 'WebPage', '@id': `${SITE_URL}${canonical}` },
 };
 
 const faqJsonLd = post.faq?.length
@@ -93,7 +74,7 @@ const faqJsonLd = post.faq?.length
     }
   : null;
 
-const jsonLd = [breadcrumbJsonLd, articleJsonLd, blogPostingJsonLd, ...(faqJsonLd ? [faqJsonLd] : [])];
+const jsonLd = [breadcrumbJsonLd, blogPostingJsonLd, ...(faqJsonLd ? [faqJsonLd] : [])];
 
 function formatDate(dateStr: string) {
   try { return new Date(dateStr).toLocaleDateString('en-US', { day: 'numeric', month: 'long', year: 'numeric' }); }

@@ -13,7 +13,8 @@
     "validate:articles": "node scripts/validate-articles.mjs dist",
     "check:i18n": "node scripts/check-i18n.mjs && node scripts/check-i18n-structure.mjs && node scripts/check-blog-parity.mjs && node scripts/validate-articles.mjs dist/en",
     "check": "npm run build && npm run validate:articles",
-    "export:blog-en": "node scripts/export-blog-en-source.mjs"
+    "export:blog-en": "node scripts/export-blog-en-source.mjs",
+    "audit:seo": "node scripts/audit-seo.mjs"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.10",

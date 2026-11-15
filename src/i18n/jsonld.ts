@@ -57,10 +57,7 @@ export function organizationJsonLd(locale: Locale) {
     inLanguage: LOCALE_TAG[locale],
     areaServed: text.region,
     sameAs: [
-      'https://twitter.com/optibilan',
       'https://linkedin.com/company/optibilan',
-      'https://github.com/optibilan',
-      'https://youtube.com/@optibilan',
     ],
     contactPoint: {
       '@type': 'ContactPoint',
@@ -86,11 +83,6 @@ export function websiteJsonLd(locale: Locale) {
     url: SITE_URL,
     inLanguage: LOCALE_TAG[locale],
     publisher: { '@id': `${SITE_URL}/#organization` },
-    potentialAction: {
-      '@type': 'SearchAction',
-      target: `${SITE_URL}/?s={search_term_string}`,
-      'query-input': 'required name=search_term_string',
-    },
   };
 }
 

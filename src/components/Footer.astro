@@ -49,11 +49,11 @@ const columns = [
   },
 ];
 
+// Seuls les profils qui existent vraiment. Les autres renvoyaient un 404 :
+// un lien social mort coute plus qu'il ne rapporte, et un sameAs casse
+// brouille l'identite de la marque pour Google.
 const socialLinks = [
-  { href: 'https://twitter.com/optibilan', label: 'Twitter', icon: 'twitter' as const },
-  { href: 'https://linkedin.com/company/optibilan', label: 'LinkedIn', icon: 'linkedin' as const },
-  { href: 'https://github.com/optibilan', label: 'GitHub', icon: 'github' as const },
-  { href: 'https://youtube.com/@optibilan', label: 'YouTube', icon: 'youtube' as const },
+  { href: 'https://www.linkedin.com/company/optibilan', label: 'LinkedIn', icon: 'linkedin' as const },
 ];
 ---
 

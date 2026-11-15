@@ -9,9 +9,6 @@ const locale = localeOf(Astro.currentLocale);
 const d = t(locale);
 const lp = (href: string) => localizePath(href, locale);
 
-// Le blog n'existe qu'en francais : on n'envoie pas les visiteurs anglais vers un 404.
-const blogHref = '/blog/';
-
 const groups = productGroups(locale);
 const solutions = solutionLinks(locale);
 const mains = mainLinks(locale);
@@ -82,7 +79,7 @@ const mains = mainLinks(locale);
   </div>
 
   {/* BLOG */}
-  <a href={locale === 'en' ? blogHref : lp('/blog/')} class="px-3 py-2 text-sm font-medium text-encre/60 hover:text-encre rounded-lg transition-colors" aria-label={d.nav.blog}>
+  <a href={lp('/blog/')} class="px-3 py-2 text-sm font-medium text-encre/60 hover:text-encre rounded-lg transition-colors" aria-label={d.nav.blog}>
     {d.nav.blog}
   </a>
 

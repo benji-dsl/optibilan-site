@@ -9,16 +9,15 @@ import { localizePath } from '@/i18n/config';
 
 const lp = (href: string) => localizePath(href, 'en');
 
-const pageTitle = 'Scheduled calls & calendar - Optibilan';
-const pageDescription = 'Automatic cadence based on your plan, Slack/email/push reminders, late and no-show handling, subscribable ICS calendar, coach calendar view. Built into the coaching journal.';
-
+const pageTitle = 'Calendar and scheduled calls | Optibilan';
+const pageDescription = 'Calendar, scheduled calls and reminders for coaches and health professionals: one agenda linked to every client record.';
 const breadcrumbJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   inLanguage: 'en-US',
   itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://optibilan.com/en/' },
-    { '@type': 'ListItem', position: 2, name: 'Product', item: 'https://optibilan.com/en/produit' },
+    { '@type': 'ListItem', position: 2, name: 'Product', item: 'https://optibilan.com/en/product/overview/' },
     { '@type': 'ListItem', position: 3, name: 'Calendar & calls', item: 'https://optibilan.com/en/product/agenda' },
   ],
 };

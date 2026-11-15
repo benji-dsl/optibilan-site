@@ -745638,11 +745638,11 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 </figure>
 <h2>Synchroniser Apple Health, Oura et Garmin : une source par grandeur</h2>
 <p>Apple Health fonctionne comme une couche de regroupement plutôt que comme une source de mesures. Elle rassemble le pas, la fréquence cardiaque, le sommeil et l’activité des applications installées sur le téléphone, ce qui en fait un excellent point de convergence. La <a href="https://developer.apple.com/health-fitness/">documentation développeur Apple</a> précise que chaque type de donnée porte un identifiant distinct, ce qui permet de savoir précisément d’où vient chaque valeur. Oura, de son côté, est la source la plus riche pour le sommeil et la récupération, avec des indices de sommeil et de récupération propriétaire. Garmin reste la référence pour la charge d’entraînement et la variabilité de la fréquence cardiaque, issue de son capteur thoracique. Aucun de ces appareils ne se remplace entièrement.</p>
-<p>La règle la plus simple consiste à attribuer une source à chaque grandeur mesurée, et à ne jamais laisser deux applications écrire la même donnée. Le sommeil vient d’un seul appareil, la charge d’entraînement d’un seul autre, et les données de contexte d’une troisième. Cette répartition supprime immédiatement la majorité des incohérences, car un doublon n’est plus jamais comparé à lui-même. Les <a href="https://www.cnil.fr/fr/la-protection-des-donnees-personnelles">recommandations de la CNIL</a> sur la minimisation des données plaident dans le même sens : ne recueillir que ce qui sert l’accompagnement. Une donnée dupliquée n’apporte rien et augmente pourtant le risque de désaccord entre les valeurs affichées.</p>
+<p>La règle la plus simple consiste à attribuer une source à chaque grandeur mesurée, et à ne jamais laisser deux applications écrire la même donnée. Le sommeil vient d’un seul appareil, la charge d’entraînement d’un seul autre, et les données de contexte d’une troisième. Cette répartition supprime immédiatement la majorité des incohérences, car un doublon n’est plus jamais comparé à lui-même. Les <a href="https://www.cnil.fr/fr/comprendre-le-rgpd">recommandations de la CNIL</a> sur la minimisation des données plaident dans le même sens : ne recueillir que ce qui sert l’accompagnement. Une donnée dupliquée n’apporte rien et augmente pourtant le risque de désaccord entre les valeurs affichées.</p>
 <p>La seconde règle porte sur la fréquence de lecture. Une donnée lue à trois heures d’intervalle perd sa valeur dindsight clinique, alors qu’une donnée lue chaque semaine suffit largement à suivre une tendance. Les indicateurs sont conçus pour être lus sur des périodes longues : la variabilité cardiaque, la charge d’entraînement, la courbe de poids. Le professionnel qui regarde chaque jour des valeurs conçues pour le mensuel finit par interpréter du bruit statistique. Une lecture hebdomadaire alignée sur le bilan structures l’accompagnement et évite les interprétations excessives.</p>
 <h2>Ce que chaque plateforme apporte réellement</h2>
 <p>Chaque plateforme excelle dans un domaine distinct, et cette complémentarité est le cœur de la synchronisation. Oura fournit la meilleure lecture de la récupération et du sommeil, avec des indices propriétaires cohérents dans le temps. Garmin apporte la mesure la plus fiable de la charge d’entraînement et de la variabilité de la fréquence cardiaque, parce que le capteur thoracique est le plus précis du marché grand public. Apple Health compile l’ensemble, ce qui est utile pour les indicateurs simples : pas, calories, temps d’écran, poids. Aucun de ces trois apports ne doit être ignoré au profit d’un autre.</p>
-<p>La conséquence pratique est qu’un dossier synchronisé évite de recopier des chiffres à la main. Les indicateurs de sommeil viennent d’Oura, la charge de Garmin, et l’activité globale d’Apple Health, ce qui laisse au professionnel un temps d’analyse au lieu d’un temps de saisie. Le <a href="https://www.garmin.com/fr-FR/software/health/">logiciel de santé de Garmin</a> permet d’exporter les données dans des formats exploitables, ce qui évite les copies d’écran illisibles. Cette mécanisation libère le temps de séance, qui est la ressource la plus rare du suivi professionnel. Le patient n’a plus non plus à présenter trois applications différentes lors du bilan.</p>
+<p>La conséquence pratique est qu’un dossier synchronisé évite de recopier des chiffres à la main. Les indicateurs de sommeil viennent d’Oura, la charge de Garmin, et l’activité globale d’Apple Health, ce qui laisse au professionnel un temps d’analyse au lieu d’un temps de saisie. Le <a href="https://www.garmin.com/fr-FR/health/">logiciel de santé de Garmin</a> permet d’exporter les données dans des formats exploitables, ce qui évite les copies d’écran illisibles. Cette mécanisation libère le temps de séance, qui est la ressource la plus rare du suivi professionnel. Le patient n’a plus non plus à présenter trois applications différentes lors du bilan.</p>
 <p>Un point de vigilance concerne les unités et les conventions. Chaque plateforme n’utilise pas les mêmes seuils pour qualifier un sommeil de bon ou de mauvais, et chaque capteur applique sa propre méthode de lissage. Un comparatif direct entre un score de récupération et un score de sommeil n’a aucun sens, et le présenter au patient produit de la confusion plutôt que de la clarté. La règle est simple : on compare les valeurs d’une même plateforme dans le temps, et on ne compare jamais deux plateformes différentes entre elles. Cette discipline évite la plupart des conclusions fausses que ces tableaux de bord produisent spontanément.</p>
 <table>
 <thead>
@@ -745692,8 +745692,8 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
     tags: ['sante', 'biomarqueurs', 'donnees', 'dossier-client'],
     sources: [
       { label: 'Apple — Documentation HealthKit', url: 'https://developer.apple.com/health-fitness/' },
-      { label: 'Garmin — Logiciel de santé', url: 'https://www.garmin.com/fr-FR/software/health/' },
-      { label: 'CNIL — Protection des données de santé', url: 'https://www.cnil.fr/fr/la-protection-des-donnees-personnelles' },
+      { label: 'Garmin — Logiciel de santé', url: 'https://www.garmin.com/fr-FR/health/' },
+      { label: 'CNIL — Protection des données de santé', url: 'https://www.cnil.fr/fr/comprendre-le-rgpd' },
     ],
     faq: [
       { q: 'Peut-on synchroniser Apple Health, Oura et Garmin en même temps ?', a: 'Oui, à condition d’attribuer une source à chaque grandeur mesurée. Le sommeil vient d’Oura, la charge d’entraînement de Garmin, l’activité globale d’Apple Health. Ne laissez jamais deux applications écrire la même donnée, sinon les écarts deviennent ininterprétables.' },
@@ -753386,7 +753386,7 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
-<p>La troisième décision a été de rendre l’identité du studio visible sur chaque document et chaque espace partagé avec le client. Les obligations de mentions légales restent rappelées sur ces documents, comme l’exige le <a href="https://www.legifrance.gouv.fr/">Code général des collectivités territoriales</a> pour les structures concernées. L’espace client, les bilans, les relances automatiques et les accès de l’équipe ont été alignés sur la même charte graphique et la même structure de contenu. Un client qui ouvrait son dossier reconnaissait immédiatement la promesse faite au moment de la signature. Les mentions obligatoires restent présentes sur chaque document, conformément aux exigences de la <a href="https://www.cnil.fr/fr/la-protection-des-donnees-personnelles">CNIL</a> sur la traçabilité des données personnelles. Cette cohérence a transformé chaque point de contact en vecteur de crédibilité, au lieu d’être un simple support administratif.</p>
+<p>La troisième décision a été de rendre l’identité du studio visible sur chaque document et chaque espace partagé avec le client. Les obligations de mentions légales restent rappelées sur ces documents, comme l’exige le <a href="https://www.legifrance.gouv.fr/">Code général des collectivités territoriales</a> pour les structures concernées. L’espace client, les bilans, les relances automatiques et les accès de l’équipe ont été alignés sur la même charte graphique et la même structure de contenu. Un client qui ouvrait son dossier reconnaissait immédiatement la promesse faite au moment de la signature. Les mentions obligatoires restent présentes sur chaque document, conformément aux exigences de la <a href="https://www.cnil.fr/fr/comprendre-le-rgpd">CNIL</a> sur la traçabilité des données personnelles. Cette cohérence a transformé chaque point de contact en vecteur de crédibilité, au lieu d’être un simple support administratif.</p>
 
 
 
@@ -762858,7 +762858,7 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
-      { label: 'CNIL — La protection des données personnelles', url: 'https://www.cnil.fr/fr/la-protection-des-donnees-personnelles' },
+      { label: 'CNIL — La protection des données personnelles', url: 'https://www.cnil.fr/fr/comprendre-le-rgpd' },
 
 
 
@@ -763114,7 +763114,7 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
-      { label: 'Service-public.fr — Créer son entreprise', url: 'https://www.service-public.fr/particuliers/vosdroits/F32185' },
+      { label: 'Service-public.fr — Créer son entreprise', url: 'https://www.service-public.fr/particuliers/vosdroits' },
 
 
 
@@ -771818,7 +771818,7 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
-      { label: 'Service-public.fr — Embauche et contrat de travail', url: 'https://entreprendre.service-public.fr/vosdroits/F' },
+      { label: 'Service-public.fr — Embauche et contrat de travail', url: 'https://entreprendre.service-public.fr/vosdroits' },
 
 
 
@@ -883050,7 +883050,7 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
-<p>Le troisième piège est de négliger la conformité des données. Un espace qui centralise des mesures de santé touche à des informations sensibles, dont le traitement est encadré en France. La <a href="https://www.cnil.fr/fr/la-protection-des-donnees-personnelles">CNIL</a> rappelle que ces données doivent être hébergées dans l’Union européenne, protégées par des mesures techniques adaptées, et que le client doit pouvoir exercer ses droits. Vérifiez ces points avant de vous engager, pas après le premier signalement. Le quatrième piège est l’absence d’un support identifié pour votre équipe. Consignez enfin qui accède à quelles données, et pendant combien de temps : en cas de contrôle, c’est ce registre qui fait la différence.</p>
+<p>Le troisième piège est de négliger la conformité des données. Un espace qui centralise des mesures de santé touche à des informations sensibles, dont le traitement est encadré en France. La <a href="https://www.cnil.fr/fr/comprendre-le-rgpd">CNIL</a> rappelle que ces données doivent être hébergées dans l’Union européenne, protégées par des mesures techniques adaptées, et que le client doit pouvoir exercer ses droits. Vérifiez ces points avant de vous engager, pas après le premier signalement. Le quatrième piège est l’absence d’un support identifié pour votre équipe. Consignez enfin qui accède à quelles données, et pendant combien de temps : en cas de contrôle, c’est ce registre qui fait la différence.</p>
 
 
 
@@ -885098,7 +885098,7 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
-<p>Le cinquième piège est de signer un contrat sans lire les conditions de sortie. Vérifiez la durée, les conditions de résiliation et la réversibilité, en vous appuyant sur <a href="https://www.legifrance.gouv.fr/">Legifrance</a>, qui publie les textes qui vous engagent. Renseignez-vous aussi sur vos obligations de création d’activité auprès de <a href="https://www.service-public.fr/particuliers/vosdroits/F32185">service-public.fr</a>, selon votre statut. Un contrat clair et un statut régularisé protègent bien plus sûrement qu’une promesse commerciale enthousiaste. En résumé, la marque blanche coaching fait gagner du temps à condition que vous la mettiez en œuvre avec méthode.</p>`,
+<p>Le cinquième piège est de signer un contrat sans lire les conditions de sortie. Vérifiez la durée, les conditions de résiliation et la réversibilité, en vous appuyant sur <a href="https://www.legifrance.gouv.fr/">Legifrance</a>, qui publie les textes qui vous engagent. Renseignez-vous aussi sur vos obligations de création d’activité auprès de <a href="https://www.service-public.fr/particuliers/vosdroits">service-public.fr</a>, selon votre statut. Un contrat clair et un statut régularisé protègent bien plus sûrement qu’une promesse commerciale enthousiaste. En résumé, la marque blanche coaching fait gagner du temps à condition que vous la mettiez en œuvre avec méthode.</p>`,
 
 
 
@@ -915818,7 +915818,7 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
-      { label: 'CNIL — La protection des données personnelles', url: 'https://www.cnil.fr/fr/la-protection-des-donnees-personnelles' },
+      { label: 'CNIL — La protection des données personnelles', url: 'https://www.cnil.fr/fr/comprendre-le-rgpd' },
 
 
 
@@ -917866,7 +917866,7 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
-      { label: 'Service-public.fr — Créer son entreprise', url: 'https://www.service-public.fr/particuliers/vosdroits/F32185' },
+      { label: 'Service-public.fr — Créer son entreprise', url: 'https://www.service-public.fr/particuliers/vosdroits' },
 
 
 
@@ -947114,7 +947114,7 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
-<p>La cinquième erreur concerne la confiance affichée. Un formulaire qui réclame une adresse complète, un numéro de téléphone et des informations médicales détaillées avant tout échange décourage par principe les personnes prudentes. Commencez par ce qui est nécessaire au premier échange, et demandez le reste au moment du suivi, une fois la relation établie. Les règles de collecte de données personnelles rappellent que le recueil doit être proportionné à la finalité poursuivie. Le <a href="https://www.cnil.fr/fr/la-protection-des-donnees-personnelles">CNIL</a> insiste sur ce point, qui protège à la fois le client et le professionnel. Les obligations déontologiques publiées sur <a href="https://www.legifrance.gouv.fr/">Legifrance</a> renforcent la même exigence de transparence. Demander trop tôt revient à appliquer une contrainte administrative avant d'avoir établi la relation.</p>
+<p>La cinquième erreur concerne la confiance affichée. Un formulaire qui réclame une adresse complète, un numéro de téléphone et des informations médicales détaillées avant tout échange décourage par principe les personnes prudentes. Commencez par ce qui est nécessaire au premier échange, et demandez le reste au moment du suivi, une fois la relation établie. Les règles de collecte de données personnelles rappellent que le recueil doit être proportionné à la finalité poursuivie. Le <a href="https://www.cnil.fr/fr/comprendre-le-rgpd">CNIL</a> insiste sur ce point, qui protège à la fois le client et le professionnel. Les obligations déontologiques publiées sur <a href="https://www.legifrance.gouv.fr/">Legifrance</a> renforcent la même exigence de transparence. Demander trop tôt revient à appliquer une contrainte administrative avant d'avoir établi la relation.</p>
 
 
 
@@ -947426,7 +947426,7 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
-      { label: 'CNIL — Le recueil des données personnelles', url: 'https://www.cnil.fr/fr/la-protection-des-donnees-personnelles' },
+      { label: 'CNIL — Le recueil des données personnelles', url: 'https://www.cnil.fr/fr/comprendre-le-rgpd' },
 
 
 
@@ -952630,7 +952630,7 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
-<p>Un plan construit pour un poids et un niveau d’activité donnés ne reste valable que quelques mois. À mesure que le poids baisse et que l’activité change, les besoins évoluent, et poursuivre les mêmes quantités provoque un plateau suivi d’une reprise. La réévaluation tous les six à huit semaines ajuste l’un des leviers disponibles : le volume d’entraînement, la répartition des nutriments, ou la fréquence des repas. La <a href="https://www.santepubliquefrance.fr/">Santé publique France</a> et les <a href="https://www.legifrance.gouv.fr/">recommandations officielles</a> soulignent l’importance d’un suivi individualisé, que cette réévaluation régulière traduit concrètement. La <a href="https://www.cnil.fr/fr/la-protection-des-donnees-personnelles">CNIL</a> rappelle par ailleurs que les données de santé recueillies pendant un suivi doivent être conservées de façon limitée et documentée.</p>
+<p>Un plan construit pour un poids et un niveau d’activité donnés ne reste valable que quelques mois. À mesure que le poids baisse et que l’activité change, les besoins évoluent, et poursuivre les mêmes quantités provoque un plateau suivi d’une reprise. La réévaluation tous les six à huit semaines ajuste l’un des leviers disponibles : le volume d’entraînement, la répartition des nutriments, ou la fréquence des repas. La <a href="https://www.santepubliquefrance.fr/">Santé publique France</a> et les <a href="https://www.legifrance.gouv.fr/">recommandations officielles</a> soulignent l’importance d’un suivi individualisé, que cette réévaluation régulière traduit concrètement. La <a href="https://www.cnil.fr/fr/comprendre-le-rgpd">CNIL</a> rappelle par ailleurs que les données de santé recueillies pendant un suivi doivent être conservées de façon limitée et documentée.</p>
 
 
 
@@ -953014,7 +953014,7 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
-      { label: 'CNIL — Protection des données de santé', url: 'https://www.cnil.fr/fr/la-protection-des-donnees-personnelles' },
+      { label: 'CNIL — Protection des données de santé', url: 'https://www.cnil.fr/fr/comprendre-le-rgpd' },
 
 
 

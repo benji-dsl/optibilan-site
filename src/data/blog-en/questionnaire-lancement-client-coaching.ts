@@ -31,7 +31,7 @@ export const article: OptibilanArticle = {
 <h2>The five mistakes that discourage engaged prospects</h2>
 <p>Client onboarding starts badly when the form asks too much too early. The first mistake is requesting a document the prospect does not yet have. Demanding a complete blood panel or a precise medical report before the first exchange discourages exactly the people who are trying to inform themselves. The second mistake is asking closed-ended questions when nuance matters. A "yes or no" field on the nature of the problem produces a binary answer, hence information unusable for precise support.</p>
 <p>The third mistake, the most costly, is length. A forty-question form turns every new contact into a chore, and the drop-off rate rises as the number of fields grows. The fourth is the absence of examples in open answers: a question like "explain your situation" produces either nothing at all, or a three-page account. Offering examples of the expected answer guides the person and saves you time when deciphering it.</p>
-<p>The fifth mistake concerns the trust you display. A form that requests a full address, a phone number and detailed medical information before any exchange discourages cautious people on principle. Start with what is necessary for the first exchange, and ask for the rest at the follow-up stage, once the relationship is established. The rules on collecting personal data remind us that collection must be proportionate to the purpose pursued. The <a href="https://www.cnil.fr/fr/la-protection-des-donnees-personnelles">CNIL</a> insists on this point, which protects both the client and the professional. The ethical obligations published on <a href="https://www.legifrance.gouv.fr/">Legifrance</a> reinforce the same requirement of transparency. Asking too early amounts to applying an administrative constraint before the relationship has been established.</p>
+<p>The fifth mistake concerns the trust you display. A form that requests a full address, a phone number and detailed medical information before any exchange discourages cautious people on principle. Start with what is necessary for the first exchange, and ask for the rest at the follow-up stage, once the relationship is established. The rules on collecting personal data remind us that collection must be proportionate to the purpose pursued. The <a href="https://www.cnil.fr/fr/comprendre-le-rgpd">CNIL</a> insists on this point, which protects both the client and the professional. The ethical obligations published on <a href="https://www.legifrance.gouv.fr/">Legifrance</a> reinforce the same requirement of transparency. Asking too early amounts to applying an administrative constraint before the relationship has been established.</p>
 <table>
 <thead>
 <tr><th>Questionnaire block</th><th>Key questions</th><th>What it enables</th></tr>
@@ -70,7 +70,7 @@ export const article: OptibilanArticle = {
   seoKeywords: [`client onboarding questionnaire`, `onboarding questionnaire`, `client onboarding`],
   tags: [`onboarding`, `questionnaire`, `client-relationship`, `methodology`],
   sources: [
-    { label: `CNIL: Collecting personal data`, url: `https://www.cnil.fr/fr/la-protection-des-donnees-personnelles` },
+    { label: `CNIL: Collecting personal data`, url: `https://www.cnil.fr/fr/comprendre-le-rgpd` },
     { label: `Service-public.fr: Business obligations`, url: `https://entreprendre.service-public.fr/` },
     { label: `Legifrance: Ethical obligations`, url: `https://www.legifrance.gouv.fr/` },
   ],

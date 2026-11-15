@@ -1,7 +1,7 @@
 {
   "name": "Optibilan - Plateforme coaching santé & performance",
   "short_name": "Optibilan",
-  "description": "SaaS multi-tenant de pilotage des accompagnements : bilans, nutrition, sport, prépa mentale, santé connectée. Marque blanche, API, RGPD/HDS.",
+  "description": "SaaS multi-tenant de pilotage des accompagnements : bilans, nutrition, sport, prépa mentale, santé connectée. Marque blanche, API, hébergement EU.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#F7F5F1",
@@ -24,30 +24,39 @@
       "purpose": "any maskable"
     }
   ],
-  "categories": ["business", "health", "productivity", "medical"],
+  "categories": [
+    "business",
+    "health",
+    "productivity",
+    "medical"
+  ],
   "screenshots": [],
   "shortcuts": [
-    {
-      "name": "Connexion espace cabinet",
-      "short_name": "Connexion",
-      "description": "Accéder à son espace Optibilan",
-      "url": "https://app.optibilan.com/login",
-      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
-    },
-    {
-      "name": "Essai gratuit 30 jours",
-      "short_name": "Essai gratuit",
-      "description": "Créer son cabinet sans engagement",
-      "url": "https://app.optibilan.com/inscription",
-      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
-    },
     {
       "name": "Rejoindre Optibilan",
       "short_name": "Rejoindre",
       "description": "Voir la plateforme en 30 min",
-      "url": "/pricing",
-      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
+      "url": "/pricing/",
+      "icons": [
+        {
+          "src": "/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Contact",
+      "short_name": "Contact",
+      "description": "Écrire à l'équipe Optibilan",
+      "url": "/contact/",
+      "icons": [
+        {
+          "src": "/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
     }
   ],
-  "prefer_related_applications": false
+  "prefer_related_applications": false,
+  "id": "/"
 }

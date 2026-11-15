@@ -37,7 +37,7 @@ export const article: OptibilanArticle = {
 <img src="/images/cabinets/04-methode-equilibre-realiste.webp" alt="Team of coaches discussing a shared check-in" loading="lazy" decoding="async" width="1000" height="750" />
 <figcaption>A single studio identity, applied by every coach on the team.</figcaption>
 </figure>
-<p>The third decision was to make the studio's identity visible on every document and every space shared with the client. Legal notice requirements remain stated on these documents, as required by <a href="https://www.legifrance.gouv.fr/">the general code of local authorities</a> for the structures concerned. The client space, the check-ins, the automated reminders and the team's access were aligned on the same visual charter and the same content structure. A client opening their record immediately recognized the promise made at signature. Mandatory notices remain present on every document, in line with <a href="https://www.cnil.fr/fr/la-protection-des-donnees-personnelles">CNIL</a> requirements on the traceability of personal data. That consistency turned every point of contact into a vector of credibility, instead of a mere administrative support.</p>
+<p>The third decision was to make the studio's identity visible on every document and every space shared with the client. Legal notice requirements remain stated on these documents, as required by <a href="https://www.legifrance.gouv.fr/">the general code of local authorities</a> for the structures concerned. The client space, the check-ins, the automated reminders and the team's access were aligned on the same visual charter and the same content structure. A client opening their record immediately recognized the promise made at signature. Mandatory notices remain present on every document, in line with <a href="https://www.cnil.fr/fr/comprendre-le-rgpd">CNIL</a> requirements on the traceability of personal data. That consistency turned every point of contact into a vector of credibility, instead of a mere administrative support.</p>
 <p>This homogeneity directly eased the integration of new coaches. A practitioner discovered a logical environment, where data was always in the same place and where check-in templates were already in place. They did not have to rebuild their own working tools, which would have fragmented the client experience. The studio could therefore hire beyond its immediate circle while keeping a homogeneous quality of service.</p>
 <p>This unified identity finally strengthened the relationship with partners. Practices and care structures that refer clients to the studio receive readable reports in the studio's colors, in which their patient immediately recognizes themselves. They see that follow-up does not stop at the practice and continues in an identifiable setting. That external continuity, rare for a young studio, generated spontaneous referrals that fed growth well beyond ordinary word of mouth.</p>
 <h2>What really triggered the scaling</h2>
@@ -74,8 +74,8 @@ export const article: OptibilanArticle = {
   seoKeywords: [`coaching studio`, `client onboarding`, `check-in automation`],
   tags: [`case-study`, `studio`, `growth`, `team`],
   sources: [
-    { label: `CNIL, personal data protection`, url: `https://www.cnil.fr/fr/la-protection-des-donnees-personnelles` },
-    { label: `Service-public.fr, starting a business`, url: `https://www.service-public.fr/particuliers/vosdroits/F32185` },
+    { label: `CNIL, personal data protection`, url: `https://www.cnil.fr/fr/comprendre-le-rgpd` },
+    { label: `Service-public.fr, starting a business`, url: `https://www.service-public.fr/particuliers/vosdroits` },
     { label: `Legifrance, applicable legal texts`, url: `https://www.legifrance.gouv.fr/` },
   ],
   faq: [
