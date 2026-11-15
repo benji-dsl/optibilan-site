@@ -1,0 +1,275 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import Icon from '@/components/Icon.astro';
+import ArticleCard from '@/components/blog/ArticleCard.astro';
+import { getAllPostsEn, getRelatedPostsEn, getPostBySlugEn } from '@/utils/blog-en';
+import { imageDims } from '@/utils/images';
+
+export function getStaticPaths() {
+  return getAllPostsEn().map(p => ({ params: { slug: p.slug } }));
+}
+
+const { slug } = Astro.params;
+if (!slug || typeof slug !== 'string') throw new Error('Slug required');
+
+const post = getPostBySlugEn(slug);
+if (!post) return Astro.redirect('/en/blog/');
+
+const featuredDims = imageDims(post.featuredImage);
+const avatarDims = imageDims(post.authorAvatar);
+
+const pageTitle = post.seoTitle || `${post.title} - Optibilan blog`;
+const pageDescription = post.seoDescription || post.excerpt;
+
+const SITE_URL = 'https://optibilan.com';
+const canonical = `/en/blog/${post.slug}/`;
+
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://optibilan.com/en/' },
+    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://optibilan.com/en/blog/' },
+    { '@type': 'ListItem', position: 3, name: post.title, item: `${SITE_URL}${canonical}` },
+  ],
+};
+
+function stripHtml(h: string) {
+  return h.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+}
+const wordCount = stripHtml(post.content).split(' ').filter(Boolean).length;
+
+const blogPostingJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  '@id': `${SITE_URL}${canonical}#blogposting`,
+  headline: post.title,
+  description: pageDescription,
+  image: post.featuredImage ? post.featuredImage : `${SITE_URL}/og-blog.png`,
+  url: `${SITE_URL}${canonical}`,
+  datePublished: post.date,
+  dateModified: post.modifiedDate || post.date,
+  inLanguage: 'en-US',
+  author: { '@type': 'Person', name: post.author, url: 'https://optibilan.com/en/', ...(post.authorAvatar ? { image: post.authorAvatar.startsWith('http') ? post.authorAvatar : `${SITE_URL}${post.authorAvatar}` } : {}) },
+  publisher: { '@id': 'https://optibilan.com/#organization' },
+  mainEntityOfPage: { '@type': 'WebPage', '@id': `${SITE_URL}${canonical}` },
+  articleSection: post.categoryLabel,
+  ...(post.seoKeywords?.length ? { keywords: post.seoKeywords.join(', ') } : {})
+};
+const articleJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: post.title,
+  description: pageDescription,
+  abstract: post.excerpt,
+  ...(post.featuredImage ? { image: post.featuredImage } : {}),
+  datePublished: post.date,
+  dateModified: post.modifiedDate || post.date,
+  wordCount,
+  inLanguage: 'en-US',
+  ...(post.seoKeywords?.length ? { keywords: post.seoKeywords.join(', ') } : {}),
+  articleSection: post.categoryLabel,
+  author: { '@type': 'Person', name: post.author },
+  publisher: {
+    '@type': 'Organization',
+    name: 'Optibilan',
+    logo: { '@type': 'ImageObject', url: `${SITE_URL}/optibilan-logo.svg` },
+  },
+  mainEntityOfPage: { '@type': 'WebPage', '@id': `${SITE_URL}${canonical}` },
+};
+
+const faqJsonLd = post.faq?.length
+  ? {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      inLanguage: 'en-US',
+      mainEntity: post.faq.map(item => ({
+        '@type': 'Question',
+        name: item.q,
+        acceptedAnswer: { '@type': 'Answer', text: item.a },
+      })),
+    }
+  : null;
+
+const jsonLd = [breadcrumbJsonLd, articleJsonLd, blogPostingJsonLd, ...(faqJsonLd ? [faqJsonLd] : [])];
+
+function formatDate(dateStr: string) {
+  try { return new Date(dateStr).toLocaleDateString('en-US', { day: 'numeric', month: 'long', year: 'numeric' }); }
+  catch { return dateStr; }
+}
+
+const relatedPosts = getRelatedPostsEn(post, 3);
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  lang="en"
+  ogType="article"
+  canonical={canonical}
+  ogImage="/og/en/blog.png"
+  ogImage={post.featuredImage || '/og-blog.png'}
+  publishedTime={post.date}
+  modifiedTime={post.date}
+  author={post.author}
+  section={post.categoryLabel}
+  jsonLd={jsonLd}
+>
+  <Header />
+
+  <main>
+    <article class="section bg-blanc">
+      <div class="container max-w-3xl">
+        <header class="mb-12 text-center">
+          <div class="flex items-center justify-center gap-2 mb-4">
+            <span class="inline-flex items-center gap-1 px-3 py-1 rounded-puce text-sm font-medium" style={`color: var(--color-${post.category}); background-color: color-mix(in oklab, var(--color-${post.category}) 10%, transparent);`}>
+              {post.categoryLabel}
+            </span>
+            {post.featured && <span class="inline-flex items-center gap-1 px-3 py-1 rounded-puce text-sm font-medium bg-gold/20 text-gold">Featured</span>}
+          </div>
+          <h1 class="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-encre mb-6 leading-[1.1]">{post.title}</h1>
+          <div class="flex items-center justify-center gap-4 text-sm text-encre/60 mb-8 flex-wrap">
+            <div class="flex items-center gap-1.5">
+              {post.authorAvatar ? (
+                <img
+                  src={post.authorAvatar}
+                  alt={post.author}
+                  width={avatarDims?.width}
+                  height={avatarDims?.height}
+                  class="w-8 h-8 rounded-full"
+                  loading="lazy"
+                />
+              ) : (
+                <div class="w-8 h-8 rounded-full bg-gradient-to-br from-bleu-signature to-bleu-lecture flex items-center justify-center text-craie font-bold text-xs">
+                  {post.author.split(' ').map(n => n[0]).join('')}
+                </div>
+              )}
+              <span class="font-medium text-encre/70">{post.author}</span>
+            </div>
+            <time datetime={post.date} class="flex items-center gap-1">
+              <Icon name="calendar" class="w-3.5 h-3.5" />
+              {formatDate(post.date)}
+            </time>
+            <span class="flex items-center gap-1">
+              <Icon name="clock" class="w-3.5 h-3.5" />
+              {post.readTime} read
+            </span>
+          </div>
+        </header>
+
+        {post.featuredImage && (
+          <div class="mb-12 relative aspect-video rounded-xl overflow-hidden">
+            <img
+              src={post.featuredImage}
+              alt={post.title}
+              loading="eager"
+              fetchpriority="high"
+              {...(post.featuredImageSizes?.['full']
+                ? { width: post.featuredImageSizes['full'].width, height: post.featuredImageSizes['full'].height }
+                : (featuredDims ?? {}))}
+              class="w-full h-full object-cover"
+            />
+          </div>
+        )}
+
+        <div class="prose prose-lg prose-encre max-w-none" set:html={post.content} {...(post.noTable ? { 'data-no-table': 'true' } : {})} />
+
+        {post.sources && post.sources.length > 0 && (
+          <section aria-labelledby="sources-title" class="mt-14">
+            <h2 id="sources-title" class="font-display text-2xl font-bold text-encre mb-5">Sources</h2>
+            <ol class="space-y-2 list-decimal pl-5">
+              {post.sources.map(src => (
+                <li class="text-encre/70">
+                  <a href={src.url} target="_blank" rel="noopener nofollow">{src.label}</a>
+                </li>
+              ))}
+            </ol>
+          </section>
+        )}
+
+        {post.faq && post.faq.length > 0 && (
+          <section aria-labelledby="faq-title" class="mt-14">
+            <h2 id="faq-title" class="font-display text-2xl font-bold text-encre mb-5">Frequently asked questions</h2>
+            <div class="space-y-6">
+              {post.faq.map(item => (
+                <div class="pb-6 border-b border-encre/10 last:border-0 last:pb-0">
+                  <h3 class="font-display text-lg font-bold text-encre mb-2">{item.q}</h3>
+                  <p class="text-encre/70 leading-relaxed m-0">{item.a}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
+        <hr class="my-12 border-encre/10" />
+
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-4 p-6 rounded-xl bg-papier/50 border border-encre/10">
+          <div class="flex items-center gap-3">
+            {post.authorAvatar ? (
+              <img
+                src={post.authorAvatar}
+                alt={post.author}
+                width={avatarDims?.width}
+                height={avatarDims?.height}
+                class="w-10 h-10 rounded-full"
+                loading="lazy"
+              />
+            ) : (
+              <div class="w-10 h-10 rounded-full bg-gradient-to-br from-bleu-signature to-bleu-lecture flex items-center justify-center text-craie font-bold text-sm">
+                {post.author.split(' ').map(n => n[0]).join('')}
+              </div>
+            )}
+            <div>
+              <p class="font-medium text-encre">{post.author}</p>
+              <p class="text-xs text-encre/50">Optibilan expert</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <section class="section bg-papier" aria-labelledby="related-title">
+      <div class="container">
+        <h2 id="related-title" class="font-display text-2xl md:text-3xl font-bold text-encre mb-8 text-center">Read next</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {relatedPosts.map(related => (
+            <ArticleCard article={related} />
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style is:global>
+  .prose-encre {
+    color: var(--color-encre-texte);
+    line-height: 1.8;
+  }
+  .prose-encre h2 { font-family: var(--font-display); font-size: 1.875rem; font-weight: 700; color: var(--color-encre-texte); margin-top: 2.5rem; margin-bottom: 1rem; }
+  .prose-encre h3 { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; color: var(--color-encre-texte); margin-top: 2rem; margin-bottom: 0.75rem; }
+  .prose-encre p { margin-bottom: 1.25rem; }
+  .prose-encre ul, .prose-encre ol { margin-bottom: 1.25rem; padding-left: 1.5rem; }
+  .prose-encre li { margin-bottom: 0.5rem; }
+  .prose-encre a { color: var(--color-bleu-signature); text-decoration: underline; text-underline-offset: 2px; }
+  .prose-encre a:hover { color: var(--color-bleu-lecture); }
+  .prose-encre blockquote { border-left: 3px solid var(--color-bleu-signature); padding-left: 1rem; margin: 1.5rem 0; font-style: italic; color: var(--color-body-light); }
+  .prose-encre img { border-radius: var(--radius-card); margin: 1.5rem 0; }
+  .prose-encre strong { font-weight: 700; color: var(--color-encre-texte); }
+  .prose-encre code { background: var(--color-bleu-clair); padding: 0.125rem 0.375rem; border-radius: 4px; font-size: 0.9em; }
+  .prose-encre pre { background: var(--color-encre); color: var(--color-craie); padding: 1rem; border-radius: var(--radius-card); overflow-x: auto; margin: 1.5rem 0; }
+  .prose-encre pre code { background: none; padding: 0; color: inherit; font-size: inherit; }
+  .prose-encre table { width: 100%; border-collapse: collapse; margin: 1.75rem 0; font-size: 0.95rem; display: block; overflow-x: auto; }
+  .prose-encre th, .prose-encre td { border: 1px solid var(--color-border); padding: 0.75rem 0.9rem; text-align: left; }
+  .prose-encre thead th { background: var(--color-bleu-clair); font-weight: 700; color: var(--color-encre-texte); }
+  .prose-encre tbody tr:nth-child(even) { background: color-mix(in oklab, var(--color-papier) 60%, transparent); }
+  .prose-encre figure { margin: 2rem 0; }
+  .prose-encre figure img { margin: 0; width: 100%; height: auto; display: block; }
+  .prose-encre figcaption { margin-top: 0.6rem; font-size: 0.85rem; color: var(--color-encre-texte); opacity: 0.65; text-align: center; }
+  .line-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .prose-encre h2, .prose-encre h3 { scroll-margin-top: 6rem; }
+</style>

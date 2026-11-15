@@ -745501,7 +745501,7 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 <h2>Exercice 1 : le relevé de 90 secondes chaque matin</h2>
 
-<p>Le relevé matinal consiste à écrire en quatre-vingt-dix secondes ce qui occupe réellement l’esprit au réveil : une inquiétude, uneProjection de la journée, une tension physique, ou rien de particulier. L’objectif n’est pas d’analyser, mais de vider. Le gesture consistant à écrire transforme un état diffus en objet observable, et un objet observable peut être repris plus tard. Le sportif qui note chaque matin pendant trois semaines finit par reconnaître ses schémas, ce qui constitue la matière première du travail mental. Cette reconnaissance se fait sans effort et sans matériel, seulement avec un carnet papier. L’<a href="https://www.who.int/fr">Organisation mondiale de la santé</a> rappelle que les programmes de santé mentale doivent rester simples et applicables au quotidien, ce qui correspond exactement à ce type de protocole.</p>
+<p>Le relevé matinal consiste à écrire en quatre-vingt-dix secondes ce qui occupe réellement l’esprit au réveil : une inquiétude, une projection de la journée, une tension physique, ou rien de particulier. L’objectif n’est pas d’analyser, mais de vider. Le gesture consistant à écrire transforme un état diffus en objet observable, et un objet observable peut être repris plus tard. Le sportif qui note chaque matin pendant trois semaines finit par reconnaître ses schémas, ce qui constitue la matière première du travail mental. Cette reconnaissance se fait sans effort et sans matériel, seulement avec un carnet papier. L’<a href="https://www.who.int/fr">Organisation mondiale de la santé</a> rappelle que les programmes de santé mentale doivent rester simples et applicables au quotidien, ce qui correspond exactement à ce type de protocole.</p>
 
 <p>Le soir même, le sportif relit son relevé et y ajoute une seule phrase : ce que cette inquiétude modifie dans sa journée. Une seule phrase est une contrainte volontaire. Elle empêche le relevé de devenir un journal introspectif sans fin, et elle oblige à traduire un ressenti en conséquence concrète. Cette traduction est exactement ce qui manque au sportif qui décrit sa semaine sans jamais isoler un point d’action. Le format court fait toute la différence entre un exercice tenu et un exercice abandonné.</p>
 
@@ -745517,15 +745517,15 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 </figure>
 
-<p>La séquence de stabilisation précède immédiatement l’effort. Elle se compose d’un appui au sol, d’une respiration ralentie sur un temps précis, puis d’une visualisation courte de la séance à venir. Le total ne dépasse pas quatre minutes, et l’ordre ne change jamais. L’objectif n’est pas d’atteindre un niveau de concentration particulier, mais de créer un signal d_activity que le sportif associe au début de l’effort. Ce signal prépare le corps à la séance, et cette association prend quelques semaines à s’installer.</p>
+<p>La séquence de stabilisation précède immédiatement l’effort. Elle se compose d’un appui au sol, d’une respiration ralentie sur un temps précis, puis d’une visualisation courte de la séance à venir. Le total ne dépasse pas quatre minutes, et l’ordre ne change jamais. L’objectif n’est pas d’atteindre un niveau de concentration particulier, mais de créer un signal d’activité que le sportif associe au début de l’effort. Ce signal prépare le corps à la séance, et cette association prend quelques semaines à s’installer.</p>
 
-<p>Le professionnel doit insister sur un point souvent mal compris : la séquence ne cherche pas à supprimer l_trouble la tension. Viser le zéro tension produit l’effet inverse, parce que la tension résiduelle s’additionne à l’effort d’activation. On cherche plutôt à faire baisser le niveau de base, ce qui libère de la capacité pour l’effort. Cette nuance explique pourquoi certains protocoles fonctionnant mal sur des sportifs très pressés. Le protocole doit rester simple et reproductible, et les variables inutiles doivent être supprimées.</p>
+<p>Le professionnel doit insister sur un point souvent mal compris : la séquence ne cherche pas à supprimer la tension. Viser le zéro tension produit l’effet inverse, parce que la tension résiduelle s’additionne à l’effort d’activation. On cherche plutôt à faire baisser le niveau de base, ce qui libère de la capacité pour l’effort. Cette nuance explique pourquoi certains protocoles fonctionnant mal sur des sportifs très pressés. Le protocole doit rester simple et reproductible, et les variables inutiles doivent être supprimées.</p>
 
 <p>La mesure de cet exercice repose sur une note contrôlée de un à cinq, notée avant et après la séquence. L’objectif n’est pas d’obtenir une progression spectaculaire, mais de rendre visible une différence moyenne. Cette note fonctionne parce qu’elle est prise dans le même contexte, celui de la veille, ce qui élimine la plupart des biais de mémoire. Le professionnel se sert de la moyenne sur quatre séances pour estimer l’effet réel de la séquence. Sans mesure, l’exercice reste une pratique subjective dont on ne peut pas discuter le maintien.</p>
 
 <h2>Exercice 3 : le bilan de deux minutes en fin de semaine</h2>
 
-<p>Le bilan de fin de semaine tient en deux minutes et comporte trois colonnes : ce qui a marché, ce qui a coincé, ce qui change la semaine prochaine. Une seule ligne par colonne, pas davantage. Ce format minuscule est ce qui garantit qu’il sera réellement rempli, et donc que le rituel tiendra au-delà du premier mois. Le bilan remplit aussi une fonction de mesure_offi au professionnel : il signale les difficultés que le sportif ne mentionne jamais spontanément en séance. Un joueur qui note systématiquement un aléa professionnel sera discuté en séance avec des faits, plutôt qu’avec des impressions.</p>
+<p>Le bilan de fin de semaine tient en deux minutes et comporte trois colonnes : ce qui a marché, ce qui a coincé, ce qui change la semaine prochaine. Une seule ligne par colonne, pas davantage. Ce format minuscule est ce qui garantit qu’il sera réellement rempli, et donc que le rituel tiendra au-delà du premier mois. Le bilan remplit aussi une fonction de mesure objective pour le professionnel : il signale les difficultés que le sportif ne mentionne jamais spontanément en séance. Un joueur qui note systématiquement un aléa professionnel sera discuté en séance avec des faits, plutôt qu’avec des impressions.</p>
 
 <p>Ce troisième exercice est aussi le seul des trois qui se fasse en présence du coach, ou au minimum en retour d’un échange écrit. C’est le moment où le professionnel relie les trois exercices entre eux : un relevé matinal chargé d inquiétudes, suivi d’une séquence mal tenue, aboutit souvent à un bilan qui signale une nuit perturbée plutôt qu’un problème de motivation. Cette lecture croisée change entièrement la façon d’aborder un décrochage. On arrête alors de chercher la discipline là où il y a un problème de récupération, ce qui évite des consignes inutilement sévères.</p>
 
@@ -745563,7 +745563,7 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 <h2>Intégrer les trois exercices au suivi existant</h2>
 
-<p>L’intégration se fait en trois semaines, sansImporter d’outil supplémentaire. La première semaine, seul le relevé matinal est demandé, avec un objectif de cinq jours sur sept. La deuxième semaine, la séquence de stabilisation est ajoutée avant les séances, et le relevé continue sans changement. La troisième semaine, le bilan de fin de semaine entre en routine. Cet échelonnement évite l’effet de surcharge, qui est la première cause d’abandon des protocoles mentaux. Le professionnel ne doit surtout pas proposer les trois exercices le premier jour, car l’enthousiasme initial masque toujours l’absence de constance.</p>
+<p>L’intégration se fait en trois semaines, sans importer d’outil supplémentaire. La première semaine, seul le relevé matinal est demandé, avec un objectif de cinq jours sur sept. La deuxième semaine, la séquence de stabilisation est ajoutée avant les séances, et le relevé continue sans changement. La troisième semaine, le bilan de fin de semaine entre en routine. Cet échelonnement évite l’effet de surcharge, qui est la première cause d’abandon des protocoles mentaux. Le professionnel ne doit surtout pas proposer les trois exercices le premier jour, car l’enthousiasme initial masque toujours l’absence de constance.</p>
 
 <p>Le suivi repose sur deux indicateurs seulement : le nombre de jours consécutifs où le rituel a été tenu, et le taux de présence du bilan. Ces deux chiffres se lisent en trente secondes à chaque point mensuel, et suffisent à décider si le protocole doit être allégé ou reconduit. Un sportif qui tient le relevé mais échoue sur la séquence avant séance ne manque pas de volonté, il manque probablement de temps ou de créneau. Alléger la séquence est alors plus efficace qu’un rappel supplémentaire.</p>
 
@@ -745607,7 +745607,7 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
     faq: [
 
-      { q: 'Combien de temps faut-il pour voir les effets d’un protocole mental ?', a: 'Comptez quatre à six semaines de pratique régulière. Les premiers effets sont souventixtures perceptibles avant les résultats mesurables. Un protocole réellement tenu pendant six semaines indique ce qui fonctionne, ce qu’il faut alléger ou ce qu’il faut abandonner.' },
+      { q: 'Combien de temps faut-il pour voir les effets d’un protocole mental ?', a: 'Comptez quatre à six semaines de pratique régulière. Les premiers effets sont souvent perceptibles avant les résultats mesurables. Un protocole réellement tenu pendant six semaines indique ce qui fonctionne, ce qu’il faut alléger ou ce qu’il faut abandonner.' },
 
       { q: 'Que faire si le sportif arrête après deux semaines ?', a: 'Allégez le protocole plutôt que d’en rajouter. Gardez un seul exercice pendant deux semaines, puis ajoutez le suivant. L’abandon signale presque toujours un protocole trop lourd, pas un manque de motivation. Le professionnel doit réduire l’effort demandé avant de réclamer plus de constance.' },
 
@@ -768426,7 +768426,7 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
-<p>Le second frein, plus discret, est l’absence de documentation. Si votre méthode n’est écrite nulle part, vous êtes le seul à pouvoir l’appliquer. Dans ces conditions, aucun recrutement ne fonctionne durablement. Un nouvel intervenant découvre la pratique par imitation, comprend les règles implicites par l’expérience, et son niveau de prestation varie selon son ancienneté. Déléguer devient alors impossible, non par unwillingness mais par manque de matière. C’est le premier travail à faire, avant même de chercher un profil à recruter.</p>
+<p>Le second frein, plus discret, est l’absence de documentation. Si votre méthode n’est écrite nulle part, vous êtes le seul à pouvoir l’appliquer. Dans ces conditions, aucun recrutement ne fonctionne durablement. Un nouvel intervenant découvre la pratique par imitation, comprend les règles implicites par l’expérience, et son niveau de prestation varie selon son ancienneté. Déléguer devient alors impossible, non par manque de volonté mais par manque de matière. C’est le premier travail à faire, avant même de chercher un profil à recruter.</p>
 
 
 
@@ -947002,7 +947002,7 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
-<p>Le questionnaire de lancement client remplace un entretien de découverte mal organisé. Son objectif n’est pas de tout savoir sur la personne, mais de recueillir ce qui conditionne la pertinence du suivi. Un bon questionnaire produit trois effets : il fait gagner du temps à l Bells première séance, il qualifie les demandes hors périmètre, et il donne au professionnel une base factuelle pour formuler une première hypothèse de travail. Sans ces trois effets, le formulaire n’est qu’une formalité administrative.</p>
+<p>Le questionnaire de lancement client remplace un entretien de découverte mal organisé. Son objectif n’est pas de tout savoir sur la personne, mais de recueillir ce qui conditionne la pertinence du suivi. Un bon questionnaire produit trois effets : il fait gagner du temps dès la première séance, il qualifie les demandes hors périmètre, et il donne au professionnel une base factuelle pour formuler une première hypothèse de travail. Sans ces trois effets, le formulaire n’est qu’une formalité administrative.</p>
 
 
 
@@ -947010,7 +947010,7 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
-<p>Cette fonction de filtrage est la plus sous-estimée. Une part importante des demandes reçues ne relève pas du travail proposé, faute d’une information recueillie avant le premier rendez-vous. Poser les bonnes questions dès l’écrit évite de consacrer une heure à un dossier hors périmètre, et protège le temps des clients réellement accompagnés. Le questionnaire fait donc gagner du temps deux fois : une fois en amont, une fois pendant la séance. Le professionnel qui leestructures correctement ne se prive plus jamais de ces deux gains.</p>
+<p>Cette fonction de filtrage est la plus sous-estimée. Une part importante des demandes reçues ne relève pas du travail proposé, faute d’une information recueillie avant le premier rendez-vous. Poser les bonnes questions dès l’écrit évite de consacrer une heure à un dossier hors périmètre, et protège le temps des clients réellement accompagnés. Le questionnaire fait donc gagner du temps deux fois : une fois en amont, une fois pendant la séance. Le professionnel qui le structure correctement ne se prive plus jamais de ces deux gains.</p>
 
 
 
@@ -947042,7 +947042,7 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
-<p>L’ordre des questions n’est pas indifférent. Commencer par la raison de la démarche et l’objectif crée lBackward élan et structure la suite. Enchaîner ensuite sur le contexte donne l’impression d’un interrogatoire mais reste nécessaire au bon ciblage. Terminer par les questions pratiques sur le rythme et l’engagement obtient des réponses utiles et installe la relation de travail. Cette progression, du plus ouvert au plus concret, évite les décrochages en cours de remplissage. Le client commence par répondre à une question qui l’intéresse, ce qui crée l’élan nécessaire pour aller plus loin. La confiance s’installe dans cet ordre : on ne demande des informations détaillées qu’après avoir établi le cadre de l’échange. Un formulaire qui commence par une donnée sensible produit l’effet inverse, et beaucoup de personnes ne vont pas au bout.</p>
+<p>L’ordre des questions n’est pas indifférent. Commencer par la raison de la démarche et l’objectif crée l’élan et structure la suite. Enchaîner ensuite sur le contexte donne l’impression d’un interrogatoire mais reste nécessaire au bon ciblage. Terminer par les questions pratiques sur le rythme et l’engagement obtient des réponses utiles et installe la relation de travail. Cette progression, du plus ouvert au plus concret, évite les décrochages en cours de remplissage. Le client commence par répondre à une question qui l’intéresse, ce qui crée l’élan nécessaire pour aller plus loin. La confiance s’installe dans cet ordre : on ne demande des informations détaillées qu’après avoir établi le cadre de l’échange. Un formulaire qui commence par une donnée sensible produit l’effet inverse, et beaucoup de personnes ne vont pas au bout.</p>
 
 
 
@@ -947274,7 +947274,7 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
-<figcaption>Les réponses deviennent la trame de la première séance, sans temps perdu enroduction.</figcaption>
+<figcaption>Les réponses deviennent la trame de la première séance, sans temps perdu en introduction.</figcaption>
 
 
 
@@ -947506,7 +947506,7 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
-      { q: 'Que demander pour filtrer les demandes hors périmètre ?', a: 'Posez en tête du formulaire une question ouverte sur la demande et l’objectif visé, suivie d’une question sur le problème déjà rencontré. Ces deux réponses permettent de qualifier avant d्ध investir du temps en séance.' },
+      { q: 'Que demander pour filtrer les demandes hors périmètre ?', a: 'Posez en tête du formulaire une question ouverte sur la demande et l’objectif visé, suivie d’une question sur le problème déjà rencontré. Ces deux réponses permettent de qualifier avant d’investir du temps en séance.' },
 
 
 

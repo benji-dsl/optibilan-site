@@ -1,5 +1,6 @@
 ---
 import Icon from '../Icon.astro';
+import { localeOf } from '@/i18n/config';
 
 interface Props {
   currentPage: number;
@@ -9,7 +10,10 @@ interface Props {
   label?: string;
 }
 
+const locale = localeOf(Astro.currentLocale);
 const { currentPage, totalPages, baseUrl, label = 'Pagination' } = Astro.props;
+const prevLabel = locale === 'en' ? 'Previous' : 'Précédent';
+const nextLabel = locale === 'en' ? 'Next' : 'Suivant';
 
 const pageUrl = (n: number) => (n === 1 ? baseUrl : `${baseUrl}page/${n}/`);
 
@@ -25,7 +29,7 @@ const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
           rel="prev"
           class="btn btn-secondary text-sm px-4 py-2 inline-flex items-center gap-2"
         >
-          <Icon name="arrowRight" class="w-4 h-4 rotate-180" /> Précédent
+          <Icon name="arrowRight" class="w-4 h-4 rotate-180" /> {prevLabel}
         </a>
       )}
 
@@ -53,7 +57,7 @@ const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
           rel="next"
           class="btn btn-secondary text-sm px-4 py-2 inline-flex items-center gap-2"
         >
-          Suivant <Icon name="arrowRight" class="w-4 h-4" />
+          {nextLabel} <Icon name="arrowRight" class="w-4 h-4" />
         </a>
       )}
     </nav>

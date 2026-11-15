@@ -1,3 +1,5 @@
+import { blogRoutesEn } from '@/utils/blog-en';
+
 /**
  * Chemins qui existent en anglais (forme canonique FR, sans prefixe).
  *
@@ -7,6 +9,7 @@
  *   3. scripts/check-i18n.mjs -> verifie que la liste et le dossier dist/en concordent
  *
  * Ajouter une page anglaise = creer le fichier dans src/pages/en/ ET l'ajouter ici.
+ * Le blog fait exception : ses routes sont calculees depuis src/data/blog-en.
  */
 export const EN_ROUTES: string[] = [
   '/',
@@ -41,6 +44,8 @@ export const EN_ROUTES: string[] = [
   '/checkout/solo/',
   '/checkout/studio/',
   '/checkout/cabinet/',
+  // Le blog anglais : une route par article, par page de pagination et par categorie.
+  ...blogRoutesEn(),
 ];
 
 const EN_ROUTE_SET = new Set(EN_ROUTES.map((route) => route.replace(/\/?$/, '/')));

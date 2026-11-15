@@ -2,10 +2,11 @@
 /**
  * Controle i18n de la vitrine, apres `npm run build`.
  *
- * 1. Chaque route de EN_ROUTES a bien un fichier dans dist/en.
+ * 1. Chaque page anglaise a une jumelle francaise (pas de page orpheline).
  * 2. Chaque page anglaise a : lang="en", canonical /en/, les 3 hreflang, og:locale en_US.
- * 3. Reciprocite : la page francaise equivalente annonce bien hreflang="en".
- * 4. Aucun lien interne casse (FR et EN), aucun lien anglais qui sort vers un 404.
+ * 3. Reciprocite : la page francaise annonce hreflang="en" vers sa jumelle, et
+ *    une page sans traduction n'annonce AUCUNE version anglaise (pas de soft 404).
+ * 4. Aucun lien interne casse (FR et EN).
  * 5. Aucun reste de francais visible dans les pages anglaises (heuristique).
  *
  * Usage : node scripts/check-i18n.mjs
@@ -25,13 +26,6 @@ if (!existsSync(DIST)) {
   console.error('dist/ introuvable : lance `npm run build` avant ce controle.');
   process.exit(1);
 }
-
-/* ------------------------------------------------------------------ */
-/* Liste des routes anglaises declarees                                 */
-/* ------------------------------------------------------------------ */
-const routesSource = readFileSync(join(ROOT, 'src/i18n/routes.ts'), 'utf8');
-const declared = [...routesSource.matchAll(/^\s*'([^']+)',/gm)].map((m) => m[1]);
-const declaredSet = new Set(declared);
 
 /* ------------------------------------------------------------------ */
 /* Inventaire du build                                                  */
@@ -58,30 +52,24 @@ function routeOf(file) {
 
 const builtRoutes = new Map(htmlFiles.map((f) => [routeOf(f), f]));
 
-/* ------------------------------------------------------------------ */
-/* 1. Les routes declarees existent, et inversement                     */
-/* ------------------------------------------------------------------ */
-for (const route of declared) {
-  const enRoute = route === '/' ? '/en/' : `/en${route}`;
-  if (!builtRoutes.has(enRoute)) {
-    errors.push(`EN_ROUTES declare ${route} mais ${enRoute} n'a pas ete genere.`);
-  }
-}
+const frRoutes = [...builtRoutes.keys()].filter((r) => !r.startsWith('/en/'));
+const enRoutes = [...builtRoutes.keys()].filter((r) => r.startsWith('/en/'));
 
-for (const [route, file] of builtRoutes) {
-  if (!route.startsWith('/en/')) continue;
-  if (route === '/en/404/') continue;
-  const canonical = route.replace(/^\/en/, '') || '/';
-  if (!declaredSet.has(canonical)) {
-    errors.push(`${relative(ROOT, file)} existe mais ${canonical} manque dans EN_ROUTES.`);
+/* ------------------------------------------------------------------ */
+/* 1. Toute page anglaise a une jumelle francaise                       */
+/* ------------------------------------------------------------------ */
+for (const route of enRoutes) {
+  const frCounterpart = route.replace(/^\/en/, '') || '/';
+  if (!builtRoutes.has(frCounterpart)) {
+    errors.push(`${route} n'a pas de jumelle francaise (${frCounterpart}).`);
   }
 }
 
 /* ------------------------------------------------------------------ */
-/* 2 + 3 + 4. Contenu des pages                                         */
+/* 2 + 4 + 5. Metadonnees, liens, langue                                */
 /* ------------------------------------------------------------------ */
 const FRENCH_MARKERS =
-  /\b(votre|vous|nous|pour|avec|dans|cette|être|déjà|gratuit|essai|tarifs|rejoindre|découvrir|en savoir plus|fonctionnalités|confidentialité|connexion|gratuits|chaque|aussi|depuis|entre|sans|plus|sur|une|les|des|est|sont)\b/gi;
+  /\b(votre|vous|nous|pour|avec|dans|cette|être|déjà|gratuit|essai|rejoindre|découvrir|fonctionnalités|confidentialité|connexion|chaque|depuis)\b/gi;
 
 function stripHtml(html) {
   return html
@@ -93,7 +81,7 @@ function stripHtml(html) {
     .replace(/\s+/g, ' ');
 }
 
-function checkLink(fromRoute, href, file) {
+function checkLink(fromRoute, href) {
   if (!href) return;
   if (/^(mailto:|tel:|javascript:|data:|https?:|\/\/|#)/i.test(href)) return;
   if (!href.startsWith('/')) return;
@@ -111,25 +99,19 @@ function checkLink(fromRoute, href, file) {
 
   if (!candidates.some((c) => existsSync(c))) {
     errors.push(`${fromRoute} -> lien interne casse : ${href}`);
-    return;
   }
-
-  // Un lien vers une page HTML existe : on verifie qu'il ne sort pas du perimetre i18n.
-  if (file.startsWith('/en/') && !file.startsWith('/en/')) return;
 }
 
 for (const [route, filePath] of builtRoutes) {
   const html = readFileSync(filePath, 'utf8');
   const isEn = route.startsWith('/en/');
 
-  // 4. liens internes
   for (const match of html.matchAll(/href="([^"]+)"/g)) {
-    checkLink(route, match[1], filePath);
+    checkLink(route, match[1]);
   }
 
   if (!isEn) continue;
 
-  // 2. metadonnees de la page anglaise
   if (!/<html[^>]+lang="en"/.test(html)) {
     errors.push(`${route} : <html lang="en"> absent.`);
   }
@@ -154,15 +136,11 @@ for (const [route, filePath] of builtRoutes) {
     errors.push(`${route} : og:locale en_US absent.`);
   }
 
-  // 5. restes de francais visibles
   const text = stripHtml(html);
-  const markers = text.match(FRENCH_MARKERS) || [];
-  const strongMarkers = text.match(
-    /\b(votre|vous|nous|pour|avec|dans|cette|être|déjà|gratuit|essai|rejoindre|découvrir|fonctionnalités|confidentialité|connexion|chaque|depuis)\b/gi
-  ) || [];
+  const strongMarkers = text.match(FRENCH_MARKERS) || [];
   if (strongMarkers.length >= 4) {
     warnings.push(
-      `${route} : ${strongMarkers.length} mots francais detectes (${[...new Set(strongMarkers.map((m) => m.toLowerCase()))].slice(0, 8).join(', ')}) | ${markers.length} marqueurs au total.`
+      `${route} : ${strongMarkers.length} mots francais detectes (${[...new Set(strongMarkers.map((m) => m.toLowerCase()))].slice(0, 8).join(', ')}).`
     );
   }
   if (text.includes('—')) {
@@ -171,29 +149,28 @@ for (const [route, filePath] of builtRoutes) {
 }
 
 /* ------------------------------------------------------------------ */
-/* Reciprocite : la page FR annonce la version EN                       */
+/* 3. Reciprocite, dans les deux sens                                   */
 /* ------------------------------------------------------------------ */
-for (const route of declared) {
-  const frRoute = route;
-  const frFile = builtRoutes.get(frRoute);
-  if (!frFile) {
-    errors.push(`Page francaise manquante pour ${route}.`);
-    continue;
-  }
-  const html = readFileSync(frFile, 'utf8');
-  const enRoute = route === '/' ? '/en/' : `/en${route}`;
-  if (!new RegExp(`hreflang="en" href="${SITE}${enRoute}"`).test(html)) {
-    errors.push(`${frRoute} : hreflang="en" ne pointe pas vers ${SITE}${enRoute}.`);
+const enByFrRoute = new Map(enRoutes.map((route) => [route.replace(/^\/en/, '') || '/', route]));
+
+for (const [frRoute, file] of builtRoutes) {
+  if (frRoute.startsWith('/en/')) continue;
+  const html = readFileSync(file, 'utf8');
+  const enRoute = enByFrRoute.get(frRoute);
+
+  if (enRoute) {
+    if (!new RegExp(`<link rel="alternate" hreflang="en" href="${SITE}${enRoute}"`).test(html)) {
+      errors.push(`${frRoute} : hreflang="en" ne pointe pas vers ${SITE}${enRoute}.`);
+    }
+  } else if (/<link rel="alternate" hreflang="en"/.test(html)) {
+    errors.push(`${frRoute} : annonce une version anglaise qui n'existe pas.`);
   }
 }
 
 /* ------------------------------------------------------------------ */
 /* Rapport                                                              */
 /* ------------------------------------------------------------------ */
-const enCount = [...builtRoutes.keys()].filter((r) => r.startsWith('/en/')).length;
-
-console.log(`Pages generees : ${builtRoutes.size} (dont ${enCount} anglaises)`);
-console.log(`Routes anglaises declarees : ${declared.length}`);
+console.log(`Pages generees : ${builtRoutes.size} (dont ${enRoutes.length} anglaises, ${frRoutes.length} francaises)`);
 
 if (warnings.length) {
   console.log(`\n${warnings.length} avertissement(s) :`);
@@ -202,7 +179,8 @@ if (warnings.length) {
 
 if (errors.length) {
   console.log(`\n${errors.length} erreur(s) :`);
-  for (const e of errors) console.log(`  x ${e}`);
+  for (const e of errors.slice(0, 60)) console.log(`  x ${e}`);
+  if (errors.length > 60) console.log(`  ... et ${errors.length - 60} autres.`);
   process.exit(1);
 }
 

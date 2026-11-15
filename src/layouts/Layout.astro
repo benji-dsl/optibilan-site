@@ -38,7 +38,7 @@ const {
   description,
   lang,
   canonical,
-  ogImage = '/og-default.png',
+  ogImage,
   ogType = 'website',
   noIndex = false,
   jsonLd,
@@ -69,7 +69,10 @@ const enUrl = `${SITE_URL}${localizePath(currentPath, 'en')}`;
 const translated = locale === 'en' || hasEnglishVersion(currentPath);
 const alternateLocale = otherLocale(locale);
 
-const fullOgImage = ogImage.startsWith('http') ? ogImage : `${SITE_URL}${ogImage}`;
+// Image sociale par defaut : celle de la langue de la page.
+const ogImageResolved =
+  ogImage ?? (locale === 'en' ? '/og/en/default.png' : '/og-default.png');
+const fullOgImage = ogImageResolved.startsWith('http') ? ogImageResolved : `${SITE_URL}${ogImageResolved}`;
 const toJsonLd = (obj) => JSON.stringify(obj).replace(/</g, '\\u003c');
 
 // GA4 Measurement ID - replace with actual ID when available
