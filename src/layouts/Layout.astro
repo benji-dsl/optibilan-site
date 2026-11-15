@@ -194,6 +194,8 @@ import '../styles/global.css';
     </script>
   </head>
   <body class="font-sans antialiased bg-papier text-encre">
+    <!-- Lien d'evitement : premier element focusable, visible seulement au clavier -->
+    <a href="#contenu" class="skip-link">{locale === 'en' ? 'Skip to content' : 'Aller au contenu'}</a>
     <slot />
   </body>
 </html>
