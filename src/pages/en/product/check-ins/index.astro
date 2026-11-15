@@ -1,0 +1,195 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import Hero from '@/components/Hero.astro';
+import CTA from '@/components/CTA.astro';
+import Icon from '@/components/Icon.astro';
+import { localizePath } from '@/i18n/config';
+
+const lp = (href: string) => localizePath(href, 'en');
+
+const pageTitle = 'Check-ins & progress - Optibilan';
+const pageDescription = 'Understand what changes. Without rebuilding your client history. Check-ins, measurements, photos, how they feel and habits in one timeline.';
+
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  inLanguage: 'en-US',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://optibilan.com/en/' },
+    { '@type': 'ListItem', position: 2, name: 'Product', item: 'https://optibilan.com/en/product' },
+    { '@type': 'ListItem', position: 3, name: 'Check-ins & progress', item: 'https://optibilan.com/en/product/check-ins' },
+  ],
+};
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  lang="en"
+  canonical="/en/product/check-ins/"
+  ogImage="/og-checkins.png"
+  jsonLd={breadcrumbJsonLd}
+>
+  <Header />
+
+  <main>
+    <Hero
+      title="Understand what changes.
+Without rebuilding your client history."
+      subtitle="Check-ins, measurements, photos, how they feel and habits in one timeline."
+      primaryCTA={{ href: '/pricing/', label: 'Join Optibilan' }}
+      secondaryCTA={{ href: '/checkout/solo/', label: 'Try Optibilan' }}
+    />
+
+    <section class="section bg-blanc" aria-labelledby="create-title">
+      <div class="container">
+        <header class="mb-16">
+          <h2 id="create-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+            Build your own check-ins
+          </h2>
+          <p class="text-lg text-encre/60 max-w-2xl mx-auto">
+            A visual builder to define exactly what you track. Weight, measurements, before/after photos, how they feel, sleep, hunger, motivation, steps, free text. Required fields, order, conditionals: you configure it.
+          </p>
+        </header>
+
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <h3 class="font-display text-2xl font-bold text-encre mb-4">30+ fields available, granular activation</h3>
+            <ul class="space-y-3 text-encre/60 mb-8">
+              <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-bleu-signature flex-shrink-0 mt-0.5" /> Weight, measurements, photos, overall feeling</li>
+              <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-bleu-signature flex-shrink-0 mt-0.5" /> Sleep (quality, duration), hunger, motivation, steps</li>
+              <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-bleu-signature flex-shrink-0 mt-0.5" /> Free text for your own specifics</li>
+              <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-bleu-signature flex-shrink-0 mt-0.5" /> Conditional questionnaires based on the goal</li>
+            </ul>
+            <p class="text-sm text-encre/50">Automatic pre-fill from the last check-in. Mobile submission in under 2 minutes.</p>
+          </div>
+          <div class="aspect-video rounded-xl border border-encre/10 bg-encre/5 overflow-hidden relative shadow-soft">
+            <img src="/images/product/bilans-progression.webp" alt="Screenshot of the Optibilan interface: client check-ins and a progress curve over time" class="w-full h-full object-cover" loading="lazy" width="575" height="273" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-papier" aria-labelledby="visualize-title">
+      <div class="container">
+        <header class="mb-16">
+          <h2 id="visualize-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+            Visualize progress
+          </h2>
+          <p class="text-lg text-encre/60 max-w-2xl mx-auto">
+            Weight and measurement curves, composite progress score. Time zooms (week, month, quarter, year). Automatic correlations: sleep vs hunger, load vs recovery.
+          </p>
+        </header>
+
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div class="aspect-video rounded-xl border border-encre/10 bg-encre/5 overflow-hidden relative shadow-soft">
+            <img src="/images/product/medecins/04-medecin-femme-analyse-dossier.webp" alt="Female doctor reviewing a patient's data and progress" class="w-full h-full object-cover" loading="lazy" width="1000" height="667" />
+          </div>
+          <div>
+            <h3 class="font-display text-2xl font-bold text-encre mb-4">The whole history, readable at a glance</h3>
+            <ul class="space-y-3 text-encre/60 mb-8">
+              <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-bleu-signature flex-shrink-0 mt-0.5" /> Synchronized multi-series curves (weight + measurements + sleep)</li>
+              <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-bleu-signature flex-shrink-0 mt-0.5" /> Configurable weighted progress score</li>
+              <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-bleu-signature flex-shrink-0 mt-0.5" /> Automatic detection of plateaus and regressions</li>
+              <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-bleu-signature flex-shrink-0 mt-0.5" /> PDF export in your colors for the client</li>
+            </ul>
+            <p class="text-sm text-encre/50">Before/after photos with automatic visual alignment. Automatic cross-correlations.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-blanc" aria-labelledby="spotlight-title">
+      <div class="container">
+        <header class="mb-16">
+          <h2 id="spotlight-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+            Spot what deserves your attention
+          </h2>
+          <p class="text-lg text-encre/60 max-w-2xl mx-auto">
+            Optibilan surfaces changes and information to review: stagnation, drop in motivation, declining adherence, disengagement. You step in at the right time, for the right client.
+          </p>
+        </header>
+
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <h3 class="font-display text-2xl font-bold text-encre mb-4">Actionable alerts, not noise</h3>
+            <ul class="space-y-3 text-encre/60 mb-8">
+              <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-bleu-signature flex-shrink-0 mt-0.5" /> Prolonged stagnation, declining motivation, low adherence</li>
+              <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-bleu-signature flex-shrink-0 mt-0.5" /> Thresholds customizable per client or global</li>
+              <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-bleu-signature flex-shrink-0 mt-0.5" /> History of handled and open alerts</li>
+              <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-bleu-signature flex-shrink-0 mt-0.5" /> Multi-factor correlation (load ↑ + sleep ↓ = watch)</li>
+            </ul>
+            <p class="text-sm text-encre/50">Real-time alerts in your cockpit. You stay in control of the action to take.</p>
+          </div>
+          <div class="aspect-video rounded-xl border border-encre/10 bg-encre/5 overflow-hidden relative shadow-soft">
+            <img src="/images/product/medecins/02-medecin-femme-consultation-bilan.webp" alt="Female doctor talking with her patient about a follow-up check-in" class="w-full h-full object-cover" loading="lazy" width="1000" height="667" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-papier" aria-labelledby="share-title">
+      <div class="container">
+        <header class="mb-16">
+          <h2 id="share-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+            Share a clear check-in with the client
+          </h2>
+          <p class="text-lg text-encre/60 max-w-2xl mx-auto">
+            Auto-generated monthly or quarterly report: charts, photos, coach comments, next steps. The client gets a secure link, no login needed. PDF version in your colors for printing.
+          </p>
+        </header>
+
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div class="aspect-video rounded-xl border border-encre/10 bg-encre/5 overflow-hidden relative shadow-soft">
+            <img src="/images/product/medecins/01-medecin-generaliste-consultation.webp" alt="General practitioner sharing a clear follow-up check-in with his patient" class="w-full h-full object-cover" loading="lazy" width="1000" height="667" />
+          </div>
+          <div>
+            <h3 class="font-display text-2xl font-bold text-encre mb-4">Your brand, your report</h3>
+            <ul class="space-y-3 text-encre/60 mb-8">
+              <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-bleu-signature flex-shrink-0 mt-0.5" /> Automatic branding (logo, colors, domain)</li>
+              <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-bleu-signature flex-shrink-0 mt-0.5" /> Configurable level of detail (full / summary)</li>
+              <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-bleu-signature flex-shrink-0 mt-0.5" /> Coach comments visible or private</li>
+              <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-bleu-signature flex-shrink-0 mt-0.5" /> Sharing by link, email or client portal</li>
+            </ul>
+            <p class="text-sm text-encre/50">Automatic reminders and follow-ups. You approve before sending, and add a comment if needed.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-papier" aria-labelledby="checkins-visual-title">
+      <div class="container">
+        <header class="text-center max-w-3xl mx-auto mb-12">
+          <h2 id="checkins-visual-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+            Check-ins and progress, concrete in the interface
+          </h2>
+          <p class="text-lg text-encre/60">
+            Timeline, curves and history together: no more rebuilding the follow-up by hand.
+          </p>
+        </header>
+        <div class="aspect-video max-w-4xl mx-auto rounded-xl border border-encre/10 bg-blanc overflow-hidden shadow-xl">
+          <img
+            src="/images/product/bilans-progression.webp"
+            alt="Screenshot of the Optibilan interface: client check-ins and a progress curve over time"
+            width="575"
+            height="273"
+            class="w-full h-full object-cover"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </section>
+
+    <CTA
+      title="Ready to see check-ins in action?"
+      subtitle="30 minutes to see how to centralize your client tracking."
+      primaryCTA={{ href: '/pricing/', label: 'Join Optibilan' }}
+      secondaryCTA={{ href: '/checkout/solo/', label: 'Try Optibilan' }}
+      variant="primary"
+    />
+  </main>
+
+  <Footer />
+</Layout>

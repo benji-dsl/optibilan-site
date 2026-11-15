@@ -1,0 +1,206 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import Hero from '@/components/Hero.astro';
+import CTA from '@/components/CTA.astro';
+import Icon from '@/components/Icon.astro';
+import { localizePath } from '@/i18n/config';
+
+const lp = (href: string) => localizePath(href, 'en');
+
+const pageTitle = 'Mental Preparation - Optibilan';
+const pageDescription = 'Bring mental preparation into your support. Cross-cutting exercises, resources, call log, adherence tracking. Strict data partitioning.';
+
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  inLanguage: 'en-US',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://optibilan.com/en/' },
+    { '@type': 'ListItem', position: 2, name: 'Product', item: 'https://optibilan.com/en/product' },
+    { '@type': 'ListItem', position: 3, name: 'Mental Preparation', item: 'https://optibilan.com/en/product/mental' },
+  ],
+};
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  lang="en"
+  canonical="/en/product/mental/"
+  ogImage="/og-mental.png"
+  jsonLd={breadcrumbJsonLd}
+>
+  <Header />
+
+  <main>
+    <Hero
+      title="Bring mental preparation
+into your support."
+      subtitle="Cross-cutting exercises, resources, call log, adherence. Strict data partitioning. Mental preparation, structured."
+      primaryCTA={{ href: '/pricing/', label: 'Join Optibilan' }}
+      secondaryCTA={{ href: '/checkout/solo/', label: 'Try Optibilan' }}
+    />
+
+    <section class="section bg-gradient-to-br from-encre/5 via-papier to-indigo/5 rounded-card-lg relative overflow-hidden" aria-labelledby="disclaimer-title">
+      <div class="container relative py-6 px-6 md:py-8 md:px-8">
+        <div class="flex items-start gap-4 p-4 bg-encre/5 rounded-lg border border-encre/10">
+          <Icon name="shield" class="w-6 h-6 text-encre/50 flex-shrink-0 mt-0.5" />
+          <div>
+            <h2 id="disclaimer-title" class="font-semibold text-encre mb-1">Ethical framework & confidentiality</h2>
+            <p class="text-encre/70 text-sm">
+              <strong>Mental preparation is not psychotherapy.</strong> Optibilan provides an organizational framework for qualified professionals.<br>
+              <strong>Strict partitioning:</strong> the sports coach does not see mental content. The mental preparation coach decides what the client shares. Optibilan does not make a diagnosis.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-blanc" aria-labelledby="problem-title">
+      <div class="container max-w-3xl">
+        <header class="mb-12">
+          <h2 id="problem-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+            The problem: mental work buried in forgotten PDFs
+          </h2>
+          <p class="text-lg text-encre/60">
+            Exercises in Word, videos on YouTube, call log in a notebook, adherence unknown…<br>
+            When exercises and feedback are scattered, tracking becomes hard over time.
+          </p>
+        
+        <div class="aspect-video rounded-xl border border-encre/10 bg-encre/5 overflow-hidden relative shadow-soft mb-12">
+          <img
+            src="/images/product/medecins/11-preparateur-mental-entretien.webp"
+            alt="Mental preparation coach in a session with an athlete"
+            class="w-full h-full object-cover"
+            loading="lazy" width="1000" height="667" />
+        </div></header>
+
+        <div class="space-y-8">
+          {[
+            {
+              title: 'Reusable cross-cutting exercises',
+              desc: 'Visualization, cardiac coherence, grounding, pre-performance routine, body scan, box breathing. Guided audio streaming, PDF sheet, duration, level. Personal library + Optibilan templates.',
+              features: [
+                '6 categories: visualization, breathing, grounding, routine, scan, coherence',
+                'Secure guided audio streaming',
+                'PDF sheet: instructions, variations',
+                'Templates by sport / goal',
+              ],
+              icon: 'brain',
+            },
+            {
+              title: 'Secure resource library',
+              desc: 'Videos, PDFs, guided audio. Secure streaming (no download, no sharing). Organized by folders and tags. Selective client sharing (level 1/2/3). Resource versioning.',
+              features: [
+                'Secure video and audio streaming',
+                'Folders + tags + search',
+                'Client sharing: 3 visibility levels',
+                'Resource versioning',
+              ],
+              icon: 'document',
+            },
+            {
+              title: 'Dedicated call log',
+              desc: 'Structured report: date, duration, session goals, key points, action plan, next deadline. Two-way link with the coaching journal (if authorized). Full history, full-text search, PDF export for the athlete or the staff.',
+              features: [
+                'Structure: goals → action → next appointment',
+                'Two-way link with the coaching journal',
+                'Full-text history search',
+                'Branded PDF export',
+              ],
+              icon: 'calendar',
+            },
+            {
+              title: 'Techniques: breathing, visualization, routine',
+              desc: 'Cardiac coherence (5-5-5 real time), box breathing (4-4-4-4), body scan, pre-sleep routine, pre-competition routine. Visual timer + audio + vibration.',
+              features: [
+                'Cardiac coherence: visual + audio + HRV',
+                'Guided 4-4-4-4 box breathing',
+                'Guided 5-20 min body scan',
+                'Routines: pre-competition, pre-sleep, post-injury',
+              ],
+              icon: 'zap',
+            },
+            {
+              title: 'Mental adherence tracking and alerts',
+              desc: 'Frequency, duration, pre and post feelings (1-10 scale), correlation with performance (if sports data is available). Alerts: frequency drop > 50%, pre feelings < 4/10, no session for more than 14 days. The mental preparation coach steps in before the client drops out.',
+              features: [
+                'Metrics: frequency, duration, feelings, consistency',
+                'Performance correlation (sports data when available)',
+                'Alerts: frequency ↓, feelings ↓, inactivity',
+                'Automatic monthly adherence report',
+              ],
+              icon: 'chart',
+            },
+            {
+              title: 'Confidentiality and permissions (the heart of the module)',
+              desc: 'Strict data separation: the sports coach does NOT see mental content. The mental preparation coach decides what the client shares (3 visibility levels). Dedicated access, reinforced encryption, dedicated traceability.',
+              features: [
+                'Mental preparation role: strict scope',
+                'Client sharing: 3 visibility levels',
+                'Reinforced encryption + dedicated traceability',
+                'Dedicated mental audit trail',
+              ],
+              icon: 'lock',
+            },
+          ].map((section, i) => (
+            <article id={section.icon} class="py-8 border-t border-encre/10 first:border-0">
+              <header class="flex items-center gap-4 mb-6">
+                <div class="icon-wrapper flex-shrink-0" aria-hidden="true" style="background-color: var(--color-bleu-clair);">
+                  <Icon name={section.icon} class="w-7 h-7 text-indigo" />
+                </div>
+                <div>
+                  <h3 class="font-display text-2xl font-bold text-encre">{section.title}</h3>
+                  <p class="text-encre/60 mt-1">{section.desc}</p>
+                </div>
+              </header>
+              <ul class="space-y-2 text-encre/60">
+                {section.features.map(f => (
+                  <li key={f} class="flex items-start gap-2">
+                    <Icon name="check" class="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5" />
+                    <span>{f}</span>
+                  </li>
+                ))}
+              </ul>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-papier" aria-labelledby="mental-visual-title">
+      <div class="container">
+        <header class="text-center max-w-3xl mx-auto mb-12">
+          <h2 id="mental-visual-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+            Mental follow-up, concrete in the interface
+          </h2>
+          <p class="text-lg text-encre/60">
+            Exercises, call log and adherence, structured in the same space as your other follow-ups.
+          </p>
+        </header>
+        <div class="aspect-video max-w-4xl mx-auto rounded-xl border border-encre/10 bg-blanc overflow-hidden shadow-xl">
+          <img
+            src="/images/product/preparation-mentale.webp"
+            alt="Optibilan interface screenshot for mental preparation: tracking exercises and athlete adherence"
+            width="558"
+            height="273"
+            class="w-full h-full object-cover"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </section>
+
+    <CTA
+      title="Ready to structure your athletes' mental follow-up?"
+      subtitle="30 minutes to see how to organize exercises, resources and adherence."
+      primaryCTA={{ href: '/pricing/', label: 'Join Optibilan' }}
+      secondaryCTA={{ href: '/checkout/solo/', label: 'Try Optibilan' }}
+      variant="primary"
+    />
+  </main>
+
+  <Footer />
+</Layout>

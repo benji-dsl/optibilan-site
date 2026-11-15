@@ -1,35 +1,53 @@
 ---
 import Icon from './Icon.astro';
+import { localeOf, localizePath } from '../i18n/config';
+import { t } from '../i18n/ui';
 
-const footerLinks = {
-  produit: [
-    { href: '/product/overview/', label: 'Fonctionnalités' },
-    { href: '/product/check-ins/', label: 'Bilans' },
-    { href: '/product/nutrition/', label: 'Nutrition' },
-    { href: '/product/training/', label: 'Sport' },
-    { href: '/product/health/', label: 'Santé' },
-    { href: '/product/white-label/', label: 'Marque blanche' },
-    { href: '/docs/', label: 'Documentation API' },
-    { href: '/newsletter/', label: 'Newsletter' },
-  ],
-  solutions: [
-    { href: '/solutions/', label: 'Solutions' },
-    { href: '/solutions/coaches/', label: 'Indépendants' },
-    { href: '/solutions/nutrition/', label: 'Nutritionnistes' },
-    { href: '/solutions/medecin/', label: 'Médecins' },
-    { href: '/solutions/cabinets/', label: 'Cabinets' },
-  ],
-  confiance: [
-    { href: '/security/', label: 'Sécurité' },
-    { href: '/legal/confidentialite/', label: 'Confidentialité' },
-    { href: '/legal/cookies/', label: 'Cookies' },
-    { href: '/legal/sous-traitance/', label: 'Sous-traitants' },
-  ],
-  legal: [
-    { href: '/legal/mentions/', label: 'Mentions légales' },
-    { href: '/legal/cgv/', label: 'CGV' },
-  ],
-};
+const locale = localeOf(Astro.currentLocale);
+const d = t(locale).footer;
+const lp = (href: string) => localizePath(href, locale);
+
+const columns = [
+  {
+    title: d.product,
+    links: [
+      { href: '/product/overview/', label: d.features },
+      { href: '/product/check-ins/', label: d.checkins },
+      { href: '/product/nutrition/', label: d.nutrition },
+      { href: '/product/training/', label: d.training },
+      { href: '/product/health/', label: d.health },
+      { href: '/product/white-label/', label: d.whitelabel },
+      { href: '/docs/', label: d.api },
+      { href: '/newsletter/', label: d.newsletter },
+    ],
+  },
+  {
+    title: d.solutions,
+    links: [
+      { href: '/solutions/', label: d.solutionsAll },
+      { href: '/solutions/coaches/', label: d.independents },
+      { href: '/solutions/nutrition/', label: d.nutritionists },
+      { href: '/solutions/medecin/', label: d.doctors },
+      { href: '/solutions/cabinets/', label: d.practices },
+    ],
+  },
+  {
+    title: d.trust,
+    links: [
+      { href: '/security/', label: d.security },
+      { href: '/legal/confidentialite/', label: d.privacy },
+      { href: '/legal/cookies/', label: d.cookies },
+      { href: '/legal/sous-traitance/', label: d.subprocessors },
+    ],
+  },
+  {
+    title: d.legal,
+    links: [
+      { href: '/legal/mentions/', label: d.notice },
+      { href: '/legal/cgv/', label: d.terms },
+    ],
+  },
+];
 
 const socialLinks = [
   { href: 'https://twitter.com/optibilan', label: 'Twitter', icon: 'twitter' as const },
@@ -42,49 +60,20 @@ const socialLinks = [
 <footer class="bg-encre text-craie" role="contentinfo">
   <div class="container py-12 md:py-16 lg:py-20">
     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 md:gap-10">
-      <!-- Colonne 1 : Produit -->
-      <nav aria-label="Produit">
-        <h2 class="font-semibold text-craie mb-4">Produit</h2>
-        <ul class="space-y-3">
-          {footerLinks.produit.map(link => (
-            <li><a href={link.href} class="text-sm hover:text-bleu-signature transition-colors">{link.label}</a></li>
-          ))}
-        </ul>
-      </nav>
+      {columns.map((column) => (
+        <nav aria-label={column.title}>
+          <h2 class="font-semibold text-craie mb-4">{column.title}</h2>
+          <ul class="space-y-3">
+            {column.links.map((link) => (
+              <li><a href={lp(link.href)} class="text-sm hover:text-bleu-signature transition-colors">{link.label}</a></li>
+            ))}
+          </ul>
+        </nav>
+      ))}
 
-      <!-- Colonne 2 : Solutions -->
-      <nav aria-label="Solutions">
-        <h2 class="font-semibold text-craie mb-4">Solutions</h2>
-        <ul class="space-y-3">
-          {footerLinks.solutions.map(link => (
-            <li><a href={link.href} class="text-sm hover:text-bleu-signature transition-colors">{link.label}</a></li>
-          ))}
-        </ul>
-      </nav>
-
-      <!-- Colonne 3 : Confiance -->
-      <nav aria-label="Confiance">
-        <h2 class="font-semibold text-craie mb-4">Confiance</h2>
-        <ul class="space-y-3">
-          {footerLinks.confiance.map(link => (
-            <li><a href={link.href} class="text-sm hover:text-bleu-signature transition-colors">{link.label}</a></li>
-          ))}
-        </ul>
-      </nav>
-
-      <!-- Colonne 4 : Légal -->
-      <nav aria-label="Légal">
-        <h2 class="font-semibold text-craie mb-4">Légal</h2>
-        <ul class="space-y-3">
-          {footerLinks.legal.map(link => (
-            <li><a href={link.href} class="text-sm hover:text-bleu-signature transition-colors">{link.label}</a></li>
-          ))}
-        </ul>
-      </nav>
-
-      <!-- Colonne 5 : Brand -->
+      <!-- Brand -->
       <div class="col-span-2 lg:col-span-1">
-        <a href="/" class="inline-block mb-4" aria-label="Optibilan - Accueil">
+        <a href={lp('/')} class="inline-block mb-4" aria-label={t(locale).nav.home}>
           <img src="/optibilan-logo-horizontal.png" alt="Optibilan" width="220" height="88" class="h-9 w-auto" loading="lazy" decoding="async" />
         </a>
         <div class="flex gap-4">
@@ -99,17 +88,17 @@ const socialLinks = [
 
     <div class="mt-10 md:mt-12 pt-8 border-t border-encre/20">
       <p class="text-center text-craie/60 text-sm leading-relaxed max-w-3xl mx-auto mb-8">
-        La plateforme de pilotage des accompagnements santé & performance. Multi-tenant, marque blanche, Protection des données, contrôle des accès et traçabilité.
+        {d.baseline}
       </p>
       <div class="flex flex-col md:flex-row items-center justify-between gap-4">
         <p class="text-craie/40 text-sm">
-          {new Date().getFullYear()} Elite Longevity LLC. Tous droits réservés.
+          {new Date().getFullYear()} Elite Longevity LLC. {d.rights}
         </p>
         <div class="flex items-center gap-6 text-sm text-craie/40">
-          <a href="/legal/mentions/" class="hover:text-bleu-signature transition-colors">Mentions légales</a>
-          <a href="/legal/confidentialite/" class="hover:text-bleu-signature transition-colors">Confidentialité</a>
-          <a href="/legal/cgv/" class="hover:text-bleu-signature transition-colors">CGV</a>
-          <a href="/legal/cookies/" class="hover:text-bleu-signature transition-colors">Cookies</a>
+          <a href={lp('/legal/mentions/')} class="hover:text-bleu-signature transition-colors">{d.notice}</a>
+          <a href={lp('/legal/confidentialite/')} class="hover:text-bleu-signature transition-colors">{d.privacy}</a>
+          <a href={lp('/legal/cgv/')} class="hover:text-bleu-signature transition-colors">{d.terms}</a>
+          <a href={lp('/legal/cookies/')} class="hover:text-bleu-signature transition-colors">{d.cookies}</a>
         </div>
       </div>
     </div>

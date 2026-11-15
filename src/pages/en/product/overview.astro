@@ -1,0 +1,279 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import Hero from '@/components/Hero.astro';
+import CTA from '@/components/CTA.astro';
+import Icon from '@/components/Icon.astro';
+import { localizePath } from '@/i18n/config';
+
+const lp = (href: string) => localizePath(href, 'en');
+
+const pageTitle = 'Product - Optibilan';
+const pageDescription = 'Discover the complete platform for steering health and performance programs: check-ins, nutrition, training, health, mental, AI, white label.';
+
+const productJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name: 'Optibilan',
+  description: 'Multi-tenant SaaS for steering programs for practices, studios and independent coaches. 12 modules: check-ins, nutrition, training, mental preparation, connected health, engagement, CRM, calendar, AI, white label, integrations, admin.',
+  brand: { '@type': 'Brand', name: 'Optibilan' },
+  category: 'BusinessApplication',
+  inLanguage: 'en-US',
+  offers: {
+    '@type': 'AggregateOffer',
+    priceCurrency: 'EUR',
+    lowPrice: '49',
+    highPrice: '349',
+    availability: 'https://schema.org/InStock',
+    url: 'https://optibilan.com/en/pricing',
+    seller: { '@type': 'Organization', name: 'Optibilan' }
+  },
+  additionalProperty: [
+    { '@type': 'PropertyValue', name: 'Modules', value: '12 modules included' },
+    { '@type': 'PropertyValue', name: 'Hosting', value: 'EU (France/Ireland)' },
+    { '@type': 'PropertyValue', name: 'Compliance', value: 'Data protection, access control and traceability' },
+    { '@type': 'PropertyValue', name: 'API', value: 'REST v1 OpenAPI 3.1' },
+    { '@type': 'PropertyValue', name: 'White label', value: 'Full (Practice plan)' },
+  ],
+};
+
+const modules = [
+  { href: '/product/check-ins/', icon: 'chart', title: 'Check-ins & progress', desc: 'Centralized program tracking', color: 'bleu-signature' },
+  { href: '/product/nutrition/', icon: 'document', title: 'Nutrition', desc: 'Plans, habits, supplements, groceries', color: 'bleu-lecture' },
+  { href: '/product/training/', icon: 'zap', title: 'Training & programs', desc: 'Library, sessions, progression', color: 'indigo' },
+  { href: '/product/health/', icon: 'globe', title: 'Health & biomarkers', desc: 'Labs, wearables, trends', color: 'bleu-clair' },
+  { href: '/product/mental/', icon: 'brain', title: 'Mental preparation', desc: 'Exercises, resources, journal, adherence', color: 'bleu-ardoise' },
+  { href: '/product/engagement/', icon: 'users', title: 'Engagement & habits', desc: 'Gamification, goals, milestones', color: 'bordeaux' },
+  { href: '/product/crm/', icon: 'lock', title: 'Journal & CRM', desc: 'Typed entries, pipeline, follow-ups', color: 'bleu-ardoise' },
+  { href: '/product/agenda/', icon: 'calendar', title: 'Calendar & calls', desc: 'Cadence, reminders, ICS calendar', color: 'bleu-signature' },
+  { href: '/product/ai/', icon: 'brain', title: 'AI & automation', desc: 'Structuring, summaries, alerts', color: 'indigo' },
+  { href: '/product/white-label/', icon: 'shield', title: 'White label', desc: 'Logo, colors, domain, emails', color: 'bordeaux' },
+  { href: '/product/integrations/', icon: 'code', title: 'Integrations & API', desc: 'Health, calendar, connectors, OpenAPI', color: 'bleu-ardoise' },
+  { href: '/product/admin/', icon: 'shield', title: 'Administration', desc: 'Users, modules, compliance', color: 'bordeaux' },
+];
+
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  inLanguage: 'en-US',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://optibilan.com/en/' },
+    { '@type': 'ListItem', position: 2, name: 'Product', item: 'https://optibilan.com/en/product' },
+  ],
+};
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  lang="en"
+  canonical="/en/product/overview/"
+  ogImage="/og-product-overview.png"
+  jsonLd={[productJsonLd, breadcrumbJsonLd]}
+>
+  <Header />
+
+  <main>
+    <Hero
+      title="The platform for steering 
+health & performance 
+programs"
+      subtitle="Check-ins, nutrition, training, health, mental, habits and tracking brought together in one environment. Built to support your clients better, without multiplying tools."
+      primaryCTA={{ href: '/pricing/', label: 'Join Optibilan' }}
+      secondaryCTA={{ href: '/checkout/solo/', label: 'Free trial' }}
+    />
+
+    <section class="section bg-blanc" aria-labelledby="visuel-key">
+      <div class="container">
+        <div class="aspect-video max-w-4xl mx-auto rounded-xl overflow-hidden relative">
+          <img
+            src="/images/product/dashboard-coach.webp"
+            alt="Optibilan professional dashboard: steering all client follow-ups"
+            class="w-full h-full object-cover"
+            loading="lazy" width="998" height="381" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" aria-hidden="true"></div>
+          <div class="absolute bottom-4 left-1/2 -translate-x-1/2 text-center text-white/90 text-sm">
+            <span class="flex items-center justify-center gap-1 bg-black/30 px-3 py-1 rounded-full backdrop-blur-sm">
+              <Icon name="activity" class="w-4 h-4" />
+              One platform, 12 modules
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-blanc" aria-labelledby="problem-title">
+      <div class="container">
+        <header class="text-center max-w-3xl mx-auto mb-16">
+          <h2 id="problem-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+            Your expertise deserves better than a stack of tools
+          </h2>
+          <p class="text-lg text-encre/60 max-w-2xl mx-auto">
+            Paper forms, Excel, PDF, WhatsApp, specialized apps, scattered wearable data…<br class="hidden md:inline">
+            Optibilan centralizes everything in one platform.
+          </p>
+        </header>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <div class="p-6 md:p-8 rounded-xl bg-papier/50 border border-encre/10">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-10 h-10 rounded-lg bg-encre/5 flex items-center justify-center">
+                <Icon name="document" class="w-5 h-5 text-encre" />
+              </div>
+              <h3 class="font-display text-xl font-bold text-encre">BEFORE OPTIBILAN</h3>
+            </div>
+            <ul class="space-y-3 text-encre/70">
+              <li class="flex items-center gap-3"><span class="w-6 h-6 rounded-full bg-encre/5 flex items-center justify-center text-encre/50">1</span> Check-ins on paper / Google Forms</li>
+              <li class="flex items-center gap-3"><span class="w-6 h-6 rounded-full bg-encre/5 flex items-center justify-center text-encre/50">2</span> Training programs on Excel / PDF</li>
+              <li class="flex items-center gap-3"><span class="w-6 h-6 rounded-full bg-encre/5 flex items-center justify-center text-encre/50">3</span> Nutrition in a separate tool</li>
+              <li class="flex items-center gap-3"><span class="w-6 h-6 rounded-full bg-encre/5 flex items-center justify-center text-encre/50">4</span> Wearable data never used</li>
+              <li class="flex items-center gap-3"><span class="w-6 h-6 rounded-full bg-encre/5 flex items-center justify-center text-encre/50">5</span> Mental work in shared documents</li>
+              <li class="flex items-center gap-3"><span class="w-6 h-6 rounded-full bg-encre/5 flex items-center justify-center text-encre/50">6</span> Communication by WhatsApp / email</li>
+              <li class="flex items-center gap-3"><span class="w-6 h-6 rounded-full bg-encre/5 flex items-center justify-center text-encre/50">7</span> No global view of the client</li>
+            </ul>
+          </div>
+          <div class="p-6 md:p-8 rounded-xl bg-gradient-to-br from-bleu-signature/5 via-papier to-bleu-lecture/5 border border-encre/10">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-10 h-10 rounded-lg bg-bleu-signature/10 flex items-center justify-center">
+                <Icon name="chart" class="w-5 h-5 text-bleu-signature" />
+              </div>
+              <h3 class="font-display text-xl font-bold text-encre">WITH OPTIBILAN</h3>
+            </div>
+            <ul class="space-y-3 text-encre/70">
+              <li class="flex items-center gap-3"><Icon name="check" class="w-5 h-5 text-emerald-500 flex-shrink-0" /> One platform, 12 modules</li>
+              <li class="flex items-center gap-3"><Icon name="check" class="w-5 h-5 text-emerald-500 flex-shrink-0" /> Check-ins, nutrition, training, health, mental unified</li>
+              <li class="flex items-center gap-3"><Icon name="check" class="w-5 h-5 text-emerald-500 flex-shrink-0" /> AI to structure, summarize, alert</li>
+              <li class="flex items-center gap-3"><Icon name="check" class="w-5 h-5 text-emerald-500 flex-shrink-0" /> Full white label, your own domain</li>
+              <li class="flex items-center gap-3"><Icon name="check" class="w-5 h-5 text-emerald-500 flex-shrink-0" /> API, connectors, compatible integrations</li>
+              <li class="flex items-center gap-3"><Icon name="check" class="w-5 h-5 text-emerald-500 flex-shrink-0" /> Data protection, access control and traceability</li>
+              <li class="flex items-center gap-3"><Icon name="check" class="w-5 h-5 text-emerald-500 flex-shrink-0" /> 360° view of every client</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-papier" aria-labelledby="modules-title">
+      <div class="container">
+        <header class="text-center max-w-3xl mx-auto mb-16">
+          <h2 id="modules-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+            12 modules, one unified platform
+          </h2>
+          <p class="text-lg text-encre/60">Turn on only what you need. Everything is included in your plan.</p>
+        </header>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+          {modules.map((mod, i) => (
+            <a href={lp(mod.href)} class="card-hover group p-5 md:p-6 text-center" style={`--mod-color: var(--color-${mod.color})`}>
+              <div class="icon-wrapper mx-auto mb-4" aria-hidden="true" style={`background-color: color-mix(in oklab, var(--color-${mod.color}) 15%, transparent);`}>
+                <Icon name={mod.icon} class="w-6 h-6" style={`color: var(--color-${mod.color});`} />
+              </div>
+              <h3 class="font-display text-lg font-bold text-encre mb-1">{mod.title}</h3>
+              <p class="text-sm text-encre/50">{mod.desc}</p>
+            </a>
+          ))}
+        </div>
+
+        <p class="text-center text-sm text-encre/40 mt-10">
+          All modules included · No extra cost · Instant activation
+        </p>
+      </div>
+    </section>
+
+    <section class="section bg-blanc" aria-labelledby="workflow-title">
+      <div class="container">
+        <header class="text-center max-w-3xl mx-auto mb-16">
+          <h2 id="workflow-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+            From the first check-in to daily tracking
+          </h2>
+          <p class="text-lg text-encre/60">Three steps to structure your support.</p>
+        </header>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {[
+            {
+              num: '01',
+              title: 'Centralize the information',
+              desc: 'Guided check-ins, smart questionnaires, Apple Health/Oura/Garmin sync, lab report import (PDF → AI → structured data), dreamboard and ultimate goal from sign-up.',
+              icon: 'calendar',
+              color: 'bleu-signature',
+            },
+            {
+              num: '02',
+              title: 'Build the program',
+              desc: 'Reusable nutrition/training/mental templates, module assignment per practitioner (siloed roles), AI assistant to generate plans and sessions, wording and white label applied automatically.',
+              icon: 'document',
+              color: 'bleu-lecture',
+            },
+            {
+              num: '03',
+              title: 'Track what changes',
+              desc: 'Gamification (XP, badges, habits) that engages your clients, adherence alerts, cohort view to steer retention and progression.',
+              icon: 'zap',
+              color: 'indigo',
+            },
+          ].map((step, i) => (
+            <article class="relative group" style={`--step-color: var(--color-${step.color})`}>
+              <div class="absolute -top-3 left-1/2 -translate-x-1/2 z-10">
+                <div class="w-12 h-12 rounded-full bg-gradient-to-br from-[var(--step-color)] to-[var(--step-color)] text-craie flex items-center justify-center font-display text-lg font-bold shadow-lg">
+                  {step.num}
+                </div>
+              </div>
+              <div class="card-hover relative pt-14">
+                <div class="icon-wrapper mx-auto mb-6" aria-hidden="true" style={`background-color: color-mix(in oklab, var(--step-color) 15%, transparent);`}>
+                  <Icon name={step.icon} class="w-7 h-7" style={`color: var(--step-color);`} />
+                </div>
+                <h3 class="font-display text-xl font-bold text-encre mb-3 text-center">{step.title}</h3>
+                <p class="text-encre/60 leading-relaxed text-center">{step.desc}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-gradient-to-br from-bleu-signature via-bleu-lecture to-indigo rounded-card-lg relative overflow-hidden" aria-labelledby="ai-title">
+      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-bleu-signature/20 via-transparent to-transparent" aria-hidden="true"></div>
+      <div class="absolute top-0 right-0 w-96 h-96 bg-bleu-signature/10 rounded-full blur-3xl" aria-hidden="true"></div>
+      <div class="absolute bottom-0 left-0 w-96 h-96 bg-bleu-signature/10 rounded-full blur-3xl" aria-hidden="true"></div>
+
+      <div class="container relative text-center max-w-3xl mx-auto py-16 md:py-24">
+        <h2 id="ai-title" class="font-display text-3xl md:text-4xl font-bold mb-4 text-craie">
+          AI prepares.<br>The professional decides.
+        </h2>
+        <p class="text-lg mb-8 text-craie/80 max-w-2xl mx-auto">
+          Optibilan uses AI to cut repetitive work, structure information and surface what matters.<br>It assists the professional. It does not make the decision for them.
+        </p>
+        <div class="grid md:grid-cols-3 gap-6 mb-10 max-w-2xl mx-auto">
+          {[
+            { icon: 'document', title: 'PDF → Structured data', desc: 'AI reads check-ins, lab reports and letters and pre-fills the fields.' },
+            { icon: 'chart', title: 'Check-in → Summary', desc: 'Automatic summaries for the professional and the client.' },
+            { icon: 'zap', title: 'Data → Suggestion', desc: 'Adherence alert detection, adjustment suggestions, proactive alerts.' },
+          ].map(item => (
+            <div class="p-5 rounded-xl bg-craie/10 backdrop-blur-sm text-left" key={item.title}>
+              <div class="icon-wrapper mb-3" aria-hidden="true" style="background-color: color-mix(in oklab, var(--color-bleu-signature) 15%, transparent);">
+                <Icon name={item.icon} class="w-6 h-6 text-bleu-signature" />
+              </div>
+              <h3 class="font-semibold text-craie mb-1">{item.title}</h3>
+              <p class="text-craie/70 text-sm">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+        <p class="text-sm text-craie/60 max-w-xl mx-auto">
+          AI does not diagnose. It does not act autonomously. The professional keeps full control.
+        </p>
+      </div>
+    </section>
+
+    <CTA
+      title="See Optibilan in real conditions"
+      subtitle="30 minutes to see the platform starting from how you work today."
+      primaryCTA={{ href: '/pricing/', label: 'Join Optibilan' }}
+      secondaryCTA={{ href: '/checkout/solo/', label: 'Free trial' }}
+      variant="secondary"
+    />
+  </main>
+
+  <Footer />
+</Layout>

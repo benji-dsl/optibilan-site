@@ -1,0 +1,188 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import Hero from '@/components/Hero.astro';
+import CTA from '@/components/CTA.astro';
+import Icon from '@/components/Icon.astro';
+import { localizePath } from '@/i18n/config';
+
+const lp = (href: string) => localizePath(href, 'en');
+
+const pageTitle = 'Coaching Journal & CRM - Optibilan';
+const pageDescription = 'Typed entries, attachments, client sharing, Notion sync, sales pipeline. The CRM built for coaching professionals.';
+
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  inLanguage: 'en-US',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://optibilan.com/en/' },
+    { '@type': 'ListItem', position: 2, name: 'Product', item: 'https://optibilan.com/en/product' },
+    { '@type': 'ListItem', position: 3, name: 'Journal & CRM', item: 'https://optibilan.com/en/product/crm' },
+  ],
+};
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  lang="en"
+  canonical="/en/product/crm/"
+  ogImage="/og-crm.png"
+  jsonLd={breadcrumbJsonLd}
+>
+  <Header />
+
+  <main>
+    <Hero
+      title="The CRM built into 
+your coaching 
+practice."
+      subtitle="Typed entries, attachments, client sharing, Notion sync, sales pipeline. All in the client record."
+      primaryCTA={{ href: '/pricing/', label: 'Join Optibilan' }}
+      secondaryCTA={{ href: '/checkout/solo/', label: 'Try Optibilan' }}
+    />
+
+    <section class="section bg-blanc" aria-labelledby="visuel-key">
+      <div class="container">
+        <div class="aspect-video max-w-4xl mx-auto rounded-xl overflow-hidden relative">
+          <img
+            src="/images/product/09-coach-entretien-client.webp"
+            alt="Coach in a session with a client, centralized relationship tracking"
+            class="w-full h-full object-cover"
+            loading="lazy" width="1000" height="651" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" aria-hidden="true"></div>
+          <div class="absolute bottom-4 left-1/2 -translate-x-1/2 text-center text-white/90 text-sm">
+            <span class="flex items-center justify-center gap-1 bg-black/30 px-3 py-1 rounded-full backdrop-blur-sm">
+              <Icon name="activity" class="w-4 h-4" />
+              Every client, one single 360° view
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-blanc" aria-labelledby="problem-title">
+      <div class="container max-w-3xl">
+        <header class="mb-12">
+          <h2 id="problem-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+            The problem: scattered information
+          </h2>
+          <p class="text-lg text-encre/60">
+            Notes in a notebook, documents in Drive, emails in Gmail, pipeline in Notion, follow-ups in your head…<br>
+            The information is never there when you need it. The team is not aligned.
+          </p>
+        </header>
+
+        <div class="space-y-8">
+          {[
+            {
+              icon: 'lock',
+              title: 'Typed entries: structured, not a pile',
+              desc: 'Predefined types: kickoff, weekly follow-up, monthly check-in, micronutrition, optimization, training, questionnaire, mental preparation, free note. Each type has its own fields. Instant full-text search.',
+              features: [
+                '9 entry types + free note',
+                'Conditional fields per type',
+                'Custom tags + combined filters',
+                'PostgreSQL full-text search',
+              ],
+              icon: 'lock',
+            },
+            {
+              icon: 'document',
+              title: 'Attachments: everything in one place',
+              desc: 'PDF (lab reports, letters), images (photos, scans), audio (voice memos), video (technique). Supabase private bucket storage, Cloudflare CDN. In-app preview, secure download (short signed URL). Automatic OCR on PDF/images.',
+              features: [
+                'Types: PDF, images, audio, video (100MB)',
+                'Supabase storage + CDN (1h signed URL)',
+                'In-app preview (PDF, images, audio, video)',
+                'Automatic OCR on PDF/images',
+              ],
+              icon: 'document',
+            },
+            {
+              icon: 'users',
+              title: 'Client sharing: visible / private / comment',
+              desc: 'Every entry: visible to the client (they see it in their portal), private staff (team only), comment only (the client only sees "your coach added a note"). Push/email notification to the client if visible. Sharing history.',
+              features: [
+                '3 levels: visible / private / comment',
+                'Push/email notification when shared as visible',
+                'Full sharing log',
+                'Sharing can be revoked',
+              ],
+              icon: 'users',
+            },
+            {
+              icon: 'chart',
+              title: 'CRM pipeline: from lead to loyal client',
+              desc: 'Stages: lead → trial → active client → churn risk → reactivation → archive. Customer lifetime value (LTV) calculated automatically. RFM segmentation (recency, frequency, monetary). Churn risk alerts (inactivity, adherence alerts). Automatic follow-ups: 7/14/30 days inactivity, birthday, renewal, upsell.',
+              features: [
+                '6 customizable stages + archiving',
+                'Automatic LTV + RFM segmentation',
+                'Churn risk alerts (inactivity, adherence alerts)',
+                'Automatic follow-ups: 7/14/30 days, birthday, upsell',
+              ],
+              icon: 'chart',
+            },
+            {
+              icon: 'code',
+              title: 'Notion sync: no double entry',
+              desc: 'note.created webhook → Notion database (client, coach, date, type, content, visibility, tags). Two-way possible (client created in Notion → client created in Optibilan). Customizable field mapping. Filter by visibility (private staff not synced).',
+              features: [
+                'note.created webhook → Notion (configurable fields)',
+                'Two-way: Notion → Optibilan',
+                'Customizable field mapping',
+                'Filter: private staff = not synced',
+              ],
+              icon: 'code',
+            },
+            {
+              icon: 'lock',
+              title: 'Follow-ups & tasks: nothing falls through',
+              desc: 'Assigned tasks (coach, admin, mental, diet) with due date, priority, recurrence. "My tasks" view per staff member. Slack/email/push reminders. Client onboarding checklist (questionnaire, lab reports, contract, tools). Offboarding checklist (export, purge, feedback).',
+              features: [
+                'Tasks: assignee, due date, priority, recurrence',
+                '"My tasks" view per staff member',
+                'Slack, email, push, ICS reminders',
+                'Onboarding/offboarding checklists',
+              ],
+              icon: 'lock',
+            },
+          ].map((section, i) => (
+            <article id={section.icon} class="py-8 border-t border-encre/10 first:border-0">
+              <header class="flex items-center gap-4 mb-6">
+                <div class="icon-wrapper flex-shrink-0" aria-hidden="true" style="background-color: var(--color-bleu-clair);">
+                  <Icon name={section.icon} class="w-7 h-7 text-bleu-signature" />
+                </div>
+                <div>
+                  <h3 class="font-display text-2xl font-bold text-encre">{section.title}</h3>
+                  <p class="text-encre/60 mt-1">{section.desc}</p>
+                </div>
+              </header>
+              <ul class="space-y-2 text-encre/60">
+                {section.features.map(f => (
+                  <li key={f} class="flex items-start gap-2">
+                    <Icon name="check" class="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5" />
+                    <span>{f}</span>
+                  </li>
+                ))}
+              </ul>
+            </article>
+          ))}
+        </div>
+
+      </div>
+    </section>
+
+    <CTA
+      title="Ready to centralize your client tracking?"
+      subtitle="30 minutes to see how to structure journal, documents and pipeline."
+      primaryCTA={{ href: '/pricing/', label: 'Join Optibilan' }}
+      secondaryCTA={{ href: '/checkout/solo/', label: 'Try Optibilan' }}
+      variant="primary"
+    />
+  </main>
+
+  <Footer />
+</Layout>

@@ -1,0 +1,212 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import Hero from '@/components/Hero.astro';
+import CTA from '@/components/CTA.astro';
+import Icon from '@/components/Icon.astro';
+import { localizePath } from '@/i18n/config';
+
+const lp = (href: string) => localizePath(href, 'en');
+
+const pageTitle = 'AI & automation - Optibilan';
+const pageDescription = 'AI prepares, the professional decides. Document structuring, check-in summaries, proactive alerts. Full transparency on the AI pipeline.';
+
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  inLanguage: 'en-US',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://optibilan.com/en/' },
+    { '@type': 'ListItem', position: 2, name: 'Product', item: 'https://optibilan.com/en/produit' },
+    { '@type': 'ListItem', position: 3, name: 'AI & automation', item: 'https://optibilan.com/en/product/ai' },
+  ],
+};
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  lang="en"
+  canonical="/en/product/ai/"
+  ogImage="/og-ai.png"
+  jsonLd={breadcrumbJsonLd}
+>
+  <Header />
+
+  <main>
+    <Hero
+      title="AI prepares.
+ The professional decides."
+      subtitle="Document structuring, check-in summaries, proactive alerts. Full transparency on the AI pipeline: provider, data sent, retention, pseudonymization."
+      primaryCTA={{ href: lp('/pricing/'), label: 'Join Optibilan' }}
+      secondaryCTA={{ href: lp('/checkout/solo/'), label: 'Free trial' }}
+    />
+
+    <section class="section bg-gradient-to-br from-encre/5 via-papier to-indigo/5 rounded-card-lg relative overflow-hidden" aria-labelledby="ai-disclaimer-title">
+      <div class="container relative py-6 px-6 md:py-8 md:px-8">
+        <div class="flex items-start gap-4 p-4 bg-encre/5 rounded-lg border border-encre/10">
+          <Icon name="brain" class="w-6 h-6 text-indigo flex-shrink-0 mt-0.5" />
+          <div>
+            <h2 id="ai-disclaimer-title" class="font-semibold text-encre mb-1">Transparency & AI framework</h2>
+            <p class="text-encre/70 text-sm">
+              <strong>AI does not make a diagnosis. It does not act autonomously. The professional keeps full control.</strong><br>
+              Provider: Anthropic (Claude) through the Enterprise API. Region: US (zero retention guaranteed). Data pseudonymized before sending. DPA signed. SCC 2021 + UK Addendum.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-blanc" aria-labelledby="ai-problem-title">
+      <div class="container max-w-3xl">
+        <header class="mb-12">
+          <h2 id="ai-problem-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+            What AI does (and does not do)
+          </h2>
+          <p class="text-lg text-encre/60">
+            AI reduces repetitive work, structures information and surfaces what matters.<br>
+            It assists the professional. It does not make the decision in their place.
+          </p>
+        </header>
+
+        <div class="aspect-video rounded-xl border border-encre/10 bg-encre/5 overflow-hidden relative shadow-soft mb-16">
+          <img
+            src="/images/product/medecins/03-medecin-analyse-imagerie-medicale.webp"
+            alt="Doctor reviewing a medical image with Optibilan AI assistance"
+            class="w-full h-full object-cover"
+            loading="lazy" width="1000" height="667" />
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6 mb-16">
+          <article class="p-6 rounded-xl border border-encre/10 bg-emerald-50">
+            <h3 class="font-display text-xl font-bold text-emerald-700 mb-3 flex items-center gap-2">
+              <Icon name="check" class="w-5 h-5" /> What AI DOES
+            </h3>
+            <ul class="space-y-2 text-encre/70">
+              <li class="flex items-start gap-2"><Icon name="check" class="w-4 h-4 text-emerald-500 flex-shrink-0" /> Reads PDFs → extracts, structures, pre-fills</li>
+              <li class="flex items-start gap-2"><Icon name="check" class="w-4 h-4 text-emerald-500 flex-shrink-0" /> Generates check-in summaries for professional + client</li>
+              <li class="flex items-start gap-2"><Icon name="check" class="w-4 h-4 text-emerald-500 flex-shrink-0" /> Detects adherence alerts (stagnation, motivation ↓)</li>
+              <li class="flex items-start gap-2"><Icon name="check" class="w-4 h-4 text-emerald-500 flex-shrink-0" /> Suggests nutrition, load and recovery adjustments</li>
+              <li class="flex items-start gap-2"><Icon name="check" class="w-4 h-4 text-emerald-500 flex-shrink-0" /> Structures prompts per practice</li>
+            </ul>
+          </article>
+          <article class="p-6 rounded-xl border border-encre/10 bg-rose-50">
+            <h3 class="font-display text-xl font-bold text-rose-700 mb-3 flex items-center gap-2">
+              <Icon name="shield" class="w-5 h-5" /> What AI DOES NOT DO
+            </h3>
+            <ul class="space-y-2 text-encre/70">
+              <li class="flex items-start gap-2"><Icon name="shield" class="w-4 h-4 text-rose-500 flex-shrink-0" /> Does NOT make a diagnosis</li>
+              <li class="flex items-start gap-2"><Icon name="shield" class="w-4 h-4 text-rose-500 flex-shrink-0" /> Does NOT prescribe (medication, doses, exercises)</li>
+              <li class="flex items-start gap-2"><Icon name="shield" class="w-4 h-4 text-rose-500 flex-shrink-0" /> Does NOT act autonomously</li>
+              <li class="flex items-start gap-2"><Icon name="shield" class="w-4 h-4 text-rose-500 flex-shrink-0" /> Does NOT replace professional judgment</li>
+              <li class="flex items-start gap-2"><Icon name="shield" class="w-4 h-4 text-rose-500 flex-shrink-0" /> Does NOT train on your data</li>
+            </ul>
+          </article>
+        </div>
+
+        <h2 class="font-display text-2xl font-bold text-encre mb-8">Three concrete uses</h2>
+
+        <div class="space-y-8">
+          <article class="py-8 border-t border-encre/10 first:border-0">
+            <header class="flex items-center gap-4 mb-6">
+              <div class="icon-wrapper flex-shrink-0" aria-hidden="true" style="background-color: var(--color-bleu-clair);">
+                <Icon name="document" class="w-7 h-7 text-indigo" />
+              </div>
+              <div>
+                <h3 class="font-display text-2xl font-bold text-encre">PDF → Structured data</h3>
+                <p class="text-encre/60 mt-1">The client or professional uploads a blood test, a doctor's letter, a report. AI extracts: biomarkers, values, units, thresholds, comments. It pre-fills the fields in Optibilan. Automatic flags: red/orange/green based on your configured thresholds. Time saved: 15 min → 30 sec per document.</p>
+              </div>
+            </header>
+            <ul class="space-y-2 text-encre/60">
+              <li class="flex items-start gap-2"><Icon name="check" class="w-5 h-5 text-emerald-500 flex-shrink-0" /> OCR + structured extraction (biomarkers, values)</li>
+              <li class="flex items-start gap-2"><Icon name="check" class="w-5 h-5 text-emerald-500 flex-shrink-0" /> Automatic flags: red/orange/green based on thresholds</li>
+              <li class="flex items-start gap-2"><Icon name="check" class="w-5 h-5 text-emerald-500 flex-shrink-0" /> Field pre-filling (95% time saved)</li>
+              <li class="flex items-start gap-2"><Icon name="check" class="w-5 h-5 text-emerald-500 flex-shrink-0" /> Import history for audit</li>
+            </ul>
+          </article>
+          <article class="py-8 border-t border-encre/10 first:border-0">
+            <header class="flex items-center gap-4 mb-6">
+              <div class="icon-wrapper flex-shrink-0" aria-hidden="true" style="background-color: var(--color-bleu-clair);">
+                <Icon name="chart" class="w-7 h-7 text-indigo" />
+              </div>
+              <div>
+                <h3 class="font-display text-2xl font-bold text-encre">Check-in → Summary</h3>
+                <p class="text-encre/60 mt-1">For every client check-in, AI prepares: a professional summary (points of attention, trends, alerts) and a client summary (plain language, encouragement, next steps). Tone configurable per practice (formal, supportive, direct). Time saved: 10 min → 30 sec per check-in.</p>
+              </div>
+            </header>
+            <ul class="space-y-2 text-encre/60">
+              <li class="flex items-start gap-2"><Icon name="check" class="w-5 h-5 text-emerald-500 flex-shrink-0" /> Dual output: professional + client (adapted language)</li>
+              <li class="flex items-start gap-2"><Icon name="check" class="w-5 h-5 text-emerald-500 flex-shrink-0" /> Tone customizable per practice</li>
+              <li class="flex items-start gap-2"><Icon name="check" class="w-5 h-5 text-emerald-500 flex-shrink-0" /> Includes: progress, alerts, next steps</li>
+              <li class="flex items-start gap-2"><Icon name="check" class="w-5 h-5 text-emerald-500 flex-shrink-0" /> Professional approval before sending</li>
+            </ul>
+          </article>
+          <article class="py-8 border-t border-encre/10 first:border-0">
+            <header class="flex items-center gap-4 mb-6">
+              <div class="icon-wrapper flex-shrink-0" aria-hidden="true" style="background-color: var(--color-bleu-clair);">
+                <Icon name="zap" class="w-7 h-7 text-indigo" />
+              </div>
+              <div>
+                <h3 class="font-display text-2xl font-bold text-encre">Data → Suggestion / Alert</h3>
+                <p class="text-encre/60 mt-1">AI monitors continuously: stagnation for more than 2 weeks, motivation down more than 30%, adherence below 70%, abnormal load/sleep/RPE correlation. It generates: an alert in the professional dashboard, an adjustment suggestion (load, recovery, nutrition), a suggested client message. The professional approves, edits or rejects it.</p>
+              </div>
+            </header>
+            <ul class="space-y-2 text-encre/60">
+              <li class="flex items-start gap-2"><Icon name="check" class="w-5 h-5 text-emerald-500 flex-shrink-0" /> Continuous monitoring (check-ins + wearable sync)</li>
+              <li class="flex items-start gap-2"><Icon name="check" class="w-5 h-5 text-emerald-500 flex-shrink-0" /> Types: stagnation, disengagement, adherence, overtraining</li>
+              <li class="flex items-start gap-2"><Icon name="check" class="w-5 h-5 text-emerald-500 flex-shrink-0" /> Output: alert + concrete suggestion</li>
+              <li class="flex items-start gap-2"><Icon name="check" class="w-5 h-5 text-emerald-500 flex-shrink-0" /> Professional approval required</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="mt-12 p-6 rounded-xl bg-papier border border-encre/10">
+          <h3 class="font-display text-xl font-bold text-encre mb-3">AI pipeline - Technical transparency</h3>
+          <ul class="space-y-2 text-sm text-encre/60">
+            <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-indigo flex-shrink-0 mt-1.5" /> Provider: Anthropic (Claude) - Enterprise API</li>
+            <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-indigo flex-shrink-0 mt-1.5" /> US - Zero retention guaranteed</li>
+            <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-indigo flex-shrink-0 mt-1.5" /> Pseudonymization before sending (name → ID)</li>
+            <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-indigo flex-shrink-0 mt-1.5" /> DPA + SCC 2021 + technical measures</li>
+            <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-indigo flex-shrink-0 mt-1.5" /> Prompting per practice: vocabulary, method, tone</li>
+            <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-indigo flex-shrink-0 mt-1.5" /> Caps: Solo 1k / Studio 5k / Cabinet 20k</li>
+            <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-indigo flex-shrink-0 mt-1.5" /> Can be disabled per practice (admin toggle)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-papier" aria-labelledby="ai-visual-title">
+      <div class="container">
+        <header class="text-center max-w-3xl mx-auto mb-12">
+          <h2 id="ai-visual-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+            AI at work on your documents
+          </h2>
+          <p class="text-lg text-encre/60">
+            Data extraction, summaries and alerts generated from your own documents.
+          </p>
+        </header>
+        <div class="aspect-video max-w-4xl mx-auto rounded-xl border border-encre/10 bg-blanc overflow-hidden shadow-xl">
+          <img
+            src="/images/product/ia-automatisations.webp"
+            alt="Optibilan interface screenshot: AI automations on practice documents"
+            width="345"
+            height="272"
+            class="w-full h-full object-cover"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </section>
+
+    <CTA
+      title="Want to test AI on YOUR documents?"
+      subtitle="30 minutes to see how AI structures your check-ins, blood tests and letters."
+      primaryCTA={{ href: lp('/pricing/'), label: 'Join Optibilan' }}
+      secondaryCTA={{ href: lp('/checkout/solo/'), label: 'Free trial' }}
+      variant="primary"
+    />
+  </main>
+
+  <Footer />
+</Layout>

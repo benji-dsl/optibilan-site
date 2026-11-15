@@ -1,0 +1,213 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import Pricing from '@/components/Pricing.astro';
+import CTA from '@/components/CTA.astro';
+import { localizePath } from '@/i18n/config';
+
+const lp = (href: string) => localizePath(href, 'en');
+
+const pageTitle = 'Pricing - Optibilan';
+const pageDescription = 'Simple, transparent pricing: Solo €49/month, Studio €149/month, Cabinet €349/month. 2 months free on yearly plans. 30-day free trial.';
+
+const faqs = [
+  { q: 'Can I change plans mid-month?', a: 'Yes. The change takes effect immediately. Proration is calculated automatically on your next Stripe invoice.' },
+  { q: 'Is there a commitment?', a: 'No. Cancel in 1 click from the admin. Access stays active until the end of the paid period.' },
+  { q: 'What happens at the end of the 30-day trial?', a: 'Your workspace switches to read-only (viewing is possible, creation is blocked). You have a 7-day grace period to choose a plan without losing staff access.' },
+  { q: 'Is the white label really complete?', a: 'On the Cabinet plan: logo, colors, AI assistant name, wording (client/patient/member...), domain, legal notice, terms of service, sending email. Everything is yours. On Studio: advanced (logo, colors, assistant, wording). On Solo: not included.' },
+  { q: 'Is my data hosted in France?', a: 'The PostgreSQL database is hosted on Supabase (EU West region, Ireland), the VPS on Hostinger in France, encrypted backups stored in the EU (S3-compatible EU). No data leaves the EU. Provider certifications: SOC 2 Type II, ISO 27001, HIPAA, GDPR.' },
+  { q: 'How do the GDPR export and the data purge work?', a: 'Admin → Export: complete JSON of ALL the practice data (37 Prisma models) in 1 click. Configurable automatic purge: retention period (default 3 years) plus deletion flag. Right to be forgotten: cascading client deletion by an admin. Verified in CI (check-tenant.mjs): no scoped model left out.' },
+  { q: 'How does billing work?', a: 'Through Stripe (credit card, SEPA transfer, SEPA direct debit) or by manual transfer / Systeme.io (on request). Invoices are issued automatically at each billing date and available in the admin. VAT extra for taxable businesses (20% France).' },
+  { q: 'Can I try before committing?', a: 'Yes. 30 days free, all the features of the plan you choose. Create your practice, invite coaches, test the client space.' },
+  { q: 'Are there any hidden fees?', a: 'No. The displayed price is the price you pay. Only VAT is added for taxable businesses. Stripe takes its fee (1.4% + €0.25 EU) on client payments if you enable integrated payment.' },
+  { q: 'What is included in the "dedicated + SLA" support (Cabinet)?', a: 'Email support plus shared Slack plus dedicated phone/video. Response time under 4 business hours. Corrective and feature maintenance included. New versions deployed without downtime (blue/green). Public changelog.' },
+  { q: 'Is the REST API documented?', a: 'Yes. Full OpenAPI 3.1 (Swagger/Redoc), cURL/Node/Python examples, test sandbox. Scoped API keys (clients:read, checkins:write, cron, health:sync...). Rate limit: 120 req/min (Studio), no practical limit (Cabinet). HMAC-signed webhooks, exponential retry, idempotency via externalId.' },
+];
+
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://optibilan.com/en/' },
+    { '@type': 'ListItem', position: 2, name: 'Pricing', item: 'https://optibilan.com/en/pricing/' },
+  ],
+};
+
+const saJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: 'Optibilan',
+  applicationCategory: 'BusinessApplication',
+  operatingSystem: 'Web',
+  inLanguage: 'en-US',
+  offers: [
+    { '@type': 'Offer', name: 'Solo', price: '49', priceCurrency: 'EUR', priceSpecification: { '@type': 'UnitPriceSpecification', billingDuration: 'P1M' }, url: 'https://optibilan.com/en/pricing/', availability: 'https://schema.org/InStock' },
+    { '@type': 'Offer', name: 'Studio', price: '149', priceCurrency: 'EUR', priceSpecification: { '@type': 'UnitPriceSpecification', billingDuration: 'P1M' }, url: 'https://optibilan.com/en/pricing/', availability: 'https://schema.org/InStock' },
+    { '@type': 'Offer', name: 'Cabinet', price: '349', priceCurrency: 'EUR', priceSpecification: { '@type': 'UnitPriceSpecification', billingDuration: 'P1M' }, url: 'https://optibilan.com/en/pricing/', availability: 'https://schema.org/InStock' },
+  ],
+};
+const orgJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Optibilan',
+  url: 'https://optibilan.com/',
+  logo: 'https://optibilan.com/optibilan-logo.svg',
+};
+
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  inLanguage: 'en-US',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  lang="en"
+  canonical="/en/pricing/"
+  ogImage="/og-pricing.png"
+  jsonLd={[breadcrumbJsonLd, faqJsonLd]}
+>
+  <Header />
+
+  <main>
+    <Pricing
+      headingLevel="h1"
+      title="Optibilan software pricing: €49/month for coaches, nutritionists and health professionals"
+      subtitle="Choose the plan that fits your practice and get 30 days free."
+    />
+
+    <section class="section bg-blanc" aria-labelledby="comparison-title">
+      <div class="container">
+        <header class="text-center max-w-3xl mx-auto mb-12">
+          <h2 id="comparison-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+            Detailed comparison
+          </h2>
+          <p class="text-lg text-encre/60">
+            Everything is included in every plan. Only the limits change.
+          </p>
+        </header>
+
+        <div class="rounded-2xl bg-papier border border-encre/10 shadow-soft p-4 md:p-6">
+          <div class="overflow-x-auto">
+            <table class="w-full text-left min-w-[720px]" role="table">
+            <thead>
+              <tr class="border-b border-encre/10">
+                <th class="pb-3 font-semibold text-encre text-left">Feature</th>
+                <th class="pb-3 font-semibold text-encre text-center">Solo</th>
+                <th class="pb-3 font-semibold text-encre text-center relative">
+                  Studio
+                  <span class="ml-1 align-middle px-2 py-0.5 text-[10px] font-bold text-craie bg-bleu-lecture rounded-full whitespace-nowrap">Selected</span>
+                </th>
+                <th class="pb-3 font-semibold text-encre text-center">Cabinet</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-encre/10">
+              {[
+                { category: 'General', rows: [
+                  { feature: 'Clients max', solo: '30', studio: '150', cabinet: 'Unlimited' },
+                  { feature: 'Staff seats (coach/admin)', solo: '1', studio: '5', cabinet: 'Unlimited' },
+                  { feature: 'White label', solo: 'No', studio: 'Advanced', cabinet: 'Full' },
+                  { feature: 'Custom domain', solo: 'No', studio: 'Yes', cabinet: 'Yes' },
+                  { feature: 'Support', solo: 'Email', studio: 'Priority', cabinet: 'Dedicated + SLA' },
+                ]},
+                { category: 'Core modules', rows: [
+                  { feature: 'Check-ins & progress', solo: '✓', studio: '✓', cabinet: '✓' },
+                  { feature: 'Nutrition (plans, shopping lists, supplements)', solo: '✓', studio: '✓', cabinet: '✓' },
+                  { feature: 'Training (programs, sessions, library)', solo: '✓', studio: '✓', cabinet: '✓' },
+                  { feature: 'Mental preparation', solo: '✓', studio: '✓', cabinet: '✓' },
+                  { feature: 'Connected health & biomarkers', solo: '✓', studio: '✓', cabinet: '✓' },
+                  { feature: 'Gamification (XP, badges, habits)', solo: '✓', studio: '✓', cabinet: '✓' },
+                  { feature: 'Coaching journal & CRM', solo: '✓', studio: '✓', cabinet: '✓' },
+                  { feature: 'Scheduled calls & ICS calendar', solo: '✓', studio: '✓', cabinet: '✓' },
+                ]},
+                { category: 'AI & automation', rows: [
+                  { feature: 'AI assistant (messages/month)', solo: '1,000', studio: '5,000', cabinet: '20,000' },
+                  { feature: 'Custom prompting per practice', solo: '✓', studio: '✓', cabinet: '✓' },
+                  { feature: 'Blood test / biomarker reading', solo: '✓', studio: '✓', cabinet: '✓' },
+                ]},
+                { category: 'Technical & integrations', rows: [
+                  { feature: 'REST API (OpenAPI)', solo: 'No', studio: '120 req/min', cabinet: 'No practical limit' },
+                  { feature: 'HMAC-signed webhooks', solo: 'No', studio: '✓', cabinet: '✓' },
+                  { feature: 'Health sync (Apple Health, Oura...)', solo: '✓', studio: '✓', cabinet: '✓' },
+                  { feature: 'Shared ICS calendar', solo: '✓', studio: '✓', cabinet: '✓' },
+                  { feature: 'Full GDPR export', solo: '✓', studio: '✓', cabinet: '✓' },
+                  { feature: 'Configurable auto purge', solo: '✓', studio: '✓', cabinet: '✓' },
+                  { feature: 'Audit trail (org + platform)', solo: '✓', studio: '✓', cabinet: '✓' },
+                  { feature: 'SSO / SAML', solo: 'No', studio: 'No', cabinet: 'Coming soon' },
+                ]},
+              ].map(category => (
+                <>
+                  <tr class="bg-papier/50">
+                    <td class="py-3 px-4 font-semibold text-encre" colSpan={4}>{category.category}</td>
+                  </tr>
+                  {category.rows.map(row => (
+                    <tr class="hover:bg-papier/30">
+                      <td class="py-3 px-4 text-encre/70">{row.feature}</td>
+                      <td class="py-3 px-4 text-center text-encre/60">{row.solo}</td>
+                      <td class="py-3 px-4 text-center text-encre font-medium bg-bleu-signature/[0.04]">{row.studio}</td>
+                      <td class="py-3 px-4 text-center text-encre/60 font-medium">{row.cabinet}</td>
+                    </tr>
+                  ))}
+                </>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-papier" aria-labelledby="faq-title">
+      <div class="container">
+        <header class="text-center max-w-3xl mx-auto mb-12">
+          <h2 id="faq-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+            Frequently asked questions
+          </h2>
+        </header>
+
+        <dl class="max-w-3xl mx-auto space-y-4">
+          {faqs.map((faq, i) => (
+            <div key={i} class="border border-encre/10 rounded-xl overflow-hidden bg-blanc transition-shadow hover:shadow-card">
+              <dt class="px-6 py-4 font-medium text-encre cursor-pointer flex items-center justify-between select-none" aria-expanded="false" aria-controls={`faq-answer-${i}`} data-faq-trigger>
+                {faq.q}
+                <svg class="w-5 h-5 text-encre/40 transition-transform shrink-0 ml-4" data-faq-icon fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+              </dt>
+              <dd id={`faq-answer-${i}`} class="px-6 pb-4 text-encre/60 hidden" data-faq-answer>{faq.a}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    </section>
+
+    <CTA
+      variant="primary"
+      title="Choose the plan that fits your practice"
+      subtitle="30 days to test every feature, cancel in one click."
+    />
+  </main>
+
+  <Footer />
+</Layout>
+
+<script>
+  const triggers = document.querySelectorAll('[data-faq-trigger]');
+  triggers.forEach((trigger, i) => {
+    const answer = trigger.nextElementSibling;
+    const icon = trigger.querySelector('[data-faq-icon]');
+
+    trigger.addEventListener('click', () => {
+      const isOpen = trigger.getAttribute('aria-expanded') === 'true';
+      trigger.setAttribute('aria-expanded', String(!isOpen));
+      answer?.classList.toggle('hidden', isOpen);
+      icon?.classList.toggle('rotate-180', !isOpen);
+    });
+  });
+</script>

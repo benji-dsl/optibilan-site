@@ -1,0 +1,144 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import Hero from '@/components/Hero.astro';
+import CTA from '@/components/CTA.astro';
+import Icon from '@/components/Icon.astro';
+import { localizePath } from '@/i18n/config';
+
+const lp = (href: string) => localizePath(href, 'en');
+
+const pageTitle = 'Habits & engagement - Optibilan';
+const pageDescription = 'Good habits are not built in a spreadsheet. Goals, routines, reminders and progress to keep your clients engaged over time.';
+
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  inLanguage: 'en-US',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://optibilan.com/en/' },
+    { '@type': 'ListItem', position: 2, name: 'Product', item: 'https://optibilan.com/en/product' },
+    { '@type': 'ListItem', position: 3, name: 'Habits & engagement', item: 'https://optibilan.com/en/product/engagement' },
+  ],
+};
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  lang="en"
+  canonical="/en/product/engagement/"
+  ogImage="/og-engagement.png"
+  jsonLd={breadcrumbJsonLd}
+>
+  <Header />
+
+  <main>
+    <Hero
+      title="Good habits
+are not built
+in a spreadsheet."
+      subtitle="Goals, routines, reminders and progress, brought together to help your clients stay engaged over time."
+      primaryCTA={{ href: '/pricing/', label: 'Join Optibilan' }}
+      secondaryCTA={{ href: '/checkout/solo/', label: 'Try Optibilan' }}
+    />
+
+    <section class="section bg-blanc" aria-labelledby="habits-title">
+      <div class="container">
+        <header class="mb-16">
+          <h2 id="habits-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+            Daily habits
+          </h2>
+          <p class="text-lg text-encre/60 max-w-2xl mx-auto">
+            The client checks off habits on mobile: water, supplements, light exposure, breathing, fasting, medication. Push and email reminders, simple validation, visible adherence rate.
+          </p>
+        </header>
+
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <h3 class="font-display text-2xl font-bold text-encre mb-4">Configurable per client, simple for everyone</h3>
+            <ul class="space-y-3 text-encre/60 mb-8">
+              <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-bleu-signature flex-shrink-0 mt-0.5" /> Type, frequency and reminder customized per habit</li>
+              <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-bleu-signature flex-shrink-0 mt-0.5" /> Barcode scan validation (supplements, medication)</li>
+              <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-bleu-signature flex-shrink-0 mt-0.5" /> Weekly and monthly adherence rate, alerts below 80%</li>
+              <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-bleu-signature flex-shrink-0 mt-0.5" /> Habit → biomarker correlation (ex: magnesium → cramps ↓)</li>
+            </ul>
+            <p class="text-sm text-encre/50">Automatic push and email reminders. Out-of-stock flagged.</p>
+          </div>
+          <div class="aspect-video rounded-xl border border-encre/10 bg-encre/5 overflow-hidden relative shadow-soft">
+            <img src="/images/product/05-mobile-preparation-mentale.webp" alt="Optibilan mobile screenshot: tracking the client habits and goals" class="w-full h-full object-cover" loading="lazy" width="1000" height="683" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-papier" aria-labelledby="goals-title">
+      <div class="container">
+        <header class="mb-16">
+          <h2 id="goals-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+            Goals & milestones
+          </h2>
+          <p class="text-lg text-encre/60 max-w-2xl mx-auto">
+            The ultimate goal (dreamboard) set from sign-up. Intermediate goals, dated milestones, visible progress. The client sees where they are going, you see where they stand.
+          </p>
+        </header>
+
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div class="aspect-video rounded-xl border border-encre/10 bg-encre/5 overflow-hidden relative shadow-soft">
+            <img src="/images/product/medecins/05-medecin-homme-consultation-prevention.webp" alt="Doctor in a prevention consultation, setting health goals with the patient" class="w-full h-full object-cover" loading="lazy" width="1000" height="667" />
+          </div>
+          <div>
+            <h3 class="font-display text-2xl font-bold text-encre mb-4">A clear view of the path</h3>
+            <ul class="space-y-3 text-encre/60 mb-8">
+              <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-bleu-signature flex-shrink-0 mt-0.5" /> Dreamboard + ultimate goal from sign-up</li>
+              <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-bleu-signature flex-shrink-0 mt-0.5" /> Dated intermediate goals, visible milestones</li>
+              <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-bleu-signature flex-shrink-0 mt-0.5" /> Visible progress on the client side and the coach side</li>
+              <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-bleu-signature flex-shrink-0 mt-0.5" /> Alerts when the plan drifts</li>
+            </ul>
+            <p class="text-sm text-encre/50">The client knows where they are going. You know where they stand.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-blanc" aria-labelledby="reminders-title">
+      <div class="container">
+        <header class="mb-16">
+          <h2 id="reminders-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+            Reminders & progress
+          </h2>
+          <p class="text-lg text-encre/60 max-w-2xl mx-auto">
+            Push and email reminders at the right time. Weekly and monthly adherence rates. Alerts when they drop. The coach sees overall engagement without micromanaging.
+          </p>
+        </header>
+
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <h3 class="font-display text-2xl font-bold text-encre mb-4">Stay informed without micromanaging</h3>
+            <ul class="space-y-3 text-encre/60 mb-8">
+              <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-bleu-signature flex-shrink-0 mt-0.5" /> Multi-channel reminders (push, email, team Slack)</li>
+              <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-bleu-signature flex-shrink-0 mt-0.5" /> Weekly and monthly adherence rate per client</li>
+              <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-bleu-signature flex-shrink-0 mt-0.5" /> Alerts when adherence is below 80% or activity stops for long</li>
+              <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-bleu-signature flex-shrink-0 mt-0.5" /> Engagement overview for the coach</li>
+            </ul>
+            <p class="text-sm text-encre/50">The client is autonomous. You are informed when it matters.</p>
+          </div>
+          <div class="aspect-video rounded-xl border border-encre/10 bg-encre/5 overflow-hidden relative shadow-soft">
+            <img src="/images/product/medecins/09-kinesitherapeute-seance.webp" alt="Physiotherapist supporting a patient during a session, tracking engagement over time" class="w-full h-full object-cover" loading="lazy" width="1000" height="667" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <CTA
+      title="Ready to engage your clients over time?"
+      subtitle="30 minutes to see how to structure habits, goals and reminders."
+      primaryCTA={{ href: '/pricing/', label: 'Join Optibilan' }}
+      secondaryCTA={{ href: '/checkout/solo/', label: 'Try Optibilan' }}
+      variant="primary"
+    />
+  </main>
+
+  <Footer />
+</Layout>

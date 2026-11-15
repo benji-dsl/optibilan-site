@@ -1,0 +1,190 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import Hero from '@/components/Hero.astro';
+import CTA from '@/components/CTA.astro';
+import Icon from '@/components/Icon.astro';
+import { localizePath } from '@/i18n/config';
+
+const lp = (href: string) => localizePath(href, 'en');
+
+const pageTitle = 'Nutrition - Optibilan';
+const pageDescription = 'Nutrition follow-up, not a pile of PDFs. Plans, eating habits, shopping lists, documented supplements and progress, all in the client record.';
+
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  inLanguage: 'en-US',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://optibilan.com/en/' },
+    { '@type': 'ListItem', position: 2, name: 'Product', item: 'https://optibilan.com/en/product' },
+    { '@type': 'ListItem', position: 3, name: 'Nutrition', item: 'https://optibilan.com/en/product/nutrition' },
+  ],
+};
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  lang="en"
+  canonical="/en/product/nutrition/"
+  ogImage="/og-nutrition.png"
+  jsonLd={breadcrumbJsonLd}
+>
+  <Header />
+
+  <main>
+    <Hero
+      title="Build the nutrition follow-up. 
+ Not a pile of PDFs."
+      subtitle="Plans, eating habits, shopping lists, documented and customizable supplements, and progress, all gathered in the client record. Nutrition at scale."
+      primaryCTA={{ href: '/pricing/', label: 'Join Optibilan' }}
+      secondaryCTA={{ href: '/checkout/solo/', label: 'Try Optibilan' }}
+    />
+
+    <section class="section bg-blanc" aria-labelledby="problem-title">
+      <div class="container max-w-3xl">
+        <header class="mb-12">
+          <h2 id="problem-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+            The problem: nutrition scattered everywhere
+          </h2>
+          <p class="text-lg text-encre/60">
+            Plan in Word, shopping list in Notes, supplements in a spreadsheet, methods in a folder, food journal on paper…<br>
+            The client does not follow through. The professional loses time.
+          </p>
+        
+        <div class="aspect-video rounded-xl border border-encre/10 bg-encre/5 overflow-hidden relative shadow-soft mb-12">
+          <img
+            src="/images/product/medecins/10-nutritionniste-consultation.webp"
+            alt="Nutritionist in consultation with a patient, personalized meal plan"
+            class="w-full h-full object-cover"
+            loading="lazy" width="1000" height="667" />
+        </div></header>
+
+        <div class="space-y-8">
+          {[
+            {
+              title: 'Create a nutrition protocol in minutes',
+              desc: 'Macro and micronutrient breakdown per meal and per day, automatic needs calculation. CIQUAL + USDA database built in (3000+ foods). Templates suited to different goals and coaching contexts.',
+              features: [
+                'Automatic needs calculation + meal breakdown',
+                'Templates customizable by goal and coaching context',
+                'Documented, customizable supplements',
+                'Coach notes, visible or private',
+              ],
+              icon: 'document',
+            },
+            {
+              title: 'Weekly shopping lists generated automatically',
+              desc: 'From the plan: quantities, categories (vegetables, proteins, groceries), your client\'s preferred stores. The client checks items off on mobile. Automatic update when the plan changes.',
+              features: [
+                'Quantities calculated for the week',
+                'Automatic categorization (delivery / market / organic)',
+                'Share by link / email / client portal',
+                'List history for reuse',
+              ],
+              icon: 'chart',
+            },
+            {
+              title: 'Documented, customizable supplements',
+              desc: 'For each supplement: dosage, timing, recommended brand. Interaction, contraindication and overdose alerts. Adherence: reminders, barcode scan validation, adherence rate.',
+              features: [
+                '200+ documented supplements',
+                'Custom dosage (weight, lab data)',
+                'Interaction / overdose alerts',
+                'Adherence: reminders + adherence rate',
+              ],
+              icon: 'zap',
+            },
+            {
+              title: 'Client food journal + coach approval',
+              desc: 'A simple photo or text journal for the client (barcode scan, search, favorite meals). One-click coach approval (✓ / comment). Automatic correlation with the plan (calorie, protein, vegetable gap).',
+              features: [
+                'Barcode scan + food database',
+                'Favorite meals for faster entry',
+                'Coach approval: ✓ / adjust / comment',
+                'Plan vs actual gap charts',
+              ],
+              icon: 'calendar',
+            },
+            {
+              title: 'Plan progression over time',
+              desc: 'One-click plan duplicate, macro and meal adjustments, version history, change comments. The client sees the progression (ex: +200 kcal / +30 g protein since last month).',
+              features: [
+                'Full plan versioning',
+                'Current vs previous version comparison',
+                'Macro drift alerts (protein, calories)',
+                'PDF export: plan + shopping + supplements',
+              ],
+              icon: 'users',
+            },
+          ].map((section, i) => (
+            <article id={section.icon} class="py-8 border-t border-encre/10 first:border-0">
+              <header class="flex items-center gap-4 mb-6">
+                <div class="icon-wrapper flex-shrink-0" aria-hidden="true" style="background-color: var(--color-bleu-clair);">
+                  <Icon name={section.icon} class="w-7 h-7 text-bleu-lecture" />
+                </div>
+                <div>
+                  <h3 class="font-display text-2xl font-bold text-encre">{section.title}</h3>
+                  <p class="text-encre/60 mt-1">{section.desc}</p>
+                </div>
+              </header>
+              <ul class="space-y-2 text-encre/60">
+                {section.features.map(f => (
+                  <li key={f} class="flex items-start gap-2">
+                    <Icon name="check" class="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5" />
+                    <span>{f}</span>
+                  </li>
+                ))}
+              </ul>
+            </article>
+          ))}
+        </div>
+
+        <div class="mt-12 p-6 rounded-xl bg-papier border border-encre/10">
+          <h3 class="font-display text-xl font-bold text-encre mb-3">Regulatory & ethical framework</h3>
+          <ul class="space-y-2 text-sm text-encre/60">
+            <li class="flex items-start gap-2"><Icon name="check" class="w-4 h-4 text-emerald-500 flex-shrink-0 mt-0.5" /> Optibilan is an organization tool. It <strong>does not replace</strong> the advice of a qualified health professional.</li>
+            <li class="flex items-start gap-2"><Icon name="check" class="w-4 h-4 text-emerald-500 flex-shrink-0 mt-0.5" /> No supplementation recommendation is "validated" automatically. The professional remains the decision maker.</li>
+            <li class="flex items-start gap-2"><Icon name="check" class="w-4 h-4 text-emerald-500 flex-shrink-0 mt-0.5" /> AI structures, suggests and alerts. It <strong>does not make a diagnosis</strong> or a prescription.</li>
+            <li class="flex items-start gap-2"><Icon name="check" class="w-4 h-4 text-emerald-500 flex-shrink-0 mt-0.5" /> GDPR Art. 9 compliance: health data processed under the responsibility of the practice (you are the controller, Optibilan is the processor).</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-papier" aria-labelledby="nutrition-visual-title">
+      <div class="container">
+        <header class="text-center max-w-3xl mx-auto mb-12">
+          <h2 id="nutrition-visual-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+            Nutrition follow-up in a single consultation
+          </h2>
+          <p class="text-lg text-encre/60">
+            Plans, food journal and actual vs plan gaps, all in the client record.
+          </p>
+        </header>
+        <div class="aspect-video max-w-4xl mx-auto rounded-xl border border-encre/10 bg-blanc overflow-hidden shadow-xl">
+          <img
+            src="/images/product/nutrition-consultation.webp"
+            alt="Optibilan interface screenshot: nutrition consultation with meal plans and the client food journal"
+            width="667"
+            height="381"
+            class="w-full h-full object-cover"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </section>
+
+    <CTA
+      title="Ready to structure your nutrition follow-up?"
+      subtitle="30 minutes to see how to build plans in minutes, not hours."
+      primaryCTA={{ href: '/pricing/', label: 'Join Optibilan' }}
+      secondaryCTA={{ href: '/checkout/solo/', label: 'Try Optibilan' }}
+      variant="primary"
+    />
+  </main>
+
+  <Footer />
+</Layout>

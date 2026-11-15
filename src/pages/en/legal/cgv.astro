@@ -1,0 +1,113 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+
+const pageTitle = 'Terms of Service - Optibilan';
+const pageDescription = 'Optibilan Terms of Service: subscriptions, pricing, payment, termination, SLA, support, liability, GDPR, governing law.';
+const lastUpdated = new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  lang="en"
+  canonical="/en/legal/cgv/"
+  ogImage="/og-legal.png"
+>
+  <Header />
+
+  <main>
+    <p class="container max-w-3xl pt-8 text-sm text-encre/60">Courtesy translation. The French version prevails in case of discrepancy.</p>
+    <section class="section bg-blanc" aria-labelledby="cgv-content">
+      <div class="container max-w-3xl">
+        <header class="mb-12 pb-8 border-b border-encre/10">
+          <h1 id="cgv-content" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">Terms of Service</h1>
+          <p class="text-sm text-encre/60"><strong>Version of:</strong> {lastUpdated}</p>
+        </header>
+        <article class="prose max-w-none">
+          <p class="lead text-encre/70 mb-8">
+            These Terms of Service (hereinafter "the ToS") govern the subscription to the Optibilan service (hereinafter "the Service") between Elite Longevity LLC (hereinafter "the Publisher") and the professional health, coaching or wellness practice (hereinafter "the Subscriber" or "the Practice").
+          </p>
+
+          <h2 class="font-display text-2xl font-bold text-encre mb-4 pb-2 border-b border-encre/10">Article 1 - Purpose</h2>
+          <p class="text-encre/70 mb-8">The Service is a multi-tenant SaaS coaching follow-up platform (check-ins, nutrition, training, mental preparation, connected health, gamification, coaching journal, scheduled calls, AI assistant) made available to the Subscriber through the URL <code>app.optibilan.com</code> and its subdomains. The Subscriber benefits from an isolated workspace (organization) that can be configured as a white label for its own clients.</p>
+
+          <h2 class="font-display text-2xl font-bold text-encre mb-4 pb-2 border-b border-encre/10">Article 2 - Plans and pricing</h2>
+          <p class="text-encre/70 mb-4">Three plans are offered, payable monthly or annually (20% discount on annual billing):</p>
+          <ul class="space-y-3 mb-8">
+            <li class="p-4 bg-papier/50 rounded-card border border-encre/10"><strong>Solo</strong>: €49/month (€39/month on annual billing) - 30 clients, 1 staff, AI 1,000 messages/month, API not included, basic white label.</li>
+            <li class="p-4 bg-papier/50 rounded-card border border-encre/10"><strong>Studio</strong>: €149/month (€119/month on annual billing) - 150 clients, 5 staff, AI 5,000 messages/month, API included, advanced white label, webhooks, Slack.</li>
+            <li class="p-4 bg-papier/50 rounded-card border border-encre/10"><strong>Cabinet</strong>: €349/month (€279/month on annual billing) - unlimited clients, unlimited staff, AI 20,000 messages/month, unlimited API, SSO/SAML, SLA, dedicated support, complimentary team onboarding.</li>
+          </ul>
+          <p class="text-encre/70 mb-8">Prices are exclusive of VAT. VAT (20% in France) is added for taxable persons. The Publisher reserves the right to change prices at any time, with 30 days' notice for subscriptions in progress. The change applies only to the next renewal.</p>
+
+          <h2 class="font-display text-2xl font-bold text-encre mb-4 pb-2 border-b border-encre/10">Article 3 - Free trial</h2>
+          <p class="text-encre/70 mb-8">Every new Subscriber receives a 30-day free trial, without a credit card, with full access to the chosen plan. At the end of the trial, the workspace switches to read-only (consultation possible, creation blocked) for a 7-day grace period. After that period, staff access is locked until a subscription is taken out.</p>
+
+          <h2 class="font-display text-2xl font-bold text-encre mb-4 pb-2 border-b border-encre/10">Article 4 - Payment and billing</h2>
+          <p class="text-encre/70 mb-4">Payment is made through Stripe (credit card, SEPA transfer, SEPA direct debit) or by manual transfer / Systeme.io (on request). Invoices are issued automatically at each due date and are available in the admin.</p>
+          <p class="text-encre/70 mb-8">In the event of non-payment, the subscription moves to the <code>PAST_DUE</code> status (read-only), then to <code>SUSPENDED</code> after 7 days, then to <code>CANCELED</code> after 30 days. Reminders are automatic (email + Slack).</p>
+
+          <h2 class="font-display text-2xl font-bold text-encre mb-4 pb-2 border-b border-encre/10">Article 5 - Term and termination</h2>
+          <p class="text-encre/70 mb-4">The subscription is entered into for an indefinite term (monthly or annual). The Subscriber may cancel at any time from the admin (1 click). Cancellation takes effect at the end of the current period (no pro rata refund).</p>
+          <p class="text-encre/70 mb-8">The Publisher may terminate in the event of a serious breach (unpaid amount not settled after formal notice, fraudulent use, security breach) with 15 days' notice.</p>
+
+          <h2 class="font-display text-2xl font-bold text-encre mb-4 pb-2 border-b border-encre/10">Article 6 - Service Level Agreement (SLA)</h2>
+          <ul class="space-y-2 mb-8 text-encre/70">
+            <li><strong>Target availability:</strong> 99.5% per month (excluding scheduled maintenance)</li>
+            <li><strong>Weekly maintenance:</strong> Sunday 03:00-05:00 UTC (notification 48h in advance)</li>
+            <li><strong>Support response time:</strong> <4 business hours (Cabinet), <8h (Studio), <24h (Solo)</li>
+            <li><strong>Major incident recovery (P1):</strong> <4h</li>
+          </ul>
+
+          <h2 class="font-display text-2xl font-bold text-encre mb-4 pb-2 border-b border-encre/10">Article 7 - Support and maintenance</h2>
+          <p class="text-encre/70 mb-4">Included support: email (all plans), shared Slack (Studio, Cabinet), dedicated phone/video (Cabinet).</p>
+          <p class="text-encre/70 mb-8">Corrective and functional maintenance included. New versions deployed without interruption (blue/green). Public changelog.</p>
+
+          <h2 class="font-display text-2xl font-bold text-encre mb-4 pb-2 border-b border-encre/10">Article 8 - Personal data and GDPR</h2>
+          <p class="text-encre/70 mb-4">The Publisher is a processor of the Subscriber (controller vis-à-vis its clients). A DPA (Data Processing Agreement) is annexed to the Terms of Service.</p>
+          <ul class="space-y-2 mb-8 text-encre/70">
+            <li>Full export (JSON, 37 models) and configurable purge</li>
+            <li>EU hosting (Supabase EU West, VPS France)</li>
+            <li>Encryption at rest (AES-256) and in transit (TLS 1.3)</li>
+            <li>No transfer outside the EU - Breach notification within 72h</li>
+          </ul>
+
+          <h2 class="font-display text-2xl font-bold text-encre mb-4 pb-2 border-b border-encre/10">Article 9 - Intellectual property</h2>
+          <p class="text-encre/70 mb-8">The Publisher retains all rights to the Service, its code, its documentation and its trademarks. The Subscriber retains all rights to its data (clients, check-ins, notes, configurations). The Subscriber grants the Publisher a licence to use its data strictly necessary for the provision of the Service (hosting, backup, support).</p>
+
+          <h2 class="font-display text-2xl font-bold text-encre mb-4 pb-2 border-b border-encre/10">Article 10 - Liability</h2>
+          <p class="text-encre/70 mb-4">The Publisher's liability is limited to the total amount of the sums paid by the Subscriber over the last 12 months.</p>
+          <p class="text-encre/70 mb-8">The Publisher is not liable for indirect damage (loss of customers, commercial harm, loss of data not caused by its fault). The Subscriber undertakes to use the Service in compliance with the regulations (French Public Health Code, professional ethics of its profession).</p>
+
+          <h2 class="font-display text-2xl font-bold text-encre mb-4 pb-2 border-b border-encre/10">Article 11 - Force majeure</h2>
+          <p class="text-encre/70 mb-8">Neither party is liable for a failure due to a case of force majeure (natural disaster, strike, third-party infrastructure failure, major cyberattack). The affected party informs the other without delay. If the impediment lasts more than 30 days, the other party may terminate without compensation.</p>
+
+          <h2 class="font-display text-2xl font-bold text-encre mb-4 pb-2 border-b border-encre/10">Article 12 - Confidentiality</h2>
+          <p class="text-encre/70 mb-8">Each party undertakes to keep confidential the non-public information of the other party (technical, commercial and financial data, client data). This obligation survives for 3 years after the end of the contract.</p>
+
+          <h2 class="font-display text-2xl font-bold text-encre mb-4 pb-2 border-b border-encre/10">Article 13 - Assignment</h2>
+          <p class="text-encre/70 mb-8">The Subscriber may not assign its contract without the Publisher's written consent. The Publisher may assign it in the context of a merger, acquisition or restructuring (notification 30 days in advance).</p>
+
+          <h2 class="font-display text-2xl font-bold text-encre mb-4 pb-2 border-b border-encre/10">Article 14 - General provisions</h2>
+          <p class="text-encre/70 mb-8">If a clause is declared void, the others remain in force. Failure to invoke a clause does not constitute a waiver. The Terms of Service constitute the entire agreement between the parties.</p>
+
+          <h2 class="font-display text-2xl font-bold text-encre mb-4 pb-2 border-b border-encre/10">Article 15 - Governing law and jurisdiction</h2>
+          <p class="text-encre/70 mb-8">The Terms of Service are governed by French law. Any dispute falls under the exclusive jurisdiction of the courts of Paris, even in the event of a third-party claim or multiple defendants.</p>
+
+          <h2 class="font-display text-2xl font-bold text-encre mb-4 pb-2 border-b border-encre/10">Article 16 - Acceptance</h2>
+          <p class="text-encre/70 mb-8">The Subscriber accepts these Terms of Service by ticking the acceptance box when subscribing or upgrading to a paid plan. The version in force is the one published on <a href="https://optibilan.com/legal/cgv" class="text-bleu-signature hover:underline">optibilan.com/legal/cgv</a> at the date of acceptance.</p>
+
+          <address class="not-italic mt-12 pt-8 border-t border-encre/10 text-sm text-encre/50">
+            Elite Longevity LLC<br>
+            Wyoming, USA<br>
+            Email: <a href="mailto:legal@optibilan.com" class="text-bleu-signature hover:underline">legal@optibilan.com</a>
+          </address>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

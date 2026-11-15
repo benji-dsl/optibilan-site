@@ -1,0 +1,114 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import { localizePath } from '@/i18n/config';
+
+const lp = (href: string) => localizePath(href, 'en');
+
+const pageTitle = 'Legal notice - Optibilan';
+const pageDescription = 'Optibilan legal notice: publisher, hosting providers, publication director, intellectual property, contact, GDPR.';
+const lastUpdated = new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  lang="en"
+  canonical="/en/legal/mentions/"
+  ogImage="/og-legal.png"
+>
+  <Header />
+
+  <main>
+    <p class="container max-w-3xl pt-8 text-sm text-encre/60">Courtesy translation. The French version prevails in case of discrepancy.</p>
+    <section class="section bg-blanc" aria-labelledby="legal-content">
+      <div class="container max-w-3xl">
+        <header class="mb-12 pb-8 border-b border-encre/10">
+          <h1 id="legal-content" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">Legal notice</h1>
+          <p class="text-sm text-encre/60"><strong>Last updated:</strong> {lastUpdated} - Version 2.0</p>
+        </header>
+        <article class="prose max-w-none">
+
+          <h2 class="font-display text-2xl font-bold text-encre mb-4 pb-2 border-b border-encre/10">1. Publisher</h2>
+          <p class="text-encre/70 mb-4"><strong>Optibilan</strong> - Brand operated by Elite Longevity LLC.</p>
+          <dl class="space-y-2 mb-8 text-encre/70">
+            <div class="flex gap-4"><dt class="font-medium text-encre min-w-[180px]">Address:</dt><dd>Wyoming, USA</dd></div>
+            <div class="flex gap-4"><dt class="font-medium text-encre min-w-[180px]">Legal email:</dt><dd><a href="mailto:legal@optibilan.com" class="text-bleu-signature hover:underline">legal@optibilan.com</a></dd></div>
+          </dl>
+
+          <h2 class="font-display text-2xl font-bold text-encre mb-4 pb-2 border-b border-encre/10">2. Publication director</h2>
+          <p class="text-encre/70 mb-8">Elite Longevity LLC, in its capacity as publisher of Optibilan.</p>
+
+          <h2 class="font-display text-2xl font-bold text-encre mb-4 pb-2 border-b border-encre/10">3. Hosting providers</h2>
+          <div class="space-y-6 mb-8">
+            <div class="p-4 bg-papier/50 rounded-card border border-encre/10">
+              <h3 class="font-semibold text-encre mb-2 flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-bleu-signature"></span> Hostinger - Cloud VPS (Application)</h3>
+              <ul class="space-y-1 text-encre/70 text-sm">
+                <li>Address: 61 Lordou Vironos Street, 6023 Larnaca, Cyprus</li>
+                <li>Website: <a href="https://hostinger.com" target="_blank" rel="noopener noreferrer" class="text-bleu-signature hover:underline">hostinger.com</a></li>
+              </ul>
+            </div>
+            <div class="p-4 bg-papier/50 rounded-card border border-encre/10">
+              <h3 class="font-semibold text-encre mb-2 flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-bleu-signature"></span> Supabase - PostgreSQL database (Data)</h3>
+              <ul class="space-y-1 text-encre/70 text-sm">
+                <li>Region: EU West (Ireland) - Data stored exclusively in the EU</li>
+                <li>Website: <a href="https://supabase.com" target="_blank" rel="noopener noreferrer" class="text-bleu-signature hover:underline">supabase.com</a></li>
+              </ul>
+            </div>
+            <div class="p-4 bg-papier/50 rounded-card border border-encre/10">
+              <h3 class="font-semibold text-encre mb-2 flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-bleu-signature"></span> Cloudflare - CDN, DNS, WAF, Tunnel</h3>
+              <ul class="space-y-1 text-encre/70 text-sm">
+                <li>Network: 300+ global PoPs - EU routing for EU users</li>
+                <li>Website: <a href="https://cloudflare.com" target="_blank" rel="noopener noreferrer" class="text-bleu-signature hover:underline">cloudflare.com</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <h2 class="font-display text-2xl font-bold text-encre mb-4 pb-2 border-b border-encre/10">4. Intellectual property</h2>
+          <p class="text-encre/70 mb-4">All the elements making up the website and the application (texts, images, logos, visual identity, source code, database, structure, modules) are the exclusive property of Optibilan or are used under an authorization. Any reproduction, representation, modification, publication or adaptation, in whole or in part, is prohibited without prior written authorization.</p>
+          <p class="text-encre/70 mb-8">The "Optibilan" trademarks, the logo and the module names are registered trademarks or trademark applications filed with the INPI.</p>
+
+          <h2 class="font-display text-2xl font-bold text-encre mb-4 pb-2 border-b border-encre/10">5. Personal data & GDPR</h2>
+          <p class="text-encre/70 mb-4">In accordance with the GDPR (EU Regulation 2016/679) and the French Data Protection Act (Informatique et Libertés), you have the right to access, rectify, erase, restrict, port and object to the processing of your data.</p>
+          <ul class="space-y-2 mb-8 text-encre/70">
+            <li>Full policy: <a href={lp('/legal/confidentialite/')} class="text-bleu-signature hover:underline">Privacy policy</a></li>
+            <li>Data Protection Officer (DPO): <a href="mailto:privacy@optibilan.com" class="text-bleu-signature hover:underline">privacy@optibilan.com</a></li>
+            <li>Exercising your rights: <a href="mailto:privacy@optibilan.com" class="text-bleu-signature hover:underline">privacy@optibilan.com</a> or through the admin (My account → My data)</li>
+          </ul>
+
+          <h2 class="font-display text-2xl font-bold text-encre mb-4 pb-2 border-b border-encre/10">6. Cookies & trackers</h2>
+          <p class="text-encre/70 mb-4">The website uses strictly necessary cookies (session, security, preferences) and, with your consent, analytics cookies (GA4/Plausible). No third-party advertising cookies.</p>
+          <ul class="space-y-2 mb-8 text-encre/70">
+            <li><code class="bg-papier px-1.5 py-0.5 rounded text-sm">optibilan_session</code> - JWT session (30 days, necessary)</li>
+            <li><code class="bg-papier px-1.5 py-0.5 rounded text-sm">optibilan_2fa_pending</code> - 2FA step (5 min, necessary)</li>
+            <li><code class="bg-papier px-1.5 py-0.5 rounded text-sm">vocab</code> - Practice vocabulary (30 days, necessary)</li>
+            <li><code class="bg-papier px-1.5 py-0.5 rounded text-sm">_ga* / plausible_*</code> - Anonymized analytics (13 months, consent)</li>
+          </ul>
+          <p class="text-encre/70 mb-8">Manage your preferences through the "Cookies" banner or your browser settings.</p>
+
+          <h2 class="font-display text-2xl font-bold text-encre mb-4 pb-2 border-b border-encre/10">7. Hyperlinks</h2>
+          <p class="text-encre/70 mb-8">The website may contain links to third-party sites. Optibilan exercises no control over these sites and accepts no liability for their content, their privacy policy or their practices.</p>
+
+          <h2 class="font-display text-2xl font-bold text-encre mb-4 pb-2 border-b border-encre/10">8. Liability</h2>
+          <p class="text-encre/70 mb-4">Optibilan strives to ensure that the information published is accurate and up to date. Errors or omissions may occur. Optibilan cannot be held liable for any direct or indirect damage resulting from access to the website or from the use of its content.</p>
+          <p class="text-encre/70 mb-8">The <code>app.optibilan.com</code> application is subject to its own <a href={lp('/legal/cgv/')} class="text-bleu-signature hover:underline">Terms of Service</a>.</p>
+
+          <h2 class="font-display text-2xl font-bold text-encre mb-4 pb-2 border-b border-encre/10">9. Governing law</h2>
+          <p class="text-encre/70 mb-8">This legal notice is governed by French law. Any dispute relating to its interpretation or performance falls under the exclusive jurisdiction of the courts of Paris.</p>
+
+          <h2 class="font-display text-2xl font-bold text-encre mb-4 pb-2 border-b border-encre/10">10. Contact</h2>
+          <p class="text-encre/70 mb-8">For any question relating to the legal notice: <a href="mailto:legal@optibilan.com" class="text-bleu-signature hover:underline">legal@optibilan.com</a></p>
+
+          <address class="not-italic mt-12 pt-8 border-t border-encre/10 text-sm text-encre/50">
+            Elite Longevity LLC<br>
+            Wyoming, USA<br>
+            Email: <a href="mailto:legal@optibilan.com" class="text-bleu-signature hover:underline">legal@optibilan.com</a>
+          </address>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

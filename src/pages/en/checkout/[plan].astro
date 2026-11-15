@@ -1,0 +1,614 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import { getPlanDetails } from '@/lib/plans';
+import { COUNTRIES, EU_CODES, EU_VAT_RATES } from '@/lib/countries';
+import { localizePath } from '@/i18n/config';
+
+const lp = (href: string) => localizePath(href, 'en');
+
+export async function getStaticPaths() {
+  return ['SOLO', 'STUDIO', 'CABINET'].map(plan => ({
+    params: { plan: plan.toLowerCase() },
+  }));
+}
+
+const { plan } = Astro.params;
+const validPlans = ['SOLO', 'STUDIO', 'CABINET'] as const;
+type Plan = (typeof validPlans)[number];
+
+const selectedPlan = validPlans.includes(plan?.toUpperCase() as Plan)
+  ? (plan?.toUpperCase() as Plan)
+  : null;
+const planDetails = selectedPlan ? getPlanDetails(selectedPlan) : null;
+const savingsYearly = planDetails ? planDetails.priceMonthly * 12 - planDetails.priceYearly : 0;
+
+// English feature labels, mirroring src/lib/plans.ts (prices and plan ids stay untouched).
+const planFeaturesEn: Record<Plan, string[]> = {
+  SOLO: [
+    'Up to 30 clients',
+    '1 practitioner seat',
+    'Check-ins & progress',
+    'Journal & photos',
+    'Nutrition & training',
+    'AI assistant (1,000 messages/month)',
+    'Data export',
+    'Email support',
+  ],
+  STUDIO: [
+    'Up to 150 clients',
+    'Up to 5 staff seats',
+    'Mental preparation & health',
+    'Nutrition/training templates',
+    'AI assistant (5,000 messages/month)',
+    'REST API (120 req/min)',
+    'Webhooks + Slack',
+    'Advanced white label',
+    'Priority support',
+  ],
+  CABINET: [
+    'Unlimited clients',
+    'Unlimited staff seats',
+    'Multi-specialty (coach / mental / diet)',
+    'AI assistant (20,000 messages/month)',
+    'API with no practical limit',
+    'SSO / SAML (coming soon)',
+    'Full audit trail',
+    'SLA & dedicated support',
+    'Team onboarding included',
+  ],
+};
+
+const features = selectedPlan ? planFeaturesEn[selectedPlan] : [];
+
+const pageTitle = selectedPlan
+  ? `Get started with Optibilan - ${planDetails!.name} plan`
+  : 'Get started with Optibilan';
+const pageDescription = selectedPlan
+  ? `${planDetails!.name} plan: 30-day free trial. Your card is saved today, first billing on day 30.`
+  : 'Optibilan - 30-day free trial, first billing on day 30.';
+
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://optibilan.com/en/' },
+    { '@type': 'ListItem', position: 2, name: 'Pricing', item: 'https://optibilan.com/en/pricing/' },
+    { '@type': 'ListItem', position: 3, name: 'Checkout', item: `https://optibilan.com/en/checkout/${plan}` },
+  ],
+};
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  lang="en"
+  canonical={`/en/checkout/${plan}/`}
+  noIndex
+  ogImage="/og-checkout.png"
+  jsonLd={breadcrumbJsonLd}
+>
+  <header class="sticky top-0 z-50 border-b border-encre/10 bg-blanc">
+    <div class="container relative flex h-16 items-center justify-between gap-4">
+      <a href={lp('/')} class="flex items-center gap-2" aria-label="Optibilan - Home">
+        <img src="/optibilan-logo-horizontal.png" alt="Optibilan" width="220" height="88" class="h-9 w-auto" fetchpriority="high" />
+      </a>
+      {selectedPlan && planDetails ? (
+        <div class="absolute left-1/2 -translate-x-1/2 min-w-0 text-center">
+          <p class="truncate font-display text-base font-bold text-encre md:text-lg">Complete your signup</p>
+          <p class="truncate text-xs text-body-light md:text-sm">30 days free with Optibilan {planDetails.name}.</p>
+        </div>
+      ) : null}
+    </div>
+  </header>
+
+  <main class="bg-blanc">
+    {selectedPlan && planDetails ? (
+      <section class="container py-10 md:py-14" aria-labelledby="checkout-title">
+        <div class="grid items-start gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-12">
+          <!-- LEFT COLUMN: SUMMARY -->
+          <aside class="lg:sticky lg:top-8">
+            <div class="rounded-2xl border border-encre/10 bg-papier p-6 md:p-8">
+              <div class="flex items-start justify-between gap-3">
+                <div>
+                  <h1 id="checkout-title" class="font-display text-2xl font-bold text-encre">Optibilan {planDetails.name}</h1>
+                  <p class="mt-1 text-body-light">For independent professionals</p>
+                </div>
+              </div>
+
+              <div class="mt-6">
+                <h2 class="text-xs font-semibold uppercase tracking-wider text-muted-light">Included</h2>
+                <ul class="mt-3 space-y-2.5 text-sm text-body-light">
+                  {features.slice(0, 4).map(f => (
+                    <li class="flex items-start gap-2.5" key={f}>
+                      <svg class="mt-0.5 w-5 h-5 flex-shrink-0 text-vert-fonce" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                      </svg>
+                      <span>{f}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <section class="mt-6" aria-labelledby="choice-title">
+                <h2 id="choice-title" class="text-xs font-semibold uppercase tracking-wider text-muted-light">Subscription options</h2>
+                <div class="mt-3 grid gap-3">
+                  <label class="plan-option is-selected" data-billing="monthly">
+                    <input type="radio" name="billing" value="monthly" class="sr-only" checked />
+                    <div class="flex items-start justify-between gap-2">
+                      <div>
+                        <div class="font-semibold text-encre">Monthly</div>
+                        <div class="mt-1 text-sm font-medium text-encre"><span id="price-monthly" data-base-price={planDetails.priceMonthly} data-billing-display="HT">€{planDetails.priceMonthly} excl. VAT / month</span></div>
+                        <div class="mt-2 text-xs text-muted-light">Maximum flexibility.</div>
+                      </div>
+                      <span class="plan-dot" aria-hidden="true"></span>
+                    </div>
+                  </label>
+                  <label class="plan-option" data-billing="yearly">
+                    <input type="radio" name="billing" value="yearly" class="sr-only" />
+                    <div class="flex items-start justify-between gap-2">
+                      <div>
+                        <div class="flex items-center gap-2">
+                          <span class="font-semibold text-encre">Yearly</span>
+                          <span class="rounded-full bg-rose-bordeaux px-2 py-0.5 text-xs font-bold text-bordeaux">2 months free</span>
+                        </div>
+                        <div class="mt-1 text-sm font-medium text-encre"><span id="price-yearly" data-base-price={planDetails.priceYearly} data-billing-display="HT">€{planDetails.priceYearly} excl. VAT / year</span></div>
+                        <div class="mt-2 text-xs text-muted-light">Save €{savingsYearly} per year.</div>
+                      </div>
+                      <span class="plan-dot" aria-hidden="true"></span>
+                    </div>
+                  </label>
+                </div>
+              </section>
+            </div>
+          </aside>
+
+          <!-- RIGHT COLUMN: FORM -->
+          <div class="space-y-8">
+            <form id="checkout-form" class="space-y-8" novalidate>
+              <!-- Your details -->
+              <section aria-labelledby="info-title">
+                <h2 id="info-title" class="font-display text-xl font-bold text-encre">Your details</h2>
+                <div class="mt-4 grid gap-4 sm:grid-cols-2">
+                  <div>
+                    <label for="firstName" class="mb-1.5 block text-sm font-medium text-encre">First name</label>
+                    <input
+                      type="text" id="firstName" name="firstName" required autocomplete="given-name"
+                      class="checkout-input"
+                    />
+                  </div>
+                  <div>
+                    <label for="lastName" class="mb-1.5 block text-sm font-medium text-encre">Last name</label>
+                    <input
+                      type="text" id="lastName" name="lastName" required autocomplete="family-name"
+                      class="checkout-input"
+                    />
+                  </div>
+                </div>
+                <div class="mt-4">
+                  <label for="email" class="mb-1.5 block text-sm font-medium text-encre">Work email</label>
+                  <input
+                    type="email" id="email" name="email" required autocomplete="email" placeholder="you@yourpractice.com"
+                    class="checkout-input"
+                  />
+                </div>
+              </section>
+
+              <!-- Billing -->
+              <section aria-labelledby="billing-title">
+                <h2 id="billing-title" class="font-display text-xl font-bold text-encre">Billing</h2>
+                <div class="mt-4 grid gap-4 sm:grid-cols-2">
+                  <div>
+                    <label for="country" class="mb-1.5 block text-sm font-medium text-encre">Billing country</label>
+                    <select id="country" name="country" required class="checkout-input">
+                      <option value="">Select a country</option>
+                      {COUNTRIES.map((c) => (
+                        <option value={c.code}>{c.name}</option>
+                      ))}
+                    </select>
+                  </div>
+                  <div>
+                    <label for="vatNumber" class="mb-1.5 block text-sm font-medium text-encre">
+                      EU VAT number <span class="font-normal text-muted-light">(optional)</span>
+                    </label>
+                    <input
+                      type="text" id="vatNumber" name="vatNumber" placeholder="FR12345678901"
+                      autocomplete="off" class="checkout-input"
+                    />
+                  </div>
+                </div>
+
+                <div class="mt-4">
+                  <label for="address" class="mb-1.5 block text-sm font-medium text-encre">Address</label>
+                  <input
+                    type="text" id="address" name="address" required autocomplete="street-address"
+                    placeholder="12 Liberty Street" class="checkout-input"
+                  />
+                </div>
+
+                <div class="mt-4 flex items-start gap-2.5 border-t border-encre/10 pt-4">
+                  <input type="checkbox" id="acceptCgv" name="acceptCgv" class="mt-0.5 h-4 w-4 shrink-0 accent-bleu-signature" />
+                  <label for="acceptCgv" class="text-sm">
+                    <span class="text-muted-light">
+                      I accept the{" "}
+                      <a href={lp('/legal/cgv/')} target="_blank" rel="noopener noreferrer" class="font-medium text-bleu-signature underline hover:text-bleu-fonce">
+                        Terms of Service
+                      </a>{" "}
+                      of Optibilan.
+                    </span>
+                  </label>
+                </div>
+
+              </section>
+
+              <!-- Card -->
+              <section aria-labelledby="card-title">
+                <h2 id="card-title" class="font-display text-xl font-bold text-encre">Payment</h2>
+                <div id="card-element" class="checkout-card mt-4" aria-label="Credit card"></div>
+                <p id="card-error" class="mt-2 min-h-5 text-sm text-danger-600" role="alert"></p>
+                <p class="mt-3 flex items-center gap-2 text-sm text-muted-light">
+                  <svg class="w-5 h-5 text-vert-fonce" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M10 1a4.5 4.5 0 00-4.5 4.5V9H5a2 2 0 00-2 2v6a2 2 0 002 2h10a2 2 0 002-2v-6a2 2 0 00-2-2h-.5V5.5A4.5 4.5 0 0010 1zm3 4.5V9H7V5.5a3 3 0 016 0z" clip-rule="evenodd"/>
+                  </svg>
+                  Secure payment by Stripe
+                </p>
+              </section>
+
+              <!-- Final summary + CTA -->
+              <section aria-labelledby="final-title">
+                <h2 id="final-title" class="sr-only">Final summary</h2>
+                <div class="rounded-xl border border-encre/10 bg-papier p-5">
+                  <div class="flex items-center justify-between text-sm">
+                    <span class="font-medium text-encre">Optibilan {planDetails.name}</span>
+                    <span id="final-cadence" class="font-medium text-encre"></span>
+                  </div>
+                  <div class="mt-3 flex items-center justify-between text-sm">
+                    <span class="text-muted-light">Today</span>
+                    <span class="font-semibold text-encre">€0</span>
+                  </div>
+                  <div class="mt-2 flex items-center justify-between text-sm">
+                    <span class="text-muted-light">Total after the trial</span>
+                    <span id="cta-total" class="font-semibold text-encre"></span>
+                  </div>
+                  <p id="cta-date" class="mt-3 text-xs text-muted-light"></p>
+                </div>
+
+                <button
+                  type="submit" id="submit-btn"
+                  class="btn-primary mt-5 w-full py-4 px-6 text-lg font-semibold rounded-xl transition-all duration-200"
+                >
+                  Start my 30 free days
+                </button>
+                <p id="cta-zero" class="mt-3 text-center text-sm font-semibold text-vert-fonce">Today: €0</p>
+                <p class="mt-2 text-center text-xs text-muted-light">
+                  You can cancel from your workspace before your first billing.
+                </p>
+              </section>
+            </form>
+
+            <!-- Reassurance -->
+            <div class="grid gap-4 sm:grid-cols-3">
+              <div class="rounded-xl border border-encre/10 p-4">
+                <svg class="w-6 h-6 text-bleu-signature" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                  <rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>
+                </svg>
+                <h3 class="mt-2 text-sm font-semibold text-encre">30 days free</h3>
+                <p class="mt-1 text-xs text-muted-light">Explore Optibilan before your first billing.</p>
+              </div>
+              <div class="rounded-xl border border-encre/10 p-4">
+                <svg class="w-6 h-6 text-bleu-signature" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                  <path d="M9 14L4 9l5-5"/><path d="M4 9h10a6 6 0 016 6v1"/>
+                </svg>
+                <h3 class="mt-2 text-sm font-semibold text-encre">Simple cancellation</h3>
+                <p class="mt-1 text-xs text-muted-light">Manage your subscription directly from your workspace.</p>
+              </div>
+              <div class="rounded-xl border border-encre/10 p-4">
+                <svg class="w-6 h-6 text-bleu-signature" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 11.5l2 2 4-4"/>
+                </svg>
+                <h3 class="mt-2 text-sm font-semibold text-encre">Secure payment</h3>
+                <p class="mt-1 text-xs text-muted-light">Payment processed by Stripe.</p>
+              </div>
+            </div>
+
+            <p class="text-center text-sm text-muted-light">
+              By continuing, you accept our
+              <a href={lp('/legal/cgv/')} target="_blank" rel="noopener noreferrer" class="underline hover:text-bleu-signature">Terms of Service</a>
+              and our
+              <a href={lp('/legal/confidentialite/')} target="_blank" rel="noopener noreferrer" class="underline hover:text-bleu-signature">Privacy Policy</a>.
+            </p>
+          </div>
+        </div>
+      </section>
+    ) : (
+      <section class="section bg-blanc" aria-labelledby="error-title">
+        <div class="container mx-auto max-w-md text-center">
+          <h1 id="error-title" class="font-display text-3xl font-bold text-encre mb-4">Invalid plan</h1>
+          <p class="text-body-light mb-8">The selected plan does not exist. Go back to the pricing page to choose a plan.</p>
+          <a href={lp('/pricing/')} class="btn-primary inline-flex">Back to pricing</a>
+        </div>
+      </section>
+    )}
+  </main>
+
+  <footer class="border-t border-encre/10 bg-blanc">
+    <div class="container flex flex-col items-center justify-between gap-3 py-6 text-xs text-muted-light sm:flex-row">
+      <span>© {new Date().getFullYear()} Elite Longevity LLC</span>
+      <span class="flex items-center gap-4">
+        <a href={lp('/legal/cgv/')} target="_blank" rel="noopener noreferrer" class="hover:text-bleu-signature">Terms</a>
+        <a href={lp('/legal/confidentialite/')} target="_blank" rel="noopener noreferrer" class="hover:text-bleu-signature">Privacy</a>
+        <a href={lp('/contact/')} class="hover:text-bleu-signature">Contact</a>
+      </span>
+    </div>
+  </footer>
+</Layout>
+
+<script is:inline define:vars={{
+  plan: (selectedPlan || '').toLowerCase(),
+  priceMonthly: planDetails?.priceMonthly ?? 0,
+  priceYearly: planDetails?.priceYearly ?? 0,
+}}>
+  const TRIAL_DAYS = 30;
+  const $ = (id) => document.getElementById(id);
+
+  const state = {
+    billing: 'monthly',
+    country: '',
+    vatNumber: '',
+    vatRates: {},
+  };
+
+  let stripe = null;
+  let cardElement = null;
+  let stripeReady = false;
+
+  const twoDigits = (n) => Math.round(n * 100) / 100;
+  const fmt = (n) =>
+    new Intl.NumberFormat('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 2 }).format(twoDigits(n));
+  const eur = (n) => `€${fmt(n)}`;
+  const basePrice = () => (state.billing === 'monthly' ? priceMonthly : priceYearly);
+  const isVatExempt = () => /^[A-Za-z]{2}[0-9A-Za-z]{6,12}$/.test(state.vatNumber.trim());
+  const vatRate = () => (isVatExempt() ? 0 : state.vatRates[state.country] || 0);
+  const vatAmount = () => twoDigits(basePrice() * vatRate());
+  const totalPrice = () => twoDigits(basePrice() + vatAmount());
+
+  function trialEndDate() {
+    const d = new Date();
+    d.setDate(d.getDate() + TRIAL_DAYS);
+    return new Intl.DateTimeFormat('en-US', { day: 'numeric', month: 'long', year: 'numeric' }).format(d);
+  }
+
+  function renderRecap() {
+    const yearly = state.billing === 'yearly';
+    $('final-cadence').textContent = yearly ? 'Yearly · 2 months free' : 'Monthly';
+    $('cta-total').textContent = `${eur(totalPrice())} incl. VAT`;
+    $('cta-date').textContent = `First billing on ${trialEndDate()}`;
+
+    const unit = vatRate() > 0 ? 'incl. VAT' : 'excl. VAT';
+    const priceMonthly = $('price-monthly');
+    const priceYearly = $('price-yearly');
+    if (priceMonthly) {
+      priceMonthly.textContent = `${eur(priceMonthly.dataset.basePrice * (1 + vatRate()))} ${unit} / month`;
+    }
+    if (priceYearly) {
+      priceYearly.textContent = `${eur(priceYearly.dataset.basePrice * (1 + vatRate()))} ${unit} / year`;
+    }
+  }
+
+  function showError(message) {
+    const el = $('card-error');
+    el.textContent = message;
+    el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  function loadStripe(version) {
+    return new Promise((resolve, reject) => {
+      if (window.Stripe) return resolve(window.Stripe);
+      const tag = document.querySelector('script[data-stripe]');
+      if (tag) {
+        tag.addEventListener('load', () => resolve(window.Stripe));
+        tag.addEventListener('error', () => reject(new Error('Unable to load payment.')));
+        return;
+      }
+      const script = document.createElement('script');
+      script.src = 'https://js.stripe.com/v3/';
+      script.dataset.stripe = '1';
+      script.onload = () => resolve(window.Stripe);
+      script.onerror = () => reject(new Error('Unable to load payment.'));
+      document.head.appendChild(script);
+    });
+  }
+
+  async function initPayment() {
+    try {
+      const res = await fetch('/api/stripe-config', { cache: 'no-store' });
+      if (!res.ok) throw new Error('Payment unavailable.');
+      const cfg = await res.json();
+      state.vatRates = cfg.vatRates || {};
+      if (!cfg.publishableKey) throw new Error('Payment temporarily unavailable. Try again in a moment.');
+      const StripeApi = await loadStripe();
+      stripe = StripeApi(cfg.publishableKey);
+      cardElement = stripe.elements().create('card', {
+        hidePostalCode: true,
+        style: {
+          base: {
+            fontSize: '16px',
+            color: '#23211C',
+            fontFamily: "'Inter', system-ui, -apple-system, sans-serif",
+            '::placeholder': { color: '#66706B' },
+          },
+          invalid: { color: '#DC2626' },
+        },
+      });
+      cardElement.mount('#card-element');
+      cardElement.on('change', (e) => {
+        if (e.error) {
+          $('card-error').textContent = e.error.message;
+        } else {
+          $('card-error').textContent = '';
+        }
+      });
+      stripeReady = true;
+    } catch (err) {
+      showError(err.message || 'Payment temporarily unavailable.');
+      $('submit-btn').disabled = true;
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    initPayment();
+    renderRecap();
+
+    document.querySelectorAll('.plan-option').forEach((opt) => {
+      opt.addEventListener('click', () => {
+        const input = opt.querySelector('input');
+        input.checked = true;
+        state.billing = input.value;
+        document.querySelectorAll('.plan-option').forEach((o) =>
+          o.classList.toggle('is-selected', o === opt)
+        );
+        renderRecap();
+      });
+    });
+
+    const country = $('country');
+    country.addEventListener('change', () => {
+      state.country = country.value;
+      renderRecap();
+    });
+
+    const vatNumber = $('vatNumber');
+    vatNumber.addEventListener('input', () => {
+      state.vatNumber = vatNumber.value;
+      renderRecap();
+    });
+  });
+
+  $('checkout-form')?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = $('submit-btn');
+
+    const firstName = $('firstName').value.trim();
+    const lastName = $('lastName').value.trim();
+    const email = $('email').value.trim();
+    const country = $('country').value;
+    const vatNumber = $('vatNumber').value.trim();
+    const address = $('address').value.trim();
+
+    if (!firstName || !lastName) return showError('Please enter your first and last name.');
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return showError('Please enter a valid work email.');
+    if (!country) return showError('Please select your billing country.');
+    if (!address) return showError('Please enter your billing address.');
+    const cgv = $('acceptCgv');
+    if (cgv && !cgv.checked) return showError('Please accept the Terms of Service to complete your order.');
+    if (!stripeReady || !stripe || !cardElement) return showError('Payment is still loading.');
+
+    const originalLabel = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = 'Securing...';
+    showError('');
+
+    const { paymentMethod, error } = await stripe.createPaymentMethod({
+      type: 'card',
+      card: cardElement,
+      billing_details: { name: `${firstName} ${lastName}`, email },
+    });
+
+    if (error) {
+      btn.disabled = false;
+      btn.textContent = originalLabel;
+      return showError(error.message);
+    }
+
+    try {
+      const res = await fetch('/api/checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          plan,
+          billing: state.billing,
+          email,
+          firstName,
+          lastName,
+          country,
+          vatNumber,
+          address,
+          paymentMethodId: paymentMethod.id,
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Payment failed. Your card was not charged.');
+      window.location.href = data.url;
+    } catch (err) {
+      btn.disabled = false;
+      btn.textContent = originalLabel;
+      showError(err.message || 'Payment failed. Your card was not charged.');
+    }
+  });
+</script>
+
+<style is:global>
+  .checkout-input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-radius: 0.75rem;
+    background-color: var(--color-surface);
+    border: 1px solid color-mix(in oklab, var(--color-encre-texte) 20%, transparent);
+    color: var(--color-encre-texte);
+    font-size: 1rem;
+    transition: border-color 150ms ease, box-shadow 150ms ease;
+  }
+  .checkout-input:focus {
+    outline: none;
+    border-color: var(--color-bleu-signature);
+    box-shadow: 0 0 0 3px color-mix(in oklab, var(--color-bleu-signature) 20%, transparent);
+  }
+  .checkout-card {
+    padding: 0.75rem 1rem;
+    border-radius: 0.75rem;
+    background-color: var(--color-surface);
+    border: 1px solid color-mix(in oklab, var(--color-encre-texte) 20%, transparent);
+    min-height: 56px;
+    transition: border-color 150ms ease, box-shadow 150ms ease;
+  }
+  .checkout-card.StripeElement--focus {
+    border-color: var(--color-bleu-signature);
+    box-shadow: 0 0 0 3px color-mix(in oklab, var(--color-bleu-signature) 20%, transparent);
+  }
+  .checkout-card.StripeElement--invalid {
+    border-color: var(--color-danger-500);
+  }
+  .plan-option {
+    cursor: pointer;
+    border-radius: 0.75rem;
+    border: 1px solid color-mix(in oklab, var(--color-encre-texte) 15%, transparent);
+    background-color: var(--color-surface);
+    padding: 1rem 1.25rem;
+    transition: border-color 150ms ease, box-shadow 150ms ease, background-color 150ms ease;
+  }
+  .plan-option:hover {
+    border-color: color-mix(in oklab, var(--color-bleu-signature) 45%, transparent);
+  }
+  .plan-option.is-selected {
+    border-color: var(--color-bleu-signature);
+    background-color: color-mix(in oklab, var(--color-ciel) 55%, white);
+    box-shadow: 0 0 0 1px var(--color-bleu-signature);
+  }
+  .plan-dot {
+    width: 1.25rem;
+    height: 1.25rem;
+    border-radius: 999px;
+    border: 2px solid color-mix(in oklab, var(--color-encre-texte) 25%, transparent);
+    flex-shrink: 0;
+    position: relative;
+  }
+  .plan-option.is-selected .plan-dot {
+    border-color: var(--color-bleu-signature);
+  }
+  .plan-option.is-selected .plan-dot::after {
+    content: '';
+    position: absolute;
+    inset: 3px;
+    border-radius: 999px;
+    background-color: var(--color-bleu-signature);
+  }
+</style>

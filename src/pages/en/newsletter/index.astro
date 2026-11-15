@@ -1,0 +1,122 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import Hero from '@/components/Hero.astro';
+import { localizePath } from '@/i18n/config';
+
+const lp = (href: string) => localizePath(href, 'en');
+
+const pageTitle = 'Newsletter - Optibilan';
+const pageDescription = 'The Optibilan newsletter: one email a week on health, nutrition, coaching and the tools that help your practice grow.';
+
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://optibilan.com/en/' },
+    { '@type': 'ListItem', position: 2, name: 'Newsletter', item: 'https://optibilan.com/en/newsletter/' },
+  ],
+};
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  lang="en"
+  canonical="/en/newsletter/"
+  ogImage="/og-default.png"
+  jsonLd={breadcrumbJsonLd}
+>
+  <Header />
+
+  <main>
+    <Hero
+      variant="page"
+      title="The newsletter
+for health professionals"
+      subtitle="One email a week: methods, tools, case studies. Built directly for physical therapists, doctors, nutritionists and coaches."
+    />
+
+    <section class="section bg-blanc" aria-labelledby="newsletter-title">
+      <div class="container max-w-4xl">
+        <header class="text-center mb-12">
+          <h2 id="newsletter-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+            One email a week, zero spam
+          </h2>
+          <p class="text-lg text-encre/60 max-w-2xl mx-auto">
+            What you get: one actionable tip, one concrete resource, one recommended read. Unsubscribe in one click,
+            at any time.
+          </p>
+        </header>
+
+        <div class="bg-gradient-to-br from-bleu-signature/5 via-papier to-bleu-lecture/5 rounded-card-lg p-8 md:p-12">
+          <form id="newsletter-form" action="/api/newsletter/" method="POST" class="space-y-4 max-w-xl mx-auto" data-track="newsletter_form">
+            <div>
+              <label for="email" class="block text-sm font-medium text-encre mb-1">Work email *</label>
+              <input type="email" id="email" name="email" required autocomplete="email" placeholder="you@yourpractice.com" class="w-full px-4 py-3 rounded-lg bg-blanc border border-encre/20 focus:outline-none focus:border-bleu-signature focus:ring-2 focus:ring-bleu-signature/20 transition-all" />
+            </div>
+            <label class="flex items-start gap-3 text-sm text-encre/60">
+              <input type="checkbox" id="consent" name="consent" required class="mt-1" />
+              <span>
+                I agree to receive the Optibilan newsletter, in accordance with the <a href={lp('/legal/confidentialite/')} class="underline hover:text-bleu-signature">Privacy Policy</a>.
+              </span>
+            </label>
+            <div class="hidden" aria-hidden="true">
+              <label for="website">Do not fill in:</label>
+              <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
+            </div>
+            <button type="submit" class="btn-demo w-full sm:w-auto mx-auto block" data-track="newsletter_submit">
+              Subscribe for free
+            </button>
+            <p class="text-xs text-encre/50 text-center">Free, no commitment. One email a week.</p>
+            <p id="newsletter-feedback" class="text-center text-sm font-medium hidden" role="status"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+
+<script is:inline>
+  const form = document.getElementById('newsletter-form');
+  const feedback = document.getElementById('newsletter-feedback');
+
+  async function submitNewsletter(e) {
+    e.preventDefault();
+    if (!form || !feedback) return;
+
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const originalLabel = submitBtn ? submitBtn.textContent : '';
+    if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Subscribing...'; }
+    feedback.classList.add('hidden');
+
+    try {
+      const res = await fetch(form.action, { method: 'POST', body: new FormData(form) });
+      const data = await res.json().catch(() => ({}));
+      if (res.ok && data.ok) {
+        feedback.textContent = 'Thank you! You are subscribed. First email next week.';
+        feedback.classList.remove('text-red-600');
+        feedback.classList.add('text-emerald-600');
+        feedback.classList.remove('hidden');
+        form.reset();
+      } else {
+        feedback.textContent = data.error || 'Something went wrong. Please try again or email us at contact@optibilan.com.';
+        feedback.classList.remove('text-emerald-600');
+        feedback.classList.add('text-red-600');
+        feedback.classList.remove('hidden');
+      }
+    } catch (err) {
+      feedback.textContent = 'Something went wrong. Please try again or email us at contact@optibilan.com.';
+      feedback.classList.remove('text-emerald-600');
+      feedback.classList.add('text-red-600');
+      feedback.classList.remove('hidden');
+    } finally {
+      if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = originalLabel; }
+    }
+  }
+
+  form?.addEventListener('submit', submitNewsletter);
+</script>

@@ -1,0 +1,203 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import Hero from '@/components/Hero.astro';
+import CTA from '@/components/CTA.astro';
+import Icon from '@/components/Icon.astro';
+import { localizePath } from '@/i18n/config';
+
+const lp = (href: string) => localizePath(href, 'en');
+
+const pageTitle = 'White label - Optibilan';
+const pageDescription = 'Optibilan disappears. Your brand remains. Logo, colors, domain, wording, AI assistant, emails, legal notices, terms: everything is yours.';
+
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  inLanguage: 'en-US',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://optibilan.com/en/' },
+    { '@type': 'ListItem', position: 2, name: 'Product', item: 'https://optibilan.com/en/produit' },
+    { '@type': 'ListItem', position: 3, name: 'White label', item: 'https://optibilan.com/en/product/white-label' },
+  ],
+};
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  lang="en"
+  canonical="/en/product/white-label/"
+  ogImage="/og-white-label.png"
+  jsonLd={breadcrumbJsonLd}
+>
+  <Header />
+
+  <main>
+    <Hero
+      title="Your method.
+Your brand."
+      subtitle="Logo, colors, domain, wording, AI assistant, emails, legal notices, terms: everything is yours. Your clients never see Optibilan."
+      primaryCTA={{ href: lp('/pricing/'), label: 'Join Optibilan' }}
+      secondaryCTA={{ href: lp('/checkout/solo/'), label: 'Free trial' }}
+    />
+
+    <section class="section bg-blanc" aria-labelledby="comparison-title">
+      <div class="container max-w-4xl">
+        <header class="text-center mb-16">
+          <h2 id="comparison-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+            BEFORE
+          </h2>
+          <p class="text-lg text-encre/60 max-w-2xl mx-auto">
+            Show your clients YOUR method, YOUR colors, YOUR domain. Optibilan steps aside completely.
+          </p>
+        </header>
+
+        <div class="grid md:grid-cols-2 gap-8 mb-16">
+          <article class="p-6 rounded-xl border border-encre/10 bg-rose-50">
+            <h3 class="font-display text-xl font-bold text-rose-700 mb-4 flex items-center gap-2">
+              <Icon name="shield" class="w-5 h-5" /> BEFORE
+            </h3>
+            <ul class="space-y-2 text-encre/70">
+              <li class="flex items-start gap-2"><Icon name="shield" class="w-4 h-4 text-rose-500 flex-shrink-0" /> Visible Optibilan logo</li>
+              <li class="flex items-start gap-2"><Icon name="shield" class="w-4 h-4 text-rose-500 flex-shrink-0" /> Optibilan colors (blue/indigo)</li>
+              <li class="flex items-start gap-2"><Icon name="shield" class="w-4 h-4 text-rose-500 flex-shrink-0" /> app.optibilan.com domain</li>
+              <li class="flex items-start gap-2"><Icon name="shield" class="w-4 h-4 text-rose-500 flex-shrink-0" /> Default wording "coaché / client"</li>
+              <li class="flex items-start gap-2"><Icon name="shield" class="w-4 h-4 text-rose-500 flex-shrink-0" /> AI assistant named "Optibilan"</li>
+              <li class="flex items-start gap-2"><Icon name="shield" class="w-4 h-4 text-rose-500 flex-shrink-0" /> Emails from @optibilan.com</li>
+              <li class="flex items-start gap-2"><Icon name="shield" class="w-4 h-4 text-rose-500 flex-shrink-0" /> Optibilan legal notices</li>
+            </ul>
+          </article>
+          <article class="p-6 rounded-xl border border-encre/10 bg-emerald-50">
+            <h3 class="font-display text-xl font-bold text-emerald-700 mb-4 flex items-center gap-2">
+              <Icon name="check" class="w-5 h-5" /> WITH OPTIBILAN
+            </h3>
+            <ul class="space-y-2 text-encre/70">
+              <li class="flex items-start gap-2"><Icon name="check" class="w-4 h-4 text-emerald-500 flex-shrink-0" /> YOUR logo</li>
+              <li class="flex items-start gap-2"><Icon name="check" class="w-4 h-4 text-emerald-500 flex-shrink-0" /> YOUR colors (full theme or custom palette)</li>
+              <li class="flex items-start gap-2"><Icon name="check" class="w-4 h-4 text-emerald-500 flex-shrink-0" /> YOUR domain (app.yourpractice.com)</li>
+              <li class="flex items-start gap-2"><Icon name="check" class="w-4 h-4 text-emerald-500 flex-shrink-0" /> YOUR wording (member / patient / client / athlete…)</li>
+              <li class="flex items-start gap-2"><Icon name="check" class="w-4 h-4 text-emerald-500 flex-shrink-0" /> YOUR AI assistant (first name, tone, specialty)</li>
+              <li class="flex items-start gap-2"><Icon name="check" class="w-4 h-4 text-emerald-500 flex-shrink-0" /> YOUR emails (@yourpractice.com)</li>
+              <li class="flex items-start gap-2"><Icon name="check" class="w-4 h-4 text-emerald-500 flex-shrink-0" /> YOUR legal notices, terms, GDPR</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-papier" aria-labelledby="visual-title">
+      <div class="container">
+        <header class="text-center max-w-3xl mx-auto mb-16">
+          <h2 id="visual-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+            Seeing is believing
+          </h2>
+          <p class="text-lg text-encre/60 max-w-2xl mx-auto mb-12">
+            White label is visual. Here is your practice on Optibilan.
+          </p>
+        </header>
+
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div class="aspect-video w-full rounded-xl border border-encre/10 bg-encre/5 overflow-hidden relative">
+            <img src="/images/product/marque-blanche.webp" alt="Optibilan white label screenshot: the client area in your practice name and colors" width="481" height="272" class="w-full h-full object-cover" loading="lazy" />
+          </div>
+          <div>
+            <h3 class="font-display text-2xl font-bold text-encre mb-4">Desktop + mobile, your practice everywhere</h3>
+            <ul class="space-y-3 text-encre/60 mb-8">
+              <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-bleu-signature flex-shrink-0 mt-0.5" /> Logo, colors, full theme</li>
+              <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-bleu-signature flex-shrink-0 mt-0.5" /> Custom domain (app.yourpractice.com)</li>
+              <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-bleu-signature flex-shrink-0 mt-0.5" /> Emails @yourpractice.com (DKIM/SPF/DMARC)</li>
+              <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-bleu-signature flex-shrink-0 mt-0.5" /> Wording: member / patient / client / athlete</li>
+              <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-bleu-signature flex-shrink-0 mt-0.5" /> Named AI assistant, legal notices, your own terms</li>
+            </ul>
+            <p class="text-sm text-encre/50">Instant activation. No code required.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-papier" aria-labelledby="modules-title">
+      <div class="container">
+        <header class="text-center max-w-3xl mx-auto mb-16">
+          <h2 id="modules-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+            What you can customize
+          </h2>
+          <p class="text-lg text-encre/60">Everything is configured in the admin, with no code. Instant activation.</p>
+        </header>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {[
+            { icon: 'logo', title: 'Logo & favicon', desc: 'Upload SVG/PNG. Favicon generated automatically. Responsive.' },
+            { icon: 'chart', title: 'Full theme', desc: 'Primary and secondary colors, backgrounds, borders. Light/dark mode. Custom palette or presets.' },
+            { icon: 'globe', title: 'Custom domain', desc: 'Subdomain (app.yourpractice.com) or root domain. DNS handled, automatic SSL (Let\'s Encrypt / Cloudflare).' },
+            { icon: 'document', title: 'Wording', desc: 'coaché / patient / member / client / athlete… Everywhere: UI, emails, notifications, PDFs.' },
+            { icon: 'brain', title: 'AI assistant', desc: 'First name, tone (formal/supportive/direct), specialty, guardrails, sample answers.' },
+            { icon: 'mail', title: 'Transactional emails', desc: 'Sender @yourpractice.com. Branded HTML templates. DKIM/SPF/DMARC on your domain.' },
+            { icon: 'shield', title: 'Legal notices & terms', desc: 'Your legal notices, terms of service, privacy policy. Injected into the client area and emails.' },
+            { icon: 'code', title: 'Custom CSS/JS (Cabinet)', desc: 'Code injection in <head> / <body>. Tracking, chat, advanced design. Without breaking updates.' },
+          ].map((item, i) => (
+            <article class="card-hover p-6 text-center group" style="animation-delay: {i * 100}ms">
+              <div class="icon-wrapper mx-auto mb-4" aria-hidden="true" style="background-color: var(--color-bleu-clair);">
+                <Icon name={item.icon} class="w-7 h-7 text-bleu-signature" />
+              </div>
+              <h3 class="font-display text-lg font-bold text-encre mb-2">{item.title}</h3>
+              <p class="text-sm text-encre/50">{item.desc}</p>
+            </article>
+          ))}
+        </div>
+
+        <div class="mt-12 p-6 rounded-xl bg-gradient-to-br from-bleu-signature/5 via-papier to-bleu-lecture/5 border border-encre/10">
+          <h3 class="font-display text-xl md:text-2xl font-bold text-encre mb-4">White label levels by plan</h3>
+          <div class="grid md:grid-cols-3 gap-6 mt-6 text-sm">
+            <article class="p-4 rounded-lg bg-blanc border border-encre/10">
+              <h4 class="font-semibold text-encre mb-3">Solo - Basic</h4>
+              <ul class="space-y-2 text-encre/60">
+                <li class="flex items-center gap-2"><Icon name="check" class="w-4 h-4 text-emerald-500" /> Logo</li>
+                <li class="flex items-center gap-2"><Icon name="check" class="w-4 h-4 text-emerald-500" /> Colors</li>
+                <li class="flex items-center gap-2"><Icon name="shield" class="w-4 h-4 text-rose-500" /> Custom domain</li>
+                <li class="flex items-center gap-2"><Icon name="shield" class="w-4 h-4 text-rose-500" /> Wording</li>
+                <li class="flex items-center gap-2"><Icon name="shield" class="w-4 h-4 text-rose-500" /> AI assistant</li>
+                <li class="flex items-center gap-2"><Icon name="shield" class="w-4 h-4 text-rose-500" /> Custom emails</li>
+              </ul>
+            </article>
+            <article class="p-4 rounded-lg bg-blanc border border-encre/10">
+              <h4 class="font-semibold text-encre mb-3">Studio - Advanced</h4>
+              <ul class="space-y-2 text-encre/60">
+                <li class="flex items-center gap-2"><Icon name="check" class="w-4 h-4 text-emerald-500" /> Logo</li>
+                <li class="flex items-center gap-2"><Icon name="check" class="w-4 h-4 text-emerald-500" /> Colors</li>
+                <li class="flex items-center gap-2"><Icon name="check" class="w-4 h-4 text-emerald-500" /> Custom domain</li>
+                <li class="flex items-center gap-2"><Icon name="check" class="w-4 h-4 text-emerald-500" /> Wording</li>
+                <li class="flex items-center gap-2"><Icon name="check" class="w-4 h-4 text-emerald-500" /> AI assistant</li>
+                <li class="flex items-center gap-2"><Icon name="shield" class="w-4 h-4 text-rose-500" /> Custom emails</li>
+              </ul>
+            </article>
+            <article class="p-4 rounded-lg bg-blanc border border-encre/10 ring-2 ring-bleu-signature">
+              <h4 class="font-semibold text-encre mb-3">Cabinet - Full</h4>
+              <ul class="space-y-2 text-encre/60">
+                <li class="flex items-center gap-2"><Icon name="check" class="w-4 h-4 text-emerald-500" /> Logo</li>
+                <li class="flex items-center gap-2"><Icon name="check" class="w-4 h-4 text-emerald-500" /> Colors</li>
+                <li class="flex items-center gap-2"><Icon name="check" class="w-4 h-4 text-emerald-500" /> Custom domain</li>
+                <li class="flex items-center gap-2"><Icon name="check" class="w-4 h-4 text-emerald-500" /> Wording</li>
+                <li class="flex items-center gap-2"><Icon name="check" class="w-4 h-4 text-emerald-500" /> AI assistant</li>
+                <li class="flex items-center gap-2"><Icon name="check" class="w-4 h-4 text-emerald-500" /> Emails @yourpractice.com</li>
+                <li class="flex items-center gap-2"><Icon name="check" class="w-4 h-4 text-emerald-500" /> Legal notices / terms</li>
+                <li class="flex items-center gap-2"><Icon name="check" class="w-4 h-4 text-emerald-500" /> Custom CSS/JS</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <CTA
+      title="Want to see YOUR brand on Optibilan?"
+      subtitle="30 minutes to set up your white label live."
+      primaryCTA={{ href: lp('/pricing/'), label: 'Join Optibilan' }}
+      secondaryCTA={{ href: lp('/checkout/solo/'), label: 'Free trial' }}
+      variant="primary"
+    />
+  </main>
+
+  <Footer />
+</Layout>

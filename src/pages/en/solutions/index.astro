@@ -1,0 +1,220 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import Hero from '@/components/Hero.astro';
+import CTA from '@/components/CTA.astro';
+import TrustBar from '@/components/TrustBar.astro';
+import Icon from '@/components/Icon.astro';
+import { localizePath } from '@/i18n/config';
+import { imageDims } from '@/utils/images';
+
+const lp = (href: string) => localizePath(href, 'en');
+
+const pageTitle = 'Solutions - Optibilan';
+const pageDescription = 'Optibilan adapts to your practice: Sports coach, Nutritionist, Doctor, health professional, Practice. One platform, four ways to use it.';
+
+const eduOrgJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'EducationalOrganization',
+  '@id': 'https://optibilan.com/en/#educational-organization',
+  name: 'Optibilan',
+  url: 'https://optibilan.com/en/',
+  logo: 'https://optibilan.com/optibilan-logo.svg',
+  inLanguage: 'en-US',
+  areaServed: 'FR',
+  sameAs: [
+    'https://twitter.com/optibilan',
+    'https://linkedin.com/company/optibilan',
+    'https://github.com/optibilan',
+    'https://youtube.com/@optibilan',
+  ],
+};
+const courseJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Course',
+  '@id': 'https://optibilan.com/en/solutions/#course',
+  name: 'Training and support with Optibilan',
+  description: 'Practical training to structure check-ins, nutrition and training follow-up, and automate processes with the Optibilan platform.',
+  provider: { '@type': 'EducationalOrganization', '@id': 'https://optibilan.com/en/#educational-organization' },
+  url: 'https://optibilan.com/en/solutions/',
+  inLanguage: 'en-US',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://optibilan.com/en/' },
+    { '@type': 'ListItem', position: 2, name: 'Solutions', item: 'https://optibilan.com/en/solutions/' },
+  ],
+};
+
+const solutions = [
+  {
+    href: '/solutions/coaches/',
+    icon: 'zap',
+    title: 'Sports coach',
+    desc: 'Programs, check-ins, progress, adherence, communication. Less time managing, more time coaching.',
+    color: 'indigo',
+    featured: true,
+    photo: '/images/product/medecins/12-coach-sportif-accompagnement.webp',
+    photoAlt: 'Sports coach supporting his client during a session',
+  },
+  {
+    href: '/solutions/nutrition/',
+    icon: 'document',
+    title: 'Nutritionist / Dietitian',
+    desc: 'Plans, habits, shopping lists, supplements, progress. Nutrition at scale. Templates, 1-click approval, compliance.',
+    color: 'bleu-lecture',
+    featured: false,
+    photo: '/images/product/medecins/10-nutritionniste-consultation.webp',
+    photoAlt: 'Nutritionist in consultation, talking with her patient',
+  },
+  {
+    href: '/solutions/medecin/',
+    icon: 'activity',
+    title: 'Doctor, health professional',
+    desc: 'Prevention, health check-ins, habits, inter-professional coordination. Strict segregation of medical data.',
+    color: 'bordeaux',
+    featured: false,
+    photo: '/images/product/medecins/01-medecin-generaliste-consultation.webp',
+    photoAlt: 'General practitioner in a preventive consultation with his patient',
+  },
+  {
+    href: '/solutions/cabinets/',
+    icon: 'users',
+    title: 'Practice / Team',
+    desc: 'Multiple practitioners, permissions, coordination, administration, security, audit, white label.',
+    color: 'bordeaux',
+    featured: true,
+    photo: '/images/product/medecins/08-equipe-medicale-pluridisciplinaire.webp',
+    photoAlt: 'Multi-disciplinary medical team gathered around the same patient',
+  },
+];
+
+const solutionsCross = [
+  { icon: 'users', title: 'Coach + Nutrition', desc: 'The coach runs training, the nutritionist the meal plan. Data shared according to permissions. The client has a single record.' },
+  { icon: 'brain', title: 'Coach + Mental', desc: 'The coach tracks performance, the mental coach tracks adherence. Segregated data, selective sharing. The athlete at the center.' },
+  { icon: 'users', title: 'Full practice', desc: 'Coach + Nutritionist + Mental + Doctor. Granular permissions, journal shared according to permissions, smooth coordination. A 360° view.' },
+];
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  lang="en"
+  canonical="/en/solutions/"
+  ogImage="/og-solutions.png"
+  jsonLd={[breadcrumbJsonLd, eduOrgJsonLd, courseJsonLd]}
+  heroImage="/images/product/06-praticien-sante-consultation.webp"
+>
+  <Header />
+
+  <main>
+    <Hero
+      variant="page"
+      title="One platform. 
+Four ways to use it."
+      subtitle="Optibilan adapts to your practice: Coach, Nutritionist, Doctor, Practice. Each solution switches on the relevant modules, with the right permissions."
+      badge="4 solutions, 1 platform"
+      primaryCTA={{ href: '/pricing/', label: 'Join Optibilan' }}
+      secondaryCTA={{ href: '/checkout/solo/', label: 'Free trial' }}
+      backgroundImage="/images/product/06-praticien-sante-consultation.webp"
+    />
+
+    <TrustBar />
+
+    <section class="section bg-blanc" aria-labelledby="solutions-title">
+      <div class="container">
+        <header class="text-center max-w-3xl mx-auto mb-16">
+          <h2 id="solutions-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+            Optibilan adapts to your practice
+          </h2>
+          <p class="text-lg text-encre/60 max-w-2xl mx-auto">
+            Each solution switches on the relevant modules, with permissions suited to your profession.
+          </p>
+        </header>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {solutions.map((sol, i) => (
+            <article class={`card-hover relative overflow-hidden ${sol.featured ? 'ring-2 ring-bleu-signature' : ''}`} style={`animation-delay: ${i * 100}ms`}>
+              {sol.featured && (
+                <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-bleu-lecture text-craie text-xs font-semibold rounded-full">
+                  Recommended
+                </div>
+              )}
+<div class="p-6 md:p-8">
+                <div class="aspect-video rounded-lg overflow-hidden mb-4">
+                  <img
+                    src={sol.photo}
+                    alt={sol.photoAlt}
+                    width={imageDims(sol.photo)?.width}
+                    height={imageDims(sol.photo)?.height}
+                    class="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="icon-wrapper mb-4" aria-hidden="true" style={`--mod-color: var(--color-${sol.color})`}>
+                  <Icon name={sol.icon} class="w-8 h-8" style={`color: var(--color-${sol.color});`} />
+                </div>
+                <h3 class="font-display text-xl font-bold text-encre mb-3">{sol.title}</h3>
+                <p class="text-encre/60 leading-relaxed mb-5">{sol.desc}</p>
+
+                <a href={lp(sol.href)} class="inline-flex items-center gap-1.5 text-sm font-medium" style={`color: var(--color-${sol.color});`} data-track={`solution_${sol.title.toLowerCase().replace(/\s+/g, '_')}_cta`}>
+                  Explore this solution
+                  <Icon name="arrowRight" class="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                </a>
+              </div>
+              </article>
+            ))}
+          </div>
+
+        <div class="text-center mt-16">
+          <p class="text-encre/60 mb-8 max-w-xl mx-auto">
+            Do not see yourself in these 4 profiles? Optibilan is modular: switch on only the modules you need.
+          </p>
+          <a href={lp('/product/overview/')} class="btn-secondary" data-track="solutions_view_all_modules">
+            <Icon name="grid" class="w-4 h-4 mr-2" /> See all modules
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-papier" aria-labelledby="cross-title">
+      <div class="container">
+        <header class="text-center max-w-3xl mx-auto mb-16">
+          <h2 id="cross-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+            One platform, combined uses
+          </h2>
+          <p class="text-lg text-encre/60">
+            The strength of Optibilan: modules combine. A coach can switch on nutrition. A practice coordinates coach + mental + nutrition.
+          </p>
+        </header>
+
+<div class="grid md:grid-cols-3 gap-8">
+          {solutionsCross.map((item, i) => {
+            return (
+              <article key={item.title} class="card-hover p-6 md:p-8 text-center" style={`animation-delay: ${i * 100}ms`}>
+                <div class="icon-wrapper mx-auto mb-4" aria-hidden="true" style="background-color: var(--color-bleu-clair);">
+                  <Icon name={item.icon} class="w-8 h-8 text-bleu-signature" />
+                </div>
+                <h3 class="font-display text-xl font-bold text-encre mb-3">{item.title}</h3>
+                <p class="text-encre/60 leading-relaxed">{item.desc}</p>
+              </article>
+            );
+          })}
+</div>
+      </div>
+    </section>
+
+    <CTA
+      title="Cannot find your profile?"
+      subtitle="Optibilan is modular. Switch on only the modules you need."
+      primaryCTA={{ href: '/product/overview/', label: 'Join Optibilan' }}
+      secondaryCTA={{ href: '/checkout/solo/', label: 'Free trial' }}
+      variant="gold"
+    />
+  </main>
+
+  <Footer />
+</Layout>

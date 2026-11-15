@@ -1,31 +1,46 @@
 ---
 import Icon from '../Icon.astro';
+import LanguageSwitcher from '../LanguageSwitcher.astro';
+import { localeOf, localizePath } from '../../i18n/config';
+import { productGroups, solutionLinks, mainLinks } from '../../i18n/nav';
+import { t } from '../../i18n/ui';
+
+const locale = localeOf(Astro.currentLocale);
+const d = t(locale);
+const lp = (href: string) => localizePath(href, locale);
+
+const groups = productGroups(locale);
+const solutions = solutionLinks(locale);
+const mains = mainLinks(locale);
 ---
 
 <div class="md:hidden" data-mobile-nav>
-  <button
-    class="md:hidden p-2 rounded-lg text-encre/60 hover:bg-encre/5"
-    aria-label="Ouvrir le menu"
-    aria-expanded="false"
-    aria-controls="mobile-menu"
-    data-menu-toggle>
-    <span data-menu-icon="closed">
-      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M4 6h16M4 12h16M4 18h16"/>
-      </svg>
-    </span>
-    <span data-menu-icon="open" class="hidden">
-      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M6 18L18 6M6 6l12 12"/>
-      </svg>
-    </span>
-  </button>
+  <div class="flex items-center gap-1">
+    <LanguageSwitcher />
+    <button
+      class="md:hidden p-2 rounded-lg text-encre/60 hover:bg-encre/5"
+      aria-label={d.nav.openMenu}
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+      data-menu-toggle>
+      <span data-menu-icon="closed">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </span>
+      <span data-menu-icon="open" class="hidden">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </span>
+    </button>
+  </div>
 
   <div
     id="mobile-menu"
     class="md:hidden hidden py-4 border-t border-encre/10"
     role="navigation"
-    aria-label="Menu mobile"
+    aria-label={d.nav.mobileNav}
     data-mobile-menu>
     <div class="flex flex-col gap-2 pb-8">
       <!-- Produit accordion -->
@@ -36,7 +51,7 @@ import Icon from '../Icon.astro';
           aria-expanded="false"
           aria-controls="mobile-produit"
           data-mobile-accordion-trigger>
-          Produit
+          {d.nav.product}
           <Icon name="chevronDown" class="w-5 h-5 transition-transform duration-200" data-accordion-icon />
         </button>
         <div
@@ -45,28 +60,19 @@ import Icon from '../Icon.astro';
           role="menu"
           data-mobile-accordion-content>
           <div class="px-2 py-2 space-y-1">
-            <div class="px-2 py-1 font-semibold text-encre/50 uppercase tracking-wider text-xs">Découvrir Optibilan</div>
-            <a href="/product/overview/" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors block" data-mobile-link>Vue d'ensemble</a>
-            <div class="px-2 py-1 font-semibold text-encre/50 uppercase tracking-wider text-xs border-t border-encre/10 mt-2">Accompagner</div>
-            <a href="/product/check-ins/" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>Bilans & progression</a>
-            <a href="/product/nutrition/" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>Nutrition</a>
-            <a href="/product/training/" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>Sport & programmes</a>
-            <a href="/product/mental/" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>Préparation mentale</a>
-            <div class="px-2 py-1 font-semibold text-encre/50 uppercase tracking-wider text-xs border-t border-encre/10 mt-2">Suivre</div>
-            <a href="/product/health/" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>Santé & biomarqueurs</a>
-            <a href="/product/engagement/" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>Habitudes & engagement</a>
-            <div class="px-2 py-1 font-semibold text-encre/50 uppercase tracking-wider text-xs border-t border-encre/10 mt-2">Dossier client</div>
-            <a href="/product/crm/" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>Journal & CRM</a>
-            <div class="px-2 py-1 font-semibold text-encre/50 uppercase tracking-wider text-xs border-t border-encre/10 mt-2">Automatiser</div>
-            <a href="/product/ai/" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>IA & Automatisations</a>
-            <a href="/product/integrations/" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>Intégrations & API</a>
-            <div class="px-2 py-1 font-semibold text-encre/50 uppercase tracking-wider text-xs border-t border-encre/10 mt-2">Personnaliser</div>
-            <a href="/product/white-label/" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>Marque blanche</a>
+            {groups.map((group, index) => (
+              <>
+                <div class={`px-2 py-1 font-semibold text-encre/50 uppercase tracking-wider text-xs ${index > 0 ? 'border-t border-encre/10 mt-2' : ''}`}>{group.title}</div>
+                {group.links.map((link) => (
+                  <a href={lp(link.href)} class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors block" data-mobile-link>{link.label}</a>
+                ))}
+              </>
+            ))}
           </div>
         </div>
       </div>
 
-      <!-- SOLUTIONS accordion -->
+      <!-- Solutions accordion -->
       <div class="relative" data-mobile-accordion>
         <button
           class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors flex items-center justify-between w-full"
@@ -74,7 +80,7 @@ import Icon from '../Icon.astro';
           aria-expanded="false"
           aria-controls="mobile-solutions"
           data-mobile-accordion-trigger>
-          Solutions
+          {d.nav.solutions}
           <Icon name="chevronDown" class="w-5 h-5 transition-transform duration-200" data-accordion-icon />
         </button>
         <div
@@ -83,42 +89,37 @@ import Icon from '../Icon.astro';
           role="menu"
           data-mobile-accordion-content>
           <div class="px-2 py-2 space-y-1">
-            <a href="/solutions/coaches/" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors block" data-mobile-link>Coach sportif</a>
-            <a href="/solutions/nutrition/" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>Nutritionniste / Diététicien</a>
-            <a href="/solutions/medecin/" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>Médecin, pro de santé</a>
-            <a href="/solutions/cabinets/" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>Cabinet / Équipe</a>
+            {solutions.map((link) => (
+              <a href={lp(link.href)} class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors block" data-mobile-link>{link.label}</a>
+            ))}
           </div>
         </div>
       </div>
 
-      <!-- BLOG -->
-      <a href="/blog/" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>Blog</a>
-
-      <!-- TARIFS -->
-      <a href="/pricing/" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>Tarifs</a>
-
-      <!-- CONTACT -->
-      <a href="/checkout/solo/" class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>Contact</a>
+      {/* Liens simples : blog, tarifs, contact */}
+      {mains.map((link) => (
+        <a href={link.href === '/blog/' && locale === 'en' ? '/blog/' : lp(link.href)} class="px-4 py-2 text-base font-medium text-encre/60 hover:text-encre hover:bg-papier rounded-lg transition-colors" data-mobile-link>{link.label}</a>
+      ))}
 
       <div class="flex flex-col gap-2 pt-2 border-t border-encre/10">
-        <a href="/pricing/" class="btn btn-header-primary text-center flex items-center justify-center gap-2" data-mobile-link>
+        <a href={lp('/pricing/')} class="btn btn-header-primary text-center flex items-center justify-center gap-2" data-mobile-link>
           <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M5 12h14M12 5l7 7-7 7"/>
           </svg>
-          Rejoindre Optibilan
+          {d.nav.join}
         </a>
         <a href="https://app.optibilan.com/login" class="btn btn-header-secondary text-center flex items-center justify-center gap-2" data-mobile-link>
           <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
             <circle cx="12" cy="7" r="4"/>
           </svg>
-          Connexion
+          {d.nav.login}
         </a>
-        <a href="/checkout/solo/" class="btn btn-header-bordeaux text-center flex items-center justify-center gap-2" data-mobile-link>
+        <a href={lp('/checkout/solo/')} class="btn btn-header-bordeaux text-center flex items-center justify-center gap-2" data-mobile-link>
           <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M12 5v14M5 12h14"/>
           </svg>
-          Essai offert
+          {d.nav.try}
         </a>
       </div>
     </div>
@@ -187,7 +188,7 @@ import Icon from '../Icon.astro';
       const toggle = document.querySelector('[data-menu-toggle]');
       const closedIcon = document.querySelector('[data-menu-icon="closed"]');
       const openIcon = document.querySelector('[data-menu-icon="open"]');
-      
+
       if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
         mobileMenu.classList.add('hidden');
         toggle?.setAttribute('aria-expanded', 'false');
@@ -195,7 +196,7 @@ import Icon from '../Icon.astro';
         openIcon?.classList.add('hidden');
         document.body.style.overflow = '';
       }
-      
+
       // Close all accordions
       document.querySelectorAll('[data-mobile-accordion-content]').forEach(content => {
         content.classList.add('hidden');
@@ -215,9 +216,9 @@ import Icon from '../Icon.astro';
     link.addEventListener('click', () => {
       const mobileMenu = document.querySelector('[data-mobile-menu]');
       const toggle = document.querySelector('[data-menu-toggle]');
-      const closedIcon = document.querySelector('[data-menu-icon="closed"]');
-      const openIcon = document.querySelector('[data-menu-icon="open"]');
-      
+      const closedIcon = mobileNav?.querySelector('[data-menu-icon="closed"]');
+      const openIcon = mobileNav?.querySelector('[data-menu-icon="open"]');
+
       if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
         mobileMenu.classList.add('hidden');
         toggle?.setAttribute('aria-expanded', 'false');
@@ -228,5 +229,3 @@ import Icon from '../Icon.astro';
     });
   });
 </script>
-
-</div>

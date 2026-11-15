@@ -1,0 +1,187 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import Hero from '@/components/Hero.astro';
+import CTA from '@/components/CTA.astro';
+import Icon from '@/components/Icon.astro';
+import { localizePath } from '@/i18n/config';
+
+const lp = (href: string) => localizePath(href, 'en');
+
+const pageTitle = 'Health & biomarkers - Optibilan';
+const pageDescription = 'Blood tests, sleep, activity, heart rate, HRV and data from compatible devices brought together in a single view. Free trial.';
+
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  inLanguage: 'en-US',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://optibilan.com/en/' },
+    { '@type': 'ListItem', position: 2, name: 'Product', item: 'https://optibilan.com/en/produit' },
+    { '@type': 'ListItem', position: 3, name: 'Health & biomarkers', item: 'https://optibilan.com/en/product/health' },
+  ],
+};
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  lang="en"
+  canonical="/en/product/health/"
+  ogImage="/og-health.png"
+  jsonLd={breadcrumbJsonLd}
+>
+  <Header />
+
+  <main>
+    <Hero
+      title="All your health data,
+ finally readable over time."
+      subtitle="Blood tests, sleep, activity, heart rate, HRV and data from compatible devices brought together in a single view."
+      primaryCTA={{ href: lp('/pricing/'), label: 'Join Optibilan' }}
+      secondaryCTA={{ href: lp('/checkout/solo/'), label: 'Free trial' }}
+    />
+
+    <section class="section bg-gradient-to-br from-encre/5 via-papier to-bleu-signature/5 rounded-card-lg relative overflow-hidden" aria-labelledby="disclaimer-title">
+      <div class="container relative py-6 px-6 md:py-8 md:px-8">
+        <div class="flex items-start gap-4 p-4 bg-encre/5 rounded-lg border border-encre/10">
+          <Icon name="shield" class="w-6 h-6 text-encre/50 flex-shrink-0 mt-0.5" />
+          <div>
+            <h2 id="disclaimer-title" class="font-semibold text-encre mb-1">Medical scope & responsibility</h2>
+            <p class="text-encre/70 text-sm">
+              <strong>Optibilan is an organization and follow-up support tool. It does not replace the judgment of a health professional and does not provide a medical diagnosis.</strong><br>
+              Biomarker interpretation, prescribing and therapeutic adjustment are the exclusive responsibility of qualified health professionals. Optibilan structures, flags and organizes - it does not decide.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-blanc" aria-labelledby="problem-title">
+      <div class="container max-w-3xl">
+        <header class="mb-12">
+          <h2 id="problem-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+            The problem: health data in silos
+          </h2>
+          <p class="text-lg text-encre/60">
+            Blood work at the lab, sleep on Oura, HRV on Garmin, blood pressure at the pharmacy, weight on a connected scale…<br>
+            No way to cross-reference, correlate or see the overall trajectory.
+          </p>
+        </header>
+
+        <div class="aspect-video rounded-xl border border-encre/10 bg-encre/5 overflow-hidden relative shadow-soft mb-12">
+          <img
+            src="/images/product/medecins/06-medecin-consultation-donnees-sante.webp"
+            alt="Doctor reviewing a patient's health data, centralized access with Optibilan"
+            class="w-full h-full object-cover"
+            loading="lazy" width="1000" height="667" />
+        </div>
+
+        <div class="space-y-8">
+          {[
+            {
+              title: 'Blood work: 130+ structured biomarkers',
+              desc: 'Glucose, HbA1c, insulin, HOMA-IR, CRP, vitamin D, B9/B12, ferritin, full lipid panel, thyroid (TSH, T3, T4, antibodies), hormones (testosterone, estradiol, SHBG, cortisol, DHEA), homocysteine, magnesium, zinc, omega-3… Lab PDF import: AI extracts, structures, pre-fills and flags values outside your configured reference ranges (red/orange/green flags).',
+              features: [
+                '130+ structured blood biomarkers',
+                'Lab PDF import: automatic AI extraction',
+                'Automatic flags: red/orange/green',
+                'Trend charts + reference thresholds',
+                'Automatic correlations (HbA1c vs glucose)',
+              ],
+              icon: 'document',
+            },
+            {
+              title: 'Wearables: Apple Health, Oura, Whoop and Garmin sync',
+              desc: 'Through iOS Shortcuts (client) or automation connectors (practice). Daily metrics: sleep (stages, score, consistency), HRV (rmssd, CV, trend), resting HR, VO2max, steps, weight, body fat %, skin temperature.',
+              features: [
+                'Sync: Apple Health, Oura, Whoop, Garmin',
+                'Metrics: sleep, HRV, resting HR, VO2max, steps, weight',
+                'Encrypted EU storage',
+                'EU hosting (Ireland + France)',
+              ],
+              icon: 'globe',
+            },
+{
+              title: 'Sleep, cardio, trends: all in one',
+              desc: 'Unified dashboard: sleep (score, stages, consistency), HRV (rmssd, CV, 7-day/30-day trend), resting HR, VO2max, steps, weight, body fat %. Time-based trend charts with reference thresholds. See how HRV, training load and sleep evolve, side by side.',
+              features: [
+                'Sleep: score, stages, consistency',
+                'HRV: rmssd, CV, 7-day/30-day trend',
+                'Cardio: resting HR, VO2max, load',
+                'Automatic cross-domain correlations',
+                'Alerts: HRV ↓ 20%, sleep < 6h 3 times',
+              ],
+              icon: 'chart',
+            },
+            {
+              title: 'Daily habits & adherence',
+              desc: 'Water, supplements, light exposure, breathing, fasting, medication. Push/email reminders, barcode scan validation, adherence rate, out-of-stock alerts. Set the evolution of logged habits against the biomarkers you track.',
+              features: [
+                'Configurable habits per client',
+                'Barcode scan validation',
+                'Adherence rate + alerts below 80%',
+                'Habit to biomarker correlation',
+              ],
+              icon: 'calendar',
+            },
+          ].map((section, i) => (
+            <article id={section.icon} class="py-8 border-t border-encre/10 first:border-0">
+              <header class="flex items-center gap-4 mb-6">
+                <div class="icon-wrapper flex-shrink-0" aria-hidden="true" style="background-color: var(--color-bleu-clair);">
+                  <Icon name={section.icon} class="w-7 h-7 text-bleu-ardoise" />
+                </div>
+                <div>
+                  <h3 class="font-display text-2xl font-bold text-encre">{section.title}</h3>
+                  <p class="text-encre/60 mt-1">{section.desc}</p>
+                </div>
+              </header>
+              <ul class="space-y-2 text-encre/60">
+                {section.features.map(f => (
+                  <li key={f} class="flex items-start gap-2">
+                    <Icon name="check" class="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5" />
+                    <span>{f}</span>
+                  </li>
+                ))}
+              </ul>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-papier" aria-labelledby="health-visual-title">
+      <div class="container">
+        <header class="text-center max-w-3xl mx-auto mb-12">
+          <h2 id="health-visual-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+            Biomarkers, readable over time
+          </h2>
+          <p class="text-lg text-encre/60">
+            Blood values and wearable data brought together in a single history.
+          </p>
+        </header>
+        <div class="aspect-video max-w-4xl mx-auto rounded-xl border border-encre/10 bg-blanc overflow-hidden shadow-xl">
+          <img
+            src="/images/product/sante-biomarqueurs.webp"
+            alt="Optibilan interface screenshot: health dashboard with blood biomarkers and connected metrics"
+            width="411"
+            height="272"
+            class="w-full h-full object-cover"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </section>
+
+    <CTA
+      title="Ready to unify your clients' health data?"
+      subtitle="30 minutes to see how to centralize blood work, wearables and habits."
+      primaryCTA={{ href: lp('/pricing/'), label: 'Join Optibilan' }}
+      secondaryCTA={{ href: lp('/checkout/solo/'), label: 'Free trial' }}
+      variant="primary"
+    />
+  </main>
+
+  <Footer />
+</Layout>

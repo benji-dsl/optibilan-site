@@ -1,0 +1,490 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import Hero from '../../components/Hero.astro';
+import TrustBar from '../../components/TrustBar.astro';
+import BrowserFrame from '../../components/BrowserFrame.astro';
+import CTA from '../../components/CTA.astro';
+import Icon from '../../components/Icon.astro';
+import { localizePath } from '../../i18n/config';
+
+const lp = (href: string) => localizePath(href, 'en');
+
+const pageTitle = 'Optibilan - Centralize your check-ins. Follow 3x more clients without losing your evenings';
+const pageDescription =
+  'Coaching and client-tracking software for health professionals: check-ins, nutrition, training and biomarkers in one platform. 30-day free trial.';
+
+const socialProof = [
+  { name: 'Studio Performance', type: 'Sports coaching', location: 'Bordeaux', clients: 120, image: '/images/cabinets/01-studio-performance-realiste.webp' },
+  { name: 'Cabinet NutriSanté', type: 'Nutrition', location: 'Nantes', clients: 85, image: '/images/cabinets/02-cabinet-nutrisante-realiste.webp' },
+  { name: 'Mental Performance', type: 'Mental preparation', location: 'Paris', clients: 60, image: '/images/cabinets/03-mental-performance-realiste.webp' },
+  { name: 'Méthode Équilibre', type: 'Multi-disciplinary practice', location: 'Lille', clients: 45, image: '/images/cabinets/04-methode-equilibre-realiste.webp' },
+];
+
+const avantAvec = [
+  { avant: 'Scattered forms', avec: 'One unified client record' },
+  { avant: 'Excel / PDF / Word', avec: 'Everything in one interface' },
+  { avant: 'Multiple apps', avec: 'One single platform' },
+  { avant: 'Information everywhere', avec: 'Structured, linked data' },
+  { avant: 'Manual, reactive tracking', avec: 'Proactive steering & alerts' },
+  { avant: 'Clients left in the dark', avec: 'A guided client experience' },
+];
+
+const productDemos = [
+  {
+    id: 'check-ins',
+    title: 'Check-ins & progress',
+    promise: 'Understand what changes. Without rebuilding the history.',
+    benefits: [
+      'Visual builder: 30+ fields, conditions, automatic pre-fill',
+      'Single timeline: check-ins, photos, how they feel, habits',
+      'Mobile submission in under 2 min, automatic adherence alerts',
+    ],
+    screenshot: '/images/product/04-mobile-progression.webp',
+    href: '/product/check-ins/',
+    layout: 'text-left',
+  },
+  {
+    id: 'health',
+    title: 'Health & biomarkers',
+    promise: 'All their health data, finally readable over time.',
+    benefits: [
+      '130+ blood biomarkers + wearables (Apple Health, Oura, Garmin)',
+      'Automatic correlations: HRV down + load up + sleep down = a signal',
+      'Lab PDF import: AI extracts, structures and flags out-of-range values',
+    ],
+    screenshot: '/images/product/07-utilisatrice-50ans-lifestyle.webp',
+    href: '/product/health/',
+    layout: 'text-right',
+  },
+  {
+    id: 'nutrition',
+    title: 'Nutrition',
+    promise: 'Build the nutrition follow-up. Not a pile of PDFs.',
+    benefits: [
+      'Macro/micro plans per meal, CIQUAL/USDA database of 3,000+ foods',
+      'Automatic shopping lists, documented supplements & interaction alerts',
+      'Client photo/scan journal + 1-click coach approval + plan vs actual gap',
+    ],
+    screenshot: '/images/product/02-mobile-nutrition.webp',
+    href: '/product/nutrition/',
+    layout: 'text-left',
+  },
+  {
+    id: 'training',
+    title: 'Training & programs',
+    promise: 'Build, track, adjust. Structured training.',
+    benefits: [
+      '200+ exercise video library + regressions/progressions',
+      'Drag-and-drop sessions, automatic load/volume/RPE progression',
+      'Client: exercise video, weight/RPE entry, coach sees everything live',
+    ],
+    screenshot: '/images/product/03-mobile-seance-sport.webp',
+    href: '/product/training/',
+    layout: 'text-right',
+  },
+  {
+    id: 'ai',
+    title: 'AI & automation',
+    promise: 'AI prepares. You decide.',
+    benefits: [
+      'PDF to structured data: check-ins, labs, pre-filled letters',
+      'Check-in to automatic summary for you and your client',
+      'Data to adherence alerts and adjustment suggestions',
+    ],
+    screenshot: '/images/product/01-mobile-accueil-programme.webp',
+    href: '/product/ai/',
+    layout: 'text-left',
+  },
+];
+
+const clientExperience = {
+  pro: {
+    title: 'Your dashboard',
+    desc: 'Steer everything from one place. Check-ins, programs, nutrition, health, mental, AI: modules you switch on for your own practice.',
+    screenshot: '/images/product/dashboard-coach.webp',
+  },
+};
+
+const profiles = [
+  { role: 'Sports coach', modules: 'Programs, check-ins, adherence, calendar, AI programs', icon: 'zap' },
+  { role: 'Nutritionist / Dietitian', modules: 'Nutrition plans, shopping lists, supplements, food journal, AI plans', icon: 'document' },
+  { role: 'Naturopath', modules: 'Full check-ins, connected health, habits, supplements, AI summaries', icon: 'globe' },
+  { role: 'Longevity practitioner', modules: '130+ biomarkers, wearables, correlations, AI alerts, prevention programs', icon: 'chart' },
+  { role: 'Multi-disciplinary practice', modules: 'Multiple practitioners, granular permissions, white label, SSO, API, SLA', icon: 'users' },
+];
+
+const testimonials = [
+  {
+    name: 'Thomas Bertrand',
+    role: 'Sports coach & Founder',
+    company: 'Studio Performance, Bordeaux',
+    quote:
+      "The exercise library (200+ videos) and the session templates saved me 10 hours a week. My clients log their sessions in the app and I see their progress in real time. Six-month retention went from 65% to 89%. I went from 30 to 120 clients without hiring anyone.",
+    result: '+59% retention • 4x clients',
+  },
+  {
+    name: 'Sophie Martin',
+    role: 'Dietitian-nutritionist',
+    company: 'Cabinet NutriSanté, Nantes',
+    quote:
+      'The nutrition templates and automated shopping lists changed the way I work. My patients get their full plan plus shopping list in one click. The GDPR export is a real plus for compliance.',
+    result: '3x faster • 100% compliant',
+  },
+  {
+    name: 'Julie Moreau',
+    role: 'Health coach & Founder',
+    company: 'Méthode Équilibre, Lille',
+    quote:
+      "I launched my signature program at €1,800 a month thanks to the full white label: custom domain, emails from @ma-methode.fr, an AI assistant called 'Julie', 'member' wording. My members never see Optibilan.",
+    result: '€81k MRR solo • Fully own brand',
+  },
+];
+
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  inLanguage: 'en-US',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Is Optibilan built for sports coaches and health professionals?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes. Optibilan is designed for sports coaches, nutritionists, mental performance coaches, physiotherapists, doctors and multi-disciplinary practices.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Do you offer a free trial?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes. A free trial lets you test the platform before subscribing.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Can Optibilan be used as a white label?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes. Full white label is available depending on your plan (logo, domain, AI assistant, wording, and more).',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Is the data GDPR compliant?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Optibilan applies GDPR principles and provides the documents covering data protection and subprocessors.',
+      },
+    },
+  ],
+};
+
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Home', item: 'https://optibilan.com/en/' }],
+};
+
+const educationalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'EducationalOrganization',
+  '@id': 'https://optibilan.com/en/#educational-organization',
+  name: 'Optibilan',
+  url: 'https://optibilan.com/en/',
+  logo: 'https://optibilan.com/optibilan-logo.svg',
+  inLanguage: 'en-US',
+  areaServed: ['FR', 'US'],
+  description:
+    'SaaS platform for running health and performance programs for professionals (coaches, nutritionists, doctors, practices).',
+};
+
+const courseJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Course',
+  '@id': 'https://optibilan.com/en/#course-accompagnement-coach',
+  name: 'Client support for health and performance coaches',
+  description:
+    'Practical training on structuring check-ins, nutrition and training follow-up, and automating processes with Optibilan.',
+  provider: { '@type': 'EducationalOrganization', '@id': 'https://optibilan.com/en/#educational-organization' },
+  url: 'https://optibilan.com/en/',
+  inLanguage: 'en-US',
+};
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  lang="en"
+  canonical="/en/"
+  ogImage="/og-home.png"
+  jsonLd={[breadcrumbJsonLd, educationalJsonLd, courseJsonLd, faqJsonLd]}
+  heroImage="/images/product/dashboard-coach.webp"
+>
+  <Header />
+
+  <main>
+    <!-- 1. HERO -->
+    <Hero
+      title="Optibilan - Centralize your check-ins.
+Follow 3x more clients without losing your evenings."
+      subtitle="The coaching and client-tracking software for health professionals: check-ins, programs, nutrition, training and biomarker data in one platform."
+      badge=""
+      primaryCTA={{ href: '/pricing/', label: 'Join Optibilan' }}
+      secondaryCTA={{ href: '/checkout/solo/', label: 'Free trial' }}
+      stats={[]}
+    />
+
+    <TrustBar />
+
+    <!-- 2. SOCIAL PROOF -->
+    <section class="section bg-blanc" aria-labelledby="social-proof-title">
+      <div class="container">
+        <header class="text-center max-w-3xl mx-auto mb-12">
+          <h2 id="social-proof-title" class="font-display text-2xl md:text-3xl font-bold text-encre mb-3">
+            They use Optibilan every day
+          </h2>
+        </header>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {socialProof.map(item => (
+            <article class="rounded-xl border border-encre/10 hover:border-bleu-signature/30 hover:shadow-soft transition-all text-center overflow-hidden">
+              <div class="bg-encre/5">
+                <img
+                  src={item.image}
+                  alt={`${item.name} using Optibilan every day`}
+                  width="1000"
+                  height="750"
+                  class="w-full h-auto"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+              <div class="p-6">
+                <h3 class="font-display text-lg font-bold text-encre mb-1">{item.name}</h3>
+                <p class="text-encre/50 text-sm mb-3">{item.type} · {item.location}</p>
+                <div class="flex items-center justify-center gap-4 text-sm text-encre/60">
+                  <span class="flex items-center gap-1"><Icon name="users" class="w-4 h-4" /> {item.clients}+ clients</span>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. BEFORE / WITH -->
+    <section class="section bg-encre text-white" aria-labelledby="avant-apres-title">
+      <div class="container">
+        <header class="text-center max-w-3xl mx-auto mb-12">
+          <h2 id="avant-apres-title" class="font-display text-3xl md:text-4xl font-bold mb-4 text-white">
+            Why Optibilan exists
+          </h2>
+        </header>
+        <div class="grid md:grid-cols-2 gap-10 items-stretch">
+          <div class="p-6 md:p-8 rounded-2xl border border-bordeaux/30 bg-bordeaux/10">
+            <h3 class="font-display text-xl font-bold text-white mb-6 flex items-center gap-3">
+              <span class="px-3 py-1 rounded-full bg-bordeaux/30 text-craie font-bold text-sm leading-none flex-shrink-0">BEFORE</span>
+              <span>Optibilan</span>
+            </h3>
+            <ul class="space-y-4 text-white/80">
+              {avantAvec.map((item, i) => (
+                <li key={i} class="flex items-center gap-3">
+                  <span class="w-8 h-8 rounded-full bg-bordeaux/25 flex items-center justify-center text-bordeaux/80 font-medium flex-shrink-0">{i + 1}</span>
+                  <span>{item.avant}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div class="p-6 md:p-8 rounded-2xl bg-gradient-to-br from-bleu-signature/25 to-bleu-lecture/15 border border-bleu-signature/50 shadow-2xl shadow-bleu-signature/20 ring-1 ring-bleu-signature/40 relative">
+            <div class="absolute -top-3 right-6 px-3 py-0.5 bg-bleu-signature text-craie text-xs font-semibold rounded-full">RECOMMENDED</div>
+            <h3 class="font-display text-2xl font-bold text-white mb-6 flex items-center gap-3">
+              <span class="px-3 py-1 rounded-full bg-bleu-signature text-craie font-bold text-sm leading-none flex-shrink-0">WITH</span>
+              <span>Optibilan</span>
+            </h3>
+            <ul class="space-y-4 text-white">
+              {avantAvec.map((item, i) => (
+                <li key={i} class="flex items-center gap-3 font-semibold">
+                  <span class="w-8 h-8 rounded-full bg-bleu-signature/40 ring-1 ring-bleu-signature/60 flex items-center justify-center text-bleu-signature font-bold flex-shrink-0">{i + 1}</span>
+                  <span>{item.avec}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. PRODUCT DEMOS -->
+    {productDemos.map((demo, index) => (
+      <section class="section" aria-labelledby={`demo-${demo.id}-title`} style={index % 2 === 0 ? 'background: linear-gradient(to bottom, var(--color-papier), var(--color-blanc));' : ''}>
+        <div class="container">
+          <div class="grid lg:grid-cols-2 gap-12 items-center" style={demo.layout === 'text-right' ? 'direction: rtl;' : ''}>
+            <div style={demo.layout === 'text-right' ? '' : 'text-align: left;'}>
+              <h2 id={`demo-${demo.id}-title`} class="font-display text-3xl md:text-4xl font-bold text-encre mb-8">
+                {demo.title}
+              </h2>
+              <ul class="space-y-3 mb-8 max-w-xl">
+                {demo.benefits.map(b => (
+                  <li key={b} class="flex items-start gap-3">
+                    <Icon name="check" class="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5" />
+                    <span class="text-encre/70">{b}</span>
+                  </li>
+                ))}
+              </ul>
+              <a href={lp(demo.href)} class="btn btn-solid group inline-flex items-center gap-2">
+                See the full demo
+                <Icon name="arrowRight" class="w-5 h-5 transition-transform group-hover:translate-x-1" />
+              </a>
+            </div>
+            <BrowserFrame
+              src={demo.screenshot}
+              alt={`Optibilan dashboard, ${demo.title} module: client and data tracking for coaches and health professionals`}
+              url={`app.optibilan.com/${demo.id}`}
+              aspect="16/10"
+              width="1000"
+              height="625"
+            />
+          </div>
+        </div>
+      </section>
+    ))}
+
+    <!-- 5. CLIENT EXPERIENCE -->
+    <section class="section bg-papier" aria-labelledby="experience-title">
+      <div class="container">
+        <header class="text-center max-w-3xl mx-auto mb-16">
+          <h2 id="experience-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+            An interface for you. A clear experience for your clients.
+          </h2>
+        </header>
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <BrowserFrame
+            src={clientExperience.pro.screenshot}
+            alt="Optibilan practitioner dashboard: steering check-ins, programs and calls for every client in one place"
+            url="app.optibilan.com/dashboard"
+            aspect="5/2"
+            width="998"
+            height="381"
+          />
+          <div>
+            <ul class="space-y-3 mb-8 max-w-xl">
+              <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5" /> Unified dashboard: check-ins, programs, nutrition, health, mental</li>
+              <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5" /> AI that structures, summarizes and alerts, and you approve</li>
+              <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5" /> Full white label: your practice, your domain, your emails</li>
+              <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5" /> API, webhooks, integrations: plug in your own ecosystem</li>
+            </ul>
+            <a href={lp('/product/overview/')} class="btn btn-solid group inline-flex items-center gap-2">
+              See every feature
+              <Icon name="arrowRight" class="w-5 h-5 transition-transform group-hover:translate-x-1" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. WHO IT IS FOR -->
+    <section
+      class="section relative bg-blanc overflow-hidden"
+      aria-labelledby="profiles-title"
+      style="background-image: url('/images/product/medecins/07-medecin-homme-consultation-longevite.webp'); background-size: cover; background-position: center;"
+    >
+      <div class="absolute inset-0 bg-blanc/80 backdrop-blur-[2px]" aria-hidden="true"></div>
+      <div class="container relative">
+        <header class="text-center max-w-3xl mx-auto mb-16">
+          <h2 id="profiles-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+            Optibilan adapts to your practice
+          </h2>
+          <p class="text-lg text-encre/60">
+            Each profile switches on the modules that matter, with the right permissions.
+          </p>
+        </header>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+          {profiles.map((profile, i) => (
+            <article class="p-6 rounded-xl bg-blanc shadow-soft border border-encre/10 hover:border-bleu-signature/30 hover:shadow-xl transition-all text-center" style={{animationDelay: `${i * 100}ms`}}>
+              <div class="icon-wrapper mx-auto mb-4" aria-hidden="true" style="background-color: var(--color-bleu-clair);">
+                <Icon name={profile.icon} class="w-8 h-8 text-bleu-signature" />
+              </div>
+              <h3 class="font-display text-xl font-bold text-encre mb-3">{profile.role}</h3>
+              <p class="text-encre/60 text-sm leading-relaxed">{profile.modules}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. SEO PILLAR -->
+    <section class="section bg-papier" aria-labelledby="pillar-title">
+      <div class="container">
+        <div class="max-w-4xl mx-auto">
+          <h2 id="pillar-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-6">
+            The coaching and client-tracking software for health professionals
+          </h2>
+          <div class="prose prose-encre max-w-none text-encre/70 leading-relaxed space-y-4">
+            <p>
+              Optibilan is <strong>coaching and client-tracking software</strong> built for health and performance professionals: <strong>sports coaches</strong>, <strong>nutritionists</strong>, dietitians, naturopaths, doctors and multi-disciplinary practices. No more spreadsheets, scattered PDFs and half a dozen apps: one platform to create check-ins, build programs, track nutrition and read your clients' biomarkers.
+            </p>
+            <p>
+              The software centralizes your follow-ups and structures your support: customizable check-ins, nutrition plans with shopping lists, training programs, mental preparation, connected health data (Apple Health, Oura, Garmin), AI that pre-fills your reports, and adherence alerts. Your clients follow their progress in a clear mobile app under your own brand (full white label included), and you steer everything from your dashboard.
+            </p>
+            <p>
+              Whether you are a <a href={lp('/solutions/coaches/')} class="text-bleu-signature font-semibold hover:underline">sports coach</a>, a <a href={lp('/solutions/nutrition/')} class="text-bleu-signature font-semibold hover:underline">nutritionist</a>, a <a href={lp('/solutions/medecin/')} class="text-bleu-signature font-semibold hover:underline">doctor</a> or a <a href={lp('/solutions/cabinets/')} class="text-bleu-signature font-semibold hover:underline">multi-disciplinary practice</a>, modules switch on according to your practice. Also explore <a href={lp('/product/white-label/')} class="text-bleu-signature font-semibold hover:underline">full white label</a>, check-ins and client progress, or plan your start on the <a href={lp('/pricing/')} class="text-bleu-signature font-semibold hover:underline">pricing</a> page.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. TESTIMONIALS -->
+    <section class="section bg-papier" aria-labelledby="testimonials-title">
+      <div class="container">
+        <header class="text-center max-w-3xl mx-auto mb-16">
+          <h2 id="testimonials-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+            What users say:
+          </h2>
+          <p class="text-lg text-encre/60">
+            Real results from professionals who structured their practice with Optibilan.
+          </p>
+        </header>
+        <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          {testimonials.map((t, i) => (
+            <article class="p-6 md:p-8 rounded-xl bg-blanc border border-encre/10 shadow-soft" style={{animationDelay: `${i * 150}ms`}}>
+              <div class="flex items-center gap-4 mb-6">
+                <div class="w-16 h-16 rounded-full bg-gradient-to-br from-bleu-signature to-bleu-lecture flex items-center justify-center text-craie font-bold text-lg flex-shrink-0">
+                  {t.name.split(' ').map(n => n[0]).join('')}
+                </div>
+                <div>
+                  <div class="font-semibold text-encre">{t.name}</div>
+                  <div class="text-sm text-encre/50">{t.role}</div>
+                  <div class="text-sm text-encre/50">{t.company}</div>
+                </div>
+              </div>
+              <blockquote class="text-encre/70 leading-relaxed mb-6 italic">
+                "{t.quote}"
+              </blockquote>
+              <div class="pt-4 border-t border-encre/10">
+                <p class="text-sm font-semibold text-bleu-signature">{t.result}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Final CTA -->
+    <CTA
+      variant="gold"
+      title="Ready to structure your practice?"
+      subtitle="30 days to test every feature, cancel in one click."
+      primaryCTA={{ href: '/pricing/', label: 'Join Optibilan' }}
+      secondaryCTA={{ href: '/checkout/solo/', label: 'Free trial' }}
+    />
+  </main>
+
+  <Footer />
+</Layout>
+
+<script>
+  import '@/scripts/home-animations';
+</script>

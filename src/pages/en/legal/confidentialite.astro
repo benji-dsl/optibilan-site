@@ -1,0 +1,186 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import { localizePath } from '@/i18n/config';
+
+const lp = (href: string) => localizePath(href, 'en');
+
+const pageTitle = 'Privacy policy - Optibilan';
+const pageDescription = 'Optibilan privacy policy: data collected, purposes, legal basis, recipients, transfers, retention, GDPR rights, cookies, DPO.';
+const lastUpdated = new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  lang="en"
+  canonical="/en/legal/confidentialite/"
+  ogImage="/og-legal.png"
+>
+  <Header />
+
+  <main>
+    <p class="container max-w-3xl pt-8 text-sm text-encre/60">Courtesy translation. The French version prevails in case of discrepancy.</p>
+    <section class="section bg-blanc" aria-labelledby="privacy-content">
+      <div class="container max-w-3xl">
+        <header class="mb-12 pb-8 border-b border-encre/10">
+          <h1 id="privacy-content" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">Privacy policy</h1>
+          <p class="text-sm text-encre/60"><strong>Effective date:</strong> {lastUpdated} - Version 2.0</p>
+        </header>
+        <article class="prose max-w-none">
+
+          <h2 class="font-display text-2xl font-bold text-encre mb-4 pb-2 border-b border-encre/10">1. Data controller</h2>
+          <dl class="space-y-2 mb-8 text-encre/70">
+            <div class="flex gap-4"><dt class="font-medium text-encre min-w-[180px]">Identity:</dt><dd><strong>Elite Longevity LLC</strong></dd></div>
+            <div class="flex gap-4"><dt class="font-medium text-encre min-w-[180px]">Address:</dt><dd>Wyoming, USA</dd></div>
+            <div class="flex gap-4"><dt class="font-medium text-encre min-w-[180px]">DPO:</dt><dd><a href="mailto:privacy@optibilan.com" class="text-bleu-signature hover:underline">privacy@optibilan.com</a></dd></div>
+          </dl>
+
+          <h2 class="font-display text-2xl font-bold text-encre mb-4 pb-2 border-b border-encre/10">2. Data collected</h2>
+
+          <h3 class="font-semibold text-xl text-encre mb-3">2.1 Subscriber data (Practice)</h3>
+          <ul class="space-y-2 mb-6 text-encre/70">
+            <li><strong>Identity:</strong> last name, first name, email, phone, hashed password (bcrypt), role, specialty, profile photo.</li>
+            <li><strong>Organization:</strong> name, slug, tagline, logo, theme, vocabulary, active modules, legal notice, white label configuration.</li>
+            <li><strong>Billing:</strong> billing email, VAT number, address, payment history, Stripe subscription (customer_id, subscription_id).</li>
+            <li><strong>Technical:</strong> login logs, IP address, user agent, audit actions, API keys (hashed), calendar/health tokens (hashed).</li>
+          </ul>
+
+          <h3 class="font-semibold text-xl text-encre mb-3">2.2 Client data (people being followed)</h3>
+          <p class="text-encre/60 italic mb-4"><em>The Subscriber is the data controller for this data. Optibilan acts as a processor (Art. 28 GDPR).</em></p>
+          <ul class="space-y-2 mb-6 text-encre/70">
+            <li><strong>Identity:</strong> last name, first name, email, phone, date of birth, sex, profile photo.</li>
+            <li><strong>Onboarding questionnaire:</strong> full answers (goals, obstacles, history, lifestyle, dreamboard).</li>
+            <li><strong>Follow-up:</strong> weekly check-ins (weight, measurements, how they feel, sleep, hunger, motivation, steps, free text), progress photos, training program, completed sessions.</li>
+            <li><strong>Nutrition:</strong> meal plan, shopping lists, supplements, methods, coach notes.</li>
+            <li><strong>Mental preparation:</strong> exercises, resources, notes (siloed).</li>
+            <li><strong>Connected health:</strong> metrics (sleep, HRV, resting HR, VO2max, steps, weight, body fat %), 130+ blood biomarkers, daily habits, supplement adherence.</li>
+            <li><strong>Coaching journal:</strong> typed entries (onboarding, follow-up, monthly review, micronutrition, training...), attachments, recordings.</li>
+            <li><strong>Gamification:</strong> XP, badges, ultimate goal, monthly goal, dreamboard, journey milestones.</li>
+            <li><strong>AI interactions:</strong> conversations, messages, tokens, attachments (blood tests).</li>
+            <li><strong>Consents:</strong> GDPR, health data, marketing.</li>
+            <li><strong>Push notifications:</strong> subscriptions (endpoint, p256dh keys, auth).</li>
+          </ul>
+
+          <h3 class="font-semibold text-xl text-encre mb-3">2.3 Technical & analytics data</h3>
+          <ul class="space-y-2 mb-8 text-encre/70">
+            <li><strong>Analytics (GA4/Plausible, with consent):</strong> page views, events, referrers, country, device, browser - anonymized (no full IP).</li>
+            <li><strong>Security:</strong> login success rate, 2FA failures, 5xx errors, failed webhooks, rate-limit hits.</li>
+          </ul>
+
+          <h2 class="font-display text-2xl font-bold text-encre mb-4 pb-2 border-b border-encre/10">3. Purposes & legal bases</h2>
+          <div class="overflow-x-auto mb-8">
+            <table class="w-full" role="table">
+              <thead>
+                <tr class="border-b border-encre/20">
+                  <th class="text-left pb-2 font-semibold text-encre">Purpose</th>
+                  <th class="text-left pb-2 font-semibold text-encre">Legal basis</th>
+                  <th class="text-left pb-2 font-semibold text-encre">Data concerned</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-encre/10">
+                <tr><td class="py-2 text-encre/70">Provision of the Service (workspace creation, authentication, check-ins, nutrition, training...)</td><td class="py-2 text-encre/70">Performance of the contract (Art. 6.1.b GDPR)</td><td class="py-2 text-encre/70">All Subscriber + Client data</td></tr>
+                <tr><td class="py-2 text-encre/70">Billing, payment, subscription management</td><td class="py-2 text-encre/70">Performance of the contract + Legal obligation (accounting)</td><td class="py-2 text-encre/70">Billing data</td></tr>
+                <tr><td class="py-2 text-encre/70">Security (auth, 2FA, audit trail, rate-limit, fraud detection)</td><td class="py-2 text-encre/70">Legitimate interest (Art. 6.1.f) + Legal obligation (security)</td><td class="py-2 text-encre/70">Logs, IP, tokens, audit</td></tr>
+                <tr><td class="py-2 text-encre/70">Customer support, answering requests</td><td class="py-2 text-encre/70">Performance of the contract + Legitimate interest</td><td class="py-2 text-encre/70">Identity, email, tickets</td></tr>
+                <tr><td class="py-2 text-encre/70">Product improvement (anonymized analytics)</td><td class="py-2 text-encre/70">Consent (Art. 6.1.a) through the banner</td><td class="py-2 text-encre/70">Usage events (no IP)</td></tr>
+                <tr><td class="py-2 text-encre/70">Marketing (newsletter, product updates)</td><td class="py-2 text-encre/70">Consent (explicit opt-in)</td><td class="py-2 text-encre/70">Email, first name</td></tr>
+                <tr><td class="py-2 text-encre/70">Legal compliance (GDPR, accounting, response to authorities)</td><td class="py-2 text-encre/70">Legal obligation (Art. 6.1.c)</td><td class="py-2 text-encre/70">Data concerned</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h2 class="font-display text-2xl font-bold text-encre mb-4 pb-2 border-b border-encre/10">4. Recipients</h2>
+          <ul class="space-y-3 mb-8 text-encre/70">
+            <li><strong>Internal:</strong> Optibilan team (support, dev, security) - access strictly necessary (least privilege principle).</li>
+            <li><strong>Processors (Art. 28 GDPR):</strong> <a href={lp('/legal/sous-traitance/')} class="text-bleu-signature hover:underline">Full register</a> - Supabase (DB), Stripe (payment), Resend (email), Cloudflare (CDN/WAF/DNS), Anthropic (AI), Plausible (analytics). All of them sign a DPA, EU hosting for health data.</li>
+            <li><strong>Authorities:</strong> upon lawful judicial or administrative request.</li>
+          </ul>
+
+          <h2 class="font-display text-2xl font-bold text-encre mb-4 pb-2 border-b border-encre/10">5. Transfers outside the EU</h2>
+          <p class="text-encre/70 mb-4"><strong>No health data is transferred outside the EU.</strong> Data remains on Supabase (EU West region) and Hostinger VPS (France).</p>
+          <p class="text-encre/70 mb-8">The following processors may access non-sensitive technical data from the US: Anthropic (AI - anonymized prompts, no identifying data, zero retention), Cloudflare (traffic metadata, WAF logs). Standard contractual clauses (SCC 2021) and technical measures (encryption, pseudonymization) frame these accesses.</p>
+
+          <h2 class="font-display text-2xl font-bold text-encre mb-4 pb-2 border-b border-encre/10">6. Retention periods</h2>
+          <ul class="space-y-2 mb-8 text-encre/70">
+            <li><strong>Subscriber data (account, billing):</strong> term of the subscription + 10 years (accounting obligation).</li>
+            <li><strong>Client data:</strong> configurable by the Subscriber (default 3 years / 1095 days after the end of the follow-up). Automatic purge can be enabled.</li>
+            <li><strong>Audit & security logs:</strong> 13 months (CNIL compliance).</li>
+            <li><strong>Anonymized analytics:</strong> 13 months.</li>
+            <li><strong>Tokens (activation, calendar, health, API):</strong> validity period + 90 days after expiry.</li>
+            <li><strong>Encrypted backups:</strong> rolling 30 days (Supabase PITR 7 days + daily snapshots).</li>
+          </ul>
+
+          <h2 class="font-display text-2xl font-bold text-encre mb-4 pb-2 border-b border-encre/10">7. Technical security</h2>
+          <ul class="space-y-2 mb-8 text-encre/70">
+            <li><strong>Encryption at rest:</strong> AES-256 (Supabase, VPS disks).</li>
+            <li><strong>Encryption in transit:</strong> TLS 1.3 everywhere (Cloudflare + app).</li>
+            <li><strong>Authentication:</strong> JWT HS256 (httpOnly, secure, sameSite=lax cookie), <code>sessionVersion</code> rotation on password change, mandatory TOTP 2FA for admins (RFC 6238), lock after 5 failures/15 min.</li>
+            <li><strong>Fail-closed multi-tenant architecture:</strong> automatic injection of <code>orgId</code> on every Prisma query (<code>tenant-guard</code> extension). Tested in CI (<code>test:isolation.mts</code> - 13/13).</li>
+            <li><strong>Security headers:</strong> strict CSP, HSTS, X-Frame-Options: DENY, X-Content-Type-Options: nosniff, Referrer-Policy: strict-origin-when-cross-origin.</li>
+            <li><strong>SSRF protection:</strong> validation of outbound network calls (<code>net.ts</code>), input/output validation.</li>
+            <li><strong>Persistent rate-limiting in the database:</strong> survives restarts, fail-open.</li>
+            <li><strong>Backups:</strong> daily and encrypted, 7-day PITR, quarterly restore test.</li>
+          </ul>
+
+          <h2 class="font-display text-2xl font-bold text-encre mb-4 pb-2 border-b border-encre/10">8. Your rights (GDPR)</h2>
+          <p class="text-encre/70 mb-4">You have the following rights over your personal data:</p>
+          <ul class="space-y-2 mb-4 text-encre/70">
+            <li><strong>Access (Art. 15):</strong> obtain a copy of your data.</li>
+            <li><strong>Rectification (Art. 16):</strong> correct inaccurate data.</li>
+            <li><strong>Erasure (Art. 17):</strong> "right to be forgotten" - within the limits of legal obligations.</li>
+            <li><strong>Restriction (Art. 18):</strong> freeze the use of your data.</li>
+            <li><strong>Portability (Art. 20):</strong> receive your data in a structured format - full JSON export available in the admin.</li>
+            <li><strong>Objection (Art. 21):</strong> to processing based on legitimate grounds or to prospecting.</li>
+            <li><strong>Withdrawal of consent (Art. 7.3):</strong> at any time for processing based on consent.</li>
+            <li><strong>Automated decisions (Art. 22):</strong> right to human intervention - the AI assists, it never decides.</li>
+          </ul>
+          <p class="text-encre/70 mb-8">Exercising your rights: <a href="mailto:privacy@optibilan.com" class="text-bleu-signature hover:underline">privacy@optibilan.com</a> or through the admin (My account → My data). Response within 30 days.</p>
+
+          <h2 class="font-display text-2xl font-bold text-encre mb-4 pb-2 border-b border-encre/10">9. Cookies & trackers</h2>
+          <div class="overflow-x-auto mb-8">
+            <table class="w-full" role="table">
+              <thead>
+                <tr class="border-b border-encre/20">
+                  <th class="text-left pb-2 font-semibold text-encre">Name</th>
+                  <th class="text-left pb-2 font-semibold text-encre">Purpose</th>
+                  <th class="text-left pb-2 font-semibold text-encre">Duration</th>
+                  <th class="text-left pb-2 font-semibold text-encre">Consent</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-encre/10 text-encre/70">
+                <tr><td class="py-2"><code class="bg-papier px-1.5 py-0.5 rounded text-sm">optibilan_session</code></td><td class="py-2">User session (JWT)</td><td class="py-2">30 days</td><td class="py-2">Strictly necessary</td></tr>
+                <tr><td class="py-2"><code class="bg-papier px-1.5 py-0.5 rounded text-sm">optibilan_2fa_pending</code></td><td class="py-2">2FA step in progress</td><td class="py-2">5 min</td><td class="py-2">Strictly necessary</td></tr>
+                <tr><td class="py-2"><code class="bg-papier px-1.5 py-0.5 rounded text-sm">vocab</code></td><td class="py-2">Practice vocabulary (client/patient...)</td><td class="py-2">30 days</td><td class="py-2">Strictly necessary</td></tr>
+                <tr><td class="py-2"><code class="bg-papier px-1.5 py-0.5 rounded text-sm">_ga* / plausible_*</code></td><td class="py-2">Analytics (anonymized)</td><td class="py-2">13 months</td><td class="py-2">Consent (banner)</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="text-encre/70 mb-8">Manage your preferences through the "Cookies" banner at the bottom of the page or your browser settings.</p>
+
+          <h2 class="font-display text-2xl font-bold text-encre mb-4 pb-2 border-b border-encre/10">10. Minors</h2>
+          <p class="text-encre/70 mb-8">The Service is not intended for minors under 15 years of age. The Subscriber (health/coaching professional) is responsible for obtaining parental consent where applicable, in accordance with Art. 8 GDPR and French law.</p>
+
+          <h2 class="font-display text-2xl font-bold text-encre mb-4 pb-2 border-b border-encre/10">11. Changes</h2>
+          <p class="text-encre/70 mb-8">This policy may be updated. The version in force is the one published on this page. Significant changes are notified by email (if you have consented) and/or through the admin interface 30 days before they take effect.</p>
+
+          <h2 class="font-display text-2xl font-bold text-encre mb-4 pb-2 border-b border-encre/10">12. DPO contact</h2>
+          <ul class="space-y-2 mb-4 text-encre/70">
+            <li>Email: <a href="mailto:privacy@optibilan.com" class="text-bleu-signature hover:underline">privacy@optibilan.com</a></li>
+            <li>Post: Elite Longevity LLC - DPO, Wyoming, USA</li>
+          </ul>
+          <p class="text-encre/70 mb-8">You have the right to lodge a complaint with the CNIL (<a href="https://cnil.fr" target="_blank" rel="noopener noreferrer" class="text-bleu-signature hover:underline">cnil.fr</a>).</p>
+
+          <address class="not-italic mt-12 pt-8 border-t border-encre/10 text-sm text-encre/50">
+            Elite Longevity LLC<br>
+            Wyoming, USA<br>
+            Email: <a href="mailto:privacy@optibilan.com" class="text-bleu-signature hover:underline">privacy@optibilan.com</a>
+          </address>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

@@ -11,6 +11,7 @@
     "preview": "astro preview",
     "astro": "astro",
     "validate:articles": "node scripts/validate-articles.mjs dist",
+    "check:i18n": "node scripts/check-i18n.mjs",
     "check": "npm run build && npm run validate:articles"
   },
   "dependencies": {

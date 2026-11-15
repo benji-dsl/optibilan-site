@@ -1,5 +1,7 @@
 ---
 import Icon from './Icon.astro';
+import { localeOf, localizePath } from '../i18n/config';
+import { t } from '../i18n/ui';
 
 interface Props {
   variant?: 'home' | 'page';
@@ -13,20 +15,38 @@ interface Props {
   backgroundImage?: string;
 }
 
+const locale = localeOf(Astro.currentLocale);
+const d = t(locale);
+
 const {
   variant = 'home',
   title,
   subtitle,
   badge,
   stats = [],
-  primaryCTA = { href: '/pricing/', label: 'Rejoindre Optibilan' },
-  secondaryCTA = { href: '/checkout/solo/', label: 'Essai offert' },
+  primaryCTA = { href: '/pricing/', label: d.cta.primary },
+  secondaryCTA = { href: '/checkout/solo/', label: d.cta.secondary },
   illustration,
   backgroundImage,
 } = Astro.props;
 
-const homeTitle = title || 'Centralisez vos suivis. \nSuivez trois fois plus de clients sans y passer vos soirées.';
-const homeSubtitle = subtitle ?? "Le système d'exploitation des coachs et des professionnels de la santé. Bilans, programmes, nutrition et données biométriques réunis sur une seule plateforme.";
+const defaultCopy = {
+  fr: {
+    title: 'Centralisez vos suivis. \nSuivez trois fois plus de clients sans y passer vos soirées.',
+    subtitle:
+      "Le système d'exploitation des coachs et des professionnels de la santé. Bilans, programmes, nutrition et données biométriques réunis sur une seule plateforme.",
+  },
+  en: {
+    title: 'Centralize your check-ins. \nFollow 3x more clients without losing your evenings.',
+    subtitle:
+      'The operating system for coaches and health professionals. Check-ins, programs, nutrition and biomarker data in a single platform.',
+  },
+}[locale];
+
+const homeTitle = title || defaultCopy.title;
+const homeSubtitle = subtitle ?? defaultCopy.subtitle;
+const primaryHref = localizePath(primaryCTA.href, locale);
+const secondaryHref = localizePath(secondaryCTA.href, locale);
 const homeBadge = badge || "";
 const isImageBg = variant === 'home' || Boolean(backgroundImage);
 const heroBackground = variant === 'home'
@@ -89,12 +109,12 @@ const contentClass = isImageBg
 
       {primaryCTA.label && (
       <div class="flex flex-col sm:flex-row items-center justify-center gap-5 animate-slide-up delay-300">
-        <a href={primaryCTA.href} class="btn btn-demo w-full sm:w-auto group text-lg px-10 py-5" data-track="hero_cta_demo">
+        <a href={primaryHref} class="btn btn-demo w-full sm:w-auto group text-lg px-10 py-5" data-track="hero_cta_demo">
           {primaryCTA.label}
           <Icon name="arrowRight" class="w-6 h-6 transition-transform group-hover:translate-x-1" />
         </a>
         {secondaryCTA.label && (
-          <a href={secondaryCTA.href} class="btn btn-bordeaux text-lg px-8 py-4" data-track="hero_cta_trial">
+          <a href={secondaryHref} class="btn btn-bordeaux text-lg px-8 py-4" data-track="hero_cta_trial">
             {secondaryCTA.label}
           </a>
         )}

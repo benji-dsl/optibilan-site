@@ -1,0 +1,226 @@
+import type { Locale } from './config';
+
+/**
+ * Chaines de l'ossature du site (header, footer, CTA, tarifs).
+ * Le contenu des pages vit dans les pages elles-memes.
+ *
+ * Regle : les deux langues ont EXACTEMENT la meme forme. TypeScript le verifie.
+ */
+
+const fr = {
+  nav: {
+    home: 'Optibilan - Accueil',
+    mainNav: 'Navigation principale',
+    mobileNav: 'Menu mobile',
+    productMenu: 'Menu Produit',
+    solutionsMenu: 'Menu Solutions',
+    product: 'Produit',
+    solutions: 'Solutions',
+    blog: 'Blog',
+    pricing: 'Tarifs',
+    contact: 'Contact',
+    login: 'Connexion',
+    join: 'Rejoindre Optibilan',
+    try: 'Essai offert',
+    openMenu: 'Ouvrir le menu',
+    groups: {
+      discover: 'Découvrir',
+      support: 'Accompagner',
+      track: 'Suivre',
+      automate: 'Automatiser',
+      customize: 'Personnaliser',
+    },
+    items: {
+      overview: "Vue d'ensemble",
+      crm: 'Journal & CRM',
+      integrations: 'Intégrations & API',
+      checkins: 'Bilans & progression',
+      nutrition: 'Nutrition',
+      training: 'Sport & programmes',
+      mental: 'Préparation mentale',
+      health: 'Santé & biomarqueurs',
+      engagement: 'Habitudes & engagement',
+      ai: 'IA & Automatisations',
+      whitelabel: 'Marque blanche',
+    },
+    solutionsItems: {
+      coaches: 'Coach sportif',
+      nutrition: 'Nutritionniste / Diététicien',
+      medecin: 'Médecin, pro de santé',
+      cabinets: 'Cabinet / Équipe',
+    },
+  },
+  footer: {
+    product: 'Produit',
+    solutions: 'Solutions',
+    trust: 'Confiance',
+    legal: 'Légal',
+    features: 'Fonctionnalités',
+    checkins: 'Bilans',
+    nutrition: 'Nutrition',
+    training: 'Sport',
+    health: 'Santé',
+    whitelabel: 'Marque blanche',
+    api: 'Documentation API',
+    newsletter: 'Newsletter',
+    solutionsAll: 'Solutions',
+    independents: 'Indépendants',
+    nutritionists: 'Nutritionnistes',
+    doctors: 'Médecins',
+    practices: 'Cabinets',
+    security: 'Sécurité',
+    privacy: 'Confidentialité',
+    cookies: 'Cookies',
+    subprocessors: 'Sous-traitants',
+    notice: 'Mentions légales',
+    terms: 'CGV',
+    baseline:
+      'La plateforme de pilotage des accompagnements santé & performance. Multi-tenant, marque blanche, Protection des données, contrôle des accès et traçabilité.',
+    rights: 'Tous droits réservés.',
+  },
+  cta: {
+    title: 'Prêt à structurer votre cabinet ?',
+    subtitle: "Professionnalisez votre suivi dès aujourd'hui.",
+    primary: 'Rejoindre Optibilan',
+    secondary: 'Essai offert',
+    note: '30 jours gratuits · Toutes fonctionnalités incluses · Annulation en 1 clic',
+  },
+  pricing: {
+    title: 'Des offres qui grandissent avec vous',
+    subtitle: "30 jours d'essai gratuit, sans CB. Changez d'offre à tout moment.",
+    monthly: 'Mensuel',
+    yearly: 'Annuel',
+    yearlyBadge: '2 mois offerts',
+    srPlans: 'Nos offres',
+    perMonth: '/mois',
+    perYear: '/ an',
+    billed: 'Facturé',
+    startFree: 'Démarrer gratuitement',
+    popular: 'Le plus choisi',
+  },
+  switcher: {
+    frLabel: 'Lire en anglais',
+    enLabel: 'Lire en français',
+    frTitle: 'English version',
+    enTitle: 'Version française',
+  },
+  common: {
+    breadcrumbHome: 'Accueil',
+    breadcrumbProduct: 'Produit',
+    breadcrumbSolutions: 'Solutions',
+  },
+} as const;
+
+type Dict = typeof fr;
+
+const en: Dict = {
+  nav: {
+    home: 'Optibilan - Home',
+    mainNav: 'Main navigation',
+    mobileNav: 'Mobile menu',
+    productMenu: 'Product menu',
+    solutionsMenu: 'Solutions menu',
+    product: 'Product',
+    solutions: 'Solutions',
+    blog: 'Blog',
+    pricing: 'Pricing',
+    contact: 'Contact',
+    login: 'Log in',
+    join: 'Join Optibilan',
+    try: 'Free trial',
+    openMenu: 'Open menu',
+    groups: {
+      discover: 'Discover',
+      support: 'Support clients',
+      track: 'Track',
+      automate: 'Automate',
+      customize: 'Customize',
+    },
+    items: {
+      overview: 'Overview',
+      crm: 'Journal & CRM',
+      integrations: 'Integrations & API',
+      checkins: 'Check-ins & progress',
+      nutrition: 'Nutrition',
+      training: 'Training & programs',
+      mental: 'Mental preparation',
+      health: 'Health & biomarkers',
+      engagement: 'Habits & engagement',
+      ai: 'AI & automation',
+      whitelabel: 'White label',
+    },
+    solutionsItems: {
+      coaches: 'Sports coach',
+      nutrition: 'Nutritionist / Dietitian',
+      medecin: 'Doctor, health professional',
+      cabinets: 'Practice / Team',
+    },
+  },
+  footer: {
+    product: 'Product',
+    solutions: 'Solutions',
+    trust: 'Trust',
+    legal: 'Legal',
+    features: 'Features',
+    checkins: 'Check-ins',
+    nutrition: 'Nutrition',
+    training: 'Training',
+    health: 'Health',
+    whitelabel: 'White label',
+    api: 'API documentation',
+    newsletter: 'Newsletter',
+    solutionsAll: 'Solutions',
+    independents: 'Independent coaches',
+    nutritionists: 'Nutritionists',
+    doctors: 'Doctors',
+    practices: 'Practices',
+    security: 'Security',
+    privacy: 'Privacy',
+    cookies: 'Cookies',
+    subprocessors: 'Subprocessors',
+    notice: 'Legal notice',
+    terms: 'Terms of service',
+    baseline:
+      'The operating system for health and performance practices. Multi-tenant, white label, data protection, access control and audit trail.',
+    rights: 'All rights reserved.',
+  },
+  cta: {
+    title: 'Ready to structure your practice?',
+    subtitle: 'Professionalize your client tracking today.',
+    primary: 'Join Optibilan',
+    secondary: 'Free trial',
+    note: '30 days free · All features included · Cancel in one click',
+  },
+  pricing: {
+    title: 'Plans that grow with you',
+    subtitle: '30-day free trial, no credit card. Change plans at any time.',
+    monthly: 'Monthly',
+    yearly: 'Yearly',
+    yearlyBadge: '2 months free',
+    srPlans: 'Our plans',
+    perMonth: '/month',
+    perYear: '/ year',
+    billed: 'Billed',
+    startFree: 'Start for free',
+    popular: 'Most chosen',
+  },
+  switcher: {
+    frLabel: 'Lire en anglais',
+    enLabel: 'Read in French',
+    frTitle: 'English version',
+    enTitle: 'French version',
+  },
+  common: {
+    breadcrumbHome: 'Home',
+    breadcrumbProduct: 'Product',
+    breadcrumbSolutions: 'Solutions',
+  },
+};
+
+const dictionaries: Record<Locale, Dict> = { fr, en };
+
+export function t(locale: Locale): Dict {
+  return dictionaries[locale] ?? dictionaries.fr;
+}
+
+export type { Dict };

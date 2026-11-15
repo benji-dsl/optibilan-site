@@ -1,5 +1,20 @@
 ---
 import Icon from '../Icon.astro';
+import LanguageSwitcher from '../LanguageSwitcher.astro';
+import { localeOf, localizePath } from '../../i18n/config';
+import { productGroups, solutionLinks, mainLinks } from '../../i18n/nav';
+import { t } from '../../i18n/ui';
+
+const locale = localeOf(Astro.currentLocale);
+const d = t(locale);
+const lp = (href: string) => localizePath(href, locale);
+
+// Le blog n'existe qu'en francais : on n'envoie pas les visiteurs anglais vers un 404.
+const blogHref = '/blog/';
+
+const groups = productGroups(locale);
+const solutions = solutionLinks(locale);
+const mains = mainLinks(locale);
 ---
 
 <div class="hidden md:flex items-center gap-4">
@@ -9,11 +24,11 @@ import Icon from '../Icon.astro';
       class="flex items-center gap-1.5 px-3 py-2 text-sm font-medium text-encre/60 hover:text-encre rounded-lg transition-colors"
       aria-haspopup="true"
       aria-expanded="false"
-      aria-label="Menu Produit"
+      aria-label={d.nav.productMenu}
       data-dropdown-trigger
       type="button"
     >
-      Produit
+      {d.nav.product}
       <Icon name="chevronDown" class="w-4 h-4 transition-transform duration-200" data-dropdown-icon />
     </button>
     <div
@@ -23,55 +38,16 @@ import Icon from '../Icon.astro';
       style="transform: translateY(4px);"
     >
       <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
-        <!-- Découvrir -->
-        <div>
-          <div class="px-2 py-2 font-semibold text-encre/50 uppercase tracking-wider text-xs border-b border-encre/10 mb-2">Découvrir</div>
-          <a href="/product/overview/" class="block p-3 rounded-lg hover:bg-papier transition-colors" role="menuitem">
-            <span class="block font-medium text-encre">Vue d'ensemble</span>
-          </a>
-          <a href="/product/crm/" class="block p-3 rounded-lg hover:bg-papier transition-colors" role="menuitem">
-            <span class="block font-medium text-encre">Journal & CRM</span>
-          </a>
-          <a href="/product/integrations/" class="block p-3 rounded-lg hover:bg-papier transition-colors" role="menuitem">
-            <span class="block font-medium text-encre">Intégrations & API</span>
-          </a>
-        </div>
-        <!-- Accompagner -->
-        <div>
-          <div class="px-2 py-2 font-semibold text-encre/50 uppercase tracking-wider text-xs border-b border-encre/10 mb-2">Accompagner</div>
-          <a href="/product/check-ins/" class="block p-3 rounded-lg hover:bg-papier transition-colors" role="menuitem">
-            <span class="block font-medium text-encre">Bilans & progression</span>
-          </a>
-          <a href="/product/nutrition/" class="block p-3 rounded-lg hover:bg-papier transition-colors" role="menuitem">
-            <span class="block font-medium text-encre">Nutrition</span>
-          </a>
-          <a href="/product/training/" class="block p-3 rounded-lg hover:bg-papier transition-colors" role="menuitem">
-            <span class="block font-medium text-encre">Sport & programmes</span>
-          </a>
-          <a href="/product/mental/" class="block p-3 rounded-lg hover:bg-papier transition-colors" role="menuitem">
-            <span class="block font-medium text-encre">Préparation mentale</span>
-          </a>
-        </div>
-        <!-- Suivre -->
-        <div>
-          <div class="px-2 py-2 font-semibold text-encre/50 uppercase tracking-wider text-xs border-b border-encre/10 mb-2">Suivre</div>
-          <a href="/product/health/" class="block p-3 rounded-lg hover:bg-papier transition-colors" role="menuitem">
-            <span class="block font-medium text-encre">Santé & biomarqueurs</span>
-          </a>
-          <a href="/product/engagement/" class="block p-3 rounded-lg hover:bg-papier transition-colors" role="menuitem">
-            <span class="block font-medium text-encre">Habitudes & engagement</span>
-          </a>
-        </div>
-        <!-- Automatiser -->
-        <div>
-          <div class="px-2 py-2 font-semibold text-encre/50 uppercase tracking-wider text-xs border-b border-encre/10 mb-2">Automatiser</div>
-          <a href="/product/ai/" class="block p-3 rounded-lg hover:bg-papier transition-colors" role="menuitem">
-            <span class="block font-medium text-encre">IA & Automatisations</span>
-          </a>
-          <a href="/product/white-label/" class="block p-3 rounded-lg hover:bg-papier transition-colors" role="menuitem">
-            <span class="block font-medium text-encre">Marque blanche</span>
-          </a>
-        </div>
+        {groups.map((group) => (
+          <div>
+            <div class="px-2 py-2 font-semibold text-encre/50 uppercase tracking-wider text-xs border-b border-encre/10 mb-2">{group.title}</div>
+            {group.links.map((link) => (
+              <a href={lp(link.href)} class="block p-3 rounded-lg hover:bg-papier transition-colors" role="menuitem">
+                <span class="block font-medium text-encre">{link.label}</span>
+              </a>
+            ))}
+          </div>
+        ))}
       </div>
     </div>
   </div>
@@ -82,11 +58,11 @@ import Icon from '../Icon.astro';
       class="flex items-center gap-1.5 px-3 py-2 text-sm font-medium text-encre/60 hover:text-encre rounded-lg transition-colors"
       aria-haspopup="true"
       aria-expanded="false"
-      aria-label="Menu Solutions"
+      aria-label={d.nav.solutionsMenu}
       data-dropdown-trigger
       type="button"
     >
-      Solutions
+      {d.nav.solutions}
       <Icon name="chevronDown" class="w-4 h-4 transition-transform duration-200" data-dropdown-icon />
     </button>
     <div
@@ -96,48 +72,42 @@ import Icon from '../Icon.astro';
       style="transform: translateY(4px);"
     >
       <div class="space-y-1">
-        <a href="/solutions/coaches/" class="block p-3 rounded-lg hover:bg-papier transition-colors" role="menuitem">
-          <span class="block font-medium text-encre">Coach sportif</span>
-        </a>
-        <a href="/solutions/nutrition/" class="block p-3 rounded-lg hover:bg-papier transition-colors" role="menuitem">
-          <span class="block font-medium text-encre">Nutritionniste / Diététicien</span>
-        </a>
-        <a href="/solutions/medecin/" class="block p-3 rounded-lg hover:bg-papier transition-colors" role="menuitem">
-          <span class="block font-medium text-encre">Médecin, pro de santé</span>
-        </a>
-        <a href="/solutions/cabinets/" class="block p-3 rounded-lg hover:bg-papier transition-colors" role="menuitem">
-          <span class="block font-medium text-encre">Cabinet / Équipe</span>
-        </a>
+        {solutions.map((link) => (
+          <a href={lp(link.href)} class="block p-3 rounded-lg hover:bg-papier transition-colors" role="menuitem">
+            <span class="block font-medium text-encre">{link.label}</span>
+          </a>
+        ))}
       </div>
     </div>
   </div>
 
-  <!-- BLOG -->
-  <a href="/blog/" class="px-3 py-2 text-sm font-medium text-encre/60 hover:text-encre rounded-lg transition-colors" aria-label="Blog Optibilan">
-    Blog
+  {/* BLOG */}
+  <a href={locale === 'en' ? blogHref : lp('/blog/')} class="px-3 py-2 text-sm font-medium text-encre/60 hover:text-encre rounded-lg transition-colors" aria-label={d.nav.blog}>
+    {d.nav.blog}
   </a>
 
-  <!-- TARIFS -->
-  <a href="/pricing/" class="px-3 py-2 text-sm font-medium text-encre/60 hover:text-encre rounded-lg transition-colors" aria-label="Tarifs Optibilan">
-    Tarifs
+  {/* TARIFS / PRICING */}
+  <a href={lp('/pricing/')} class="px-3 py-2 text-sm font-medium text-encre/60 hover:text-encre rounded-lg transition-colors" aria-label={d.nav.pricing}>
+    {d.nav.pricing}
   </a>
 
-  <!-- CONTACT -->
-  <a href="/contact/" class="px-3 py-2 text-sm font-medium text-encre/60 hover:text-encre rounded-lg transition-colors" aria-label="Contact et support">
-    Contact
+  {/* CONTACT */}
+  <a href={lp('/contact/')} class="px-3 py-2 text-sm font-medium text-encre/60 hover:text-encre rounded-lg transition-colors" aria-label={d.nav.contact}>
+    {d.nav.contact}
   </a>
 </div>
 
 <div class="hidden md:flex items-center gap-2">
-  <a href="https://app.optibilan.com/login" class="btn-header-secondary" aria-label="Connexion">
+  <LanguageSwitcher class="mr-1" />
+  <a href="https://app.optibilan.com/login" class="btn-header-secondary" aria-label={d.nav.login}>
     <Icon name="user" class="w-5 h-5" />
   </a>
-  <a href="/pricing/" class="btn-header-primary" aria-label="Rejoindre Optibilan">
+  <a href={lp('/pricing/')} class="btn-header-primary" aria-label={d.nav.join}>
     <Icon name="arrowRight" class="w-5 h-5" />
-    <span class="hidden sm:inline">Rejoindre Optibilan</span>
+    <span class="hidden sm:inline">{d.nav.join}</span>
   </a>
-  <a href="/checkout/solo/" class="btn-header-bordeaux" aria-label="Essayer Optibilan">
-    <span class="hidden md:inline">Essayer Optibilan</span>
+  <a href={lp('/checkout/solo/')} class="btn-header-bordeaux" aria-label={d.nav.try}>
+    <span class="hidden md:inline">{d.nav.try}</span>
   </a>
 </div>
 
@@ -161,7 +131,7 @@ import Icon from '../Icon.astro';
     const menu = dropdown.querySelector('[data-dropdown-menu]');
     const trigger = dropdown.querySelector('[data-dropdown-trigger]');
     const icon = trigger?.querySelector('[data-dropdown-icon]');
-    
+
     if (menu && trigger) {
       menu.classList.remove('opacity-0', 'invisible');
       menu.classList.add('opacity-100', 'visible');
@@ -176,10 +146,10 @@ import Icon from '../Icon.astro';
     trigger.addEventListener('click', (e) => {
       e.preventDefault();
       e.stopPropagation();
-      
+
       const dropdown = trigger.closest('[data-dropdown]');
       const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
-      
+
       if (isExpanded) {
         closeAllDropdowns();
       } else {

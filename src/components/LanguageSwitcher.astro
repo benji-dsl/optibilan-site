@@ -1,0 +1,56 @@
+---
+/**
+ * Bascule de langue.
+ *
+ * Affiche le drapeau de la langue COURANTE (FR sur une page FR, US sur une page EN)
+ * et pointe vers la meme page dans l'autre langue. C'est un vrai lien <a> :
+ * il fonctionne sans JavaScript, il est explorable, et le prefetch d'Astro le
+ * rend instantane au survol.
+ */
+import Flag from './Flag.astro';
+import { localizePath, localeOf, otherLocale, normalizePath } from '../i18n/config';
+import { hasEnglishVersion } from '../i18n/routes';
+import { t } from '../i18n/ui';
+
+interface Props {
+  /** Chemin canonique de la page courante. Par defaut, l'URL rendue. */
+  path?: string;
+  /** 'light' sur fond clair, 'dark' sur fond sombre. */
+  variant?: 'light' | 'dark';
+  class?: string;
+}
+
+const { path, variant = 'light', class: className = '' } = Astro.props;
+
+const locale = localeOf(Astro.currentLocale);
+const target = otherLocale(locale);
+const canonical = normalizePath(path ?? Astro.url.pathname);
+
+// Une page FR sans traduction renvoie vers l'accueil anglais plutot que vers un 404.
+const translated = locale === 'en' || hasEnglishVersion(canonical);
+const href = translated ? localizePath(canonical, target) : localizePath('/', target);
+
+const d = t(locale).switcher;
+const label = locale === 'fr' ? d.frLabel : d.enLabel;
+const title = locale === 'fr' ? d.frTitle : d.enTitle;
+
+const base =
+  'group inline-flex h-9 w-9 items-center justify-center rounded-full border transition-colors';
+const styles =
+  variant === 'dark'
+    ? 'border-craie/25 hover:border-craie/60 hover:bg-craie/10'
+    : 'border-encre/15 hover:border-encre/40 hover:bg-encre/5';
+---
+
+<a
+  href={href}
+  hreflang={target}
+  lang={target}
+  class={`${base} ${styles} ${className}`}
+  aria-label={label}
+  title={title}
+  data-lang-switch={target}
+  data-track="lang_switch"
+>
+  <Flag code={locale} />
+</a>

@@ -1,0 +1,175 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import Hero from '@/components/Hero.astro';
+import CTA from '@/components/CTA.astro';
+import TrustBar from '@/components/TrustBar.astro';
+import Icon from '@/components/Icon.astro';
+import { localizePath } from '@/i18n/config';
+
+const lp = (href: string) => localizePath(href, 'en');
+
+const pageTitle = 'Nutritionist software | Complete nutrition tracking | Optibilan';
+const pageDescription = 'The nutrition-tracking software for nutritionists: personalized plans, habits, shopping lists and supplements in a single record. Free trial.';
+
+const eduOrgJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'EducationalOrganization',
+  '@id': 'https://optibilan.com/en/#educational-organization',
+  name: 'Optibilan',
+  url: 'https://optibilan.com/en/',
+  logo: 'https://optibilan.com/optibilan-logo.svg',
+  inLanguage: 'en-US',
+  areaServed: 'FR',
+  sameAs: [
+    'https://twitter.com/optibilan',
+    'https://linkedin.com/company/optibilan',
+    'https://github.com/optibilan',
+    'https://youtube.com/@optibilan',
+  ],
+};
+const courseJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Course',
+  '@id': 'https://optibilan.com/en/solutions/#course',
+  name: 'Training and support with Optibilan',
+  description: 'Practical training to structure check-ins, nutrition and training follow-up, and automate processes with the Optibilan platform.',
+  provider: { '@type': 'EducationalOrganization', '@id': 'https://optibilan.com/en/#educational-organization' },
+  url: 'https://optibilan.com/en/solutions/',
+  inLanguage: 'en-US',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://optibilan.com/en/' },
+    { '@type': 'ListItem', position: 2, name: 'Solutions', item: 'https://optibilan.com/en/solutions/' },
+    { '@type': 'ListItem', position: 3, name: 'Nutritionist', item: 'https://optibilan.com/en/solutions/nutrition/' },
+  ],
+};
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  lang="en"
+  canonical="/en/solutions/nutrition/"
+  ogImage="/og-solution-nutrition.png"
+  jsonLd={[breadcrumbJsonLd, eduOrgJsonLd, courseJsonLd]}
+  heroImage="/images/product/nutrition-consultation.webp"
+>
+  <Header />
+
+  <main>
+<Hero
+      variant="page"
+      title="All the nutrition follow-up 
+in a single record."
+      subtitle="Plans, eating habits, shopping lists, documented and customizable supplements, progress, all gathered in the client record."
+      primaryCTA={{ href: '/pricing/', label: 'Join Optibilan' }}
+      secondaryCTA={{ href: '/checkout/solo/', label: 'Free trial' }}
+      backgroundImage="/images/product/nutrition-consultation.webp"
+    />
+
+    <TrustBar />
+
+    <section class="section bg-papier" aria-labelledby="nutrition-visual-title">
+      <div class="container">
+        <header class="text-center max-w-3xl mx-auto mb-12">
+          <h2 id="nutrition-visual-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+            The consultation at the heart of the follow-up
+          </h2>
+          <p class="text-lg text-encre/60">
+            The software prepares the data. You stay focused on your patient.
+          </p>
+        </header>
+        <div class="aspect-video max-w-4xl mx-auto rounded-xl border border-encre/10 bg-blanc overflow-hidden shadow-xl">
+          <img
+            src="/images/product/nutrition-consultation.webp"
+            alt="Nutritionist in consultation with a patient, personalized meal plan"
+            class="w-full h-full object-cover"
+            loading="eager"
+            fetchpriority="high" width="667" height="381" />
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-blanc" aria-labelledby="promise-title">
+      <div class="container max-w-3xl">
+        <header class="text-center mb-16">
+          <h2 id="promise-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+            Build individualized nutrition plans for 50+ patients.
+            Without spending your evenings on it.
+          </h2>
+          <p class="text-lg text-encre/60 max-w-2xl mx-auto">
+            Reusable templates, automatic shopping lists, sorted supplements, 1-click coach approval.
+            The power of reusable templates.
+          </p>
+        </header>
+
+        <div class="grid md:grid-cols-2 gap-6 mb-16">
+          {[
+            { icon: 'document', title: 'A plan in 5 min thanks to templates', desc: 'Automatic needs calculation (Mifflin-St Jeor), macro/meal split, templates by condition (diabetes, thyroid, PCOS...) or goal. Duplicate in 1 click.' },
+            { icon: 'chart', title: 'Automatic weekly shopping lists', desc: 'Calculated quantities, categories (vegetables, protein, groceries), preferred stores. The patient checks items on mobile. Automatic update when the plan changes.' },
+            { icon: 'zap', title: 'Supplements sorted by evidence', desc: 'Dosage, timing, brand, level of evidence (A/B/C). Essential / Optional / Not recommended. Interaction alerts, barcode-scan adherence.' },
+            { icon: 'chart', title: 'Food journal + 1-click approval', desc: 'Patient photo/text journal (barcode scan), coach approval or comment. Plan vs actual gap charts (calories, protein/fat/carbs, vegetables).' },
+          ].map(item => (
+            <article class="p-6 rounded-xl border border-encre/10 hover:border-bleu-lecture/30 hover:shadow-soft transition-all">
+              <div class="icon-wrapper mb-4" aria-hidden="true" style="background-color: var(--color-bleu-clair);">
+                <Icon name={item.icon} class="w-7 h-7 text-bleu-lecture" />
+              </div>
+              <h3 class="font-display text-xl font-bold text-encre mb-2">{item.title}</h3>
+              <p class="text-encre/60">{item.desc}</p>
+            </article>
+          ))}
+        </div>
+
+        <div class="p-6 md:p-8 rounded-xl bg-gradient-to-br from-bleu-lecture/5 via-papier to-bleu-clair/5 border border-encre/10 mb-16">
+          <h3 class="font-display text-xl md:text-2xl font-bold text-encre mb-4">Nutritionist feedback</h3>
+          <blockquote class="text-encre/70 leading-relaxed mb-4 italic max-w-2xl">
+            "The nutrition templates (fat loss, longevity, condition) and the automated shopping lists changed my practice. My patients get their full plan plus shopping list in 1 click. AI pre-fills the macros according to the goals. The GDPR export is a real plus for compliance. I added the mental preparation module for my patients with eating disorders, and the data segregation is perfect: my sports coach sees nothing. I could not work without it."
+          </blockquote>
+          <footer class="flex items-center gap-3">
+            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-bleu-signature to-bleu-lecture flex items-center justify-center text-craie font-bold text-sm">SM</div>
+            <div>
+              <div class="font-semibold text-encre">Sophie Martin</div>
+              <div class="text-sm text-encre/50">Dietitian-nutritionist · Cabinet NutriSanté - Nantes</div>
+            </div>
+          </footer>
+        </div>
+
+        <h3 class="font-display text-2xl font-bold text-encre mb-8">Key modules for nutrition</h3>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {[
+            { href: '/product/nutrition/', icon: 'document', title: 'Complete Nutrition', desc: 'Plans, shopping lists, supplements, methods, templates, coach approval', color: 'bleu-lecture' },
+            { href: '/product/check-ins/', icon: 'chart', title: 'Check-ins & Progress', desc: 'Weight, measurements, photos, adherence, charts, PDF export', color: 'bleu-signature' },
+            { href: '/product/health/', icon: 'globe', title: 'Health & Biomarkers', desc: 'Blood panel (130+ markers), AI reads lab PDFs, correlations', color: 'bleu-clair' },
+            { href: '/product/engagement/', icon: 'users', title: 'Habits & Adherence', desc: 'Water, supplements, reminders, barcode scan, adherence rate', color: 'bordeaux' },
+            { href: '/product/crm/', icon: 'lock', title: 'Journal & Documents', desc: 'Notes, attachments, patient sharing, Notion sync', color: 'bleu-ardoise' },
+            { href: '/product/white-label/', icon: 'shield', title: 'White Label', desc: 'Your logo, your colors, your domain, your emails', color: 'bordeaux' },
+          ].map(mod => (
+            <a href={lp(mod.href)} class="card-hover p-6 text-center group" style={`--mod-color: var(--color-${mod.color})`}>
+              <div class="icon-wrapper mx-auto mb-4" aria-hidden="true" style={`background-color: color-mix(in oklab, var(--color-${mod.color}) 15%, transparent);`}>
+                <Icon name={mod.icon} class="w-7 h-7" style={`color: var(--color-${mod.color});`} />
+              </div>
+              <h4 class="font-display text-lg font-bold text-encre mb-2">{mod.title}</h4>
+              <p class="text-sm text-encre/50">{mod.desc}</p>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <CTA
+      title="Want to see how to structure YOUR nutrition plans?"
+      subtitle="30 minutes to set up Optibilan around your dietetic method."
+      primaryCTA={{ href: '/pricing/', label: 'Join Optibilan' }}
+      secondaryCTA={{ href: '/checkout/solo/', label: 'Free trial' }}
+      variant="primary"
+    />
+  </main>
+
+  <Footer />
+</Layout>

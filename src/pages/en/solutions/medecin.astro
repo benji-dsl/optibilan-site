@@ -1,0 +1,189 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import Hero from '@/components/Hero.astro';
+import CTA from '@/components/CTA.astro';
+import TrustBar from '@/components/TrustBar.astro';
+import Icon from '@/components/Icon.astro';
+import { localizePath } from '@/i18n/config';
+
+const lp = (href: string) => localizePath(href, 'en');
+
+const pageTitle = 'Software for doctors and health professionals | Check-ins and biomarkers | Optibilan';
+const pageDescription = 'The health-tracking software for doctors: check-ins, 130+ biomarkers, habits, inter-professional coordination and permissions. 30-day free trial.';
+
+const eduOrgJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'EducationalOrganization',
+  '@id': 'https://optibilan.com/en/#educational-organization',
+  name: 'Optibilan',
+  url: 'https://optibilan.com/en/',
+  logo: 'https://optibilan.com/optibilan-logo.svg',
+  inLanguage: 'en-US',
+  areaServed: 'FR',
+  sameAs: [
+    'https://twitter.com/optibilan',
+    'https://linkedin.com/company/optibilan',
+    'https://github.com/optibilan',
+    'https://youtube.com/@optibilan',
+  ],
+};
+const courseJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Course',
+  '@id': 'https://optibilan.com/en/solutions/#course',
+  name: 'Training and support with Optibilan',
+  description: 'Practical training to structure check-ins, nutrition and training follow-up, and automate processes with the Optibilan platform.',
+  provider: { '@type': 'EducationalOrganization', '@id': 'https://optibilan.com/en/#educational-organization' },
+  url: 'https://optibilan.com/en/solutions/',
+  inLanguage: 'en-US',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://optibilan.com/en/' },
+    { '@type': 'ListItem', position: 2, name: 'Solutions', item: 'https://optibilan.com/en/solutions/' },
+    { '@type': 'ListItem', position: 3, name: 'Doctor', item: 'https://optibilan.com/en/solutions/medecin/' },
+  ],
+};
+
+---
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  lang="en"
+  canonical="/en/solutions/medecin/"
+  ogImage="/og-solutions.png"
+  jsonLd={[breadcrumbJsonLd, eduOrgJsonLd, courseJsonLd]}
+  heroImage="/images/product/medecins/06-medecin-consultation-donnees-sante.webp"
+>
+  <Header />
+
+  <main>
+    <Hero
+      variant="page"
+      title="Structure prevention 
+at the heart of your practice."
+      subtitle="Check-ins, biomarkers, habits, nutrition, inter-professional coordination. Strict segregation of health data. Prevention, structured."
+      primaryCTA={{ href: '/pricing/', label: 'Join Optibilan' }}
+      secondaryCTA={{ href: '/checkout/solo/', label: 'Free trial' }}
+      backgroundImage="/images/product/medecins/06-medecin-consultation-donnees-sante.webp"
+    />
+
+    <TrustBar />
+
+    <section class="section bg-papier" aria-labelledby="medecin-visual-title">
+      <div class="container">
+        <header class="text-center max-w-3xl mx-auto mb-12">
+          <h2 id="medecin-visual-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+            Prevention also happens between two consultations
+          </h2>
+          <p class="text-lg text-encre/60">
+            Check-ins, biomarkers, habits, nutrition: what happens between two appointments, structured.
+          </p>
+        </header>
+        <div class="aspect-video max-w-4xl mx-auto rounded-xl border border-encre/10 bg-blanc overflow-hidden shadow-xl">
+          <img
+            src="/images/product/medecins/06-medecin-consultation-donnees-sante.webp"
+            alt="Doctor in a preventive consultation with his patient health data"
+            class="w-full h-full object-cover"
+            loading="eager"
+            fetchpriority="high" width="1000" height="667" />
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-gradient-to-br from-encre/5 via-papier to-bordeaux/5 rounded-card-lg relative overflow-hidden" aria-labelledby="disclaimer-title">
+      <div class="container relative py-6 px-6 md:py-8 md:px-8">
+        <div class="flex items-start gap-4 p-4 bg-encre/5 rounded-lg border border-encre/10">
+          <Icon name="shield" class="w-6 h-6 text-encre/50 flex-shrink-0 mt-0.5" />
+          <div>
+            <h3 id="disclaimer-title" class="font-semibold text-encre mb-1">Professional and ethical framework</h3>
+            <p class="text-encre/70 text-sm">
+              <strong>Optibilan is an organization tool, not a medical device.</strong> It provides a follow-up framework for qualified health professionals.<br>
+              <strong>Strict segregation:</strong> each professional only sees what is shared. The patient remains the decision-maker of their care pathway. Optibilan does not make diagnoses.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-blanc" aria-labelledby="promise-title">
+      <div class="container max-w-3xl">
+        <header class="text-center mb-16">
+          <h2 id="promise-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+            Prevention is part of care.
+            Its data deserves its own space.
+          </h2>
+          <p class="text-lg text-encre/60 max-w-2xl mx-auto">
+            Check-ins, biomarkers, habits, coordination. All structured, segregated, steerable.
+          </p>
+        </header>
+
+        <div class="grid md:grid-cols-2 gap-6 mb-16">
+          {[
+            { icon: 'chart', title: 'Structured check-ins & biomarkers', desc: 'Long check-ins, key markers, history, trends. Standardized templates, tracking over time, threshold alerts.' },
+            { icon: 'activity', title: 'Habits & adherence, steered', desc: 'Sleep, activity, stress, nutrition. Daily tracking, proactive alerts, correlation with health measurements.' },
+            { icon: 'users', title: 'Inter-professional coordination', desc: 'Selective sharing with the patient other practitioners. Granular permissions, traceability, full audit.' },
+            { icon: 'document', title: 'Nutrition & prevention plans', desc: 'Nutrition templates, shopping lists, supplements, education. Concrete prevention, every day.' },
+          ].map(item => (
+            <article class="p-6 rounded-xl border border-encre/10 hover:border-bordeaux/30 hover:shadow-soft transition-all">
+              <div class="icon-wrapper mb-4" aria-hidden="true" style="background-color: var(--color-bleu-clair);">
+                <Icon name={item.icon} class="w-7 h-7 text-bordeaux" />
+              </div>
+              <h3 class="font-display text-xl font-bold text-encre mb-2">{item.title}</h3>
+              <p class="text-encre/60">{item.desc}</p>
+            </article>
+          ))}
+        </div>
+
+        <div class="p-6 md:p-8 rounded-xl bg-gradient-to-br from-bleu-lecture/5 via-papier to-bordeaux/5 border border-encre/10 mb-16">
+          <h3 class="font-display text-xl md:text-2xl font-bold text-encre mb-4">Feedback from a primary care doctor</h3>
+          <blockquote class="text-encre/70 leading-relaxed mb-4 italic max-w-2xl">
+            "Follow-up between two consultations was the weak point of my preventive practice: paper check-ins filed in a binder. Optibilan structures everything: biomarkers, habits, nutrition. And I can share the pathway with other practitioners in a segregated framework. My patients are actors in their prevention, not spectators."
+          </blockquote>
+          <footer class="flex items-center gap-3">
+            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-bleu-signature to-bleu-lecture flex items-center justify-center text-craie font-bold text-sm">CF</div>
+            <div>
+              <div class="font-semibold text-encre">Dr Claire Fontaine</div>
+              <div class="text-sm text-encre/50">General practitioner & Prevention · Cabinet Longévité - Lyon</div>
+            </div>
+          </footer>
+        </div>
+
+        <h3 class="font-display text-2xl font-bold text-encre mb-8">Key modules for doctors and health professionals</h3>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {[
+            { href: '/product/health/', icon: 'activity', title: 'Health & Biomarkers', desc: 'Check-ins, markers, history, trends, alerts', color: 'bleu-lecture' },
+            { href: '/product/check-ins/', icon: 'chart', title: 'Check-ins & Progress', desc: 'Long check-ins, templates, tracking over time', color: 'bordeaux' },
+            { href: '/product/engagement/', icon: 'users', title: 'Gamification & Habits', desc: 'Habits, journal, AI alerts, adherence', color: 'indigo' },
+            { href: '/product/nutrition/', icon: 'document', title: 'Nutrition & Plans', desc: 'Templates, shopping lists, supplements', color: 'bleu-ardoise' },
+            { href: '/product/white-label/', icon: 'shield', title: 'White Label', desc: 'Your logo, your colors, your domain', color: 'bordeaux' },
+            { href: '/product/integrations/', icon: 'code', title: 'API & Integrations', desc: 'Webhooks, n8n, Notion sync, ICS calendar', color: 'bleu-ardoise' },
+          ].map(mod => (
+            <a href={lp(mod.href)} class="card-hover p-6 text-center group" style={`--mod-color: var(--color-${mod.color})`}>
+              <div class="icon-wrapper mx-auto mb-4" aria-hidden="true" style={`background-color: color-mix(in oklab, var(--color-${mod.color}) 15%, transparent);`}>
+                <Icon name={mod.icon} class="w-7 h-7" style={`color: var(--color-${mod.color});`} />
+              </div>
+              <h4 class="font-display text-lg font-bold text-encre mb-2">{mod.title}</h4>
+              <p class="text-sm text-encre/50">{mod.desc}</p>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <CTA
+      title="Want to structure prevention for YOUR patients?"
+      subtitle="30 minutes to set up Optibilan around your medical practice."
+      primaryCTA={{ href: '/pricing/', label: 'Join Optibilan' }}
+      secondaryCTA={{ href: '/checkout/solo/', label: 'Free trial' }}
+      variant="primary"
+    />
+  </main>
+
+  <Footer />
+</Layout>

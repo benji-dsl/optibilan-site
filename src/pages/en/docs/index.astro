@@ -1,0 +1,269 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import Icon from '@/components/Icon.astro';
+import DiscoverCTA from '@/components/DiscoverCTA.astro';
+import { localizePath } from '@/i18n/config';
+
+const lp = (href: string) => localizePath(href, 'en');
+
+const pageTitle = 'Optibilan API documentation: REST v1, webhooks, sandbox';
+const pageDescription = 'Optibilan REST API documentation: scoped API keys, client, check-in, nutrition, training and health resources, signed webhooks and sandbox.';
+
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://optibilan.com/en/' },
+    { '@type': 'ListItem', position: 2, name: 'API documentation', item: 'https://optibilan.com/en/docs/' },
+  ],
+};
+
+const docJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'TechArticle',
+  headline: 'Optibilan API documentation',
+  description: pageDescription,
+  url: 'https://optibilan.com/en/docs/',
+  inLanguage: 'en-US',
+  proficiencyLevel: 'Expert',
+};
+
+const resources = [
+  { name: 'Clients', desc: 'Creation, read, update and search of clients, with the permissions of the authenticated user.', scope: 'clients:read, clients:write' },
+  { name: 'Check-ins', desc: 'Follow-up check-in, measurements and indicator trends, and the history of checkpoints.', scope: 'bilans:read, bilans:write' },
+  { name: 'Nutrition', desc: 'Plans, shopping lists, habits and documented supplements.', scope: 'nutrition:read, nutrition:write' },
+  { name: 'Training', desc: 'Programs, sessions, progression and training data.', scope: 'sport:read, sport:write' },
+  { name: 'Health', desc: 'Biomarkers, lifestyle habits and data upload from a third-party device.', scope: 'sante:read, sante:write' },
+  { name: 'Webhooks', desc: 'Event subscription, configuration of receiving URLs and event replay.', scope: 'webhooks:read, webhooks:write' },
+  { name: 'Administration', desc: 'Users, roles, granular permissions and audit, on the Studio and Cabinet plans.', scope: 'admin:read, admin:write' },
+];
+
+const webhookEvents = [
+  'Client created',
+  'Check-in submitted',
+  'Badge earned',
+  'Nutrition updated',
+  'Overdue call',
+];
+
+const steps = [
+  {
+    icon: 'lock',
+    title: 'Create a scoped API key',
+    desc: 'Keys are generated in your workspace and limited to the permissions your use case needs. A read-only key cannot write, even if the endpoint allows it.',
+  },
+  {
+    icon: 'terminal',
+    title: 'Call the REST v1 API',
+    desc: 'A single base, classic REST resources, JSON responses. The full schema is described in OpenAPI 3.1 and provided with API access.',
+  },
+  {
+    icon: 'zap',
+    title: 'Receive webhooks',
+    desc: 'Eight signed events cover the life of a client record: creation, check-in, nutrition, badges and calls. Every incoming request is signed and timestamped.',
+  },
+];
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  lang="en"
+  canonical="/en/docs/"
+  ogImage="/og-integrations.png"
+  jsonLd={[docJsonLd, breadcrumbJsonLd]}
+>
+  <Header />
+
+  <main>
+    <section class="section pt-20 md:pt-28 bg-papier">
+      <div class="container">
+        <div class="max-w-3xl">
+          <span
+            class="inline-flex items-center gap-2 px-3 py-1.5 rounded-puce text-sm font-medium mb-6"
+            style="color: var(--color-bleu-signature); background-color: color-mix(in oklab, var(--color-bleu-signature) 10%, transparent);"
+          >
+            <Icon name="terminal" class="w-4 h-4" />
+            API REST v1 · OpenAPI 3.1
+          </span>
+          <h1 class="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-encre mb-5 leading-tight">
+            Optibilan API documentation
+          </h1>
+          <p class="text-lg text-encre/70 leading-relaxed">
+            The REST v1 API gives access to clients, check-ins, nutrition, training and health, with signed webhooks so
+            you can react in real time. This document covers what is public and verifiable. The full OpenAPI schema,
+            the detailed authentication signatures and the exact quotas are provided with API access.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-blanc" aria-labelledby="auth-title">
+      <div class="container">
+        <header class="max-w-3xl mb-12">
+          <h2 id="auth-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+            Authentication and permissions
+          </h2>
+          <p class="text-lg text-encre/70">
+            Authentication relies on scoped API keys: each key carries an explicit list of permissions, and requests
+            are rejected if the requested action is not in that list. This model prevents a read integration from
+            obtaining write access through a simple configuration mistake.
+          </p>
+        </header>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {steps.map(step => (
+            <div class="p-6 rounded-card-lg border border-encre/10 bg-blanc">
+              <div class="icon-wrapper mb-4" aria-hidden="true">
+                <Icon name={step.icon} class="w-6 h-6" />
+              </div>
+              <h3 class="font-display text-lg font-bold text-encre mb-2">{step.title}</h3>
+              <p class="text-encre/70 leading-relaxed">{step.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-papier" aria-labelledby="resources-title">
+      <div class="container">
+        <header class="max-w-3xl mb-12">
+          <h2 id="resources-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+            Available resources
+          </h2>
+          <p class="text-lg text-encre/70">
+            The v1 API covers the seven resource families below. The permissions shown are the ones most often used
+            by integrations; the exact list is attached to each key.
+          </p>
+        </header>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse">
+            <thead>
+              <tr class="border-b-2 border-encre/15">
+                <th scope="col" class="py-3 pr-4 font-semibold text-encre">Resource</th>
+                <th scope="col" class="py-3 pr-4 font-semibold text-encre">Content</th>
+                <th scope="col" class="py-3 font-semibold text-encre">Typical permissions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {resources.map(r => (
+                <tr class="border-b border-encre/10">
+                  <td class="py-4 pr-4 font-semibold text-encre whitespace-nowrap">{r.name}</td>
+                  <td class="py-4 pr-4 text-encre/70">{r.desc}</td>
+                  <td class="py-4 text-encre/60 font-mono text-xs">{r.scope}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <div class="mt-10 p-6 rounded-card-lg border border-encre/10 bg-blanc">
+          <h3 class="font-display text-lg font-bold text-encre mb-2">Health data upload</h3>
+          <p class="text-encre/70 leading-relaxed">
+            Third-party applications that already hold measured data (Apple Health, Oura, Garmin) send it to the sync
+            entry point
+            <code class="px-1.5 py-0.5 rounded bg-encre/5 font-mono text-sm">POST /api/health-sync</code>. This entry
+            point is the anchor for n8n, Make and Zapier automations: retrieval on the partner side, then sending to
+            Optibilan.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-blanc" aria-labelledby="webhooks-title">
+      <div class="container">
+        <header class="max-w-3xl mb-12">
+          <h2 id="webhooks-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+            Signed webhooks
+          </h2>
+          <p class="text-lg text-encre/70">
+            Eight events cover the life of a client record. Every notification is signed and timestamped, which makes it
+            possible to reject any request that does not come from Optibilan. Among the most used:
+          </p>
+        </header>
+
+        <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 max-w-4xl">
+          {webhookEvents.map(event => (
+            <li class="flex items-center gap-3 p-4 rounded-card border border-encre/10 bg-blanc">
+              <Icon name="check" class="w-4 h-4 flex-shrink-0" />
+              <span class="text-encre/80">{event}</span>
+            </li>
+          ))}
+          <li class="flex items-center gap-3 p-4 rounded-card border border-encre/10 bg-papier text-encre/50">
+            <span class="w-4 h-4 flex-shrink-0 flex items-center justify-center text-xs font-bold">+</span>
+            <span>+ 3 more events</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="sandbox" class="section bg-papier scroll-mt-24" aria-labelledby="sandbox-title">
+      <div class="container">
+        <header class="max-w-3xl mb-12">
+          <h2 id="sandbox-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+            Sandbox environment
+          </h2>
+          <p class="text-lg text-encre/70">
+            The test environment provides test API keys, mock data and a navigation playground to explore the spec
+            without touching real records. It is the recommended space to validate an integration before it goes live,
+            and to test retry on a failed webhook.
+          </p>
+        </header>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="p-6 rounded-card-lg border border-encre/10 bg-blanc">
+            <h3 class="font-display text-lg font-bold text-encre mb-2">Test keys</h3>
+            <p class="text-encre/70 leading-relaxed">
+              Keys distinct from production keys, with the same scopes. A permission test therefore runs under the same
+              conditions as in production.
+            </p>
+          </div>
+          <div class="p-6 rounded-card-lg border border-encre/10 bg-blanc">
+            <h3 class="font-display text-lg font-bold text-encre mb-2">Mock data</h3>
+            <p class="text-encre/70 leading-relaxed">
+              Preloaded fictitious records, with no real health data. The check-in, nutrition and follow-up flows are
+              identical to those in the product.
+            </p>
+          </div>
+          <div class="p-6 rounded-card-lg border border-encre/10 bg-blanc">
+            <h3 class="font-display text-lg font-bold text-encre mb-2">Swagger / Redoc playground</h3>
+            <p class="text-encre/70 leading-relaxed">
+              The OpenAPI 3.1 spec is explorable directly in the browser: endpoint lists, schemas and payload examples.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-blanc" aria-labelledby="access-title">
+      <div class="container">
+        <div class="max-w-3xl">
+          <h2 id="access-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+            Getting API access
+          </h2>
+          <p class="text-lg text-encre/70 mb-8">
+            API access is enabled from your workspace, on the Studio and Cabinet plans. Activation opens the developer
+            space: scoped keys, OpenAPI 3.1 spec, sandbox and call log.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a href={lp('/pricing/')} class="btn btn-demo" data-track="docs_pricing">
+              <Icon name="zap" class="w-5 h-5 mr-2" /> Join Optibilan
+            </a>
+            <a href={lp('/contact/')} class="btn btn-secondary" data-track="docs_contact">Ask a technical question</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-papier">
+      <div class="container">
+        <DiscoverCTA />
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

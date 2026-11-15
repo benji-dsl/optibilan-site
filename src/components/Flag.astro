@@ -1,0 +1,51 @@
+---
+/**
+ * Drapeau vectoriel inline (aucune requete reseau, compatible CSP stricte).
+ * Purement decoratif : le libelle accessible est porte par LanguageSwitcher.
+ */
+interface Props {
+  code: 'fr' | 'en';
+  class?: string;
+}
+const { code, class: className = '' } = Astro.props;
+---
+
+<span
+  class={`inline-block shrink-0 overflow-hidden rounded-[2px] ring-1 ring-inset ring-black/10 ${className}`}
+  aria-hidden="true"
+  data-flag={code}
+>
+  {code === 'fr' ? (
+    <svg viewBox="0 0 21 14" width="21" height="14" role="presentation" focusable="false">
+      <rect width="7" height="14" fill="#002395" />
+      <rect x="7" width="7" height="14" fill="#FFFFFF" />
+      <rect x="14" width="7" height="14" fill="#ED2939" />
+    </svg>
+  ) : (
+    <svg viewBox="0 0 21 14" width="21" height="14" role="presentation" focusable="false">
+      <rect width="21" height="14" fill="#FFFFFF" />
+      <g fill="#B22234">
+        <rect y="0" width="21" height="1.077" />
+        <rect y="2.154" width="21" height="1.077" />
+        <rect y="4.308" width="21" height="1.077" />
+        <rect y="6.462" width="21" height="1.077" />
+        <rect y="8.615" width="21" height="1.077" />
+        <rect y="10.769" width="21" height="1.077" />
+        <rect y="12.923" width="21" height="1.077" />
+      </g>
+      <rect width="8.6" height="7.538" fill="#3C3B6E" />
+      <g fill="#FFFFFF">
+        <circle cx="1.6" cy="1.5" r="0.5" />
+        <circle cx="4.3" cy="1.5" r="0.5" />
+        <circle cx="7" cy="1.5" r="0.5" />
+        <circle cx="2.95" cy="3" r="0.5" />
+        <circle cx="5.65" cy="3" r="0.5" />
+        <circle cx="1.6" cy="4.5" r="0.5" />
+        <circle cx="4.3" cy="4.5" r="0.5" />
+        <circle cx="7" cy="4.5" r="0.5" />
+        <circle cx="2.95" cy="6" r="0.5" />
+        <circle cx="5.65" cy="6" r="0.5" />
+      </g>
+    </svg>
+  )}
+</span>

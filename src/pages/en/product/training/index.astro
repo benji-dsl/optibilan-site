@@ -1,0 +1,181 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import Hero from '@/components/Hero.astro';
+import CTA from '@/components/CTA.astro';
+import Icon from '@/components/Icon.astro';
+import { localizePath } from '@/i18n/config';
+
+const lp = (href: string) => localizePath(href, 'en');
+
+const pageTitle = 'Training & programs - Optibilan';
+const pageDescription = 'Exercise library, program templates, validated sessions, load and volume progression. Build, track, adjust.';
+
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  inLanguage: 'en-US',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://optibilan.com/en/' },
+    { '@type': 'ListItem', position: 2, name: 'Product', item: 'https://optibilan.com/en/product' },
+    { '@type': 'ListItem', position: 3, name: 'Training & programs', item: 'https://optibilan.com/en/product/training' },
+  ],
+};
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  lang="en"
+  canonical="/en/product/training/"
+  ogImage="/og-training.png"
+  jsonLd={breadcrumbJsonLd}
+>
+  <Header />
+
+  <main>
+    <Hero
+      title="Build your programs. 
+ Track every progression."
+      subtitle="Exercise library, validated sessions, load/volume/RPE progression. Structured training."
+      primaryCTA={{ href: '/pricing/', label: 'Join Optibilan' }}
+      secondaryCTA={{ href: '/checkout/solo/', label: 'Try Optibilan' }}
+    />
+
+    <section class="section bg-blanc" aria-labelledby="problem-title">
+      <div class="container max-w-3xl">
+        <header class="mb-12">
+          <h2 id="problem-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+            The problem: training in the dark
+          </h2>
+          <p class="text-lg text-encre/60">
+            Program in Excel, sessions on paper, loads in your head, progress invisible…<br>
+            When sessions and data are scattered, progress becomes hard to track.
+          </p>
+        
+        <div class="aspect-video rounded-xl border border-encre/10 bg-encre/5 overflow-hidden relative shadow-soft mb-12">
+          <img
+            src="/images/product/medecins/12-coach-sportif-accompagnement.webp"
+            alt="Sports coach supporting his client during a training session"
+            class="w-full h-full object-cover"
+            loading="lazy" width="1000" height="667" />
+        </div></header>
+
+        <div class="space-y-8">
+          {[
+            {
+              title: 'Library of 200+ exercises (video, coaching points, regressions and progressions)',
+              desc: 'Every exercise: demo video, target muscles, coaching points, regressions (easier) / progressions (harder), required equipment. Filters: pattern (push/pull/legs/hinge/squat/carry), equipment, level, duration. Unlimited custom exercises.',
+              features: [
+                'Secure video streaming',
+                'Muscle / pattern / equipment / level mapping',
+                'Predefined regressions and progressions',
+                'Unlimited custom exercise import',
+              ],
+              icon: 'zap',
+            },
+            {
+              title: 'Drag-and-drop session builder',
+              desc: 'Sets / rest / tempo / RPE / target loads. Automatic progression (ex: +2.5kg if RPE < 8 two sessions in a row). Periodization: viewable macros / mesos, scheduled deloads. One-click session duplicate.',
+              features: [
+                'Drag-and-drop exercise interface',
+                'Parameters: sets, rest, tempo, RPE, %1RM',
+                'Configurable automatic progression',
+                'Visual periodization + deloads',
+              ],
+              icon: 'document',
+            },
+            {
+              title: 'Client experience: real-time session validation',
+              desc: 'The client opens their session on mobile: exercise video, target loads, target RPE. They enter: actual load, perceived RPE, optional video, comment. Validation in < 60 sec. The coach sees everything in real time.',
+              features: [
+                'Exercise video inside the session card',
+                'Entry: load, RPE, reps, optional video',
+                'Coach approval: ✓ / comment / reschedule',
+                'Notifications if a session is missed for more than 24h',
+              ],
+              icon: 'users',
+            },
+            {
+              title: 'Progression: load, volume, tonnage, estimated 1RM',
+              desc: 'Charts per exercise and overall: average load, volume, weekly tonnage, estimated 1RM, estimated fatigue. Load × RPE × recovery correlation.',
+              features: [
+                'Synchronized multi-exercise curves',
+                'Estimated 1RM per exercise',
+                'Estimated fatigue (RPE × volume)',
+                'CSV export for external analysis',
+              ],
+              icon: 'chart',
+            },
+            {
+              title: 'FitFocus import and smooth migration',
+              desc: 'FitFocus JSON/CSV import: exercises, programs, history. Automatic exercise mapping (name and muscle match). Migration in < 5 min. No data loss.',
+              features: [
+                'Automatic exercise mapping (name + muscle)',
+                'Load and volume history preserved',
+                'Migrated programs ready to use',
+                'Rollback available for 30 days',
+              ],
+              icon: 'calendar',
+            },
+          ].map((section, i) => (
+            <article id={section.icon} class="py-8 border-t border-encre/10 first:border-0">
+              <header class="flex items-center gap-4 mb-6">
+                <div class="icon-wrapper flex-shrink-0" aria-hidden="true" style="background-color: var(--color-bleu-clair);">
+                  <Icon name={section.icon} class="w-7 h-7 text-indigo" />
+                </div>
+                <div>
+                  <h3 class="font-display text-2xl font-bold text-encre">{section.title}</h3>
+                  <p class="text-encre/60 mt-1">{section.desc}</p>
+                </div>
+              </header>
+              <ul class="space-y-2 text-encre/60">
+                {section.features.map(f => (
+                  <li key={f} class="flex items-start gap-2">
+                    <Icon name="check" class="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5" />
+                    <span>{f}</span>
+                  </li>
+                ))}
+              </ul>
+            </article>
+          ))}
+        </div>
+
+      </div>
+    </section>
+
+    <section class="section bg-papier" aria-labelledby="training-visual-title">
+      <div class="container">
+        <header class="text-center max-w-3xl mx-auto mb-12">
+          <h2 id="training-visual-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+            Structured training programs, coach side
+          </h2>
+          <p class="text-lg text-encre/60">
+            Sessions, volumes and loads: everything is built and tracked in one place.
+          </p>
+        </header>
+        <div class="aspect-video max-w-4xl mx-auto rounded-xl border border-encre/10 bg-blanc overflow-hidden shadow-xl">
+          <img
+            src="/images/product/sport-programmes.webp"
+            alt="Optibilan interface screenshot: building and tracking training programs"
+            width="523"
+            height="273"
+            class="w-full h-full object-cover"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </section>
+
+    <CTA
+      title="Ready to program faster?"
+      subtitle="30 minutes to see how to build and steer your clients' training."
+      primaryCTA={{ href: '/pricing/', label: 'Join Optibilan' }}
+      secondaryCTA={{ href: '/checkout/solo/', label: 'Try Optibilan' }}
+      variant="primary"
+    />
+  </main>
+
+  <Footer />
+</Layout>

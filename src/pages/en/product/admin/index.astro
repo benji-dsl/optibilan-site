@@ -1,0 +1,211 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import Hero from '@/components/Hero.astro';
+import CTA from '@/components/CTA.astro';
+import Icon from '@/components/Icon.astro';
+import { localizePath } from '@/i18n/config';
+
+const lp = (href: string) => localizePath(href, 'en');
+
+const pageTitle = 'Administration - Optibilan';
+const pageDescription = 'Users, call plans, white label, modules, compliance, audit: everything configured in a few clicks, with no support ticket.';
+
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  inLanguage: 'en-US',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://optibilan.com/en/' },
+    { '@type': 'ListItem', position: 2, name: 'Product', item: 'https://optibilan.com/en/produit' },
+    { '@type': 'ListItem', position: 3, name: 'Administration', item: 'https://optibilan.com/en/product/admin' },
+  ],
+};
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  lang="en"
+  canonical="/en/product/admin/"
+  ogImage="/og-admin.png"
+  jsonLd={breadcrumbJsonLd}
+>
+  <Header />
+
+  <main>
+    <Hero
+      title="An admin that never gets
+in your way."
+      subtitle="Users, plans, white label, modules, compliance, audit. Everything configured in a few clicks. No support ticket to change a setting."
+      primaryCTA={{ href: lp('/pricing/'), label: 'Join Optibilan' }}
+      secondaryCTA={{ href: lp('/checkout/solo/'), label: 'Free trial' }}
+    />
+
+    <section class="section bg-blanc" aria-labelledby="visuel-key">
+      <div class="container">
+        <div class="aspect-video max-w-4xl mx-auto rounded-xl overflow-hidden relative">
+          <img
+            src="/images/product/dashboard-coach.webp"
+            alt="Optibilan admin console screenshot: managing users, modules and compliance"
+            class="w-full h-full object-cover"
+            loading="lazy" width="998" height="381" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" aria-hidden="true"></div>
+          <div class="absolute bottom-4 left-1/2 -translate-x-1/2 text-center text-white/90 text-sm">
+            <span class="flex items-center justify-center gap-1 bg-black/30 px-3 py-1 rounded-full backdrop-blur-sm">
+              <Icon name="activity" class="w-4 h-4" />
+              Run your practice, not the software
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-blanc" aria-labelledby="problem-title">
+      <div class="container max-w-3xl">
+        <header class="mb-12">
+          <h2 id="problem-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+            The problem: admin that slows you down
+          </h2>
+          <p class="text-lg text-encre/60">
+            Changing a role = support ticket. Enabling a module = migration. Editing a plan = a developer. Setting up white label = code.<br>
+            Admin should be a tool, not an obstacle.
+          </p>
+        </header>
+
+        <div class="space-y-8">
+          {[
+            {
+              icon: 'users',
+              title: 'User management - roles, specialties, 2FA',
+              desc: 'Create, invite, suspend or delete in one click. Roles: admin, coach, mental, diet, support. Specialties per practitioner (strength coach, clinical diet, mental performance…). TOTP 2FA required for admins. Lock after 5 failed attempts in 15 min. Login history.',
+              features: [
+                'Full user CRUD',
+                'Roles: admin, coach, mental, diet, support',
+                'TOTP 2FA required for admins',
+                'Login history + audit trail',
+              ],
+              icon: 'users',
+            },
+            {
+              icon: 'document',
+              title: 'Custom call plans',
+              desc: 'Create your own plans: name, description, duration, call frequency, price, included/excluded, auto renewal. Assign to a client in one click. Automatic billing based on the plan. Plan history per client.',
+              features: [
+                'Free creation: name, duration, frequency, price',
+                'Included/excluded: modules, limits, support',
+                'Auto / manual / prorated renewal',
+                'Plan history per client',
+              ],
+              icon: 'document',
+            },
+            {
+              icon: 'shield',
+              title: 'White label - full configuration',
+              desc: 'Logo, theme, domain, wording, AI assistant, emails, legal notices, terms. All on a single page. Real-time preview. Instant activation. Levels: Solo (basic), Studio (advanced), Cabinet (full).',
+              features: [
+                'Single page: logo, theme, domain, wording, AI, emails',
+                'Real-time preview (desktop + mobile)',
+                'Levels: Solo / Studio / Cabinet',
+                'Instant activation, one-click rollback',
+              ],
+              icon: 'shield',
+            },
+            {
+              icon: 'code',
+              title: 'Modules on/off - instant activation',
+              desc: '12 modules that can be enabled independently. No migration, no extra cost. Disabling = hidden UI + features stopped. Re-enabling = data restored intact. Audit: who enabled what, when.',
+              features: [
+                '12 independent modules, single toggle',
+                'No migration, no extra cost',
+                'Disabling = hidden UI + features',
+                'Audit trail: who enabled what, when',
+              ],
+              icon: 'code',
+            },
+            {
+              icon: 'document',
+              title: 'Configurable onboarding questionnaire',
+              desc: 'Fields: text, number, single choice, multiple choice, file, date, scale, yes/no. Reorder by drag-and-drop. Conditional logic (if goal = fat loss → waist measurement required). AI pre-filling from existing data. Real-time preview.',
+              features: [
+                '8 field types + conditional logic + drag-and-drop',
+                'Conditional logic (if X → show Y)',
+                'AI pre-filling from data',
+                'Real-time preview',
+              ],
+              icon: 'document',
+            },
+            {
+              icon: 'lock',
+              title: 'GDPR & compliance - native management',
+              desc: 'One-click export (37 JSON models), configurable purge (duration + flag), cascading right to erasure, attached DPA, legal notices, subprocessor register. Checked in CI: no multi-tenant model left out.',
+              features: [
+                'One-click GDPR export (37 JSON models)',
+                'Configurable automatic purge (duration + flag)',
+                'Right to erasure: cascading deletion',
+                'Attached DPA, Art. 28 register up to date',
+              ],
+              icon: 'lock',
+            },
+            {
+              icon: 'chart',
+              title: 'Two-level audit trail - full transparency',
+              desc: 'Organization level: staff actions (creating a client, editing a check-in, GDPR export, inviting staff…). Platform level: Optibilan team actions (suspending an organization, changing a plan, troubleshooting, support access). Time-stamped, IP, user-agent, JSON meta. CSV/JSON export.',
+              features: [
+                'Org level: staff actions (create, edit, export)',
+                'Platform level: Optibilan team actions',
+                'Time-stamped, IP, user-agent, JSON meta',
+                'CSV/JSON export for compliance',
+              ],
+              icon: 'chart',
+            },
+            {
+              icon: 'zap',
+              title: 'API keys & webhooks - external control',
+              desc: 'Webhooks: 8 events, signature, exponential retry, idempotency. API keys: scoped (clients:read, checkins:write, cron, health:sync…), rotation, expiration, rate limit 120 req/min (Studio), unlimited (Cabinet). Test sandbox.',
+              features: [
+                '8 events: client created, check-in submitted...',
+                'Signature, exponential retry, idempotency',
+                'Scoped API keys (clients:read, checkins:write...)',
+                'Rate limit: 120/min (Studio), unlimited (Cabinet)',
+              ],
+              icon: 'zap',
+            },
+          ].map((section, i) => (
+            <article id={section.icon} class="py-8 border-t border-encre/10 first:border-0">
+              <header class="flex items-center gap-4 mb-6">
+                <div class="icon-wrapper flex-shrink-0" aria-hidden="true" style="background-color: var(--color-bleu-clair);">
+                  <Icon name={section.icon} class="w-7 h-7 text-bleu-signature" />
+                </div>
+                <div>
+                  <h3 class="font-display text-2xl font-bold text-encre">{section.title}</h3>
+                  <p class="text-encre/60 mt-1">{section.desc}</p>
+                </div>
+              </header>
+              <ul class="space-y-2 text-encre/60">
+                {section.features.map(f => (
+                  <li key={f} class="flex items-start gap-2">
+                    <Icon name="check" class="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5" />
+                    <span>{f}</span>
+                  </li>
+                ))}
+              </ul>
+            </article>
+          ))}
+        </div>
+
+      </div>
+    </section>
+
+    <CTA
+      title="Ready to configure your practice on your own?"
+      subtitle="30 minutes to see how admin sets you free."
+      primaryCTA={{ href: lp('/pricing/'), label: 'Join Optibilan' }}
+      secondaryCTA={{ href: lp('/checkout/solo/'), label: 'Free trial' }}
+      variant="primary"
+    />
+  </main>
+
+  <Footer />
+</Layout>

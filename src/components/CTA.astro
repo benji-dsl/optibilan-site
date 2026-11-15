@@ -1,5 +1,7 @@
 ---
 import Icon from './Icon.astro';
+import { localeOf, localizePath } from '../i18n/config';
+import { t } from '../i18n/ui';
 
 interface Props {
   title?: string;
@@ -7,15 +9,25 @@ interface Props {
   primaryCTA?: { href: string; label: string };
   secondaryCTA?: { href: string; label: string };
   variant?: 'primary' | 'gold' | 'minimal';
+  /** Masque la ligne de reassurance sous les boutons. */
+  hideNote?: boolean;
 }
 
+const locale = localeOf(Astro.currentLocale);
+const d = t(locale).cta;
+
 const {
-  title = 'Prêt à structurer votre cabinet ?',
-  subtitle = 'Professionnalisez votre suivi dès aujourd\'hui.',
-  primaryCTA = { href: '/pricing/', label: 'Rejoindre Optibilan' },
-  secondaryCTA = { href: '/checkout/solo/', label: 'Essai offert' },
+  title = d.title,
+  subtitle = d.subtitle,
+  primaryCTA = { href: '/pricing/', label: d.primary },
+  secondaryCTA = { href: '/checkout/solo/', label: d.secondary },
   variant = 'primary',
+  hideNote = false,
 } = Astro.props;
+
+// Les href sont fournis sous forme canonique FR par les pages : on les traduit ici.
+const primaryHref = localizePath(primaryCTA.href, locale);
+const secondaryHref = localizePath(secondaryCTA.href, locale);
 
 const variants = {
   primary: 'bg-gradient-to-br from-bleu-signature via-bleu-lecture to-indigo',
@@ -41,16 +53,18 @@ const variants = {
       {subtitle}
     </p>
     <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-      <a href={primaryCTA.href} class="btn btn-primary text-lg px-8 py-4">
+      <a href={primaryHref} class="btn btn-primary text-lg px-8 py-4">
         {primaryCTA.label}
         <Icon name="arrowRight" class="w-5 h-5" />
       </a>
-      <a href={secondaryCTA.href} class="btn btn-bordeaux text-lg px-8 py-4">
+      <a href={secondaryHref} class="btn btn-bordeaux text-lg px-8 py-4">
         {secondaryCTA.label}
       </a>
     </div>
-    <p class="mt-6 text-sm text-craie/60">
-      30 jours gratuits · Toutes fonctionnalités incluses · Annulation en 1 clic
-    </p>
+    {!hideNote && (
+      <p class="mt-6 text-sm text-craie/60">
+        {d.note}
+      </p>
+    )}
   </div>
 </section>

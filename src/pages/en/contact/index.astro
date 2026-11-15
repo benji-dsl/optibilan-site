@@ -1,0 +1,186 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import { localizePath } from '@/i18n/config';
+
+const lp = (href: string) => localizePath(href, 'en');
+
+const pageTitle = 'Contact - Optibilan';
+const pageDescription = 'Send us a message. The Optibilan team replies within 4 business hours.';
+
+const contactJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ContactPage',
+  name: 'Contact Optibilan',
+  description: 'Contact the Optibilan team for a demo, support, partnerships or press.',
+  url: 'https://optibilan.com/en/contact/',
+  inLanguage: 'en-US',
+  mainEntity: {
+    '@type': 'Organization',
+    name: 'Optibilan',
+    url: 'https://optibilan.com',
+    contactPoint: [
+      {
+        '@type': 'ContactPoint',
+        contactType: 'customer service',
+        availableLanguage: ['French', 'English'],
+        areaServed: 'FR',
+        hoursAvailable: {
+          '@type': 'OpeningHoursSpecification',
+          dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+          opens: '09:00',
+          closes: '18:00',
+        },
+      },
+      {
+        '@type': 'ContactPoint',
+        contactType: 'technical support',
+        email: 'support@optibilan.com',
+        availableLanguage: ['French', 'English'],
+      },
+      {
+        '@type': 'ContactPoint',
+        contactType: 'business development',
+        email: 'partners@optibilan.com',
+        availableLanguage: ['French', 'English'],
+      },
+      {
+        '@type': 'ContactPoint',
+        contactType: 'press',
+        email: 'press@optibilan.com',
+        availableLanguage: ['French', 'English'],
+      },
+    ],
+    sameAs: [
+      'https://twitter.com/optibilan',
+      'https://linkedin.com/company/optibilan',
+      'https://github.com/optibilan',
+      'https://youtube.com/@optibilan',
+    ],
+  },
+};
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  lang="en"
+  canonical="/en/contact/"
+  ogImage="/og-contact.png"
+  jsonLd={contactJsonLd}
+>
+  <Header />
+
+  <main>
+    <section class="section bg-blanc pt-20 md:pt-24 lg:pt-28 bg-gradient-to-b from-papier via-papier to-blanc" aria-labelledby="contact-title">
+      <div class="container max-w-4xl">
+        <header class="text-center mb-12">
+          <h1 id="contact-title" class="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-encre mb-4">
+            Send us a message
+          </h1>
+          <p class="text-lg text-encre/60 max-w-2xl mx-auto">
+            Demo, technical question, pricing, partnership or press: tell us everything.
+          </p>
+        </header>
+
+        <div class="bg-gradient-to-br from-bleu-signature/5 via-papier to-bleu-lecture/5 rounded-card-lg p-8 md:p-12">
+          <form id="contact-form" action="/api/contact/" method="POST" class="space-y-4 max-w-2xl mx-auto" data-track="contact_form">
+            <div class="grid sm:grid-cols-2 gap-4">
+              <div>
+                <label for="firstName" class="block text-sm font-medium text-encre mb-1">First name *</label>
+                <input type="text" id="firstName" name="firstName" required autocomplete="given-name" class="w-full px-4 py-3 rounded-lg bg-blanc border border-encre/20 focus:outline-none focus:border-bleu-signature focus:ring-2 focus:ring-bleu-signature/20 transition-all" />
+              </div>
+              <div>
+                <label for="lastName" class="block text-sm font-medium text-encre mb-1">Last name *</label>
+                <input type="text" id="lastName" name="lastName" required autocomplete="family-name" class="w-full px-4 py-3 rounded-lg bg-blanc border border-encre/20 focus:outline-none focus:border-bleu-signature focus:ring-2 focus:ring-bleu-signature/20 transition-all" />
+              </div>
+            </div>
+            <div>
+              <label for="email" class="block text-sm font-medium text-encre mb-1">Work email *</label>
+              <input type="email" id="email" name="email" required autocomplete="email" placeholder="you@yourpractice.com" class="w-full px-4 py-3 rounded-lg bg-blanc border border-encre/20 focus:outline-none focus:border-bleu-signature focus:ring-2 focus:ring-bleu-signature/20 transition-all" />
+            </div>
+            <div>
+              <label for="cabinet" class="block text-sm font-medium text-encre mb-1">Practice name</label>
+              <input type="text" id="cabinet" name="cabinet" placeholder="Vitality Plus Practice" class="w-full px-4 py-3 rounded-lg bg-blanc border border-encre/20 focus:outline-none focus:border-bleu-signature focus:ring-2 focus:ring-bleu-signature/20 transition-all" />
+            </div>
+            <div>
+              <label for="subject" class="block text-sm font-medium text-encre mb-1">Subject *</label>
+              <select id="subject" name="subject" required class="w-full px-4 py-3 rounded-lg bg-blanc border border-encre/20 focus:outline-none focus:border-bleu-signature focus:ring-2 focus:ring-bleu-signature/20 transition-all">
+                <option value="">Select a subject</option>
+                <option value="Démo">Demo request</option>
+                <option value="Support">Technical question / Support</option>
+                <option value="Tarifs">Pricing / Plans</option>
+                <option value="Partenariat">Partnership / Integration</option>
+                <option value="Presse">Press / Media</option>
+                <option value="Autre">Other</option>
+              </select>
+            </div>
+            <div>
+              <label for="message" class="block text-sm font-medium text-encre mb-1">Message *</label>
+              <textarea id="message" name="message" rows="5" required placeholder="Describe what you need..." class="w-full px-4 py-3 rounded-lg bg-blanc border border-encre/20 focus:outline-none focus:border-bleu-signature focus:ring-2 focus:ring-bleu-signature/20 transition-all resize-none"></textarea>
+            </div>
+            <label class="flex items-start gap-3 text-sm text-encre/60">
+              <input type="checkbox" id="consent" name="consent" required class="mt-1" />
+              <span>
+                I agree that my information may be used to process my request, in accordance with the <a href={lp('/legal/confidentialite/')} class="underline hover:text-bleu-signature">Privacy Policy</a>.
+              </span>
+            </label>
+            <div class="hidden" aria-hidden="true">
+              <label for="website">Do not fill in:</label>
+              <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
+            </div>
+            <button type="submit" class="btn-demo w-full sm:w-auto mx-auto block" data-track="contact_submit">
+              Send message
+            </button>
+            <p class="text-xs text-encre/50 text-center">Reply within 4 business hours.</p>
+            <p id="contact-feedback" class="text-center text-sm font-medium hidden" role="status"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+
+<script is:inline>
+  const form = document.getElementById('contact-form');
+  const feedback = document.getElementById('contact-feedback');
+
+  async function submitContact(e) {
+    e.preventDefault();
+    if (!form || !feedback) return;
+
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const originalLabel = submitBtn ? submitBtn.textContent : '';
+    if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Sending...'; }
+    feedback.classList.add('hidden');
+
+    try {
+      const res = await fetch(form.action, { method: 'POST', body: new FormData(form) });
+      const data = await res.json().catch(() => ({}));
+      if (res.ok && data.ok) {
+        feedback.textContent = 'Thank you. Your message has been sent. We will reply within 4 business hours.';
+        feedback.classList.remove('text-red-600');
+        feedback.classList.add('text-emerald-600');
+        feedback.classList.remove('hidden');
+        form.reset();
+      } else {
+        feedback.textContent = data.error || 'Something went wrong. Try again or email us directly at contact@optibilan.com.';
+        feedback.classList.remove('text-emerald-600');
+        feedback.classList.add('text-red-600');
+        feedback.classList.remove('hidden');
+      }
+    } catch (err) {
+      feedback.textContent = 'Something went wrong. Try again or email us directly at contact@optibilan.com.';
+      feedback.classList.remove('text-emerald-600');
+      feedback.classList.add('text-red-600');
+      feedback.classList.remove('hidden');
+    } finally {
+      if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = originalLabel; }
+    }
+  }
+
+  form?.addEventListener('submit', submitContact);
+</script>

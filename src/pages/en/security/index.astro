@@ -1,0 +1,375 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import Hero from '@/components/Hero.astro';
+import CTA from '@/components/CTA.astro';
+import TrustBar from '@/components/TrustBar.astro';
+import Icon from '@/components/Icon.astro';
+import { localizePath } from '@/i18n/config';
+
+const lp = (href: string) => localizePath(href, 'en');
+
+const pageTitle = 'Security & Compliance - Optibilan';
+const pageDescription = 'See how Optibilan protects data, controls access and organizes its infrastructure. Security, GDPR, HDS, audit trail, European infrastructure.';
+
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://optibilan.com/en/' },
+    { '@type': 'ListItem', position: 2, name: 'Security', item: 'https://optibilan.com/en/security/' },
+  ],
+};
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  lang="en"
+  canonical="/en/security/"
+  ogImage="/og-security.png"
+  jsonLd={breadcrumbJsonLd}
+>
+  <Header />
+
+  <main>
+    <Hero
+      title="Security is not a feature.
+It is a baseline requirement."
+      subtitle="See how Optibilan protects data, controls access and organizes its infrastructure. Full transparency."
+      primaryCTA={{ href: '/legal/confidentialite/', label: 'Privacy Policy' }}
+      secondaryCTA={{ href: '/legal/sous-traitance/', label: 'Subprocessor register' }}
+    />
+
+    <section class="section bg-blanc" aria-labelledby="data-protection-title">
+      <div class="container">
+        <header class="text-center max-w-3xl mx-auto mb-16">
+          <h2 id="data-protection-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+            DATA PROTECTION
+          </h2>
+          <p class="text-lg text-encre/60">What is implemented, verified and documented.</p>
+        </header>
+
+        <div class="grid md:grid-cols-2 gap-8">
+          {[
+            {
+              icon: 'lock',
+              title: 'Encryption in transit',
+              desc: 'TLS 1.3 everywhere (Cloudflare + application). HSTS preloaded. Certificate Transparency monitoring. No HTTP allowed.',
+              verified: true,
+            },
+            {
+              icon: 'database',
+              title: 'Encryption at rest',
+              desc: 'AES-256 on Supabase (database, storage, backups) and VPS disks (LUKS). Keys managed by Cloud KMS (automatic rotation).',
+              verified: true,
+            },
+            {
+              icon: 'cloud',
+              title: 'Backups & restore',
+              desc: '7-day PITR (Supabase) + daily snapshots + encrypted S3-compatible EU backups (30-day retention). Documented quarterly restore test.',
+              verified: true,
+            },
+            {
+              icon: 'shield',
+              title: 'Data isolation',
+              desc: 'Fail-closed multi-tenant architecture: automatic orgId injection on every Prisma query (tenant-guard extension). Isolation validated by 13/13 automated tests in CI.',
+              verified: true,
+            },
+            {
+              icon: 'code',
+              title: 'Input/output validation',
+              desc: 'Zod schema on all API inputs. Output sanitization. SSRF protection (net.ts: destination allowlist, private IP blocking, timeout). Strict Content Security Policy.',
+              verified: true,
+            },
+            {
+              icon: 'bug',
+              title: 'Vulnerability management',
+              desc: 'Dependabot + Snyk in CI. Trivy container scan. Responsible disclosure policy: security@optibilan.com. /.well-known/security.txt configured. No public bug bounty without an explicit decision.',
+              verified: true,
+            },
+          ].map(item => (
+            <article class="p-6 rounded-xl border border-encre/10 hover:border-bleu-signature/30 hover:shadow-soft transition-all">
+              <div class="flex items-center gap-3 mb-4">
+                <div class="icon-wrapper flex-shrink-0" aria-hidden="true" style="background-color: var(--color-bleu-clair);">
+                  <Icon name={item.icon} class="w-6 h-6 text-bleu-signature" />
+                </div>
+                <div class="flex items-center gap-2">
+                  <h3 class="font-display text-lg font-bold text-encre">{item.title}</h3>
+                  {item.verified && (
+                    <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 text-xs font-semibold">
+                      <Icon name="check" class="w-3 h-3" /> Verified
+                    </span>
+                  )}
+                </div>
+              </div>
+              <p class="text-encre/60 text-sm leading-relaxed">{item.desc}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-papier" aria-labelledby="access-control-title">
+      <div class="container">
+        <header class="text-center max-w-3xl mx-auto mb-16">
+          <h2 id="access-control-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+            ACCESS CONTROL
+          </h2>
+          <p class="text-lg text-encre/60">Who accesses what, how, and how access is revoked.</p>
+        </header>
+
+        <div class="grid md:grid-cols-2 gap-8">
+          {[
+            {
+              icon: 'lock',
+              title: 'Strong authentication',
+              desc: 'JWT HS256 (httpOnly, secure, sameSite=lax cookie). sessionVersion rotation on password change. 2FA TOTP (RFC 6238) mandatory for all admins. 5-failure lockout / 15 min. Persistent brute force protection in the database.',
+            },
+            {
+              icon: 'users',
+              title: 'Granular RBAC',
+              desc: 'Roles: admin, coach, mental, diet, support. Specialties per practitioner. Permissions per resource and action. Least privilege applied by default (deny by default).',
+            },
+            {
+              icon: 'key',
+              title: 'Session management',
+              desc: '30-day maximum duration (configurable). Instant revocation (logout everywhere, role change, suspicion). Detection of abnormal concurrent sessions. Admin alerts on unusual logins.',
+            },
+            {
+              icon: 'shield',
+              title: 'API keys',
+              desc: 'obk_… format. Granular scopes (clients:read, checkins:write, cron, health:sync…). Rotation, expiration, revocation. Rate limit 120 req/min per key. HMAC on webhooks.',
+            },
+          ].map(item => (
+            <article class="p-6 rounded-xl border border-encre/10 hover:border-bleu-signature/30 hover:shadow-soft transition-all">
+              <div class="icon-wrapper mb-4" aria-hidden="true" style="background-color: var(--color-bleu-clair);">
+                <Icon name={item.icon} class="w-7 h-7 text-bleu-signature" />
+              </div>
+              <h3 class="font-display text-xl font-bold text-encre mb-2">{item.title}</h3>
+              <p class="text-encre/60 leading-relaxed">{item.desc}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-blanc" aria-labelledby="audit-title">
+      <div class="container">
+        <header class="text-center max-w-3xl mx-auto mb-16">
+          <h2 id="audit-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+            TRACEABILITY & AUDIT TRAIL
+          </h2>
+          <p class="text-lg text-encre/60">Everything that happens in your organization, traced.</p>
+        </header>
+
+        <div class="grid md:grid-cols-2 gap-8">
+          {[
+            {
+              icon: 'chart',
+              title: 'Two levels of audit',
+              desc: 'Organization level: staff actions (client creation, check-in edit, GDPR export, staff invitation…). Platform level: Optibilan team actions (org suspension, plan change, troubleshooting, support access…). Timestamped, IP, user-agent, JSON meta.',
+            },
+            {
+              icon: 'code',
+              title: 'Requests & webhooks',
+              desc: 'Structured JSON logs: API requests (method, path, status, duration, orgId, userId), webhooks (event, destination, status, retry, HMAC signature). 13-month retention. Queryable through the admin.',
+            },
+            {
+              icon: 'bug',
+              title: 'Errors & security',
+              desc: '5xx errors (sanitized stack trace), auth failures, 2FA, rate-limit hits, failed webhooks, blocked SSRF attempts. Automatic Slack alerts on abnormal patterns.',
+            },
+            {
+              icon: 'lock',
+              title: 'CNIL compliance',
+              desc: 'Audit & security logs retained for 13 months (CNIL deliberation compliance). Restricted access (admin + security team). Export available for investigation. No health data in the logs.',
+            },
+          ].map(item => (
+            <article class="p-6 rounded-xl border border-encre/10 hover:border-bleu-signature/30 hover:shadow-soft transition-all">
+              <div class="icon-wrapper mb-4" aria-hidden="true" style="background-color: var(--color-bleu-clair);">
+                <Icon name={item.icon} class="w-7 h-7 text-bleu-signature" />
+              </div>
+              <h3 class="font-display text-xl font-bold text-encre mb-2">{item.title}</h3>
+              <p class="text-encre/60 leading-relaxed">{item.desc}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-papier" aria-labelledby="infra-title">
+      <div class="container">
+        <header class="text-center max-w-3xl mx-auto mb-16">
+          <h2 id="infra-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+            INFRASTRUCTURE
+          </h2>
+          <p class="text-lg text-encre/60">Simplified architecture, zero exposed secrets.</p>
+        </header>
+
+        <div class="max-w-4xl mx-auto">
+          <div class="space-y-4 mb-8 text-center">
+            <div class="inline-flex items-center gap-4 p-4 rounded-lg bg-blanc border border-encre/10 shadow-sm">
+              <Icon name="cloud" class="w-6 h-6 text-bleu-signature" />
+              <span class="font-medium text-encre">User</span>
+            </div>
+            <Icon name="arrowRight" class="w-6 h-6 text-encre/30 mx-2" />
+            <div class="inline-flex items-center gap-4 p-4 rounded-lg bg-blanc border border-encre/10 shadow-sm">
+              <Icon name="cloud" class="w-6 h-6 text-bleu-lecture" />
+              <span class="font-medium text-encre">Cloudflare Edge<br>(TLS, WAF, DDoS, Cache, Tunnel)</span>
+            </div>
+            <Icon name="arrowRight" class="w-6 h-6 text-encre/30 mx-2" />
+            <div class="inline-flex items-center gap-4 p-4 rounded-lg bg-blanc border border-encre/10 shadow-sm">
+              <Icon name="code" class="w-6 h-6 text-indigo" />
+              <span class="font-medium text-encre">Next.js application<br>(France VPS, standalone, healthcheck)</span>
+            </div>
+            <Icon name="arrowRight" class="w-6 h-6 text-encre/30 mx-2" />
+            <div class="inline-flex items-center gap-4 p-4 rounded-lg bg-blanc border border-encre/10 shadow-sm">
+              <Icon name="database" class="w-6 h-6 text-emerald-500" />
+              <span class="font-medium text-encre">Supabase PostgreSQL<br>(EU West, PITR, AES-256, HDS)</span>
+            </div>
+            <Icon name="arrowRight" class="w-6 h-6 text-encre/30 mx-2" />
+            <div class="inline-flex items-center gap-4 p-4 rounded-lg bg-blanc border border-encre/10 shadow-sm">
+              <Icon name="cloud" class="w-6 h-6 text-bordeaux" />
+              <span class="font-medium text-encre">S3 EU storage<br>(Encrypted backups, 30 days)</span>
+            </div>
+          </div>
+
+          <div class="grid md:grid-cols-3 gap-6 mt-8">
+            {[
+              { icon: 'cloud', title: 'Cloudflare', desc: 'CDN, WAF (OWASP Top 10), L3/L4/L7 DDoS, zero-trust Tunnel (no open port), aggregated Analytics', certs: 'SOC 2 Type II, ISO 27001, FedRAMP' },
+              { icon: 'database', title: 'Supabase', desc: 'Managed PostgreSQL, Auth, Storage, Edge Functions, 7-day PITR, daily snapshots', certs: 'SOC 2 Type II, ISO 27001, HIPAA, GDPR, HDS' },
+              { icon: 'credit-card', title: 'Stripe', desc: 'Payments, invoicing, subscriptions, customer portal, PCI DSS Level 1', certs: 'PCI DSS Level 1, SOC 1/2, ISO 27001' },
+            ].map(item => (
+              <article class="p-6 rounded-xl border border-encre/10 bg-blanc">
+                <div class="flex items-center gap-3 mb-3">
+                  <div class="w-10 h-10 rounded-lg bg-bleu-clair flex items-center justify-center">
+                    <Icon name={item.icon} class="w-5 h-5 text-bleu-signature" />
+                  </div>
+                  <h3 class="font-semibold text-encre">{item.title}</h3>
+                </div>
+                <p class="text-encre/60 text-sm mb-3">{item.desc}</p>
+                <p class="text-xs text-encre/50">Certifications: {item.certs}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-blanc" aria-labelledby="incidents-title">
+      <div class="container">
+        <header class="text-center max-w-3xl mx-auto mb-16">
+          <h2 id="incidents-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+            INCIDENT MANAGEMENT
+          </h2>
+          <p class="text-lg text-encre/60">A documented process, no impossible promise.</p>
+        </header>
+
+        <div class="grid md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+          {[
+            { num: '1', title: 'Detection', desc: '24/7 monitoring (healthchecks, logs, Slack/PagerDuty alerts). Thresholds: P99 latency > 2s, 5xx errors > 1%, CPU > 80%.' },
+            { num: '2', title: 'Containment', desc: 'Circuit breakers, feature flags, blue/green rollback < 5 min. Tenant isolation preserved.' },
+            { num: '3', title: 'Analysis & remediation', desc: 'Root cause analysis < 24h. Public post-mortem if there is client impact. Fix deployed through CI/CD (no manual hotfix).' },
+            { num: '4', title: 'Notification', desc: 'If data is affected: CNIL notification < 72h, affected clients < 24h. Full transparency. No artificial delay.' },
+          ].map(item => (
+            <article class="p-6 rounded-xl border border-encre/10 text-center">
+              <div class="w-12 h-12 rounded-full bg-bleu-signature/10 flex items-center justify-center mx-auto mb-4 font-display text-xl font-bold text-bleu-signature">
+                {item.num}
+              </div>
+              <h3 class="font-display text-lg font-bold text-encre mb-2">{item.title}</h3>
+              <p class="text-encre/60 text-sm">{item.desc}</p>
+            </article>
+          ))}
+        </div>
+
+        <div class="mt-12 p-6 rounded-xl bg-papier border border-encre/10 max-w-2xl mx-auto text-center">
+          <h3 class="font-semibold text-encre mb-2">Security contact</h3>
+          <p class="text-encre/60 mb-4">Found a vulnerability? Please report it responsibly.</p>
+          <a href="mailto:security@optibilan.com" class="btn-secondary inline-flex" data-track="security_contact">
+            <Icon name="mail" class="w-4 h-4 mr-2" /> security@optibilan.com
+          </a>
+          <p class="mt-3 text-xs text-encre/50">Responsible disclosure policy · /.well-known/security.txt · No financial bug bounty without an explicit decision</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-papier" aria-labelledby="compliance-title">
+      <div class="container">
+        <header class="text-center max-w-3xl mx-auto mb-16">
+          <h2 id="compliance-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+            COMPLIANCE & CERTIFICATIONS
+          </h2>
+          <p class="text-lg text-encre/60">What Optibilan certifies vs what its providers certify. A clear distinction, no shortcuts.</p>
+        </header>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-left" role="table">
+            <thead>
+              <tr class="border-b border-encre/20">
+                <th class="pb-3 font-semibold text-encre">Area</th>
+                <th class="pb-3 font-semibold text-encre text-center">Optibilan</th>
+                <th class="pb-3 font-semibold text-encre text-center">Provider</th>
+                <th class="pb-3 font-semibold text-encre text-center">Evidence</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-encre/10">
+              <tr>
+                <td class="py-3 font-medium text-encre">GDPR</td>
+                <td class="py-3 text-center text-encre/60">Data controller (prospects) / Processor (practices)</td>
+                <td class="py-3 text-center text-encre/60">Supabase, Stripe, Cloudflare, Resend, Anthropic, Plausible</td>
+                <td class="py-3 text-center"><a href={lp('/legal/confidentialite/')} class="text-bleu-signature hover:underline">Policy</a></td>
+              </tr>
+              <tr>
+                <td class="py-3 font-medium text-encre">Health data (Art. 9)</td>
+                <td class="py-3 text-center text-encre/60">Processor (practices are controllers)</td>
+                <td class="py-3 text-center text-encre/60">Supabase (HDS certified, EU West)</td>
+                <td class="py-3 text-center"><a href={lp('/legal/sous-traitance/')} class="text-bleu-signature hover:underline">Register</a></td>
+              </tr>
+              <tr>
+                <td class="py-3 font-medium text-encre">SOC 2 Type II</td>
+                <td class="py-3 text-center text-encre/60">Under evaluation</td>
+                <td class="py-3 text-center text-encre/60">Supabase ✓, Cloudflare ✓, Stripe ✓</td>
+                <td class="py-3 text-center text-encre/50">Provider certificates</td>
+              </tr>
+              <tr>
+                <td class="py-3 font-medium text-encre">ISO 27001</td>
+                <td class="py-3 text-center text-encre/60">Not certified (ISMS in place)</td>
+                <td class="py-3 text-center text-encre/60">Supabase ✓, Cloudflare ✓, Stripe ✓</td>
+                <td class="py-3 text-center text-encre/50">Provider certificates</td>
+              </tr>
+              <tr>
+                <td class="py-3 font-medium text-encre">HDS</td>
+                <td class="py-3 text-center text-encre/60">Not certified (HDS processor via Supabase)</td>
+                <td class="py-3 text-center text-encre/60">Supabase EU West ✓</td>
+                <td class="py-3 text-center"><a href={lp('/legal/sous-traitance/')} class="text-bleu-signature hover:underline">Register</a></td>
+              </tr>
+              <tr>
+                <td class="py-3 font-medium text-encre">PCI DSS</td>
+                <td class="py-3 text-center text-encre/60">Not applicable (no card storage)</td>
+                <td class="py-3 text-center text-encre/60">Stripe Level 1 ✓</td>
+                <td class="py-3 text-center text-encre/50">Stripe attestation</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p class="mt-8 text-sm text-encre/50 max-w-2xl mx-auto">
+            <strong>Rule:</strong> Optibilan NEVER claims a certification held only by a provider.
+            The "Optibilan vs provider" distinction is systematic. Only verified contractual commitments are listed.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <CTA
+      title="Do you have a specific technical question?"
+      subtitle="The security team replies in <4 business hours for Cabinet clients."
+      primaryCTA={{ href: 'mailto:security@optibilan.com', label: 'Contact the security team' }}
+      secondaryCTA={{ href: '/legal/confidentialite/', label: 'Privacy Policy' }}
+      variant="gold"
+    />
+  </main>
+
+  <Footer />
+</Layout>

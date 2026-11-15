@@ -1,7 +1,25 @@
 ---
+import {
+  SITE_URL,
+  HTML_LANG,
+  OG_LOCALE,
+  localeOf,
+  normalizePath,
+  localizePath,
+  otherLocale,
+} from '../i18n/config';
+import { hasEnglishVersion } from '../i18n/routes';
+import {
+  organizationJsonLd,
+  websiteJsonLd,
+  softwareApplicationJsonLd,
+} from '../i18n/jsonld';
+
 interface Props {
   title: string;
   description: string;
+  /** Force la langue. Par defaut deduite de l'URL (/en/... -> en). */
+  lang?: 'fr' | 'en';
   canonical?: string;
   ogImage?: string;
   ogType?: 'website' | 'article';
@@ -18,6 +36,7 @@ interface Props {
 const {
   title,
   description,
+  lang,
   canonical,
   ogImage = '/og-default.png',
   ogType = 'website',
@@ -31,9 +50,25 @@ const {
   tags,
 } = Astro.props;
 
-const SITE_URL = 'https://optibilan.com';
 const SITE_NAME = 'Optibilan';
-const fullUrl = canonical ? `${SITE_URL}${canonical}` : (Astro.url ? Astro.url.href : SITE_URL);
+
+// Langue de la page : deduite de l'URL (/en/...), surchargeable par la prop lang.
+const locale = localeOf(lang ?? Astro.currentLocale);
+
+// Chemin canonique, toujours sous sa forme FR ("/product/nutrition/"),
+// que la page soit francaise ou anglaise. Une seule source de verite.
+const currentPath = normalizePath(canonical ?? Astro.url.pathname);
+
+// Canonical : l'URL de la page dans SA langue.
+const fullUrl = `${SITE_URL}${localizePath(currentPath, locale)}`;
+const frUrl = `${SITE_URL}${localizePath(currentPath, 'fr')}`;
+const enUrl = `${SITE_URL}${localizePath(currentPath, 'en')}`;
+
+// On n'annonce une version anglaise que si elle existe reellement :
+// un hreflang vers un 404 est un soft 404.
+const translated = locale === 'en' || hasEnglishVersion(currentPath);
+const alternateLocale = otherLocale(locale);
+
 const fullOgImage = ogImage.startsWith('http') ? ogImage : `${SITE_URL}${ogImage}`;
 const toJsonLd = (obj) => JSON.stringify(obj).replace(/</g, '\\u003c');
 
@@ -46,7 +81,7 @@ import '../styles/global.css';
 ---
 
 <!doctype html>
-<html lang="fr">
+<html lang={HTML_LANG[locale]}>
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/optibilan-favicon.svg" />
@@ -67,8 +102,18 @@ import '../styles/global.css';
     {!noIndex && <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />}
 
     <link rel="canonical" href={fullUrl} />
-    <link rel="alternate" hreflang="fr" href={fullUrl} />
-    <link rel="alternate" hreflang="x-default" href={fullUrl} />
+    {translated ? (
+      <>
+        <link rel="alternate" hreflang="fr" href={frUrl} />
+        <link rel="alternate" hreflang="en" href={enUrl} />
+        <link rel="alternate" hreflang="x-default" href={frUrl} />
+      </>
+    ) : (
+      <>
+        <link rel="alternate" hreflang={HTML_LANG[locale]} href={fullUrl} />
+        <link rel="alternate" hreflang="x-default" href={fullUrl} />
+      </>
+    )}
 
     <meta property="og:type" content={ogType} />
     <meta property="og:url" content={fullUrl} />
@@ -79,7 +124,8 @@ import '../styles/global.css';
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content={title} />
     <meta property="og:site_name" content={SITE_NAME} />
-    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:locale" content={OG_LOCALE[locale]} />
+    {translated && <meta property="og:locale:alternate" content={OG_LOCALE[alternateLocale]} />}
     {publishedTime && <meta property="article:published_time" content={publishedTime} />}
     {modifiedTime && <meta property="article:modified_time" content={modifiedTime} />}
     {author && <meta property="article:author" content={author} />}
@@ -103,103 +149,10 @@ import '../styles/global.css';
     <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
     <link rel="dns-prefetch" href="https://eu.i.posthog.com" />
 
-    {/* JSON-LD echappe : un '<' non echappe peut cloturer <script> prematurely et corrompre le HTML */}
-<!-- JSON-LD: Organization -->
-    <script type="application/ld+json" set:html={toJsonLd({
-      '@context': 'https://schema.org',
-      '@type': 'Organization',
-      '@id': `${SITE_URL}/#organization`,
-      name: SITE_NAME,
-      url: SITE_URL,
-      logo: `${SITE_URL}/optibilan-logo.svg`,
-      inLanguage: 'fr-FR',
-      areaServed: 'FR',
-      sameAs: [
-        'https://twitter.com/optibilan',
-        'https://linkedin.com/company/optibilan',
-        'https://github.com/optibilan',
-        'https://youtube.com/@optibilan',
-      ],
-      contactPoint: {
-        '@type': 'ContactPoint',
-        contactType: 'customer service',
-        availableLanguage: ['French', 'English'],
-      },
-      address: {
-        '@type': 'PostalAddress',
-        addressCountry: 'US',
-        addressRegion: 'WY',
-        addressLocality: 'Wyoming',
-      },
-      legalName: 'Elite Longevity LLC',
-    })}></script>
-
-    <!-- JSON-LD: WebSite -->
-    <script type="application/ld+json" set:html={toJsonLd({
-      '@context': 'https://schema.org',
-      '@type': 'WebSite',
-      name: SITE_NAME,
-      url: SITE_URL,
-      inLanguage: 'fr-FR',
-      publisher: {
-        '@id': `${SITE_URL}/#organization`,
-      },
-      potentialAction: {
-        '@type': 'SearchAction',
-        target: `${SITE_URL}/?s={search_term_string}`,
-        'query-input': 'required name=search_term_string',
-      },
-    })}></script>
-
-    <!-- JSON-LD: SoftwareApplication (SaaS) -->
-    <script type="application/ld+json" set:html={toJsonLd({
-      '@context': 'https://schema.org',
-      '@type': 'SoftwareApplication',
-      name: 'Optibilan',
-      applicationCategory: 'BusinessApplication',
-      operatingSystem: 'Cloud / SaaS',
-      inLanguage: 'fr-FR',
-      isAccessibleForFree: false,
-      offers: [
-      {
-        '@type': 'Offer',
-        name: 'Solo',
-        price: '49',
-        priceCurrency: 'EUR',
-        priceSpecification: { '@type': 'UnitPriceSpecification', billingDuration: 'P1M' },
-        url: `${SITE_URL}/pricing`,
-        availability: 'https://schema.org/InStock',
-      },
-      {
-        '@type': 'Offer',
-        name: 'Studio',
-        price: '149',
-        priceCurrency: 'EUR',
-        priceSpecification: { '@type': 'UnitPriceSpecification', billingDuration: 'P1M' },
-        url: `${SITE_URL}/pricing`,
-        availability: 'https://schema.org/InStock',
-      },
-      {
-        '@type': 'Offer',
-        name: 'Cabinet',
-        price: '349',
-        priceCurrency: 'EUR',
-        priceSpecification: { '@type': 'UnitPriceSpecification', billingDuration: 'P1M' },
-        url: `${SITE_URL}/pricing`,
-        availability: 'https://schema.org/InStock',
-      },
-    ],
-      description: 'SaaS multi-tenant de pilotage des accompagnements pour cabinets, studios et coachs indépendants. Bilans, nutrition, sport, prépa mentale, santé connectée, marque blanche, API, Protection des données, contrôle des accès et traçabilité.',
-      featureList: [
-        'Bilans & progression automatisés',
-        'Nutrition complète (plans, courses, compléments)',
-        'Sport & programmes (bibliothèque 200+ exercices)',
-        'Préparation mentale (exercices, ressources, journal)',
-        'Santé connectée (Apple Health, Oura, Garmin, 130+ biomarqueurs)',
-        'Marque blanche totale + API REST + Webhooks',
-        'Protection des données, contrôle des accès et traçabilité, hébergement EU',
-      ],
-    })}></script>
+    {/* JSON-LD echappe : un '<' non echappe peut cloturer <script> prematurement et corrompre le HTML */}
+    <script type="application/ld+json" set:html={toJsonLd(organizationJsonLd(locale))}></script>
+    <script type="application/ld+json" set:html={toJsonLd(websiteJsonLd(locale))}></script>
+    <script type="application/ld+json" set:html={toJsonLd(softwareApplicationJsonLd(locale))}></script>
 
     {jsonLd && <script type="application/ld+json" set:html={toJsonLd(jsonLd)}></script>}
 

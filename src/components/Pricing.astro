@@ -1,5 +1,7 @@
 ---
 import Icon from './Icon.astro';
+import { localeOf, localizePath } from '../i18n/config';
+import { t } from '../i18n/ui';
 
 interface Props {
   title?: string;
@@ -23,75 +25,141 @@ interface Props {
   }>;
 }
 
-const defaultPlans = [
-  {
-    name: 'Solo',
-    tagline: 'Coach indépendant',
-    priceMonthly: 49,
-    priceYearly: 490,
-    features: [
-      'Jusqu\'à 30 coachés',
-      '1 accès coach (vous)',
-      'Bilans, photos, journal',
-      'Nutrition & sport',
-      'Assistant IA (1 000 msg/mois)',
-      'Export RGPD',
-      'Support email',
-    ],
-    cta: { href: '/checkout/solo/', label: 'Démarrer gratuitement' },
-    limits: { clients: 30, staff: 1, aiMessages: 1000, api: false, whiteLabel: false },
-  },
-  {
-    name: 'Studio',
-    tagline: 'Petite équipe (2-5)',
-    priceMonthly: 149,
-    priceYearly: 1490,
-    features: [
-      'Jusqu\'à 150 coachés',
-      'Jusqu\'à 5 accès staff',
-      'Prépa mentale & santé',
-      'Templates nutrition/sport',
-      'Assistant IA (5 000 msg/mois)',
-      'API REST (120 req/min)',
-      'Webhooks + Slack',
-      'Marque blanche avancée',
-      'Support prioritaire',
-    ],
-    cta: { href: '/checkout/studio/', label: 'Démarrer gratuitement' },
-    popular: true,
-    limits: { clients: 150, staff: 5, aiMessages: 5000, api: true, whiteLabel: true },
-  },
-  {
-    name: 'Cabinet',
-    tagline: 'Structure 5+ coachs',
-    priceMonthly: 349,
-    priceYearly: 3490,
-    features: [
-      'Coachés illimités',
-      'Accès staff illimités',
-      'Multi-spécialités (coach/mental/diet)',
-      'Assistant IA (20 000 msg/mois)',
-      'API sans limite pratique',
-      'SSO / SAML (bientôt)',
-      'Audit trail complet',
-      'SLA & support dédié',
-      'Onboarding équipe offert',
-    ],
-    cta: { href: '/checkout/cabinet/', label: 'Démarrer gratuitement' },
-    limits: { clients: 'illimité', staff: 'illimité', aiMessages: 20000, api: true, whiteLabel: true },
-  },
-];
+const locale = localeOf(Astro.currentLocale);
+const d = t(locale).pricing;
+
+const PLANS = {
+  fr: [
+    {
+      name: 'Solo',
+      tagline: 'Coach indépendant',
+      priceMonthly: 49,
+      priceYearly: 490,
+      features: [
+        `Jusqu'à 30 coachés`,
+        '1 accès coach (vous)',
+        'Bilans, photos, journal',
+        'Nutrition & sport',
+        'Assistant IA (1 000 msg/mois)',
+        'Export RGPD',
+        'Support email',
+      ],
+      cta: { href: '/checkout/solo/', label: 'Démarrer gratuitement' },
+      limits: { clients: 30, staff: 1, aiMessages: 1000, api: false, whiteLabel: false },
+    },
+    {
+      name: 'Studio',
+      tagline: 'Petite équipe (2-5)',
+      priceMonthly: 149,
+      priceYearly: 1490,
+      features: [
+        `Jusqu'à 150 coachés`,
+        `Jusqu'à 5 accès staff`,
+        'Prépa mentale & santé',
+        'Templates nutrition/sport',
+        'Assistant IA (5 000 msg/mois)',
+        'API REST (120 req/min)',
+        'Webhooks + Slack',
+        'Marque blanche avancée',
+        'Support prioritaire',
+      ],
+      cta: { href: '/checkout/studio/', label: 'Démarrer gratuitement' },
+      popular: true,
+      limits: { clients: 150, staff: 5, aiMessages: 5000, api: true, whiteLabel: true },
+    },
+    {
+      name: 'Cabinet',
+      tagline: 'Structure 5+ coachs',
+      priceMonthly: 349,
+      priceYearly: 3490,
+      features: [
+        'Coachés illimités',
+        'Accès staff illimités',
+        'Multi-spécialités (coach/mental/diet)',
+        'Assistant IA (20 000 msg/mois)',
+        'API sans limite pratique',
+        'SSO / SAML (bientôt)',
+        'Audit trail complet',
+        'SLA & support dédié',
+        'Onboarding équipe offert',
+      ],
+      cta: { href: '/checkout/cabinet/', label: 'Démarrer gratuitement' },
+      limits: { clients: 'illimité', staff: 'illimité', aiMessages: 20000, api: true, whiteLabel: true },
+    },
+  ],
+  en: [
+    {
+      name: 'Solo',
+      tagline: 'Independent coach',
+      priceMonthly: 49,
+      priceYearly: 490,
+      features: [
+        'Up to 30 clients',
+        '1 coach seat (you)',
+        'Check-ins, photos, journal',
+        'Nutrition & training',
+        'AI assistant (1,000 msg/month)',
+        'GDPR export',
+        'Email support',
+      ],
+      cta: { href: '/checkout/solo/', label: 'Start for free' },
+      limits: { clients: 30, staff: 1, aiMessages: 1000, api: false, whiteLabel: false },
+    },
+    {
+      name: 'Studio',
+      tagline: 'Small team (2-5)',
+      priceMonthly: 149,
+      priceYearly: 1490,
+      features: [
+        'Up to 150 clients',
+        'Up to 5 staff seats',
+        'Mental preparation & health',
+        'Nutrition/training templates',
+        'AI assistant (5,000 msg/month)',
+        'REST API (120 req/min)',
+        'Webhooks + Slack',
+        'Advanced white label',
+        'Priority support',
+      ],
+      cta: { href: '/checkout/studio/', label: 'Start for free' },
+      popular: true,
+      limits: { clients: 150, staff: 5, aiMessages: 5000, api: true, whiteLabel: true },
+    },
+    {
+      name: 'Cabinet',
+      tagline: 'Team with 5+ coaches',
+      priceMonthly: 349,
+      priceYearly: 3490,
+      features: [
+        'Unlimited clients',
+        'Unlimited staff seats',
+        'Multi-specialty (coach/mental/diet)',
+        'AI assistant (20,000 msg/month)',
+        'API with no practical limit',
+        'SSO / SAML (coming soon)',
+        'Full audit trail',
+        'SLA & dedicated support',
+        'Team onboarding included',
+      ],
+      cta: { href: '/checkout/cabinet/', label: 'Start for free' },
+      limits: { clients: 'illimité', staff: 'illimité', aiMessages: 20000, api: true, whiteLabel: true },
+    },
+  ],
+};
 
 const {
-  title = 'Des offres qui grandissent avec vous',
-  subtitle = '30 jours d\'essai gratuit, sans CB. Changez d\'offre à tout moment.',
+  title = d.title,
+  subtitle = d.subtitle,
   plans,
+  headingLevel = 'h2',
 } = Astro.props;
 
+const defaultPlans = PLANS[locale];
 const displayPlans = plans && plans.length > 0 ? plans : defaultPlans;
-const headingLevel = Astro.props.headingLevel ?? 'h2';
-const HeadingTag = (headingLevel) as 'h1' | 'h2' | 'h3';
-const formatEuro = (n: number) => n.toLocaleString('fr-FR');
+const HeadingTag = headingLevel as 'h1' | 'h2' | 'h3';
+
+const formatPrice = (n: number) => n.toLocaleString(locale === 'en' ? 'en-US' : 'fr-FR');
+const lp = (href: string) => localizePath(href, locale);
 ---
 
 <section class="section bg-papier" aria-labelledby="pricing-title">
@@ -107,21 +175,21 @@ const formatEuro = (n: number) => n.toLocaleString('fr-FR');
 
     <div class="mb-10 flex justify-center">
       <div class="inline-flex items-center gap-2 p-1 bg-blanc rounded-pill border border-encre/10 shadow-sm">
-        <button id="monthly-btn" class="px-4 py-2 rounded-pill text-sm font-medium bg-bleu-lecture text-craie shadow-sm" aria-pressed="true" data-period="monthly">Mensuel</button>
+        <button id="monthly-btn" class="px-4 py-2 rounded-pill text-sm font-medium bg-bleu-lecture text-craie shadow-sm" aria-pressed="true" data-period="monthly">{d.monthly}</button>
         <button id="yearly-btn" class="px-4 py-2 rounded-pill text-sm font-medium text-encre/60 hover:text-encre" aria-pressed="false" data-period="yearly">
-          Annuel
-          <span class="ml-2 px-2 py-0.5 text-xs font-bold text-bordeaux bg-rose-bordeaux rounded-full">2 mois offerts</span>
+          {d.yearly}
+          <span class="ml-2 px-2 py-0.5 text-xs font-bold text-bordeaux bg-rose-bordeaux rounded-full">{d.yearlyBadge}</span>
         </button>
       </div>
     </div>
 
-    <h2 class="sr-only">Nos offres</h2>
+    <h2 class="sr-only">{d.srPlans}</h2>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
       {displayPlans.map((plan, index) => (
         <article class={`relative bg-blanc flex flex-col p-6 md:p-8 rounded-card-lg transition-all duration-200 ${plan.popular ? 'ring-2 ring-bleu-signature shadow-card md:-translate-y-2' : 'border border-encre/10 shadow-card hover:shadow-elevated hover:-translate-y-1'}`} data-plan={plan.name}>
           {plan.popular && (
             <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-bleu-lecture text-craie text-xs font-semibold rounded-full whitespace-nowrap">
-              Le plus choisi
+              {d.popular}
             </div>
           )}
           <div class="mb-6">
@@ -132,15 +200,15 @@ const formatEuro = (n: number) => n.toLocaleString('fr-FR');
           <div class="mb-6" data-price-container>
             <div class="flex items-baseline gap-1" data-monthly>
               <span class="text-4xl font-bold text-encre">{plan.priceMonthly}</span>
-              <span class="text-encre/50">€/mois</span>
+              <span class="text-encre/50">€{d.perMonth}</span>
             </div>
             <div class="flex items-baseline gap-2 hidden" data-yearly>
               <span class="text-4xl font-bold text-encre">{Math.round(plan.priceYearly / 12)}</span>
-              <span class="text-encre/50">€/mois</span>
+              <span class="text-encre/50">€{d.perMonth}</span>
             </div>
             <p class="text-sm mt-1 hidden" data-yearly-note>
-              <span class="text-encre/50">Facturé {formatEuro(plan.priceYearly)}€ / an</span>
-              <span class="text-bordeaux font-medium ml-1">(2 mois offerts)</span>
+              <span class="text-encre/50">{d.billed} {formatPrice(plan.priceYearly)}€ {d.perYear}</span>
+              <span class="text-bordeaux font-medium ml-1">({d.yearlyBadge})</span>
             </p>
           </div>
 
@@ -155,7 +223,7 @@ const formatEuro = (n: number) => n.toLocaleString('fr-FR');
             </ul>
           </div>
 
-          <a href={plan.cta.href} class="btn-primary w-full group py-3 px-5 mt-auto text-base font-semibold rounded-xl transition-all duration-200">
+          <a href={lp(plan.cta.href)} class="btn-primary w-full group py-3 px-5 mt-auto text-base font-semibold rounded-xl transition-all duration-200">
             {plan.cta.label}
             <Icon name="arrowRight" class="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1 inline-block" />
           </a>

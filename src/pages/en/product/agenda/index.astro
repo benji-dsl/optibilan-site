@@ -1,0 +1,175 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import Hero from '@/components/Hero.astro';
+import CTA from '@/components/CTA.astro';
+import Icon from '@/components/Icon.astro';
+import { localizePath } from '@/i18n/config';
+
+const lp = (href: string) => localizePath(href, 'en');
+
+const pageTitle = 'Scheduled calls & calendar - Optibilan';
+const pageDescription = 'Automatic cadence based on your plan, Slack/email/push reminders, late and no-show handling, subscribable ICS calendar, coach calendar view. Built into the coaching journal.';
+
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  inLanguage: 'en-US',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://optibilan.com/en/' },
+    { '@type': 'ListItem', position: 2, name: 'Product', item: 'https://optibilan.com/en/produit' },
+    { '@type': 'ListItem', position: 3, name: 'Calendar & calls', item: 'https://optibilan.com/en/product/agenda' },
+  ],
+};
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  lang="en"
+  canonical="/en/product/agenda/"
+  ogImage="/og-agenda.png"
+  jsonLd={breadcrumbJsonLd}
+>
+  <Header />
+
+  <main>
+    <Hero
+      title="The calendar that follows
+your cadence."
+      subtitle="Automatic cadence based on your plan, multi-channel reminders, late and no-show handling, subscribable ICS calendar, coach calendar view. Built into the coaching journal."
+      primaryCTA={{ href: lp('/pricing/'), label: 'Join Optibilan' }}
+      secondaryCTA={{ href: lp('/checkout/solo/'), label: 'Free trial' }}
+    />
+
+    <section class="section bg-blanc" aria-labelledby="visuel-key">
+      <div class="container">
+        <div class="aspect-video max-w-4xl mx-auto rounded-xl overflow-hidden relative">
+          <img
+            src="/images/product/06-praticien-sante-consultation.webp"
+            alt="Health practitioner in consultation, real time spent with their patient"
+            class="w-full h-full object-cover"
+            loading="lazy" width="1000" height="607" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" aria-hidden="true"></div>
+          <div class="absolute bottom-4 left-1/2 -translate-x-1/2 text-center text-white/90 text-sm">
+            <span class="flex items-center justify-center gap-1 bg-black/30 px-3 py-1 rounded-full backdrop-blur-sm">
+              <Icon name="activity" class="w-4 h-4" />
+              Appointments, reminders and follow-up: no friction
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-blanc" aria-labelledby="problem-title">
+      <div class="container max-w-3xl">
+        <header class="mb-12">
+          <h2 id="problem-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+            The problem: appointments left to chance
+          </h2>
+          <p class="text-lg text-encre/60">
+            Forgotten reminders, unmanaged delays, calendars nobody shares, clients who do not show up…<br>
+            Coach time wasted. Clients left without support.
+          </p>
+        </header>
+
+        <div class="space-y-8">
+          {[
+            {
+              icon: 'calendar',
+              title: 'Automatic cadence based on your plan + per-client customization',
+              desc: 'Starter: 1 call per month. Essentiel: 2 per month. Plus: weekly. Premium: 2 per week. Customizable per client (frequency, duration, type). Changing the cadence = automatic recalculation of upcoming calls.',
+              features: [
+                '4 cadences + per-client customization',
+                'Types: check-in, follow-up, nutrition, mental, technique',
+                'Configurable duration (15/30/45/60 min)',
+                'Automatic recalculation when the cadence changes',
+              ],
+              icon: 'calendar',
+            },
+            {
+              icon: 'zap',
+              title: 'Multi-channel reminders - nothing forgotten',
+              desc: 'Slack (team), email (client + coach), push (client app), ICS calendar. Timing: 1 day before, 1 hour before, at start time, 15 min after if absent. Customizable per client (some want 2 days before, others only 30 min before).',
+              features: [
+                '4 channels: Slack, email, push, ICS',
+                'Timing: 1 day before at 9am, 1 hour before, at start time, 15 min after',
+                'Customizable per client',
+                'Delivery logs + read receipts',
+              ],
+              icon: 'zap',
+            },
+            {
+              icon: 'users',
+              title: 'Late arrivals & no-shows - proactive',
+              desc: 'Alert 15 min before if the client is not connected. Follow-up 15 min after if absent. One-click reschedule (offers 3 available slots). Punctuality stats per client (attendance rate, average delay). Coach alert if the rate is below 80%.',
+              features: [
+                'Alert 15 min before if not connected',
+                'Follow-up 15 min after + reschedule offer',
+                'One-click reschedule: 3 slots offered',
+                'Punctuality dashboard (rate, delay, trends)',
+              ],
+              icon: 'users',
+            },
+            {
+              icon: 'globe',
+              title: 'Subscribable ICS calendar - without friction',
+              desc: 'Each staff member has a calendar token (regenerable, revocable). URL: https://app.optibilan.com/api/calendrier/<token>.ics. Subscribe from Google Calendar, Apple Calendar, Outlook or Calendly. Contains: title, date, duration, link to the client record. Filtered by role (a coach does not see mental calls).',
+              features: [
+                'Token per staff member (regenerable, revocable)',
+                'Compatible: Google, Apple, Outlook, Calendly',
+                'Contents: title, date, duration, client record link',
+                'Role filtering (a coach does not see mental/diet)',
+              ],
+              icon: 'globe',
+            },
+            {
+              icon: 'chart',
+              title: 'Coach calendar view - week / month / list',
+              desc: 'Filters: client, type, status (upcoming / past / canceled). Drag-and-drop to reschedule. Quick call creation (client + type + date). Journal integration: automatic entry after a call (pre-filled: client, date, type, duration). Workload view: calls per week, fill rate.',
+              features: [
+                'Views: week, month, list, workload',
+                'Filters: client, type, status, coach',
+                'Drag-and-drop + quick creation',
+                'Automatic journal entry after a call',
+              ],
+              icon: 'chart',
+            },
+          ].map((section, i) => (
+            <article id={section.icon} class="py-8 border-t border-encre/10 first:border-0">
+              <header class="flex items-center gap-4 mb-6">
+                <div class="icon-wrapper flex-shrink-0" aria-hidden="true" style="background-color: var(--color-bleu-clair);">
+                  <Icon name={section.icon} class="w-7 h-7 text-bleu-signature" />
+                </div>
+                <div>
+                  <h3 class="font-display text-2xl font-bold text-encre">{section.title}</h3>
+                  <p class="text-encre/60 mt-1">{section.desc}</p>
+                </div>
+              </header>
+              <ul class="space-y-2 text-encre/60">
+                {section.features.map(f => (
+                  <li key={f} class="flex items-start gap-2">
+                    <Icon name="check" class="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5" />
+                    <span>{f}</span>
+                  </li>
+                ))}
+              </ul>
+            </article>
+          ))}
+        </div>
+
+      </div>
+    </section>
+
+    <CTA
+      title="Ready to never miss an appointment again?"
+      subtitle="30 minutes to see how to automate your calendar and reminders."
+      primaryCTA={{ href: lp('/pricing/'), label: 'Join Optibilan' }}
+      secondaryCTA={{ href: lp('/checkout/solo/'), label: 'Free trial' }}
+      variant="primary"
+    />
+  </main>
+
+  <Footer />
+</Layout>

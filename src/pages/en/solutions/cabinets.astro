@@ -1,0 +1,174 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import Hero from '@/components/Hero.astro';
+import CTA from '@/components/CTA.astro';
+import TrustBar from '@/components/TrustBar.astro';
+import Icon from '@/components/Icon.astro';
+import { localizePath } from '@/i18n/config';
+
+const lp = (href: string) => localizePath(href, 'en');
+
+const pageTitle = 'Software for multi-disciplinary practices | Multiple practitioners | Optibilan';
+const pageDescription = 'The software for multi-disciplinary practices: the whole team, one single view of the client. Multiple practitioners, permissions, white label, free trial.';
+
+const eduOrgJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'EducationalOrganization',
+  '@id': 'https://optibilan.com/en/#educational-organization',
+  name: 'Optibilan',
+  url: 'https://optibilan.com/en/',
+  logo: 'https://optibilan.com/optibilan-logo.svg',
+  inLanguage: 'en-US',
+  areaServed: 'FR',
+  sameAs: [
+    'https://twitter.com/optibilan',
+    'https://linkedin.com/company/optibilan',
+    'https://github.com/optibilan',
+    'https://youtube.com/@optibilan',
+  ],
+};
+const courseJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Course',
+  '@id': 'https://optibilan.com/en/solutions/#course',
+  name: 'Training and support with Optibilan',
+  description: 'Practical training to structure check-ins, nutrition and training follow-up, and automate processes with the Optibilan platform.',
+  provider: { '@type': 'EducationalOrganization', '@id': 'https://optibilan.com/en/#educational-organization' },
+  url: 'https://optibilan.com/en/solutions/',
+  inLanguage: 'en-US',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://optibilan.com/en/' },
+    { '@type': 'ListItem', position: 2, name: 'Solutions', item: 'https://optibilan.com/en/solutions/' },
+    { '@type': 'ListItem', position: 3, name: 'Practices', item: 'https://optibilan.com/en/solutions/cabinets/' },
+  ],
+};
+
+---
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  lang="en"
+  canonical="/en/solutions/cabinets/"
+  ogImage="/og-solution-cabinet.png"
+  jsonLd={[breadcrumbJsonLd, eduOrgJsonLd, courseJsonLd]}
+  heroImage="/images/cabinets/01-studio-performance-realiste.webp"
+>
+  <Header />
+
+  <main>
+    <Hero
+      variant="page"
+      title="Your whole team. 
+One single view of the client."
+      subtitle="Multiple practitioners, granular permissions, coordination, administration, security, audit, full white label. The operating system of your practice."
+      primaryCTA={{ href: '/pricing/', label: 'Join Optibilan' }}
+      secondaryCTA={{ href: '/checkout/solo/', label: 'Free trial' }}
+      backgroundImage="/images/cabinets/01-studio-performance-realiste.webp"
+    />
+
+    <TrustBar />
+
+    <section class="section bg-papier" aria-labelledby="cabinets-visual-title">
+      <div class="container">
+        <header class="text-center max-w-3xl mx-auto mb-12">
+          <h2 id="cabinets-visual-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+            The team, gathered around the same vision
+          </h2>
+          <p class="text-lg text-encre/60">
+            A single record, permissions by role, smooth coordination between practitioners.
+          </p>
+        </header>
+        <div class="aspect-video max-w-4xl mx-auto rounded-xl border border-encre/10 bg-blanc overflow-hidden shadow-xl">
+          <img
+            src="/images/cabinets/01-studio-performance-realiste.webp"
+            alt="Team of practitioners gathered in a practice, coordinated around the same patient"
+            class="w-full h-full object-cover"
+            loading="eager"
+            fetchpriority="high" width="1000" height="750" />
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-blanc" aria-labelledby="promise-title">
+      <div class="container max-w-3xl">
+        <header class="text-center mb-16">
+          <h2 id="promise-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
+            Your whole team.
+            One single view of the client.
+          </h2>
+          <p class="text-lg text-encre/60 max-w-2xl mx-auto">
+            Coach, dietitian, mental coach, doctor, admin... Each with their own scope. The client at the center. Smooth coordination.
+          </p>
+        </header>
+
+        <div class="grid md:grid-cols-2 gap-6 mb-16">
+          {[
+            { icon: 'users', title: 'Multiple practitioners, granular permissions', desc: 'Roles: admin, coach, mental, diet, support. Specialties per practitioner. Segregated access: the coach does not see mental, mental does not see nutrition (unless sharing is authorized).' },
+            { icon: 'shield', title: 'Smooth coordination, zero information lost', desc: 'Shared coaching journal (according to permissions), synchronized scheduled calls, automatic follow-ups, Slack/email team reminders. 0 information lost between practitioners.' },
+            { icon: 'shield', title: 'Native administration & compliance', desc: 'User management (2FA mandatory for admins), custom call offers, practice legal notice, modules on/off, onboarding questionnaire, GDPR (export, purge), two-level audit trail, API keys, webhooks.' },
+            { icon: 'globe', title: 'Full white label = your practice', desc: 'Logo, theme, domain, wording, named AI assistant, emails @yourpractice.com, legal notice, terms of sale: everything is yours. Your clients never see Optibilan.' },
+          ].map(item => (
+            <article class="p-6 rounded-xl border border-encre/10 hover:border-bordeaux/30 hover:shadow-soft transition-all">
+              <div class="icon-wrapper mb-4" aria-hidden="true" style="background-color: var(--color-rose-bordeaux);">
+                <Icon name={item.icon} class="w-7 h-7 text-bordeaux" />
+              </div>
+              <h3 class="font-display text-xl font-bold text-encre mb-2">{item.title}</h3>
+              <p class="text-encre/60">{item.desc}</p>
+            </article>
+          ))}
+        </div>
+
+        <div class="p-6 md:p-8 rounded-xl bg-gradient-to-br from-bordeaux/5 via-papier to-rose-bordeaux/5 border border-encre/10 mb-16">
+          <h3 class="font-display text-xl md:text-2xl font-bold text-encre mb-4">Feedback from a practice</h3>
+          <blockquote class="text-encre/70 leading-relaxed mb-4 italic max-w-2xl">
+            "I launched my signature program at €1,800 a month thanks to full white label: custom domain, emails @ma-methode.fr, an AI assistant called 'Julie', 'member' wording. My members never see Optibilan. The integrations let me plug in Notion (CRM), Slack (team alerts) and Stripe (automatic billing). In 6 months: 45 members at €1,800 = €81k MRR, solo. Technical support answers in under 2h. It is an OS, not a SaaS."
+          </blockquote>
+          <footer class="flex items-center gap-3">
+            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-bleu-signature to-bleu-lecture flex items-center justify-center text-craie font-bold text-sm">JM</div>
+            <div>
+              <div class="font-semibold text-encre">Julie Moreau</div>
+              <div class="text-sm text-encre/50">Health coach & Founder · Méthode Équilibre - Lille</div>
+            </div>
+          </footer>
+        </div>
+
+        <h3 class="font-display text-2xl font-bold text-encre mb-8">Key modules for practices</h3>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {[
+            { href: '/product/admin/', icon: 'shield', title: 'Administration', desc: 'Users, roles, 2FA, offers, legal notice, modules, GDPR, audit, API', color: 'bordeaux' },
+            { href: '/product/white-label/', icon: 'shield', title: 'Full White Label', desc: 'Logo, theme, domain, wording, AI, emails, legal notice, terms of sale', color: 'bordeaux' },
+            { href: '/product/crm/', icon: 'lock', title: 'Coaching Journal & CRM', desc: 'Typed entries, pipeline, follow-ups, sharing, Notion sync', color: 'bleu-ardoise' },
+            { href: '/product/check-ins/', icon: 'chart', title: 'Check-ins & Progress', desc: 'Questionnaires, charts, adherence alert detection, PDF export', color: 'bleu-signature' },
+            { href: '/product/integrations/', icon: 'code', title: 'Integrations & SSO', desc: 'REST v1, OpenAPI, scoped keys, SSO/SAML, connectors', color: 'bleu-ardoise' },
+            { href: '/product/health/', icon: 'globe', title: 'Health & Biomarkers', desc: '130+ lab markers, wearables, AI reads PDFs, correlations, HDS', color: 'bleu-clair' },
+          ].map(mod => (
+            <a href={lp(mod.href)} class="card-hover p-6 text-center group" style={`--mod-color: var(--color-${mod.color})`}>
+              <div class="icon-wrapper mx-auto mb-4" aria-hidden="true" style={`background-color: color-mix(in oklab, var(--color-${mod.color}) 15%, transparent);`}>
+                <Icon name={mod.icon} class="w-7 h-7" style={`color: var(--color-${mod.color});`} />
+              </div>
+              <h4 class="font-display text-lg font-bold text-encre mb-2">{mod.title}</h4>
+              <p class="text-sm text-encre/50">{mod.desc}</p>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <CTA
+      title="Want to see how Optibilan adapts to YOUR practice?"
+      subtitle="30 minutes to set up Optibilan around your multi-practitioner organization."
+      primaryCTA={{ href: '/pricing/', label: 'Join Optibilan' }}
+      secondaryCTA={{ href: '/checkout/solo/', label: 'Free trial' }}
+      variant="primary"
+    />
+  </main>
+
+  <Footer />
+</Layout>
