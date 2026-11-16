@@ -131,7 +131,14 @@ function onTrackedClick(event: MouseEvent): void {
     return;
   }
 
-  track(isExternal ? 'outbound_click' : 'cta_click', {
+  // Deux CTA meritent leur propre nom d'evenement : ils deviennent des
+  // conversions dans GA4, et un nom dedie se suit sans filtrer sur un parametre.
+  const dedicated: Record<string, string> = {
+    hero_cta_demo: 'demo_click',
+    hero_cta_trial: 'trial_click',
+  };
+
+  track(dedicated[ctaId] ?? (isExternal ? 'outbound_click' : 'cta_click'), {
     cta_id: ctaId,
     link_url: href,
   });
@@ -215,6 +222,16 @@ if (GA4_ID) {
   // Page 404 : on veut savoir quelles URL cassees sont demandees.
   if (document.querySelector('[data-notfound]')) {
     track('page_not_found', { missing_path: window.location.pathname });
+  }
+
+  // Tunnel d'achat : entree dans le paiement, puis retour de Stripe.
+  const path = window.location.pathname;
+  if (/^\/(en\/)?checkout\/[a-z]+\/?$/.test(path)) {
+    const plan = path.split('/').filter(Boolean).pop() || 'unknown';
+    track('begin_checkout', { plan });
+  }
+  if (/^\/(en\/)?checkout\/success\/?$/.test(path)) {
+    track('generate_lead', { method: 'stripe_checkout' });
   }
 }
 
