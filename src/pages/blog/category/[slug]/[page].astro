@@ -5,7 +5,7 @@ import Footer from '@/components/Footer.astro';
 import ArticleCard from '@/components/blog/ArticleCard.astro';
 import Pagination from '@/components/blog/Pagination.astro';
 import Icon from '@/components/Icon.astro';
-import { getAllPosts, getCategories, CATEGORY_MAP, PER_PAGE } from '@/utils/wordpress';
+import { getAllPosts, getCategories, CATEGORY_MAP, PER_PAGE } from '@/utils/blog-fr';
 
 export async function getStaticPaths() {
   const [allPosts, categories] = await Promise.all([getAllPosts(), getCategories()]);

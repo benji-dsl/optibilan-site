@@ -5,6 +5,7 @@ import Footer from '../../../components/Footer.astro';
 import Hero from '../../../components/Hero.astro';
 import CTA from '../../../components/CTA.astro';
 import Icon from '../../../components/Icon.astro';
+import RelatedReading from '@/components/RelatedReading.astro';
 
 const pageTitle = 'Bilans et progression : un suivi structuré | Optibilan';
 const pageDescription = "Comprenez ce qui évolue sans reconstruire l'historique : bilans, mensurations, photos, ressentis et habitudes dans une chronologie unique.";
@@ -182,6 +183,13 @@ Sans reconstruire l'historique de la personne suivie."
       primaryCTA={{ href: '/pricing/', label: 'Rejoindre Optibilan' }}
       secondaryCTA={{ href: '/checkout/solo/', label: 'Essayer Optibilan' }}
       variant="primary"
+    />
+
+    <RelatedReading
+      items={[
+        { href: '/blog/comment-structurer-ses-bilans/', label: 'Structurer ses bilans pour gagner dix heures par semaine', description: 'Le format fixe en quatre temps, et le temps réellement récupéré.' },
+        { href: '/blog/fideliser-clients-coaching-retention/', label: 'Rétention : garder les personnes avant la résiliation', description: 'Les signaux faibles à surveiller, et quand intervenir.' },
+      ]}
     />
   </main>
 

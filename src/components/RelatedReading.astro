@@ -1,0 +1,53 @@
+---
+/**
+ * Bloc de maillage interne : deux ou trois lectures utiles depuis une page
+ * produit ou tarifs vers le blog. Les liens sont localises automatiquement.
+ */
+import Icon from './Icon.astro';
+import { localeOf, localizePath } from '../i18n/config';
+
+interface Item {
+  /** Chemin canonique de l'article, forme FR : /blog/mon-article/ */
+  href: string;
+  label: string;
+  description?: string;
+}
+
+interface Props {
+  items: Item[];
+  title?: string;
+}
+
+const { items, title } = Astro.props;
+const locale = localeOf(Astro.currentLocale);
+const heading = title ?? (locale === 'en' ? 'Further reading' : 'À lire aussi');
+---
+
+{items.length > 0 && (
+  <section class="section bg-papier" aria-labelledby="related-reading-title">
+    <div class="container">
+      <h2 id="related-reading-title" class="font-display text-2xl md:text-3xl font-bold text-encre mb-8 text-center">
+        {heading}
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        {items.slice(0, 3).map((item) => (
+          <a
+            href={localizePath(item.href, locale)}
+            class="group flex flex-col p-6 rounded-xl bg-blanc border border-encre/10 hover:border-bleu-signature/30 hover:shadow-soft transition-all"
+          >
+            <span class="font-display text-lg font-bold text-encre mb-2 group-hover:text-bleu-signature transition-colors">
+              {item.label}
+            </span>
+            {item.description && (
+              <span class="text-sm text-encre/60 leading-relaxed mb-4">{item.description}</span>
+            )}
+            <span class="mt-auto inline-flex items-center gap-1 text-sm font-semibold text-bleu-signature">
+              {locale === 'en' ? 'Read' : 'Lire'}
+              <Icon name="arrowRight" class="w-4 h-4 transition-transform group-hover:translate-x-1" />
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+)}

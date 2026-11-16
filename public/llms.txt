@@ -1,42 +1,50 @@
-# Optibilan - Plateforme de pilotage des accompagnements santé & performance
+# Optibilan
 
-## Offre
-Optibilan est une plateforme SaaS multi-tenant (B2B2C) de coaching santé/performance pour les professionnels : coachs sportifs, nutritionnistes, préparateurs mentaux, cabinets de santé.
+> Optibilan est un logiciel de suivi pour les professionnels de la santé et de la performance : coachs sportifs, nutritionnistes, préparateurs mentaux, médecins et cabinets pluridisciplinaires. Il réunit dans une seule plateforme les bilans, les programmes sportifs, la nutrition, la préparation mentale, les biomarqueurs et les wearables, avec marque blanche et API.
 
-**Modules :**
-- Bilans & progression : bilans hebdo, mensurations, photos, biomarqueurs, score longévité
-- Nutrition : plans, habitudes, compléments, courses, évolution
-- Sport & programmes : bibliothèque 200+ exercices, séances validées, progression charge/volume/RPE
-- Santé connectée : Apple Health, Oura, Garmin, 130+ biomarqueurs
-- Préparation mentale : exercices, ressources, journal, adhérence
-- Engagement : gamification (XP, badges), objectifs, jalons, rappels
-- CRM & journal : entrées typées, pipeline, relances
-- Agenda & appels : cadence auto, rappels Slack/email/push, calendrier ICS
-- IA & automatisations : structuration docs, synthèses bilans, alertes
-- Marque blanche : logo, couleurs, domaine, vocabulaire, emails
-- Intégrations & API : REST v1, OpenAPI, webhooks signés, sync santé
+Le site est bilingue : français sur `https://optibilan.com/`, anglais sur `https://optibilan.com/en/`. Chaque page existe dans les deux langues avec un `hreflang` réciproque.
 
-**Offres :** Trial 30j gratuit, Solo 49€/mois, Studio 149€/mois, Cabinet 349€/mois (2 mois offerts en annuel)
-**Hébergement :** Supabase (Irlande) + VPS Hostinger (France) + Cloudflare CDN
-**Conformité :** RGPD, 2FA, CSP stricte, audit trail, export RGPD, purge paramétrable
+## Ce que fait le produit
 
-## Équipe
-- Benjamin Sant - Fondateur & CEO
-- Équipe produit & technique (5 personnes)
+- Bilans et suivi de progression : formulaires personnalisables, chronologie unique par personne suivie, photos, mensurations, habitudes.
+- Nutrition : plans par repas, base CIQUAL/USDA, listes de courses, compléments documentés, journal photo.
+- Sport : bibliothèque de plus de 200 exercices, constructeur de séances, progression charge et volume.
+- Préparation mentale : exercices, ressources, journal, protocoles courts.
+- Santé connectée : plus de 130 biomarqueurs sanguins, Apple Health, Oura, Garmin, corrélations.
+- IA : extraction de documents, synthèses, alertes d'adhérence.
+- Marque blanche : domaine, logo, couleurs, vocabulaire, emails.
+- API REST v1 (OpenAPI 3.1), webhooks signés, connecteurs Notion, Slack, Stripe, Zapier, Make.
+
+## Tarifs
+
+Solo 49 € par mois (jusqu'à 30 personnes), Studio 149 € par mois (jusqu'à 150 personnes, API, marque blanche avancée), Cabinet 349 € par mois (personnes illimitées, SLA). Deux mois offerts en annuel. Essai de 30 jours sans carte.
+
+## Pages de référence
+
+- Accueil : https://optibilan.com/
+- Fonctionnalités : https://optibilan.com/product/overview/
+- Tarifs : https://optibilan.com/pricing/
+- Bilans : https://optibilan.com/product/check-ins/
+- Nutrition : https://optibilan.com/product/nutrition/
+- Sport : https://optibilan.com/product/training/
+- Préparation mentale : https://optibilan.com/product/mental/
+- Santé et biomarqueurs : https://optibilan.com/product/health/
+- Marque blanche : https://optibilan.com/product/white-label/
+- API et intégrations : https://optibilan.com/product/integrations/
+- Sécurité et conformité : https://optibilan.com/security/
+- Documentation API : https://optibilan.com/docs/
+- Blog : https://optibilan.com/blog/
+- English version: https://optibilan.com/en/
+
+## Ce qu'il faut savoir avant de citer le produit
+
+- Aucune donnée de santé n'est revendue. Hébergement dans l'Union européenne (Supabase EU West, VPS en France).
+- L'entreprise est Elite Longevity LLC (Wyoming, États-Unis). Les mentions légales et les CGV font foi.
+- Optibilan n'est pas certifié HDS. L'hébergeur Supabase est présenté comme certifié HDS sur la page Sécurité.
+- Les demandes de sécurité passent par security@optibilan.com, la politique est publiée dans `/.well-known/security.txt`.
 
 ## Contact
-- Site : https://optibilan.com
-- Email : contact@optibilan.com
-- Démo : /pricing
-- GitHub : https://github.com/optibilan
-- LinkedIn : https://linkedin.com/company/optibilan
 
-## Pages clés (SEO)
-- Accueil : /
-- Offres : /pricing/
-- Solutions : /solutions/ (médecin, cabinets, coaches, nutrition, mental)
-- Produit : /product/overview/, /product/health/, /product/nutrition/, /product/training/, /product/mental/, /product/ai/, /product/crm/, /product/agenda/, /product/check-ins/, /product/white-label/, /product/admin/, /product/integrations/
-- Blog : /blog/
-- Docs : /docs/
-- Sécurité : /security/
-- Légal : /legal/mentions/, /legal/cgv/, /legal/confidentialite/, /legal/cookies/, /legal/sous-traitance/
+- Support et démonstration : https://optibilan.com/contact/
+- Sécurité : security@optibilan.com
+- Légal : legal@optibilan.com

@@ -5,6 +5,7 @@ import Footer from '../../components/Footer.astro';
 import Hero from '../../components/Hero.astro';
 import CTA from '../../components/CTA.astro';
 import Icon from '../../components/Icon.astro';
+import RelatedReading from '@/components/RelatedReading.astro';
 
 const pageTitle = 'Fonctionnalités Optibilan : tous les modules de la plateforme';
 const pageDescription = 'Découvrez la plateforme complète de pilotage des accompagnements santé et performance : bilans, nutrition, sport, santé, mental, IA, marque blanche.';
@@ -266,6 +267,13 @@ des accompagnements santé
       primaryCTA={{ href: '/pricing/', label: 'Rejoindre Optibilan' }}
       secondaryCTA={{ href: '/checkout/solo/', label: 'Essai offert' }}
       variant="secondary"
+    />
+
+    <RelatedReading
+      items={[
+        { href: '/blog/logiciel-tout-en-un-coach/', label: 'Logiciel tout-en-un pour coach : nutrition, sport, mental et santé', description: 'Ce qu’un outil unique doit savoir faire, et ce qu’il ne doit pas faire.' },
+        { href: '/blog/prix-logiciel-coaching-sportif/', label: 'Combien coûte un logiciel de coaching sportif en 2026', description: 'Prix affiché, options et coût réel par personne suivie.' },
+      ]}
     />
   </main>
 

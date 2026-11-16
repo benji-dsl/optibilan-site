@@ -4,6 +4,7 @@ import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import Pricing from '../../components/Pricing.astro';
 import CTA from '../../components/CTA.astro';
+import RelatedReading from '@/components/RelatedReading.astro';
 
 const pageTitle = 'Tarifs Optibilan : 49, 149 et 349 € par mois, essai offert';
 const pageDescription = 'Tarification simple et transparente : Solo 49€/mois, Studio 149€/mois, Cabinet 349€/mois. 2 mois offerts en annuel. Essai gratuit 30 jours.';
@@ -185,6 +186,13 @@ const faqJsonLd = {
       variant="primary"
       title="Choisissez l'offre qui vous correspond"
       subtitle="30 jours pour tester toutes les fonctionnalités, annulation en 1 clic."
+    />
+
+    <RelatedReading
+      items={[
+        { href: '/blog/prix-logiciel-coaching-sportif/', label: 'Combien coûte un logiciel de coaching sportif en 2026', description: 'Modèles de facturation, options et coût réel par personne suivie.' },
+        { href: '/blog/marque-blanche-coaching-studio/', label: 'Marque blanche coaching : lancer votre studio sans tout créer', description: 'Ce que vous gardez, ce que vous déléguez, et les pièges du lancement.' },
+      ]}
     />
   </main>
 

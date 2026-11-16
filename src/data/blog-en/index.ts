@@ -16,6 +16,8 @@ import { article as fideliserClientsCoachingRetention } from './fideliser-client
 import { article as questionnaireLancementClientCoaching } from './questionnaire-lancement-client-coaching';
 import { article as fixerTarifsCoachingSportif } from './fixer-tarifs-coaching-sportif';
 import { article as perteDePoidsDurableEviterYoyo } from './perte-de-poids-durable-eviter-yoyo';
+import { article as logicielToutEnUnCoach } from './logiciel-tout-en-un-coach';
+import { article as prixLogicielCoachingSportif } from './prix-logiciel-coaching-sportif';
 
 export const articles: OptibilanArticle[] = [
   commentStructurerSesBilans,
@@ -28,4 +30,6 @@ export const articles: OptibilanArticle[] = [
   questionnaireLancementClientCoaching,
   fixerTarifsCoachingSportif,
   perteDePoidsDurableEviterYoyo,
+  logicielToutEnUnCoach,
+  prixLogicielCoachingSportif,
 ];

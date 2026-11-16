@@ -6,6 +6,7 @@ import Hero from '@/components/Hero.astro';
 import CTA from '@/components/CTA.astro';
 import Icon from '@/components/Icon.astro';
 import { localizePath } from '@/i18n/config';
+import RelatedReading from '@/components/RelatedReading.astro';
 
 const lp = (href: string) => localizePath(href, 'en');
 
@@ -272,6 +273,13 @@ programs"
       primaryCTA={{ href: '/pricing/', label: 'Join Optibilan' }}
       secondaryCTA={{ href: '/checkout/solo/', label: 'Free trial' }}
       variant="secondary"
+    />
+
+    <RelatedReading
+      items={[
+        { href: '/blog/logiciel-tout-en-un-coach/', label: 'All-in-one coaching software: nutrition, training, mental and health', description: 'What a single tool must do, and what it must not do.' },
+        { href: '/blog/prix-logiciel-coaching-sportif/', label: 'What sports coaching software really costs in 2026', description: 'Listed price, add-ons and the real cost per person you follow.' },
+      ]}
     />
   </main>
 

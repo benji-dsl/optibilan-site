@@ -3,9 +3,13 @@
  * Exporte les 10 articles du blog FR (src/utils/wordpress.ts) vers
  * src/data/blog-en/<slug>.ts, prets a etre traduits.
  *
- * A ne lancer QU'UNE FOIS, pour amorcer la version anglaise (ou pour ajouter un
- * nouvel article francais). Les fichiers produits sont ensuite edites a la main :
- * ce script les ecrase.
+ * ATTENTION : ce script ne concerne QUE les articles venus de WordPress
+ * (STATIC_FALLBACK_ARTICLES). Il ECRASE les fichiers de src/data/blog-en, donc
+ * les traductions deja faites. Ne le lancer que pour amorcer une traduction
+ * manquante, jamais en bloc.
+ *
+ * Les articles ecrits dans le depot vivent dans src/data/blog-fr et
+ * src/data/blog-en : ils ne passent pas par ce script.
  *
  * Usage : node scripts/export-blog-en-source.mjs
  */

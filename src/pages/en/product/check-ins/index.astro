@@ -6,6 +6,7 @@ import Hero from '@/components/Hero.astro';
 import CTA from '@/components/CTA.astro';
 import Icon from '@/components/Icon.astro';
 import { localizePath } from '@/i18n/config';
+import RelatedReading from '@/components/RelatedReading.astro';
 
 const lp = (href: string) => localizePath(href, 'en');
 
@@ -188,6 +189,13 @@ Without rebuilding your client history."
       primaryCTA={{ href: '/pricing/', label: 'Join Optibilan' }}
       secondaryCTA={{ href: '/checkout/solo/', label: 'Try Optibilan' }}
       variant="primary"
+    />
+
+    <RelatedReading
+      items={[
+        { href: '/blog/comment-structurer-ses-bilans/', label: 'Structuring your check-ins to save ten hours a week', description: 'The fixed format in four steps, and the time you actually get back.' },
+        { href: '/blog/fideliser-clients-coaching-retention/', label: 'Retention: keeping people before they cancel', description: 'The weak signals to watch, and when to step in.' },
+      ]}
     />
   </main>
 

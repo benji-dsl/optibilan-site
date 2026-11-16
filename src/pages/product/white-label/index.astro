@@ -5,6 +5,7 @@ import Footer from '../../../components/Footer.astro';
 import Hero from '../../../components/Hero.astro';
 import CTA from '../../../components/CTA.astro';
 import Icon from '../../../components/Icon.astro';
+import RelatedReading from '@/components/RelatedReading.astro';
 
 const pageTitle = 'Marque blanche : votre domaine, vos couleurs, vos emails';
 const pageDescription = 'Optibilan disparaît. Votre marque reste. Logo, couleurs, domaine, vocabulaire, assistant IA, emails, mentions légales, CGV - tout est à vous.';
@@ -191,6 +192,13 @@ Votre marque."
       primaryCTA={{ href: '/pricing/', label: 'Rejoindre Optibilan' }}
       secondaryCTA={{ href: '/checkout/solo/', label: 'Essayer Optibilan' }}
       variant="primary"
+    />
+
+    <RelatedReading
+      items={[
+        { href: '/blog/marque-blanche-coaching-studio/', label: 'Marque blanche coaching : lancer votre studio sans tout créer', description: 'Les cinq points de contact à personnaliser, et les pièges qui font échouer un lancement.' },
+        { href: '/blog/fixer-tarifs-coaching-sportif/', label: 'Tarifs coaching sportif : fixer le juste prix', description: 'Construire un prix qui tient, sans aligner sur le voisin.' },
+      ]}
     />
   </main>
 

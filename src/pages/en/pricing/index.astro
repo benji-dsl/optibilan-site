@@ -5,6 +5,7 @@ import Footer from '@/components/Footer.astro';
 import Pricing from '@/components/Pricing.astro';
 import CTA from '@/components/CTA.astro';
 import { localizePath } from '@/i18n/config';
+import RelatedReading from '@/components/RelatedReading.astro';
 
 const lp = (href: string) => localizePath(href, 'en');
 
@@ -191,6 +192,13 @@ const faqJsonLd = {
       variant="primary"
       title="Choose the plan that fits your practice"
       subtitle="30 days to test every feature, cancel in one click."
+    />
+
+    <RelatedReading
+      items={[
+        { href: '/blog/prix-logiciel-coaching-sportif/', label: 'What sports coaching software really costs in 2026', description: 'Billing models, add-ons and the real cost per person you follow.' },
+        { href: '/blog/marque-blanche-coaching-studio/', label: 'White label coaching: launch your studio without building everything', description: 'What you keep, what you delegate, and the pitfalls of a launch.' },
+      ]}
     />
   </main>
 

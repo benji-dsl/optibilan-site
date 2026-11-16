@@ -6,6 +6,7 @@ import Hero from '@/components/Hero.astro';
 import CTA from '@/components/CTA.astro';
 import Icon from '@/components/Icon.astro';
 import { localizePath } from '@/i18n/config';
+import RelatedReading from '@/components/RelatedReading.astro';
 
 const lp = (href: string) => localizePath(href, 'en');
 
@@ -196,6 +197,13 @@ Your brand."
       primaryCTA={{ href: lp('/pricing/'), label: 'Join Optibilan' }}
       secondaryCTA={{ href: lp('/checkout/solo/'), label: 'Free trial' }}
       variant="primary"
+    />
+
+    <RelatedReading
+      items={[
+        { href: '/blog/marque-blanche-coaching-studio/', label: 'White label coaching: launch your studio without building everything', description: 'The five touchpoints to personalize, and the pitfalls that make a launch fail.' },
+        { href: '/blog/fixer-tarifs-coaching-sportif/', label: 'Personal training rates: setting the right price', description: 'Build a price that holds, without copying the neighbour.' },
+      ]}
     />
   </main>
 
