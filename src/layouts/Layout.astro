@@ -10,6 +10,7 @@ import {
 } from '../i18n/config';
 import { hasEnglishVersion } from '../i18n/routes';
 import ConsentBanner from '../components/ConsentBanner.astro';
+import { resolveGa4Id } from '../config/analytics';
 import {
   organizationJsonLd,
   websiteJsonLd,
@@ -77,7 +78,7 @@ const fullOgImage = ogImageResolved.startsWith('http') ? ogImageResolved : `${SI
 const toJsonLd = (obj) => JSON.stringify(obj).replace(/</g, '\\u003c');
 
 // GA4 Measurement ID - replace with actual ID when available
-const GA4_ID = (import.meta.env.PUBLIC_GA4_ID || '').trim();
+const GA4_ID = resolveGa4Id(import.meta.env.PUBLIC_GA4_ID);
 // PostHog - replace with actual key when available
 const POSTHOG_KEY = (import.meta.env.PUBLIC_POSTHOG_KEY || '').trim();
 
