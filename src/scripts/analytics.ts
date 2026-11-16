@@ -70,9 +70,10 @@ function clearConsent(): void {
 function ensureGtag(): void {
   if (!GA4_ID || window.__gtagLoaded) return;
 
-  window.dataLayer = window.dataLayer || [];
-  window.gtag = function gtag(...args: unknown[]) {
-    window.dataLayer?.push(args);
+  const dataLayer: unknown[] = (window.dataLayer = window.dataLayer || []);
+  // gtag.js ne lit que l'objet `arguments` ici : un tableau est ignore en silence.
+  window.gtag = function gtag() {
+    dataLayer.push(arguments as unknown as unknown[]);
   };
 
   // Consent Mode v2 : tout est refuse par defaut, la mesure n'est activee

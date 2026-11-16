@@ -15,7 +15,8 @@
     "check": "npm run build && npm run validate:articles",
     "export:blog-en": "node scripts/export-blog-en-source.mjs",
     "audit:seo": "node scripts/audit-seo.mjs",
-    "verify": "npm run build && npm run check:i18n && npm run audit:seo"
+    "verify": "npm run build && npm run check:i18n && npm run audit:seo",
+    "smoke:analytics": "node scripts/smoke-analytics.mjs"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.10",
