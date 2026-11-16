@@ -330,7 +330,7 @@ Suivez trois fois plus de clients sans y passer vos soirées."
     {productDemos.map((demo, index) => (
       <section class="section" aria-labelledby={`demo-${demo.id}-title`} style={index % 2 === 0 ? 'background: linear-gradient(to bottom, var(--color-papier), var(--color-blanc));' : ''}>
         <div class="container">
-          <div class="grid lg:grid-cols-2 gap-12 items-center" style={demo.layout === 'text-right' ? 'direction: rtl;' : ''}>
+          <div class={`grid lg:grid-cols-2 gap-12 items-center ${demo.layout === 'text-right' ? 'demo-rtl' : ''}`}>
             <div style={demo.layout === 'text-right' ? '' : 'text-align: left;'}>
               <h2 id={`demo-${demo.id}-title`} class="font-display text-3xl md:text-4xl font-bold text-encre mb-8">
                 {demo.title}

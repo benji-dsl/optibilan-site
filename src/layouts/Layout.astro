@@ -9,6 +9,7 @@ import {
   otherLocale,
 } from '../i18n/config';
 import { hasEnglishVersion } from '../i18n/routes';
+import ConsentBanner from '../components/ConsentBanner.astro';
 import {
   organizationJsonLd,
   websiteJsonLd,
@@ -76,15 +77,15 @@ const fullOgImage = ogImageResolved.startsWith('http') ? ogImageResolved : `${SI
 const toJsonLd = (obj) => JSON.stringify(obj).replace(/</g, '\\u003c');
 
 // GA4 Measurement ID - replace with actual ID when available
-const GA4_ID = import.meta.env.PUBLIC_GA4_ID || 'G-XXXXXXXXXX';
+const GA4_ID = (import.meta.env.PUBLIC_GA4_ID || '').trim();
 // PostHog - replace with actual key when available
-const POSTHOG_KEY = import.meta.env.PUBLIC_POSTHOG_KEY || 'phc_XXXXXXXXXX';
+const POSTHOG_KEY = (import.meta.env.PUBLIC_POSTHOG_KEY || '').trim();
 
 import '../styles/global.css';
 ---
 
 <!doctype html>
-<html lang={HTML_LANG[locale]}>
+<html lang={HTML_LANG[locale]} {...(GA4_ID ? { 'data-ga4': GA4_ID } : {})}>
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/optibilan-favicon.svg" />
@@ -159,22 +160,6 @@ import '../styles/global.css';
 
     {jsonLd && <script type="application/ld+json" set:html={toJsonLd(jsonLd)}></script>}
 
-    {GA4_ID !== 'G-XXXXXXXXXX' && (
-    <>
-    <!-- Google Analytics 4 -->
-    <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA4_ID}`}></script>
-    <script is:inline>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', GA4_ID, {
-        send_page_view: true,
-        anonymize_ip: true,
-      });
-    </script>
-    </>
-    )}
-
     {POSTHOG_KEY !== 'phc_XXXXXXXXXX' && (
     <>
     <!-- PostHog -->
@@ -197,5 +182,9 @@ import '../styles/global.css';
     <!-- Lien d'evitement : premier element focusable, visible seulement au clavier -->
     <a href="#contenu" class="skip-link">{locale === 'en' ? 'Skip to content' : 'Aller au contenu'}</a>
     <slot />
+    {GA4_ID && <ConsentBanner />}
+    <script>
+      import '@/scripts/analytics';
+    </script>
   </body>
 </html>

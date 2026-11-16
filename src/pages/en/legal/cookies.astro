@@ -30,16 +30,16 @@ const cookies = [
     description: 'Custom practice vocabulary (client/patient/member) for the interface.',
   },
   {
-    name: '_ga* / _gid / _gat',
-    category: 'Analytics',
-    duration: '13 months / 24h / 1min',
-    description: 'Google Analytics 4 - Anonymized audience measurement (masked IP). Consent required.',
+    name: 'optibilan_consent_v1',
+    category: 'Necessary',
+    duration: '6 months',
+    description: 'Remembers your choice about audience measurement. Stored in your browser, never transmitted. No measurement cookie is set before that choice.',
   },
   {
-    name: 'plausible_*',
+    name: '_ga / _ga_*',
     category: 'Analytics',
     duration: '13 months',
-    description: 'Plausible Analytics - Lightweight, privacy-friendly alternative to GA4.',
+    description: 'Google Analytics 4, loaded only after you agree. Masked IP, no personal identifier, no data resold.',
   },
 ];
 ---
@@ -88,7 +88,14 @@ const cookies = [
           <h2 class="font-display text-xl font-bold text-encre mb-3">Your rights</h2>
           <p class="text-encre/60 mb-4">In accordance with the GDPR, you have the right to access, rectify, erase, restrict, port and object to the processing of your data.</p>
           <ul class="space-y-2 text-encre/60 text-sm">
-            <li>Manage your preferences through the "Cookies" banner at the bottom of the page.</li>
+            <li>
+              You can change your mind at any time:
+              {import.meta.env.PUBLIC_GA4_ID ? (
+                <button type="button" data-consent-manage class="text-bleu-signature hover:underline font-medium">change my choice</button>
+              ) : (
+                <span>audience measurement is disabled on this site.</span>
+              )}
+            </li>
             <li>Delete cookies through your browser settings.</li>
             <li>Exercise your GDPR rights through <a href={lp('/legal/confidentialite/')} class="text-bleu-signature hover:underline">the privacy policy</a> or the admin (My account → My data).</li>
           </ul>

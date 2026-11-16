@@ -98,6 +98,15 @@ const fr = {
     startFree: 'Démarrer gratuitement',
     popular: 'Le plus choisi',
   },
+  consent: {
+    aria: 'Consentement à la mesure d\'audience',
+    title: 'Mesure d\'audience',
+    text: "Google Analytics nous dit quelles pages et quels boutons servent vraiment. Aucun cookie n'est déposé avant votre choix, et refuser ne change rien à votre navigation.",
+    accept: 'Accepter',
+    refuse: 'Refuser',
+    more: 'En savoir plus',
+    manage: 'Gérer les cookies',
+  },
   switcher: {
     frLabel: 'Lire en anglais',
     enLabel: 'Lire en français',
@@ -203,6 +212,15 @@ const en: Dict = {
     billed: 'Billed',
     startFree: 'Start for free',
     popular: 'Most chosen',
+  },
+  consent: {
+    aria: 'Measurement consent',
+    title: 'Audience measurement',
+    text: 'Google Analytics tells us which pages and buttons actually help. No cookie is set before you choose, and refusing changes nothing in your browsing.',
+    accept: 'Accept',
+    refuse: 'Refuse',
+    more: 'Learn more',
+    manage: 'Manage cookies',
   },
   switcher: {
     frLabel: 'Lire en anglais',

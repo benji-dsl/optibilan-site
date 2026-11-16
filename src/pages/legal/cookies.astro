@@ -27,16 +27,16 @@ const cookies = [
     description: 'Vocabulaire personnalisé du cabinet (coaché/patient/membre) pour l\'interface.',
   },
   {
-    name: '_ga* / _gid / _gat',
-    category: 'Analytique',
-    duration: '13 mois / 24h / 1min',
-    description: 'Google Analytics 4 - Mesure d\'audience anonymisée (IP masquée). Consentement requis.',
+    name: 'optibilan_consent_v1',
+    category: 'Nécessaire',
+    duration: '6 mois',
+    description: 'Mémorise votre choix sur la mesure d\'audience. Stocké dans votre navigateur, jamais transmis. Aucun cookie de mesure n\'est déposé avant ce choix.',
   },
   {
-    name: 'plausible_*',
+    name: '_ga / _ga_*',
     category: 'Analytique',
     duration: '13 mois',
-    description: 'Plausible Analytics - Alternative légère à GA4, respectueuse de la vie privée.',
+    description: 'Google Analytics 4, chargé uniquement après votre accord. IP masquée, aucun identifiant personnel, aucune donnée revendue.',
   },
 ];
 ---
@@ -83,7 +83,14 @@ const cookies = [
           <h2 class="font-display text-xl font-bold text-encre mb-3">Vos droits</h2>
           <p class="text-encre/60 mb-4">Conformément au RGPD, vous disposez d'un droit d'accès, de rectification, d'effacement, de limitation, de portabilité et d'opposition au traitement de vos données.</p>
           <ul class="space-y-2 text-encre/60 text-sm">
-            <li>Gérez vos préférences via le bandeau « Cookies » en bas de page.</li>
+            <li>
+              Vous pouvez changer d'avis à tout moment :
+              {import.meta.env.PUBLIC_GA4_ID ? (
+                <button type="button" data-consent-manage class="text-bleu-signature hover:underline font-medium">modifier mon choix</button>
+              ) : (
+                <span>la mesure d'audience est désactivée sur ce site.</span>
+              )}
+            </li>
             <li>Supprimez les cookies via les paramètres de votre navigateur.</li>
             <li>Exercez vos droits RGPD via <a href="/legal/confidentialite/" class="text-bleu-signature hover:underline">la politique de confidentialité</a> ou l'admin (Mon compte → Mes données).</li>
           </ul>

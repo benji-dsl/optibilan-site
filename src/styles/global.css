@@ -945,3 +945,17 @@
 }
 
 /* cache bust: Mon Sep 23 2026 */
+
+/* Alternance des blocs de demonstration : l'image passe a gauche.
+   Applique uniquement en grand ecran : sur mobile, une colonne inversee
+   decalait le contenu et provoquait un debordement horizontal. */
+@media (min-width: 1024px) {
+  .demo-rtl {
+    direction: rtl;
+  }
+}
+
+/* Un element anime hors du cadre ne doit jamais creer de scroll lateral. */
+body {
+  overflow-x: clip;
+}

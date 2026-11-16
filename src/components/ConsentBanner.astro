@@ -1,0 +1,56 @@
+---
+/**
+ * Bandeau de consentement (mesure d'audience).
+ *
+ * Il n'est affiche que si un identifiant GA4 est configure, et il est masque par
+ * defaut : c'est le script d'analyse qui l'affiche, et seulement quand aucun
+ * choix n'a encore ete enregistre. Sans JavaScript, rien n'est charge et rien
+ * n'est depose, ce qui est le comportement attendu.
+ *
+ * Les deux boutons ont exactement le meme poids visuel : le refus doit etre
+ * aussi simple que l'acceptation (CNIL).
+ */
+import { localeOf } from '../i18n/config';
+import { t } from '../i18n/ui';
+
+const locale = localeOf(Astro.currentLocale);
+const d = t(locale).consent;
+const cookiesHref = locale === 'en' ? '/en/legal/cookies/' : '/legal/cookies/';
+---
+
+<section
+  data-consent-banner
+  hidden
+  role="region"
+  aria-label={d.aria}
+  class="fixed inset-x-0 bottom-0 z-[120] border-t border-encre/15 bg-blanc/98 backdrop-blur-md shadow-[0_-8px_30px_rgba(35,33,28,0.12)]"
+>
+  <div class="container py-4 md:py-5">
+    <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between md:gap-8">
+      <div class="max-w-2xl">
+        <p class="font-semibold text-encre text-sm mb-1">{d.title}</p>
+        <p class="text-encre/70 text-sm leading-relaxed">
+          {d.text}
+          <a href={cookiesHref} class="text-bleu-signature hover:underline whitespace-nowrap">{d.more}</a>
+        </p>
+      </div>
+
+      <div class="flex items-center gap-3 shrink-0">
+        <button
+          type="button"
+          data-consent-choice="denied"
+          class="btn-secondary text-sm px-5 py-2.5 min-w-[7rem] justify-center"
+        >
+          {d.refuse}
+        </button>
+        <button
+          type="button"
+          data-consent-choice="granted"
+          class="btn-secondary text-sm px-5 py-2.5 min-w-[7rem] justify-center"
+        >
+          {d.accept}
+        </button>
+      </div>
+    </div>
+  </div>
+</section>

@@ -167,17 +167,21 @@ function initAvantAvec(): void {
 }
 
 function initDemoSections(): void {
+  // Sur mobile, un decalage horizontal de 60 a 90 px sortait de l'ecran et
+  // creait un scroll lateral : on n'anime plus que la verticale sous 1024 px.
+  const compact = window.matchMedia('(max-width: 1023px)').matches;
+
   const sections = document.querySelectorAll('[aria-labelledby^="demo-"]');
   sections.forEach((section: Element) => {
+    const grid = section.querySelector('.grid') as HTMLElement | null;
     const textCol = section.querySelector('.grid > div:first-child');
     const mockup = section.querySelector('.grid > :last-child');
-    const isRtl = (section.querySelector('.grid') as HTMLElement | null)?.style
-      .direction === 'rtl';
+    const isRtl = grid?.classList.contains('demo-rtl') ?? false;
 
     if (textCol && !REDUCED) {
       gsap.fromTo(
         textCol,
-        { autoAlpha: 0, x: isRtl ? 60 : -60 },
+        { autoAlpha: 0, x: compact ? 0 : isRtl ? 60 : -60 },
         {
           autoAlpha: 1,
           x: 0,
@@ -197,7 +201,7 @@ function initDemoSections(): void {
       if (!REDUCED) {
         gsap.fromTo(
           mockup,
-          { autoAlpha: 0, x: 90 * dir, scale: 0.94 },
+          { autoAlpha: 0, x: compact ? 0 : 90 * dir, scale: 0.94 },
           {
             autoAlpha: 1,
             x: 0,

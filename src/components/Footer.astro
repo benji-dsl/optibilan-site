@@ -94,11 +94,16 @@ const socialLinks = [
         <p class="text-craie/40 text-sm">
           {new Date().getFullYear()} Elite Longevity LLC. {d.rights}
         </p>
-        <div class="flex items-center gap-6 text-sm text-craie/40">
+        <div class="flex flex-wrap items-center gap-6 text-sm text-craie/40">
           <a href={lp('/legal/mentions/')} class="hover:text-bleu-signature transition-colors">{d.notice}</a>
           <a href={lp('/legal/confidentialite/')} class="hover:text-bleu-signature transition-colors">{d.privacy}</a>
           <a href={lp('/legal/cgv/')} class="hover:text-bleu-signature transition-colors">{d.terms}</a>
           <a href={lp('/legal/cookies/')} class="hover:text-bleu-signature transition-colors">{d.cookies}</a>
+          {import.meta.env.PUBLIC_GA4_ID && (
+            <button type="button" data-consent-manage class="hover:text-bleu-signature transition-colors">
+              {t(locale).consent.manage}
+            </button>
+          )}
         </div>
       </div>
     </div>
