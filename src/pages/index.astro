@@ -8,23 +8,23 @@ import BrowserFrame from '../components/BrowserFrame.astro';
 import CTA from '../components/CTA.astro';
 import Icon from '../components/Icon.astro';
 
-const pageTitle = 'Optibilan : logiciel de coaching et suivi client santé';
-const pageDescription = 'Le logiciel de coaching et de suivi client des pros de la santé : bilans, nutrition, sport et biométriques sur une seule plateforme. Essai offert 30 jours.';
+const pageTitle = 'Optibilan : logiciel de coaching et suivi des personnes';
+const pageDescription = 'Le logiciel de coaching et de suivi des personnes pour les pros de la santé : bilans, nutrition, sport et biométriques sur une plateforme. Essai offert 30 jours.';
 
 const socialProof = [
-  { name: 'Studio Performance', type: 'Coaching sportif', location: 'Bordeaux', clients: 120, image: '/images/cabinets/01-studio-performance-realiste.webp' },
-  { name: 'Cabinet NutriSanté', type: 'Nutrition', location: 'Nantes', clients: 85, image: '/images/cabinets/02-cabinet-nutrisante-realiste.webp' },
-  { name: 'Mental Performance', type: 'Préparation mentale', location: 'Paris', clients: 60, image: '/images/cabinets/03-mental-performance-realiste.webp' },
-  { name: 'Méthode Équilibre', type: 'Cabinet pluridisciplinaire', location: 'Lille', clients: 45, image: '/images/cabinets/04-methode-equilibre-realiste.webp' },
+  { name: 'Studio Performance', type: 'Coaching sportif', location: 'Bordeaux', personnes: 120, image: '/images/cabinets/01-studio-performance-realiste.webp' },
+  { name: 'Cabinet NutriSanté', type: 'Nutrition', location: 'Nantes', personnes: 85, image: '/images/cabinets/02-cabinet-nutrisante-realiste.webp' },
+  { name: 'Mental Performance', type: 'Préparation mentale', location: 'Paris', personnes: 60, image: '/images/cabinets/03-mental-performance-realiste.webp' },
+  { name: 'Méthode Équilibre', type: 'Cabinet pluridisciplinaire', location: 'Lille', personnes: 45, image: '/images/cabinets/04-methode-equilibre-realiste.webp' },
 ];
 
 const avantAvec = [
-  { avant: 'Formulaires dispersés', avec: 'Un dossier client unifié' },
+  { avant: 'Formulaires dispersés', avec: 'Un dossier unique par personne' },
   { avant: 'Excel / PDF / Word', avec: 'Tout dans une interface' },
   { avant: 'Applications multiples', avec: 'Une seule plateforme' },
   { avant: 'Informations éparpillées', avec: 'Données structurées & liées' },
   { avant: 'Suivi manuel & réactif', avec: 'Pilotage proactif & alertes' },
-  { avant: 'Client dans le flou', avec: 'Expérience client guidée' },
+  { avant: 'La personne dans le flou', avec: 'Un parcours guidé pour la personne' },
 ];
 
 const productDemos = [
@@ -61,7 +61,7 @@ const productDemos = [
     benefits: [
       'Plans macro/micro par repas, base CIQUAL/USDA 3000+ aliments',
       'Listes de courses auto, compléments documentés & alertes interactions',
-      'Journal client photo/scan + validation coach 1 clic + écart plan vs réel',
+      'Journal de la personne (photo/scan) + validation coach 1 clic + écart plan vs réel',
     ],
     screenshot: '/images/product/02-mobile-nutrition.webp',
     href: '/product/nutrition/',
@@ -74,7 +74,7 @@ const productDemos = [
     benefits: [
       'Bibliothèque 200+ exercices vidéo + régressions/progressions',
       'Drag-and-drop séances, progression auto charge/volume/RPE',
-      'Client : vidéo exercice, saisie poids/RPE, coach voit tout temps réel',
+      'La personne : vidéo exercice, saisie poids/RPE, le coach voit tout en temps réel',
     ],
     screenshot: '/images/product/03-mobile-seance-sport.webp',
     href: '/product/training/',
@@ -86,7 +86,7 @@ const productDemos = [
     promise: 'L\'IA prépare. Vous décidez.',
     benefits: [
       'PDF → données structurées : bilans, analyses, lettres pré-remplies',
-      'Bilan → synthèse auto pour pro + client',
+      'Bilan → synthèse auto pour le pro + la personne',
       'Données → alertes adhérence, suggestions ajustement',
     ],
     screenshot: '/images/product/01-mobile-accueil-programme.webp',
@@ -95,10 +95,10 @@ const productDemos = [
   },
 ];
 
-const clientExperience = {
+const interfacePro = {
   pro: {
     title: 'Votre tableau de bord',
-    desc: 'Tout piloter d\'un seul endroit. Bilans, programmes, nutrition, santé, mental, IA — modules activables selon votre pratique.',
+    desc: 'Tout piloter d\'un seul endroit. Bilans, programmes, nutrition, santé, mental, IA : modules activables selon votre pratique.',
     screenshot: '/images/product/dashboard-coach.webp',
   },
 };
@@ -115,15 +115,15 @@ const testimonials = [
   {
     name: 'Thomas Bertrand',
     role: 'Coach sportif & Fondateur',
-    company: 'Studio Performance — Bordeaux',
+    company: 'Studio Performance, Bordeaux',
     photo: '/images/avatars/avatar-placeholder-1.svg',
-    quote: '"La bibliothèque d\'exercices (200+ vidéos) et les programmes types m\'ont fait gagner 10h/semaine. Mes clients valident leurs séances sur l\'app, je vois leur progression en temps réel. La rétention à 6 mois est passée de 65% à 89%. J\'ai pu passer de 30 à 120 clients sans embaucher."',
-    result: '+59% rétention • 4x clients',
+    quote: '"La bibliothèque d\'exercices (200+ vidéos) et les programmes types m\'ont fait gagner 10h/semaine. Les personnes que j\'accompagne valident leurs séances sur l\'app, je vois leur progression en temps réel. La rétention à 6 mois est passée de 65% à 89%. J\'ai pu passer de 30 à 120 personnes sans embaucher."',
+    result: '+59% rétention • 4x personnes',
   },
   {
     name: 'Sophie Martin',
     role: 'Diététicienne-nutritionniste',
-    company: 'Cabinet NutriSanté — Nantes',
+    company: 'Cabinet NutriSanté, Nantes',
     photo: '/images/avatars/avatar-placeholder-2.svg',
     quote: '"Les templates nutrition et les listes de courses automatisées ont changé ma pratique. Mes patients reçoivent leur plan complet + courses en 1 clic. L\'export RGPD est un vrai plus pour la conformité."',
     result: '3x plus rapide • 100% conforme',
@@ -131,7 +131,7 @@ const testimonials = [
   {
     name: 'Julie Moreau',
     role: 'Coach santé & Fondatrice',
-    company: 'Méthode Équilibre — Lille',
+    company: 'Méthode Équilibre, Lille',
     photo: '/images/avatars/avatar-placeholder-3.svg',
     quote: '"J\'ai lancé mon accompagnement signature à 1 800€/mois grâce à la marque blanche totale : domaine custom, emails @ma-methode.fr, assistant IA \'Julie\', vocabulaire \'membre\'. Mes membres ne voient jamais Optibilan."',
     result: '81k€ MRR solo • Marque 100% sienne',
@@ -220,7 +220,7 @@ const breadcrumbJsonLd = {
       "@context": "https://schema.org",
       "@type": "Course",
       "@id": "https://optibilan.com/#course-accompagnement-coach",
-      "name": "Accompagnement des clients pour coachs santé et performance",
+      "name": "Accompagnement des personnes pour coachs santé et performance",
       "description": "Formation pratique à l'organisation des bilans, au suivi nutrition-sport et à l'automatisation des processus avec Optibilan.",
       "provider": {
         "@type": "EducationalOrganization",
@@ -239,8 +239,8 @@ const breadcrumbJsonLd = {
     <!-- 1. HERO with spectacular product shot -->
     <Hero
       title="Optibilan - Centralisez vos suivis. 
-Suivez trois fois plus de clients sans y passer vos soirées."
-      subtitle="Le logiciel de coaching et de suivi client des professionnels de la santé : bilans, programmes, nutrition, sport et données biométriques réunis sur une seule plateforme."
+Suivez trois fois plus de personnes sans y passer vos soirées."
+      subtitle="Le logiciel de coaching et de suivi des personnes pour les professionnels de la santé : bilans, programmes, nutrition, sport et données biométriques réunis sur une seule plateforme."
       badge=""
       primaryCTA={{ href: '/pricing/', label: 'Rejoindre Optibilan' }}
       secondaryCTA={{ href: '/checkout/solo/', label: 'Essai offert' }}
@@ -273,9 +273,9 @@ Suivez trois fois plus de clients sans y passer vos soirées."
               </div>
               <div class="p-6">
                 <h3 class="font-display text-lg font-bold text-encre mb-1">{item.name}</h3>
-                <p class="text-encre/50 text-sm mb-3">{item.type} — {item.location}</p>
+                <p class="text-encre/50 text-sm mb-3">{item.type} · {item.location}</p>
                 <div class="flex items-center justify-center gap-4 text-sm text-encre/60">
-                  <span class="flex items-center gap-1"><Icon name="users" class="w-4 h-4" /> {item.clients}+ clients</span>
+                  <span class="flex items-center gap-1"><Icon name="users" class="w-4 h-4" /> {item.personnes}+ personnes</span>
                 </div>
               </div>
             </article>
@@ -350,7 +350,7 @@ Suivez trois fois plus de clients sans y passer vos soirées."
             </div>
             <BrowserFrame
               src={demo.screenshot}
-              alt={`Tableau de bord Optibilan — module ${demo.title} : suivi des clients et des données pour les coachs et professionnels de la santé`}
+              alt={`Tableau de bord Optibilan, module ${demo.title} : suivi des personnes et des données pour les coachs et professionnels de la santé`}
               url={`app.optibilan.com/${demo.id}`}
               aspect="16/10"
               width="1000"
@@ -361,18 +361,18 @@ Suivez trois fois plus de clients sans y passer vos soirées."
       </section>
     ))}
 
-    <!-- 5. EXPÉRIENCE CLIENT -->
+    <!-- 5. EXPÉRIENCE DES PERSONNES -->
     <section class="section bg-papier" aria-labelledby="experience-title">
       <div class="container">
         <header class="text-center max-w-3xl mx-auto mb-16">
           <h2 id="experience-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
-            Une interface pour vous. Une expérience claire pour vos clients.
+            Une interface pour vous. Une expérience claire pour les personnes que vous suivez.
           </h2>
         </header>
         <div class="grid lg:grid-cols-2 gap-12 items-center">
           <BrowserFrame
-            src={clientExperience.pro.screenshot}
-            alt="Tableau de bord Optibilan du professionnel : pilotage des suivis, bilans, programmes et appels de tous les clients en un seul endroit"
+            src={interfacePro.pro.screenshot}
+            alt="Tableau de bord Optibilan du professionnel : pilotage des suivis, bilans, programmes et appels de toutes les personnes suivies en un seul endroit"
             url="app.optibilan.com/dashboard"
             aspect="5/2"
             width="998"
@@ -381,7 +381,7 @@ Suivez trois fois plus de clients sans y passer vos soirées."
           <div>
             <ul class="space-y-3 mb-8 max-w-xl">
               <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5" /> Dashboard unifié : bilans, programmes, nutrition, santé, mental</li>
-              <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5" /> IA qui structure, synthétise, alerte — vous validez</li>
+              <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5" /> IA qui structure, synthétise, alerte : vous validez</li>
               <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5" /> Marque blanche totale : votre cabinet, votre domaine, vos emails</li>
               <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5" /> API, webhooks, intégrations : branchez votre écosystème</li>
             </ul>
@@ -429,17 +429,17 @@ Suivez trois fois plus de clients sans y passer vos soirées."
       <div class="container">
         <div class="max-w-4xl mx-auto">
           <h2 id="pillar-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-6">
-            Le logiciel de coaching et de suivi client des professionnels de la santé
+            Le logiciel de coaching et de suivi des personnes pour les professionnels de la santé
           </h2>
           <div class="prose prose-encre max-w-none text-encre/70 leading-relaxed space-y-4">
             <p>
-              Optibilan est un <strong>logiciel de coaching et de suivi client</strong> conçu pour les professionnels de la santé et de la performance : <strong>coachs sportifs</strong>, <strong>nutritionnistes</strong>, diététiciens, naturopathes, médecins et cabinets pluridisciplinaires. Fini les tableurs, les PDF éparpillés et les applications multiples : servez-vous d'une plateforme unique pour créer des bilans, construire des programmes, suivre la nutrition et analyser les biomarqueurs de vos clients.
+              Optibilan est un <strong>logiciel de coaching et de suivi des personnes</strong> conçu pour les professionnels de la santé et de la performance : <strong>coachs sportifs</strong>, <strong>nutritionnistes</strong>, diététiciens, naturopathes, médecins et cabinets pluridisciplinaires. Fini les tableurs, les PDF éparpillés et les applications multiples : servez-vous d'une plateforme unique pour créer des bilans, construire des programmes, suivre la nutrition et analyser les biomarqueurs des personnes que vous suivez.
             </p>
             <p>
-              Le logiciel centralise vos suivis et structure votre accompagnement : bilans personnalisables, plans nutrition avec listes de courses, programmes sportifs, préparation mentale, données de santé connectée (Apple Health, Oura, Garmin), IA qui pré-remplit vos comptes rendus et alertes d'adhérence. Vos clients suivent leur progression dans une application mobile claire, votre marque (marque blanche totale comprise), et vous pilotez tout depuis votre tableau de bord.
+              Le logiciel centralise vos suivis et structure votre accompagnement : bilans personnalisables, plans nutrition avec listes de courses, programmes sportifs, préparation mentale, données de santé connectée (Apple Health, Oura, Garmin), IA qui pré-remplit vos comptes rendus et alertes d'adhérence. Les personnes que vous suivez voient leur progression dans une application mobile claire, votre marque (marque blanche totale comprise), et vous pilotez tout depuis votre tableau de bord.
             </p>
             <p>
-              Que vous soyez un <a href="/solutions/coaches/" class="text-bleu-signature font-semibold hover:underline">coach sportif</a>, un <a href="/solutions/nutrition/" class="text-bleu-signature font-semibold hover:underline">nutritionniste</a>, un <a href="/solutions/medecin/" class="text-bleu-signature font-semibold hover:underline">médecin</a> ou un <a href="/solutions/cabinets/" class="text-bleu-signature font-semibold hover:underline">cabinet pluridisciplinaire</a>, les modules s'activent selon votre pratique. Découvrez aussi la <a href="/product/white-label/" class="text-bleu-signature font-semibold hover:underline">marque blanche totale</a>, les bilans et la progression clients, ou planifiez votre démarrage sur la page <a href="/pricing/" class="text-bleu-signature font-semibold hover:underline">tarifs</a>.
+              Que vous soyez un <a href="/solutions/coaches/" class="text-bleu-signature font-semibold hover:underline">coach sportif</a>, un <a href="/solutions/nutrition/" class="text-bleu-signature font-semibold hover:underline">nutritionniste</a>, un <a href="/solutions/medecin/" class="text-bleu-signature font-semibold hover:underline">médecin</a> ou un <a href="/solutions/cabinets/" class="text-bleu-signature font-semibold hover:underline">cabinet pluridisciplinaire</a>, les modules s'activent selon votre pratique. Découvrez aussi la <a href="/product/white-label/" class="text-bleu-signature font-semibold hover:underline">marque blanche totale</a>, les bilans et la progression des personnes, ou planifiez votre démarrage sur la page <a href="/pricing/" class="text-bleu-signature font-semibold hover:underline">tarifs</a>.
             </p>
           </div>
         </div>

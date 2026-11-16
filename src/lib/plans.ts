@@ -15,7 +15,7 @@ export function getPlanDetails(plan: 'SOLO' | 'STUDIO' | 'CABINET'): PlanDetails
         priceMonthly: 49,
         priceYearly: 490,
         features: [
-          'Jusqu\'à 30 clients',
+          'Jusqu\'à 30 personnes',
           '1 accès professionnel',
           'Bilans & progression',
           'Journal & photos',
@@ -32,7 +32,7 @@ export function getPlanDetails(plan: 'SOLO' | 'STUDIO' | 'CABINET'): PlanDetails
         priceMonthly: 149,
         priceYearly: 1490,
         features: [
-          'Jusqu\'à 150 clients',
+          'Jusqu\'à 150 personnes',
           'Jusqu\'à 5 accès staff',
           'Prépa mentale & santé',
           'Templates nutrition/sport',
@@ -50,7 +50,7 @@ export function getPlanDetails(plan: 'SOLO' | 'STUDIO' | 'CABINET'): PlanDetails
         priceMonthly: 349,
         priceYearly: 3490,
         features: [
-          'Clients illimités',
+          'Personnes illimitées',
           'Accès staff illimités',
           'Multi-spécialités (coach / mental / diététique)',
           'Assistant IA (20 000 messages/mois)',

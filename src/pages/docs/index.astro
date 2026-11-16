@@ -6,7 +6,7 @@ import Icon from '../../components/Icon.astro';
 import DiscoverCTA from '../../components/DiscoverCTA.astro';
 
 const pageTitle = 'Documentation API Optibilan : REST v1, webhooks, sandbox';
-const pageDescription = 'Documentation de l’API REST Optibilan : clés API scopées, ressources clients, bilans, nutrition, sport et santé, webhooks signés et sandbox.';
+const pageDescription = 'Documentation de l’API REST Optibilan : clés API scopées, ressources des personnes, bilans, nutrition, sport et santé, webhooks signés et sandbox.';
 
 const breadcrumbJsonLd = {
   '@context': 'https://schema.org',
@@ -28,7 +28,7 @@ const docJsonLd = {
 };
 
 const resources = [
-  { name: 'Clients', desc: 'Création, lecture, mise à jour et recherche de clients, avec les permissions de l’utilisateur authentifié.', scope: 'clients:read, clients:write' },
+  { name: 'Personnes', desc: 'Création, lecture, mise à jour et recherche de personnes, avec les permissions de l’utilisateur authentifié.', scope: 'clients:read, clients:write' },
   { name: 'Bilans', desc: 'Bilan de suivi, mesures et évolution des indicateurs et historique des points d’étape.', scope: 'bilans:read, bilans:write' },
   { name: 'Nutrition', desc: 'Plans, listes de courses, habitudes et compléments documentés.', scope: 'nutrition:read, nutrition:write' },
   { name: 'Sport', desc: 'Programmes, séances, progression et données d’entraînement.', scope: 'sport:read, sport:write' },
@@ -38,7 +38,7 @@ const resources = [
 ];
 
 const webhookEvents = [
-  'Client créé',
+  'Personne créée',
   'Bilan soumis',
   'Badge obtenu',
   'Nutrition mise à jour',
@@ -88,7 +88,7 @@ const steps = [
             Documentation API Optibilan
           </h1>
           <p class="text-lg text-encre/70 leading-relaxed">
-            L’API REST v1 donne accès aux clients, bilans, nutrition, sport et santé, avec des webhooks signés pour
+            L’API REST v1 donne accès aux personnes, bilans, nutrition, sport et santé, avec des webhooks signés pour
             réagir en temps réel. Ce document présente ce qui est public et vérifiable. Le schéma OpenAPI complet,
             les signatures d’authentification détaillées et les quotas exacts sont communiqués avec l’accès API.
           </p>

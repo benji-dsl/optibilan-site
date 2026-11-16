@@ -6,9 +6,8 @@ import Hero from '../../../components/Hero.astro';
 import CTA from '../../../components/CTA.astro';
 import Icon from '../../../components/Icon.astro';
 
-const pageTitle = 'Bilans et progression : suivi client structuré | Optibilan';
-const pageDescription = 'Comprenez ce qui évolue. Sans reconstruire l\'historique de votre client. Bilans, mensurations, photos, ressentis et habitudes réunis dans une seule chronologie.';
-
+const pageTitle = 'Bilans et progression : un suivi structuré | Optibilan';
+const pageDescription = "Comprenez ce qui évolue sans reconstruire l'historique : bilans, mensurations, photos, ressentis et habitudes dans une chronologie unique.";
 const breadcrumbJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
@@ -32,7 +31,7 @@ const breadcrumbJsonLd = {
   <main id="contenu">
     <Hero
       title="Comprenez ce qui évolue.
-Sans reconstruire l'historique de votre client."
+Sans reconstruire l'historique de la personne suivie."
       subtitle="Bilans, mensurations, photos, ressentis et habitudes réunis dans une seule chronologie."
       primaryCTA={{ href: '/pricing/', label: 'Rejoindre Optibilan' }}
       secondaryCTA={{ href: '/checkout/solo/', label: 'Essayer Optibilan' }}
@@ -61,7 +60,7 @@ Sans reconstruire l'historique de votre client."
             <p class="text-sm text-encre/50">Pré-remplissage automatique depuis le dernier bilan. Validation mobile en moins de 2 minutes.</p>
           </div>
           <div class="aspect-video rounded-xl border border-encre/10 bg-encre/5 overflow-hidden relative shadow-soft">
-            <img src="/images/product/bilans-progression.webp" alt="Capture de l'interface Optibilan : bilans clients et courbe de progression au fil du temps" class="w-full h-full object-cover" loading="lazy" width="575" height="273" />
+            <img src="/images/product/bilans-progression.webp" alt="Capture de l'interface Optibilan : bilans des personnes suivies et courbe de progression au fil du temps" class="w-full h-full object-cover" loading="lazy" width="575" height="273" />
           </div>
         </div>
       </div>
@@ -88,7 +87,7 @@ Sans reconstruire l'historique de votre client."
               <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-bleu-signature flex-shrink-0 mt-0.5" /> Courbes multi-séries synchronisées (poids + mensurations + sommeil)</li>
               <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-bleu-signature flex-shrink-0 mt-0.5" /> Score de progression pondéré configurable</li>
               <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-bleu-signature flex-shrink-0 mt-0.5" /> Détection automatique de plateaux et régressions</li>
-              <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-bleu-signature flex-shrink-0 mt-0.5" /> Export PDF à vos couleurs pour le client</li>
+              <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-bleu-signature flex-shrink-0 mt-0.5" /> Export PDF à vos couleurs pour la personne</li>
             </ul>
             <p class="text-sm text-encre/50">Photos avant/après avec alignement visuel automatique. Corrélations croisées automatiques.</p>
           </div>
@@ -103,7 +102,7 @@ Sans reconstruire l'historique de votre client."
             Repérez ce qui mérite votre attention
           </h2>
           <p class="text-lg text-encre/60 max-w-2xl mx-auto">
-            Optibilan fait remonter les évolutions et informations à examiner : stagnation, baisse de motivation, observance en baisse, désengagement. Vous intervenez au bon moment, sur le bon client.
+            Optibilan fait remonter les évolutions et informations à examiner : stagnation, baisse de motivation, observance en baisse, désengagement. Vous intervenez au bon moment, sur la bonne personne.
           </p>
         </header>
 
@@ -112,7 +111,7 @@ Sans reconstruire l'historique de votre client."
             <h3 class="font-display text-2xl font-bold text-encre mb-4">Des alertes actionnables, pas du bruit</h3>
             <ul class="space-y-3 text-encre/60 mb-8">
               <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-bleu-signature flex-shrink-0 mt-0.5" /> Stagnation prolongée, motivation en baisse, observance faible</li>
-              <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-bleu-signature flex-shrink-0 mt-0.5" /> Seuils personnalisables par client ou globaux</li>
+              <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-bleu-signature flex-shrink-0 mt-0.5" /> Seuils personnalisables par personne ou globaux</li>
               <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-bleu-signature flex-shrink-0 mt-0.5" /> Historique des alertes traitées / en cours</li>
               <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-bleu-signature flex-shrink-0 mt-0.5" /> Corrélation multi-facteurs (charge ↑ + sommeil ↓ = vigilance)</li>
             </ul>
@@ -129,10 +128,10 @@ Sans reconstruire l'historique de votre client."
       <div class="container">
         <header class="mb-16">
           <h2 id="share-title" class="font-display text-3xl md:text-4xl font-bold text-encre mb-4">
-            Partagez un bilan clair avec le client
+            Partagez un bilan clair avec la personne
           </h2>
           <p class="text-lg text-encre/60 max-w-2xl mx-auto">
-            Rapport mensuel ou trimestriel auto-généré : graphiques, photos, commentaires coach, prochaines étapes. Le client reçoit un lien sécurisé, sans connexion. Version PDF à vos couleurs pour impression.
+            Rapport mensuel ou trimestriel auto-généré : graphiques, photos, commentaires coach, prochaines étapes. La personne reçoit un lien sécurisé, sans connexion. Version PDF à vos couleurs pour impression.
           </p>
         </header>
 
@@ -146,7 +145,7 @@ Sans reconstruire l'historique de votre client."
               <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-bleu-signature flex-shrink-0 mt-0.5" /> Branding automatique (logo, couleurs, domaine)</li>
               <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-bleu-signature flex-shrink-0 mt-0.5" /> Niveau de détail configurable (complet / synthèse)</li>
               <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-bleu-signature flex-shrink-0 mt-0.5" /> Commentaires coach visibles ou privés</li>
-              <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-bleu-signature flex-shrink-0 mt-0.5" /> Partage par lien, email ou espace client</li>
+              <li class="flex items-start gap-3"><Icon name="check" class="w-5 h-5 text-bleu-signature flex-shrink-0 mt-0.5" /> Partage par lien, email ou espace des personnes</li>
             </ul>
             <p class="text-sm text-encre/50">Automatisation des rappels et relances. Vous validez avant envoi, commentez si besoin.</p>
           </div>
@@ -167,7 +166,7 @@ Sans reconstruire l'historique de votre client."
         <div class="aspect-video max-w-4xl mx-auto rounded-xl border border-encre/10 bg-blanc overflow-hidden shadow-xl">
           <img
             src="/images/product/bilans-progression.webp"
-            alt="Capture de l'interface Optibilan : bilans clients et courbe de progression au fil du temps"
+            alt="Capture de l'interface Optibilan : bilans des personnes suivies et courbe de progression au fil du temps"
             width="575"
             height="273"
             class="w-full h-full object-cover"
@@ -179,7 +178,7 @@ Sans reconstruire l'historique de votre client."
 
     <CTA
       title="Prêt à voir les bilans en action ?"
-      subtitle="30 minutes pour découvrir comment centraliser le suivi de vos clients."
+      subtitle="30 minutes pour découvrir comment centraliser le suivi de toutes les personnes que vous accompagnez."
       primaryCTA={{ href: '/pricing/', label: 'Rejoindre Optibilan' }}
       secondaryCTA={{ href: '/checkout/solo/', label: 'Essayer Optibilan' }}
       variant="primary"

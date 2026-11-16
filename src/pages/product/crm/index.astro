@@ -6,8 +6,8 @@ import Hero from '../../../components/Hero.astro';
 import CTA from '../../../components/CTA.astro';
 import Icon from '../../../components/Icon.astro';
 
-const pageTitle = 'Journal coaching et CRM : un dossier client unique';
-const pageDescription = 'Entrées typées, pièces jointes, partage client, sync Notion, pipeline commercial. Le CRM intégré pour les professionnels de l\'accompagnement.';
+const pageTitle = 'Journal coaching et CRM : un dossier unique par personne';
+const pageDescription = 'Entrées typées, pièces jointes, partage avec la personne, sync Notion, pipeline commercial. Le CRM intégré pour les professionnels de l\'accompagnement.';
 
 const breadcrumbJsonLd = {
   '@context': 'https://schema.org',
@@ -34,7 +34,7 @@ const breadcrumbJsonLd = {
       title="Le CRM intégré 
 pour les pros 
 de l'accompagnement."
-      subtitle="Entrées typées, pièces jointes, partage client, sync Notion, pipeline commercial. Tout dans le dossier client."
+      subtitle="Entrées typées, pièces jointes, partage avec la personne, sync Notion, pipeline commercial. Tout dans le dossier de la personne."
       primaryCTA={{ href: '/pricing/', label: 'Rejoindre Optibilan' }}
       secondaryCTA={{ href: '/checkout/solo/', label: 'Essayer Optibilan' }}
     />
@@ -44,14 +44,14 @@ de l'accompagnement."
         <div class="aspect-video max-w-4xl mx-auto rounded-xl overflow-hidden relative">
           <img
             src="/images/product/09-coach-entretien-client.webp"
-            alt="Coach en entretien avec son client, suivi relationnel centralisé"
+            alt="Coach en entretien avec une personne suivie, suivi relationnel centralisé"
             class="w-full h-full object-cover"
             loading="lazy" width="1000" height="651" />
           <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" aria-hidden="true"></div>
           <div class="absolute bottom-4 left-1/2 -translate-x-1/2 text-center text-white/90 text-sm">
             <span class="flex items-center justify-center gap-1 bg-black/30 px-3 py-1 rounded-full backdrop-blur-sm">
               <Icon name="activity" class="w-4 h-4" />
-              Chaque client, une seule vue à 360°
+              Chaque personne, une seule vue à 360°
             </span>
           </div>
         </div>
@@ -98,8 +98,8 @@ de l'accompagnement."
             },
             {
               icon: 'users',
-              title: 'Partage client - visible / privé / commentaire',
-              desc: 'Chaque entrée : visible client (il la voit dans son espace), privée staff (équipe seulement), commentaire seul (client voit juste "votre coach a ajouté une note"). Notification push/email au client si visible. Historique des partages.',
+              title: 'Partage avec la personne - visible / privé / commentaire',
+              desc: 'Chaque entrée : visible par la personne (elle la voit dans son espace), privée staff (équipe seulement), commentaire seul (la personne voit juste "votre coach a ajouté une note"). Notification push/email à la personne si visible. Historique des partages.',
               features: [
                 '3 niveaux : visible / privé / commentaire',
                 'Notification push/email si partage visible',
@@ -110,8 +110,8 @@ de l'accompagnement."
             },
             {
               icon: 'chart',
-              title: 'Pipeline CRM - du prospect au client fidèle',
-              desc: 'Stages : prospect → essai → client actif → risque churn → réactivation → archive. Valeur vie client (LTV) calculée auto. Segmentation RFM (récence, fréquence, montant). Alertes churn risk (inactivité, alertes d\'adhérence). Relances auto : inactivité 7/14/30j, anniversaire, renouvellement, upsell.',
+              title: 'Pipeline CRM - du prospect au suivi dans la durée',
+              desc: 'Stages : prospect → essai → personne active → risque churn → réactivation → archive. Valeur vie (LTV) calculée auto. Segmentation RFM (récence, fréquence, montant). Alertes churn risk (inactivité, alertes d\'adhérence). Relances auto : inactivité 7/14/30j, anniversaire, renouvellement, upsell.',
               features: [
                 '6 stages personnalisables + archivage',
                 'LTV auto + segmentation RFM',
@@ -123,7 +123,7 @@ de l'accompagnement."
             {
               icon: 'code',
               title: 'Sync Notion - zéro double saisie',
-              desc: 'Webhook note.created → base Notion (client, coach, date, type, contenu, visibilité, tags). Bidirectionnel possible (création client Notion → création client Optibilan). Mapping champs personnalisable. Filtres par visibilité (privé staff non sync).',
+              desc: 'Webhook note.created → base Notion (client, coach, date, type, contenu, visibilité, tags). Bidirectionnel possible (création d\'une personne dans Notion → création de la personne dans Optibilan). Mapping champs personnalisable. Filtres par visibilité (privé staff non sync).',
               features: [
                 'Webhook note.created → Notion (champs config)',
                 'Bidirectionnel : Notion → Optibilan',
@@ -135,7 +135,7 @@ de l'accompagnement."
             {
               icon: 'lock',
               title: 'Relances & tâches - rien ne tombe à l\'eau',
-              desc: 'Tâches assignées (coach, admin, mental, diet) avec échéance, priorité, recurrence. Vue "Mes tâches" par staff. Rappels Slack/email/push. Checklist onboarding client (questionnaire, analyses, contrat, outils). Checklist offboarding (export, purge, feedback).',
+              desc: 'Tâches assignées (coach, admin, mental, diet) avec échéance, priorité, recurrence. Vue "Mes tâches" par staff. Rappels Slack/email/push. Checklist d\'accueil de la personne (questionnaire, analyses, contrat, outils). Checklist offboarding (export, purge, feedback).',
               features: [
                 'Tâches : assigné, échéance, priorité, récurrence',
                 'Vue "Mes tâches" par staff',
@@ -171,7 +171,7 @@ de l'accompagnement."
     </section>
 
     <CTA
-      title="Prêt à centraliser votre suivi client ?"
+      title="Prêt à centraliser le suivi des personnes que vous suivez ?"
       subtitle="30 minutes pour voir comment structurer journal, documents et pipeline."
       primaryCTA={{ href: '/pricing/', label: 'Rejoindre Optibilan' }}
       secondaryCTA={{ href: '/checkout/solo/', label: 'Essayer Optibilan' }}

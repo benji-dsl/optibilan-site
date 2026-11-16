@@ -7,7 +7,7 @@ import CTA from '../../../components/CTA.astro';
 import Icon from '../../../components/Icon.astro';
 
 const pageTitle = 'Logiciel de suivi nutritionnel pour coachs et nutritionnistes';
-const pageDescription = 'Le suivi nutritionnel, pas une pile de PDF. Plans, habitudes, listes de courses, compléments documentés et évolution dans le dossier client.';
+const pageDescription = 'Le suivi nutritionnel, pas une pile de PDF. Plans, habitudes, listes de courses, compléments documentés et évolution dans le dossier de la personne.';
 
 const breadcrumbJsonLd = {
   '@context': 'https://schema.org',
@@ -33,7 +33,7 @@ const breadcrumbJsonLd = {
     <Hero
       title="Construisez le suivi nutritionnel. 
  Pas une pile de PDF."
-      subtitle="Plans, habitudes alimentaires, listes de courses, compléments documentés et personnalisables, évolution réunis dans le dossier client. La nutrition à l'échelle."
+      subtitle="Plans, habitudes alimentaires, listes de courses, compléments documentés et personnalisables, évolution réunis dans le dossier de la personne. La nutrition à l'échelle."
       primaryCTA={{ href: '/pricing/', label: 'Rejoindre Optibilan' }}
       secondaryCTA={{ href: '/checkout/solo/', label: 'Essayer Optibilan' }}
     />
@@ -46,7 +46,7 @@ const breadcrumbJsonLd = {
           </h2>
           <p class="text-lg text-encre/60">
             Plan sur Word, liste de courses sur Notes, compléments dans un tableau, méthodes dans un dossier, journal alimentaire sur papier…<br>
-            Le client ne suit pas. Le professionnel perd du temps.
+            La personne ne suit pas. Le professionnel perd du temps.
           </p>
         
         <div class="aspect-video rounded-xl border border-encre/10 bg-encre/5 overflow-hidden relative shadow-soft mb-12">
@@ -72,11 +72,11 @@ const breadcrumbJsonLd = {
             },
             {
               title: 'Listes de courses hebdomadaires auto-générées',
-              desc: 'À partir du plan : quantités, catégories (légumes, protéines, épicerie), magasins préférés du client. Le client coche sur mobile. Mise à jour auto si le plan change.',
+              desc: 'À partir du plan : quantités, catégories (légumes, protéines, épicerie), magasins préférés de la personne. Elle coche sur mobile. Mise à jour auto si le plan change.',
               features: [
                 'Quantités calculées pour la semaine',
                 'Catégorisation auto (drive / marché / bio)',
-                'Partage lien / email / espace client',
+                'Partage lien / email / espace des personnes',
                 'Historique listes pour réutilisation',
               ],
               icon: 'chart',
@@ -93,8 +93,8 @@ const breadcrumbJsonLd = {
               icon: 'zap',
             },
             {
-              title: 'Suivi alimentaire client + validation coach',
-              desc: 'Journal photo/texte simple pour le client (scan code-barres, recherche, plat favori). Validation coach en 1 clic (✓ / commentaire). Corrélation auto avec le plan (écart calories, protéines, légumes).',
+              title: 'Suivi alimentaire des personnes + validation coach',
+              desc: 'Journal photo/texte simple pour la personne (scan code-barres, recherche, plat favori). Validation coach en 1 clic (✓ / commentaire). Corrélation auto avec le plan (écart calories, protéines, légumes).',
               features: [
                 'Scan code-barres + base aliments',
                 'Plats favoris pour saisie rapide',
@@ -105,7 +105,7 @@ const breadcrumbJsonLd = {
             },
             {
               title: 'Évolution du plan dans le temps',
-              desc: 'Duplicata de plan en 1 clic, ajustement macros/repas, historique des versions, commentaires de modification. Le client voit la progression (ex: +200 kcal / +30g protéines depuis le mois dernier).',
+              desc: 'Duplicata de plan en 1 clic, ajustement macros/repas, historique des versions, commentaires de modification. La personne voit la progression (ex: +200 kcal / +30g protéines depuis le mois dernier).',
               features: [
                 'Versioning complet des plans',
                 'Comparatif version actuelle vs précédente',
@@ -156,13 +156,13 @@ const breadcrumbJsonLd = {
             Le suivi nutritionnel dans une seule consultation
           </h2>
           <p class="text-lg text-encre/60">
-            Plans, journal alimentaire et écarts réel/plan réunis dans le dossier client.
+            Plans, journal alimentaire et écarts réel/plan réunis dans le dossier de la personne.
           </p>
         </header>
         <div class="aspect-video max-w-4xl mx-auto rounded-xl border border-encre/10 bg-blanc overflow-hidden shadow-xl">
           <img
             src="/images/product/nutrition-consultation.webp"
-            alt="Capture de l'interface Optibilan : consultation nutrition avec plans repas et journal alimentaire du client"
+            alt="Capture de l'interface Optibilan : consultation nutrition avec plans repas et journal alimentaire de la personne"
             width="667"
             height="381"
             class="w-full h-full object-cover"

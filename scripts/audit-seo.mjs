@@ -32,6 +32,16 @@ const routeOf = (file) => {
 const errors = [];
 const warnings = [];
 
+function stripTags(html) {
+  return html
+    .replace(/<script[\s\S]*?<\/script>/gi, ' ')
+    .replace(/<style[\s\S]*?<\/style>/gi, ' ')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/&nbsp;/g, ' ')
+    .replace(/&amp;/g, '&')
+    .replace(/\s+/g, ' ');
+}
+
 const pages = walk(DIST).map((file) => {
   const html = readFileSync(file, 'utf8');
   const route = routeOf(file);
@@ -45,7 +55,8 @@ const pages = walk(DIST).map((file) => {
   const noindex = /<meta name="robots" content="noindex/.test(html);
   const lang = (html.match(/<html[^>]*lang="([^"]+)"/) || [, ''])[1];
   const isRedirect = /http-equiv="refresh"/.test(html);
-  return { route, title, desc, h1s, imgs, links, noindex, lang, isRedirect };
+  const bodyText = stripTags(html.match(/<body[\s\S]*<\/body>/)?.[0] || '');
+  return { route, title, desc, h1s, imgs, links, noindex, lang, isRedirect, bodyText };
 });
 
 const content = pages.filter((p) => !p.isRedirect);
@@ -77,6 +88,19 @@ for (const page of content) {
 
   titles.set(page.title, [...(titles.get(page.title) || []), page.route]);
   descs.set(page.desc, [...(descs.get(page.desc) || []), page.route]);
+
+  // Tiret cadratin : interdit dans la copie, toutes langues confondues.
+  if (page.bodyText.includes('—')) {
+    errors.push(`${page.route} : tiret cadratin (—) dans le texte de la page.`);
+  }
+
+  // Vocabulaire : la personne accompagnee ne s'appelle pas un "client".
+  if (page.lang === 'fr' && !page.route.startsWith('/legal/')) {
+    const offenders = page.bodyText.match(/\bclients?\b/gi) || [];
+    if (offenders.length > 0) {
+      warnings.push(`${page.route} : ${offenders.length} occurrence(s) de "client" dans la copie francaise.`);
+    }
+  }
 
   const withoutDims = page.imgs.filter((img) => !/\bwidth="\d/.test(img) || !/\bheight="\d/.test(img));
   if (withoutDims.length > 0) {

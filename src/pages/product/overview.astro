@@ -83,7 +83,7 @@ des accompagnements santé
         <div class="aspect-video max-w-4xl mx-auto rounded-xl overflow-hidden relative">
           <img
             src="/images/product/dashboard-coach.webp"
-            alt="Tableau de bord professionnel Optibilan : pilotage de tous les suivis clients"
+            alt="Tableau de bord professionnel Optibilan : pilotage de l'ensemble des suivis"
             class="w-full h-full object-cover"
             loading="lazy" width="998" height="381" />
           <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" aria-hidden="true"></div>
@@ -124,7 +124,7 @@ des accompagnements santé
               <li class="flex items-center gap-3"><span class="w-6 h-6 rounded-full bg-encre/5 flex items-center justify-center text-encre/50">4</span> Données wearables non exploitées</li>
               <li class="flex items-center gap-3"><span class="w-6 h-6 rounded-full bg-encre/5 flex items-center justify-center text-encre/50">5</span> Mental sur documents partagés</li>
               <li class="flex items-center gap-3"><span class="w-6 h-6 rounded-full bg-encre/5 flex items-center justify-center text-encre/50">6</span> Communication par WhatsApp / Email</li>
-              <li class="flex items-center gap-3"><span class="w-6 h-6 rounded-full bg-encre/5 flex items-center justify-center text-encre/50">7</span> Aucune vision globale du client</li>
+              <li class="flex items-center gap-3"><span class="w-6 h-6 rounded-full bg-encre/5 flex items-center justify-center text-encre/50">7</span> Aucune vision globale de la personne suivie</li>
             </ul>
           </div>
           <div class="p-6 md:p-8 rounded-xl bg-gradient-to-br from-bleu-signature/5 via-papier to-bleu-lecture/5 border border-encre/10">
@@ -141,7 +141,7 @@ des accompagnements santé
               <li class="flex items-center gap-3"><Icon name="check" class="w-5 h-5 text-emerald-500 flex-shrink-0" /> Marque blanche totale, votre domaine</li>
               <li class="flex items-center gap-3"><Icon name="check" class="w-5 h-5 text-emerald-500 flex-shrink-0" /> API, connecteurs, intégrations compatibles</li>
               <li class="flex items-center gap-3"><Icon name="check" class="w-5 h-5 text-emerald-500 flex-shrink-0" /> Protection des données, contrôle des accès et traçabilité</li>
-              <li class="flex items-center gap-3"><Icon name="check" class="w-5 h-5 text-emerald-500 flex-shrink-0" /> Vision 360° de chaque client</li>
+              <li class="flex items-center gap-3"><Icon name="check" class="w-5 h-5 text-emerald-500 flex-shrink-0" /> Vision 360° de chaque personne</li>
             </ul>
           </div>
         </div>
@@ -203,7 +203,7 @@ des accompagnements santé
             {
               num: '03',
               title: 'Suivez ce qui évolue',
-              desc: 'Gamification (XP, badges, habitudes) qui engage vos clients, alertes sur l\'adhérence, vue cohortes pour piloter rétention et progression.',
+              desc: 'Gamification (XP, badges, habitudes) qui engage les personnes que vous suivez, alertes sur l\'adhérence, vue cohortes pour piloter rétention et progression.',
               icon: 'zap',
               color: 'indigo',
             },
@@ -242,7 +242,7 @@ des accompagnements santé
         <div class="grid md:grid-cols-3 gap-6 mb-10 max-w-2xl mx-auto">
           {[
             { icon: 'document', title: 'PDF → Données structurées', desc: 'L\'IA lit bilans, analyses, lettres et pré-remplit les champs.' },
-            { icon: 'chart', title: 'Bilan → Synthèse', desc: 'Génération automatique de résumés pour le professionnel et le client.' },
+            { icon: 'chart', title: 'Bilan → Synthèse', desc: 'Génération automatique de résumés pour le professionnel et pour la personne.' },
             { icon: 'zap', title: 'Données → Proposition', desc: 'Détection alertes d\'adhérence, suggestions d\'ajustement, alertes proactives.' },
           ].map(item => (
             <div class="p-5 rounded-xl bg-craie/10 backdrop-blur-sm text-left" key={item.title}>

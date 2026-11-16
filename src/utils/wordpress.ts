@@ -742017,7 +742017,7 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
-      { label: 'CNIL — Durées de conservation des données', url: 'https://www.cnil.fr/fr/les-durees-de-conservation-des-donnees' },
+      { label: 'CNIL : Durées de conservation des données', url: 'https://www.cnil.fr/fr/les-durees-de-conservation-des-donnees' },
 
 
 
@@ -742145,7 +742145,7 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
-      { label: 'Service-public.fr — Créer son entreprise', url: 'https://entreprendre.service-public.fr/' },
+      { label: 'Service-public.fr : Créer son entreprise', url: 'https://entreprendre.service-public.fr/' },
 
 
 
@@ -742273,7 +742273,7 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
-      { label: 'Legifrance — Textes de droit applicables', url: 'https://www.legifrance.gouv.fr/' },
+      { label: 'Legifrance : Textes de droit applicables', url: 'https://www.legifrance.gouv.fr/' },
 
 
 
@@ -745597,11 +745597,11 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
     sources: [
 
-      { label: 'Inserm — Mémoire et répétition espacée', url: 'https://www.inserm.fr/' },
+      { label: 'Inserm : Mémoire et répétition espacée', url: 'https://www.inserm.fr/' },
 
-      { label: 'ANSM — Informations sur la santé', url: 'https://www.ansm.sante.fr/' },
+      { label: 'ANSM : Informations sur la santé', url: 'https://www.ansm.sante.fr/' },
 
-      { label: 'OMS — Santé physique et mentale', url: 'https://www.who.int/fr' },
+      { label: 'OMS : Santé physique et mentale', url: 'https://www.who.int/fr' },
 
     ],
 
@@ -745691,9 +745691,9 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
     seoKeywords: ['synchroniser Apple Health, Oura et Garmin', 'synchronisation des données de santé', 'dossier de biomarqueurs'],
     tags: ['sante', 'biomarqueurs', 'donnees', 'dossier-client'],
     sources: [
-      { label: 'Apple — Documentation HealthKit', url: 'https://developer.apple.com/health-fitness/' },
-      { label: 'Garmin — Logiciel de santé', url: 'https://www.garmin.com/fr-FR/health/' },
-      { label: 'CNIL — Protection des données de santé', url: 'https://www.cnil.fr/fr/comprendre-le-rgpd' },
+      { label: 'Apple : Documentation HealthKit', url: 'https://developer.apple.com/health-fitness/' },
+      { label: 'Garmin : Logiciel de santé', url: 'https://www.garmin.com/fr-FR/health/' },
+      { label: 'CNIL : Protection des données de santé', url: 'https://www.cnil.fr/fr/comprendre-le-rgpd' },
     ],
     faq: [
       { q: 'Peut-on synchroniser Apple Health, Oura et Garmin en même temps ?', a: 'Oui, à condition d’attribuer une source à chaque grandeur mesurée. Le sommeil vient d’Oura, la charge d’entraînement de Garmin, l’activité globale d’Apple Health. Ne laissez jamais deux applications écrire la même donnée, sinon les écarts deviennent ininterprétables.' },
@@ -762858,7 +762858,7 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
-      { label: 'CNIL — La protection des données personnelles', url: 'https://www.cnil.fr/fr/comprendre-le-rgpd' },
+      { label: 'CNIL : La protection des données personnelles', url: 'https://www.cnil.fr/fr/comprendre-le-rgpd' },
 
 
 
@@ -763114,7 +763114,7 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
-      { label: 'Service-public.fr — Créer son entreprise', url: 'https://www.service-public.fr/particuliers/vosdroits' },
+      { label: 'Service-public.fr : Créer son entreprise', url: 'https://www.service-public.fr/particuliers/vosdroits' },
 
 
 
@@ -763370,7 +763370,7 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
-      { label: 'Legifrance — Textes de droit applicables', url: 'https://www.legifrance.gouv.fr/' },
+      { label: 'Legifrance : Textes de droit applicables', url: 'https://www.legifrance.gouv.fr/' },
 
 
 
@@ -771754,7 +771754,7 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
-      { label: 'CNIL — Les durées de conservation des données', url: 'https://www.cnil.fr/fr/les-durees-de-conservation-des-donnees' },
+      { label: 'CNIL : Les durées de conservation des données', url: 'https://www.cnil.fr/fr/les-durees-de-conservation-des-donnees' },
 
 
 
@@ -771818,7 +771818,7 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
-      { label: 'Service-public.fr — Embauche et contrat de travail', url: 'https://entreprendre.service-public.fr/vosdroits' },
+      { label: 'Service-public.fr : Embauche et contrat de travail', url: 'https://entreprendre.service-public.fr/vosdroits' },
 
 
 
@@ -915818,7 +915818,7 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
-      { label: 'CNIL — La protection des données personnelles', url: 'https://www.cnil.fr/fr/comprendre-le-rgpd' },
+      { label: 'CNIL : La protection des données personnelles', url: 'https://www.cnil.fr/fr/comprendre-le-rgpd' },
 
 
 
@@ -917866,7 +917866,7 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
-      { label: 'Service-public.fr — Créer son entreprise', url: 'https://www.service-public.fr/particuliers/vosdroits' },
+      { label: 'Service-public.fr : Créer son entreprise', url: 'https://www.service-public.fr/particuliers/vosdroits' },
 
 
 
@@ -919914,7 +919914,7 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
-      { label: 'Legifrance — Textes de droit applicables', url: 'https://www.legifrance.gouv.fr/' },
+      { label: 'Legifrance : Textes de droit applicables', url: 'https://www.legifrance.gouv.fr/' },
 
 
 
@@ -944522,7 +944522,7 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
-      { label: 'CNIL — Les durées de conservation des données', url: 'https://www.cnil.fr/fr/les-durees-de-conservation-des-donnees' },
+      { label: 'CNIL : Les durées de conservation des données', url: 'https://www.cnil.fr/fr/les-durees-de-conservation-des-donnees' },
 
 
 
@@ -944554,7 +944554,7 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
-      { label: 'Service-public.fr — Créer son entreprise', url: 'https://entreprendre.service-public.fr/' },
+      { label: 'Service-public.fr : Créer son entreprise', url: 'https://entreprendre.service-public.fr/' },
 
 
 
@@ -944586,7 +944586,7 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
-      { label: 'Code général des collectivités territoriales — Legifrance', url: 'https://www.legifrance.gouv.fr/' },
+      { label: 'Code général des collectivités territoriales : Legifrance', url: 'https://www.legifrance.gouv.fr/' },
 
 
 
@@ -947426,7 +947426,7 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
-      { label: 'CNIL — Le recueil des données personnelles', url: 'https://www.cnil.fr/fr/comprendre-le-rgpd' },
+      { label: 'CNIL : Le recueil des données personnelles', url: 'https://www.cnil.fr/fr/comprendre-le-rgpd' },
 
 
 
@@ -947434,7 +947434,7 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
-      { label: 'Service-public.fr — Obligations de l’entreprise', url: 'https://entreprendre.service-public.fr/' },
+      { label: 'Service-public.fr : Obligations de l’entreprise', url: 'https://entreprendre.service-public.fr/' },
 
 
 
@@ -947442,7 +947442,7 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
-      { label: 'Legifrance — Obligations déontologiques', url: 'https://www.legifrance.gouv.fr/' },
+      { label: 'Legifrance : Obligations déontologiques', url: 'https://www.legifrance.gouv.fr/' },
 
 
 
@@ -949818,15 +949818,15 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
-      { label: 'URSSAF — Cotisations et contributions sociales', url: 'https://www.urssaf.fr/' },
+      { label: 'URSSAF : Cotisations et contributions sociales', url: 'https://www.urssaf.fr/' },
 
 
 
-      { label: 'Service-public.fr — Formalités et obligations de l’entreprise', url: 'https://entreprendre.service-public.fr/' },
+      { label: 'Service-public.fr : Formalités et obligations de l’entreprise', url: 'https://entreprendre.service-public.fr/' },
 
 
 
-      { label: 'DGCCRF — Information sur les prix pratiqués', url: 'https://www.economie.gouv.fr/dgccrf' },
+      { label: 'DGCCRF : Information sur les prix pratiqués', url: 'https://www.economie.gouv.fr/dgccrf' },
 
 
 
@@ -952998,7 +952998,7 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
-      { label: 'Santé publique France — Repères alimentaires', url: 'https://www.santepubliquefrance.fr/' },
+      { label: 'Santé publique France : Repères alimentaires', url: 'https://www.santepubliquefrance.fr/' },
 
 
 
@@ -953014,7 +953014,7 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
-      { label: 'CNIL — Protection des données de santé', url: 'https://www.cnil.fr/fr/comprendre-le-rgpd' },
+      { label: 'CNIL : Protection des données de santé', url: 'https://www.cnil.fr/fr/comprendre-le-rgpd' },
 
 
 
@@ -953030,7 +953030,7 @@ const STATIC_FALLBACK_ARTICLES: OptibilanArticle[] = [
 
 
 
-      { label: 'Legifrance — Données de santé et obligations', url: 'https://www.legifrance.gouv.fr/' },
+      { label: 'Legifrance : Données de santé et obligations', url: 'https://www.legifrance.gouv.fr/' },
 
 
 

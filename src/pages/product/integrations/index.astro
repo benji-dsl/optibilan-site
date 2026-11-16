@@ -85,7 +85,7 @@ const breadcrumbJsonLd = {
               icon: 'calendar',
               color: 'bleu-signature',
               integrations: [
-                { name: 'Google Calendar', type: 'NATIF', desc: 'Abonnement ICS par staff - appels planifiés, titre, date, lien fiche client', status: 'Disponible' },
+                { name: 'Google Calendar', type: 'NATIF', desc: 'Abonnement ICS par staff - appels planifiés, titre, date, lien fiche de la personne', status: 'Disponible' },
                 { name: 'Apple Calendar', type: 'NATIF', desc: 'Abonnement ICS natif - mêmes données que Google Calendar', status: 'Disponible' },
                 { name: 'Outlook / Office 365', type: 'NATIF', desc: 'Abonnement ICS - compatible Outlook desktop, web, mobile', status: 'Disponible' },
                 { name: 'Calendly', type: 'CONNECTEUR', desc: 'Nouveau RDV Calendly → webhook → création appel dans Optibilan', status: 'Disponible' },
@@ -96,7 +96,7 @@ const breadcrumbJsonLd = {
               icon: 'users',
               color: 'bordeaux',
               integrations: [
-                { name: 'Slack', type: 'CONNECTEUR', desc: 'Webhook entrant - nouveau client, bilan déposé, appel en retard, demande RGPD', status: 'Disponible' },
+                { name: 'Slack', type: 'CONNECTEUR', desc: 'Webhook entrant - nouvelle personne, bilan déposé, appel en retard, demande RGPD', status: 'Disponible' },
                 { name: 'Email (Resend)', type: 'NATIF', desc: 'Emails transactionnels - activation, reset MDP, rappels bilans, notifications équipe', status: 'Disponible' },
                 { name: 'Push (Web)', type: 'NATIF', desc: 'Notifications navigateur - rappel bilan, séance, message, alerte', status: 'Disponible' },
                 { name: 'WhatsApp Business', type: 'AUTOMATISATION', desc: 'Via n8n / Make - notifications WhatsApp pour rappels, alertes', status: 'Disponible' },
@@ -108,8 +108,8 @@ const breadcrumbJsonLd = {
               color: 'indigo',
               integrations: [
                 { name: 'n8n', type: 'AUTOMATISATION', desc: 'Auto-hébergé ou cloud - webhooks Optibilan → actions n8n (Notion, Sheets, Airtable, HTTP)', status: 'Disponible' },
-                { name: 'Make (Integromat)', type: 'AUTOMATISATION', desc: 'Scénarios visuels - nouveaux clients, bilans, paiements → actions multiples', status: 'Disponible' },
-                { name: 'Zapier', type: 'AUTOMATISATION', desc: 'Zaps - trigger Optibilan (client créé, bilan soumis…) → 5000+ apps', status: 'Disponible' },
+                { name: 'Make (Integromat)', type: 'AUTOMATISATION', desc: 'Scénarios visuels - nouvelles personnes, bilans, paiements → actions multiples', status: 'Disponible' },
+                { name: 'Zapier', type: 'AUTOMATISATION', desc: 'Zaps - trigger Optibilan (personne créée, bilan soumis…) → 5000+ apps', status: 'Disponible' },
                 { name: 'Notion', type: 'CONNECTEUR', desc: 'Webhook note.created → base Notion (client, coach, date, type, contenu, visibilité)', status: 'Disponible' },
               ],
             },
@@ -128,8 +128,8 @@ const breadcrumbJsonLd = {
               icon: 'code',
               color: 'bleu-ardoise',
               integrations: [
-                { name: 'API REST v1', type: 'API', desc: 'OpenAPI 3.1 complet - clients, bilans, nutrition, sport, santé, webhooks, admin', status: 'Disponible' },
-                { name: 'Webhooks signés', type: 'API', desc: '8 événements signés - client créé, bilan soumis, badge obtenu, nutrition mise à jour, appel en retard…', status: 'Disponible' },
+                { name: 'API REST v1', type: 'API', desc: 'OpenAPI 3.1 complet - personnes, bilans, nutrition, sport, santé, webhooks, admin', status: 'Disponible' },
+                { name: 'Webhooks signés', type: 'API', desc: '8 événements signés - personne créée, bilan soumis, badge obtenu, nutrition mise à jour, appel en retard…', status: 'Disponible' },
                 { name: 'Sandbox API', type: 'API', desc: 'Environnement test - clés API test, données factices, playground Swagger/Redoc', status: 'Disponible' },
                 { name: 'SSO / SAML', type: 'API', desc: 'Offre Cabinet - SAML 2.0, OIDC, provisioning SCIM (bientôt)', status: 'Bientôt' },
               ],
