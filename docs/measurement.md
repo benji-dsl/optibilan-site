@@ -58,6 +58,21 @@ tels quels dans `cta_id` : aucun attribut à réécrire dans les pages.
 4. Pied de page → « Gérer les cookies » : le bandeau revient, le choix est effacé.
 5. Refuser, puis vérifier dans l'onglet Application qu'aucun cookie `_ga` n'existe.
 
+## Cloudflare Web Analytics
+
+Cloudflare injecte son propre beacon (`static.cloudflareinsights.com`) sur les pages
+du site. Il est **sans cookie**, ne demande donc pas de consentement, et donne une
+mesure d'audience même aux visiteurs qui refusent GA4. La CSP l'autorise
+explicitement depuis le 16/11/2026 : sans cette autorisation, le navigateur le
+bloquait et affichait une erreur en console à chaque visite.
+
+## Attention pour tester
+
+Si ton navigateur a un bloqueur de publicités (uBlock, AdGuard, Brave Shields),
+`googletagmanager.com` est bloqué : la balise est bien posée, mais la requête ne
+part pas et GA4 reste vide. Teste en navigation privée sans extension, ou depuis
+un téléphone, avant de conclure que l'installation ne marche pas.
+
 ## Pourquoi pas de bandeau géant
 
 Le bandeau est une barre basse, non bloquante, avec un refus aussi accessible que
