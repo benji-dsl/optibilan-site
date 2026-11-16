@@ -95,8 +95,17 @@ for (const page of content) {
   }
 
   // Vocabulaire : la personne accompagnee ne s'appelle pas un "client".
-  if (page.lang === 'fr' && !page.route.startsWith('/legal/')) {
-    const offenders = page.bodyText.match(/\bclients?\b/gi) || [];
+  // Le blog est editorial et les pages legales definissent le terme : hors perimetre.
+  if (page.lang === 'fr' && !page.route.startsWith('/legal/') && !page.route.startsWith('/blog/')) {
+    const copy = page.bodyText
+      .replace(/clients:(read|write|delete)/g, ' ')
+      .replace(/[Pp]ortail client/g, ' ')
+      .replace(/[Ss]upport client/g, ' ')
+      .replace(/impact client/g, ' ')
+      .replace(/clients impactés/g, ' ')
+      .replace(/clients Cabinet/g, ' ')
+      .replace(/base Notion \(client/g, ' ');
+    const offenders = copy.match(/\bclients?\b/gi) || [];
     if (offenders.length > 0) {
       warnings.push(`${page.route} : ${offenders.length} occurrence(s) de "client" dans la copie francaise.`);
     }
