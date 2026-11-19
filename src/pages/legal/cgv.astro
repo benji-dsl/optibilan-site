@@ -5,7 +5,18 @@ import Footer from '../../components/Footer.astro';
 
 const pageTitle = 'Conditions Générales de Vente - Optibilan';
 const pageDescription = 'CGV d\'Optibilan : abonnements, tarifs, paiement, résiliation, SLA, support, responsabilités, RGPD, droit applicable.';
-const lastUpdated = new Date().toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
+// DATE FIGEE, jamais celle du build.
+//
+// Cette page etait datee avec `new Date()` : chaque deploiement Cloudflare
+// changeait donc la date des CGV sans qu'une seule ligne du texte bouge. Or
+// l'app enregistre la version acceptee par chaque cabinet (`TERMS_VERSION` =
+// 2026-10) et `npm run check:prod` compare les deux : une page qui se re-date
+// toute seule detruit la preuve du consentement. Le 16 novembre 2026, la page
+// disait « 16 novembre » quand l'app enregistrait « 12 octobre ».
+//
+// Cette date ne bouge QUE si le texte des CGV change vraiment, et dans ce cas
+// il faut incrementer `TERMS_VERSION` dans l'app en meme temps.
+const lastUpdated = '12 octobre 2026';
 ---
 
 <Layout
