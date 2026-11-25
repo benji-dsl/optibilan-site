@@ -272,7 +272,7 @@ const breadcrumbJsonLd = {
                     <span class="font-semibold text-encre">€0</span>
                   </div>
                   <div class="mt-2 flex items-center justify-between text-sm">
-                    <span class="text-muted-light">Total after the trial</span>
+                    <span class="text-muted-light" id="total-label">Total after the trial</span>
                     <span id="cta-total" class="font-semibold text-encre"></span>
                   </div>
                   <p id="cta-date" class="mt-3 text-xs text-muted-light"></p>
@@ -398,6 +398,8 @@ const breadcrumbJsonLd = {
     $('submit-btn').textContent = betaRequested() ? 'Start my 3 free months' : 'Start my 30 free days';
     document.querySelectorAll('[data-trial-label]').forEach(el => { el.textContent = betaRequested() ? "3 months free" : "30 days free"; });
     $('final-cadence').textContent = yearly ? 'Yearly · 2 months free' : 'Monthly';
+    const totalLabel = $('total-label');
+    if (totalLabel) totalLabel.textContent = betaRequested() ? 'Total after the 3 free months' : 'Total after the trial';
     $('cta-total').textContent = `${eur(totalPrice())} incl. VAT`;
     $('cta-date').textContent = `First billing on ${trialEndDate()}`;
 
