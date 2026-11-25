@@ -17,7 +17,7 @@ Le site est bilingue : français sur `https://optibilan.com/`, anglais sur `http
 
 ## Tarifs
 
-Solo 49 € par mois (jusqu'à 30 personnes), Studio 149 € par mois (jusqu'à 150 personnes, API, marque blanche avancée), Cabinet 349 € par mois (personnes illimitées, SLA). Deux mois offerts en annuel. Essai de 30 jours sans carte.
+Solo 49 € par mois (jusqu'à 30 personnes), Studio 99 € par mois (jusqu'à 150 personnes, API, marque blanche avancée), Cabinet 199 € par mois (personnes illimitées, SLA). Deux mois offerts en annuel. Essai de 30 jours sans carte.
 
 ## Pages de référence
 

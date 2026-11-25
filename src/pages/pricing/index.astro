@@ -6,8 +6,8 @@ import Pricing from '../../components/Pricing.astro';
 import CTA from '../../components/CTA.astro';
 import RelatedReading from '@/components/RelatedReading.astro';
 
-const pageTitle = 'Tarifs Optibilan : 49, 149 et 349 € par mois, essai offert';
-const pageDescription = 'Tarification simple et transparente : Solo 49€/mois, Studio 149€/mois, Cabinet 349€/mois. 2 mois offerts en annuel. Essai gratuit 30 jours.';
+const pageTitle = 'Tarifs Optibilan : 49, 99 et 199 € par mois, essai offert';
+const pageDescription = 'Tarification simple et transparente : Solo 49€/mois, Studio 99€/mois, Cabinet 199€/mois. 2 mois offerts en annuel. Essai gratuit 30 jours.';
 
 const faqs = [
   { q: 'Puis-je changer d\'offre en cours de mois ?', a: 'Oui. Le changement prend effet immédiatement. Le prorata est calculé automatiquement sur votre prochaine facture Stripe.' },
@@ -40,8 +40,8 @@ const saJsonLd = {
   operatingSystem: 'Web',
   offers: [
     { '@type': 'Offer', name: 'Solo', price: '49', priceCurrency: 'EUR', priceSpecification: { '@type': 'UnitPriceSpecification', billingDuration: 'P1M' }, url: 'https://optibilan.com/pricing/', availability: 'https://schema.org/InStock' },
-    { '@type': 'Offer', name: 'Studio', price: '149', priceCurrency: 'EUR', priceSpecification: { '@type': 'UnitPriceSpecification', billingDuration: 'P1M' }, url: 'https://optibilan.com/pricing/', availability: 'https://schema.org/InStock' },
-    { '@type': 'Offer', name: 'Cabinet', price: '349', priceCurrency: 'EUR', priceSpecification: { '@type': 'UnitPriceSpecification', billingDuration: 'P1M' }, url: 'https://optibilan.com/pricing/', availability: 'https://schema.org/InStock' },
+    { '@type': 'Offer', name: 'Studio', price: '99', priceCurrency: 'EUR', priceSpecification: { '@type': 'UnitPriceSpecification', billingDuration: 'P1M' }, url: 'https://optibilan.com/pricing/', availability: 'https://schema.org/InStock' },
+    { '@type': 'Offer', name: 'Cabinet', price: '199', priceCurrency: 'EUR', priceSpecification: { '@type': 'UnitPriceSpecification', billingDuration: 'P1M' }, url: 'https://optibilan.com/pricing/', availability: 'https://schema.org/InStock' },
   ],
 };
 const orgJsonLd = {

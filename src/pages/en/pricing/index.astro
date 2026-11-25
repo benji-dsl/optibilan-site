@@ -9,8 +9,8 @@ import RelatedReading from '@/components/RelatedReading.astro';
 
 const lp = (href: string) => localizePath(href, 'en');
 
-const pageTitle = 'Optibilan pricing: €49, €149 and €349 per month, free trial';
-const pageDescription = 'Simple, transparent pricing: Solo €49/month, Studio €149/month, Cabinet €349/month. 2 months free on yearly plans. 30-day free trial.';
+const pageTitle = 'Optibilan pricing: €49, €99 and €199 per month, free trial';
+const pageDescription = 'Simple, transparent pricing: Solo €49/month, Studio €99/month, Cabinet €199/month. 2 months free on yearly plans. 30-day free trial.';
 
 const faqs = [
   { q: 'Can I change plans mid-month?', a: 'Yes. The change takes effect immediately. Proration is calculated automatically on your next Stripe invoice.' },
@@ -44,8 +44,8 @@ const saJsonLd = {
   inLanguage: 'en-US',
   offers: [
     { '@type': 'Offer', name: 'Solo', price: '49', priceCurrency: 'EUR', priceSpecification: { '@type': 'UnitPriceSpecification', billingDuration: 'P1M' }, url: 'https://optibilan.com/en/pricing/', availability: 'https://schema.org/InStock' },
-    { '@type': 'Offer', name: 'Studio', price: '149', priceCurrency: 'EUR', priceSpecification: { '@type': 'UnitPriceSpecification', billingDuration: 'P1M' }, url: 'https://optibilan.com/en/pricing/', availability: 'https://schema.org/InStock' },
-    { '@type': 'Offer', name: 'Cabinet', price: '349', priceCurrency: 'EUR', priceSpecification: { '@type': 'UnitPriceSpecification', billingDuration: 'P1M' }, url: 'https://optibilan.com/en/pricing/', availability: 'https://schema.org/InStock' },
+    { '@type': 'Offer', name: 'Studio', price: '99', priceCurrency: 'EUR', priceSpecification: { '@type': 'UnitPriceSpecification', billingDuration: 'P1M' }, url: 'https://optibilan.com/en/pricing/', availability: 'https://schema.org/InStock' },
+    { '@type': 'Offer', name: 'Cabinet', price: '199', priceCurrency: 'EUR', priceSpecification: { '@type': 'UnitPriceSpecification', billingDuration: 'P1M' }, url: 'https://optibilan.com/en/pricing/', availability: 'https://schema.org/InStock' },
   ],
 };
 const orgJsonLd = {
@@ -73,7 +73,7 @@ const faqJsonLd = {
   description={pageDescription}
   lang="en"
   canonical="/en/pricing/"
-  ogImage="/og/en/pricing.png"
+  ogImage="/og/en/pricing-2026.png"
   jsonLd={[breadcrumbJsonLd, faqJsonLd]}
 >
   <Header />

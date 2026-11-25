@@ -2,8 +2,8 @@ import Stripe from 'stripe';
 
 const PLAN_PRICES = {
   SOLO: { monthly: 49, yearly: 490 },
-  STUDIO: { monthly: 149, yearly: 1490 },
-  CABINET: { monthly: 349, yearly: 3490 },
+  STUDIO: { monthly: 99, yearly: 990 },
+  CABINET: { monthly: 199, yearly: 1990 },
 } as const;
 
 const VAT_RATES: Record<string, number> = {

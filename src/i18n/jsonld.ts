@@ -107,7 +107,7 @@ export function softwareApplicationJsonLd(locale: Locale) {
     operatingSystem: 'Cloud / SaaS',
     inLanguage: LOCALE_TAG[locale],
     isAccessibleForFree: false,
-    offers: [offer('Solo', '49'), offer('Studio', '149'), offer('Cabinet', '349')],
+    offers: [offer('Solo', '49'), offer('Studio', '99'), offer('Cabinet', '199')],
     description: text.description,
     featureList: text.features,
   };
