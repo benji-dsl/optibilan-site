@@ -95,7 +95,7 @@ const breadcrumbJsonLd = {
       {selectedPlan && planDetails ? (
         <div class="absolute left-1/2 -translate-x-1/2 min-w-0 text-center">
           <p class="truncate font-display text-base font-bold text-encre md:text-lg">Complete your signup</p>
-          <p class="truncate text-xs text-body-light md:text-sm">30 days free with Optibilan {planDetails.name}.</p>
+          <p class="truncate text-xs text-body-light md:text-sm"><span data-trial-label>30 days free</span> with Optibilan {planDetails.name}.</p>
         </div>
       ) : null}
     </div>
@@ -254,6 +254,12 @@ const breadcrumbJsonLd = {
               </section>
 
               <!-- Final summary + CTA -->
+              <section aria-labelledby="promo-title">
+                <label id="promo-title" for="promoCode" class="block text-sm font-medium text-encre mb-2">Promotion code (optional)</label>
+                <input id="promoCode" name="promoCode" type="text" autocomplete="off" maxlength="40" class="checkout-input" aria-describedby="promo-help" />
+                <p id="promo-help" class="mt-2 text-xs text-muted-light">BETA3MOIS: three months free on monthly subscriptions, for first-time users. Limited to 20 redemptions. This replaces the standard 30-day trial.</p>
+              </section>
+
               <section aria-labelledby="final-title">
                 <h2 id="final-title" class="sr-only">Final summary</h2>
                 <div class="rounded-xl border border-encre/10 bg-papier p-5">
@@ -291,7 +297,7 @@ const breadcrumbJsonLd = {
                 <svg class="w-6 h-6 text-bleu-signature" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
                   <rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>
                 </svg>
-                <h3 class="mt-2 text-sm font-semibold text-encre">30 days free</h3>
+                <h3 class="mt-2 text-sm font-semibold text-encre" data-trial-label>30 days free</h3>
                 <p class="mt-1 text-xs text-muted-light">Explore Optibilan before your first billing.</p>
               </div>
               <div class="rounded-xl border border-encre/10 p-4">
@@ -371,14 +377,26 @@ const breadcrumbJsonLd = {
   const vatAmount = () => twoDigits(basePrice() * vatRate());
   const totalPrice = () => twoDigits(basePrice() + vatAmount());
 
+  const betaRequested = () => $('promoCode')?.value.trim().toUpperCase() === 'BETA3MOIS' && state.billing === 'monthly';
+
   function trialEndDate() {
     const d = new Date();
-    d.setDate(d.getDate() + TRIAL_DAYS);
+    if (betaRequested()) {
+      const day = d.getUTCDate();
+      d.setUTCDate(1);
+      d.setUTCMonth(d.getUTCMonth() + 3);
+      const last = new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth() + 1, 0)).getUTCDate();
+      d.setUTCDate(Math.min(day, last));
+    } else {
+      d.setDate(d.getDate() + TRIAL_DAYS);
+    }
     return new Intl.DateTimeFormat('en-US', { day: 'numeric', month: 'long', year: 'numeric' }).format(d);
   }
 
   function renderRecap() {
     const yearly = state.billing === 'yearly';
+    $('submit-btn').textContent = betaRequested() ? 'Start my 3 free months' : 'Start my 30 free days';
+    document.querySelectorAll('[data-trial-label]').forEach(el => { el.textContent = betaRequested() ? "3 months free" : "30 days free"; });
     $('final-cadence').textContent = yearly ? 'Yearly · 2 months free' : 'Monthly';
     $('cta-total').textContent = `${eur(totalPrice())} incl. VAT`;
     $('cta-date').textContent = `First billing on ${trialEndDate()}`;
@@ -455,6 +473,7 @@ const breadcrumbJsonLd = {
   }
 
   document.addEventListener('DOMContentLoaded', () => {
+    $('promoCode').addEventListener('input', renderRecap);
     initPayment();
     renderRecap();
 
@@ -483,6 +502,10 @@ const breadcrumbJsonLd = {
     });
   });
 
+  const attemptKey = 'optibilan-checkout-attempt';
+  const requestId = sessionStorage.getItem(attemptKey) || crypto.randomUUID();
+  sessionStorage.setItem(attemptKey, requestId);
+
   $('checkout-form')?.addEventListener('submit', async (e) => {
     e.preventDefault();
     const btn = $('submit-btn');
@@ -493,6 +516,9 @@ const breadcrumbJsonLd = {
     const country = $('country').value;
     const vatNumber = $('vatNumber').value.trim();
     const address = $('address').value.trim();
+    const enteredCode = $('promoCode').value.trim().toUpperCase();
+    if (enteredCode && enteredCode !== 'BETA3MOIS') return showError('Unknown promotion code.');
+    if (enteredCode && state.billing !== 'monthly') return showError('This promotion is only available on monthly subscriptions.');
 
     if (!firstName || !lastName) return showError('Please enter your first and last name.');
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return showError('Please enter a valid work email.');
@@ -533,10 +559,17 @@ const breadcrumbJsonLd = {
           vatNumber,
           address,
           paymentMethodId: paymentMethod.id,
+          requestId,
+          promoCode: $('promoCode').value.trim(),
         }),
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || 'Payment failed. Your card was not charged.');
+      if (data.setupClientSecret) {
+        const confirmation = await stripe.confirmCardSetup(data.setupClientSecret);
+        if (confirmation.error) throw new Error(confirmation.error.message);
+        if (confirmation.setupIntent?.status !== 'succeeded') throw new Error('Card authentication incomplete.');
+      }
       window.location.href = data.url;
     } catch (err) {
       btn.disabled = false;
